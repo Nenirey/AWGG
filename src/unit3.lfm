@@ -1,0 +1,1899 @@
+object Form3: TForm3
+  Left = 270
+  Height = 433
+  Top = 196
+  Width = 584
+  Caption = 'Configuration'
+  ClientHeight = 433
+  ClientWidth = 584
+  OnCreate = FormCreate
+  OnPaint = FormPaint
+  OnShow = FormShow
+  Position = poScreenCenter
+  LCLVersion = '1.2.6.0'
+  object Button1: TButton
+    AnchorSideLeft.Control = PageControl1
+    AnchorSideRight.Control = Button2
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 472
+    Height = 27
+    Top = 403
+    Width = 44
+    Anchors = [akRight, akBottom]
+    AutoSize = True
+    BorderSpacing.Left = 3
+    BorderSpacing.Right = 10
+    BorderSpacing.Bottom = 3
+    Caption = 'Save'
+    OnClick = Button1Click
+    TabOrder = 0
+  end
+  object Button2: TButton
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Owner
+    AnchorSideBottom.Side = asrBottom
+    Left = 526
+    Height = 27
+    Top = 403
+    Width = 55
+    Anchors = [akRight, akBottom]
+    AutoSize = True
+    BorderSpacing.Right = 3
+    BorderSpacing.Bottom = 3
+    Caption = 'Cancel'
+    OnClick = Button2Click
+    TabOrder = 1
+  end
+  object PageControl1: TPageControl
+    AnchorSideLeft.Control = TreeView1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Panel1
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = Button1
+    Left = 184
+    Height = 374
+    Top = 24
+    Width = 400
+    ActivePage = TabSheet1
+    Align = alCustom
+    Anchors = [akTop, akLeft, akRight, akBottom]
+    BorderSpacing.Bottom = 5
+    ShowTabs = False
+    TabIndex = 0
+    TabOrder = 2
+    OnChange = PageControl1Change
+    Options = [nboKeyboardTabSwitch]
+    object TabSheet1: TTabSheet
+      Caption = 'Proxy'
+      ClientHeight = 370
+      ClientWidth = 396
+      object Label9: TLabel
+        AnchorSideLeft.Control = CheckBox2
+        AnchorSideTop.Control = Edit6
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = Edit6
+        Left = 26
+        Height = 15
+        Top = 252
+        Width = 63
+        Anchors = [akTop, akRight]
+        Caption = 'Password:'
+        ParentColor = False
+      end
+      object Label1: TLabel
+        AnchorSideLeft.Control = Label2
+        AnchorSideTop.Control = Edit1
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = Label2
+        AnchorSideRight.Side = asrBottom
+        Left = 13
+        Height = 15
+        Top = 38
+        Width = 36
+        Anchors = [akTop, akRight]
+        BorderSpacing.Left = 6
+        Caption = 'HTTP:'
+        ParentColor = False
+      end
+      object Label2: TLabel
+        AnchorSideTop.Control = Edit2
+        AnchorSideTop.Side = asrCenter
+        Left = 20
+        Height = 15
+        Top = 91
+        Width = 29
+        BorderSpacing.Left = 5
+        Caption = 'SSL:'
+        ParentColor = False
+      end
+      object Label3: TLabel
+        AnchorSideLeft.Control = Label2
+        AnchorSideTop.Control = Edit3
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = Label2
+        AnchorSideRight.Side = asrBottom
+        Left = 23
+        Height = 15
+        Top = 122
+        Width = 26
+        Anchors = [akTop, akRight]
+        BorderSpacing.Left = 5
+        Caption = 'FTP:'
+        ParentColor = False
+      end
+      object Edit1: TEdit
+        AnchorSideLeft.Control = Label1
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = ComboBox1
+        AnchorSideTop.Side = asrBottom
+        Left = 49
+        Height = 21
+        Top = 35
+        Width = 191
+        BorderSpacing.Top = 5
+        OnChange = CheckBox5Change
+        TabOrder = 0
+      end
+      object Edit2: TEdit
+        AnchorSideLeft.Control = Label2
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = CheckBox5
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Edit1
+        AnchorSideRight.Side = asrBottom
+        Left = 49
+        Height = 21
+        Top = 88
+        Width = 191
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        TabOrder = 1
+      end
+      object Edit3: TEdit
+        AnchorSideLeft.Control = Label3
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Edit2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Edit1
+        AnchorSideRight.Side = asrBottom
+        Left = 49
+        Height = 21
+        Top = 119
+        Width = 191
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 10
+        TabOrder = 2
+      end
+      object SpinEdit1: TSpinEdit
+        AnchorSideLeft.Control = Label4
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Edit1
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 275
+        Height = 21
+        Top = 35
+        Width = 116
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Right = 5
+        MaxValue = 9999
+        OnChange = CheckBox5Change
+        TabOrder = 3
+      end
+      object SpinEdit2: TSpinEdit
+        AnchorSideLeft.Control = Label5
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Edit2
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 275
+        Height = 21
+        Top = 88
+        Width = 116
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 5
+        MaxValue = 9999
+        TabOrder = 4
+      end
+      object SpinEdit3: TSpinEdit
+        AnchorSideLeft.Control = Label6
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 275
+        Height = 21
+        Top = 119
+        Width = 116
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 5
+        MaxValue = 9999
+        TabOrder = 5
+      end
+      object Label4: TLabel
+        AnchorSideLeft.Control = Edit1
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit1
+        AnchorSideTop.Side = asrCenter
+        Left = 245
+        Height = 15
+        Top = 38
+        Width = 30
+        BorderSpacing.Left = 5
+        Caption = 'Port:'
+        ParentColor = False
+      end
+      object Label5: TLabel
+        AnchorSideLeft.Control = Edit1
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit2
+        AnchorSideTop.Side = asrCenter
+        Left = 245
+        Height = 15
+        Top = 91
+        Width = 30
+        BorderSpacing.Left = 5
+        Caption = 'Port:'
+        ParentColor = False
+      end
+      object Label6: TLabel
+        AnchorSideLeft.Control = Edit1
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit3
+        AnchorSideTop.Side = asrCenter
+        Left = 245
+        Height = 15
+        Top = 122
+        Width = 30
+        BorderSpacing.Left = 5
+        Caption = 'Port:'
+        ParentColor = False
+      end
+      object Label7: TLabel
+        AnchorSideTop.Control = Edit4
+        AnchorSideTop.Side = asrCenter
+        Left = 7
+        Height = 15
+        Top = 153
+        Width = 82
+        BorderSpacing.Left = 5
+        Caption = 'No proxy for:'
+        ParentColor = False
+      end
+      object Edit4: TEdit
+        AnchorSideLeft.Control = Label7
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Edit3
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Side = asrBottom
+        Left = 89
+        Height = 21
+        Top = 150
+        Width = 302
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 5
+        TabOrder = 6
+        Text = 'localhost'
+      end
+      object Edit5: TEdit
+        AnchorSideLeft.Control = Edit4
+        AnchorSideTop.Control = CheckBox2
+        AnchorSideTop.Side = asrBottom
+        Left = 89
+        Height = 21
+        Top = 223
+        Width = 144
+        BorderSpacing.Top = 5
+        TabOrder = 7
+      end
+      object Label8: TLabel
+        AnchorSideLeft.Control = CheckBox2
+        AnchorSideTop.Control = Edit5
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = Edit5
+        Left = 55
+        Height = 15
+        Top = 226
+        Width = 34
+        Anchors = [akTop, akRight]
+        Caption = 'User:'
+        ParentColor = False
+      end
+      object Edit6: TEdit
+        AnchorSideLeft.Control = Edit5
+        AnchorSideTop.Control = Edit5
+        AnchorSideTop.Side = asrBottom
+        Left = 89
+        Height = 21
+        Top = 249
+        Width = 144
+        BorderSpacing.Top = 5
+        EchoMode = emPassword
+        PasswordChar = '*'
+        TabOrder = 8
+      end
+      object CheckBox2: TCheckBox
+        AnchorSideTop.Control = Label27
+        AnchorSideTop.Side = asrBottom
+        Left = 15
+        Height = 22
+        Top = 196
+        Width = 145
+        BorderSpacing.Top = 10
+        Caption = 'Use authentication'
+        Color = clDefault
+        OnChange = CheckBox2Change
+        ParentColor = False
+        TabOrder = 9
+      end
+      object CheckBox5: TCheckBox
+        AnchorSideTop.Control = Edit1
+        AnchorSideTop.Side = asrBottom
+        Left = 82
+        Height = 22
+        Top = 61
+        Width = 196
+        BorderSpacing.Top = 5
+        Caption = 'Use the same proxy for all.'
+        OnChange = CheckBox5Change
+        TabOrder = 10
+      end
+      object ComboBox1: TComboBox
+        AnchorSideLeft.Control = Edit1
+        AnchorSideTop.Control = TabSheet1
+        AnchorSideRight.Control = SpinEdit1
+        AnchorSideRight.Side = asrBottom
+        Left = 49
+        Height = 25
+        Top = 5
+        Width = 342
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        ItemHeight = 0
+        Items.Strings = (
+          'No proxy'
+          'System proxy'
+          'Manual'
+        )
+        OnChange = ComboBox1Change
+        Style = csDropDownList
+        TabOrder = 11
+      end
+      object Label27: TLabel
+        AnchorSideLeft.Control = Edit4
+        AnchorSideTop.Control = Edit4
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = Edit4
+        AnchorSideRight.Side = asrBottom
+        Left = 89
+        Height = 15
+        Top = 171
+        Width = 302
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Exp: .mozilla.org, localhost, 192.168.0.1'
+        ParentColor = False
+      end
+    end
+    object TabSheet2: TTabSheet
+      AnchorSideRight.Side = asrBottom
+      Caption = 'Scheduler'
+      ClientHeight = 370
+      ClientWidth = 396
+      object CheckBox3: TCheckBox
+        AnchorSideLeft.Control = TabSheet2
+        AnchorSideTop.Control = CheckBox11
+        AnchorSideTop.Side = asrBottom
+        Left = 15
+        Height = 22
+        Top = 47
+        Width = 55
+        BorderSpacing.Left = 15
+        BorderSpacing.Top = 15
+        Caption = 'Daily'
+        OnChange = CheckBox3Change
+        TabOrder = 0
+      end
+      object Label10: TLabel
+        AnchorSideLeft.Control = CheckBox3
+        AnchorSideTop.Control = CheckBox3
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = CheckBox10
+        AnchorSideRight.Side = asrBottom
+        Left = 36
+        Height = 15
+        Top = 79
+        Width = 80
+        Alignment = taRightJustify
+        Anchors = [akTop, akRight]
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 2
+        Caption = 'Start queue:'
+        ParentColor = False
+      end
+      object CheckGroup5: TCheckGroup
+        AnchorSideLeft.Control = TabSheet2
+        AnchorSideTop.Control = SpinEdit8
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet2
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet2
+        AnchorSideBottom.Side = asrBottom
+        Left = 0
+        Height = 174
+        Top = 126
+        Width = 396
+        Anchors = [akTop, akLeft, akRight]
+        AutoFill = True
+        BorderSpacing.Top = 5
+        Caption = 'Week days'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 3
+        ClientHeight = 158
+        ClientWidth = 394
+        Columns = 3
+        Items.Strings = (
+          'Sunday'
+          'Monday'
+          'Tuesday'
+          'Wednesday'
+          'Thursday'
+          'Friday'
+          'Saturday'
+        )
+        TabOrder = 1
+        Data = {
+          0700000002020202020202
+        }
+      end
+      object DateEdit1: TDateEdit
+        AnchorSideLeft.Control = SpinEdit7
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit7
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = TabSheet2
+        AnchorSideRight.Side = asrBottom
+        Left = 228
+        Height = 21
+        Top = 76
+        Width = 79
+        CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+        OKCaption = 'OK'
+        CancelCaption = 'Cancel'
+        DateOrder = doNone
+        ButtonWidth = 23
+        BorderSpacing.Left = 2
+        CharCase = ecNormal
+        NumGlyphs = 1
+        MaxLength = 0
+        TabOrder = 2
+      end
+      object DateEdit2: TDateEdit
+        AnchorSideLeft.Control = SpinEdit9
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit9
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Side = asrBottom
+        Left = 228
+        Height = 21
+        Top = 100
+        Width = 79
+        CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
+        OKCaption = 'OK'
+        CancelCaption = 'Cancel'
+        DateOrder = doNone
+        ButtonWidth = 23
+        BorderSpacing.Left = 2
+        CharCase = ecNormal
+        NumGlyphs = 1
+        MaxLength = 0
+        TabOrder = 3
+      end
+      object SpinEdit6: TSpinEdit
+        AnchorSideLeft.Control = SpinEdit8
+        AnchorSideTop.Control = Label10
+        AnchorSideTop.Side = asrCenter
+        Left = 118
+        Height = 21
+        Top = 76
+        Width = 50
+        MaxValue = 23
+        OnEditingDone = SpinEdit6EditingDone
+        TabOrder = 4
+      end
+      object SpinEdit7: TSpinEdit
+        AnchorSideLeft.Control = Label34
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit6
+        AnchorSideTop.Side = asrCenter
+        Left = 176
+        Height = 21
+        Top = 76
+        Width = 50
+        BorderSpacing.Left = 2
+        MaxValue = 59
+        OnEditingDone = SpinEdit7EditingDone
+        TabOrder = 5
+      end
+      object SpinEdit8: TSpinEdit
+        AnchorSideLeft.Control = CheckBox10
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit6
+        AnchorSideTop.Side = asrBottom
+        Left = 118
+        Height = 21
+        Top = 100
+        Width = 50
+        BorderSpacing.Top = 3
+        MaxValue = 23
+        OnEditingDone = SpinEdit8EditingDone
+        TabOrder = 6
+      end
+      object SpinEdit9: TSpinEdit
+        AnchorSideLeft.Control = Label35
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit8
+        AnchorSideTop.Side = asrCenter
+        Left = 176
+        Height = 21
+        Top = 100
+        Width = 50
+        BorderSpacing.Left = 2
+        MaxValue = 59
+        OnEditingDone = SpinEdit9EditingDone
+        TabOrder = 7
+      end
+      object Label32: TLabel
+        AnchorSideLeft.Control = SpinEdit6
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = CheckBox3
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = SpinEdit6
+        Left = 115
+        Height = 15
+        Top = 61
+        Width = 57
+        Anchors = [akLeft, akBottom]
+        Caption = 'Hour(24)'
+        ParentColor = False
+      end
+      object Label33: TLabel
+        AnchorSideLeft.Control = SpinEdit7
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideBottom.Control = SpinEdit7
+        Left = 180
+        Height = 15
+        Top = 61
+        Width = 43
+        Anchors = [akLeft, akBottom]
+        Caption = 'Minute'
+        ParentColor = False
+      end
+      object Label34: TLabel
+        AnchorSideLeft.Control = SpinEdit6
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit6
+        AnchorSideTop.Side = asrCenter
+        Left = 170
+        Height = 15
+        Top = 79
+        Width = 4
+        BorderSpacing.Left = 2
+        Caption = ':'
+        ParentColor = False
+      end
+      object Label35: TLabel
+        AnchorSideLeft.Control = SpinEdit8
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit9
+        AnchorSideTop.Side = asrCenter
+        Left = 170
+        Height = 15
+        Top = 103
+        Width = 4
+        BorderSpacing.Left = 2
+        Caption = ':'
+        ParentColor = False
+      end
+      object Label36: TLabel
+        AnchorSideLeft.Control = DateEdit1
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideBottom.Control = DateEdit1
+        Left = 252
+        Height = 15
+        Top = 61
+        Width = 31
+        Anchors = [akLeft, akBottom]
+        Caption = 'Date'
+        ParentColor = False
+      end
+      object CheckBox8: TCheckBox
+        AnchorSideLeft.Control = CheckBox3
+        AnchorSideTop.Control = CheckGroup5
+        AnchorSideTop.Side = asrBottom
+        Left = 15
+        Height = 22
+        Top = 305
+        Width = 109
+        BorderSpacing.Top = 5
+        Caption = 'Disable limits'
+        TabOrder = 8
+      end
+      object CheckBox10: TCheckBox
+        AnchorSideTop.Control = SpinEdit8
+        AnchorSideTop.Side = asrCenter
+        Left = 16
+        Height = 22
+        Top = 99
+        Width = 102
+        Caption = 'Stop queue:'
+        OnChange = CheckBox10Change
+        TabOrder = 9
+      end
+      object CheckBox11: TCheckBox
+        AnchorSideLeft.Control = TabSheet2
+        AnchorSideTop.Control = TabSheet2
+        Left = 15
+        Height = 22
+        Top = 10
+        Width = 126
+        BorderSpacing.Left = 15
+        BorderSpacing.Top = 10
+        Caption = 'Enable sheduler'
+        OnChange = CheckBox11Change
+        TabOrder = 10
+      end
+    end
+    object TabSheet3: TTabSheet
+      Caption = 'Notifications'
+      ClientHeight = 370
+      ClientWidth = 396
+      object CheckBox4: TCheckBox
+        AnchorSideLeft.Control = TabSheet3
+        AnchorSideTop.Control = TabSheet3
+        Left = 15
+        Height = 19
+        Top = 15
+        Width = 118
+        BorderSpacing.Left = 15
+        BorderSpacing.Top = 15
+        Caption = 'Show notifications'
+        TabOrder = 0
+      end
+      object SpinEdit4: TSpinEdit
+        AnchorSideLeft.Control = Label12
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = CheckBox4
+        AnchorSideTop.Side = asrBottom
+        Left = 56
+        Height = 23
+        Top = 44
+        Width = 50
+        BorderSpacing.Top = 10
+        MaxValue = 60
+        MinValue = 1
+        TabOrder = 1
+        Value = 1
+      end
+      object Label12: TLabel
+        AnchorSideLeft.Control = CheckBox4
+        AnchorSideTop.Control = SpinEdit4
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = SpinEdit4
+        Left = 15
+        Height = 15
+        Top = 48
+        Width = 41
+        Caption = 'Hide in:'
+        ParentColor = False
+      end
+      object Label13: TLabel
+        AnchorSideLeft.Control = SpinEdit4
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = SpinEdit4
+        AnchorSideTop.Side = asrCenter
+        Left = 106
+        Height = 15
+        Top = 48
+        Width = 46
+        Caption = ' seconds'
+        ParentColor = False
+      end
+      object RadioGroup1: TRadioGroup
+        AnchorSideLeft.Control = TabSheet3
+        AnchorSideTop.Control = SpinEdit4
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet3
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet3
+        AnchorSideBottom.Side = asrBottom
+        Left = 40
+        Height = 219
+        Top = 77
+        Width = 262
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoFill = True
+        BorderSpacing.Left = 40
+        BorderSpacing.Top = 10
+        BorderSpacing.Right = 40
+        BorderSpacing.Bottom = 40
+        Caption = 'Position on the screen'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousSpaceResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsHomogenousChildResize
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 3
+        ClientHeight = 203
+        ClientWidth = 260
+        Columns = 3
+        ItemIndex = 2
+        Items.Strings = (
+          ''
+          ''
+          ''
+          ''
+          ''
+          ''
+          ''
+          ''
+          ''
+        )
+        TabOrder = 2
+      end
+    end
+    object TabSheet17: TTabSheet
+      AnchorSideRight.Side = asrBottom
+      Caption = 'Sounds'
+      ClientHeight = 370
+      ClientWidth = 396
+      object GroupBox4: TGroupBox
+        AnchorSideLeft.Control = TabSheet17
+        AnchorSideTop.Control = TabSheet17
+        AnchorSideRight.Control = TabSheet17
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet17
+        AnchorSideBottom.Side = asrBottom
+        Left = 15
+        Height = 338
+        Top = 15
+        Width = 362
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 15
+        BorderSpacing.Top = 15
+        BorderSpacing.Right = 15
+        BorderSpacing.Bottom = 15
+        Caption = 'Sounds'
+        ClientHeight = 322
+        ClientWidth = 360
+        TabOrder = 0
+        object CheckBox7: TCheckBox
+          AnchorSideLeft.Control = GroupBox4
+          AnchorSideTop.Control = GroupBox4
+          Left = 10
+          Height = 19
+          Top = 10
+          Width = 83
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 10
+          Caption = 'Play sounds'
+          TabOrder = 0
+        end
+        object Label25: TLabel
+          AnchorSideLeft.Control = FileNameEdit6
+          AnchorSideTop.Control = CheckBox7
+          AnchorSideTop.Side = asrBottom
+          Left = 25
+          Height = 15
+          Top = 39
+          Width = 110
+          BorderSpacing.Top = 10
+          Caption = 'Download complete:'
+          ParentColor = False
+        end
+        object Label26: TLabel
+          AnchorSideLeft.Control = FileNameEdit7
+          AnchorSideTop.Control = FileNameEdit6
+          AnchorSideTop.Side = asrBottom
+          Left = 25
+          Height = 15
+          Top = 92
+          Width = 96
+          BorderSpacing.Top = 10
+          Caption = 'Download stoped:'
+          ParentColor = False
+        end
+        object FileNameEdit6: TFileNameEdit
+          AnchorSideLeft.Control = GroupBox4
+          AnchorSideTop.Control = Label25
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = GroupBox4
+          AnchorSideRight.Side = asrCenter
+          Left = 25
+          Height = 23
+          Top = 59
+          Width = 307
+          Filter = 'Waves Files|*.wav'
+          FilterIndex = 0
+          HideDirectories = False
+          ButtonWidth = 23
+          NumGlyphs = 1
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Left = 25
+          BorderSpacing.Top = 5
+          MaxLength = 0
+          TabOrder = 1
+        end
+        object FileNameEdit7: TFileNameEdit
+          AnchorSideLeft.Control = GroupBox4
+          AnchorSideTop.Control = Label26
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = GroupBox4
+          AnchorSideRight.Side = asrCenter
+          Left = 25
+          Height = 23
+          Top = 112
+          Width = 307
+          Filter = 'Wave Files|*.wav'
+          FilterIndex = 0
+          HideDirectories = False
+          ButtonWidth = 23
+          NumGlyphs = 1
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Left = 25
+          BorderSpacing.Top = 5
+          MaxLength = 0
+          TabOrder = 2
+        end
+        object SpeedButton1: TSpeedButton
+          AnchorSideLeft.Control = GroupBox4
+          AnchorSideTop.Control = FileNameEdit6
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = FileNameEdit6
+          AnchorSideRight.Side = asrBottom
+          Left = 3
+          Height = 20
+          Top = 60
+          Width = 20
+          AutoSize = True
+          BorderSpacing.Left = 3
+          Glyph.Data = {
+            36040000424D3604000000000000360000002800000010000000100000000100
+            2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF006165655B616565E6FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF006165650360636485606364F6606464FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF002B15E168260FE11AFFFFFF006C70713A686A
+            6B3A6468683A6266663A606565DC696D6DFF727777FF606464FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF003824E1813D32EDFF2C17E1CBFFFFFF00717474FF6F73
+            73FF6B6F6FFF696D6DFF696C6CFF505151FF5F6161FF616565FFFFFFFF00FFFF
+            FF00FFFFFF004635E16A3F2DE12C3D2EE6FF3F35EDFF2D18E16B787B7BFF999A
+            9AFF777878FF6E6F6FFF505151FF3F3F3FFF5D5F5FFF636767FFFFFFFF00FFFF
+            FF005547E169554DEDFF4736E178402FE16E453BEDFF3420E1D8818383FF999B
+            9BFF656565FF5F5F5FFF535353FF494949FF676969FF666969FFFFFFFF005A50
+            E9ED5D51E1435A50E9FF4F40E1FFFFFFFF004230E1FF3B29E1FF858787FFA5A6
+            A6FF878787FF858585FF7D7D7DFF727272FF848585FF696D6DFFFFFFFF005A50
+            E9DC655AE1436159E9FF574AE1FFFFFFFF004A3AE1FF4332E1FF888B8BFFC2C3
+            C3FFBCBCBCFFBABABAFF9E9E9EFF838383FF919191FF6E7172FFFFFFFF00FFFF
+            FF006E64E1646B65ECFF6054E178594CE16E5A53EDFF4B3BE1D88B8D8DFF9192
+            92FF8F9191FF8F9090FFA1A3A3FFA9A9A9FFA1A2A2FF757778FFFFFFFF00FFFF
+            FF00FFFFFF006F66E165685EE12C635AE6FF615BEDFF5345E16B8D8E8E3A8C8E
+            8E3A8C8E8E3A8B8C8C3A888A8ADB9B9D9DFFADAFAFFF7C7F7FFFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF007067E17B6D69ECFF6357E1CBFFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF008A8B8B03888A8A83858787F6818383FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF007269E1646B61E11AFFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00888A8A59838585E5FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+          }
+          OnClick = SpeedButton1Click
+        end
+        object SpeedButton2: TSpeedButton
+          AnchorSideLeft.Control = GroupBox4
+          AnchorSideTop.Control = FileNameEdit7
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = FileNameEdit6
+          AnchorSideRight.Side = asrBottom
+          Left = 3
+          Height = 20
+          Top = 113
+          Width = 20
+          AutoSize = True
+          BorderSpacing.Left = 3
+          Glyph.Data = {
+            36040000424D3604000000000000360000002800000010000000100000000100
+            2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF006165655B616565E6FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF006165650360636485606364F6606464FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF002B15E168260FE11AFFFFFF006C70713A686A
+            6B3A6468683A6266663A606565DC696D6DFF727777FF606464FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF003824E1813D32EDFF2C17E1CBFFFFFF00717474FF6F73
+            73FF6B6F6FFF696D6DFF696C6CFF505151FF5F6161FF616565FFFFFFFF00FFFF
+            FF00FFFFFF004635E16A3F2DE12C3D2EE6FF3F35EDFF2D18E16B787B7BFF999A
+            9AFF777878FF6E6F6FFF505151FF3F3F3FFF5D5F5FFF636767FFFFFFFF00FFFF
+            FF005547E169554DEDFF4736E178402FE16E453BEDFF3420E1D8818383FF999B
+            9BFF656565FF5F5F5FFF535353FF494949FF676969FF666969FFFFFFFF005A50
+            E9ED5D51E1435A50E9FF4F40E1FFFFFFFF004230E1FF3B29E1FF858787FFA5A6
+            A6FF878787FF858585FF7D7D7DFF727272FF848585FF696D6DFFFFFFFF005A50
+            E9DC655AE1436159E9FF574AE1FFFFFFFF004A3AE1FF4332E1FF888B8BFFC2C3
+            C3FFBCBCBCFFBABABAFF9E9E9EFF838383FF919191FF6E7172FFFFFFFF00FFFF
+            FF006E64E1646B65ECFF6054E178594CE16E5A53EDFF4B3BE1D88B8D8DFF9192
+            92FF8F9191FF8F9090FFA1A3A3FFA9A9A9FFA1A2A2FF757778FFFFFFFF00FFFF
+            FF00FFFFFF006F66E165685EE12C635AE6FF615BEDFF5345E16B8D8E8E3A8C8E
+            8E3A8C8E8E3A8B8C8C3A888A8ADB9B9D9DFFADAFAFFF7C7F7FFFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF007067E17B6D69ECFF6357E1CBFFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF008A8B8B03888A8A83858787F6818383FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF007269E1646B61E11AFFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00888A8A59838585E5FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+          }
+          OnClick = SpeedButton2Click
+        end
+      end
+    end
+    object TabSheet4: TTabSheet
+      Caption = 'Clipboard monitor'
+      ClientHeight = 370
+      ClientWidth = 396
+      object CheckBox6: TCheckBox
+        AnchorSideLeft.Control = TabSheet4
+        AnchorSideTop.Control = TabSheet4
+        AnchorSideRight.Control = TabSheet4
+        AnchorSideRight.Side = asrBottom
+        Left = 15
+        Height = 19
+        Top = 15
+        Width = 327
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Left = 15
+        BorderSpacing.Top = 15
+        Caption = 'Detect downloads in the clipboard'
+        TabOrder = 0
+      end
+    end
+    object TabSheet5: TTabSheet
+      Caption = 'Folders'
+      ClientHeight = 370
+      ClientWidth = 396
+      object DirectoryEdit1: TDirectoryEdit
+        AnchorSideLeft.Control = Label14
+        AnchorSideTop.Control = Label14
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet5
+        AnchorSideRight.Side = asrCenter
+        Left = 30
+        Height = 21
+        Top = 35
+        Width = 339
+        ShowHidden = False
+        ButtonWidth = 23
+        NumGlyphs = 1
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object Label14: TLabel
+        AnchorSideLeft.Control = TabSheet5
+        AnchorSideTop.Control = TabSheet5
+        Left = 30
+        Height = 15
+        Top = 15
+        Width = 154
+        BorderSpacing.Left = 30
+        BorderSpacing.Top = 15
+        Caption = 'Default download folder:'
+        ParentColor = False
+      end
+    end
+    object TabSheet6: TTabSheet
+      Caption = 'wget'
+      ClientHeight = 370
+      ClientWidth = 396
+      object FileNameEdit1: TFileNameEdit
+        AnchorSideLeft.Control = Label15
+        AnchorSideTop.Control = Label15
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet6
+        AnchorSideRight.Side = asrCenter
+        Left = 30
+        Height = 21
+        Top = 33
+        Width = 335
+        FilterIndex = 0
+        HideDirectories = False
+        ButtonWidth = 23
+        NumGlyphs = 1
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object Label15: TLabel
+        AnchorSideLeft.Control = TabSheet6
+        AnchorSideTop.Control = TabSheet6
+        Left = 30
+        Height = 13
+        Top = 15
+        Width = 146
+        BorderSpacing.Left = 30
+        BorderSpacing.Top = 15
+        Caption = 'Route of wget executable file:'
+        ParentColor = False
+      end
+      object Label18: TLabel
+        AnchorSideLeft.Control = Label15
+        AnchorSideTop.Control = CheckGroup1
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = Edit7
+        Left = 30
+        Height = 13
+        Top = 332
+        Width = 105
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Top = 10
+        Caption = 'Additional arguments:'
+        ParentColor = False
+      end
+      object Edit7: TEdit
+        AnchorSideLeft.Control = Label18
+        AnchorSideTop.Control = Label18
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet6
+        AnchorSideRight.Side = asrCenter
+        AnchorSideBottom.Control = TabSheet6
+        AnchorSideBottom.Side = asrBottom
+        Left = 30
+        Height = 21
+        Top = 350
+        Width = 335
+        Anchors = [akLeft, akRight, akBottom]
+        BorderSpacing.Top = 5
+        BorderSpacing.Bottom = 15
+        TabOrder = 1
+      end
+      object CheckGroup1: TCheckGroup
+        AnchorSideLeft.Control = FileNameEdit1
+        AnchorSideTop.Control = FileNameEdit1
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = FileNameEdit1
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = Label18
+        Left = 30
+        Height = 258
+        Top = 64
+        Width = 335
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoFill = True
+        BorderSpacing.Top = 10
+        Caption = 'Default arguments'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 242
+        ClientWidth = 333
+        Items.Strings = (
+          '[-c] Continue downloads.'
+          '[-nH] No create host dir.'
+          '[-nd] No create out dir.'
+          '[--no-check-certificate] No check SSL.'
+        )
+        TabOrder = 2
+        Data = {
+          0400000003030303
+        }
+      end
+    end
+    object TabSheet7: TTabSheet
+      Caption = 'aria2c'
+      ClientHeight = 370
+      ClientWidth = 396
+      object Label16: TLabel
+        AnchorSideLeft.Control = TabSheet7
+        AnchorSideTop.Control = TabSheet7
+        Left = 30
+        Height = 13
+        Top = 15
+        Width = 151
+        BorderSpacing.Left = 30
+        BorderSpacing.Top = 15
+        Caption = 'Route of aria2 excecutable file:'
+        ParentColor = False
+      end
+      object FileNameEdit2: TFileNameEdit
+        AnchorSideLeft.Control = Label16
+        AnchorSideTop.Control = Label16
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet7
+        AnchorSideRight.Side = asrCenter
+        Left = 30
+        Height = 21
+        Top = 33
+        Width = 335
+        FilterIndex = 0
+        HideDirectories = False
+        ButtonWidth = 23
+        NumGlyphs = 1
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object Label19: TLabel
+        AnchorSideLeft.Control = Label16
+        AnchorSideTop.Control = CheckGroup2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = Edit8
+        Left = 30
+        Height = 13
+        Top = 332
+        Width = 105
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Top = 10
+        Caption = 'Additional arguments:'
+        ParentColor = False
+      end
+      object Edit8: TEdit
+        AnchorSideLeft.Control = Label19
+        AnchorSideTop.Control = Label19
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet7
+        AnchorSideRight.Side = asrCenter
+        AnchorSideBottom.Control = TabSheet7
+        AnchorSideBottom.Side = asrBottom
+        Left = 30
+        Height = 21
+        Top = 350
+        Width = 335
+        Anchors = [akLeft, akRight, akBottom]
+        BorderSpacing.Top = 5
+        BorderSpacing.Bottom = 15
+        TabOrder = 1
+      end
+      object CheckGroup2: TCheckGroup
+        AnchorSideLeft.Control = FileNameEdit2
+        AnchorSideTop.Control = FileNameEdit2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = FileNameEdit2
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = Label19
+        Left = 30
+        Height = 258
+        Top = 64
+        Width = 335
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoFill = True
+        BorderSpacing.Top = 10
+        Caption = 'Default arguments'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 242
+        ClientWidth = 333
+        Items.Strings = (
+          '[-c] Continue downloads'
+          '[--file-allocation=none] No allocate space.'
+        )
+        TabOrder = 2
+        Data = {
+          020000000303
+        }
+      end
+    end
+    object TabSheet8: TTabSheet
+      Caption = 'curl'
+      ClientHeight = 370
+      ClientWidth = 396
+      object Label17: TLabel
+        AnchorSideLeft.Control = TabSheet8
+        AnchorSideTop.Control = TabSheet8
+        Left = 30
+        Height = 13
+        Top = 15
+        Width = 144
+        BorderSpacing.Left = 30
+        BorderSpacing.Top = 15
+        Caption = 'Route of curl excecutable file:'
+        ParentColor = False
+      end
+      object FileNameEdit3: TFileNameEdit
+        AnchorSideLeft.Control = Label17
+        AnchorSideTop.Control = Label17
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet8
+        AnchorSideRight.Side = asrCenter
+        Left = 30
+        Height = 21
+        Top = 33
+        Width = 335
+        FilterIndex = 0
+        HideDirectories = False
+        ButtonWidth = 23
+        NumGlyphs = 1
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        MaxLength = 0
+        TabOrder = 0
+      end
+      object Label21: TLabel
+        AnchorSideLeft.Control = Label17
+        AnchorSideTop.Control = CheckGroup3
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = Edit9
+        Left = 30
+        Height = 13
+        Top = 332
+        Width = 105
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Top = 10
+        Caption = 'Additional arguments:'
+        ParentColor = False
+      end
+      object Edit9: TEdit
+        AnchorSideLeft.Control = Label21
+        AnchorSideTop.Control = Label21
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet8
+        AnchorSideRight.Side = asrCenter
+        AnchorSideBottom.Control = TabSheet8
+        AnchorSideBottom.Side = asrBottom
+        Left = 30
+        Height = 21
+        Top = 350
+        Width = 335
+        Anchors = [akLeft, akRight, akBottom]
+        BorderSpacing.Top = 5
+        BorderSpacing.Bottom = 15
+        TabOrder = 1
+      end
+      object CheckGroup3: TCheckGroup
+        AnchorSideLeft.Control = FileNameEdit3
+        AnchorSideTop.Control = FileNameEdit3
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = FileNameEdit3
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = Label21
+        Left = 30
+        Height = 258
+        Top = 64
+        Width = 335
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoFill = True
+        BorderSpacing.Top = 10
+        Caption = 'Default arguments'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 242
+        ClientWidth = 333
+        Items.Strings = (
+          '[-C -] Continue downloads.'
+        )
+        TabOrder = 2
+        Data = {
+          0100000003
+        }
+      end
+    end
+    object TabSheet11: TTabSheet
+      Caption = 'axel'
+      ClientHeight = 370
+      ClientWidth = 396
+      object Label23: TLabel
+        AnchorSideLeft.Control = TabSheet11
+        AnchorSideTop.Control = TabSheet11
+        Left = 30
+        Height = 13
+        Top = 15
+        Width = 147
+        BorderSpacing.Left = 30
+        BorderSpacing.Top = 15
+        Caption = 'Route of axel excecutable file:'
+        ParentColor = False
+      end
+      object Label24: TLabel
+        AnchorSideLeft.Control = Label23
+        AnchorSideTop.Control = CheckGroup6
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = Edit10
+        Left = 30
+        Height = 13
+        Top = 332
+        Width = 105
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Top = 10
+        Caption = 'Additional arguments:'
+        ParentColor = False
+      end
+      object Edit10: TEdit
+        AnchorSideLeft.Control = Label24
+        AnchorSideTop.Control = Label24
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = CheckGroup6
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet11
+        AnchorSideBottom.Side = asrBottom
+        Left = 30
+        Height = 21
+        Top = 350
+        Width = 335
+        Anchors = [akLeft, akRight, akBottom]
+        BorderSpacing.Top = 5
+        BorderSpacing.Bottom = 15
+        TabOrder = 0
+      end
+      object FileNameEdit4: TFileNameEdit
+        AnchorSideLeft.Control = Label23
+        AnchorSideTop.Control = Label23
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet11
+        AnchorSideRight.Side = asrCenter
+        Left = 30
+        Height = 21
+        Top = 33
+        Width = 335
+        FilterIndex = 0
+        HideDirectories = False
+        ButtonWidth = 23
+        NumGlyphs = 1
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object CheckGroup6: TCheckGroup
+        AnchorSideLeft.Control = FileNameEdit4
+        AnchorSideTop.Control = FileNameEdit4
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = FileNameEdit4
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = Label24
+        Left = 30
+        Height = 258
+        Top = 64
+        Width = 335
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        AutoFill = True
+        BorderSpacing.Top = 10
+        Caption = 'Default arguments'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        TabOrder = 2
+      end
+    end
+    object TabSheet9: TTabSheet
+      Caption = 'Automation'
+      ClientHeight = 370
+      ClientWidth = 396
+      object CheckGroup4: TCheckGroup
+        Left = 0
+        Height = 370
+        Top = 0
+        Width = 392
+        Align = alClient
+        AutoFill = True
+        Caption = 'Automation'
+        ChildSizing.LeftRightSpacing = 6
+        ChildSizing.TopBottomSpacing = 6
+        ChildSizing.EnlargeHorizontal = crsHomogenousChildResize
+        ChildSizing.EnlargeVertical = crsHomogenousChildResize
+        ChildSizing.ShrinkHorizontal = crsScaleChilds
+        ChildSizing.ShrinkVertical = crsScaleChilds
+        ChildSizing.Layout = cclLeftToRightThenTopToBottom
+        ChildSizing.ControlsPerLine = 1
+        ClientHeight = 354
+        ClientWidth = 390
+        Items.Strings = (
+          'Run with the system.'
+          'Start in the systray.'
+        )
+        TabOrder = 0
+        Data = {
+          020000000202
+        }
+      end
+    end
+    object TabSheet10: TTabSheet
+      Caption = 'Logs'
+      ClientHeight = 370
+      ClientWidth = 396
+      object CheckBox1: TCheckBox
+        AnchorSideLeft.Control = TabSheet10
+        AnchorSideTop.Control = TabSheet10
+        Left = 30
+        Height = 19
+        Top = 15
+        Width = 162
+        BorderSpacing.Left = 30
+        BorderSpacing.Top = 15
+        Caption = 'Save download log history.'
+        TabOrder = 0
+      end
+      object DirectoryEdit2: TDirectoryEdit
+        AnchorSideLeft.Control = Label22
+        AnchorSideTop.Control = Label22
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet10
+        AnchorSideRight.Side = asrCenter
+        Left = 30
+        Height = 23
+        Top = 64
+        Width = 282
+        ShowHidden = False
+        ButtonWidth = 23
+        NumGlyphs = 1
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Top = 5
+        MaxLength = 0
+        TabOrder = 1
+      end
+      object Label22: TLabel
+        AnchorSideLeft.Control = CheckBox1
+        AnchorSideTop.Control = CheckBox1
+        AnchorSideTop.Side = asrBottom
+        Left = 30
+        Height = 15
+        Top = 44
+        Width = 112
+        BorderSpacing.Top = 10
+        Caption = 'Route of history logs:'
+        ParentColor = False
+      end
+    end
+    object TabSheet15: TTabSheet
+      Caption = 'Download options'
+      ClientHeight = 370
+      ClientWidth = 396
+      object GroupBox2: TGroupBox
+        AnchorSideLeft.Control = TabSheet15
+        AnchorSideTop.Control = TabSheet15
+        AnchorSideRight.Control = TabSheet15
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet15
+        AnchorSideBottom.Side = asrBottom
+        Left = 10
+        Height = 177
+        Top = 15
+        Width = 372
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Left = 10
+        BorderSpacing.Top = 15
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 15
+        Caption = 'Connection'
+        ClientHeight = 161
+        ClientWidth = 370
+        TabOrder = 0
+        object Label37: TLabel
+          AnchorSideLeft.Control = SpinEdit1
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = SpinEdit10
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = SpinEdit10
+          Left = 235
+          Height = 15
+          Top = 14
+          Width = 79
+          Anchors = [akTop, akRight]
+          BorderSpacing.Top = 10
+          BorderSpacing.Right = 2
+          Caption = 'Time out (sec):'
+          ParentColor = False
+        end
+        object SpinEdit10: TSpinEdit
+          AnchorSideLeft.Control = Label37
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = GroupBox2
+          AnchorSideRight.Control = GroupBox2
+          AnchorSideRight.Side = asrBottom
+          AnchorSideBottom.Control = Owner
+          AnchorSideBottom.Side = asrBottom
+          Left = 316
+          Height = 23
+          Top = 10
+          Width = 42
+          Anchors = [akTop, akRight]
+          BorderSpacing.Left = 2
+          BorderSpacing.Top = 10
+          BorderSpacing.Right = 10
+          MaxValue = 120
+          MinValue = 1
+          TabOrder = 0
+          Value = 10
+        end
+        object Label38: TLabel
+          AnchorSideLeft.Control = SpinEdit10
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = SpinEdit11
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = SpinEdit11
+          Left = 286
+          Height = 15
+          Top = 47
+          Width = 28
+          Anchors = [akTop, akRight]
+          BorderSpacing.Top = 10
+          BorderSpacing.Right = 2
+          Caption = 'Tries:'
+          ParentColor = False
+        end
+        object SpinEdit11: TSpinEdit
+          AnchorSideLeft.Control = Label38
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = SpinEdit10
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = GroupBox2
+          AnchorSideRight.Side = asrBottom
+          AnchorSideBottom.Control = Owner
+          AnchorSideBottom.Side = asrBottom
+          Left = 316
+          Height = 23
+          Top = 43
+          Width = 42
+          Anchors = [akTop, akRight]
+          BorderSpacing.Left = 2
+          BorderSpacing.Top = 10
+          BorderSpacing.Right = 10
+          TabOrder = 1
+        end
+        object Label39: TLabel
+          AnchorSideLeft.Control = TabSheet15
+          AnchorSideTop.Control = SpinEdit12
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = SpinEdit12
+          Left = 226
+          Height = 15
+          Top = 80
+          Width = 88
+          Anchors = [akTop, akRight]
+          BorderSpacing.Top = 10
+          BorderSpacing.Right = 2
+          Caption = 'Delay tries  (sec):'
+          ParentColor = False
+        end
+        object SpinEdit12: TSpinEdit
+          AnchorSideLeft.Control = Label39
+          AnchorSideLeft.Side = asrBottom
+          AnchorSideTop.Control = SpinEdit11
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = GroupBox2
+          AnchorSideRight.Side = asrBottom
+          AnchorSideBottom.Control = Owner
+          AnchorSideBottom.Side = asrBottom
+          Left = 316
+          Height = 23
+          Top = 76
+          Width = 42
+          Anchors = [akTop, akRight]
+          BorderSpacing.Left = 2
+          BorderSpacing.Top = 10
+          BorderSpacing.Right = 10
+          MaxValue = 120
+          MinValue = 5
+          TabOrder = 2
+          Value = 5
+        end
+      end
+      object GroupBox3: TGroupBox
+        AnchorSideLeft.Control = TabSheet15
+        AnchorSideTop.Control = GroupBox2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet15
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet15
+        AnchorSideBottom.Side = asrBottom
+        Left = 10
+        Height = 146
+        Top = 207
+        Width = 372
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Left = 10
+        BorderSpacing.Top = 15
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 15
+        Caption = 'Engine'
+        ClientHeight = 130
+        ClientWidth = 370
+        TabOrder = 1
+        object ComboBox3: TComboBox
+          AnchorSideLeft.Control = GroupBox3
+          AnchorSideLeft.Side = asrCenter
+          AnchorSideTop.Control = GroupBox3
+          AnchorSideTop.Side = asrCenter
+          Left = 134
+          Height = 21
+          Top = 53
+          Width = 100
+          ItemHeight = 0
+          Style = csDropDownList
+          TabOrder = 0
+        end
+        object Label20: TLabel
+          AnchorSideTop.Control = ComboBox3
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = ComboBox3
+          Left = 52
+          Height = 15
+          Top = 57
+          Width = 80
+          Anchors = [akTop, akRight]
+          BorderSpacing.Right = 2
+          Caption = 'Default engine:'
+          ParentColor = False
+        end
+      end
+    end
+    object TabSheet16: TTabSheet
+      Caption = 'Language'
+      ClientHeight = 370
+      ClientWidth = 396
+      object ComboBox2: TComboBox
+        AnchorSideLeft.Control = TabSheet16
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = TabSheet16
+        AnchorSideTop.Side = asrCenter
+        Left = 123
+        Height = 21
+        Top = 155
+        Width = 100
+        ItemHeight = 0
+        Style = csDropDownList
+        TabOrder = 0
+      end
+      object Label40: TLabel
+        AnchorSideTop.Control = ComboBox2
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = ComboBox2
+        Left = 8
+        Height = 15
+        Top = 162
+        Width = 113
+        Anchors = [akTop, akRight]
+        BorderSpacing.Right = 2
+        Caption = 'Default language:'
+        ParentColor = False
+      end
+    end
+    object TabSheet18: TTabSheet
+      Caption = 'Queue'
+      ClientHeight = 370
+      ClientWidth = 396
+      object CheckBox9: TCheckBox
+        AnchorSideLeft.Control = Label41
+        AnchorSideTop.Control = SpinEdit13
+        AnchorSideTop.Side = asrBottom
+        Left = 20
+        Height = 22
+        Top = 58
+        Width = 169
+        BorderSpacing.Top = 20
+        Caption = 'Rotate downloads if fail'
+        TabOrder = 0
+      end
+      object Label41: TLabel
+        AnchorSideLeft.Control = TabSheet18
+        AnchorSideTop.Control = TabSheet18
+        Left = 20
+        Height = 15
+        Top = 20
+        Width = 132
+        BorderSpacing.Left = 20
+        BorderSpacing.Top = 20
+        Caption = 'Tries or rotate times:'
+        ParentColor = False
+      end
+      object SpinEdit13: TSpinEdit
+        AnchorSideLeft.Control = Label41
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Label41
+        AnchorSideTop.Side = asrCenter
+        Left = 154
+        Height = 21
+        Top = 17
+        Width = 50
+        BorderSpacing.Left = 2
+        TabOrder = 1
+        Value = 10
+      end
+      object SpinEdit14: TSpinEdit
+        AnchorSideLeft.Control = Label42
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = Label42
+        AnchorSideTop.Side = asrCenter
+        Left = 224
+        Height = 21
+        Top = 232
+        Width = 50
+        BorderSpacing.Left = 2
+        MaxValue = 60
+        MinValue = 1
+        TabOrder = 2
+        Value = 1
+      end
+      object Label42: TLabel
+        AnchorSideLeft.Control = CheckBox9
+        AnchorSideTop.Control = CheckBox9
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = TabSheet18
+        AnchorSideBottom.Side = asrBottom
+        Left = 20
+        Height = 15
+        Top = 235
+        Width = 202
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Top = 20
+        BorderSpacing.Bottom = 120
+        Caption = 'Delay (downloads or tries)(sec):'
+        ParentColor = False
+      end
+      object GroupBox5: TGroupBox
+        AnchorSideLeft.Control = CheckBox9
+        AnchorSideTop.Control = CheckBox9
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet18
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = Label42
+        Left = 20
+        Height = 130
+        Top = 85
+        Width = 356
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 20
+        Caption = 'Rotate mode'
+        ClientHeight = 114
+        ClientWidth = 354
+        TabOrder = 3
+        object RadioButton1: TRadioButton
+          AnchorSideLeft.Control = GroupBox5
+          AnchorSideTop.Control = GroupBox5
+          Left = 10
+          Height = 22
+          Top = 10
+          Width = 119
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 10
+          Caption = 'One step down'
+          Checked = True
+          TabOrder = 0
+          TabStop = True
+        end
+        object RadioButton2: TRadioButton
+          AnchorSideLeft.Control = RadioButton1
+          AnchorSideTop.Control = RadioButton3
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 22
+          Top = 74
+          Width = 90
+          BorderSpacing.Top = 10
+          Caption = 'To the end'
+          TabOrder = 1
+        end
+        object RadioButton3: TRadioButton
+          AnchorSideLeft.Control = RadioButton1
+          AnchorSideTop.Control = RadioButton1
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 22
+          Top = 42
+          Width = 122
+          BorderSpacing.Top = 10
+          Caption = 'Two steps down'
+          TabOrder = 2
+        end
+      end
+    end
+  end
+  object TreeView1: TTreeView
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = PageControl1
+    AnchorSideBottom.Control = Button1
+    Left = 0
+    Height = 398
+    Top = 0
+    Width = 184
+    Anchors = [akTop, akLeft, akBottom]
+    BorderSpacing.Bottom = 5
+    DefaultItemHeight = 18
+    HideSelection = False
+    Images = Form1.ImageList1
+    ReadOnly = True
+    StateImages = Form1.ImageList1
+    TabOrder = 3
+    OnSelectionChanged = TreeView1SelectionChanged
+    Options = [tvoAutoItemHeight, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
+    Items.Data = {
+      F9FFFFFF02000F0000000500000005000000FFFFFFFFFFFFFFFF000000000000
+      0000000500000050726F78790600000006000000FFFFFFFFFFFFFFFF00000000
+      0000000000090000005363686564756C65721000000010000000FFFFFFFFFFFF
+      FFFF0000000000000000000D0000004E6F74696669636174696F6E7320000000
+      20000000FFFFFFFFFFFFFFFF00000000000000000006000000536F756E647319
+      00000019000000FFFFFFFFFFFFFFFF00000000000000000011000000436C6970
+      626F617264206D6F6E69746F721700000017000000FFFFFFFFFFFFFFFF000000
+      00000000000007000000466F6C646572731B0000001B000000FFFFFFFFFFFFFF
+      FF00000000000000000004000000776765741B0000001B000000FFFFFFFFFFFF
+      FFFF000000000000000000060000006172696132631B0000001B000000FFFFFF
+      FFFFFFFFFF000000000000000000040000006375726C1B0000001B000000FFFF
+      FFFFFFFFFFFF000000000000000000040000006178656C1800000018000000FF
+      FFFFFFFFFFFFFF0000000000000000000A0000004175746F6D6174696F6E1A00
+      00001A000000FFFFFFFFFFFFFFFF000000000000000000040000004C6F677313
+      00000013000000FFFFFFFFFFFFFFFF00000000000000000010000000446F776E
+      6C6F6164206F7074696F6E731F0000001F000000FFFFFFFFFFFFFFFF00000000
+      0000000000080000004C616E67756167652800000028000000FFFFFFFFFFFFFF
+      FF000000000000000000050000005175657565
+    }
+  end
+  object Panel1: TPanel
+    AnchorSideLeft.Control = TreeView1
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 184
+    Height = 24
+    Top = 0
+    Width = 400
+    Anchors = [akTop, akLeft, akRight]
+    Color = clHighlight
+    Font.Color = clHighlightText
+    Font.Style = [fsBold]
+    ParentColor = False
+    ParentFont = False
+    TabOrder = 4
+  end
+end
