@@ -1,12 +1,3 @@
-{
-   AWGG
-   -------------------------------------------------------------------------
-   Licence  : GNU GPL v 2.0
-   Copyright (C) 2014 Reinier Romero Mir (nenirey@gmail.com)
-
-   New Download Dialog window
-
-}
 unit Unit2;
 
 {$mode objfpc}{$H+}

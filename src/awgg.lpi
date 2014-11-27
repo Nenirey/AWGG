@@ -19,7 +19,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="1563"/>
+      <BuildNr Value="1569"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2014" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="10">
@@ -61,6 +61,7 @@
             </Options>
           </Linking>
           <Other>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -98,6 +99,7 @@
             </Options>
           </Linking>
           <Other>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -135,6 +137,7 @@
             </Options>
           </Linking>
           <Other>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -172,6 +175,7 @@
             </Options>
           </Linking>
           <Other>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -209,6 +213,7 @@
             </Options>
           </Linking>
           <Other>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -246,6 +251,7 @@
             </Options>
           </Linking>
           <Other>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -283,6 +289,7 @@
             </Options>
           </Linking>
           <Other>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -319,6 +326,7 @@
           </Linking>
           <Other>
             <CustomOptions Value="-dalpha"/>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -355,6 +363,7 @@
           </Linking>
           <Other>
             <CustomOptions Value="-dbeta"/>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -476,6 +485,7 @@
       </Options>
     </Linking>
     <Other>
+      <CompilerPath Value="$(CompPath)"/>
       <ExecuteBefore>
         <Command Value="$(SrcOS)-versionitis -verbose"/>
       </ExecuteBefore>

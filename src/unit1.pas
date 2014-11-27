@@ -1,12 +1,3 @@
-{
-   AWGG
-   -------------------------------------------------------------------------
-   Licence  : GNU GPL v 2.0
-   Copyright (C) 2014 Reinier Romero Mir (nenirey@gmail.com)
-
-   Main Dialog window
-
-}
 unit Unit1;
 
 {$mode objfpc}{$H+}
@@ -1766,10 +1757,19 @@ descargado:=Copy(tamano,0,Pos('/',tamano)-1);
 end;
 if Pos('/',tamano)>0 then
 tamano:='';
-if Pos('% [',wout[thid])>0 then
+//wget 1.16 cambios en la salida
+if (Pos('% [',wout[thid])>0) or (Pos('%[',wout[thid])>0)  then
+begin
+if (Pos('% [',wout[thid])>0) then
 begin
 porciento:=Copy(wout[thid],Pos('% [',wout[thid])-2,3);
 velocidad:=Copy(wout[thid],Pos('/s ',wout[thid])-5,7);
+end
+else
+begin
+porciento:=Copy(wout[thid],Pos('%[',wout[thid])-2,3);
+velocidad:=Copy(wout[thid],Pos('/s ',wout[thid])-6,8);
+end;
 descargado:=Copy(wout[thid],Pos('] ',wout[thid])+2,Length(wout[thid]));
 descargado:=Copy(descargado,0,Pos(' ',descargado));
 if Pos('T.E. ',wout[thid])>0 then
@@ -2057,6 +2057,8 @@ begin
 if FileExists(Form1.ListView1.Items[i].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[i].SubItems[columnname])) and delfile then
    DeleteFile(Form1.ListView1.Items[i].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[i].SubItems[columnname]));
 end;
+if Form1.ListView1.ItemIndex=i then
+Form1.Memo1.Lines.Clear;
 Form1.ListView1.Items.Delete(i);
 end;
 end;
