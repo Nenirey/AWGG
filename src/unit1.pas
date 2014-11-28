@@ -367,13 +367,13 @@ implementation
 { TForm1 }
 procedure titlegen();
 begin
-  {$IFDEF alpha}
+  {$IFDEF alpha or alpha64}
   Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' ALPHA BUILD '+Copy(version,LastDelimiter('.',version)+1,Length(version));
   {$ENDIF}
-  {$IFDEF beta}
+  {$IFDEF beta or beta64}
   Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' BETA';
   {$ENDIF}
-  {$IFDEF release}
+  {$IFDEF release or release64}
   Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1);
   {$ENDIF}
 end;
@@ -510,7 +510,7 @@ if (engine='') and (FileExists('/usr/bin/mplayer2')=true) then
 engine:='/usr/bin/mplayer2';
 if FileExists(engine) then
 begin
-player.Options:=[poUsePipes,poStderrToOutPut,poNoConsole];
+player.Options:=[poNoConsole];
 player.Executable:=engine;
 player.Parameters.Add(sndfile);
 player.Execute;
@@ -2737,6 +2737,7 @@ end;
 
 procedure TForm1.MenuItem10Click(Sender: TObject);
 var widgetset:String;
+    cpu:String;
 begin
 {$IFDEF LCLWINCE}
 widgetset:='wince';
@@ -2765,8 +2766,14 @@ widgetset:='carbon';
 {$IFDEF LCLCocoa}
 widgetset:='cocoa';
 {$ENDIF}
+{$IFDEF cpui386}
+cpu:='i386';
+{$ENDIF}
+{$IFDEF cpux86_64}
+cpu:='x86_64';
+{$ENDIF}
 Form4.Label1.Caption:='AWGG';
-Form4.Label2.Caption:='(Advanced WGET GUI)'+#10#13+'Version: '+versionitis.version+#10#13+'Compiled using:'+#10#13+'Lazarus: '+lcl_version+#10#13+'FPC: '+versionitis.fpcversion+#10#13+'Platform: '+versionitis.targetcpu+'-'+versionitis.targetos+'-'+widgetset;
+Form4.Label2.Caption:='(Advanced WGET GUI)'+#10#13+'Version: '+versionitis.version+#10#13+'Compiled using:'+#10#13+'Lazarus: '+lcl_version+#10#13+'FPC: '+versionitis.fpcversion+#10#13+'Platform: '+cpu+'-'+versionitis.targetos+'-'+widgetset;
 Form4.Memo1.Text:='Created By Reinier Romero Mir'+#13+'Email: nenirey@gmail.com'+#13+'Copyright© 2014'+#13+'The project uses the following third party resources:'+#10#13+'Silk icons set 1.3 by Mark James'+#13+'http://www.famfamfam.com/lab/icons/silk/'+#10#13+'Tango Icon Library'+#13+'http://tango.freedesktop.org/Tango_Icon_Library'+#10#13+'aria2'+#13+'http://aria2.sourceforge.net/'+#10#13+'Wget'+#13+'http://www.gnu.org/software/wget/'+#10#13+'cURL'+#13+'http://curl.haxx.se/'+#10#13+'Axel'+#13+'http://axel.alioth.debian.org/'+#10#13+'Cntlm'+#13+'http://cntlm.sourceforge.net/';
 Form4.Label3.Caption:='http://sites.google.com/site/awggproject';
 Form4.Show;

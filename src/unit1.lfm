@@ -1,17 +1,17 @@
 object Form1: TForm1
-  Left = 127
+  Left = 137
   Height = 480
-  Top = 63
+  Top = 107
   Width = 640
   Caption = 'AWGG'
-  ClientHeight = 459
+  ClientHeight = 461
   ClientWidth = 640
   Menu = MainMenu1
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.3'
   object FloatSpinEdit1: TFloatSpinEdit
     AnchorSideLeft.Control = CheckBox1
     AnchorSideLeft.Side = asrBottom
@@ -21,9 +21,9 @@ object Form1: TForm1
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 105
+    Left = 82
     Height = 21
-    Top = 436
+    Top = 438
     Width = 47
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 2
@@ -40,9 +40,9 @@ object Form1: TForm1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = FloatSpinEdit1
     Left = 5
-    Height = 22
-    Top = 435
-    Width = 100
+    Height = 17
+    Top = 440
+    Width = 77
     BorderSpacing.Left = 5
     Caption = 'Limit (Kb/s):'
     TabOrder = 1
@@ -295,7 +295,7 @@ object Form1: TForm1
     AnchorSideBottom.Side = asrBottom
     Left = 584
     Height = 21
-    Top = 436
+    Top = 438
     Width = 46
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 10
@@ -310,10 +310,10 @@ object Form1: TForm1
     AnchorSideTop.Control = SpinEdit1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = SpinEdit1
-    Left = 402
-    Height = 15
-    Top = 439
-    Width = 180
+    Left = 442
+    Height = 13
+    Top = 442
+    Width = 140
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Max. downloads in progress:'
@@ -326,9 +326,9 @@ object Form1: TForm1
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = FloatSpinEdit1
-    Cursor = crVSplit
+    Cursor = crDefault
     Left = 0
-    Height = 410
+    Height = 412
     Top = 26
     Width = 640
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -454,14 +454,14 @@ object Form1: TForm1
     object PairSplitterSide2: TPairSplitterSide
       Cursor = crArrow
       Left = 0
-      Height = 135
+      Height = 137
       Top = 275
       Width = 640
       ClientWidth = 640
-      ClientHeight = 135
+      ClientHeight = 137
       object Memo1: TMemo
         Left = 5
-        Height = 133
+        Height = 135
         Top = 0
         Width = 630
         Align = alClient

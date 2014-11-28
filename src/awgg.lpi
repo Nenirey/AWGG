@@ -19,10 +19,10 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="1569"/>
+      <BuildNr Value="1570"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2014" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
-    <BuildModes Count="10">
+    <BuildModes Count="8">
       <Item1 Name="Default" Default="True"/>
       <Item2 Name="Debug">
         <CompilerOptions>
@@ -61,242 +61,13 @@
             </Options>
           </Linking>
           <Other>
-            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
       </Item2>
-      <Item3 Name="DefaultQT">
-        <MacroValues Count="1">
-          <Macro2 Name="LCLWidgetType" Value="qt"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CompilerPath Value="$(CompPath)"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item3>
-      <Item4 Name="DefaultGTK2">
-        <MacroValues Count="1">
-          <Macro1 Name="LCLWidgetType" Value="gtk2"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CompilerPath Value="$(CompPath)"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item4>
-      <Item5 Name="DefaultCarbon">
-        <MacroValues Count="1">
-          <Macro3 Name="LCLWidgetType" Value="carbon"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CompilerPath Value="$(CompPath)"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item5>
-      <Item6 Name="DefaultCocoa">
-        <MacroValues Count="1">
-          <Macro4 Name="LCLWidgetType" Value="cocoa"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CompilerPath Value="$(CompPath)"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item6>
-      <Item7 Name="DefaultGTK">
-        <MacroValues Count="1">
-          <Macro5 Name="LCLWidgetType" Value="gtk"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CompilerPath Value="$(CompPath)"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item7>
-      <Item8 Name="DefaultGTK3">
-        <MacroValues Count="1">
-          <Macro6 Name="LCLWidgetType" Value="gtk3"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CompilerPath Value="$(CompPath)"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item8>
-      <Item9 Name="Alpha">
+      <Item3 Name="Alpha">
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -326,14 +97,13 @@
           </Linking>
           <Other>
             <CustomOptions Value="-dalpha"/>
-            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
-      </Item9>
-      <Item10 Name="Beta">
+      </Item3>
+      <Item4 Name="Beta">
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -363,20 +133,151 @@
           </Linking>
           <Other>
             <CustomOptions Value="-dbeta"/>
-            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
-      </Item10>
+      </Item4>
+      <Item5 Name="Release">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <UseAnsiStrings Value="False"/>
+            </SyntaxOptions>
+          </Parsing>
+          <Other>
+            <CustomOptions Value="-drelease"/>
+          </Other>
+        </CompilerOptions>
+      </Item5>
+      <Item6 Name="Alpha64">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="x86_64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dalpha64"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item6>
+      <Item7 Name="Beta64">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <TargetCPU Value="x86_64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dbeta64"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item7>
+      <Item8 Name="Release64">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-drelease64"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item8>
       <SharedMatrixOptions Count="6">
-        <Item1 ID="262970800232" Modes="DefaultGTK2" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
-        <Item2 ID="292782621389" Modes="DefaultQT" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
-        <Item3 ID="321585814677" Modes="DefaultCarbon" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
-        <Item4 ID="243018807025" Modes="DefaultCocoa" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
-        <Item5 ID="952727043054" Modes="DefaultGTK" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk"/>
-        <Item6 ID="325016516933" Modes="DefaultGTK3" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
+        <Item1 ID="262970800232" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
+        <Item2 ID="292782621389" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
+        <Item3 ID="321585814677" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
+        <Item4 ID="243018807025" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
+        <Item5 ID="952727043054" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk"/>
+        <Item6 ID="325016516933" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
@@ -485,7 +386,6 @@
       </Options>
     </Linking>
     <Other>
-      <CompilerPath Value="$(CompPath)"/>
       <ExecuteBefore>
         <Command Value="$(SrcOS)-versionitis -verbose"/>
       </ExecuteBefore>
