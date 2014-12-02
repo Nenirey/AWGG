@@ -13,6 +13,8 @@ Features:
 
 Copyright (C) 2014 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
 
+[Official web site][8]
+
 [1]: http://www.gnu.org/software/wget/
 [2]: http://aria2.sourceforge.net/
 [3]: http://curl.haxx.se/
@@ -20,3 +22,4 @@ Copyright (C) 2014 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
 [5]: http://www.freepascal.org/
 [6]: http://www.lazarus.freepascal.org/
 [7]: mailto:nenirey@gmail.com
+[8]: http://sites.google.com/site/awggproject
