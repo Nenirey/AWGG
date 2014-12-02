@@ -1,7 +1,7 @@
 object Form3: TForm3
-  Left = 289
+  Left = 146
   Height = 433
-  Top = 195
+  Top = 103
   Width = 584
   Caption = 'Configuration'
   ClientHeight = 433
@@ -16,10 +16,10 @@ object Form3: TForm3
     AnchorSideRight.Control = Button2
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 472
-    Height = 27
-    Top = 403
-    Width = 44
+    Left = 459
+    Height = 25
+    Top = 405
+    Width = 50
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Left = 3
@@ -34,10 +34,10 @@ object Form3: TForm3
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 526
-    Height = 27
-    Top = 403
-    Width = 55
+    Left = 519
+    Height = 25
+    Top = 405
+    Width = 62
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 3
@@ -55,7 +55,7 @@ object Form3: TForm3
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Button1
     Left = 184
-    Height = 374
+    Height = 376
     Top = 24
     Width = 400
     ActivePage = TabSheet1
@@ -69,17 +69,17 @@ object Form3: TForm3
     Options = [nboKeyboardTabSwitch]
     object TabSheet1: TTabSheet
       Caption = 'Proxy'
-      ClientHeight = 370
-      ClientWidth = 396
+      ClientHeight = 368
+      ClientWidth = 392
       object Label9: TLabel
         AnchorSideLeft.Control = CheckBox2
         AnchorSideTop.Control = Edit6
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = Edit6
-        Left = 26
+        Left = 23
         Height = 15
-        Top = 252
-        Width = 63
+        Top = 255
+        Width = 53
         Anchors = [akTop, akRight]
         Caption = 'Password:'
         ParentColor = False
@@ -90,10 +90,10 @@ object Form3: TForm3
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = Label2
         AnchorSideRight.Side = asrBottom
-        Left = 13
+        Left = 8
         Height = 15
-        Top = 38
-        Width = 36
+        Top = 37
+        Width = 33
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 6
         Caption = 'HTTP:'
@@ -104,8 +104,8 @@ object Form3: TForm3
         AnchorSideTop.Side = asrCenter
         Left = 20
         Height = 15
-        Top = 91
-        Width = 29
+        Top = 89
+        Width = 21
         BorderSpacing.Left = 5
         Caption = 'SSL:'
         ParentColor = False
@@ -116,10 +116,10 @@ object Form3: TForm3
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = Label2
         AnchorSideRight.Side = asrBottom
-        Left = 23
+        Left = 18
         Height = 15
         Top = 122
-        Width = 26
+        Width = 23
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 5
         Caption = 'FTP:'
@@ -130,9 +130,9 @@ object Form3: TForm3
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = ComboBox1
         AnchorSideTop.Side = asrBottom
-        Left = 49
-        Height = 21
-        Top = 35
+        Left = 41
+        Height = 23
+        Top = 33
         Width = 191
         BorderSpacing.Top = 5
         OnChange = CheckBox5Change
@@ -145,9 +145,9 @@ object Form3: TForm3
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = Edit1
         AnchorSideRight.Side = asrBottom
-        Left = 49
-        Height = 21
-        Top = 88
+        Left = 41
+        Height = 23
+        Top = 85
         Width = 191
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
@@ -160,9 +160,9 @@ object Form3: TForm3
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = Edit1
         AnchorSideRight.Side = asrBottom
-        Left = 49
-        Height = 21
-        Top = 119
+        Left = 41
+        Height = 23
+        Top = 118
         Width = 191
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
@@ -174,10 +174,10 @@ object Form3: TForm3
         AnchorSideTop.Control = Edit1
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 275
-        Height = 21
-        Top = 35
-        Width = 116
+        Left = 262
+        Height = 23
+        Top = 33
+        Width = 125
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 5
         MaxValue = 9999
@@ -191,10 +191,10 @@ object Form3: TForm3
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 275
-        Height = 21
-        Top = 88
-        Width = 116
+        Left = 262
+        Height = 23
+        Top = 85
+        Width = 125
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -208,10 +208,10 @@ object Form3: TForm3
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 275
-        Height = 21
-        Top = 119
-        Width = 116
+        Left = 262
+        Height = 23
+        Top = 118
+        Width = 125
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -223,10 +223,10 @@ object Form3: TForm3
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = SpinEdit1
         AnchorSideTop.Side = asrCenter
-        Left = 245
+        Left = 237
         Height = 15
-        Top = 38
-        Width = 30
+        Top = 37
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -236,10 +236,10 @@ object Form3: TForm3
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = SpinEdit2
         AnchorSideTop.Side = asrCenter
-        Left = 245
+        Left = 237
         Height = 15
-        Top = 91
-        Width = 30
+        Top = 89
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -249,10 +249,10 @@ object Form3: TForm3
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = SpinEdit3
         AnchorSideTop.Side = asrCenter
-        Left = 245
+        Left = 237
         Height = 15
         Top = 122
-        Width = 30
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -262,8 +262,8 @@ object Form3: TForm3
         AnchorSideTop.Side = asrCenter
         Left = 7
         Height = 15
-        Top = 153
-        Width = 82
+        Top = 155
+        Width = 69
         BorderSpacing.Left = 5
         Caption = 'No proxy for:'
         ParentColor = False
@@ -275,10 +275,10 @@ object Form3: TForm3
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrBottom
-        Left = 89
-        Height = 21
-        Top = 150
-        Width = 302
+        Left = 76
+        Height = 23
+        Top = 151
+        Width = 311
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -289,8 +289,8 @@ object Form3: TForm3
         AnchorSideLeft.Control = Edit4
         AnchorSideTop.Control = CheckBox2
         AnchorSideTop.Side = asrBottom
-        Left = 89
-        Height = 21
+        Left = 76
+        Height = 23
         Top = 223
         Width = 144
         BorderSpacing.Top = 5
@@ -301,10 +301,10 @@ object Form3: TForm3
         AnchorSideTop.Control = Edit5
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = Edit5
-        Left = 55
+        Left = 50
         Height = 15
-        Top = 226
-        Width = 34
+        Top = 227
+        Width = 26
         Anchors = [akTop, akRight]
         Caption = 'User:'
         ParentColor = False
@@ -313,9 +313,9 @@ object Form3: TForm3
         AnchorSideLeft.Control = Edit5
         AnchorSideTop.Control = Edit5
         AnchorSideTop.Side = asrBottom
-        Left = 89
-        Height = 21
-        Top = 249
+        Left = 76
+        Height = 23
+        Top = 251
         Width = 144
         BorderSpacing.Top = 5
         EchoMode = emPassword
@@ -326,9 +326,9 @@ object Form3: TForm3
         AnchorSideTop.Control = Label27
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 22
-        Top = 196
-        Width = 145
+        Height = 19
+        Top = 199
+        Width = 119
         BorderSpacing.Top = 10
         Caption = 'Use authentication'
         Color = clDefault
@@ -340,9 +340,9 @@ object Form3: TForm3
         AnchorSideTop.Control = Edit1
         AnchorSideTop.Side = asrBottom
         Left = 82
-        Height = 22
+        Height = 19
         Top = 61
-        Width = 196
+        Width = 158
         BorderSpacing.Top = 5
         Caption = 'Use the same proxy for all.'
         OnChange = CheckBox5Change
@@ -353,13 +353,13 @@ object Form3: TForm3
         AnchorSideTop.Control = TabSheet1
         AnchorSideRight.Control = SpinEdit1
         AnchorSideRight.Side = asrBottom
-        Left = 49
-        Height = 25
+        Left = 41
+        Height = 23
         Top = 5
-        Width = 342
+        Width = 346
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
-        ItemHeight = 0
+        ItemHeight = 15
         Items.Strings = (
           'No proxy'
           'System proxy'
@@ -375,10 +375,10 @@ object Form3: TForm3
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = Edit4
         AnchorSideRight.Side = asrBottom
-        Left = 89
+        Left = 76
         Height = 15
-        Top = 171
-        Width = 302
+        Top = 174
+        Width = 311
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Exp: .mozilla.org, localhost, 192.168.0.1'
         ParentColor = False
@@ -387,7 +387,7 @@ object Form3: TForm3
     object TabSheet2: TTabSheet
       AnchorSideRight.Side = asrBottom
       Caption = 'Scheduler'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object CheckBox3: TCheckBox
         AnchorSideLeft.Control = TabSheet2
@@ -444,8 +444,8 @@ object Form3: TForm3
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
-        ClientHeight = 158
-        ClientWidth = 394
+        ClientHeight = 156
+        ClientWidth = 392
         Columns = 3
         Items.Strings = (
           'Sunday'
@@ -661,7 +661,7 @@ object Form3: TForm3
     end
     object TabSheet3: TTabSheet
       Caption = 'Notifications'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object CheckBox4: TCheckBox
         AnchorSideLeft.Control = TabSheet3
@@ -740,8 +740,8 @@ object Form3: TForm3
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
-        ClientHeight = 203
-        ClientWidth = 260
+        ClientHeight = 201
+        ClientWidth = 258
         Columns = 3
         ItemIndex = 2
         Items.Strings = (
@@ -761,7 +761,7 @@ object Form3: TForm3
     object TabSheet17: TTabSheet
       AnchorSideRight.Side = asrBottom
       Caption = 'Sounds'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object GroupBox4: TGroupBox
         AnchorSideLeft.Control = TabSheet17
@@ -780,8 +780,8 @@ object Form3: TForm3
         BorderSpacing.Right = 15
         BorderSpacing.Bottom = 15
         Caption = 'Sounds'
-        ClientHeight = 322
-        ClientWidth = 360
+        ClientHeight = 320
+        ClientWidth = 358
         TabOrder = 0
         object CheckBox7: TCheckBox
           AnchorSideLeft.Control = GroupBox4
@@ -965,7 +965,7 @@ object Form3: TForm3
     end
     object TabSheet4: TTabSheet
       Caption = 'Clipboard monitor'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object CheckBox6: TCheckBox
         AnchorSideLeft.Control = TabSheet4
@@ -985,7 +985,7 @@ object Form3: TForm3
     end
     object TabSheet5: TTabSheet
       Caption = 'Folders'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object DirectoryEdit1: TDirectoryEdit
         AnchorSideLeft.Control = Label14
@@ -1020,7 +1020,7 @@ object Form3: TForm3
     end
     object TabSheet6: TTabSheet
       Caption = 'wget'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object FileNameEdit1: TFileNameEdit
         AnchorSideLeft.Control = Label15
@@ -1107,8 +1107,8 @@ object Form3: TForm3
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 242
-        ClientWidth = 333
+        ClientHeight = 240
+        ClientWidth = 331
         Items.Strings = (
           '[-c] Continue downloads.'
           '[-nH] No create host dir.'
@@ -1123,7 +1123,7 @@ object Form3: TForm3
     end
     object TabSheet7: TTabSheet
       Caption = 'aria2c'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object Label16: TLabel
         AnchorSideLeft.Control = TabSheet7
@@ -1210,8 +1210,8 @@ object Form3: TForm3
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 242
-        ClientWidth = 333
+        ClientHeight = 240
+        ClientWidth = 331
         Items.Strings = (
           '[-c] Continue downloads'
           '[--file-allocation=none] No allocate space.'
@@ -1224,7 +1224,7 @@ object Form3: TForm3
     end
     object TabSheet8: TTabSheet
       Caption = 'curl'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object Label17: TLabel
         AnchorSideLeft.Control = TabSheet8
@@ -1311,8 +1311,8 @@ object Form3: TForm3
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 242
-        ClientWidth = 333
+        ClientHeight = 240
+        ClientWidth = 331
         Items.Strings = (
           '[-C -] Continue downloads.'
         )
@@ -1324,7 +1324,7 @@ object Form3: TForm3
     end
     object TabSheet11: TTabSheet
       Caption = 'axel'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object Label23: TLabel
         AnchorSideLeft.Control = TabSheet11
@@ -1416,7 +1416,7 @@ object Form3: TForm3
     end
     object TabSheet9: TTabSheet
       Caption = 'Automation'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object CheckGroup4: TCheckGroup
         Left = 0
@@ -1434,8 +1434,8 @@ object Form3: TForm3
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 354
-        ClientWidth = 390
+        ClientHeight = 352
+        ClientWidth = 388
         Items.Strings = (
           'Run with the system.'
           'Start in the systray.'
@@ -1448,8 +1448,8 @@ object Form3: TForm3
     end
     object TabSheet10: TTabSheet
       Caption = 'Logs'
-      ClientHeight = 370
-      ClientWidth = 396
+      ClientHeight = 368
+      ClientWidth = 392
       object CheckBox1: TCheckBox
         AnchorSideLeft.Control = TabSheet10
         AnchorSideTop.Control = TabSheet10
@@ -1471,7 +1471,7 @@ object Form3: TForm3
         Left = 30
         Height = 23
         Top = 64
-        Width = 282
+        Width = 331
         ShowHidden = False
         ButtonWidth = 23
         NumGlyphs = 1
@@ -1492,10 +1492,73 @@ object Form3: TForm3
         Caption = 'Route of history logs:'
         ParentColor = False
       end
+      object CheckBox12: TCheckBox
+        AnchorSideLeft.Control = CheckBox1
+        AnchorSideTop.Control = DirectoryEdit2
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet10
+        AnchorSideRight.Side = asrCenter
+        Left = 30
+        Height = 19
+        Top = 102
+        Width = 199
+        BorderSpacing.Top = 15
+        Caption = 'Load log when select a download.'
+        OnChange = CheckBox12Change
+        TabOrder = 2
+      end
+      object GroupBox1: TGroupBox
+        AnchorSideLeft.Control = CheckBox12
+        AnchorSideTop.Control = CheckBox12
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = TabSheet10
+        AnchorSideRight.Side = asrCenter
+        Left = 30
+        Height = 86
+        Top = 126
+        Width = 332
+        Anchors = [akTop, akLeft, akRight]
+        AutoSize = True
+        BorderSpacing.Top = 5
+        Caption = 'Load mode'
+        ClientHeight = 68
+        ClientWidth = 328
+        TabOrder = 3
+        object RadioButton4: TRadioButton
+          AnchorSideLeft.Control = GroupBox1
+          AnchorSideTop.Control = GroupBox1
+          Left = 10
+          Height = 19
+          Top = 10
+          Width = 93
+          BorderSpacing.Left = 10
+          BorderSpacing.Top = 10
+          Caption = 'All histroy log'
+          TabOrder = 0
+        end
+        object RadioButton5: TRadioButton
+          AnchorSideLeft.Control = RadioButton4
+          AnchorSideTop.Control = RadioButton4
+          AnchorSideTop.Side = asrBottom
+          AnchorSideBottom.Control = GroupBox1
+          AnchorSideBottom.Side = asrBottom
+          Left = 10
+          Height = 19
+          Top = 39
+          Width = 86
+          Anchors = [akTop, akLeft, akBottom]
+          BorderSpacing.Top = 10
+          BorderSpacing.Bottom = 10
+          Caption = 'Last 20 lines.'
+          Checked = True
+          TabOrder = 1
+          TabStop = True
+        end
+      end
     end
     object TabSheet15: TTabSheet
       Caption = 'Download options'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object GroupBox2: TGroupBox
         AnchorSideLeft.Control = TabSheet15
@@ -1514,8 +1577,8 @@ object Form3: TForm3
         BorderSpacing.Right = 10
         BorderSpacing.Bottom = 15
         Caption = 'Connection'
-        ClientHeight = 161
-        ClientWidth = 370
+        ClientHeight = 159
+        ClientWidth = 368
         TabOrder = 0
         object Label37: TLabel
           AnchorSideLeft.Control = SpinEdit1
@@ -1645,8 +1708,8 @@ object Form3: TForm3
         BorderSpacing.Right = 10
         BorderSpacing.Bottom = 15
         Caption = 'Engine'
-        ClientHeight = 130
-        ClientWidth = 370
+        ClientHeight = 128
+        ClientWidth = 368
         TabOrder = 1
         object ComboBox3: TComboBox
           AnchorSideLeft.Control = GroupBox3
@@ -1654,10 +1717,10 @@ object Form3: TForm3
           AnchorSideTop.Control = GroupBox3
           AnchorSideTop.Side = asrCenter
           Left = 134
-          Height = 21
+          Height = 23
           Top = 53
           Width = 100
-          ItemHeight = 0
+          ItemHeight = 15
           Style = csDropDownList
           TabOrder = 0
         end
@@ -1678,7 +1741,7 @@ object Form3: TForm3
     end
     object TabSheet16: TTabSheet
       Caption = 'Language'
-      ClientHeight = 370
+      ClientHeight = 376
       ClientWidth = 396
       object ComboBox2: TComboBox
         AnchorSideLeft.Control = TabSheet16
@@ -1686,10 +1749,10 @@ object Form3: TForm3
         AnchorSideTop.Control = TabSheet16
         AnchorSideTop.Side = asrCenter
         Left = 123
-        Height = 21
+        Height = 23
         Top = 155
         Width = 100
-        ItemHeight = 0
+        ItemHeight = 15
         Style = csDropDownList
         TabOrder = 0
       end
@@ -1709,18 +1772,19 @@ object Form3: TForm3
     end
     object TabSheet18: TTabSheet
       Caption = 'Queue'
-      ClientHeight = 370
-      ClientWidth = 396
+      ClientHeight = 368
+      ClientWidth = 392
       object CheckBox9: TCheckBox
         AnchorSideLeft.Control = Label41
         AnchorSideTop.Control = SpinEdit13
         AnchorSideTop.Side = asrBottom
         Left = 20
-        Height = 22
-        Top = 58
-        Width = 169
+        Height = 19
+        Top = 59
+        Width = 144
         BorderSpacing.Top = 20
         Caption = 'Rotate downloads if fail'
+        OnChange = CheckBox9Change
         TabOrder = 0
       end
       object Label41: TLabel
@@ -1729,7 +1793,7 @@ object Form3: TForm3
         Left = 20
         Height = 15
         Top = 20
-        Width = 132
+        Width = 108
         BorderSpacing.Left = 20
         BorderSpacing.Top = 20
         Caption = 'Tries or rotate times:'
@@ -1740,9 +1804,9 @@ object Form3: TForm3
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = Label41
         AnchorSideTop.Side = asrCenter
-        Left = 154
-        Height = 21
-        Top = 17
+        Left = 130
+        Height = 23
+        Top = 16
         Width = 50
         BorderSpacing.Left = 2
         TabOrder = 1
@@ -1753,9 +1817,9 @@ object Form3: TForm3
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = Label42
         AnchorSideTop.Side = asrCenter
-        Left = 224
-        Height = 21
-        Top = 232
+        Left = 187
+        Height = 23
+        Top = 229
         Width = 50
         BorderSpacing.Left = 2
         MaxValue = 60
@@ -1771,8 +1835,8 @@ object Form3: TForm3
         AnchorSideBottom.Side = asrBottom
         Left = 20
         Height = 15
-        Top = 235
-        Width = 202
+        Top = 233
+        Width = 165
         Anchors = [akLeft, akBottom]
         BorderSpacing.Top = 20
         BorderSpacing.Bottom = 120
@@ -1788,22 +1852,22 @@ object Form3: TForm3
         AnchorSideBottom.Control = Label42
         Left = 20
         Height = 130
-        Top = 85
-        Width = 356
+        Top = 83
+        Width = 352
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Top = 5
         BorderSpacing.Right = 20
         Caption = 'Rotate mode'
-        ClientHeight = 114
-        ClientWidth = 354
+        ClientHeight = 112
+        ClientWidth = 348
         TabOrder = 3
         object RadioButton1: TRadioButton
           AnchorSideLeft.Control = GroupBox5
           AnchorSideTop.Control = GroupBox5
           Left = 10
-          Height = 22
+          Height = 19
           Top = 10
-          Width = 119
+          Width = 100
           BorderSpacing.Left = 10
           BorderSpacing.Top = 10
           Caption = 'One step down'
@@ -1816,9 +1880,9 @@ object Form3: TForm3
           AnchorSideTop.Control = RadioButton3
           AnchorSideTop.Side = asrBottom
           Left = 10
-          Height = 22
-          Top = 74
-          Width = 90
+          Height = 19
+          Top = 68
+          Width = 77
           BorderSpacing.Top = 10
           Caption = 'To the end'
           TabOrder = 1
@@ -1828,9 +1892,9 @@ object Form3: TForm3
           AnchorSideTop.Control = RadioButton1
           AnchorSideTop.Side = asrBottom
           Left = 10
-          Height = 22
-          Top = 42
-          Width = 122
+          Height = 19
+          Top = 39
+          Width = 106
           BorderSpacing.Top = 10
           Caption = 'Two steps down'
           TabOrder = 2
@@ -1844,7 +1908,7 @@ object Form3: TForm3
     AnchorSideRight.Control = PageControl1
     AnchorSideBottom.Control = Button1
     Left = 0
-    Height = 398
+    Height = 400
     Top = 0
     Width = 184
     Anchors = [akTop, akLeft, akBottom]
@@ -1896,4 +1960,4 @@ object Form3: TForm3
     ParentFont = False
     TabOrder = 4
   end
-end
+end

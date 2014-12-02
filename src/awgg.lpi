@@ -19,7 +19,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="1"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="1570"/>
+      <BuildNr Value="1635"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2014" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="8">
@@ -46,7 +46,9 @@
               <OverflowChecks Value="True"/>
               <StackChecks Value="True"/>
             </Checks>
-            <SmallerCode Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="0"/>
+            </Optimizations>
           </CodeGeneration>
           <Linking>
             <Debugging>
@@ -54,13 +56,9 @@
               <UseHeaptrc Value="True"/>
               <UseExternalDbgSyms Value="True"/>
             </Debugging>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
           </Linking>
           <Other>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -90,6 +88,7 @@
             </Debugging>
             <LinkSmart Value="True"/>
             <Options>
+              <LinkerOptions Value="-T"/>
               <Win32>
                 <GraphicApplication Value="True"/>
               </Win32>
@@ -97,6 +96,7 @@
           </Linking>
           <Other>
             <CustomOptions Value="-dalpha"/>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -133,6 +133,7 @@
           </Linking>
           <Other>
             <CustomOptions Value="-dbeta"/>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -154,8 +155,27 @@
               <UseAnsiStrings Value="False"/>
             </SyntaxOptions>
           </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
           <Other>
             <CustomOptions Value="-drelease"/>
+            <CompilerPath Value="$(CompPath)"/>
           </Other>
         </CompilerOptions>
       </Item5>
@@ -167,81 +187,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <TargetCPU Value="x86_64"/>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CustomOptions Value="-dalpha64"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item6>
-      <Item7 Name="Beta64">
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <TargetCPU Value="x86_64"/>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CustomOptions Value="-dbeta64"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item7>
-      <Item8 Name="Release64">
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -264,7 +210,89 @@
             </Options>
           </Linking>
           <Other>
+            <CustomOptions Value="-dalpha64"/>
+            <CompilerPath Value="$(CompPath)"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item6>
+      <Item7 Name="Beta64">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dbeta64"/>
+            <CompilerPath Value="$(CompPath)"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item7>
+      <Item8 Name="Release64">
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <Verbosity>
+              <ShowHintsForSenderNotUsed Value="True"/>
+            </Verbosity>
             <CustomOptions Value="-drelease64"/>
+            <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
             </ExecuteBefore>
@@ -312,6 +340,7 @@
         <ComponentName Value="Form2"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit2"/>
       </Unit2>
       <Unit3>
         <Filename Value="unit3.pas"/>
@@ -327,6 +356,7 @@
         <ComponentName Value="Form4"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit4"/>
       </Unit4>
       <Unit5>
         <Filename Value="unit5.pas"/>
@@ -334,6 +364,7 @@
         <ComponentName Value="Form5"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit5"/>
       </Unit5>
       <Unit6>
         <Filename Value="unit6.pas"/>
@@ -341,6 +372,7 @@
         <ComponentName Value="rsForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit6"/>
       </Unit6>
       <Unit7>
         <Filename Value="unit7.pas"/>
@@ -348,6 +380,7 @@
         <ComponentName Value="dlgForm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit7"/>
       </Unit7>
       <Unit8>
         <Filename Value="unit8.pas"/>
@@ -355,6 +388,7 @@
         <ComponentName Value="Form6"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit8"/>
       </Unit8>
     </Units>
   </ProjectOptions>
@@ -386,6 +420,7 @@
       </Options>
     </Linking>
     <Other>
+      <CompilerPath Value="$(CompPath)"/>
       <ExecuteBefore>
         <Command Value="$(SrcOS)-versionitis -verbose"/>
       </ExecuteBefore>

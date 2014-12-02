@@ -1,5 +1,25 @@
 unit Unit1;
 
+{
+  Main form of AWGG
+
+  Copyright (C) 2014 Reinier Romero Mir
+  nenirey@gmail.com
+
+  This library is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Library General Public License as published by
+  the Free Software Foundation; either version 2 of the License.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
+  for more details.
+
+  You should have received a copy of the GNU Library General Public License
+  along with this library; if not, write to the Free Software Foundation,
+  Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+}
+
 {$mode objfpc}{$H+}
 
 interface
@@ -48,8 +68,9 @@ private
 player:TProcess;
 sndfile:string;
 protected
-  procedure Execute;
-  public Constructor Create(CreateSuspended:boolean);
+  procedure Execute; override;
+public
+  Constructor Create(CreateSuspended:boolean);
 end;
 
   { TForm1 }
@@ -290,6 +311,7 @@ end;
     procedure ToolButton7Click(Sender: TObject);
     procedure ToolButton8Click(Sender: TObject);
     procedure ToolButton9Click(Sender: TObject);
+    procedure TrayIcon1Click(Sender: TObject);
     procedure TrayIcon1DblClick(Sender: TObject);
     procedure TrayIcon1MouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
@@ -359,6 +381,9 @@ var
   queuedelay:integer;
   queuestop:boolean;
   sameproxyforall:boolean;
+  sameclip:string;
+  loadhistorylog:boolean;
+  loadhistorymode:integer;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string):boolean;
   procedure playsound(soundfile:string);
@@ -367,6 +392,8 @@ implementation
 { TForm1 }
 procedure titlegen();
 begin
+//alpha por defecto
+Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' ALPHA BUILD '+Copy(version,LastDelimiter('.',version)+1,Length(version));
   {$IFDEF alpha or alpha64}
   Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' ALPHA BUILD '+Copy(version,LastDelimiter('.',version)+1,Length(version));
   {$ENDIF}
@@ -510,11 +537,13 @@ if (engine='') and (FileExists('/usr/bin/mplayer2')=true) then
 engine:='/usr/bin/mplayer2';
 if FileExists(engine) then
 begin
-player.Options:=[poNoConsole];
+player.Options:=[poUsePipes,poStderrToOutPut,poNoConsole];
 player.Executable:=engine;
 player.Parameters.Add(sndfile);
 player.Execute;
 end;
+while player.Running do;
+hilosnd.Terminate;
 end;
 
 {procedure runcntlm();
@@ -534,7 +563,7 @@ sndPlaySound(pchar(UTF8ToSys(soundfile)), snd_Async or snd_NoDefault);
 {$ELSE}
 hilosnd:=soundthread.Create(true);
 hilosnd.sndfile:=soundfile;
-hilosnd.Execute;
+hilosnd.Start;
 {$ENDIF}
 
 end;
@@ -558,6 +587,7 @@ for x:=0 to Form1.ListView1.Items.Count-1 do
     '1':Form1.ListView1.Items[x].Caption:=rsForm.statusinprogres.Caption;
     '2':Form1.ListView1.Items[x].Caption:=rsForm.statusstoped.Caption;
     '3':Form1.ListView1.Items[x].Caption:=rsForm.statuscomplete.Caption;
+    '4':Form1.ListView1.Items[x].Caption:=rsForm.statuserror.Caption;
     end;
     end;
 end;
@@ -794,6 +824,8 @@ iniconfigfile.WriteInteger('Config','rotatemode',rotatemode);
 iniconfigfile.WriteInteger('Config','queuedelay',queuedelay);
 iniconfigfile.WriteBool('Config','queuestop',queuestop);
 iniconfigfile.WriteBool('Config','sameproxyforall',sameproxyforall);
+iniconfigfile.WriteBool('Config','loadhistorylog',loadhistorylog);
+iniconfigfile.WriteInteger('Config','loadhistorymode',loadhistorymode);
 iniconfigfile.UpdateFile;
 iniconfigfile.Free;
 autostart();
@@ -921,6 +953,8 @@ rotatemode:=iniconfigfile.ReadInteger('Config','rotatemode',0);
 queuedelay:=iniconfigfile.ReadInteger('Config','queuedelay',1);
 queuestop:=iniconfigfile.ReadBool('Config','queuestop',false);
 sameproxyforall:=iniconfigfile.ReadBool('Config','sameproxyforall',false);
+loadhistorylog:=iniconfigfile.ReadBool('Config','loadhistorylog',false);
+loadhistorymode:=iniconfigfile.ReadInteger('Config','loadhistorymode',2);
 iniconfigfile.Free;
 Form1.ListView1.Column[0].Width:=columncolaw;
 Form1.ListView1.Column[columnname+1].Width:=columnnamew;
@@ -1200,6 +1234,11 @@ Form3.SpinEdit8.Enabled:=queuestop;
 Form3.SpinEdit9.Enabled:=queuestop;
 Form3.DateEdit2.Enabled:=queuestop;
 Form3.CheckBox5.Checked:=sameproxyforall;
+Form3.CheckBox12.Checked:=loadhistorylog;
+if loadhistorymode=1 then
+Form3.RadioButton4.Checked:=true;
+if loadhistorymode=2 then
+Form3.RadioButton5.Checked:=true;
   except on e:exception do
   ShowMessage(e.Message);
   end;
@@ -1279,6 +1318,11 @@ rotatemode:=2;
 queuedelay:=Form3.SpinEdit14.Value;
 queuestop:=Form3.CheckBox10.Checked;
 sameproxyforall:=Form3.CheckBox5.Checked;
+loadhistorylog:=Form3.CheckBox12.Checked;
+if Form3.RadioButton4.Checked=true then
+loadhistorymode:=1;
+if Form3.RadioButton5.Checked=true then
+loadhistorymode:=2;
   {if useproxy=3 then
   runcntlm()
   else
@@ -1693,6 +1737,8 @@ end;
 
 procedure restartdownload(indice:integer;ahora:boolean);
 begin
+if Form1.ListView1.Items[indice].SubItems[columnstatus] <> '1' then
+begin
   if FileExists(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])) then
   DeleteFile(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname]));
 
@@ -1710,9 +1756,14 @@ begin
   Form1.ListView1.Items[indice].ImageIndex:=18;
   Form1.ListView1.Items[indice].Caption:=rsForm.statuspaused.Caption;
   Form1.ListView1.Items[indice].SubItems[columnstatus]:='0';
+  Form1.ListView1.Items[indice].SubItems[columnpercent]:='0%';
+  Form1.ListView1.Items[indice].SubItems[columnspeed]:='--';
+  Form1.ListView1.Items[indice].SubItems[columnestimate]:='--';
+  Form1.ListView1.Items[indice].SubItems[columncurrent]:='0';
 
   if ahora then
   downloadstart(indice,true);
+end;
 end;
 
 procedure DownThread.update;
@@ -1770,8 +1821,10 @@ begin
 porciento:=Copy(wout[thid],Pos('%[',wout[thid])-2,3);
 velocidad:=Copy(wout[thid],Pos('/s ',wout[thid])-6,8);
 end;
-descargado:=Copy(wout[thid],Pos('] ',wout[thid])+2,Length(wout[thid]));
-descargado:=Copy(descargado,0,Pos(' ',descargado));
+descargado:=Copy(wout[thid],Pos(']',wout[thid])+1,Length(wout[thid]));
+descargado:=ExtractWord(1,descargado,[' ']);
+if Pos(':',descargado)>0 then
+descargado:='';
 if Pos('T.E. ',wout[thid])>0 then
 begin
 tiempo:=Copy(wout[thid],Pos('T.E. ',wout[thid])+5,length(wout[thid]));
@@ -1892,6 +1945,7 @@ ReWrite(statusfile);
 Write(statusfile,Form1.ListView1.Items[thid].SubItems[columnstatus]+'/'+descargado+'/'+porciento+'/'+tiempo);
 CloseFile(statusfile);
 except on e:exception do
+CloseFile(statusfile);
 end;
 
 //Talvez con un icono independiente por cada descarga
@@ -2135,7 +2189,7 @@ end;
            Write(logfile,AnsiReplaceStr(AnsiReplaceStr(wout[thid],#13,#10),#10,LineEnding));
            except on e:exception do
            end;
-           if (Pos('(OK):download',wout[thid])>0) or (Pos('100%[',wout[thid])>0) or (Pos('%AWGG100OK%',wout[thid])>0) or (Pos('[100%]',wout[thid])>0) or (Pos(' guardado [',wout[thid])>0) or (Pos(' saved [',wout[thid])>0) then
+           if (Pos('(OK):download',wout[thid])>0) or (Pos('100%[',wout[thid])>0) or (Pos('%AWGG100OK%',wout[thid])>0) or (Pos('[100%]',wout[thid])>0) or (Pos(' guardado [',wout[thid])>0) or (Pos(' saved [',wout[thid])>0) or (Pos('ERROR 400: Bad Request',wout[thid])>0) or (Pos('The file is already fully retrieved; nothing to do.',wout[thid])>0) then
            completado:=true;
            //end;
         {$IFDEF UNIX}
@@ -2168,7 +2222,6 @@ end;
 
 procedure DownThread.prepare();
 var outlines:TStringList;
-    cachefile:TextFile;
 begin
 case Form1.ListView1.Items[thid].SubItems[columnengine] of
         'wget':begin
@@ -2195,6 +2248,7 @@ if completado  then
 Form1.ListView1.Items[thid].Checked:=false;
 if completado then
 begin
+Form1.Timer2.Interval:=1000;
 Form1.ListView1.Items[thid].SubItems[columnstatus]:='3';
 Form1.ListView1.Items[thid].Caption:=rsForm.statuscomplete.Caption;
 Form1.ListView1.Items[thid].SubItems[columnpercent]:='100%';
@@ -2229,9 +2283,18 @@ Form1.ListView1.Items[thid].ImageIndex:=4;
 end
 else
 begin
+if manualshutdown then
+begin
 Form1.ListView1.Items[thid].SubItems[columnstatus]:='2';
 Form1.ListView1.Items[thid].Caption:=rsForm.statusstoped.Caption;
 Form1.ListView1.Items[thid].ImageIndex:=3;
+end
+else
+begin
+Form1.ListView1.Items[thid].SubItems[columnstatus]:='4';
+Form1.ListView1.Items[thid].Caption:=rsForm.statuserror.Caption;
+Form1.ListView1.Items[thid].ImageIndex:=3;
+end;
 Form1.ListView1.Items[thid].SubItems[columnspeed]:='--';
 if Form1.ListView1.ItemIndex=thid then
 begin
@@ -2239,8 +2302,9 @@ Form1.ToolButton3.Enabled:=true;
 Form1.ToolButton4.Enabled:=false;
 Form1.ToolButton22.Enabled:=true;
 end;
-if (shownotifi) and (Form1.Focused=false) then
+if (shownotifi) and (manualshutdown=false) then
 begin
+Form1.Timer2.Interval:=queuedelay*1000;
 outlines:=TStringList.Create;
 outlines.Add(datetostr(Date()));
 outlines.Add(timetostr(Time()));
@@ -2329,6 +2393,7 @@ var fitem:TListItem;
     ns,nt:integer;
     downloadsconfig:string;
     ftext:TStringList;
+    statusstr:string;
 begin
 if FileExists(configpath+'awgg.dat.bak') then
 downloadsconfig:=configpath+'awgg.dat.bak'
@@ -2389,6 +2454,29 @@ ftext.LoadFromFile(datapath+pathdelim+fitem.SubItems[columnuid]+'.status');
 fitem.SubItems[columncurrent]:=ExtractWord(2,ftext.Strings[0],['/']);
 fitem.SubItems[columnpercent]:=ExtractWord(3,ftext.Strings[0],['/']);
 fitem.SubItems[columnestimate]:=ExtractWord(4,ftext.Strings[0],['/']);
+statusstr:=ExtractWord(1,ftext.Strings[0],['/']);
+Case statusstr of
+ '0':begin
+ fitem.SubItems[columnstatus]:=statusstr;
+ fitem.ImageIndex:=18;
+ end;
+ '1':begin
+ fitem.SubItems[columnstatus]:='4';
+ fitem.ImageIndex:=3;
+ end;
+  '2':begin
+ fitem.SubItems[columnstatus]:=statusstr;
+ fitem.ImageIndex:=3;
+ end;
+  '3':begin
+ fitem.SubItems[columnstatus]:=statusstr;
+ fitem.ImageIndex:=4;
+ end;
+  '4':begin
+ fitem.SubItems[columnstatus]:=statusstr;
+ fitem.ImageIndex:=3;
+ end;
+ end;
 ftext.Destroy;
 end;
 Form1.ListView1.Items.AddItem(fitem);
@@ -2604,7 +2692,7 @@ case Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnstatus] of
  Form1.MenuItem13.Enabled:=false;
  Form1.MenuItem11.Enabled:=false;
  end;
- '2':begin
+ '2','4':begin
  Form1.MenuItem27.Enabled:=true;
  Form1.MenuItem28.Enabled:=false;
  Form1.MenuItem29.Enabled:=true;
@@ -2630,7 +2718,7 @@ procedure TForm1.ListView1DblClick(Sender: TObject);
 begin
   if Form1.ListView1.ItemIndex<>-1 then
   begin
-  if (Form1.ListView1.ItemFocused.SubItems[columnstatus]='') or (Form1.ListView1.ItemFocused.SubItems[columnstatus]='2') or (Form1.ListView1.ItemFocused.SubItems[columnstatus]='3') or (Form1.ListView1.ItemFocused.SubItems[columnstatus]='0') then
+  if (Form1.ListView1.ItemFocused.SubItems[columnstatus]='') or (Form1.ListView1.ItemFocused.SubItems[columnstatus]='2') or (Form1.ListView1.ItemFocused.SubItems[columnstatus]='3') or (Form1.ListView1.ItemFocused.SubItems[columnstatus]='0')or (Form1.ListView1.ItemFocused.SubItems[columnstatus]='4') then
   begin
   colamanual:=true;
   downloadstart(Form1.ListView1.ItemIndex,false);
@@ -2687,12 +2775,12 @@ begin
     Form1.ToolButton22.Enabled:=true;
     end;
   Form1.Memo1.Lines.Clear;
-  {if FileExists(logpath+pathdelim+UTF8ToSys(Form1.Listview1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log') and (Form1.Memo1.Visible) then
+  if FileExists(logpath+pathdelim+UTF8ToSys(Form1.Listview1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log') and (Form1.Memo1.Visible) and (loadhistorylog) then
   begin
   try
   lastlines:=TStringList.Create;
   lastlines.LoadFromFile(logpath+pathdelim+UTF8ToSys(Form1.Listview1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log');
-  if lastlines.Count>=20 then
+  if (lastlines.Count>=20) and (loadhistorymode=2) then
   begin
   Form1.Memo1.Lines.Add(lastlines[lastlines.Count-19]);
   Form1.Memo1.Lines.Add(lastlines[lastlines.Count-18]);
@@ -2722,7 +2810,7 @@ begin
   except on e:exception do
   Form1.Memo1.Lines.Add(e.ToString);
   end;
-  end;}
+  end;
   {if fileExists(logpath+PathDelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.cache') and (Form1.Listview1.Items[Form1.ListView1.ItemIndex].SubItems[columnstatus]<>'1') and (Form1.Memo1.Visible) then
   begin
   try
@@ -2774,7 +2862,7 @@ cpu:='x86_64';
 {$ENDIF}
 Form4.Label1.Caption:='AWGG';
 Form4.Label2.Caption:='(Advanced WGET GUI)'+#10#13+'Version: '+versionitis.version+#10#13+'Compiled using:'+#10#13+'Lazarus: '+lcl_version+#10#13+'FPC: '+versionitis.fpcversion+#10#13+'Platform: '+cpu+'-'+versionitis.targetos+'-'+widgetset;
-Form4.Memo1.Text:='Created By Reinier Romero Mir'+#13+'Email: nenirey@gmail.com'+#13+'Copyright© 2014'+#13+'The project uses the following third party resources:'+#10#13+'Silk icons set 1.3 by Mark James'+#13+'http://www.famfamfam.com/lab/icons/silk/'+#10#13+'Tango Icon Library'+#13+'http://tango.freedesktop.org/Tango_Icon_Library'+#10#13+'aria2'+#13+'http://aria2.sourceforge.net/'+#10#13+'Wget'+#13+'http://www.gnu.org/software/wget/'+#10#13+'cURL'+#13+'http://curl.haxx.se/'+#10#13+'Axel'+#13+'http://axel.alioth.debian.org/'+#10#13+'Cntlm'+#13+'http://cntlm.sourceforge.net/';
+Form4.Memo1.Text:='This program is free software under GNU GPL 2 license.'+#10#13+'Created By Reinier Romero Mir'+#13+'Email: nenirey@gmail.com'+#13+'Copyright© 2014'+#13+'The project uses the following third party resources:'+#10#13+'Silk icons set 1.3 by Mark James'+#13+'http://www.famfamfam.com/lab/icons/silk/'+#10#13+'Tango Icon Library'+#13+'http://tango.freedesktop.org/Tango_Icon_Library'+#10#13+'aria2'+#13+'http://aria2.sourceforge.net/'+#10#13+'Wget'+#13+'http://www.gnu.org/software/wget/'+#10#13+'cURL'+#13+'http://curl.haxx.se/'+#10#13+'Axel'+#13+'http://axel.alioth.debian.org/';
 Form4.Label3.Caption:='http://sites.google.com/site/awggproject';
 Form4.Show;
 end;
@@ -3052,35 +3140,30 @@ procedure TForm1.MenuItem40Click(Sender: TObject);
 begin
   Form1.ListView1.Column[columnspeed+1].Visible:=not Form1.ListView1.Column[columnspeed+1].Visible;
   Form1.MenuItem40.Checked:=Form1.ListView1.Column[columnspeed+1].Visible;
-
 end;
 
 procedure TForm1.MenuItem41Click(Sender: TObject);
 begin
   Form1.ListView1.Column[columnpercent+1].Visible:=not Form1.ListView1.Column[columnpercent+1].Visible;
   Form1.MenuItem41.Checked:=Form1.ListView1.Column[columnpercent+1].Visible;
-
 end;
 
 procedure TForm1.MenuItem42Click(Sender: TObject);
 begin
   Form1.ListView1.Column[columnestimate+1].Visible:=not Form1.ListView1.Column[columnestimate+1].Visible;
   Form1.MenuItem42.Checked:=Form1.ListView1.Column[columnestimate+1].Visible;
-
 end;
 
 procedure TForm1.MenuItem43Click(Sender: TObject);
 begin
   Form1.ListView1.Column[columndestiny+1].Visible:=not Form1.ListView1.Column[columndestiny+1].Visible;
   Form1.MenuItem43.Checked:=Form1.ListView1.Column[columndestiny+1].Visible;
-
 end;
 
 procedure TForm1.MenuItem44Click(Sender: TObject);
 begin
   Form1.ListView1.Column[columnengine+1].Visible:=not Form1.ListView1.Column[columnengine+1].Visible;
   Form1.MenuItem44.Checked:=Form1.ListView1.Column[columnengine+1].Visible;
-
 end;
 
 procedure TForm1.MenuItem45Click(Sender: TObject);
@@ -3307,7 +3390,6 @@ var hora:TTime;
     fecha:TDate;
     startdatetime:TDatetime;
     stopdatetime:TDateTime;
-    i:integer;
     checkstart:boolean;
     checkstop:boolean;
     checkdayweek:boolean;
@@ -3353,7 +3435,7 @@ begin
   if sheduledisablelimits then
   Form1.CheckBox1.Checked:=false;
   Form1.Timer2.Enabled:=true;
-  Form1.Timer2.Interval:=queuedelay*1000;
+  //Form1.Timer2.Interval:=queuedelay*1000;
 end
 else
 begin
@@ -3367,6 +3449,7 @@ end;
 procedure TForm1.Timer2StartTimer(Sender: TObject);
 var n:integer;
 begin
+  Form1.Timer2.Interval:=1000;
   Form1.ToolButton9.Enabled:=false;
   Form1.ToolButton11.Enabled:=true;
   Form1.MenuItem3.Enabled:=false;
@@ -3385,21 +3468,29 @@ end;
 
 procedure TForm1.Timer2Timer(Sender: TObject);
 var i,maxcdown:integer;
+    inqueue:boolean;
 begin
 maxcdown:=0;
+inqueue:=false;
 for i:=0 to Form1.ListView1.Items.Count-1 do
 begin
+if Form1.ListView1.Items[i].Checked then
+inqueue:=true;
 if (Form1.ListView1.Items[i].SubItems[columnstatus]='1') then
 inc(maxcdown);
 end;
+//no seguir si no hay nada en cola
+if inqueue then
+begin
 for i:=0 to Form1.ListView1.Items.Count-1 do
 begin
-if (Form1.ListView1.Items[i].Checked) and (maxcdown<Form1.SpinEdit1.Value) and ((Form1.ListView1.Items[i].SubItems[columnstatus]='') or (Form1.ListView1.Items[i].SubItems[columnstatus]='2') or (Form1.ListView1.Items[i].SubItems[columnstatus]='0')) and (strtoint(Form1.ListView1.Items[i].SubItems[columntries])>0) then
+if (Form1.ListView1.Items[i].Checked) and (maxcdown<Form1.SpinEdit1.Value) and ((Form1.ListView1.Items[i].SubItems[columnstatus]='') or (Form1.ListView1.Items[i].SubItems[columnstatus]='2') or (Form1.ListView1.Items[i].SubItems[columnstatus]='0') or (Form1.ListView1.Items[i].SubItems[columnstatus]='4')) and (strtoint(Form1.ListView1.Items[i].SubItems[columntries])>0) then
 begin
 ///////
 inc(maxcdown);
 downloadstart(i,false);
 //////
+end;
 end;
 end;
 end;
@@ -3416,8 +3507,11 @@ var cbn:integer;
     tmpclip:string;
 begin
 noesta:=true;
-if Length(ClipBoard.AsText) <= 256 then
+if (Length(ClipBoard.AsText) <= 256) then
 begin
+if sameclip<>ClipBoard.AsText then
+begin
+sameclip:=ClipBoard.AsText;
 tmpclip:=ClipBoard.AsText;
   if ((Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1)) and (clipurl<>tmpclip) then
   begin
@@ -3435,6 +3529,7 @@ tmpclip:=ClipBoard.AsText;
   end;
 if ((Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1)) then
 clipurl:=tmpclip;
+end;
 end
 else
 tmpclip:='';
@@ -3731,6 +3826,11 @@ procedure TForm1.ToolButton9Click(Sender: TObject);
 begin
   colamanual:=true;
   Form1.Timer2.Enabled:=true;
+end;
+
+procedure TForm1.TrayIcon1Click(Sender: TObject);
+begin
+  Form1.TrayIcon1MouseMove(nil,[ssShift], 0, 0);
 end;
 
 procedure TForm1.TrayIcon1DblClick(Sender: TObject);

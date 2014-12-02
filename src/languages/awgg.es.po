@@ -677,6 +677,10 @@ msgstr "Detener cola:"
 msgid "Enable sheduler"
 msgstr "Habilitar programador"
 
+#: tform3.checkbox12.caption
+msgid "Load log when select a download."
+msgstr "Cargar log al seleccionar una descarga."
+
 #: tform3.checkbox2.caption
 msgid "Use authentication"
 msgstr "Usar autenticacion"
@@ -761,6 +765,10 @@ msgstr "Aceptar"
 #: tform3.edit4.text
 msgid "localhost"
 msgstr ""
+
+#: tform3.groupbox1.caption
+msgid "Load mode"
+msgstr "Cargar"
 
 #: tform3.groupbox2.caption
 msgid "Connection"
@@ -951,6 +959,14 @@ msgstr "Al final"
 #: tform3.radiobutton3.caption
 msgid "Two steps down"
 msgstr "Dos pasos abajo"
+
+#: tform3.radiobutton4.caption
+msgid "All histroy log"
+msgstr "Todo el historial log"
+
+#: tform3.radiobutton5.caption
+msgid "Last 20 lines."
+msgstr "Ultimas 20 lineas."
 
 #: tform3.radiogroup1.caption
 msgid "Position on the screen"
@@ -1213,6 +1229,10 @@ msgstr "Iniciar en la bandeja del sistema."
 #: trsform.statuscomplete.caption
 msgid "Complete"
 msgstr "Completada"
+
+#: trsform.statuserror.caption
+msgid "Error"
+msgstr ""
 
 #: trsform.statusinprogres.caption
 msgid "In progress"

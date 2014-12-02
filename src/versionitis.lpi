@@ -22,7 +22,7 @@
       <AutoIncrementBuild Value="True"/>
       <MajorVersionNr Value="4"/>
       <RevisionNr Value="2"/>
-      <BuildNr Value="30"/>
+      <BuildNr Value="32"/>
       <StringTable ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="1">
@@ -40,7 +40,6 @@
       <Unit0>
         <Filename Value="versionitis.lpr"/>
         <IsPartOfProject Value="True"/>
-        <UnitName Value="versionitis"/>
       </Unit0>
     </Units>
   </ProjectOptions>
@@ -65,12 +64,6 @@
         <GenerateDebugInfo Value="False"/>
       </Debugging>
     </Linking>
-    <Other>
-      <CompilerMessages>
-        <MsgFileName Value=""/>
-      </CompilerMessages>
-      <CompilerPath Value="$(CompPath)"/>
-    </Other>
   </CompilerOptions>
   <Debugging>
     <Exceptions Count="3">

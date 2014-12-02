@@ -1,17 +1,17 @@
 object Form1: TForm1
-  Left = 137
+  Left = 152
   Height = 480
-  Top = 107
+  Top = 58
   Width = 640
   Caption = 'AWGG'
-  ClientHeight = 461
+  ClientHeight = 459
   ClientWidth = 640
   Menu = MainMenu1
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
-  LCLVersion = '1.3'
+  LCLVersion = '1.2.6.0'
   object FloatSpinEdit1: TFloatSpinEdit
     AnchorSideLeft.Control = CheckBox1
     AnchorSideLeft.Side = asrBottom
@@ -21,9 +21,9 @@ object Form1: TForm1
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 82
+    Left = 105
     Height = 21
-    Top = 438
+    Top = 436
     Width = 47
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 2
@@ -40,9 +40,9 @@ object Form1: TForm1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = FloatSpinEdit1
     Left = 5
-    Height = 17
-    Top = 440
-    Width = 77
+    Height = 22
+    Top = 435
+    Width = 100
     BorderSpacing.Left = 5
     Caption = 'Limit (Kb/s):'
     TabOrder = 1
@@ -54,6 +54,8 @@ object Form1: TForm1
     Width = 640
     EdgeBorders = [ebTop, ebBottom]
     Images = ImageList1
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 2
     object ToolButton1: TToolButton
       Left = 1
@@ -62,8 +64,6 @@ object Form1: TForm1
       AutoSize = True
       ImageIndex = 0
       OnClick = ToolButton1Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton2: TToolButton
       Left = 24
@@ -71,8 +71,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 1
       OnClick = ToolButton2Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton3: TToolButton
       Left = 200
@@ -80,8 +78,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 2
       OnClick = ToolButton3Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton4: TToolButton
       Left = 223
@@ -89,8 +85,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 3
       OnClick = ToolButton4Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton7: TToolButton
       Left = 376
@@ -98,8 +92,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 5
       OnClick = ToolButton7Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton8: TToolButton
       Left = 399
@@ -107,8 +99,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 6
       OnClick = ToolButton8Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton5: TToolButton
       Left = 195
@@ -128,8 +118,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 7
       OnClick = ToolButton9Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton10: TToolButton
       Left = 269
@@ -144,8 +132,6 @@ object Form1: TForm1
       Enabled = False
       ImageIndex = 8
       OnClick = ToolButton11Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton12: TToolButton
       Left = 325
@@ -153,8 +139,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 9
       OnClick = ToolButton12Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton13: TToolButton
       Left = 348
@@ -168,8 +152,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 10
       OnClick = ToolButton14Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton15: TToolButton
       Left = 422
@@ -177,8 +159,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 11
       OnClick = ToolButton15Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton16: TToolButton
       Left = 445
@@ -187,8 +167,6 @@ object Form1: TForm1
       Enabled = False
       ImageIndex = 12
       OnClick = ToolButton16Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton17: TToolButton
       Left = 473
@@ -196,8 +174,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 13
       OnClick = ToolButton17Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton18: TToolButton
       Left = 468
@@ -211,8 +187,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 15
       OnClick = ToolButton19Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton20: TToolButton
       Left = 126
@@ -220,8 +194,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 14
       OnClick = ToolButton20Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton21: TToolButton
       Left = 98
@@ -235,8 +207,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 20
       OnClick = ToolButton22Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton23: TToolButton
       Left = 149
@@ -244,8 +214,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 21
       OnClick = ToolButton23Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton24: TToolButton
       Left = 172
@@ -253,8 +221,6 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 22
       OnClick = ToolButton24Click
-      ParentShowHint = False
-      ShowHint = True
     end
     object ToolButton25: TToolButton
       Left = 52
@@ -262,9 +228,7 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 34
       OnClick = ToolButton25Click
-      ParentShowHint = False
       ShowCaption = False
-      ShowHint = True
     end
     object ToolButton26: TToolButton
       Left = 75
@@ -272,9 +236,7 @@ object Form1: TForm1
       Top = 2
       ImageIndex = 33
       OnClick = ToolButton26Click
-      ParentShowHint = False
       ShowCaption = False
-      ShowHint = True
     end
     object ToolButton27: TToolButton
       Left = 47
@@ -295,7 +257,7 @@ object Form1: TForm1
     AnchorSideBottom.Side = asrBottom
     Left = 584
     Height = 21
-    Top = 438
+    Top = 436
     Width = 46
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 10
@@ -310,10 +272,10 @@ object Form1: TForm1
     AnchorSideTop.Control = SpinEdit1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = SpinEdit1
-    Left = 442
-    Height = 13
-    Top = 442
-    Width = 140
+    Left = 402
+    Height = 15
+    Top = 439
+    Width = 180
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Max. downloads in progress:'
@@ -326,9 +288,9 @@ object Form1: TForm1
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = FloatSpinEdit1
-    Cursor = crDefault
+    Cursor = crVSplit
     Left = 0
-    Height = 412
+    Height = 410
     Top = 26
     Width = 640
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -454,14 +416,14 @@ object Form1: TForm1
     object PairSplitterSide2: TPairSplitterSide
       Cursor = crArrow
       Left = 0
-      Height = 137
+      Height = 135
       Top = 275
       Width = 640
       ClientWidth = 640
-      ClientHeight = 137
+      ClientHeight = 135
       object Memo1: TMemo
         Left = 5
-        Height = 135
+        Height = 133
         Top = 0
         Width = 630
         Align = alClient
@@ -625,6 +587,7 @@ object Form1: TForm1
     }
     Hint = 'AWGG'
     Visible = True
+    OnClick = TrayIcon1Click
     OnDblClick = TrayIcon1DblClick
     OnMouseMove = TrayIcon1MouseMove
     left = 184

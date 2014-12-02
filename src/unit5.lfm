@@ -10,15 +10,15 @@ object Form5: TForm5
   ClientWidth = 298
   FormStyle = fsSystemStayOnTop
   Position = poScreenCenter
-  LCLVersion = '1.2.4.0'
+  LCLVersion = '1.2.6.0'
   object Label1: TLabel
     AnchorSideTop.Control = ComboBox1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = ComboBox1
-    Left = 30
-    Height = 15
-    Top = 55
-    Width = 67
+    Left = 46
+    Height = 13
+    Top = 56
+    Width = 51
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Language:'
@@ -30,10 +30,10 @@ object Form5: TForm5
     AnchorSideTop.Control = Owner
     AnchorSideTop.Side = asrCenter
     Left = 99
-    Height = 29
-    Top = 48
+    Height = 21
+    Top = 52
     Width = 100
-    ItemHeight = 0
+    ItemHeight = 13
     Style = csDropDownList
     TabOrder = 0
   end
@@ -42,10 +42,10 @@ object Form5: TForm5
     AnchorSideLeft.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 135
-    Height = 27
-    Top = 93
-    Width = 29
+    Left = 130
+    Height = 23
+    Top = 97
+    Width = 39
     Anchors = [akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Bottom = 5

@@ -1,7 +1,7 @@
 object rsForm: TrsForm
-  Left = 80
+  Left = 141
   Height = 490
-  Top = 126
+  Top = 105
   Width = 759
   Caption = 'rsForm'
   ClientHeight = 490
@@ -11,7 +11,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 8
-    Width = 148
+    Width = 124
     Caption = 'Error saving config file: '
     ParentColor = False
   end
@@ -19,7 +19,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 24
-    Width = 153
+    Width = 130
     Caption = 'Error loading config file: '
     ParentColor = False
   end
@@ -27,7 +27,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 40
-    Width = 71
+    Width = 58
     Caption = 'In progress'
     ParentColor = False
   end
@@ -35,7 +35,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 56
-    Width = 137
+    Width = 112
     Caption = 'The folder not exists: '
     ParentColor = False
   end
@@ -43,7 +43,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 72
-    Width = 180
+    Width = 152
     Caption = 'You must select a download.'
     ParentColor = False
   end
@@ -51,7 +51,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 88
-    Width = 187
+    Width = 156
     Caption = 'Error saving the download list'
     ParentColor = False
   end
@@ -59,7 +59,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 104
-    Width = 395
+    Width = 327
     Caption = 'Do you want to delete the selected downloads and file in disk?'
     ParentColor = False
   end
@@ -67,7 +67,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 120
-    Width = 301
+    Width = 248
     Caption = 'Do you want to delete the selected downloads?'
     ParentColor = False
   end
@@ -75,7 +75,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 136
-    Width = 50
+    Width = 44
     Caption = 'Confirm'
     ParentColor = False
   end
@@ -83,7 +83,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 152
-    Width = 62
+    Width = 52
     Caption = 'Complete'
     ParentColor = False
   end
@@ -91,7 +91,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 167
-    Width = 126
+    Width = 107
     Caption = 'Download complete'
     ParentColor = False
   end
@@ -99,7 +99,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 184
-    Width = 46
+    Width = 37
     Caption = 'Stoped'
     ParentColor = False
   end
@@ -107,7 +107,7 @@ object rsForm: TrsForm
     Left = 419
     Height = 15
     Top = 200
-    Width = 114
+    Width = 96
     Caption = 'Download stoped:'
     ParentColor = False
   end
@@ -115,7 +115,7 @@ object rsForm: TrsForm
     Left = 420
     Height = 15
     Top = 216
-    Width = 379
+    Width = 313
     Caption = 'Downloads exist in progress, do you want to close any way?'
     ParentColor = False
   end
@@ -123,7 +123,7 @@ object rsForm: TrsForm
     Left = 420
     Height = 15
     Top = 232
-    Width = 131
+    Width = 110
     Caption = 'Download properties'
     ParentColor = False
   end
@@ -131,7 +131,7 @@ object rsForm: TrsForm
     Left = 420
     Height = 15
     Top = 248
-    Width = 17
+    Width = 15
     Caption = 'Ok'
     ParentColor = False
   end
@@ -139,7 +139,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 16
-    Width = 91
+    Width = 80
     Caption = 'New download'
     ParentColor = False
   end
@@ -147,7 +147,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 32
-    Width = 61
+    Width = 50
     Caption = 'Start now'
     ParentColor = False
   end
@@ -155,7 +155,7 @@ object rsForm: TrsForm
     Left = 16
     Height = 15
     Top = 48
-    Width = 249
+    Width = 206
     Caption = 'Not exists history log of the download!!'
     ParentColor = False
   end
@@ -163,7 +163,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 67
-    Width = 232
+    Width = 193
     Caption = 'Do you want to restart all download?'
     ParentColor = False
   end
@@ -171,7 +171,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 88
-    Width = 236
+    Width = 197
     Caption = 'Do you want to delete all downloads?'
     ParentColor = False
   end
@@ -179,7 +179,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 104
-    Width = 115
+    Width = 94
     Caption = 'The file not exists.'
     ParentColor = False
   end
@@ -187,7 +187,7 @@ object rsForm: TrsForm
     Left = 16
     Height = 15
     Top = 120
-    Width = 277
+    Width = 228
     Caption = 'Do you want to restart all downloads latter?'
     ParentColor = False
   end
@@ -195,7 +195,7 @@ object rsForm: TrsForm
     Left = 16
     Height = 15
     Top = 136
-    Width = 46
+    Width = 38
     Caption = 'Paused'
     ParentColor = False
   end
@@ -203,7 +203,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 152
-    Width = 335
+    Width = 274
     Caption = 'Do you want to restart the selected download letter?'
     ParentColor = False
   end
@@ -211,7 +211,7 @@ object rsForm: TrsForm
     Left = 16
     Height = 15
     Top = 168
-    Width = 255
+    Width = 212
     Caption = 'Do you want to clear the history log file?'
     ParentColor = False
   end
@@ -219,7 +219,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 184
-    Width = 297
+    Width = 244
     Caption = 'Do you want to restart the selected download?'
     ParentColor = False
   end
@@ -227,7 +227,7 @@ object rsForm: TrsForm
     Left = 16
     Height = 15
     Top = 200
-    Width = 48
+    Width = 39
     Caption = 'Sunday'
     ParentColor = False
   end
@@ -235,7 +235,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 216
-    Width = 50
+    Width = 44
     Caption = 'Monday'
     ParentColor = False
   end
@@ -243,7 +243,7 @@ object rsForm: TrsForm
     Left = 16
     Height = 15
     Top = 232
-    Width = 51
+    Width = 44
     Caption = 'Tuesday'
     ParentColor = False
   end
@@ -251,7 +251,7 @@ object rsForm: TrsForm
     Left = 16
     Height = 15
     Top = 248
-    Width = 72
+    Width = 61
     Caption = 'Wednesday'
     ParentColor = False
   end
@@ -259,7 +259,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 264
-    Width = 58
+    Width = 49
     Caption = 'Thursday'
     ParentColor = False
   end
@@ -267,7 +267,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 280
-    Width = 37
+    Width = 32
     Caption = 'Friday'
     ParentColor = False
   end
@@ -275,7 +275,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 296
-    Width = 58
+    Width = 46
     Caption = 'Saturday'
     ParentColor = False
   end
@@ -283,7 +283,7 @@ object rsForm: TrsForm
     Left = 17
     Height = 15
     Top = 312
-    Width = 236
+    Width = 197
     Caption = 'You must select a download engine!!'''
     ParentColor = False
   end
@@ -291,7 +291,7 @@ object rsForm: TrsForm
     Left = 20
     Height = 15
     Top = 328
-    Width = 201
+    Width = 165
     Caption = 'You must select one week day!!'
     ParentColor = False
   end
@@ -299,7 +299,7 @@ object rsForm: TrsForm
     Left = 418
     Height = 15
     Top = 264
-    Width = 132
+    Width = 110
     Caption = 'Run with the system.'
     ParentColor = False
   end
@@ -307,7 +307,7 @@ object rsForm: TrsForm
     Left = 416
     Height = 15
     Top = 280
-    Width = 169
+    Width = 139
     Caption = 'Automatic start scheduler.'
     ParentColor = False
   end
@@ -315,8 +315,16 @@ object rsForm: TrsForm
     Left = 417
     Height = 15
     Top = 296
-    Width = 124
+    Width = 99
     Caption = 'Start in the systray.'
     ParentColor = False
   end
-end
+  object statuserror: TLabel
+    Left = 417
+    Height = 15
+    Top = 312
+    Width = 25
+    Caption = 'Error'
+    ParentColor = False
+  end
+end

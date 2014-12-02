@@ -676,6 +676,10 @@ msgstr "Stop queue:"
 msgid "Enable sheduler"
 msgstr "Enable sheduler"
 
+#: tform3.checkbox12.caption
+msgid "Load log when select a download."
+msgstr "Load log when select a download."
+
 #: tform3.checkbox2.caption
 msgid "Use authentication"
 msgstr "Use authentication"
@@ -760,6 +764,10 @@ msgstr "OK"
 #: tform3.edit4.text
 msgid "localhost"
 msgstr ""
+
+#: tform3.groupbox1.caption
+msgid "Load mode"
+msgstr "Load mode"
 
 #: tform3.groupbox2.caption
 msgid "Connection"
@@ -950,6 +958,14 @@ msgstr "To the end"
 #: tform3.radiobutton3.caption
 msgid "Two steps down"
 msgstr "Two steps down"
+
+#: tform3.radiobutton4.caption
+msgid "All histroy log"
+msgstr "All histroy log"
+
+#: tform3.radiobutton5.caption
+msgid "Last 20 lines."
+msgstr "Last 20 lines."
 
 #: tform3.radiogroup1.caption
 msgid "Position on the screen"
@@ -1212,6 +1228,10 @@ msgstr "Start in the systray."
 #: trsform.statuscomplete.caption
 msgid "Complete"
 msgstr "Complete"
+
+#: trsform.statuserror.caption
+msgid "Error"
+msgstr ""
 
 #: trsform.statusinprogres.caption
 msgid "In progress"
