@@ -1,14 +1,15 @@
 object dlgForm: TdlgForm
-  Left = 350
-  Height = 141
-  Top = 354
-  Width = 402
+  Left = 320
+  Height = 168
+  Top = 298
+  Width = 417
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'Confirm'
-  ClientHeight = 141
-  ClientWidth = 402
+  ClientHeight = 168
+  ClientWidth = 417
   OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
   Position = poScreenCenter
   LCLVersion = '1.2.6.0'
   object dlgbtnyes: TButton
@@ -19,33 +20,38 @@ object dlgForm: TdlgForm
     AnchorSideRight.Control = dlgbtnno
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 296
-    Height = 25
-    Top = 106
-    Width = 44
+    Left = 315
+    Height = 23
+    Top = 135
+    Width = 43
     Anchors = [akTop, akRight]
     AutoSize = True
     BorderSpacing.Right = 10
     BorderSpacing.Bottom = 10
-    Caption = 'Yes'
+    Caption = '&Yes'
     OnClick = dlgbtnyesClick
+    OnKeyDown = FormKeyDown
     TabOrder = 0
   end
   object dlgbtnno: TButton
+    AnchorSideTop.Control = dlgtext
+    AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 350
-    Height = 25
-    Top = 106
-    Width = 42
+    Left = 368
+    Height = 23
+    Top = 135
+    Width = 39
     Anchors = [akRight, akBottom]
     AutoSize = True
+    BorderSpacing.Top = 30
     BorderSpacing.Right = 10
     BorderSpacing.Bottom = 10
-    Caption = 'No'
+    Caption = '&No'
     OnClick = dlgbtnnoClick
+    OnKeyDown = FormKeyDown
     TabOrder = 1
   end
   object dlgtext: TLabel
@@ -56,7 +62,7 @@ object dlgForm: TdlgForm
     Left = 20
     Height = 1
     Top = 20
-    Width = 362
+    Width = 377
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 20
     BorderSpacing.Top = 20

@@ -7,11 +7,11 @@ msgid "Confirm"
 msgstr ""
 
 #: tdlgform.dlgbtnno.caption
-msgid "No"
+msgid "&No"
 msgstr ""
 
 #: tdlgform.dlgbtnyes.caption
-msgid "Yes"
+msgid "&Yes"
 msgstr ""
 
 #: tform1.caption
@@ -28,7 +28,8 @@ msgid "Max. downloads in progress:"
 msgstr ""
 
 #: tform1.listview1.columns[0].caption
-msgid "[Queue] Status"
+msgctxt "tform1.listview1.columns[0].caption"
+msgid "Status"
 msgstr ""
 
 #: tform1.listview1.columns[10].caption
@@ -39,32 +40,6 @@ msgstr ""
 #: tform1.listview1.columns[11].caption
 msgctxt "tform1.listview1.columns[11].caption"
 msgid "Parameters"
-msgstr ""
-
-#: tform1.listview1.columns[12].caption
-msgid "status"
-msgstr ""
-
-#: tform1.listview1.columns[13].caption
-msgid "id"
-msgstr ""
-
-#: tform1.listview1.columns[14].caption
-msgctxt "tform1.listview1.columns[14].caption"
-msgid "user"
-msgstr ""
-
-#: tform1.listview1.columns[15].caption
-msgctxt "TFORM1.LISTVIEW1.COLUMNS[15].CAPTION"
-msgid "pass"
-msgstr ""
-
-#: tform1.listview1.columns[16].caption
-msgid "tries"
-msgstr ""
-
-#: tform1.listview1.columns[17].caption
-msgid "uid"
 msgstr ""
 
 #: tform1.listview1.columns[1].caption
@@ -93,6 +68,7 @@ msgid "Speed"
 msgstr ""
 
 #: tform1.listview1.columns[6].caption
+msgctxt "tform1.listview1.columns[6].caption"
 msgid "%"
 msgstr ""
 
@@ -158,7 +134,7 @@ msgid "Downloads"
 msgstr ""
 
 #: tform1.menuitem19.caption
-msgid "Check all"
+msgid "Select all"
 msgstr ""
 
 #: tform1.menuitem2.caption
@@ -167,7 +143,7 @@ msgid "Exit"
 msgstr ""
 
 #: tform1.menuitem20.caption
-msgid "Uncheck all"
+msgid "Unselect all"
 msgstr ""
 
 #: tform1.menuitem21.caption
@@ -240,7 +216,7 @@ msgid "Columns"
 msgstr ""
 
 #: tform1.menuitem36.caption
-msgid "[Queue] State"
+msgid "State"
 msgstr ""
 
 #: tform1.menuitem37.caption
@@ -489,6 +465,37 @@ msgctxt "TFORM1.MENUITEM82.CAPTION"
 msgid "Date"
 msgstr ""
 
+#: tform1.menuitem83.caption
+msgid "New queue"
+msgstr ""
+
+#: tform1.menuitem84.caption
+msgid "Delete queue"
+msgstr ""
+
+#: tform1.menuitem85.caption
+msgid "Rename queue"
+msgstr ""
+
+#: tform1.menuitem86.caption
+msgid "Send to the queue"
+msgstr ""
+
+#: tform1.menuitem87.caption
+msgctxt "TFORM1.MENUITEM87.CAPTION"
+msgid "-"
+msgstr ""
+
+#: tform1.menuitem88.caption
+msgctxt "tform1.menuitem88.caption"
+msgid "New site grabber..."
+msgstr ""
+
+#: tform1.menuitem89.caption
+msgctxt "TFORM1.MENUITEM89.CAPTION"
+msgid "New site grabber..."
+msgstr ""
+
 #: tform1.menuitem9.caption
 msgid "Help"
 msgstr ""
@@ -574,6 +581,14 @@ msgctxt "TFORM1.TOOLBUTTON26.HINT"
 msgid "Export list of downloads..."
 msgstr ""
 
+#: tform1.toolbutton28.hint
+msgid "New site grabber"
+msgstr ""
+
+#: tform1.toolbutton29.caption
+msgid "ToolButton29"
+msgstr ""
+
 #: tform1.toolbutton3.hint
 msgid "Start download"
 msgstr ""
@@ -642,20 +657,31 @@ msgid "File name: "
 msgstr ""
 
 #: tform2.label6.caption
+msgctxt "tform2.label6.caption"
 msgid "HTTP/FTP User:"
 msgstr ""
 
 #: tform2.label7.caption
+msgctxt "tform2.label7.caption"
 msgid "HTTP/FTP Password:"
 msgstr ""
 
+#: tform2.label8.caption
+msgctxt "TFORM2.LABEL8.CAPTION"
+msgid "Queue:"
+msgstr ""
+
 #: tform3.button1.caption
-msgid "Save"
+msgid "Accept"
 msgstr ""
 
 #: tform3.button2.caption
 msgctxt "TFORM3.BUTTON2.CAPTION"
 msgid "Cancel"
+msgstr ""
+
+#: tform3.button3.caption
+msgid "Apply"
 msgstr ""
 
 #: tform3.caption
@@ -794,6 +820,11 @@ msgstr ""
 
 #: tform3.label10.caption
 msgid "Start queue:"
+msgstr ""
+
+#: tform3.label11.caption
+msgctxt "tform3.label11.caption"
+msgid "Queue:"
 msgstr ""
 
 #: tform3.label12.caption
@@ -940,10 +971,12 @@ msgid "No proxy for:"
 msgstr ""
 
 #: tform3.label8.caption
+msgctxt "tform3.label8.caption"
 msgid "User:"
 msgstr ""
 
 #: tform3.label9.caption
+msgctxt "tform3.label9.caption"
 msgid "Password:"
 msgstr ""
 
@@ -967,8 +1000,20 @@ msgstr ""
 msgid "Last 20 lines."
 msgstr ""
 
+#: tform3.radiobutton6.caption
+msgid "All files in single folder"
+msgstr ""
+
+#: tform3.radiobutton7.caption
+msgid "Suggest by file type"
+msgstr ""
+
 #: tform3.radiogroup1.caption
 msgid "Position on the screen"
+msgstr ""
+
+#: tform3.radiogroup2.caption
+msgid "Categorize"
 msgstr ""
 
 #: tform3.tabsheet1.caption
@@ -997,6 +1042,7 @@ msgid "Sounds"
 msgstr ""
 
 #: tform3.tabsheet18.caption
+msgctxt "tform3.tabsheet18.caption"
 msgid "Queue"
 msgstr ""
 
@@ -1100,6 +1146,151 @@ msgstr ""
 msgid "Manual rename the file."
 msgstr ""
 
+#: tform7.button1.caption
+msgctxt "TFORM7.BUTTON1.CAPTION"
+msgid "Finish"
+msgstr ""
+
+#: tform7.button2.caption
+msgctxt "TFORM7.BUTTON2.CAPTION"
+msgid "Cancel"
+msgstr ""
+
+#: tform7.button3.caption
+msgid "< Back"
+msgstr ""
+
+#: tform7.button4.caption
+msgid "Next >"
+msgstr ""
+
+#: tform7.caption
+msgid "New Site Grabber"
+msgstr ""
+
+#: tform7.checkbox1.caption
+msgid "Convert to locals links"
+msgstr ""
+
+#: tform7.checkbox2.caption
+msgid "Follow FPT links"
+msgstr ""
+
+#: tform7.checkbox3.caption
+msgid "No parent links"
+msgstr ""
+
+#: tform7.checkbox4.caption
+msgid "Page requisites"
+msgstr ""
+
+#: tform7.checkbox5.caption
+msgid "Span hosts"
+msgstr ""
+
+#: tform7.checkbox6.caption
+msgid "Follow relative links"
+msgstr ""
+
+#: tform7.groupbox1.caption
+msgid "File reject filter"
+msgstr ""
+
+#: tform7.groupbox2.caption
+msgid "Domain reject filter"
+msgstr ""
+
+#: tform7.groupbox3.caption
+msgid "Follow domain filter"
+msgstr ""
+
+#: tform7.groupbox4.caption
+msgid "Include directory list"
+msgstr ""
+
+#: tform7.groupbox5.caption
+msgid "Exclude directory list"
+msgstr ""
+
+#: tform7.groupbox6.caption
+msgid "File accept filter"
+msgstr ""
+
+#: tform7.groupbox7.caption
+msgid "Follow tags list"
+msgstr ""
+
+#: tform7.groupbox8.caption
+msgid "Ignore tags list"
+msgstr ""
+
+#: tform7.groupbox9.caption
+msgid "HTTP/FTP Authentication"
+msgstr ""
+
+#: tform7.label1.caption
+msgid "URL:"
+msgstr ""
+
+#: tform7.label2.caption
+msgid "Name:"
+msgstr ""
+
+#: tform7.label3.caption
+msgid "Destiny:"
+msgstr ""
+
+#: tform7.label4.caption
+msgctxt "TFORM7.LABEL4.CAPTION"
+msgid "User:"
+msgstr ""
+
+#: tform7.label5.caption
+msgctxt "TFORM7.LABEL5.CAPTION"
+msgid "Password:"
+msgstr ""
+
+#: tform7.label6.caption
+msgctxt "TFORM7.LABEL6.CAPTION"
+msgid "Queue:"
+msgstr ""
+
+#: tform7.label7.caption
+msgid "Max level:"
+msgstr ""
+
+#: tform7.label8.caption
+msgid "Wellcome to the site grabber wizard"
+msgstr ""
+
+#: tform7.label9.caption
+msgid "User agent:"
+msgstr ""
+
+#: tform7.tabsheet1.caption
+msgid "TabSheet1"
+msgstr ""
+
+#: tform7.tabsheet2.caption
+msgid "TabSheet2"
+msgstr ""
+
+#: tform7.tabsheet3.caption
+msgid "TabSheet3"
+msgstr ""
+
+#: tform7.tabsheet4.caption
+msgid "TabSheet4"
+msgstr ""
+
+#: tform7.tabsheet5.caption
+msgid "TabSheet5"
+msgstr ""
+
+#: trsform.alldowntreename.caption
+msgid "All downloads"
+msgstr ""
+
 #: trsform.automaticstartscheduler.caption
 msgid "Automatic start scheduler."
 msgstr ""
@@ -1132,11 +1323,15 @@ msgid "Do you want to delete all downloads?"
 msgstr ""
 
 #: trsform.dlgdeletedown.caption
-msgid "Do you want to delete the selected downloads?"
+msgid "Do you want to delete the selected download(s)?"
 msgstr ""
 
 #: trsform.dlgdeletedownandfile.caption
-msgid "Do you want to delete the selected downloads and file in disk?"
+msgid "Do you want to delete the selected download(s) and file(s) in disk?"
+msgstr ""
+
+#: trsform.dlgdeletequeue.caption
+msgid "Do you want to delete the selected queue?"
 msgstr ""
 
 #: trsform.dlgrestartalldownloads.caption
@@ -1153,6 +1348,10 @@ msgstr ""
 
 #: trsform.dlgrestartselecteddownloadletter.caption
 msgid "Do you want to restart the selected download letter?"
+msgstr ""
+
+#: trsform.filtresname.caption
+msgid "Filters"
 msgstr ""
 
 #: trsform.friday.caption
@@ -1213,6 +1412,19 @@ msgctxt "trsform.popuptitlestoped.caption"
 msgid "Download stoped:"
 msgstr ""
 
+#: trsform.queuemainname.caption
+msgid "Main"
+msgstr ""
+
+#: trsform.queuename.caption
+msgctxt "TRSFORM.QUEUENAME.CAPTION"
+msgid "Queue"
+msgstr ""
+
+#: trsform.queuestreename.caption
+msgid "Queues"
+msgstr ""
+
 #: trsform.runwiththesystem.caption
 msgid "Run with the system."
 msgstr ""
@@ -1243,7 +1455,7 @@ msgid "Paused"
 msgstr ""
 
 #: trsform.statusstoped.caption
-msgid "Stoped"
+msgid "Stopped"
 msgstr ""
 
 #: trsform.sunday.caption
@@ -1269,5 +1481,9 @@ msgstr ""
 
 #: trsform.wednesday.caption
 msgid "Wednesday"
+msgstr ""
+
+#: unit1.txt
+msgid "texto prueba"
 msgstr ""
 

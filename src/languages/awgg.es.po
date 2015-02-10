@@ -7,12 +7,12 @@ msgid "Confirm"
 msgstr "Confirmar"
 
 #: tdlgform.dlgbtnno.caption
-msgid "No"
-msgstr "No"
+msgid "&No"
+msgstr "&No"
 
 #: tdlgform.dlgbtnyes.caption
-msgid "Yes"
-msgstr "Si"
+msgid "&Yes"
+msgstr "&Si"
 
 #: tform1.caption
 msgctxt "TFORM1.CAPTION"
@@ -28,8 +28,9 @@ msgid "Max. downloads in progress:"
 msgstr "Maximo numero de descargas a la vez:"
 
 #: tform1.listview1.columns[0].caption
-msgid "[Queue] Status"
-msgstr "[Cola] Estado"
+msgctxt "tform1.listview1.columns[0].caption"
+msgid "Status"
+msgstr "Estado"
 
 #: tform1.listview1.columns[10].caption
 msgctxt "tform1.listview1.columns[10].caption"
@@ -40,33 +41,6 @@ msgstr "Motor"
 msgctxt "tform1.listview1.columns[11].caption"
 msgid "Parameters"
 msgstr "Parametros"
-
-#: tform1.listview1.columns[12].caption
-msgid "status"
-msgstr ""
-
-#: tform1.listview1.columns[13].caption
-msgid "id"
-msgstr ""
-
-#: tform1.listview1.columns[14].caption
-msgctxt "tform1.listview1.columns[14].caption"
-msgid "user"
-msgstr ""
-
-#: tform1.listview1.columns[15].caption
-msgctxt "tform1.listview1.columns[15].caption"
-msgid "pass"
-msgstr ""
-
-#: tform1.listview1.columns[16].caption
-msgctxt "tform1.listview1.columns[16].caption"
-msgid "tries"
-msgstr ""
-
-#: tform1.listview1.columns[17].caption
-msgid "uid"
-msgstr ""
 
 #: tform1.listview1.columns[1].caption
 msgctxt "tform1.listview1.columns[1].caption"
@@ -94,6 +68,7 @@ msgid "Speed"
 msgstr "Velocidad"
 
 #: tform1.listview1.columns[6].caption
+msgctxt "tform1.listview1.columns[6].caption"
 msgid "%"
 msgstr ""
 
@@ -159,8 +134,8 @@ msgid "Downloads"
 msgstr "Descargas"
 
 #: tform1.menuitem19.caption
-msgid "Check all"
-msgstr "Marcar todas"
+msgid "Select all"
+msgstr "Seleccionar todas"
 
 #: tform1.menuitem2.caption
 msgctxt "TFORM1.MENUITEM2.CAPTION"
@@ -168,8 +143,8 @@ msgid "Exit"
 msgstr "Salir"
 
 #: tform1.menuitem20.caption
-msgid "Uncheck all"
-msgstr "Desmarcar todas"
+msgid "Unselect all"
+msgstr "Deseleccionar todas"
 
 #: tform1.menuitem21.caption
 msgid "Start all"
@@ -241,8 +216,8 @@ msgid "Columns"
 msgstr "Columnas"
 
 #: tform1.menuitem36.caption
-msgid "[Queue] State"
-msgstr "[Cola] Estado"
+msgid "State"
+msgstr "Estado"
 
 #: tform1.menuitem37.caption
 msgctxt "TFORM1.MENUITEM37.CAPTION"
@@ -490,6 +465,37 @@ msgctxt "tform1.menuitem82.caption"
 msgid "Date"
 msgstr "Fecha"
 
+#: tform1.menuitem83.caption
+msgid "New queue"
+msgstr "Nueva cola"
+
+#: tform1.menuitem84.caption
+msgid "Delete queue"
+msgstr "Eliminar cola"
+
+#: tform1.menuitem85.caption
+msgid "Rename queue"
+msgstr "Renombrar cola"
+
+#: tform1.menuitem86.caption
+msgid "Send to the queue"
+msgstr "Enviar a la cola"
+
+#: tform1.menuitem87.caption
+msgctxt "tform1.menuitem87.caption"
+msgid "-"
+msgstr ""
+
+#: tform1.menuitem88.caption
+msgctxt "tform1.menuitem88.caption"
+msgid "New site grabber..."
+msgstr "Nuevo grabador de sitios..."
+
+#: tform1.menuitem89.caption
+msgctxt "tform1.menuitem89.caption"
+msgid "New site grabber..."
+msgstr "Nuevo grabador de sitios..."
+
 #: tform1.menuitem9.caption
 msgid "Help"
 msgstr "Ayuda"
@@ -575,6 +581,14 @@ msgctxt "tform1.toolbutton26.hint"
 msgid "Export list of downloads..."
 msgstr "Exportar lista de descargas..."
 
+#: tform1.toolbutton28.hint
+msgid "New site grabber"
+msgstr "Nuevo grabador de sitios"
+
+#: tform1.toolbutton29.caption
+msgid "ToolButton29"
+msgstr ""
+
 #: tform1.toolbutton3.hint
 msgid "Start download"
 msgstr "Iniciar descarga"
@@ -643,21 +657,32 @@ msgid "File name: "
 msgstr "Nombre de archivo: "
 
 #: tform2.label6.caption
+msgctxt "tform2.label6.caption"
 msgid "HTTP/FTP User:"
 msgstr "HTTP/FTP Usuario:"
 
 #: tform2.label7.caption
+msgctxt "tform2.label7.caption"
 msgid "HTTP/FTP Password:"
 msgstr "HTTP/FTP Contraseña:"
 
+#: tform2.label8.caption
+msgctxt "tform2.label8.caption"
+msgid "Queue:"
+msgstr "Cola:"
+
 #: tform3.button1.caption
-msgid "Save"
-msgstr "Guardar"
+msgid "Accept"
+msgstr "Aceptar"
 
 #: tform3.button2.caption
 msgctxt "TFORM3.BUTTON2.CAPTION"
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: tform3.button3.caption
+msgid "Apply"
+msgstr "Aplicar"
 
 #: tform3.caption
 msgctxt "TFORM3.CAPTION"
@@ -796,6 +821,11 @@ msgstr ""
 #: tform3.label10.caption
 msgid "Start queue:"
 msgstr "Iniciar cola:"
+
+#: tform3.label11.caption
+msgctxt "tform3.label11.caption"
+msgid "Queue:"
+msgstr "Cola:"
 
 #: tform3.label12.caption
 msgid "Hide in:"
@@ -941,10 +971,12 @@ msgid "No proxy for:"
 msgstr "No usar proxy para:"
 
 #: tform3.label8.caption
+msgctxt "tform3.label8.caption"
 msgid "User:"
 msgstr "Usuario:"
 
 #: tform3.label9.caption
+msgctxt "tform3.label9.caption"
 msgid "Password:"
 msgstr "Contraseña:"
 
@@ -968,9 +1000,21 @@ msgstr "Todo el historial log"
 msgid "Last 20 lines."
 msgstr "Ultimas 20 lineas."
 
+#: tform3.radiobutton6.caption
+msgid "All files in single folder"
+msgstr "Todos los archivos en una carpeta"
+
+#: tform3.radiobutton7.caption
+msgid "Suggest by file type"
+msgstr "Sugerir por tipo de archivo"
+
 #: tform3.radiogroup1.caption
 msgid "Position on the screen"
 msgstr "Posicion en pantalla"
+
+#: tform3.radiogroup2.caption
+msgid "Categorize"
+msgstr "Categorizar"
 
 #: tform3.tabsheet1.caption
 msgid "Proxy"
@@ -998,6 +1042,7 @@ msgid "Sounds"
 msgstr "Sonidos"
 
 #: tform3.tabsheet18.caption
+msgctxt "tform3.tabsheet18.caption"
 msgid "Queue"
 msgstr "Cola"
 
@@ -1101,6 +1146,151 @@ msgstr "Autorenombrar el archivo"
 msgid "Manual rename the file."
 msgstr "Renombrar manualmente."
 
+#: tform7.button1.caption
+msgctxt "tform7.button1.caption"
+msgid "Finish"
+msgstr "Finalizar"
+
+#: tform7.button2.caption
+msgctxt "tform7.button2.caption"
+msgid "Cancel"
+msgstr "Cancelar"
+
+#: tform7.button3.caption
+msgid "< Back"
+msgstr "< Anterior"
+
+#: tform7.button4.caption
+msgid "Next >"
+msgstr "Siguiente >"
+
+#: tform7.caption
+msgid "New Site Grabber"
+msgstr "Nuevo grabador de sitio"
+
+#: tform7.checkbox1.caption
+msgid "Convert to locals links"
+msgstr "Convertir enlaces en locales"
+
+#: tform7.checkbox2.caption
+msgid "Follow FPT links"
+msgstr "Seguir enlaces a FTP"
+
+#: tform7.checkbox3.caption
+msgid "No parent links"
+msgstr "No seguir enlaces superiores"
+
+#: tform7.checkbox4.caption
+msgid "Page requisites"
+msgstr "Requisitios de pagina"
+
+#: tform7.checkbox5.caption
+msgid "Span hosts"
+msgstr "Expandir dominios"
+
+#: tform7.checkbox6.caption
+msgid "Follow relative links"
+msgstr "Seguir enlaces relativos"
+
+#: tform7.groupbox1.caption
+msgid "File reject filter"
+msgstr "Filtro de archivos a rechazar"
+
+#: tform7.groupbox2.caption
+msgid "Domain reject filter"
+msgstr "Filtro de dominios a rechazar"
+
+#: tform7.groupbox3.caption
+msgid "Follow domain filter"
+msgstr "Filtro de dominios a seguir"
+
+#: tform7.groupbox4.caption
+msgid "Include directory list"
+msgstr "Lista de directorios a incluir"
+
+#: tform7.groupbox5.caption
+msgid "Exclude directory list"
+msgstr "Lista de directorios a excluir"
+
+#: tform7.groupbox6.caption
+msgid "File accept filter"
+msgstr "Filtro de archivos a descargar"
+
+#: tform7.groupbox7.caption
+msgid "Follow tags list"
+msgstr "Lista de tags a seguir"
+
+#: tform7.groupbox8.caption
+msgid "Ignore tags list"
+msgstr "Lista de tags ignorados"
+
+#: tform7.groupbox9.caption
+msgid "HTTP/FTP Authentication"
+msgstr "Autenticacion HTTP/FTP"
+
+#: tform7.label1.caption
+msgid "URL:"
+msgstr ""
+
+#: tform7.label2.caption
+msgid "Name:"
+msgstr "Nombre:"
+
+#: tform7.label3.caption
+msgid "Destiny:"
+msgstr "Destino:"
+
+#: tform7.label4.caption
+msgctxt "tform7.label4.caption"
+msgid "User:"
+msgstr "Nombre:"
+
+#: tform7.label5.caption
+msgctxt "tform7.label5.caption"
+msgid "Password:"
+msgstr "Contraseña:"
+
+#: tform7.label6.caption
+msgctxt "tform7.label6.caption"
+msgid "Queue:"
+msgstr "Cola:"
+
+#: tform7.label7.caption
+msgid "Max level:"
+msgstr "Profundidad:"
+
+#: tform7.label8.caption
+msgid "Wellcome to the site grabber wizard"
+msgstr "Bienvenidos al asistente de grabar sitios"
+
+#: tform7.label9.caption
+msgid "User agent:"
+msgstr "User agent:"
+
+#: tform7.tabsheet1.caption
+msgid "TabSheet1"
+msgstr ""
+
+#: tform7.tabsheet2.caption
+msgid "TabSheet2"
+msgstr ""
+
+#: tform7.tabsheet3.caption
+msgid "TabSheet3"
+msgstr ""
+
+#: tform7.tabsheet4.caption
+msgid "TabSheet4"
+msgstr ""
+
+#: tform7.tabsheet5.caption
+msgid "TabSheet5"
+msgstr ""
+
+#: trsform.alldowntreename.caption
+msgid "All downloads"
+msgstr "Todas las descargas"
+
 #: trsform.automaticstartscheduler.caption
 msgid "Automatic start scheduler."
 msgstr "Iniciar programador automaticamente."
@@ -1133,12 +1323,16 @@ msgid "Do you want to delete all downloads?"
 msgstr "¿Desea borrar todas las descargas?"
 
 #: trsform.dlgdeletedown.caption
-msgid "Do you want to delete the selected downloads?"
-msgstr "¿Desea borrar la descarga seleccionada?"
+msgid "Do you want to delete the selected download(s)?"
+msgstr "¿Desea borrar la(s) descarga(s) seleccionada(s)?"
 
 #: trsform.dlgdeletedownandfile.caption
-msgid "Do you want to delete the selected downloads and file in disk?"
-msgstr "¿Desea borrar la descarga seleccionada y el archivo en disco?"
+msgid "Do you want to delete the selected download(s) and file(s) in disk?"
+msgstr "¿Desea borrar la(s) descarga(s) seleccionada(s) y archivo(s) en disco?"
+
+#: trsform.dlgdeletequeue.caption
+msgid "Do you want to delete the selected queue?"
+msgstr "¿Desea borrar la cola seleccionada?"
 
 #: trsform.dlgrestartalldownloads.caption
 msgid "Do you want to restart all download?"
@@ -1155,6 +1349,10 @@ msgstr "¿Desea reiniciar la descarga seleccionada?"
 #: trsform.dlgrestartselecteddownloadletter.caption
 msgid "Do you want to restart the selected download letter?"
 msgstr "¿Desea reiniciar la descarga seleccionada mas tarde?"
+
+#: trsform.filtresname.caption
+msgid "Filters"
+msgstr "Filtros"
 
 #: trsform.friday.caption
 msgid "Friday"
@@ -1214,6 +1412,19 @@ msgctxt "trsform.popuptitlestoped.caption"
 msgid "Download stoped:"
 msgstr "Descarga detenida:"
 
+#: trsform.queuemainname.caption
+msgid "Main"
+msgstr "Principal"
+
+#: trsform.queuename.caption
+msgctxt "trsform.queuename.caption"
+msgid "Queue"
+msgstr "Cola"
+
+#: trsform.queuestreename.caption
+msgid "Queues"
+msgstr "Colas"
+
 #: trsform.runwiththesystem.caption
 msgid "Run with the system."
 msgstr "Ejecutar con el sistema."
@@ -1232,7 +1443,7 @@ msgstr "Completada"
 
 #: trsform.statuserror.caption
 msgid "Error"
-msgstr ""
+msgstr "Error"
 
 #: trsform.statusinprogres.caption
 msgid "In progress"
@@ -1244,7 +1455,7 @@ msgid "Paused"
 msgstr "Pausada"
 
 #: trsform.statusstoped.caption
-msgid "Stoped"
+msgid "Stopped"
 msgstr "Detenida"
 
 #: trsform.sunday.caption
@@ -1271,4 +1482,8 @@ msgstr "Martes"
 #: trsform.wednesday.caption
 msgid "Wednesday"
 msgstr "Miercoles"
+
+#: unit1.txt
+msgid "texto prueba"
+msgstr ""
 

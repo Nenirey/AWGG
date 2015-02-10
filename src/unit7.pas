@@ -37,6 +37,7 @@ type
     procedure dlgbtnnoClick(Sender: TObject);
     procedure dlgbtnyesClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
   private
     { private declarations }
   public
@@ -61,6 +62,18 @@ end;
 procedure TdlgForm.FormCreate(Sender: TObject);
 begin
   dlgcuestion:=false;
+end;
+
+procedure TdlgForm.FormKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  //ShowMessage(inttostr(Key));
+  case Key of
+  27:begin
+    dlgcuestion:=false;
+    dlgForm.Close;
+    end;
+  end;
 end;
 
 procedure TdlgForm.dlgbtnnoClick(Sender: TObject);

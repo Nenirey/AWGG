@@ -24,7 +24,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  EditBtn, Unit6, Unit8;
+  EditBtn, Buttons, Unit6, Unit8;
 
 type
 
@@ -36,6 +36,7 @@ type
     Button3: TButton;
     Button4: TButton;
     ComboBox1: TComboBox;
+    ComboBox2: TComboBox;
     DirectoryEdit1: TDirectoryEdit;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -49,6 +50,9 @@ type
     Label5: TLabel;
     Label6: TLabel;
     Label7: TLabel;
+    Label8: TLabel;
+    SpeedButton1: TSpeedButton;
+    SpeedButton2: TSpeedButton;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -56,6 +60,8 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
+    procedure SpeedButton1Click(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -67,7 +73,7 @@ var
   //downitem:TListItem;
   iniciar,agregar,cola:Boolean;
 implementation
-uses Unit1;
+uses Unit1,Unit3;
 {$R *.lfm}
 
 { TForm2 }
@@ -180,6 +186,30 @@ end;
 procedure TForm2.FormKeyPress(Sender: TObject; var Key: char);
 begin
 
+end;
+
+procedure TForm2.SpeedButton1Click(Sender: TObject);
+var i:integer;
+begin
+newqueue();
+  Form2.ComboBox2.Items.Clear;
+for i:=0 to Length(queues)-1 do
+    begin
+    Form2.ComboBox2.Items.Add(queuenames[i]);
+    end;
+Form2.ComboBox2.ItemIndex:=Length(queues)-1;
+end;
+
+procedure TForm2.SpeedButton2Click(Sender: TObject);
+begin
+  Form2.FormStyle:=fsNormal;
+  Form3.PageControl1.ActivePageIndex:=1;
+  Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
+  configdlg();
+  Form3.ComboBox4.ItemIndex:=Form2.ComboBox2.ItemIndex;
+  Form3.ShowModal;
+  Form2.ComboBox2.ItemIndex:=Form3.ComboBox4.ItemIndex;
+  Form2.FormStyle:=fsSystemStayOnTop;
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);

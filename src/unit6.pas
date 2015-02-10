@@ -43,6 +43,12 @@ type
     dlgrestartselecteddownload: TLabel;
     friday: TLabel;
     automaticstartscheduler: TLabel;
+    dlgdeletequeue: TLabel;
+    filtresname: TLabel;
+    alldowntreename: TLabel;
+    queuename: TLabel;
+    queuestreename: TLabel;
+    queuemainname: TLabel;
     statuserror: TLabel;
     startinthesystray: TLabel;
     runwiththesystem: TLabel;

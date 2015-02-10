@@ -17,9 +17,8 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <MinorVersionNr Value="1"/>
-      <RevisionNr Value="2"/>
-      <BuildNr Value="1635"/>
+      <MinorVersionNr Value="3"/>
+      <BuildNr Value="2004"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2014" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="8">
@@ -98,7 +97,7 @@
             <CustomOptions Value="-dalpha"/>
             <CompilerPath Value="$(CompPath)"/>
             <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
+              <Command Value="$(srcOS)-versionitis -verbose"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
@@ -187,7 +186,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/;C:/codetyphon/binLibraries/x86_64-linux;C:/codetyphon/binLibraries/x86_64-linux-qt4"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -316,12 +315,15 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="1">
+    <RequiredPackages Count="2">
       <Item1>
-        <PackageName Value="LCL"/>
+        <PackageName Value="SynEdit"/>
       </Item1>
+      <Item2>
+        <PackageName Value="LCL"/>
+      </Item2>
     </RequiredPackages>
-    <Units Count="9">
+    <Units Count="10">
       <Unit0>
         <Filename Value="awgg.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -390,6 +392,14 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit8"/>
       </Unit8>
+      <Unit9>
+        <Filename Value="unit9.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form7"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit9"/>
+      </Unit9>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
