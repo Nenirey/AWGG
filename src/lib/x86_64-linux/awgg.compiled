@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="/usr/lib/codetyphon/fpc/fpc64/bin/x86_64-linux/fpc" Date="1419622243"/>
+  <Params Value=" -MObjFPC -Scghi -CX -Os3 -Px86_64 -XX -vewnhibq -Fi/datos/reinier/AWGG/src/lib/x86_64-linux -Fl/usr/lib/codetyphon/binLibraries/x86_64-linux -Fl/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4 -Fu/usr/lib/codetyphon/typhon/components/synedit/units/x86_64-linux/qt -Fu/usr/lib/codetyphon/typhon/lcl/units/x86_64-linux/qt -Fu/usr/lib/codetyphon/typhon/lcl/units/x86_64-linux -Fu/usr/lib/codetyphon/typhon/components/lazutils/lib/x86_64-linux -Fu/usr/lib/codetyphon/typhon/packager/units/x86_64-linux -Fu/datos/reinier/AWGG/src/ -FU/datos/reinier/AWGG/src/lib/x86_64-linux/ -l -FE/datos/reinier/AWGG/linux/ -dLCL -dLCLqt -dbeta64 awgg.lpr"/>
+</CONFIG>

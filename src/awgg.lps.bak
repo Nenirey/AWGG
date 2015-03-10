@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Alpha"/>
+    <Units Count="48">
+      <Unit0>
+        <Filename Value="awgg.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="13"/>
+        <CursorPos Y="28"/>
+        <UsageCount Value="237"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="unit1.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form1"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit1"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="2728"/>
+        <CursorPos X="17" Y="2769"/>
+        <UsageCount Value="237"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="unit2.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form2"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="43"/>
+        <CursorPos X="2" Y="56"/>
+        <UsageCount Value="203"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="unit3.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form3"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit3"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="318"/>
+        <CursorPos X="26" Y="322"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="unit4.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form4"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="40"/>
+        <CursorPos X="15" Y="50"/>
+        <UsageCount Value="200"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="unit5.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form5"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="17"/>
+        <CursorPos X="45" Y="18"/>
+        <UsageCount Value="217"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="unit6.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="rsForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="40"/>
+        <CursorPos X="22" Y="32"/>
+        <UsageCount Value="211"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="unit7.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="dlgForm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="67" Y="8"/>
+        <UsageCount Value="210"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="unit8.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form6"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="63"/>
+        <CursorPos Y="61"/>
+        <UsageCount Value="198"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="/usr/share/fpcsrc/2.6.4/packages/fcl-process/src/process.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="110"/>
+        <CursorPos X="14" Y="121"/>
+        <UsageCount Value="1"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="/lazarus/fpc/2.6.4/source/rtl/objpas/strutils.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="155"/>
+        <CursorPos X="10" Y="167"/>
+        <UsageCount Value="1"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="/usr/share/lazarus/1.2.4/lcl/forms.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="50"/>
+        <CursorPos X="3" Y="64"/>
+        <UsageCount Value="1"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="/lazarus/fpc/2.7.1/source/rtl/objpas/objpas.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="430"/>
+        <CursorPos X="16" Y="99"/>
+        <UsageCount Value="2"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="unit1.lfm"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="344"/>
+        <CursorPos X="29" Y="398"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="stringsunit.pas"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="13" Y="10"/>
+        <UsageCount Value="9"/>
+      </Unit14>
+      <Unit15>
+        <Filename Value="/usr/share/fpcsrc/2.7.1/rtl/objpas/objpas.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="78"/>
+        <CursorPos X="16" Y="98"/>
+        <UsageCount Value="10"/>
+      </Unit15>
+      <Unit16>
+        <Filename Value="/lazarus/components/pl_lclextensions/source/delphicompat.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="146"/>
+        <CursorPos X="14" Y="148"/>
+        <UsageCount Value="10"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="awgg.lps"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="52"/>
+        <UsageCount Value="10"/>
+        <DefaultSyntaxHighlighter Value="XML"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="/lazarus/lcl/interfaces/gtk3/gtk3defines.inc"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="23"/>
+        <CursorPos X="8" Y="25"/>
+        <UsageCount Value="10"/>
+      </Unit18>
+      <Unit19>
+        <Filename Value="/lazarus/lcl/interfaces/gtk3/gtk3bindings/lazgtk3.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="7968"/>
+        <CursorPos X="29" Y="7980"/>
+        <UsageCount Value="10"/>
+      </Unit19>
+      <Unit20>
+        <Filename Value="/lazarus/lcl/interfaces/gtk/gtkdefines.inc"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="64"/>
+        <CursorPos X="14" Y="78"/>
+        <UsageCount Value="10"/>
+      </Unit20>
+      <Unit21>
+        <Filename Value="/lazarus/lcl/interfaces/fpgui/fpguiwsdialogs.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="21"/>
+        <CursorPos X="3" Y="33"/>
+        <UsageCount Value="10"/>
+      </Unit21>
+      <Unit22>
+        <Filename Value="/lazarus/lcl/interfaces/wince/wincewschecklst.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="45"/>
+        <CursorPos X="12" Y="50"/>
+        <UsageCount Value="10"/>
+      </Unit22>
+      <Unit23>
+        <Filename Value="/lazarus/lcl/interfaces/wince/wincewsmenus.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="36"/>
+        <CursorPos X="20" Y="48"/>
+        <UsageCount Value="10"/>
+      </Unit23>
+      <Unit24>
+        <Filename Value="/lazarus/lcl/interfaces/gtk/gtk1extra.inc"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="13"/>
+        <CursorPos X="12" Y="25"/>
+        <UsageCount Value="10"/>
+      </Unit24>
+      <Unit25>
+        <Filename Value="/lazarus/lcl/interfaces/carbon/carbonprivate.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="16"/>
+        <CursorPos X="3" Y="28"/>
+        <UsageCount Value="10"/>
+      </Unit25>
+      <Unit26>
+        <Filename Value="/codetyphon/typhon/lcl/interfaces/gtk3/gtk3widgets.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="2359"/>
+        <CursorPos X="22" Y="2365"/>
+        <UsageCount Value="10"/>
+      </Unit26>
+      <Unit27>
+        <Filename Value="/codetyphon/typhon/lcl/interfaces/gtk/gtkdefines.inc"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="72"/>
+        <CursorPos X="6" Y="79"/>
+        <UsageCount Value="10"/>
+      </Unit27>
+      <Unit28>
+        <Filename Value="/codetyphon/typhon/components/pl_lclextensions/source/delphicompat.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="153"/>
+        <CursorPos X="3" Y="160"/>
+        <UsageCount Value="10"/>
+      </Unit28>
+      <Unit29>
+        <Filename Value="/codetyphon/typhon/lcl/interfaces/customdrawn/customdrawnproc.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="952"/>
+        <CursorPos X="3" Y="959"/>
+        <UsageCount Value="10"/>
+      </Unit29>
+      <Unit30>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/lclversion.pas"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="3" Y="40"/>
+        <UsageCount Value="10"/>
+      </Unit30>
+      <Unit31>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/interfaces/cocoa/cocoawscommon.pas"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="2" Y="4"/>
+        <UsageCount Value="10"/>
+      </Unit31>
+      <Unit32>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/interfaces/gtk3/gtk3defines.inc"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="18"/>
+        <CursorPos Y="41"/>
+        <UsageCount Value="10"/>
+      </Unit32>
+      <Unit33>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/interfaces/gtk3/gtk3bindings/lazglib2.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="4468"/>
+        <CursorPos Y="4482"/>
+        <UsageCount Value="10"/>
+      </Unit33>
+      <Unit34>
+        <Filename Value="/usr/share/lazarus/1.2.6/lcl/forms.pp"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="595"/>
+        <CursorPos X="14" Y="608"/>
+        <UsageCount Value="10"/>
+      </Unit34>
+      <Unit35>
+        <Filename Value="acs_file.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="2"/>
+        <CursorPos X="12" Y="13"/>
+        <UsageCount Value="10"/>
+      </Unit35>
+      <Unit36>
+        <Filename Value="acs_classes.pas"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="42" Y="13"/>
+        <UsageCount Value="10"/>
+      </Unit36>
+      <Unit37>
+        <Filename Value="acs_allformats.pas"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="10" Y="15"/>
+        <UsageCount Value="10"/>
+      </Unit37>
+      <Unit38>
+        <Filename Value="acs_wave.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="4"/>
+        <CursorPos X="9" Y="19"/>
+        <UsageCount Value="10"/>
+      </Unit38>
+      <Unit39>
+        <Filename Value="dvr_acs_stdaudio.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="137"/>
+        <CursorPos X="20" Y="157"/>
+        <UsageCount Value="10"/>
+      </Unit39>
+      <Unit40>
+        <Filename Value="bs_mad.pas"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="2" Y="16"/>
+        <UsageCount Value="10"/>
+      </Unit40>
+      <Unit41>
+        <Filename Value="acs_vorbis.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="104"/>
+        <CursorPos X="3" Y="17"/>
+        <UsageCount Value="10"/>
+      </Unit41>
+      <Unit42>
+        <Filename Value="acs_audio.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="700"/>
+        <CursorPos X="6" Y="678"/>
+        <UsageCount Value="10"/>
+      </Unit42>
+      <Unit43>
+        <Filename Value="acs_types.pas"/>
+        <WindowIndex Value="1"/>
+        <UsageCount Value="10"/>
+      </Unit43>
+      <Unit44>
+        <Filename Value="acs_strings.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="32"/>
+        <UsageCount Value="10"/>
+      </Unit44>
+      <Unit45>
+        <Filename Value="../../codetyphon/typhon/packager/registration/registerfcl.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="30"/>
+        <CursorPos X="3" Y="43"/>
+        <UsageCount Value="10"/>
+      </Unit45>
+      <Unit46>
+        <Filename Value="../../lazarus/packager/registration/registerfcl.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="35"/>
+        <CursorPos X="3" Y="43"/>
+        <UsageCount Value="10"/>
+      </Unit46>
+      <Unit47>
+        <Filename Value="/usr/share/lazarus/1.2.6/components/pl_lclextensions/source/delphicompat.pas"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="145"/>
+        <CursorPos Y="173"/>
+        <UsageCount Value="1"/>
+      </Unit47>
+    </Units>
+    <CustomDefines Count="6">
+      <Define0 Value="alpha"/>
+      <Define1 Value="beta"/>
+      <Define2 Value="release"/>
+      <Define3 Value="alpha64"/>
+      <Define4 Value="beta64"/>
+      <Define5 Value="release64"/>
+    </CustomDefines>
+    <JumpHistory Count="5" HistoryIndex="4">
+      <Position1>
+        <Filename Value="unit3.pas"/>
+        <Caret Line="302" Column="32" TopLine="295"/>
+      </Position1>
+      <Position2>
+        <Filename Value="unit3.pas"/>
+        <Caret Line="345" Column="3" TopLine="332"/>
+      </Position2>
+      <Position3>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="2061" Column="25" TopLine="2047"/>
+      </Position3>
+      <Position4>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="2223" Column="14" TopLine="2200"/>
+      </Position4>
+      <Position5>
+        <Filename Value="unit1.pas"/>
+        <Caret Line="376" Column="32" TopLine="364"/>
+      </Position5>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>

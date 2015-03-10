@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <PathDelim Value="\"/>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="1">
+      <Unit0>
+        <Filename Value="versionitis.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="versionitis"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="0"/>
+        <WindowIndex Value="0"/>
+        <TopLine Value="83"/>
+        <CursorPos X="15" Y="110"/>
+        <UsageCount Value="28"/>
+        <Loaded Value="True"/>
+      </Unit0>
+    </Units>
+    <General>
+      <ActiveWindowIndexAtStart Value="0"/>
+    </General>
+    <JumpHistory Count="15" HistoryIndex="14">
+      <Position1>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="21" Column="10" TopLine="1"/>
+      </Position1>
+      <Position2>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="22" Column="10" TopLine="1"/>
+      </Position2>
+      <Position3>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="20" Column="29" TopLine="1"/>
+      </Position3>
+      <Position4>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="32" Column="30" TopLine="1"/>
+      </Position4>
+      <Position5>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="27" Column="37" TopLine="3"/>
+      </Position5>
+      <Position6>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="30" Column="26" TopLine="4"/>
+      </Position6>
+      <Position7>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="11" Column="58" TopLine="9"/>
+      </Position7>
+      <Position8>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="32" Column="22" TopLine="10"/>
+      </Position8>
+      <Position9>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="18" Column="3" TopLine="4"/>
+      </Position9>
+      <Position10>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="19" Column="35" TopLine="9"/>
+      </Position10>
+      <Position11>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="79" Column="43" TopLine="64"/>
+      </Position11>
+      <Position12>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="81" Column="3" TopLine="64"/>
+      </Position12>
+      <Position13>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="85" Column="25" TopLine="71"/>
+      </Position13>
+      <Position14>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="98" Column="1" TopLine="83"/>
+      </Position14>
+      <Position15>
+        <Filename Value="versionitis.lpr"/>
+        <Caret Line="95" Column="20" TopLine="84"/>
+      </Position15>
+    </JumpHistory>
+  </ProjectSession>
+  <EditorMacros Count="0"/>
+</CONFIG>
