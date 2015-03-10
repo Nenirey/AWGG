@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Compiler Value="D:\lazarus\fpc\2.7.1\bin\i386-win32\fpc.exe" Date="1160259729"/>
+  <Params Value=" -MObjFPC -Scgi -CX -O3 -WG -vewnhi -FuD:\lazarus\lcl\units\i386-win32\win32 -FuD:\lazarus\lcl\units\i386-win32 -FuD:\lazarus\components\lazutils\lib\i386-win32 -FuD:\lazarus\packager\units\i386-win32 -FuD:\AWGG\src_sound2\ -l -FED:\AWGG\win32\ -dLCL -dLCLwin32 -drelease awgg.lpr"/>
+</CONFIG>

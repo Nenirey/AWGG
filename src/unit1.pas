@@ -129,7 +129,6 @@ end;
     MenuItem59: TMenuItem;
     MenuItem6: TMenuItem;
     MenuItem60: TMenuItem;
-    MenuItem61: TMenuItem;
     MenuItem62: TMenuItem;
     MenuItem63: TMenuItem;
     MenuItem64: TMenuItem;
@@ -140,8 +139,6 @@ end;
     MenuItem69: TMenuItem;
     MenuItem7: TMenuItem;
     MenuItem70: TMenuItem;
-    MenuItem71: TMenuItem;
-    MenuItem72: TMenuItem;
     MenuItem73: TMenuItem;
     MenuItem74: TMenuItem;
     MenuItem75: TMenuItem;
@@ -161,6 +158,8 @@ end;
     MenuItem88: TMenuItem;
     MenuItem89: TMenuItem;
     MenuItem9: TMenuItem;
+    MenuItem90: TMenuItem;
+    MenuItem91: TMenuItem;
     OpenDialog1: TOpenDialog;
     PairSplitter1: TPairSplitter;
     PairSplitter2: TPairSplitter;
@@ -172,6 +171,7 @@ end;
     PopupMenu2: TPopupMenu;
     PopupMenu3: TPopupMenu;
     PopupNotifier1: TPopupNotifier;
+    ProgressBar1: TProgressBar;
     SaveDialog1: TSaveDialog;
     SpinEdit1: TSpinEdit;
     SynMemo1: TSynMemo;
@@ -203,6 +203,8 @@ end;
     ToolButton28: TToolButton;
     ToolButton29: TToolButton;
     ToolButton3: TToolButton;
+    ToolButton30: TToolButton;
+    ToolButton31: TToolButton;
     ToolButton4: TToolButton;
     ToolButton5: TToolButton;
     ToolButton6: TToolButton;
@@ -286,6 +288,7 @@ end;
     procedure MenuItem88Click(Sender: TObject);
     procedure MenuItem89Click(Sender: TObject);
     procedure MenuItem8Click(Sender: TObject);
+    procedure MenuItem91Click(Sender: TObject);
     procedure PairSplitter1ChangeBounds(Sender: TObject);
     procedure PairSplitter1MouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
@@ -293,6 +296,8 @@ end;
     procedure PopupNotifier1Close(Sender: TObject; var CloseAction: TCloseAction
       );
     procedure Timer3Timer(Sender: TObject);
+    procedure Timer4StartTimer(Sender: TObject);
+    procedure Timer4StopTimer(Sender: TObject);
     procedure Timer4Timer(Sender: TObject);
     procedure Timer6Timer(Sender: TObject);
     procedure ToolButton11Click(Sender: TObject);
@@ -311,6 +316,7 @@ end;
     procedure ToolButton26Click(Sender: TObject);
     procedure ToolButton28Click(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
+    procedure ToolButton31Click(Sender: TObject);
     procedure ToolButton3Click(Sender: TObject);
     procedure ToolButton4Click(Sender: TObject);
     procedure ToolButton7Click(Sender: TObject);
@@ -338,6 +344,18 @@ end;
   type
   queuemenu=class(TMenuItem)
   procedure sendtoqueue(Sender:TObject);
+  end;
+
+  type
+  stqueuemenu=class(TMenuItem)
+  procedure startstopqueue(Sender:TObject);
+  end;
+
+  type
+  downtrayicon=class(TTrayIcon)
+  procedure startstop(Sender:TObject);
+  private
+  downindex:integer;
   end;
 
   type
@@ -371,7 +389,7 @@ var
   notifipos:integer;
   ddowndir:string;
   clipboardmonitor:boolean;
-  columnname,columnurl,columnpercent,columnsize,columncurrent,columnspeed,columnestimate, columndate, columndestiny,columnengine,columnparameters,columnuser,columnpass,columnstatus,columnid, columntries, columnuid, columntype, columnqueue:integer;
+  columnname,columnurl,columnpercent,columnsize,columncurrent,columnspeed,columnestimate, columndate, columndestiny,columnengine,columnparameters,columnuser,columnpass,columnstatus,columnid, columntries, columnuid, columntype, columnqueue, columncookie:integer;
   columncolaw,columnnamew,columnurlw,columnpercentw,columnsizew,columncurrentw,columnspeedw,columnestimatew,columndatew,columndestinyw,columnenginew,columnparametersw:integer;
   columncolav,columnnamev,columnurlv,columnpercentv,columnsizev,columncurrentv,columnspeedv,columnestimatev,columndatev,columndestinyv,columnenginev,columnparametersv:boolean;
   limited:boolean;
@@ -420,6 +438,9 @@ var
   stimer:array of sheduletimer;
   qtimerenable:array of boolean;
   queuemanual:array of boolean;
+  queuelimits:array of boolean;
+  queuepoweroff:array of boolean;
+  queuesheduledone:array of boolean;
   queuestmp:array of integer;
   queuestartdatestmp:array of TDate;
   queuestopdatestmp:array of TDate;
@@ -433,33 +454,42 @@ var
   stimertmp:array of sheduletimer;
   qtimerenabletmp:array of boolean;
   queuemanualtmp:array of boolean;
+  queuelimitstmp:array of boolean;
+  queuepowerofftmp:array of boolean;
+  queuesheduledonetmp:array of boolean;
+  shutingdown:boolean=false;
+  trayicons:array of downtrayicon;
+  showdowntrayicon:boolean;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string):boolean;
+  function suggestdir(doc:string):string;
   procedure playsound(soundfile:string);
   procedure newqueue();
   procedure setconfig();
   procedure enginereload();
   procedure configdlg();
+  procedure poweroff;
+  procedure savemydownloads;
+  procedure stopqueue(indice:integer);
 implementation
 {$R *.lfm}
 { TForm1 }
-
 
 function suggestdir(doc:string):string;
 begin
 result:=ddowndir+pathdelim+'Others';
 case UpperCase(Copy(doc,LastDelimiter('.',doc)+1,Length(doc))) of
-'ZIP','RAR','7Z','CAB','GZ','TAR','XZ','BZ2','LZMA':
+'ZIP','RAR','7Z','7ZIP','CAB','GZ','TAR','XZ','BZ2','LZMA':
 result:=ddowndir+pathdelim+'Compressed';
-'EXE','MSI','COM','BAT','PY','SH','HTA':
+'EXE','MSI','COM','BAT','PY','SH','HTA','JAR','APK','DMG':
 result:=ddowndir+pathdelim+'Programs';
-'JPG','JPE','JPEG','PNG','GIF','BMP':
+'JPG','JPE','JPEG','PNG','GIF','BMP','ICO','CUR','ANI':
 result:=ddowndir+pathdelim+'Images';
 'DOC','DOCX','XLS','XLSX','PPT','PPS','PPTX','PPSX','TXT','PDF','HTM','HTML','MHT','RTF','ODF','ODT','ODS','PHP':
 result:=ddowndir+pathdelim+'Documments';
-'MPG','MP4','FLV','AVI','WMV','MKV','VOB','RMVB','DIVX','3GP':
+'MPG','MPE','MPEG','MP4','MOV','FLV','AVI','ASF','WMV','MKV','VOB','IFO','RMVB','DIVX','3GP','3GP2','SWF','MPV','M4V','WEBM','AMV':
 result:=ddowndir+pathdelim+'Videos';
-'MP3','OGG','WAV','WMA':
+'MP3','OGG','WAV','WMA','AMR','MIDI':
 result:=ddowndir+pathdelim+'Music';
 end;
 if not DirectoryExists(result) then
@@ -522,11 +552,25 @@ Form1.ListView1.Items[i].SubItems[columnqueue]:=inttostr(Form1.MenuItem86.IndexO
 end;
 end;
 Form1.TreeView1SelectionChanged(nil);
+savemydownloads();
+end;
+
+procedure stqueuemenu.startstopqueue(Sender:TObject);
+begin
+if qtimer[Form1.PopupMenu1.Items.IndexOf(self)-5].Enabled then
+stopqueue(Form1.PopupMenu1.Items.IndexOf(self)-5)
+else
+begin
+queuemanual[Form1.PopupMenu1.Items.IndexOf(self)-5]:=true;
+qtimer[Form1.PopupMenu1.Items.IndexOf(self)-5].Interval:=1000;
+qtimer[Form1.PopupMenu1.Items.IndexOf(self)-5].Enabled:=true;
+end;
 end;
 
 procedure queuesreload();
 var treeitem:TTreeNode;
     menuitem:queuemenu;
+    stmenu:stqueuemenu;
     i:integer;
     tmptreeindex:integer;
 begin
@@ -534,6 +578,11 @@ if Form1.TreeView1.Items.SelectionCount>0 then
 tmptreeindex:=Form1.TreeView1.Selected.AbsoluteIndex;
 Form1.TreeView1.Items[1].DeleteChildren;
 Form1.MenuItem86.Clear;
+for i:=Form1.PopupMenu1.Items.Count-1 downto 0 do
+begin
+if (Form1.PopupMenu1.Items[i].ImageIndex=7) or (Form1.PopupMenu1.Items[i].ImageIndex=8) then
+Form1.PopupMenu1.Items.Delete(i);
+end;
 for i:=0 to Length(queues)-1 do
 begin
 qtimer[i].qtindex:=i;
@@ -565,6 +614,14 @@ menuitem:=queuemenu.Create(Form1.MenuItem86);
 menuitem.Caption:=queuenames[i];
 menuitem.ImageIndex:=40;
 menuitem.OnClick:=@menuitem.sendtoqueue;
+stmenu:=stqueuemenu.Create(Form1.PopupMenu1);
+stmenu.Caption:=queuenames[i];
+if qtimer[i].Enabled then
+stmenu.ImageIndex:=8
+else
+stmenu.ImageIndex:=7;
+stmenu.OnClick:=@stmenu.startstopqueue;
+Form1.PopupMenu1.Items.Insert(Form1.PopupMenu1.Items.Count-4,stmenu);
 Form1.MenuItem86.Add(menuitem);
 end;
 Form1.TreeView1.Items[1].Expand(true);
@@ -593,6 +650,9 @@ SetLength(qtimertmp,0);
 SetLength(stimertmp,0);
 SetLength(qtimerenabletmp,0);
 SetLength(queuemanualtmp,0);
+SetLength(queuelimitstmp,0);
+SetLength(queuepowerofftmp,0);
+SetLength(queuesheduledonetmp,0);
 end;
 
 procedure deletequeue(indice:integer);
@@ -633,6 +693,9 @@ SetLength(qtimertmp,Length(qtimertmp)+1);
 SetLength(stimertmp,Length(stimertmp)+1);
 SetLength(qtimerenabletmp,Length(qtimerenabletmp)+1);
 SetLength(queuemanualtmp,Length(queuemanualtmp)+1);
+SetLength(queuelimitstmp,Length(queuelimitstmp)+1);
+SetLength(queuepowerofftmp,Length(queuepowerofftmp)+1);
+SetLength(queuesheduledonetmp,Length(queuesheduledonetmp)+1);
 
 queuestmp[Length(queuestmp)-1]:=queues[i];
 queuenamestmp[Length(queuenamestmp)-1]:=queuenames[i];
@@ -652,7 +715,10 @@ qalldaytmp[Length(qalldaytmp)-1]:=qallday[i];
 qtimertmp[Length(qtimertmp)-1]:=qtimer[i];
 stimertmp[Length(stimertmp)-1]:=stimer[i];
 qtimerenabletmp[Length(qtimerenabletmp)-1]:=qtimerenable[i];
-queuemanualtmp[Length(queuemanualtmp)-1]:=queuemanual[i]
+queuemanualtmp[Length(queuemanualtmp)-1]:=queuemanual[i];
+queuelimitstmp[Length(queuelimitstmp)-1]:=queuelimits[i];
+queuepowerofftmp[Length(queuepowerofftmp)-1]:=queuepoweroff[i];
+queuesheduledonetmp[Length(queuesheduledonetmp)-1]:=queuesheduledone[i];
 end;
 end;
 queues:=queuestmp;
@@ -674,6 +740,9 @@ qtimer:=qtimertmp;
 stimer:=stimertmp;
 qtimerenable:=qtimerenabletmp;
 queuemanual:=queuemanualtmp;
+queuelimits:=queuelimitstmp;
+queuepoweroff:=queuepowerofftmp;
+queuesheduledone:=queuesheduledonetmp;
 resetqtmp();
 Form1.TreeView1.Items[1].Selected:=true;
 newdownqueues();
@@ -684,6 +753,8 @@ for i:=0 to Form1.ListView1.Items.Count-1 do
 begin
 if Form1.ListView1.Items[i].SubItems[columnqueue]=inttostr(indice) then
 Form1.ListView1.Items[i].SubItems[columnqueue]:='0';
+if strtoint(Form1.ListView1.Items[i].SubItems[columnqueue])>=indice then
+Form1.ListView1.Items[i].SubItems[columnqueue]:=inttostr(strtoint(Form1.ListView1.Items[i].SubItems[columnqueue])-1);
 end;
 end;
 
@@ -711,6 +782,13 @@ SetLength(qtimer,Length(qtimer)+1);
 SetLength(stimer,Length(stimer)+1);
 SetLength(qtimerenable,Length(qtimerenable)+1);
 SetLength(queuemanual,Length(queuemanual)+1);
+SetLength(queuelimits,Length(queuelimits)+1);
+SetLength(queuepoweroff,Length(queuepoweroff)+1);
+SetLength(queuesheduledone,Length(queuesheduledone)+1);
+
+//Fecha actual ya que por defecto da una muy antigua
+queuestartdates[Length(queues)-1]:=Date();
+queuestopdates[Length(queues)-1]:=Date();
 
 qtimer[Length(queues)-1]:=queuetimer.Create(Form1);
 qtimer[Length(queues)-1].Enabled:=false;
@@ -742,13 +820,22 @@ procedure titlegen();
 begin
 //alpha por defecto
 Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' ALPHA BUILD '+Copy(version,LastDelimiter('.',version)+1,Length(version));
-  {$IFDEF alpha or alpha64}
+  {$IFDEF alpha}
   Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' ALPHA BUILD '+Copy(version,LastDelimiter('.',version)+1,Length(version));
   {$ENDIF}
-  {$IFDEF beta or beta64}
+  {$IFDEF beta}
   Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' BETA';
   {$ENDIF}
-  {$IFDEF release or release64}
+  {$IFDEF release}
+  Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1);
+  {$ENDIF}
+  {$IFDEF alpha64}
+  Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' ALPHA BUILD '+Copy(version,LastDelimiter('.',version)+1,Length(version));
+  {$ENDIF}
+  {$IFDEF beta64}
+  Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1)+' BETA';
+  {$ENDIF}
+  {$IFDEF release64}
   Form1.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1);
   {$ENDIF}
 end;
@@ -864,10 +951,29 @@ end;
 procedure rebuildids();
 var x:integer;
 begin
+SetLength(trayicons,Form1.ListView1.Items.Count);
 for x:=0 to Form1.ListView1.Items.Count-1 do
     begin
     if Form1.ListView1.Items[x].SubItems[columnstatus]='1' then
     hilo[strtoint(Form1.ListView1.Items[x].SubItems[columnid])].thid:=x;
+    if Assigned(trayicons[x]) then
+        begin
+        trayicons[x].Icon.Clear;
+        trayicons[x].Visible:=false;
+        trayicons[x].Hide;
+        trayicons[x].downindex:=x;
+        end
+        else
+        begin
+        trayicons[x]:=downtrayicon.Create(nil);
+        trayicons[x].Visible:=false;
+        trayicons[x].Icon.Clear;
+        trayicons[x].Hide;
+        trayicons[x].downindex:=x;
+        trayicons[x].OnDblClick:=@trayicons[x].startstop;
+        end;
+if (Form1.ListView1.Items[x].SubItems[columnstatus]='1') and showdowntrayicon then
+trayicons[x].Show;
     end;
 if Form1.ListView2.Visible then
 begin
@@ -1123,6 +1229,7 @@ maxgdown:=Form1.SpinEdit1.Value;
 showstdout:=Form1.MenuItem53.Checked;
 showgridlines:=Form1.ListView1.GridLines;
 showcommandout:=Form1.SynMemo1.Visible;
+showdowntrayicon:=Form1.MenuItem4.Checked;
 if showcommandout then
 splitpos:=Form1.PairSplitter1.Position;
 try
@@ -1230,6 +1337,7 @@ iniconfigfile.WriteBool('Config','sameproxyforall',sameproxyforall);
 iniconfigfile.WriteBool('Config','loadhistorylog',loadhistorylog);
 iniconfigfile.WriteInteger('Config','loadhistorymode',loadhistorymode);
 iniconfigfile.WriteInteger('Config','defaultdirmode',defaultdirmode);
+iniconfigfile.WriteBool('Config','showdowntrayicon',showdowntrayicon);
 iniconfigfile.UpdateFile;
 iniconfigfile.Free;
 autostart();
@@ -1345,6 +1453,7 @@ sameproxyforall:=iniconfigfile.ReadBool('Config','sameproxyforall',false);
 loadhistorylog:=iniconfigfile.ReadBool('Config','loadhistorylog',false);
 loadhistorymode:=iniconfigfile.ReadInteger('Config','loadhistorymode',2);
 defaultdirmode:=iniconfigfile.ReadInteger('Config','defaultdirmode',2);
+showdowntrayicon:=iniconfigfile.ReadBool('Config','showdowntrayicon',true);
 iniconfigfile.Free;
 Form1.ListView1.Column[0].Width:=columncolaw;
 Form1.ListView1.Column[columnname+1].Width:=columnnamew;
@@ -1395,6 +1504,8 @@ Form1.MenuItem53.Enabled:=showcommandout;
 Form1.MenuItem33.Checked:=showcommandout;
 Form1.MenuItem25.Checked:=showgridlines;
 Form1.Timer4.Enabled:=clipboardmonitor;
+Form1.ToolButton31.Down:=clipboardmonitor;
+Form1.MenuItem4.Checked:=showdowntrayicon;
    if splitpos<20 then
    splitpos:=20;
    if splitpos>Form1.PairSplitter1.Height-20 then
@@ -1492,7 +1603,9 @@ begin
   deflanguage:=Form3.ComboBox2.Text;
   defaultengine:=Form3.ComboBox3.Text;
   playsounds:=Form3.CheckBox7.Checked;
-  sheduledisablelimits:=Form3.CheckBox8.Checked;
+  //sheduledisablelimits:=Form3.CheckBox8.Checked;
+  queuelimits[Form3.ComboBox4.ItemIndex]:=Form3.CheckBox8.Checked;
+  queuepoweroff[Form3.ComboBox4.ItemIndex]:=Form3.CheckBox13.Checked;
   queuerotate:=Form3.CheckBox9.Checked;
   downcompsound:=Form3.FileNameEdit6.Text;
   downstopsound:=Form3.FileNameEdit7.Text;
@@ -1640,7 +1753,6 @@ end;
 Form3.ComboBox2.ItemIndex:=Form3.ComboBox2.Items.IndexOf(deflanguage);
 enginereload();
 Form3.CheckBox7.Checked:=playsounds;
-Form3.CheckBox8.Checked:=sheduledisablelimits;
 Form3.CheckBox9.Checked:=queuerotate;
 Form3.FileNameEdit6.Text:=downcompsound;
 Form3.FileNameEdit7.Text:=downstopsound;
@@ -1693,6 +1805,8 @@ for i:=0 to Length(queues)-1 do
   Form3.CheckGroup5.Checked[4]:=qjueves[Form3.ComboBox4.ItemIndex];
   Form3.CheckGroup5.Checked[5]:=qviernes[Form3.ComboBox4.ItemIndex];
   Form3.CheckGroup5.Checked[6]:=qsabado[Form3.ComboBox4.ItemIndex];
+  Form3.CheckBox8.Checked:=queuelimits[Form3.ComboBox4.ItemIndex];
+  Form3.CheckBox13.Checked:=queuepoweroff[Form3.ComboBox4.ItemIndex];
   case defaultdirmode of
   1:Form3.RadioButton6.Checked:=true;
   2:Form3.RadioButton6.Checked:=false;
@@ -1867,6 +1981,12 @@ tmps.Add('--ftp-user='+Form1.ListView1.Items[indice].SubItems[columnuser]);
 tmps.Add('--ftp-password='+Form1.ListView1.Items[indice].SubItems[columnpass]);
 end;
 end;
+if Form1.ListView1.Items[indice].SubItems[columncookie]<>'' then
+begin
+tmps.Add('--user-agent=Firefox');
+tmps.Add('--content-disposition');
+tmps.Add('--load-cookies='+Form1.ListView1.Items[indice].SubItems[columncookie]);
+end;
 if FileExists(Form1.ListView1.Items[indice].SubItems[columnurl]) then
 tmps.Add('-i');//Fichero de entrada
 tmps.Add(Form1.ListView1.Items[indice].SubItems[columnurl]);
@@ -1897,6 +2017,7 @@ if WordCount(Form1.ListView1.Items[indice].SubItems[columnparameters],[' '])>0 t
         tmps.Add(ExtractWord(wrn,Form1.ListView1.Items[indice].SubItems[columnparameters],[' ']));
         end;
 tmps.Add('--check-certificate=false');//Ignorar certificados
+tmps.Add('--summary-interval=1');//intervalo del sumario de descargas
 if Form1.ListView1.Items[indice].SubItems[columnname]<>'' then
 begin
 tmps.Add('-o');
@@ -1945,6 +2066,11 @@ begin
 tmps.Add('--ftp-user='+Form1.ListView1.Items[indice].SubItems[columnuser]);
 tmps.Add('--ftp-passwd='+Form1.ListView1.Items[indice].SubItems[columnpass]);
 end;
+end;
+if Form1.ListView1.Items[indice].SubItems[columncookie]<>'' then
+begin
+tmps.Add('--user-agent=Firefox');
+tmps.Add('--load-cookies='+Form1.ListView1.Items[indice].SubItems[columncookie]);
 end;
 tmps.Add(Form1.ListView1.Items[indice].SubItems[columnurl]);
 end;
@@ -2023,6 +2149,13 @@ if (Form1.ListView1.Items[indice].SubItems[columnuser]<>'') and (Form1.ListView1
 begin
 tmps.Add('-u');
 tmps.Add(Form1.ListView1.Items[indice].SubItems[columnuser]+':'+Form1.ListView1.Items[indice].SubItems[columnpass]);
+end;
+if Form1.ListView1.Items[indice].SubItems[columncookie]<>'' then
+begin
+tmps.Add('-A');
+tmps.Add('Firefox');
+tmps.Add('-b');
+tmps.Add(Form1.ListView1.Items[indice].SubItems[columncookie]);
 end;
 tmps.Add(Form1.ListView1.Items[indice].SubItems[columnurl]);
 end;
@@ -2201,6 +2334,20 @@ thnum:=downid
 else
 thnum:=Form1.ListView1.Items.Count;
 SetLength(hilo,thnum);
+SetLength(trayicons,thnum);
+if Assigned(trayicons[downid])=false then
+begin
+trayicons[downid]:=downtrayicon.Create(nil);
+trayicons[downid].Visible:=showdowntrayicon;
+//trayicons[downid].Show;
+trayicons[downid].downindex:=downid;
+trayicons[downid].OnDblClick:=@trayicons[downid].startstop;
+end
+else
+begin
+trayicons[downid].Visible:=showdowntrayicon;
+//trayicons[downid].Show;
+end;
 hilo[downid]:=DownThread.Create(true,tmps);
 SetLength(hilo[downid].wout,thnum);
 hilo[downid].thid:=indice;
@@ -2233,7 +2380,6 @@ end
 else
 begin
 Form1.SynMemo1.Lines.Add(rsForm.msgnoexistfolder.Caption+Form1.ListView1.Items[indice].SubItems[columndestiny]);
-Form1.ListView1.Items[indice].Checked:=false;
 end;
 end;
 end
@@ -2270,12 +2416,10 @@ var n:integer;
 begin
   Form1.ToolButton9.Enabled:=false;
   Form1.ToolButton11.Enabled:=true;
-  Form1.MenuItem3.Enabled:=false;
-  Form1.MenuItem4.Enabled:=true;
-
   Form1.TreeView1.Items[1].Items[self.qtindex].ImageIndex:=46;
   Form1.TreeView1.Items[1].Items[self.qtindex].SelectedIndex:=46;
   Form1.TreeView1.Items[1].Items[self.qtindex].StateIndex:=40;
+  Form1.PopupMenu1.Items[self.qtindex+5].ImageIndex:=8;
   for n:=0 to Form1.ListView1.Items.Count-1 do
   begin
   if Form1.ListView1.Items[n].SubItems[columnqueue]=inttostr(self.qtindex) then
@@ -2287,11 +2431,10 @@ procedure queuetimer.ontimestop(Sender:TObject);
 begin
   Form1.ToolButton9.Enabled:=true;
   Form1.ToolButton11.Enabled:=false;
-  Form1.MenuItem3.Enabled:=true;
-  Form1.MenuItem4.Enabled:=false;
   Form1.TreeView1.Items[1].Items[self.qtindex].ImageIndex:=47;
   Form1.TreeView1.Items[1].Items[self.qtindex].SelectedIndex:=47;
   Form1.TreeView1.Items[1].Items[self.qtindex].StateIndex:=40;
+  Form1.PopupMenu1.Items[self.qtindex+5].ImageIndex:=7;
 end;
 
 procedure sheduletimer.onstime(Sender:TObject);
@@ -2302,6 +2445,7 @@ var hora:TTime;
     checkstart:boolean;
     checkstop:boolean;
     checkdayweek:boolean;
+    exactdate:boolean=false;
     diasemana:integer;
     semana:array[1..7] of boolean;
 begin
@@ -2329,6 +2473,8 @@ checkstop:=(hora<=queuestoptimes[self.stindex])
 else
 checkstop:=true;
 checkdayweek:=semana[diasemana];
+if hora=queuestoptimes[self.stindex] then
+exactdate:=true;
 end
 else
 begin
@@ -2338,12 +2484,15 @@ checkstop:=(Now()<=stopdatetime)
 else
 checkstop:=true;
 checkdayweek:=true;
+if Now()=stopdatetime then
+exactdate:=true;
 end;
 
 if (checkstart) and (checkstop) and (checkdayweek) then
 begin
   queuemanual[self.stindex]:=false;
-  if sheduledisablelimits then
+  queuesheduledone[self.stindex]:=true;
+  if queuelimits[self.stindex] then
   Form1.CheckBox1.Checked:=false;
   if qtimer[self.stindex].Enabled =false then
   qtimer[self.stindex].Interval:=1000;
@@ -2354,6 +2503,8 @@ begin
 if (queuemanual[self.stindex]=false) then
 begin
 stopqueue(self.stindex);
+if queuepoweroff[self.stindex] and (shutingdown=false) and (queuesheduledone[self.stindex]) then
+poweroff;
 end;
 end;
 end;
@@ -2363,16 +2514,12 @@ procedure sheduletimer.onstimestart(Sender:TObject);
 begin
 Form1.ToolButton15.Enabled:=false;
 Form1.ToolButton16.Enabled:=true;
-Form1.MenuItem60.Enabled:=false;
-Form1.MenuItem61.Enabled:=true;
 end;
 
 procedure sheduletimer.onstimestop(Sender:TObject);
 begin
 Form1.ToolButton15.Enabled:=true;
 Form1.ToolButton16.Enabled:=false;
-Form1.MenuItem60.Enabled:=true;
-Form1.MenuItem61.Enabled:=false;
 end;
 
 procedure restartdownload(indice:integer;ahora:boolean);
@@ -2422,7 +2569,7 @@ end;
 
 procedure DownThread.update;
 var porciento, velocidad, tamano, tiempo, descargado:String;
-    //icono:TBitmap;
+    icono:TBitmap;
     statusfile:TextFile;
 begin
 porciento:='';
@@ -2469,12 +2616,12 @@ begin
 if (Pos('% [',wout[thid])>0) then
 begin
 porciento:=Copy(wout[thid],Pos('% [',wout[thid])-2,3);
-velocidad:=Copy(wout[thid],Pos('/s ',wout[thid])-5,7);
+velocidad:=Copy(wout[thid],Pos('/s ',wout[thid])-6,8);
 end
 else
 begin
 porciento:=Copy(wout[thid],Pos('%[',wout[thid])-2,3);
-velocidad:=Copy(wout[thid],Pos('/s ',wout[thid])-6,8);
+velocidad:=Copy(wout[thid],Pos('/s ',wout[thid])-7,9);
 end;
 descargado:=Copy(wout[thid],Pos(']',wout[thid])+1,Length(wout[thid]));
 descargado:=ExtractWord(1,descargado,[' ']);
@@ -2523,8 +2670,11 @@ if Pos('%) ',wout[thid])>0 then
 begin
 porciento:=Copy(wout[thid],Pos('B(',wout[thid])+2,length(wout[thid]));
 porciento:=Copy(porciento,0,Pos('%)',porciento));
-velocidad:=Copy(wout[thid],Pos(' SPD:',wout[thid])+5,length(wout[thid]));
-velocidad:=Copy(velocidad,0,Pos('Bs ETA:',velocidad)+1);
+if Pos(' SPD:',wout[thid])>0 then
+velocidad:=Copy(wout[thid],Pos(' SPD:',wout[thid])+5,length(wout[thid]))
+else
+velocidad:=Copy(wout[thid],Pos(' DL:',wout[thid])+4,length(wout[thid]));
+velocidad:=Copy(velocidad,0,Pos('B',velocidad)+1);
 if Pos(' ETA:',wout[thid])>0 then
 begin
 tiempo:=Copy(wout[thid],Pos(' ETA:',wout[thid])+5,length(wout[thid]));
@@ -2535,6 +2685,14 @@ begin
 tamano:=Copy(wout[thid],Pos('B/',wout[thid])+2,length(wout[thid]));
 tamano:=Copy(tamano,0,Pos('(',tamano)-1);
 descargado:=Copy(wout[thid],Pos(' SIZE:',wout[thid])+6,length(wout[thid]));
+descargado:=Copy(descargado,0,Pos('/',descargado)-1);
+end;
+//aria2 1.18 cambios en la salida
+if Pos('[#',wout[thid])>0 then
+begin
+tamano:=Copy(wout[thid],Pos('B/',wout[thid])+2,length(wout[thid]));
+tamano:=Copy(tamano,0,Pos('(',tamano)-1);
+descargado:=Copy(wout[thid],Pos('[#',wout[thid])+9,length(wout[thid]));
 descargado:=Copy(descargado,0,Pos('/',descargado)-1);
 end;
 end;
@@ -2605,6 +2763,13 @@ if (Form1.ListView2.Visible) then
     end;
   end;
 ////////////////////////////////////
+try
+if (porciento<>'') and (thid=Form1.ListView1.ItemIndex) then
+begin
+Form1.ProgressBar1.Position:=strtoint(Copy(porciento,0,Pos('%',porciento)-1));
+end;
+except on e:exception do
+end;
 if descargado = '' then
 begin
 descargado:=Form1.ListView1.Items[thid].SubItems[columncurrent];
@@ -2632,22 +2797,35 @@ CloseFile(statusfile);
 except on e:exception do
 CloseFile(statusfile);
 end;
-
 //Talvez con un icono independiente por cada descarga
-//icono:=TBitmap.Create();
-//icono.Width:=Form1.TrayIcon1.Icon.Width;
-//icono.Height:=Form1.TrayIcon1.Icon.Height;
-//icono.Canvas.Brush.Color:=clWhite;
-//icono.Canvas.Pen.Color:=clGreen;
-//{$IFDEF UNIX}
-//icono.Canvas.Font.Size:=75;
-//{$ENDIF}
-//{$IFDEF WINDOWS}
-//icono.Canvas.Font.Size:=20;
-//{$ENDIF}
-//icono.Canvas.TextOut(0,0,porcientobandeja);
-//Form1.TrayIcon1.Icon.Assign(icono);
-//icono.Destroy;
+icono:=TBitmap.Create();
+icono.Width:=Form1.TrayIcon1.Icon.Width;
+icono.Height:=Form1.TrayIcon1.Icon.Height;
+icono.Canvas.Brush.Color:=clWhite;
+icono.Canvas.Pen.Color:=clBlack;
+icono.Canvas.Pen.Width:=3;
+if Form1.ListView1.Items[thid].SubItems[columnstatus]='1' then
+icono.Canvas.Font.Color:=clBlack
+else
+icono.Canvas.Font.Color:=clRed;
+icono.Canvas.Font.Bold:=true;
+icono.Canvas.Font.Quality:=fqAntialiased;
+{$IFDEF UNIX}
+icono.Canvas.Font.Size:=14;
+{$ENDIF}
+{$IFDEF WINDOWS}
+icono.Canvas.Font.Size:=16;
+{$ENDIF}
+icono.Canvas.Rectangle(0,0,icono.Width,icono.Height);
+porciento:=StringReplace(porciento,'%','',[rfReplaceAll]);
+porciento:=StringReplace(porciento,' ','',[rfReplaceAll]);
+if length(porciento)<2 then
+porciento:=' '+porciento;
+icono.Canvas.TextOut(3,4,porciento);
+trayicons[thid].Icon.Canvas.Brush.Color:=clWhite;
+trayicons[thid].Icon.Assign(icono);
+trayicons[thid].Hint:=Form1.ListView1.Items[thid].SubItems[columnname]+' '+velocidad;
+icono.Destroy;
 end;
 procedure savemydownloads();
 var wn:integer;
@@ -2663,7 +2841,6 @@ inidownloadsfile:=TMEMINIFile.Create(configpath+'awgg.dat');
 inidownloadsfile.WriteInteger('Total','value',Form1.ListView1.Items.Count);
    for wn:=0 to Form1.ListView1.Items.Count-1 do
    begin
-   inidownloadsfile.WriteBool('Download'+inttostr(wn),'checked',Form1.ListView1.Items[wn].Checked);
    if Form1.ListView1.Items[wn].SubItems[columnstatus]<> '1' then
    begin
    inidownloadsfile.WriteString('Download'+inttostr(wn),'columnstatus',Form1.ListView1.Items[wn].SubItems[columnstatus]);
@@ -2692,6 +2869,7 @@ inidownloadsfile.WriteInteger('Total','value',Form1.ListView1.Items.Count);
    inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuid',Form1.ListView1.Items[wn].SubItems[columnuid]);
    inidownloadsfile.WriteString('Download'+inttostr(wn),'columnqueue',Form1.ListView1.Items[wn].SubItems[columnqueue]);
    inidownloadsfile.WriteString('Download'+inttostr(wn),'columntype',Form1.ListView1.Items[wn].SubItems[columntype]);
+   inidownloadsfile.WriteString('Download'+inttostr(wn),'columncookie',Form1.ListView1.Items[wn].SubItems[columncookie]);
    end;
 if (Form1.ListView1.Items.Count=0) and inidownloadsfile.SectionExists('Download0') then
 begin
@@ -2716,6 +2894,8 @@ inidownloadsfile.WriteBool('Queue'+inttostr(wn),'sabado',qsabado[wn]);
 inidownloadsfile.WriteBool('Queue'+inttostr(wn),'stop',qstop[wn]);
 inidownloadsfile.WriteBool('Queue'+inttostr(wn),'allday',qallday[wn]);
 inidownloadsfile.WriteBool('Queue'+inttostr(wn),'timerenable',qtimerenable[wn]);
+inidownloadsfile.WriteBool('Queue'+inttostr(wn),'limits',queuelimits[wn]);
+inidownloadsfile.WriteBool('Queue'+inttostr(wn),'poweroff',queuepoweroff[wn]);
 
 end;
 //*****Quedan restos de las descargas anteriores******
@@ -2773,6 +2953,7 @@ begin
   imitem.SubItems.Add(uidgen());//uid
   imitem.SubItems.Add('0');//queue
   imitem.SubItems.Add('0');//type
+  imitem.SubItems.Add('');//cookie
   Form1.ListView1.Items.AddItem(imitem);
   end;
 end;
@@ -2861,6 +3042,7 @@ end
 else
 ShowMessage(rsForm.msgmustselectdownload.Caption);
 end;
+
 procedure DownThread.shutdown;
 begin
 manualshutdown:=true;
@@ -3027,6 +3209,8 @@ qtimer[strtoint(Form1.ListView1.Items[thid].SubItems[columnqueue])].Interval:=10
 Form1.ListView1.Items[thid].SubItems[columnstatus]:='3';
 Form1.ListView1.Items[thid].Caption:=rsForm.statuscomplete.Caption;
 Form1.ListView1.Items[thid].SubItems[columnpercent]:='100%';
+if Form1.ListView1.ItemIndex=thid then
+Form1.ProgressBar1.Position:=100;
 Form1.ListView1.Items[thid].SubItems[columnspeed]:='--';
 if Form1.ListView1.Items[thid].SubItems[columntype] = '0' then
 Form1.ListView1.Items[thid].ImageIndex:=4;
@@ -3069,6 +3253,8 @@ Form1.ListView1.Items[thid].ImageIndex:=54;
  end;
  Form1.Timer3.Enabled:=true;
  end;
+trayicons[thid].Icon.Clear;
+trayicons[thid].Visible:=false;
 end
 else
 begin
@@ -3178,7 +3364,6 @@ end;
 Form1.Timer3.Enabled:=true;
 end;
 end;
-
 if columncolav then
 begin
 Form1.ListView1.Columns[0].Width:=columncolaw;
@@ -3217,7 +3402,6 @@ for ns:=0 to nt-1 do
 begin
 try
 fitem:=TListItem.Create(Form1.ListView1.Items);
-fitem.Checked:=inidownloadsfile.ReadBool('Download'+inttostr(ns),'checked',false);
 fitem.Caption:=inidownloadsfile.ReadString('Download'+inttostr(ns),'status','');
 fitem.ImageIndex:=inidownloadsfile.ReadInteger('Download'+inttostr(ns),'icon',-1);
 fitem.SubItems.Add('');
@@ -3260,6 +3444,8 @@ fitem.SubItems.Add('');
 fitem.SubItems[columnqueue]:=inttostr(inidownloadsfile.ReadInteger('Download'+inttostr(ns),'columnqueue',0));
 fitem.SubItems.Add('');
 fitem.SubItems[columntype]:=inttostr(inidownloadsfile.ReadInteger('Download'+inttostr(ns),'columntype',0));
+fitem.SubItems.Add('');
+fitem.SubItems[columncookie]:=inidownloadsfile.ReadString('Download'+inttostr(ns),'columncookie','');
 if FileExists(datapath+pathdelim+fitem.SubItems[columnuid]+'.status') then
 begin
 ftext:=TStringList.Create;
@@ -3331,6 +3517,9 @@ SetLength(qtimer,Length(queues));
 SetLength(stimer,Length(queues));
 SetLength(qtimerenable,Length(queues));
 SetLength(queuemanual,Length(queues));
+SetLength(queuelimits,Length(queues));
+SetLength(queuepoweroff,Length(queues));
+SetLength(queuesheduledone,Length(queues));
 for ns:=0 to Length(queues)-1 do
 begin
 queues[ns]:=ns;
@@ -3350,6 +3539,9 @@ qsabado[ns]:=inidownloadsfile.ReadBool('Queue'+inttostr(ns),'sabado',false);
 qstop[ns]:=inidownloadsfile.ReadBool('Queue'+inttostr(ns),'stop',false);
 qallday[ns]:=inidownloadsfile.ReadBool('Queue'+inttostr(ns),'allday',false);
 qtimerenable[ns]:=inidownloadsfile.ReadBool('Queue'+inttostr(ns),'timerenable',false);
+queuelimits[ns]:=inidownloadsfile.ReadBool('Queue'+inttostr(ns),'limits',false);
+queuepoweroff[ns]:=inidownloadsfile.ReadBool('Queue'+inttostr(ns),'poweroff',false);
+queuesheduledone[ns]:=false;
 qtimer[ns]:=queuetimer.Create(Form1);
 qtimer[ns].Enabled:=false;
 qtimer[ns].qtindex:=ns;
@@ -3398,6 +3590,46 @@ begin
 end;
 end;
 
+procedure poweroff;
+var shutp:TProcess;
+begin
+Form1.Caption:='Turning off...';
+shutingdown:=true;
+savemydownloads();
+shutp:=TProcess.Create(nil);
+{$IFDEF UNIX}
+if fileexists('/usr/bin/gnome-session-save') then
+begin
+shutp.Executable:='/usr/bin/gnome-session-save';
+shutp.Parameters.Add('--shutdown-dialog');
+end;
+
+if fileexists('/usr/bin/mate-session-save') and (fileexists(shutp.Executable)=false) then
+begin
+shutp.Executable:='/usr/bin/mate-session-save';
+shutp.Parameters.Add('--shutdown-dialog');
+end;
+
+if fileexists('/usr/bin/shutdown') and (fileexists(shutp.Executable)=false) then
+begin
+shutp.Executable:='/usr/bin/shutdown';
+shutp.Parameters.Add('-h');
+shutp.Parameters.Add('1');
+end;
+
+ {$ENDIF}
+{$IFDEF WINDOWS}
+shutp.Executable:='shutdown.exe';
+shutp.Parameters.Add('-f');
+shutp.Parameters.Add('-s');
+shutp.Parameters.Add('-t');
+shutp.Parameters.Add('10');
+shutp.Parameters.Add('-c');
+shutp.Parameters.Add('"AWGG is turning off the system"');
+{$ENDIF}
+if fileexists(shutp.Executable) then
+shutp.Execute;
+end;
 
 procedure TForm1.FormCloseQuery(Sender: TObject; var CanClose: boolean);
 begin
@@ -3433,6 +3665,7 @@ columntries:=15;
 columnuid:=16;
 columnqueue:=17;
 columntype:=18;
+columncookie:=19;
 phttpport:='3128';
 phttpsport:='3128';
 pftpport:='3128';
@@ -3518,9 +3751,10 @@ begin
 end;
 
 procedure TForm1.ListView1ColumnClick(Sender: TObject; Column: TListColumn);
-var n:integer;
+//var n:integer;
 begin
-for n:=0 to Form1.ListView1.Columns.Count-1 do
+///Commentado temporalmente porque afecta el orden de todas las colas
+{for n:=0 to Form1.ListView1.Columns.Count-1 do
 begin
 Form1.ListView1.Columns[n].Caption:=AnsiReplaceStr(Form1.ListView1.Columns[n].Caption,'  ٧','');
 Form1.ListView1.Columns[n].Caption:=AnsiReplaceStr(Form1.ListView1.Columns[n].Caption,'  ٨','');
@@ -3554,7 +3788,7 @@ Form1.ListView2.SortColumn:=Column.Index;
 Form1.ListView2.SortType:=stText;
 Form1.TreeView1SelectionChanged(nil);
 end;
-rebuildids();
+rebuildids();}
 end;
 
 
@@ -3620,8 +3854,7 @@ begin
   end
   else
   begin
-  Form1.ListView1.Items[Form1.ListView1.ItemIndex].Checked:=false;
-  hilo[Form1.ListView1.ItemIndex].shutdown();
+  hilo[strtoint(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnid])].shutdown();
   Form1.ToolButton3.Enabled:=true;
   Form1.ToolButton4.Enabled:=false;
   end;
@@ -3649,6 +3882,7 @@ end;
 procedure TForm1.ListView1SelectItem(Sender: TObject; Item: TListItem;
   Selected: Boolean);
 var lastlines:TStringList;
+    percent:string;
 begin
 if (Form1.ListView1.ItemIndex<>-1) then
 begin
@@ -3703,6 +3937,15 @@ begin
   Form1.SynMemo1.Lines.Add(e.ToString);
   end;
   end;
+percent:=Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnpercent];
+try
+if percent<>'' then
+Form1.ProgressBar1.Position:=strtoint(Copy(percent,0,Pos('%',percent)-1))
+else
+Form1.ProgressBar1.Position:=0;
+except on e:exception do
+Form1.ProgressBar1.Position:=0;
+end;
 end;
 end;
 
@@ -4039,7 +4282,7 @@ begin
   Form3.PageControl1.ActivePageIndex:=1;
   Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
-  Form3.ShowModal;
+  Form3.Show;
 end;
 
 procedure TForm1.MenuItem16Click(Sender: TObject);
@@ -4103,7 +4346,6 @@ for x:=0 to Form1.ListView1.Items.Count-1 do
 begin
 if Form1.ListView1.Items[x].SubItems[columnstatus]='1' then
 begin
-Form1.ListView1.Items[x].Checked:=false;
 hilo[strtoint(Form1.ListView1.Items[x].SubItems[columnid])].shutdown();
 end;
 end;
@@ -4153,7 +4395,7 @@ end;
 procedure TForm1.MenuItem28Click(Sender: TObject);
 begin
   if Form1.ListView1.ItemIndex<>-1 then
-  hilo[Form1.ListView1.ItemIndex].shutdown();
+  hilo[strtoint(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnid])].shutdown();
 end;
 
 procedure TForm1.MenuItem29Click(Sender: TObject);
@@ -4200,10 +4442,10 @@ end;
 
 procedure TForm1.MenuItem33Click(Sender: TObject);
 begin
-if splitpos<20 then
-splitpos:=20;
-if splitpos>Form1.PairSplitter1.Height-20 then
-splitpos:=splitpos-20;
+if splitpos<50 then
+splitpos:=50;
+if splitpos>Form1.PairSplitter1.Height-50 then
+splitpos:=splitpos-50;
    if Form1.SynMemo1.Visible then
    begin
    splitpos:=Form1.PairSplitter1.Position;
@@ -4376,17 +4618,22 @@ begin
 end;
 
 procedure TForm1.MenuItem4Click(Sender: TObject);
+var i:integer;
 begin
-  if Form1.TreeView1.SelectionCount>0 then
- begin
- if Form1.TreeView1.Selected.Level>0 then
- begin
-  case Form1.TreeView1.Selected.Parent.Index of
-  1:begin//colas
-  stopqueue(Form1.TreeView1.Selected.Index);
-  end;
-  end;
- end;
+Form1.MenuItem4.Checked:=not Form1.MenuItem4.Checked;
+showdowntrayicon:=Form1.MenuItem4.Checked;
+for i:=0 to Length(trayicons)-1 do
+begin
+if Assigned(trayicons[i]) then
+begin
+if showdowntrayicon then
+begin
+if Form1.ListView1.Items[i].SubItems[columnstatus]='1' then
+trayicons[i].Visible:=true;
+end
+else
+trayicons[i].Visible:=false;
+end;
 end;
 end;
 
@@ -4534,7 +4781,12 @@ procedure TForm1.MenuItem8Click(Sender: TObject);
 begin
   Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
-  Form3.ShowModal;
+  Form3.Show;
+end;
+
+procedure TForm1.MenuItem91Click(Sender: TObject);
+begin
+  OpenURL('http://sites.google.com/site/awggproject');
 end;
 
 procedure TForm1.PairSplitter1ChangeBounds(Sender: TObject);
@@ -4575,6 +4827,16 @@ begin
   Form1.Timer3.Enabled:=false;
 end;
 
+procedure TForm1.Timer4StartTimer(Sender: TObject);
+begin
+  Form1.ToolButton31.Down:=Form1.Timer4.Enabled;
+end;
+
+procedure TForm1.Timer4StopTimer(Sender: TObject);
+begin
+  Form1.ToolButton31.Down:=Form1.Timer4.Enabled;
+end;
+
 procedure TForm1.Timer4Timer(Sender: TObject);
 var cbn:integer;
     noesta:boolean;
@@ -4608,8 +4870,11 @@ end;
 
 procedure TForm1.Timer6Timer(Sender: TObject);
 var downitem:TListItem;
-    tmpindex:integer;
+    tmpindex,i:integer;
     itemfile:TSearchRec;
+    fcookie:string='';
+    fname:string='';
+    url:string='';
 begin
 newdownqueues();
 Form1.Timer6.Enabled:=false;
@@ -4639,9 +4904,21 @@ titlegen();
 firststart:=false;
 if (Application.ParamCount>0) then
 begin
-  Form2.Edit1.Text:=Application.Params[1];
-  if Application.ParamCount>1 then
-  Form2.Edit3.Text:=Application.Params[2]
+for i:=0 to Application.ParamCount-1 do
+begin
+if (Application.Params[i]='-n') and (Application.ParamCount>i) then
+begin
+if Application.Params[i+1]<>'-c' then
+fname:=Application.Params[i+1];
+end;
+if (Application.Params[i]='-c') and (Application.ParamCount>i) then
+fcookie:=Application.Params[i+1];
+if (Pos('http://',Application.Params[i])=1) or (Pos('https://',Application.Params[i])=1) or (Pos('ftp://',Application.Params[i])=1) then
+url:=Application.Params[i];
+end;
+  Form2.Edit1.Text:=url;
+  if fname<>'' then
+  Form2.Edit3.Text:=fname
   else
   Form2.Edit3.Text:=ParseURI(Form2.Edit1.Text).Document;
   case defaultdirmode of
@@ -4682,11 +4959,11 @@ begin
   downitem.SubItems.Add(uidgen());//uid
   downitem.SubItems.Add(inttostr(Form2.ComboBox2.ItemIndex));//queue
   downitem.SubItems.Add('0');//type
+  downitem.SubItems.Add(fcookie);//cookie
   Form1.ListView1.Items.AddItem(downitem);
   tmpindex:=downitem.Index;
   if cola then
   begin
-  Form1.ListView1.Items[tmpindex].Checked:=true;
   queuemanual[strtoint(Form1.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
   qtimer[strtoint(Form1.ListView1.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
   end;
@@ -4760,8 +5037,6 @@ var downitem:TListItem;
     tmpindex:integer;
     tmpclip:string='';
 begin
-//if clipboard.HasFormat(1) then
-//begin
 if Length(ClipBoard.AsText)<=256 then
 tmpclip:=ClipBoard.AsText;
 if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) then
@@ -4769,16 +5044,12 @@ if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tm
   else
   Form2.Edit1.Text:='http://';
 tmpclip:='';
-//end
-//else
-//Form2.Edit1.Text:='http://';
 Form2.Edit3.Text:=ParseURI(Form2.Edit1.Text).Document;
 case defaultdirmode of
 1:Form2.DirectoryEdit1.Text:=ddowndir;
 2:Form2.DirectoryEdit1.Text:=suggestdir(Form2.Edit3.Text);
 end;
 Form2.Edit2.Text:='';
-//Form2.Edit3.Text:=ufilename(Form2.Edit1.Text);
 Form2.Edit4.Text:='';
 Form2.Edit5.Text:='';
 Form2.ComboBox1.ItemIndex:=Form2.ComboBox1.Items.IndexOf(defaultengine);
@@ -4813,11 +5084,11 @@ downitem.SubItems.Add(inttostr(triesrotate));//tries
 downitem.SubItems.Add(uidgen());//uid
 downitem.SubItems.Add(inttostr(Form2.ComboBox2.ItemIndex));//queue
 downitem.SubItems.Add('0');//type
+downitem.SubItems.Add('');//cookie
 Form1.ListView1.Items.AddItem(downitem);
 tmpindex:=downitem.Index;
 if cola then
 begin
-Form1.ListView1.Items[tmpindex].Checked:=true;
 queuemanual[strtoint(Form1.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
 qtimer[strtoint(Form1.ListView1.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
 end;
@@ -4952,6 +5223,7 @@ downitem.SubItems.Add(inttostr(triesrotate));//tries
 downitem.SubItems.Add(uidgen());//uid
 downitem.SubItems.Add(inttostr(Form7.ComboBox1.ItemIndex));//queue
 downitem.SubItems.Add('1');//type
+downitem.SubItems.Add('');//cookie;
 Form1.ListView1.Items.AddItem(downitem);
 //if cola then
 //begin
@@ -4971,6 +5243,12 @@ end;
 procedure TForm1.ToolButton2Click(Sender: TObject);
 begin
 deleteitems(false);
+end;
+
+procedure TForm1.ToolButton31Click(Sender: TObject);
+begin
+  Form1.Timer4.Enabled:=Form1.ToolButton31.Down;
+  clipboardmonitor:=Form1.ToolButton31.Down;
 end;
 
 procedure TForm1.ToolButton3Click(Sender: TObject);
@@ -5001,7 +5279,7 @@ procedure TForm1.ToolButton7Click(Sender: TObject);
 begin
   Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
-  Form3.ShowModal;
+  Form3.Show;
 end;
 
 procedure TForm1.ToolButton8Click(Sender: TObject);
@@ -5009,7 +5287,7 @@ begin
   Form3.PageControl1.ActivePageIndex:=1;
   Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
-  Form3.ShowModal;
+  Form3.Show;
 end;
 
 procedure TForm1.ToolButton9Click(Sender: TObject);
@@ -5123,6 +5401,7 @@ begin
   queuenames[Form1.TreeView1.Selected.Index]:=s;
   Form1.MenuItem86.Items[Form1.TreeView1.Selected.Index].Caption:=s;
   Form2.ComboBox2.Items[Form1.TreeView1.Selected.Index]:=s;
+  Form1.PopupMenu1.Items[Form1.TreeView1.Selected.Index+5].Caption:=s;
   savemydownloads();
   end;
   end;
@@ -5176,12 +5455,8 @@ if (Form1.TreeView1.SelectionCount>0) then
 
   Form1.ToolButton9.Enabled:=false;
   Form1.ToolButton11.Enabled:=false;
-  Form1.MenuItem3.Enabled:=false;
-  Form1.MenuItem4.Enabled:=false;
   Form1.ToolButton15.Enabled:=false;
   Form1.ToolButton16.Enabled:=false;
-  Form1.MenuItem60.Enabled:=false;
-  Form1.MenuItem61.Enabled:=false;
 
  if Form1.TreeView1.Selected.Level>0 then
  begin
@@ -5215,30 +5490,22 @@ if (Form1.TreeView1.SelectionCount>0) then
   begin
   Form1.ToolButton9.Enabled:=false;
   Form1.ToolButton11.Enabled:=true;
-  Form1.MenuItem3.Enabled:=false;
-  Form1.MenuItem4.Enabled:=true;
   end
   else
   begin
   Form1.ToolButton9.Enabled:=true;
   Form1.ToolButton11.Enabled:=false;
-  Form1.MenuItem3.Enabled:=true;
-  Form1.MenuItem4.Enabled:=false;
   end;
 
   if stimer[Form1.TreeView1.Selected.Index].Enabled then
   begin
   Form1.ToolButton15.Enabled:=false;
   Form1.ToolButton16.Enabled:=true;
-  Form1.MenuItem60.Enabled:=false;
-  Form1.MenuItem61.Enabled:=true;
   end
   else
   begin
   Form1.ToolButton15.Enabled:=true;
   Form1.ToolButton16.Enabled:=false;
-  Form1.MenuItem60.Enabled:=true;
-  Form1.MenuItem61.Enabled:=false;
   end;
 
   end;
@@ -5291,14 +5558,29 @@ end;
 procedure TForm1.UniqueInstance1OtherInstance(Sender: TObject;
   ParamCount: Integer; Parameters: array of String);
 var downitem:TListItem;
-    tmpindex:integer;
+    tmpindex,i:integer;
+    url:string='';
+    fcookie:string='';
+    fname:string='';
 begin
 onestart:=false;
 if ParamCount>0 then
 begin
-  Form2.Edit1.Text:=Parameters[0];
-  if ParamCount>1 then
-  Form2.Edit3.Text:=Parameters[1]
+for i:=0 to ParamCount-1 do
+begin
+if (Parameters[i]='-n') and (ParamCount>i) then
+begin
+if Parameters[i+1]<>'-c' then
+fname:=Parameters[i+1];
+end;
+if (Parameters[i]='-c') and (ParamCount>i) then
+fcookie:=Parameters[i+1];
+if (Pos('http://',Parameters[i])=1) or (Pos('https://',Parameters[i])=1) or (Pos('ftp://',Parameters[i])=1) then
+url:=Parameters[i];
+end;
+  Form2.Edit1.Text:=url;
+  if fname<>'' then
+  Form2.Edit3.Text:=fname
   else
   Form2.Edit3.Text:=ParseURI(Form2.Edit1.Text).Document;
   case defaultdirmode of
@@ -5339,11 +5621,11 @@ begin
   downitem.SubItems.Add(uidgen());//uid
   downitem.SubItems.Add(inttostr(Form2.ComboBox2.ItemIndex));//queue
   downitem.SubItems.Add('0');//type
+  downitem.SubItems.Add(fcookie);//cookie
   Form1.ListView1.Items.AddItem(downitem);
   tmpindex:=downitem.Index;
   if cola then
   begin
-  Form1.ListView1.Items[tmpindex].Checked:=true;
   queuemanual[strtoint(Form1.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
   qtimer[strtoint(Form1.ListView1.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
   end;
@@ -5357,6 +5639,16 @@ begin
 end
 else
 Form1.Show;
+end;
+
+procedure downtrayicon.startstop(Sender:TObject);
+begin
+if Form1.ListView1.Items[self.downindex].SubItems[columnstatus]='1' then
+hilo[strtoint(Form1.ListView1.Items[self.downindex].SubItems[columnid])].shutdown()
+else
+begin
+downloadstart(self.downindex,false);
+end;
 end;
 
 end.

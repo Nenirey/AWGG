@@ -1,7 +1,7 @@
 object Form6: TForm6
-  Left = 328
+  Left = 339
   Height = 202
-  Top = 183
+  Top = 230
   Width = 366
   AutoSize = True
   BorderIcons = []
@@ -35,9 +35,9 @@ object Form6: TForm6
     AnchorSideTop.Control = Label1
     AnchorSideTop.Side = asrBottom
     Left = 116
-    Height = 22
+    Height = 21
     Top = 50
-    Width = 135
+    Width = 134
     BorderSpacing.Top = 5
     Caption = 'Overwrite the file.'
     OnChange = RadioButton1Change
@@ -49,9 +49,9 @@ object Form6: TForm6
     AnchorSideTop.Control = RadioButton1
     AnchorSideTop.Side = asrBottom
     Left = 116
-    Height = 22
-    Top = 77
-    Width = 159
+    Height = 21
+    Top = 76
+    Width = 158
     BorderSpacing.Top = 5
     Caption = 'Auto rename the file.'
     Checked = True
@@ -65,9 +65,9 @@ object Form6: TForm6
     AnchorSideTop.Control = RadioButton2
     AnchorSideTop.Side = asrBottom
     Left = 116
-    Height = 22
-    Top = 104
-    Width = 175
+    Height = 21
+    Top = 102
+    Width = 174
     BorderSpacing.Top = 5
     Caption = 'Manual rename the file.'
     OnChange = RadioButton3Change
@@ -82,8 +82,8 @@ object Form6: TForm6
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 80
-    Height = 21
-    Top = 131
+    Height = 25
+    Top = 128
     Width = 271
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 5
@@ -99,10 +99,10 @@ object Form6: TForm6
     AnchorSideRight.Control = Button2
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 262
-    Height = 27
-    Top = 167
-    Width = 29
+    Left = 266
+    Height = 25
+    Top = 168
+    Width = 27
     Anchors = [akTop, akRight]
     AutoSize = True
     BorderSpacing.Top = 15
@@ -119,7 +119,7 @@ object Form6: TForm6
     AnchorSideRight.Control = Edit1
     Left = 15
     Height = 15
-    Top = 134
+    Top = 133
     Width = 65
     BorderSpacing.Left = 15
     Caption = 'File name:'
@@ -150,10 +150,10 @@ object Form6: TForm6
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 296
-    Height = 27
-    Top = 167
-    Width = 55
+    Left = 298
+    Height = 25
+    Top = 168
+    Width = 53
     Anchors = [akTop, akRight]
     AutoSize = True
     BorderSpacing.Left = 5

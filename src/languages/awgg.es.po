@@ -186,9 +186,9 @@ msgid "Restart now"
 msgstr "Reinicar ahora"
 
 #: tform1.menuitem3.caption
-msgctxt "TFORM1.MENUITEM3.CAPTION"
-msgid "Start queue"
-msgstr "Iniciar cola"
+msgctxt "tform1.menuitem3.caption"
+msgid "-"
+msgstr ""
 
 #: tform1.menuitem30.caption
 msgid "Restart all now"
@@ -235,9 +235,8 @@ msgid "URL"
 msgstr ""
 
 #: tform1.menuitem4.caption
-msgctxt "TFORM1.MENUITEM4.CAPTION"
-msgid "Stop queue"
-msgstr "Detener cola"
+msgid "Show downloads icons in systray"
+msgstr "Mostrar iconos de descarga en la bandeja"
 
 #: tform1.menuitem40.caption
 msgctxt "TFORM1.MENUITEM40.CAPTION"
@@ -343,13 +342,8 @@ msgstr "Salir"
 
 #: tform1.menuitem60.caption
 msgctxt "tform1.menuitem60.caption"
-msgid "Start scheduler"
-msgstr "Iniciar programador"
-
-#: tform1.menuitem61.caption
-msgctxt "tform1.menuitem61.caption"
-msgid "Stop scheduler"
-msgstr "Detener programador"
+msgid "-"
+msgstr ""
 
 #: tform1.menuitem62.caption
 msgctxt "tform1.menuitem62.caption"
@@ -397,16 +391,6 @@ msgstr "Herramientas"
 
 #: tform1.menuitem70.caption
 msgctxt "tform1.menuitem70.caption"
-msgid "-"
-msgstr ""
-
-#: tform1.menuitem71.caption
-msgctxt "tform1.menuitem71.caption"
-msgid "-"
-msgstr ""
-
-#: tform1.menuitem72.caption
-msgctxt "tform1.menuitem72.caption"
 msgid "-"
 msgstr ""
 
@@ -499,6 +483,15 @@ msgstr "Nuevo grabador de sitios..."
 #: tform1.menuitem9.caption
 msgid "Help"
 msgstr "Ayuda"
+
+#: tform1.menuitem90.caption
+msgctxt "tform1.menuitem90.caption"
+msgid "-"
+msgstr ""
+
+#: tform1.menuitem91.caption
+msgid "Official web site"
+msgstr "Sitio web oficial"
 
 #: tform1.opendialog1.title
 msgid "Open file list of downloads"
@@ -593,6 +586,10 @@ msgstr ""
 msgid "Start download"
 msgstr "Iniciar descarga"
 
+#: tform1.toolbutton31.hint
+msgid "Enable/Disable clipboard monitor"
+msgstr "Habilitar/Desabilitar monitor del portapapeles"
+
 #: tform1.toolbutton4.hint
 msgid "Stop download"
 msgstr "Detener descarga"
@@ -671,6 +668,14 @@ msgctxt "tform2.label8.caption"
 msgid "Queue:"
 msgstr "Cola:"
 
+#: tform2.speedbutton1.hint
+msgid "Add queue"
+msgstr "Añadir cola"
+
+#: tform2.speedbutton2.hint
+msgid "Shedule"
+msgstr "Programador"
+
 #: tform3.button1.caption
 msgid "Accept"
 msgstr "Aceptar"
@@ -705,6 +710,10 @@ msgstr "Habilitar programador"
 #: tform3.checkbox12.caption
 msgid "Load log when select a download."
 msgstr "Cargar log al seleccionar una descarga."
+
+#: tform3.checkbox13.caption
+msgid "Shutdown after end"
+msgstr "Apagar al terminar"
 
 #: tform3.checkbox2.caption
 msgid "Use authentication"
@@ -1191,6 +1200,10 @@ msgstr "Expandir dominios"
 #: tform7.checkbox6.caption
 msgid "Follow relative links"
 msgstr "Seguir enlaces relativos"
+
+#: tform7.edit5.text
+msgid "Mozilla/4.0"
+msgstr ""
 
 #: tform7.groupbox1.caption
 msgid "File reject filter"

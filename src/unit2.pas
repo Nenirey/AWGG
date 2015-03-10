@@ -24,7 +24,7 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  EditBtn, Buttons, Unit6, Unit8;
+  EditBtn, Buttons, Unit6, Unit8, URIParser;
 
 type
 
@@ -57,6 +57,8 @@ type
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure Edit1Change(Sender: TObject);
+    procedure Edit3Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
@@ -165,6 +167,19 @@ else
 ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
 end;
 
+procedure TForm2.Edit1Change(Sender: TObject);
+begin
+  Form2.Edit3.Text:=ParseURI(Form2.Edit1.Text).document;
+end;
+
+procedure TForm2.Edit3Change(Sender: TObject);
+begin
+case defaultdirmode of
+1:Form2.DirectoryEdit1.Text:=ddowndir;
+2:Form2.DirectoryEdit1.Text:=suggestdir(Form2.Edit3.Text);
+end;
+end;
+
 procedure TForm2.FormCreate(Sender: TObject);
 begin
   agregar:=false;
@@ -178,7 +193,7 @@ begin
   //ShowMessage(inttostr(Key));
   Case Key of
   13:Form2.Button3Click(nil);
-  27:checkandclose();
+  27:Form2.Button2Click(nil);
   113:Form2.Button1Click(nil);
   end;
 end;
@@ -202,14 +217,14 @@ end;
 
 procedure TForm2.SpeedButton2Click(Sender: TObject);
 begin
-  Form2.FormStyle:=fsNormal;
+  //Form2.FormStyle:=fsNormal;
   Form3.PageControl1.ActivePageIndex:=1;
   Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   Form3.ComboBox4.ItemIndex:=Form2.ComboBox2.ItemIndex;
-  Form3.ShowModal;
+  Form3.Show;
   Form2.ComboBox2.ItemIndex:=Form3.ComboBox4.ItemIndex;
-  Form2.FormStyle:=fsSystemStayOnTop;
+  //Form2.FormStyle:=fsSystemStayOnTop;
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);

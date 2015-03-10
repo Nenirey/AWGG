@@ -187,7 +187,7 @@ msgstr ""
 
 #: tform1.menuitem3.caption
 msgctxt "TFORM1.MENUITEM3.CAPTION"
-msgid "Start queue"
+msgid "-"
 msgstr ""
 
 #: tform1.menuitem30.caption
@@ -235,8 +235,7 @@ msgid "URL"
 msgstr ""
 
 #: tform1.menuitem4.caption
-msgctxt "TFORM1.MENUITEM4.CAPTION"
-msgid "Stop queue"
+msgid "Show downloads icons in systray"
 msgstr ""
 
 #: tform1.menuitem40.caption
@@ -342,13 +341,8 @@ msgid "Exit"
 msgstr ""
 
 #: tform1.menuitem60.caption
-msgctxt "tform1.menuitem60.caption"
-msgid "Start scheduler"
-msgstr ""
-
-#: tform1.menuitem61.caption
-msgctxt "tform1.menuitem61.caption"
-msgid "Stop scheduler"
+msgctxt "TFORM1.MENUITEM60.CAPTION"
+msgid "-"
 msgstr ""
 
 #: tform1.menuitem62.caption
@@ -397,16 +391,6 @@ msgstr ""
 
 #: tform1.menuitem70.caption
 msgctxt "TFORM1.MENUITEM70.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tform1.menuitem71.caption
-msgctxt "TFORM1.MENUITEM71.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tform1.menuitem72.caption
-msgctxt "TFORM1.MENUITEM72.CAPTION"
 msgid "-"
 msgstr ""
 
@@ -498,6 +482,15 @@ msgstr ""
 
 #: tform1.menuitem9.caption
 msgid "Help"
+msgstr ""
+
+#: tform1.menuitem90.caption
+msgctxt "TFORM1.MENUITEM90.CAPTION"
+msgid "-"
+msgstr ""
+
+#: tform1.menuitem91.caption
+msgid "Official web site"
 msgstr ""
 
 #: tform1.opendialog1.title
@@ -593,6 +586,10 @@ msgstr ""
 msgid "Start download"
 msgstr ""
 
+#: tform1.toolbutton31.hint
+msgid "Enable/Disable clipboard monitor"
+msgstr ""
+
 #: tform1.toolbutton4.hint
 msgid "Stop download"
 msgstr ""
@@ -671,6 +668,14 @@ msgctxt "TFORM2.LABEL8.CAPTION"
 msgid "Queue:"
 msgstr ""
 
+#: tform2.speedbutton1.hint
+msgid "Add queue"
+msgstr ""
+
+#: tform2.speedbutton2.hint
+msgid "Shedule"
+msgstr ""
+
 #: tform3.button1.caption
 msgid "Accept"
 msgstr ""
@@ -704,6 +709,10 @@ msgstr ""
 
 #: tform3.checkbox12.caption
 msgid "Load log when select a download."
+msgstr ""
+
+#: tform3.checkbox13.caption
+msgid "Shutdown after end"
 msgstr ""
 
 #: tform3.checkbox2.caption
@@ -1190,6 +1199,10 @@ msgstr ""
 
 #: tform7.checkbox6.caption
 msgid "Follow relative links"
+msgstr ""
+
+#: tform7.edit5.text
+msgid "Mozilla/4.0"
 msgstr ""
 
 #: tform7.groupbox1.caption

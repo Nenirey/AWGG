@@ -18,10 +18,11 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="3"/>
-      <BuildNr Value="2004"/>
-      <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2014" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
+      <RevisionNr Value="4"/>
+      <BuildNr Value="2222"/>
+      <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
-    <BuildModes Count="8">
+    <BuildModes Count="9">
       <Item1 Name="Default" Default="True"/>
       <Item2 Name="Debug">
         <CompilerOptions>
@@ -72,6 +73,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux/;/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -110,6 +112,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux/;/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -186,7 +189,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/;C:/codetyphon/binLibraries/x86_64-linux;C:/codetyphon/binLibraries/x86_64-linux-qt4"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -298,13 +301,52 @@
           </Other>
         </CompilerOptions>
       </Item8>
+      <Item9 Name="Alpha64-GTK3">
+        <MacroValues Count="1">
+          <Macro6 Name="LCLWidgetType" Value="gtk3"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux-gtk3/"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dalpha64"/>
+            <CompilerPath Value="$(CompPath)"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item9>
       <SharedMatrixOptions Count="6">
         <Item1 ID="262970800232" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item2 ID="292782621389" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
         <Item3 ID="321585814677" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
         <Item4 ID="243018807025" Type="IDEMacro" MacroName="LCLWidgetType" Value="cocoa"/>
         <Item5 ID="952727043054" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk"/>
-        <Item6 ID="325016516933" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
+        <Item6 ID="325016516933" Modes="Alpha64-GTK3" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>

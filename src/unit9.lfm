@@ -1,12 +1,13 @@
 object Form7: TForm7
   AnchorSideRight.Side = asrCenter
-  Left = 313
+  Left = 331
   Height = 428
-  Top = 203
+  Top = 204
   Width = 463
   Caption = 'New Site Grabber'
   ClientHeight = 428
   ClientWidth = 463
+  FormStyle = fsSystemStayOnTop
   OnCreate = FormCreate
   OnShow = FormCreate
   Position = poScreenCenter
@@ -87,7 +88,7 @@ object Form7: TForm7
         Left = 61
         Height = 25
         Top = 85
-        Width = 335
+        Width = 336
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 15
         BorderSpacing.Right = 10
@@ -115,7 +116,7 @@ object Form7: TForm7
         Left = 61
         Height = 25
         Top = 45
-        Width = 335
+        Width = 336
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 20
         OnChange = Edit2Change
@@ -131,7 +132,7 @@ object Form7: TForm7
         Left = 61
         Height = 25
         Top = 125
-        Width = 335
+        Width = 336
         ShowHidden = False
         ButtonWidth = 23
         NumGlyphs = 1
@@ -156,7 +157,7 @@ object Form7: TForm7
         AnchorSideTop.Control = ComboBox1
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = ComboBox1
-        Left = 132
+        Left = 133
         Height = 15
         Top = 340
         Width = 46
@@ -170,7 +171,7 @@ object Form7: TForm7
         AnchorSideTop.Control = GroupBox9
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = PageControl1
-        Left = 178
+        Left = 179
         Height = 27
         Top = 334
         Width = 101
@@ -198,7 +199,7 @@ object Form7: TForm7
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = ComboBox1
         AnchorSideTop.Side = asrCenter
-        Left = 279
+        Left = 280
         Height = 22
         Top = 336
         Width = 23
@@ -245,7 +246,7 @@ object Form7: TForm7
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = SpeedButton1
         AnchorSideTop.Side = asrCenter
-        Left = 302
+        Left = 303
         Height = 22
         Top = 336
         Width = 23
@@ -294,17 +295,17 @@ object Form7: TForm7
         Left = 61
         Height = 120
         Top = 184
-        Width = 335
+        Width = 336
         Anchors = [akTop, akLeft, akRight]
         Caption = 'HTTP/FTP Authentication'
         ClientHeight = 103
-        ClientWidth = 331
+        ClientWidth = 332
         TabOrder = 4
         object Label4: TLabel
           AnchorSideTop.Control = Edit3
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = Edit3
-          Left = 77
+          Left = 78
           Height = 15
           Top = 26
           Width = 34
@@ -318,7 +319,7 @@ object Form7: TForm7
           AnchorSideTop.Control = GroupBox9
           AnchorSideRight.Control = GroupBox9
           AnchorSideRight.Side = asrBottom
-          Left = 111
+          Left = 112
           Height = 25
           Top = 21
           Width = 205
@@ -331,7 +332,7 @@ object Form7: TForm7
           AnchorSideTop.Control = Edit4
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = Edit4
-          Left = 48
+          Left = 49
           Height = 15
           Top = 67
           Width = 63
@@ -345,7 +346,7 @@ object Form7: TForm7
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = Edit3
           AnchorSideRight.Side = asrBottom
-          Left = 111
+          Left = 112
           Height = 25
           Top = 62
           Width = 205
@@ -383,19 +384,21 @@ object Form7: TForm7
         Width = 50
         BorderSpacing.Top = 15
         TabOrder = 0
-        Value = 5
+        Value = 10
       end
       object CheckBox1: TCheckBox
         AnchorSideLeft.Control = TabSheet2
         AnchorSideTop.Control = SpinEdit1
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 22
+        Height = 21
         Top = 55
-        Width = 163
+        Width = 162
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         Caption = 'Convert to locals links'
+        Checked = True
+        State = cbChecked
         TabOrder = 1
       end
       object CheckBox2: TCheckBox
@@ -403,9 +406,9 @@ object Form7: TForm7
         AnchorSideTop.Control = CheckBox1
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 22
-        Top = 92
-        Width = 120
+        Height = 21
+        Top = 91
+        Width = 119
         BorderSpacing.Top = 15
         Caption = 'Follow FPT links'
         TabOrder = 2
@@ -415,9 +418,9 @@ object Form7: TForm7
         AnchorSideTop.Control = CheckBox2
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 22
-        Top = 129
-        Width = 120
+        Height = 21
+        Top = 127
+        Width = 119
         BorderSpacing.Top = 15
         Caption = 'No parent links'
         TabOrder = 3
@@ -427,9 +430,9 @@ object Form7: TForm7
         AnchorSideTop.Control = CheckBox3
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 22
-        Top = 166
-        Width = 121
+        Height = 21
+        Top = 163
+        Width = 120
         BorderSpacing.Top = 15
         Caption = 'Page requisites'
         Checked = True
@@ -441,11 +444,13 @@ object Form7: TForm7
         AnchorSideTop.Control = CheckBox4
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 22
-        Top = 203
-        Width = 96
+        Height = 21
+        Top = 199
+        Width = 95
         BorderSpacing.Top = 15
         Caption = 'Span hosts'
+        Checked = True
+        State = cbChecked
         TabOrder = 5
       end
       object CheckBox6: TCheckBox
@@ -453,11 +458,13 @@ object Form7: TForm7
         AnchorSideTop.Control = CheckBox5
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 22
-        Top = 240
-        Width = 145
+        Height = 21
+        Top = 235
+        Width = 144
         BorderSpacing.Top = 15
         Caption = 'Follow relative links'
+        Checked = True
+        State = cbChecked
         TabOrder = 6
       end
       object Label9: TLabel
@@ -479,10 +486,11 @@ object Form7: TForm7
         Left = 304
         Height = 25
         Top = 15
-        Width = 138
+        Width = 140
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 15
         TabOrder = 7
+        Text = 'Mozilla/4.0'
       end
     end
     object TabSheet3: TTabSheet
