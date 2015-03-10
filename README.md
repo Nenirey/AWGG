@@ -6,12 +6,17 @@ AWGG is a lightweight multiplatform and multilanguage download manager, basicall
 
 Features:
 
+- Status filter download.
 - Batch download.
 - Manage multiple downloads engines at the same time.
-- Scheduling, clipboard monitoring, notification system, proxy configuration, proxy authentication(NTLM).
+- Multiple schedules.
+- Clipboard monitoring.
+- Notification system.
+- Proxy configuration.
+- Multiple queues.
 - Supports HTTP, HTTPS, FTP.
 
-Copyright (C) 2014 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
+Copyright (C) 2015 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
 
 [Official web site][8]
 
