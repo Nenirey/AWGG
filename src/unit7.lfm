@@ -11,7 +11,7 @@ object dlgForm: TdlgForm
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.2'
   object dlgbtnyes: TButton
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter

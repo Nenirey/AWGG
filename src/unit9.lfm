@@ -1,8 +1,8 @@
 object Form7: TForm7
   AnchorSideRight.Side = asrCenter
-  Left = 331
+  Left = 304
   Height = 428
-  Top = 204
+  Top = 200
   Width = 463
   Caption = 'New Site Grabber'
   ClientHeight = 428
@@ -11,7 +11,7 @@ object Form7: TForm7
   OnCreate = FormCreate
   OnShow = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.2.6.0'
+  LCLVersion = '1.4.0.2'
   object Button1: TButton
     AnchorSideRight.Control = Button2
     AnchorSideBottom.Control = Button2
@@ -490,7 +490,6 @@ object Form7: TForm7
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 15
         TabOrder = 7
-        Text = 'Mozilla/4.0'
       end
     end
     object TabSheet3: TTabSheet

@@ -1,12 +1,13 @@
 object rsForm: TrsForm
-  Left = 202
-  Height = 490
-  Top = 142
-  Width = 759
+  Left = 419
+  Height = 465
+  Top = 99
+  Width = 644
   Caption = 'rsForm'
-  ClientHeight = 490
-  ClientWidth = 759
-  LCLVersion = '1.2.6.0'
+  ClientHeight = 465
+  ClientWidth = 644
+  OnCreate = FormCreate
+  LCLVersion = '1.4.0.4'
   object msgerrorconfigsave: TLabel
     Left = 416
     Height = 13

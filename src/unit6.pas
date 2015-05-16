@@ -2,7 +2,7 @@ unit Unit6;
 {
   Resource strings form of AWGG
 
-  Copyright (C) 2014 Reinier Romero Mir
+  Copyright (C) 2015 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -76,6 +76,7 @@ type
     statusinprogres: TLabel;
     msgerrorconfigload: TLabel;
     msgerrorconfigsave: TLabel;
+    procedure FormCreate(Sender: TObject);
   private
     { private declarations }
   public
@@ -91,6 +92,10 @@ implementation
 
 { TrsForm }
 
+procedure TrsForm.FormCreate(Sender: TObject);
+begin
+
+end;
 
 end.
 

@@ -2,7 +2,7 @@ unit Unit2;
 {
   New download form of AWGG
 
-  Copyright (C) 2014 Reinier Romero Mir
+  Copyright (C) 2015 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -31,9 +31,9 @@ type
   { TForm2 }
 
   TForm2 = class(TForm)
+    BitBtn1: TBitBtn;
     Button1: TButton;
     Button2: TButton;
-    Button3: TButton;
     Button4: TButton;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
@@ -53,6 +53,7 @@ type
     Label8: TLabel;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
+    procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
@@ -74,6 +75,7 @@ var
   Form2: TForm2;
   //downitem:TListItem;
   iniciar,agregar,cola:Boolean;
+  function checkandclose(auto:boolean=false):boolean;
 implementation
 uses Unit1,Unit3;
 {$R *.lfm}
@@ -105,7 +107,7 @@ uexists:=true;
 end;
 result:=uexists;
 end;}
-procedure checkandclose();
+function checkandclose(auto:boolean=false):boolean;
 var found:boolean;
 begin
 accept:=true;
@@ -124,7 +126,12 @@ while (destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text)) or (
 Form6.Edit1.Text:='_'+Form6.Edit1.Text;
 Form6.Label4.Caption:=Form2.Edit3.Text;
 Form6.Label3.Caption:=Form2.DirectoryEdit1.Text;
+if auto=false then
+begin
 Form6.ShowModal;
+end
+else
+accept:=true;
 if accept=true then
 Form2.Edit3.Text:=Form6.Edit1.Text
 else
@@ -133,7 +140,12 @@ end;
 end;
 end;
 if accept=true then
+begin
 Form2.Close;
+result:=true;
+end
+else
+result:=false;
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);
@@ -217,14 +229,14 @@ end;
 
 procedure TForm2.SpeedButton2Click(Sender: TObject);
 begin
-  //Form2.FormStyle:=fsNormal;
+  Form2.FormStyle:=fsNormal;
   Form3.PageControl1.ActivePageIndex:=1;
   Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   Form3.ComboBox4.ItemIndex:=Form2.ComboBox2.ItemIndex;
-  Form3.Show;
+  Form3.ShowModal;
   Form2.ComboBox2.ItemIndex:=Form3.ComboBox4.ItemIndex;
-  //Form2.FormStyle:=fsSystemStayOnTop;
+  Form2.FormStyle:=fsSystemStayOnTop;
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);
@@ -234,6 +246,18 @@ if Form2.ComboBox1.ItemIndex<>-1 then
   agregar:=true;
   cola:=true;
   iniciar:=false;
+  checkandclose();
+  end
+else
+ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
+end;
+
+procedure TForm2.BitBtn1Click(Sender: TObject);
+begin
+  if Form2.ComboBox1.ItemIndex<>-1 then
+  begin
+  agregar:=true;
+  iniciar:=true;
   checkandclose();
   end
 else

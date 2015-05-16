@@ -2,7 +2,7 @@ unit Unit7;
 {
   Confirm form of AWGG
 
-  Copyright (C) 2014 Reinier Romero Mir
+  Copyright (C) 2015 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it

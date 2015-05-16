@@ -106,6 +106,7 @@ msgid "Copy download URL"
 msgstr "Copy download URL"
 
 #: tform1.menuitem13.caption
+msgctxt "tform1.menuitem13.caption"
 msgid "Delete"
 msgstr "Delete"
 
@@ -174,10 +175,12 @@ msgid "Open log file"
 msgstr "Open log file"
 
 #: tform1.menuitem27.caption
+msgctxt "tform1.menuitem27.caption"
 msgid "Start"
 msgstr "Start"
 
 #: tform1.menuitem28.caption
+msgctxt "tform1.menuitem28.caption"
 msgid "Stop"
 msgstr "Stop"
 
@@ -336,7 +339,7 @@ msgid "New download..."
 msgstr "New download..."
 
 #: tform1.menuitem6.caption
-msgctxt "TFORM1.MENUITEM6.CAPTION"
+msgctxt "TFORM1.MENUITEM6.CAPTIONtform1.menuitem61.caption"
 msgid "Exit"
 msgstr "Exit"
 
@@ -344,6 +347,11 @@ msgstr "Exit"
 msgctxt "tform1.menuitem60.caption"
 msgid "-"
 msgstr ""
+
+#: tform1.menuitem61.caption
+msgctxt "tform1.menuitem61.caption"
+msgid "Start"
+msgstr "Start"
 
 #: tform1.menuitem62.caption
 msgctxt "tform1.menuitem62.caption"
@@ -393,6 +401,15 @@ msgstr "Tools"
 msgctxt "tform1.menuitem70.caption"
 msgid "-"
 msgstr ""
+
+#: tform1.menuitem71.caption
+msgctxt "tform1.menuitem71.caption"
+msgid "Stop"
+msgstr "Stop"
+
+#: tform1.menuitem72.caption
+msgid "Hide"
+msgstr "Hide"
 
 #: tform1.menuitem73.caption
 msgctxt "tform1.menuitem73.caption"
@@ -492,6 +509,15 @@ msgstr ""
 #: tform1.menuitem91.caption
 msgid "Official web site"
 msgstr "Official web site"
+
+#: tform1.menuitem92.caption
+msgid "Show in systray"
+msgstr "Show in systray"
+
+#: tform1.menuitem93.caption
+msgctxt "tform1.menuitem93.caption"
+msgid "-"
+msgstr ""
 
 #: tform1.opendialog1.title
 msgid "Open file list of downloads"
@@ -609,6 +635,11 @@ msgctxt "tform1.toolbutton9.hint"
 msgid "Start queue"
 msgstr "Start queue"
 
+#: tform2.bitbtn1.caption
+msgctxt "tform2.bitbtn1.caption"
+msgid "Start now"
+msgstr "Start now"
+
 #: tform2.button1.caption
 msgid "To the queue [F2]"
 msgstr "To the queue [F2]"
@@ -617,11 +648,6 @@ msgstr "To the queue [F2]"
 msgctxt "tform2.button2.caption"
 msgid "Cancel"
 msgstr "Cancel"
-
-#: tform2.button3.caption
-msgctxt "tform2.button3.caption"
-msgid "Start now"
-msgstr "Start now"
 
 #: tform2.button4.caption
 msgctxt "tform2.button4.caption"
@@ -714,6 +740,14 @@ msgstr "Load log when select a download."
 #: tform3.checkbox13.caption
 msgid "Shutdown after end"
 msgstr "Shutdown after end"
+
+#: tform3.checkbox14.caption
+msgid "Use global:"
+msgstr "Use global:"
+
+#: tform3.checkbox15.caption
+msgid "Use multiple connections."
+msgstr "Use multiple connections."
 
 #: tform3.checkbox2.caption
 msgid "Use authentication"
@@ -822,6 +856,14 @@ msgstr "Sounds"
 msgid "Rotate mode"
 msgstr "Rotate mode"
 
+#: tform3.groupbox6.caption
+msgid "Multiple connections"
+msgstr "Multiple connections"
+
+#: tform3.groupbox7.caption
+msgid "User agent"
+msgstr "User agent"
+
 #: tform3.label1.caption
 msgctxt "tform3.label1.caption"
 msgid "HTTP:"
@@ -909,9 +951,25 @@ msgstr "Download stoped:"
 msgid "Exp: .mozilla.org, localhost, 192.168.0.1"
 msgstr "Exp: .mozilla.org, localhost, 192.168.0.1"
 
+#: tform3.label28.caption
+msgid "Category download folder:"
+msgstr "Category download folder:"
+
+#: tform3.label29.caption
+msgid "Category:"
+msgstr "Category:"
+
 #: tform3.label3.caption
 msgid "FTP:"
-msgstr ""
+msgstr "FTP:"
+
+#: tform3.label30.caption
+msgid "Extencions:"
+msgstr "Extencions:"
+
+#: tform3.label31.caption
+msgid "Connections per server:"
+msgstr "Connections per server:"
 
 #: tform3.label32.caption
 msgid "Hour(24)"
@@ -945,8 +1003,8 @@ msgid "Tries:"
 msgstr "Tries:"
 
 #: tform3.label39.caption
-msgid "Delay tries  (sec):"
-msgstr "Delay tries  (sec):"
+msgid "Delay tries (sec):"
+msgstr "Delay tries (sec):"
 
 #: tform3.label4.caption
 msgctxt "tform3.label4.caption"
@@ -964,6 +1022,10 @@ msgstr "Tries or rotate times:"
 #: tform3.label42.caption
 msgid "Delay (downloads or tries)(sec):"
 msgstr "Delay (downloads or tries)(sec):"
+
+#: tform3.label43.caption
+msgid "Split size (can append K or M):"
+msgstr "Split size (can append K or M):"
 
 #: tform3.label5.caption
 msgctxt "TFORM3.LABEL5.CAPTION"
@@ -1024,6 +1086,30 @@ msgstr "Position on the screen"
 #: tform3.radiogroup2.caption
 msgid "Categorize"
 msgstr "Categorize"
+
+#: tform3.speedbutton4.hint
+msgctxt "tform3.speedbutton4.hint"
+msgid "Add"
+msgstr "Add"
+
+#: tform3.speedbutton5.hint
+msgctxt "tform3.speedbutton5.hint"
+msgid "Delete"
+msgstr "Delete"
+
+#: tform3.speedbutton6.hint
+msgctxt "tform3.speedbutton6.hint"
+msgid "Add"
+msgstr "Add"
+
+#: tform3.speedbutton7.hint
+msgctxt "tform3.speedbutton7.hint"
+msgid "Delete"
+msgstr "Delete"
+
+#: tform3.speedbutton8.hint
+msgid "Edit"
+msgstr "Edit"
 
 #: tform3.tabsheet1.caption
 msgid "Proxy"
@@ -1201,10 +1287,6 @@ msgstr "Span hosts"
 msgid "Follow relative links"
 msgstr "Follow relative links"
 
-#: tform7.edit5.text
-msgid "Mozilla/4.0"
-msgstr ""
-
 #: tform7.groupbox1.caption
 msgid "File reject filter"
 msgstr "File reject filter"
@@ -1299,6 +1381,15 @@ msgstr ""
 #: tform7.tabsheet5.caption
 msgid "TabSheet5"
 msgstr ""
+
+#: tform8.caption
+msgctxt "tform8.caption"
+msgid "Add"
+msgstr "Add"
+
+#: tform8.label1.caption
+msgid "Value:"
+msgstr "Value:"
 
 #: trsform.alldowntreename.caption
 msgid "All downloads"
@@ -1496,7 +1587,23 @@ msgstr "Tuesday"
 msgid "Wednesday"
 msgstr "Wednesday"
 
-#: unit1.txt
-msgid "texto prueba"
-msgstr ""
+#: unit1.startqueuesystray
+msgctxt "unit1.startqueuesystray"
+msgid "Start queue"
+msgstr "Start queue"
+
+#: unit1.stopqueuesystray
+msgctxt "unit1.stopqueuesystray"
+msgid "Stop queue"
+msgstr "Stop queue"
+
+#: unit6.startqueuesystray
+msgctxt "unit6.startqueuesystray"
+msgid "Start queue"
+msgstr "Start queue"
+
+#: unit6.stopqueuesystray
+msgctxt "unit6.stopqueuesystray"
+msgid "Stop queue"
+msgstr "Stop queue"
 
