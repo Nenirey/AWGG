@@ -1,7 +1,7 @@
 object Form4: TForm4
-  Left = 40
+  Left = 380
   Height = 389
-  Top = 34
+  Top = 150
   Width = 570
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -10,7 +10,7 @@ object Form4: TForm4
   ClientWidth = 570
   OnDeactivate = FormDeactivate
   Position = poScreenCenter
-  LCLVersion = '1.4.0.2'
+  LCLVersion = '1.4.0.4'
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Image1
@@ -35,10 +35,10 @@ object Form4: TForm4
     AnchorSideRight.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 266
-    Height = 23
-    Top = 361
-    Width = 39
+    Left = 272
+    Height = 25
+    Top = 359
+    Width = 27
     Anchors = [akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Bottom = 5
@@ -137,10 +137,10 @@ object Form4: TForm4
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Button1
     Cursor = crHandPoint
-    Left = 251
+    Left = 262
     Height = 1
-    Top = 344
-    Width = 319
+    Top = 341
+    Width = 308
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 20
@@ -160,9 +160,9 @@ object Form4: TForm4
     AnchorSideRight.Control = Button1
     AnchorSideBottom.Control = Button1
     Left = 200
-    Height = 13
-    Top = 338
-    Width = 46
+    Height = 15
+    Top = 334
+    Width = 57
     Alignment = taRightJustify
     Anchors = [akLeft, akBottom]
     BorderSpacing.Top = 5
@@ -176,7 +176,7 @@ object Form4: TForm4
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Label4
     Left = 200
-    Height = 328
+    Height = 324
     Top = 5
     Width = 365
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -192,7 +192,7 @@ object Form4: TForm4
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Memo1
     Left = 0
-    Height = 13
+    Height = 15
     Top = 78
     Width = 200
     Alignment = taCenter

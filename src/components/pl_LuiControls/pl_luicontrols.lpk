@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Package Version="4">
+    <PathDelim Value="\"/>
+    <Name Value="pl_luicontrols"/>
+    <Type Value="RunAndDesignTime"/>
+    <AddToProjectUsesSection Value="True"/>
+    <Author Value="Luiz Américo Pereira Câmara"/>
+    <CompilerOptions>
+      <Version Value="11"/>
+      <PathDelim Value="\"/>
+      <SearchPaths>
+        <IncludeFiles Value="source\luicomponents;source\luicontrols;source\multilog;source\uniqueinstance;source\atbinhex;source"/>
+        <OtherUnitFiles Value="source\luicomponents;source\luicontrols;source\multilog;source\uniqueinstance;source\atbinhex;source;source\luicontrols\frames;source\luicontrols\editors;source\luicontrols\forms"/>
+        <UnitOutputDirectory Value="lib\$(TargetCPU)-$(TargetOS)\$(LCLWidgetType)"/>
+      </SearchPaths>
+      <Parsing>
+        <SyntaxOptions>
+          <UseAnsiStrings Value="False"/>
+        </SyntaxOptions>
+      </Parsing>
+    </CompilerOptions>
+    <Description Value="Set of miscellaneous controls:
+TToggleLabel
+TMenuButton
+TSearchEdit
+"/>
+    <License Value="Modified LGPL
+"/>
+    <Version Major="5" Minor="2" Release="1"/>
+    <Files Count="32">
+      <Item1>
+        <Filename Value="source\allluicontrolsregister.pas"/>
+        <HasRegisterProc Value="True"/>
+        <UnitName Value="allluicontrolsregister"/>
+      </Item1>
+      <Item2>
+        <Filename Value="source\atbinhex\ATBinHex.pas"/>
+        <UnitName Value="ATBinHex"/>
+      </Item2>
+      <Item3>
+        <Filename Value="source\luicomponents\iniconfigprovider.pas"/>
+        <UnitName Value="IniConfigProvider"/>
+      </Item3>
+      <Item4>
+        <Filename Value="source\luicomponents\luiconfig.pas"/>
+        <UnitName Value="LuiConfig"/>
+      </Item4>
+      <Item5>
+        <Filename Value="source\luicomponents\luidbutils.pas"/>
+        <UnitName Value="LuiDBUtils"/>
+      </Item5>
+      <Item6>
+        <Filename Value="source\luicomponents\luijsonlclviews.pas"/>
+        <UnitName Value="LuiJSONLCLViews"/>
+      </Item6>
+      <Item7>
+        <Filename Value="source\luicomponents\luijsonutils.pas"/>
+        <UnitName Value="LuiJSONUtils"/>
+      </Item7>
+      <Item8>
+        <Filename Value="source\luicomponents\luilclinterfaces.pas"/>
+        <UnitName Value="LuiLCLInterfaces"/>
+      </Item8>
+      <Item9>
+        <Filename Value="source\luicomponents\luilclmessages.pas"/>
+        <UnitName Value="LuiLCLMessages"/>
+      </Item9>
+      <Item10>
+        <Filename Value="source\luicomponents\luirttiutils.pas"/>
+        <UnitName Value="LuiRTTIUtils"/>
+      </Item10>
+      <Item11>
+        <Filename Value="source\luicomponents\luistrutils.pas"/>
+        <UnitName Value="LuiStrUtils"/>
+      </Item11>
+      <Item12>
+        <Filename Value="source\luicomponents\varrecutils.pas"/>
+        <UnitName Value="VarRecUtils"/>
+      </Item12>
+      <Item13>
+        <Filename Value="source\luicontrols\advancedlabel.pas"/>
+        <UnitName Value="AdvancedLabel"/>
+      </Item13>
+      <Item14>
+        <Filename Value="source\luicontrols\dropdownbutton.pas"/>
+        <UnitName Value="DropDownButton"/>
+      </Item14>
+      <Item15>
+        <Filename Value="source\luicontrols\dropdownmanager.pas"/>
+        <UnitName Value="DropDownManager"/>
+      </Item15>
+      <Item16>
+        <Filename Value="source\luicontrols\formmediator.pas"/>
+        <UnitName Value="FormMediator"/>
+      </Item16>
+      <Item17>
+        <Filename Value="source\luicontrols\frames\jsonbooleanradiobuttonview.pas"/>
+        <UnitName Value="JSONBooleanRadioButtonView"/>
+      </Item17>
+      <Item18>
+        <Filename Value="source\luicontrols\frames\jsonbooleanradiobuttonview.lfm"/>
+        <Type Value="LFM"/>
+      </Item18>
+      <Item19>
+        <Filename Value="source\luicontrols\jsonmediators.pas"/>
+        <UnitName Value="JSONMediators"/>
+      </Item19>
+      <Item20>
+        <Filename Value="source\luicontrols\menubutton.pas"/>
+        <UnitName Value="MenuButton"/>
+      </Item20>
+      <Item21>
+        <Filename Value="source\luicontrols\presentationmanager.pas"/>
+        <UnitName Value="PresentationManager"/>
+      </Item21>
+      <Item22>
+        <Filename Value="source\luicontrols\searchedit.pas"/>
+        <UnitName Value="SearchEdit"/>
+      </Item22>
+      <Item23>
+        <Filename Value="source\luicontrols\togglelabel.pas"/>
+        <UnitName Value="ToggleLabel"/>
+      </Item23>
+      <Item24>
+        <Filename Value="source\luicontrols\validateedit.pas"/>
+        <UnitName Value="ValidateEdit"/>
+      </Item24>
+      <Item25>
+        <Filename Value="source\luicontrols\virtualpages.pas"/>
+        <UnitName Value="VirtualPages"/>
+      </Item25>
+      <Item26>
+        <Filename Value="source\luicontrols\wizardcontrols.pas"/>
+        <UnitName Value="WizardControls"/>
+      </Item26>
+      <Item27>
+        <Filename Value="source\multilog\filechannel.pas"/>
+        <UnitName Value="filechannel"/>
+      </Item27>
+      <Item28>
+        <Filename Value="source\multilog\ipcchannel.pas"/>
+        <UnitName Value="ipcchannel"/>
+      </Item28>
+      <Item29>
+        <Filename Value="source\multilog\logtreeview.pas"/>
+        <UnitName Value="logtreeview"/>
+      </Item29>
+      <Item30>
+        <Filename Value="source\multilog\multiloglcl.pas"/>
+        <UnitName Value="multiloglcl"/>
+      </Item30>
+      <Item31>
+        <Filename Value="source\multilog\sharedlogger.pas"/>
+        <UnitName Value="sharedlogger"/>
+      </Item31>
+      <Item32>
+        <Filename Value="source\uniqueinstance\uniqueinstance.pas"/>
+        <UnitName Value="UniqueInstance"/>
+      </Item32>
+    </Files>
+    <RequiredPkgs Count="3">
+      <Item1>
+        <PackageName Value="IDEIntf"/>
+      </Item1>
+      <Item2>
+        <PackageName Value="pl_lclextensions"/>
+      </Item2>
+      <Item3>
+        <PackageName Value="LCL"/>
+      </Item3>
+    </RequiredPkgs>
+    <UsageOptions>
+      <UnitPath Value="$(PkgOutDir)"/>
+    </UsageOptions>
+    <PublishOptions>
+      <Version Value="2"/>
+      <IgnoreBinaries Value="False"/>
+    </PublishOptions>
+  </Package>
+</CONFIG>

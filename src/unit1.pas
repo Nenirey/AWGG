@@ -503,6 +503,21 @@ implementation
 resourcestring
 startqueuesystray='Start queue';
 stopqueuesystray='Stop queue';
+folderdownname='Downloads';
+categorycompressed='Compressed';
+categoryprograms='Programs';
+categoryimages='Images';
+categorydocuments='Documents';
+categoryvideos='Videos';
+categorymusic='Music';
+abouttext='This program is free software under GNU GPL 2 license.'+#10#13+'Created By Reinier Romero Mir'+#13+'Email: nenirey@gmail.com'+#13+'Copyright© 2015'+#13+'The project uses the following third party resources:'+#10#13+'Silk icons set 1.3 by Mark James'+#13+'http://www.famfamfam.com/lab/icons/silk/'+#13+'Tango Icon Library'+#13+'http://tango.freedesktop.org/Tango_Icon_Library'+#13+'aria2'+#13+'http://aria2.sourceforge.net/'+#13+'Wget'+#13+'http://www.gnu.org/software/wget/'+#13+'cURL'+#13+'http://curl.haxx.se/'+#13+'Axel'+#13+'http://axel.alioth.debian.org/'+#10#13+'French translation: '+#10+'Tony O Gallos @ CodeTyphon Community';
+wgetdefarg1='[-c] Continue downloads.';
+wgetdefarg2='[-nH] No create host dir.';
+wgetdefarg3='[-nd] No create out dir.';
+wgetdefarg4='[--no-check-certificate] No check SSL.';
+aria2defarg1='[-c] Continue downloads';
+aria2defarg2='[--file-allocation=none] No allocate space.';
+curldefarg1='[-C -] Continue downloads.';
 procedure refreshicons;
 var x:integer;
 begin
@@ -553,28 +568,28 @@ procedure defaultcategory();
 begin
 SetLength(categoryextencions,6);
 categoryextencions[0]:=TStringList.Create;
-categoryextencions[0].Add(ddowndir+pathdelim+'Compressed');
-categoryextencions[0].Add('Compressed');
+categoryextencions[0].Add(ddowndir+pathdelim+categorycompressed);
+categoryextencions[0].Add(categorycompressed);
 categoryextencions[0].AddStrings(['ZIP','RAR','7Z','7ZIP','CAB','GZ','TAR','XZ','BZ2','LZMA']);
 categoryextencions[1]:=TStringList.Create;
-categoryextencions[1].Add(ddowndir+pathdelim+'Programs');
-categoryextencions[1].Add('Programs');
+categoryextencions[1].Add(ddowndir+pathdelim+categoryprograms);
+categoryextencions[1].Add(categoryprograms);
 categoryextencions[1].AddStrings(['EXE','MSI','COM','BAT','PY','SH','HTA','JAR','APK','DMG']);
 categoryextencions[2]:=TStringList.Create;
-categoryextencions[2].Add(ddowndir+pathdelim+'Images');
-categoryextencions[2].Add('Images');
+categoryextencions[2].Add(ddowndir+pathdelim+categoryimages);
+categoryextencions[2].Add(categoryimages);
 categoryextencions[2].AddStrings(['JPG','JPE','JPEG','PNG','GIF','BMP','ICO','CUR','ANI']);
 categoryextencions[3]:=TStringList.Create;
-categoryextencions[3].Add(ddowndir+pathdelim+'Documents');
-categoryextencions[3].Add('Documents');
+categoryextencions[3].Add(ddowndir+pathdelim+categorydocuments);
+categoryextencions[3].Add(categorydocuments);
 categoryextencions[3].AddStrings(['DOC','DOCX','XLS','XLSX','PPT','PPS','PPTX','PPSX','TXT','PDF','HTM','HTML','MHT','RTF','ODF','ODT','ODS','PHP']);
 categoryextencions[4]:=TStringList.Create;
-categoryextencions[4].Add(ddowndir+pathdelim+'Videos');
-categoryextencions[4].Add('Videos');
+categoryextencions[4].Add(ddowndir+pathdelim+categoryvideos);
+categoryextencions[4].Add(categoryvideos);
 categoryextencions[4].AddStrings(['MPG','MPE','MPEG','MP4','MOV','FLV','AVI','ASF','WMV','MKV','VOB','IFO','RMVB','DIVX','3GP','3GP2','SWF','MPV','M4V','WEBM','AMV']);
 categoryextencions[5]:=TStringList.Create;
-categoryextencions[5].Add(ddowndir+pathdelim+'Music');
-categoryextencions[5].Add('Music');
+categoryextencions[5].Add(ddowndir+pathdelim+categorymusic);
+categoryextencions[5].Add(categorymusic);
 categoryextencions[5].AddStrings(['MP3','OGG','WAV','WMA','AMR','MIDI']);
 end;
 
@@ -1189,6 +1204,18 @@ Form3.CheckGroup5.Items[6]:=rsForm.saturday.Caption;
 Form3.CheckGroup4.Items[0]:=rsForm.runwiththesystem.Caption;
 Form3.CheckGroup4.Items[1]:=rsForm.startinthesystray.Caption;
 queuenames[0]:=rsform.queuemainname.Caption;
+if Form3.ComboBox4.Items.Count>0 then
+Form3.ComboBox4.Items[0]:=rsform.queuemainname.Caption;
+Form3.ComboBox1.Items[0]:=rsform.proxynot.Caption;
+Form3.ComboBox1.Items[1]:=rsform.proxysystem.Caption;
+Form3.ComboBox1.Items[2]:=rsform.proxymanual.Caption;
+Form3.CheckGroup1.Items[0]:=wgetdefarg1;
+Form3.CheckGroup1.Items[1]:=wgetdefarg2;
+Form3.CheckGroup1.Items[2]:=wgetdefarg3;
+Form3.CheckGroup1.Items[3]:=wgetdefarg4;
+Form3.CheckGroup2.Items[0]:=aria2defarg1;
+Form3.CheckGroup2.Items[1]:=aria2defarg2;
+Form3.CheckGroup3.Items[0]:=curldefarg1;
 queuesreload();
 newdownqueues();
 end;
@@ -1589,7 +1616,9 @@ categoryextencions[i].AddText(StringReplace(iniconfigfile.ReadString('Group'+int
 end;
 end
 else
-defaultcategory();
+begin
+//defaultcategory();
+end;
 iniconfigfile.Free;
 Form1.ListView1.Column[0].Width:=columncolaw;
 Form1.ListView1.Column[columnname+1].Width:=columnnamew;
@@ -1690,8 +1719,6 @@ axelrutebin:=ExtractFilePath(Application.Params[0])+'axel.exe';
 if not FileExists(lftprutebin) then
 lftprutebin:=ExtractFilePath(Application.Params[0])+'lftp.exe';
 {$ENDIF}
-if not DirectoryExists(ddowndir) then
-CreateDir(ddowndir);
 Form1.Timer4.Enabled:=clipboardmonitor;
 except on e:exception do
 //ShowMessage(e.Message);
@@ -3862,15 +3889,6 @@ configpath:=ExtractFilePath(Application.Params[0])
 else
 configpath:=GetAppConfigDir(false);
 datapath:=configpath+PathDelim+'Data';
-ddowndir:=GetUserDir()+'Downloads';
-{$IFDEF WINDOWS}
-  registro:=TRegistry.Create;
-  registro.RootKey:=HKEY_CURRENT_USER;
-  registro.OpenKey('Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\',false);
-  ddowndir:=registro.ReadString('Personal')+PathDelim+'Downloads';
-  registro.CloseKey;
-  registro.Free;
-{$ENDIF}
 {$IFDEF UNIX}
 if FileExists(ExtractFilePath(Application.Params[0])+'wget') then
 wgetrutebin:=ExtractFilePath(Application.Params[0])+'wget';
@@ -4218,7 +4236,7 @@ cpu:='x86_64';
 {$ENDIF}
 Form4.Label1.Caption:='AWGG';
 Form4.Label2.Caption:='(Advanced WGET GUI)'+#10#13+'Version: '+versionitis.version+#10#13+'Compiled using:'+#10#13+'Lazarus: '+lcl_version+#10#13+'FPC: '+versionitis.fpcversion+#10#13+'Platform: '+cpu+'-'+versionitis.targetos+'-'+widgetset;
-Form4.Memo1.Text:='This program is free software under GNU GPL 2 license.'+#10#13+'Created By Reinier Romero Mir'+#13+'Email: nenirey@gmail.com'+#13+'Copyright© 2015'+#13+'The project uses the following third party resources:'+#10#13+'Silk icons set 1.3 by Mark James'+#13+'http://www.famfamfam.com/lab/icons/silk/'+#13+'Tango Icon Library'+#13+'http://tango.freedesktop.org/Tango_Icon_Library'+#13+'aria2'+#13+'http://aria2.sourceforge.net/'+#13+'Wget'+#13+'http://www.gnu.org/software/wget/'+#13+'cURL'+#13+'http://curl.haxx.se/'+#13+'Axel'+#13+'http://axel.alioth.debian.org/';
+Form4.Memo1.Text:=abouttext;
 Form4.Label3.Caption:='http://sites.google.com/site/awggproject';
 Form4.Show;
 end;
@@ -5130,6 +5148,19 @@ Form5.ShowModal;
 deflanguage:=Form5.ComboBox1.Text;
 end;
 SetDefaultLang(deflanguage);
+updatelangstatus();
+ddowndir:=GetUserDir()+folderdownname;
+{$IFDEF WINDOWS}
+  registro:=TRegistry.Create;
+  registro.RootKey:=HKEY_CURRENT_USER;
+  registro.OpenKey('Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\',false);
+  ddowndir:=registro.ReadString('Personal')+PathDelim+folderdownname;
+  registro.CloseKey;
+  registro.Free;
+{$ENDIF}
+if not DirectoryExists(ddowndir) then
+CreateDir(ddowndir);
+defaultcategory();
 end;
 updatelangstatus();
 titlegen();

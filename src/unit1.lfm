@@ -1,10 +1,10 @@
 object Form1: TForm1
   Left = 382
   Height = 460
-  Top = 82
+  Top = 49
   Width = 640
   Caption = 'AWGG'
-  ClientHeight = 441
+  ClientHeight = 437
   ClientWidth = 640
   Menu = MainMenu1
   OnCloseQuery = FormCloseQuery
@@ -22,9 +22,9 @@ object Form1: TForm1
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 82
-    Height = 21
-    Top = 418
+    Left = 104
+    Height = 25
+    Top = 410
     Width = 47
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 2
@@ -41,9 +41,9 @@ object Form1: TForm1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = FloatSpinEdit1
     Left = 5
-    Height = 17
-    Top = 420
-    Width = 77
+    Height = 21
+    Top = 412
+    Width = 99
     BorderSpacing.Left = 5
     Caption = 'Limit (Kb/s):'
     TabOrder = 1
@@ -296,8 +296,8 @@ object Form1: TForm1
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 584
-    Height = 21
-    Top = 418
+    Height = 25
+    Top = 410
     Width = 46
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 10
@@ -312,10 +312,10 @@ object Form1: TForm1
     AnchorSideTop.Control = SpinEdit1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = SpinEdit1
-    Left = 444
-    Height = 13
-    Top = 422
-    Width = 138
+    Left = 402
+    Height = 15
+    Top = 415
+    Width = 180
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Max. downloads in progress:'
@@ -330,7 +330,7 @@ object Form1: TForm1
     AnchorSideBottom.Control = FloatSpinEdit1
     Cursor = crVSplit
     Left = 0
-    Height = 392
+    Height = 384
     Top = 26
     Width = 640
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -380,7 +380,7 @@ object Form1: TForm1
             BorderSpacing.Left = 5
             BorderSpacing.Top = 5
             BorderSpacing.Bottom = 2
-            DefaultItemHeight = 16
+            DefaultItemHeight = 18
             HideSelection = False
             Images = ImageList1
             RightClickSelect = True
@@ -562,7 +562,7 @@ object Form1: TForm1
                 Width = 70
               end            
               item
-                Caption = 'Estimate'
+                Caption = 'Estimated'
                 Width = 58
               end            
               item
@@ -570,7 +570,7 @@ object Form1: TForm1
                 Width = 70
               end            
               item
-                Caption = 'Destiny'
+                Caption = 'Destination'
                 Width = 135
               end            
               item
@@ -655,11 +655,11 @@ object Form1: TForm1
     object PairSplitterSide2: TPairSplitterSide
       Cursor = crArrow
       Left = 0
-      Height = 117
+      Height = 109
       Top = 275
       Width = 640
       ClientWidth = 640
-      ClientHeight = 117
+      ClientHeight = 109
       inline SynMemo1: TSynMemo
         AnchorSideLeft.Control = PairSplitterSide2
         AnchorSideTop.Control = PairSplitterSide2
@@ -669,7 +669,7 @@ object Form1: TForm1
         AnchorSideBottom.Side = asrBottom
         Cursor = crIBeam
         Left = 5
-        Height = 117
+        Height = 109
         Top = 0
         Width = 630
         BorderSpacing.Left = 5
@@ -3694,7 +3694,7 @@ object Form1: TForm1
           OnClick = MenuItem41Click
         end
         object MenuItem42: TMenuItem
-          Caption = 'Estimate'
+          Caption = 'Estimated'
           Checked = True
           OnClick = MenuItem42Click
         end
@@ -3704,7 +3704,7 @@ object Form1: TForm1
           OnClick = MenuItem82Click
         end
         object MenuItem43: TMenuItem
-          Caption = 'Destiny'
+          Caption = 'Destination'
           Checked = True
           OnClick = MenuItem43Click
         end
@@ -4045,7 +4045,7 @@ object Form1: TForm1
         OnClick = MenuItem30Click
       end
       object MenuItem47: TMenuItem
-        Caption = 'Restart all latter'
+        Caption = 'Restart all later'
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000BB6A3400BA65
@@ -4436,7 +4436,7 @@ object Form1: TForm1
       OnClick = MenuItem29Click
     end
     object MenuItem48: TMenuItem
-      Caption = 'Restart latter'
+      Caption = 'Restart later'
       Bitmap.Data = {
         36040000424D3604000000000000360000002800000010000000100000000100
         2000000000000004000064000000640000000000000000000000BB6A3400BA65

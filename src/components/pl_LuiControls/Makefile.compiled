@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Makefile Value="2"/>
+  <Params Value=" -Fusource/luicomponents;source/luicontrols;source/multilog;source/uniqueinstance;source/atbinhex;source;source/luicontrols/frames;source/luicontrols/editors;source/luicontrols/forms;../../packager/units/$(CPU_TARGET)-$(OS_TARGET);../lazutils/lib/$(CPU_TARGET)-$(OS_TARGET);../../lcl/units/$(CPU_TARGET)-$(OS_TARGET);../../lcl/units/$(CPU_TARGET)-$(OS_TARGET)/$(LCL_PLATFORM);../lazcontrols/lib/$(CPU_TARGET)-$(OS_TARGET)/$(LCL_PLATFORM);../pl_lclextensions/lib/$(CPU_TARGET)-$(OS_TARGET)/$(LCL_PLATFORM);../ideintf/units/$(CPU_TARGET)-$(OS_TARGET)/$(LCL_PLATFORM);. -Fisource/luicomponents;source/luicontrols;source/multilog;source/uniqueinstance;source/atbinhex;source  -MObjFPC -Scgi -O1 -g -gl -l -vewnhibq -dLCL -dLCL$(LCL_PLATFORM) pl_luicontrols.pas"/>
+</CONFIG>

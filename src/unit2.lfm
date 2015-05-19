@@ -1,7 +1,7 @@
 object Form2: TForm2
-  Left = 308
+  Left = 397
   Height = 172
-  Top = 296
+  Top = 295
   Width = 541
   AutoSize = True
   BorderStyle = bsDialog
@@ -14,7 +14,7 @@ object Form2: TForm2
   OnKeyPress = FormKeyPress
   Position = poScreenCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.4.0.2'
+  LCLVersion = '1.4.0.4'
   object Edit1: TEdit
     AnchorSideLeft.Control = Label1
     AnchorSideLeft.Side = asrBottom
@@ -93,9 +93,9 @@ object Form2: TForm2
     Left = 5
     Height = 15
     Top = 36
-    Width = 55
+    Width = 81
     BorderSpacing.Left = 5
-    Caption = 'Destiny: '
+    Caption = 'Destination: '
     ParentColor = False
   end
   object ComboBox1: TComboBox
@@ -154,10 +154,10 @@ object Form2: TForm2
     AnchorSideTop.Control = Edit1
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Button2
-    Left = 60
+    Left = 86
     Height = 25
     Top = 31
-    Width = 425
+    Width = 399
     ShowHidden = False
     ButtonWidth = 23
     NumGlyphs = 1
@@ -375,7 +375,7 @@ object Form2: TForm2
     AnchorSideBottom.Side = asrBottom
     Left = 178
     Height = 26
-    Hint = 'Shedule'
+    Hint = 'Schedule'
     Top = 141
     Width = 23
     Glyph.Data = {

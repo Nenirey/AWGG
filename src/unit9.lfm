@@ -1,8 +1,8 @@
 object Form7: TForm7
   AnchorSideRight.Side = asrCenter
-  Left = 304
+  Left = 449
   Height = 428
-  Top = 200
+  Top = 127
   Width = 463
   Caption = 'New Site Grabber'
   ClientHeight = 428
@@ -11,7 +11,7 @@ object Form7: TForm7
   OnCreate = FormCreate
   OnShow = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.4.0.2'
+  LCLVersion = '1.4.0.4'
   object Button1: TButton
     AnchorSideRight.Control = Button2
     AnchorSideBottom.Control = Button2
@@ -70,7 +70,7 @@ object Form7: TForm7
         AnchorSideTop.Control = Edit1
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = Edit1
-        Left = 32
+        Left = 58
         Height = 15
         Top = 90
         Width = 29
@@ -85,10 +85,10 @@ object Form7: TForm7
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrCenter
-        Left = 61
+        Left = 87
         Height = 25
         Top = 85
-        Width = 336
+        Width = 284
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 15
         BorderSpacing.Right = 10
@@ -99,7 +99,7 @@ object Form7: TForm7
         AnchorSideTop.Control = Edit2
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = Edit2
-        Left = 18
+        Left = 44
         Height = 15
         Top = 50
         Width = 43
@@ -113,10 +113,10 @@ object Form7: TForm7
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrCenter
-        Left = 61
+        Left = 87
         Height = 25
         Top = 45
-        Width = 336
+        Width = 284
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 20
         OnChange = Edit2Change
@@ -129,10 +129,10 @@ object Form7: TForm7
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = TabSheet1
         AnchorSideRight.Side = asrCenter
-        Left = 61
+        Left = 87
         Height = 25
         Top = 125
-        Width = 336
+        Width = 284
         ShowHidden = False
         ButtonWidth = 23
         NumGlyphs = 1
@@ -148,9 +148,9 @@ object Form7: TForm7
         Left = 10
         Height = 15
         Top = 130
-        Width = 51
+        Width = 77
         BorderSpacing.Left = 10
-        Caption = 'Destiny:'
+        Caption = 'Destination:'
         ParentColor = False
       end
       object Label6: TLabel
@@ -189,7 +189,7 @@ object Form7: TForm7
         Align = alTop
         Alignment = taCenter
         BorderSpacing.Top = 10
-        Caption = 'Wellcome to the site grabber wizard'
+        Caption = 'Welcome to the site grabber wizard'
         Font.Style = [fsBold]
         ParentColor = False
         ParentFont = False
@@ -292,20 +292,20 @@ object Form7: TForm7
         AnchorSideLeft.Control = DirectoryEdit1
         AnchorSideRight.Control = DirectoryEdit1
         AnchorSideRight.Side = asrBottom
-        Left = 61
+        Left = 87
         Height = 120
         Top = 184
-        Width = 336
+        Width = 284
         Anchors = [akTop, akLeft, akRight]
         Caption = 'HTTP/FTP Authentication'
         ClientHeight = 103
-        ClientWidth = 332
+        ClientWidth = 280
         TabOrder = 4
         object Label4: TLabel
           AnchorSideTop.Control = Edit3
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = Edit3
-          Left = 78
+          Left = 42
           Height = 15
           Top = 26
           Width = 34
@@ -319,10 +319,10 @@ object Form7: TForm7
           AnchorSideTop.Control = GroupBox9
           AnchorSideRight.Control = GroupBox9
           AnchorSideRight.Side = asrBottom
-          Left = 112
+          Left = 76
           Height = 25
           Top = 21
-          Width = 205
+          Width = 189
           Anchors = [akTop, akRight]
           BorderSpacing.Top = 21
           BorderSpacing.Right = 15
@@ -332,7 +332,7 @@ object Form7: TForm7
           AnchorSideTop.Control = Edit4
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = Edit4
-          Left = 49
+          Left = 13
           Height = 15
           Top = 67
           Width = 63
@@ -346,11 +346,11 @@ object Form7: TForm7
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = Edit3
           AnchorSideRight.Side = asrBottom
-          Left = 112
+          Left = 76
           Height = 25
           Top = 62
-          Width = 205
-          Anchors = [akTop, akRight]
+          Width = 189
+          Anchors = [akTop, akLeft, akRight]
           BorderSpacing.Top = 16
           EchoMode = emPassword
           PasswordChar = '*'
@@ -410,7 +410,7 @@ object Form7: TForm7
         Top = 91
         Width = 119
         BorderSpacing.Top = 15
-        Caption = 'Follow FPT links'
+        Caption = 'Follow FTP links'
         TabOrder = 2
       end
       object CheckBox3: TCheckBox

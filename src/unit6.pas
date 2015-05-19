@@ -46,6 +46,9 @@ type
     dlgdeletequeue: TLabel;
     filtresname: TLabel;
     alldowntreename: TLabel;
+    proxymanual: TLabel;
+    proxysystem: TLabel;
+    proxynot: TLabel;
     queuename: TLabel;
     queuestreename: TLabel;
     queuemainname: TLabel;

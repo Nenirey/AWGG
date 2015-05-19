@@ -1,0 +1,7 @@
+pl_LCLExtensions 
+
+15-10-2014 SVN Rev 3652  
+
+---------- MODs -----------
+
+Restructure and ADD WinCE Platform
