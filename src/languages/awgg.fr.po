@@ -93,7 +93,6 @@ msgctxt "tform1.listview1.columns[8].caption"
 msgid "Date"
 msgstr "Date"
 
-# Destination, not destiny ;)
 #: tform1.listview1.columns[9].caption
 msgctxt "tform1.listview1.columns[9].caption"
 msgid "Destination"
@@ -1531,15 +1530,15 @@ msgstr "Téléchargement stoppé:"
 
 #: trsform.proxymanual.caption
 msgid "Manual"
-msgstr ""
+msgstr "Manuel"
 
 #: trsform.proxynot.caption
 msgid "No proxy"
-msgstr ""
+msgstr "Pas de proxy"
 
 #: trsform.proxysystem.caption
 msgid "System proxy"
-msgstr ""
+msgstr "Proxy du Système"
 
 #: trsform.queuemainname.caption
 msgid "Main"
@@ -1637,42 +1636,72 @@ msgid ""
 "French translation: \n"
 "Tony O Gallos @ CodeTyphon Community\n"
 msgstr ""
+"Ce programme est un logiciel libre sous licence GNU GPL 2.\n"
+"\n"
+"Créé par Reinier Romero Mir\n"
+"Email: nenirey@gmail.com\n"
+"Copyright (c) 2015\n"
+"Ce projet utilise les ressources tierces suivantes:\n"
+"\n"
+"Silk icons set 1.3 par Mark James\n"
+"http://www.famfamfam.com/lab/icons/silk/\n"
+"Tango Icon Library\n"
+"http://tango.freedesktop.org/Tango_Icon_Library\n"
+"aria2\n"
+"http://aria2.sourceforge.net/\n"
+"Wget\n"
+"http://www.gnu.org/software/wget/\n"
+"cURL\n"
+"http://curl.haxx.se/\n"
+"Axel\n"
+"http://axel.alioth.debian.org/\n"
+"\n"
+"Traduction française: \n"
+"Tony O Gallos @ CodeTyphon Community\n"
 
 #: unit1.aria2defarg1
 msgid "[-c] Continue downloads"
-msgstr ""
+msgstr "[-c] Continuer les téléchargements"
 
 #: unit1.aria2defarg2
 msgid "[--file-allocation=none] No allocate space."
-msgstr ""
+msgstr "[--file-allocation=none] Ne pas allouer d'espace."
 
 #: unit1.categorycompressed
 msgid "Compressed"
-msgstr ""
+msgstr "Compressés"
 
 #: unit1.categorydocuments
 msgid "Documents"
+msgstr "Documents"
+
+#: unit1.categoryfilter
+msgid "Categories"
 msgstr ""
 
 #: unit1.categoryimages
 msgid "Images"
-msgstr ""
+msgstr "Images"
 
 #: unit1.categorymusic
 msgid "Music"
+msgstr "Musique"
+
+#: unit1.categoryothers
+msgid "Others"
 msgstr ""
 
 #: unit1.categoryprograms
 msgid "Programs"
-msgstr ""
+msgstr "Programmes"
 
 #: unit1.categoryvideos
 msgid "Videos"
-msgstr ""
+msgstr "Vidéos"
 
 #: unit1.curldefarg1
 msgid "[-C -] Continue downloads."
-msgstr ""
+msgstr "[-C -] Continuer les téléchargements."
 
 #: unit1.folderdownname
 msgctxt "unit1.folderdownname"
@@ -1691,19 +1720,19 @@ msgstr "Stopper la file d'attente"
 
 #: unit1.wgetdefarg1
 msgid "[-c] Continue downloads."
-msgstr ""
+msgstr "[-c] Continuer les téléchargements."
 
 #: unit1.wgetdefarg2
 msgid "[-nH] No create host dir."
-msgstr ""
+msgstr "[-nH] Ne pas créer le dossier hôte."
 
 #: unit1.wgetdefarg3
 msgid "[-nd] No create out dir."
-msgstr ""
+msgstr "[-nd] Ne pas créer le dossier de sortie."
 
 #: unit1.wgetdefarg4
 msgid "[--no-check-certificate] No check SSL."
-msgstr ""
+msgstr "[--no-check-certificate] Ne pas vérifier le SSL."
 
 #: unit6.startqueuesystray
 msgctxt "unit6.startqueuesystray"

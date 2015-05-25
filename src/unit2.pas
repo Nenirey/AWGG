@@ -63,6 +63,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
+    procedure FormShow(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
   private
@@ -213,6 +214,14 @@ end;
 procedure TForm2.FormKeyPress(Sender: TObject; var Key: char);
 begin
 
+end;
+
+procedure TForm2.FormShow(Sender: TObject);
+begin
+  //Form2.AutoSize:=false;
+  //Form2.AutoSize:=true;
+  //Form2.Changed;
+  //Form2.RequestAlign;
 end;
 
 procedure TForm2.SpeedButton1Click(Sender: TObject);

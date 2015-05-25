@@ -1,10 +1,10 @@
 object Form1: TForm1
-  Left = 382
+  Left = 206
   Height = 460
-  Top = 49
+  Top = 164
   Width = 640
   Caption = 'AWGG'
-  ClientHeight = 437
+  ClientHeight = 440
   ClientWidth = 640
   Menu = MainMenu1
   OnCloseQuery = FormCloseQuery
@@ -22,9 +22,9 @@ object Form1: TForm1
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 104
-    Height = 25
-    Top = 410
+    Left = 80
+    Height = 21
+    Top = 417
     Width = 47
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 2
@@ -41,9 +41,9 @@ object Form1: TForm1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = FloatSpinEdit1
     Left = 5
-    Height = 21
-    Top = 412
-    Width = 99
+    Height = 17
+    Top = 419
+    Width = 75
     BorderSpacing.Left = 5
     Caption = 'Limit (Kb/s):'
     TabOrder = 1
@@ -296,8 +296,8 @@ object Form1: TForm1
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 584
-    Height = 25
-    Top = 410
+    Height = 21
+    Top = 417
     Width = 46
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 10
@@ -312,10 +312,10 @@ object Form1: TForm1
     AnchorSideTop.Control = SpinEdit1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = SpinEdit1
-    Left = 402
-    Height = 15
-    Top = 415
-    Width = 180
+    Left = 444
+    Height = 13
+    Top = 421
+    Width = 138
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Max. downloads in progress:'
@@ -330,7 +330,7 @@ object Form1: TForm1
     AnchorSideBottom.Control = FloatSpinEdit1
     Cursor = crVSplit
     Left = 0
-    Height = 384
+    Height = 391
     Top = 26
     Width = 640
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -380,7 +380,7 @@ object Form1: TForm1
             BorderSpacing.Left = 5
             BorderSpacing.Top = 5
             BorderSpacing.Bottom = 2
-            DefaultItemHeight = 18
+            DefaultItemHeight = 16
             HideSelection = False
             Images = ImageList1
             RightClickSelect = True
@@ -394,7 +394,7 @@ object Form1: TForm1
             OnSelectionChanged = TreeView1SelectionChanged
             Options = [tvoAutoItemHeight, tvoKeepCollapsedNodes, tvoRightClickSelect, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
             Items.Data = {
-              F9FFFFFF0200030000002900000029000000FFFFFFFFFFFFFFFF000000000000
+              F9FFFFFF0200040000002900000029000000FFFFFFFFFFFFFFFF000000000000
               0000000D000000416C6C20646F776E6C6F6164732800000028000000FFFFFFFF
               FFFFFFFF000000000000000000060000005175657565732A0000002A000000FF
               FFFFFFFFFFFFFF0500000000000000010700000046696C746572730400000004
@@ -403,7 +403,8 @@ object Form1: TForm1
               2070726F67726573730300000003000000FFFFFFFFFFFFFFFF00000000000000
               00000700000053746F707065640300000003000000FFFFFFFFFFFFFFFF000000
               000000000000050000004572726F721200000012000000FFFFFFFFFFFFFFFF00
-              000000000000000006000000506175736564
+              0000000000000000060000005061757365641700000017000000FFFFFFFFFFFF
+              FFFF0000000000000000000A00000043617465676F72696573
             }
           end
         end
@@ -655,11 +656,11 @@ object Form1: TForm1
     object PairSplitterSide2: TPairSplitterSide
       Cursor = crArrow
       Left = 0
-      Height = 109
+      Height = 116
       Top = 275
       Width = 640
       ClientWidth = 640
-      ClientHeight = 109
+      ClientHeight = 116
       inline SynMemo1: TSynMemo
         AnchorSideLeft.Control = PairSplitterSide2
         AnchorSideTop.Control = PairSplitterSide2
@@ -669,7 +670,7 @@ object Form1: TForm1
         AnchorSideBottom.Side = asrBottom
         Cursor = crIBeam
         Left = 5
-        Height = 109
+        Height = 116
         Top = 0
         Width = 630
         BorderSpacing.Left = 5

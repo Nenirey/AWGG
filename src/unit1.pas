@@ -406,7 +406,7 @@ var
   shownotifi:boolean;
   hiddenotifi:integer;
   notifipos:integer;
-  ddowndir:string;
+  ddowndir:string='';
   clipboardmonitor:boolean;
   columnname,columnurl,columnpercent,columnsize,columncurrent,columnspeed,columnestimate, columndate, columndestiny,columnengine,columnparameters,columnuser,columnpass,columnstatus,columnid, columntries, columnuid, columntype, columnqueue, columncookie:integer;
   columncolaw,columnnamew,columnurlw,columnpercentw,columnsizew,columncurrentw,columnspeedw,columnestimatew,columndatew,columndestinyw,columnenginew,columnparametersw:integer;
@@ -510,7 +510,27 @@ categoryimages='Images';
 categorydocuments='Documents';
 categoryvideos='Videos';
 categorymusic='Music';
-abouttext='This program is free software under GNU GPL 2 license.'+#10#13+'Created By Reinier Romero Mir'+#13+'Email: nenirey@gmail.com'+#13+'Copyright© 2015'+#13+'The project uses the following third party resources:'+#10#13+'Silk icons set 1.3 by Mark James'+#13+'http://www.famfamfam.com/lab/icons/silk/'+#13+'Tango Icon Library'+#13+'http://tango.freedesktop.org/Tango_Icon_Library'+#13+'aria2'+#13+'http://aria2.sourceforge.net/'+#13+'Wget'+#13+'http://www.gnu.org/software/wget/'+#13+'cURL'+#13+'http://curl.haxx.se/'+#13+'Axel'+#13+'http://axel.alioth.debian.org/'+#10#13+'French translation: '+#10+'Tony O Gallos @ CodeTyphon Community';
+categoryothers='Others';
+categoryfilter='Categories';
+abouttext='This program is free software under GNU GPL 2 license.'+
+#10#13+'Created By Reinier Romero Mir'+
+#13+'Email: nenirey@gmail.com'+
+#13+'Copyright (c) 2015'+
+#13+'The project uses the following third party resources:'+
+#10#13+'Silk icons set 1.3 by Mark James'+
+#13+'http://www.famfamfam.com/lab/icons/silk/'+
+#13+'Tango Icon Library'+
+#13+'http://tango.freedesktop.org/Tango_Icon_Library'+
+#13+'aria2'+
+#13+'http://aria2.sourceforge.net/'+
+#13+'Wget'+
+#13+'http://www.gnu.org/software/wget/'
++#13+'cURL'+
+#13+'http://curl.haxx.se/'+
+#13+'Axel'+
+#13+'http://axel.alioth.debian.org/'+
+#10#13+'French translation: '+
+#10+'Tony O Gallos @ CodeTyphon Community';
 wgetdefarg1='[-c] Continue downloads.';
 wgetdefarg2='[-nH] No create host dir.';
 wgetdefarg3='[-nd] No create out dir.';
@@ -564,31 +584,44 @@ if not DirectoryExists(result) then
 CreateDir(result);
 end;
 
+function findcategorydir(catindex:integer;doc:string):boolean;
+var i,x:integer;
+    e:string;
+begin
+e:=UpperCase(Copy(doc,LastDelimiter('.',doc)+1,Length(doc)));
+result:=false;
+ for x:=2 to categoryextencions[catindex].Count-1 do
+ begin
+  if UpperCase(categoryextencions[catindex][x])=e then
+  result:=true;
+ end;
+end;
+
 procedure defaultcategory();
 begin
 SetLength(categoryextencions,6);
 categoryextencions[0]:=TStringList.Create;
-categoryextencions[0].Add(ddowndir+pathdelim+categorycompressed);
+categoryextencions[0].Add(ddowndir+pathdelim+'Compressed');
 categoryextencions[0].Add(categorycompressed);
 categoryextencions[0].AddStrings(['ZIP','RAR','7Z','7ZIP','CAB','GZ','TAR','XZ','BZ2','LZMA']);
 categoryextencions[1]:=TStringList.Create;
-categoryextencions[1].Add(ddowndir+pathdelim+categoryprograms);
+categoryextencions[1].Add(ddowndir+pathdelim+'Programs');
 categoryextencions[1].Add(categoryprograms);
 categoryextencions[1].AddStrings(['EXE','MSI','COM','BAT','PY','SH','HTA','JAR','APK','DMG']);
 categoryextencions[2]:=TStringList.Create;
-categoryextencions[2].Add(ddowndir+pathdelim+categoryimages);
+categoryextencions[2].Add(ddowndir+pathdelim+'Images');
 categoryextencions[2].Add(categoryimages);
 categoryextencions[2].AddStrings(['JPG','JPE','JPEG','PNG','GIF','BMP','ICO','CUR','ANI']);
 categoryextencions[3]:=TStringList.Create;
-categoryextencions[3].Add(ddowndir+pathdelim+categorydocuments);
+categoryextencions[3].Add(ddowndir+pathdelim+'Documents');
 categoryextencions[3].Add(categorydocuments);
 categoryextencions[3].AddStrings(['DOC','DOCX','XLS','XLSX','PPT','PPS','PPTX','PPSX','TXT','PDF','HTM','HTML','MHT','RTF','ODF','ODT','ODS','PHP']);
 categoryextencions[4]:=TStringList.Create;
-categoryextencions[4].Add(ddowndir+pathdelim+categoryvideos);
+categoryextencions[4].Add(ddowndir+pathdelim+'Videos');
 categoryextencions[4].Add(categoryvideos);
 categoryextencions[4].AddStrings(['MPG','MPE','MPEG','MP4','MOV','FLV','AVI','ASF','WMV','MKV','VOB','IFO','RMVB','DIVX','3GP','3GP2','SWF','MPV','M4V','WEBM','AMV']);
 categoryextencions[5]:=TStringList.Create;
-categoryextencions[5].Add(ddowndir+pathdelim+categorymusic);
+categoryextencions[5].Add(ddowndir+pathdelim+'Music');
 categoryextencions[5].Add(categorymusic);
 categoryextencions[5].AddStrings(['MP3','OGG','WAV','WMA','AMR','MIDI']);
 end;
@@ -731,6 +764,21 @@ end;
 Form1.TreeView1.Items[1].Expand(true);
 if (tmptreeindex>=0) and (tmptreeindex<Form1.TreeView1.Items.Count) then
 Form1.TreeView1.Items[tmptreeindex].Selected:=true;
+end;
+
+procedure categoryreload();
+var treeitem:TTreeNode;
+    i:integer;
+begin
+Form1.TreeView1.Items.TopLvlItems[3].DeleteChildren;
+for i:=0 to Length(categoryextencions)-1 do
+begin
+treeitem:=TTreeNode.Create(Form1.TreeView1.Items);
+treeitem:=Form1.TreeView1.Items.AddChild(Form1.TreeView1.Items.TopLvlItems[3],categoryextencions[i][1]);
+treeitem.ImageIndex:=23;
+treeitem.SelectedIndex:=23;
+end;
+Form1.TreeView1.Items.TopLvlItems[3].Expand(true);
 end;
 
 procedure resetqtmp();
@@ -1054,24 +1102,29 @@ for x:=0 to Form1.ListView1.Items.Count-1 do
     begin
     if Form1.ListView1.Items[x].SubItems[columnstatus]='1' then
     hilo[strtoint(Form1.ListView1.Items[x].SubItems[columnid])].thid:=x;
+    try
     if Assigned(trayicons[x]) then
         begin
+        trayicons[x].downindex:=x;
+        trayicons[x].Animate:=false;
         trayicons[x].Icon.Clear;
         trayicons[x].Visible:=false;
         trayicons[x].Hide;
-        trayicons[x].downindex:=x;
         end
         else
         begin
         trayicons[x]:=downtrayicon.Create(nil);
+        trayicons[x].downindex:=x;
+        trayicons[x].Animate:=false;
         trayicons[x].Visible:=false;
         trayicons[x].Icon.Clear;
         trayicons[x].Hide;
-        trayicons[x].downindex:=x;
         trayicons[x].OnMouseDown:=@trayicons[x].contextmenu;
         trayicons[x].PopUpMenu:=Form1.PopupMenu4;
         trayicons[x].OnDblClick:=@trayicons[x].showinmain;
         end;
+    except on e:exception do
+    end;
 if (Form1.ListView1.Items[x].SubItems[columnstatus]='1') and showdowntrayicon then
 trayicons[x].Show;
     end;
@@ -1174,10 +1227,11 @@ Form1.TreeView1.Items[1].Text:=rsform.queuestreename.Caption;
 Form1.TreeView1.Items[1].Items[0].Text:=rsform.queuemainname.Caption;
 Form1.TreeView1.Items[Form1.TreeView1.Items[1].Count+2].Text:=rsform.filtresname.Caption;
 Form1.TreeView1.Items[Form1.TreeView1.Items[1].Count+3].Text:=rsform.statuscomplete.Caption;
-Form1.TreeView1.Items[Form1.TreeView1.Items.Count-4].Text:=rsform.statusinprogres.Caption;
-Form1.TreeView1.Items[Form1.TreeView1.Items.Count-3].Text:=rsform.statusstoped.Caption;
-Form1.TreeView1.Items[Form1.TreeView1.Items.Count-2].Text:=rsform.statuserror.Caption;
-Form1.TreeView1.Items[Form1.TreeView1.Items.Count-1].Text:=rsform.statuspaused.Caption;
+Form1.TreeView1.Items[Form1.TreeView1.Items[1].Count+4].Text:=rsform.statusinprogres.Caption;
+Form1.TreeView1.Items[Form1.TreeView1.Items[1].Count+5].Text:=rsform.statusstoped.Caption;
+Form1.TreeView1.Items[Form1.TreeView1.Items[1].Count+6].Text:=rsform.statuserror.Caption;
+Form1.TreeView1.Items[Form1.TreeView1.Items[1].Count+7].Text:=rsform.statuspaused.Caption;
+Form1.TreeView1.Items.TopLvlItems[3].Text:=categoryfilter;
 Form3.TreeView1.Items[0].Text:=Form3.TabSheet1.Caption;
 Form3.TreeView1.Items[1].Text:=Form3.TabSheet2.Caption;
 Form3.TreeView1.Items[2].Text:=Form3.TabSheet3.Caption;
@@ -1818,6 +1872,7 @@ loadhistorymode:=2;
   titlegen();
   saveconfig();
   stimer[Form3.ComboBox4.ItemIndex].Enabled:=qtimerenable[Form3.ComboBox4.ItemIndex];
+  categoryreload();
 end;
 
 procedure configdlg();
@@ -2075,18 +2130,19 @@ if Form1.ListView1.Items[indice].SubItems[columnengine]='wget' then
 begin
 ////USAR un archivo de configuracion limpio
 {$IFDEF UNIX}
-try
-if FileExists(configpath+'.wgetrc')=false then
-begin
-wgetc:=TStringList.Create;
-wgetc.Add('#This is a WGET config file created by AWGG, please not change it.');
-wgetc.Add('passive_ftp = on');
-wgetc.Add('recursive = off');
-wgetc.SaveToFile(configpath+'.wgetrc');
-end;
-tmps.Add('--config='+ExtractShortPathName(configpath)+'.wgetrc');
-except on e:exception do
-end;
+//No trabaja en versiones antiguas de wget
+//try
+//if FileExists(configpath+'.wgetrc')=false then
+//begin
+//wgetc:=TStringList.Create;
+//wgetc.Add('#This is a WGET config file created by AWGG, please not change it.');
+//wgetc.Add('passive_ftp = on');
+//wgetc.Add('recursive = off');
+//wgetc.SaveToFile(configpath+'.wgetrc');
+//end;
+//tmps.Add('--config='+ExtractShortPathName(configpath)+'.wgetrc');
+//except on e:exception do
+//end;
 {$ENDIF}
 ////Parametros generales
 if WordCount(wgetargs,[' '])>0 then
@@ -2530,26 +2586,7 @@ SetLength(trayicons,thnum);
 if Assigned(trayicons[downid])=false then
 begin
 trayicons[downid]:=downtrayicon.Create(nil);
-//trayicons[downid].downtraymenu:=stdownmenu.Create(nil);
-//trayicons[downid].downtraymenu.menudownindex:=downid;
-//trayicons[downid].downtraymenu.Images:=Form1.ImageList1;
-//menudownitem:=TMenuItem.Create(nil);
-//menudownitem.Caption:='Start';
-//menudownitem.ImageIndex:=2;
-//menudownitem.OnClick:=@trayicons[downid].downtraymenu.ststartdown;
-//trayicons[downid].downtraymenu.Items.Add(menudownitem);
-//menudownitem:=TMenuItem.Create(nil);
-//menudownitem.Caption:='Stop';
-//menudownitem.ImageIndex:=3;
-//menudownitem.OnClick:=@trayicons[downid].downtraymenu.ststopdown;
-//trayicons[downid].downtraymenu.Items.Add(menudownitem);
-//menudownitem:=TMenuItem.Create(nil);
-//menudownitem.Caption:='Hide';
-//menudownitem.OnClick:=@trayicons[downid].downtraymenu.sthidedown;
-//trayicons[downid].downtraymenu.Items.Add(menudownitem);
-//trayicons[downid].PopUpMenu:=trayicons[downid].downtraymenu;
 trayicons[downid].Visible:=showdowntrayicon;
-//trayicons[downid].Show;
 trayicons[downid].downindex:=downid;
 trayicons[downid].OnDblClick:=@trayicons[downid].showinmain;
 trayicons[downid].OnMouseDown:=@trayicons[downid].contextmenu;
@@ -2558,7 +2595,6 @@ end
 else
 begin
 trayicons[downid].Visible:=showdowntrayicon;
-//trayicons[downid].Show;
 end;
 hilo[downid]:=DownThread.Create(true,tmps);
 SetLength(hilo[downid].wout,thnum);
@@ -2940,7 +2976,6 @@ if Form1.ListView1.Items[thid].SubItems[columnengine] = 'lftp' then
 begin
 //  LFTP UPDATE ****
 end;
-{ TODO 2 -oSegator -cinterface : Homogenizar la salida de los deferentes motores de descarga. }
 if descargado<>'' then
 Form1.ListView1.Items[thid].SubItems[columncurrent]:=AnsiReplaceStr(descargado,LineEnding,'');
 if porciento<>'' then
@@ -3033,6 +3068,8 @@ porciento:=' '+porciento;
 icono.Canvas.TextOut(3,4,porciento);
 trayicons[thid].Icon.Canvas.Brush.Color:=clWhite;
 trayicons[thid].Icon.Assign(icono);
+trayicons[thid].Animate:=true;///////////Esto es necesario para Qt si no el icono no se actualiza
+trayicons[thid].AnimateInterval:=0;//////y un intervalo que no parpadee
 trayicons[thid].Hint:=Form1.ListView1.Items[thid].SubItems[columnname]+' '+velocidad;
 icono.Destroy;
 end;
@@ -3460,6 +3497,7 @@ Form1.ListView1.Items[thid].ImageIndex:=54;
  end;
  Form1.Timer3.Enabled:=true;
  end;
+trayicons[thid].Animate:=false;
 trayicons[thid].Icon.Clear;
 trayicons[thid].Visible:=false;
 end
@@ -3846,9 +3884,6 @@ end;
 
 
 procedure TForm1.FormCreate(Sender: TObject);
-{$IFDEF WINDOWS}
-var registro:TRegistry;
-{$ENDIF}
 begin
 firsttime:=true;
 //Tal vez se puede cambiar el orden de las columnas dinamicamente
@@ -3927,6 +3962,7 @@ lftprutebin:=ExtractFilePath(Application.Params[0])+'lftp.exe';
 {$ENDIF}
 loadmydownloads();
 loadconfig();
+categoryreload();
 SetDefaultLang(deflanguage);
 titlegen();
 Form1.Timer6.Enabled:=true;
@@ -4681,7 +4717,10 @@ begin
 if Form1.ListView1.ItemIndex<>-1 then
 begin
   if DirectoryExists(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]) then
-  OpenURL(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny])
+  begin
+ if not OpenURL(UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny])) then
+ OpenURL(ExtractShortPathName(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]));
+  end
   else
   ShowMessage(rsForm.msgnoexistfolder.Caption+' '+Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]);
 end;
@@ -4775,14 +4814,14 @@ begin
   if Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columntype]='0' then
   begin
   if FileExists(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])) then
-  OpenURL(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname]))
+  OpenURL(ExtractShortPathName(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])))
   else
   ShowMessage(rsForm.msgfilenoexist.Caption);
   end;
   if Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columntype]='1' then
   begin
   if FileExists(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html') then
-  OpenURL(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html')
+  OpenURL(ExtractShortPathName(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html'))
   else
   ShowMessage(rsForm.msgfilenoexist.Caption);
   end;
@@ -5125,6 +5164,9 @@ var downitem:TListItem;
     fname:string='';
     url:string='';
     silent:boolean=false;
+    {$IFDEF WINDOWS}
+    registro:TRegistry;
+    {$ENDIF}
 begin
 newdownqueues();
 Form1.Timer6.Enabled:=false;
@@ -5149,18 +5191,23 @@ deflanguage:=Form5.ComboBox1.Text;
 end;
 SetDefaultLang(deflanguage);
 updatelangstatus();
-ddowndir:=GetUserDir()+folderdownname;
+if ddowndir='' then //Para version portable
+begin
+ddowndir:=GetUserDir()+'Downloads';
 {$IFDEF WINDOWS}
   registro:=TRegistry.Create;
   registro.RootKey:=HKEY_CURRENT_USER;
   registro.OpenKey('Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\',false);
-  ddowndir:=registro.ReadString('Personal')+PathDelim+folderdownname;
+  ddowndir:=registro.ReadString('Personal')+PathDelim+'Downloads';
   registro.CloseKey;
   registro.Free;
 {$ENDIF}
+end;
+logpath:=ddowndir+pathdelim+'logs';
 if not DirectoryExists(ddowndir) then
 CreateDir(ddowndir);
 defaultcategory();
+categoryreload();
 end;
 updatelangstatus();
 titlegen();
@@ -5428,8 +5475,8 @@ if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tm
 tmpclip:='';
 Form7.Edit2.Text:=ParseURI(Form2.Edit1.Text).Document;
 Form7.DirectoryEdit1.Text:=ddowndir+pathdelim+'Sites';
-if not DirectoryExists(ddowndir+pathdelim+'sites') then
-CreateDir(ddowndir+pathdelim+'sites');
+if not DirectoryExists(ddowndir+pathdelim+'Sites') then
+CreateDir(ddowndir+pathdelim+'Sites');
 Form7.Edit2.Text:='';
 Form7.Edit3.Text:='';
 Form7.Edit4.Text:='';
@@ -5809,7 +5856,23 @@ if (Form1.TreeView1.SelectionCount>0) then
   hilo[strtoint(Form1.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
   end;
   end;
-
+  end;
+  3:begin//categorias
+  for i:=0 to Form1.ListView1.Items.Count-1 do
+  begin
+  if findcategorydir(Form1.TreeView1.Selected.Index,Form1.ListView1.Items[i].SubItems[columnname]) then
+  begin
+  vitem:=TListItem.Create(Form1.ListView2.Items);
+  vitem.Caption:=Form1.ListView1.Items[i].Caption;
+  vitem.ImageIndex:=Form1.ListView1.Items[i].ImageIndex;
+  vitem.SubItems.AddStrings(Form1.ListView1.Items[i].SubItems);
+  vitem.Selected:=Form1.ListView1.Items[i].Selected;
+  Form1.ListView2.Items.AddItem(vitem);
+  vitem.Selected:=Form1.ListView1.Items[i].Selected;
+  if Form1.ListView1.Items[i].SubItems[columnstatus]='1' then
+  hilo[strtoint(Form1.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
+  end;
+  end;
   end;
   end;
  end

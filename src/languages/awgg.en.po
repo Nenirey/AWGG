@@ -1664,6 +1664,10 @@ msgstr "Compressed"
 msgid "Documents"
 msgstr "Documents"
 
+#: unit1.categoryfilter
+msgid "Categories"
+msgstr ""
+
 #: unit1.categoryimages
 msgid "Images"
 msgstr "Images"
@@ -1671,6 +1675,10 @@ msgstr "Images"
 #: unit1.categorymusic
 msgid "Music"
 msgstr "Music"
+
+#: unit1.categoryothers
+msgid "Others"
+msgstr ""
 
 #: unit1.categoryprograms
 msgid "Programs"

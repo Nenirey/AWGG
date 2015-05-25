@@ -143,6 +143,7 @@ end;
 
 procedure TForm7.SpeedButton2Click(Sender: TObject);
 begin
+  Form7.FormStyle:=fsNormal;
   Form3.PageControl1.ActivePageIndex:=1;
   Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
@@ -150,6 +151,7 @@ begin
   Form3.ComboBox4Change(nil);
   Form3.ShowModal;
   Form7.ComboBox1.ItemIndex:=Form3.ComboBox4.ItemIndex;
+  Form7.FormStyle:=fsSystemStayOnTop;
 end;
 
 procedure TForm7.Button1Click(Sender: TObject);
