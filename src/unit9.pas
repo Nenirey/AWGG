@@ -110,16 +110,16 @@ uses Unit1, Unit3;
 
 procedure validatesite();
 begin
-if (Length(Form7.Edit2.Text)>0) and (Length(Form7.Edit1.Text)>0) then
-begin
-Form7.Button1.Enabled:=true;
-Form7.Button4.Enabled:=true;
-end
-else
-begin
-Form7.Button1.Enabled:=false;
-Form7.Button4.Enabled:=false;
-end;
+  if (Length(Form7.Edit2.Text)>0) and (Length(Form7.Edit1.Text)>0) then
+  begin
+    Form7.Button1.Enabled:=true;
+    Form7.Button4.Enabled:=true;
+  end
+  else
+  begin
+    Form7.Button1.Enabled:=false;
+    Form7.Button4.Enabled:=false;
+  end;
 end;
 
 procedure TForm7.FormCreate(Sender: TObject);
@@ -130,15 +130,16 @@ begin
 end;
 
 procedure TForm7.SpeedButton1Click(Sender: TObject);
-var i:integer;
+var
+  i:integer;
 begin
-newqueue();
+  newqueue();
   Form7.ComboBox1.Items.Clear;
-for i:=0 to Length(queues)-1 do
-    begin
+  for i:=0 to Length(queues)-1 do
+  begin
     Form7.ComboBox1.Items.Add(queuenames[i]);
-    end;
-Form7.ComboBox1.ItemIndex:=Length(queues)-1;
+  end;
+  Form7.ComboBox1.ItemIndex:=Length(queues)-1;
 end;
 
 procedure TForm7.SpeedButton2Click(Sender: TObject);
@@ -169,18 +170,18 @@ end;
 procedure TForm7.Button3Click(Sender: TObject);
 begin
   if Form7.PageControl1.TabIndex>0 then
-  Form7.PageControl1.TabIndex:=Form7.PageControl1.TabIndex-1;
+    Form7.PageControl1.TabIndex:=Form7.PageControl1.TabIndex-1;
   if Form7.PageControl1.TabIndex=0 then
-  Form7.Button3.Enabled:=false;
+    Form7.Button3.Enabled:=false;
   Form7.Button4.Enabled:=true;
 end;
 
 procedure TForm7.Button4Click(Sender: TObject);
 begin
   if Form7.PageControl1.TabIndex<Form7.PageControl1.PageCount-1 then
-  Form7.PageControl1.TabIndex:=Form7.PageControl1.TabIndex+1;
+    Form7.PageControl1.TabIndex:=Form7.PageControl1.TabIndex+1;
   if (Form7.PageControl1.TabIndex=Form7.PageControl1.PageCount-1) then
-  Form7.Button4.Enabled:=false;
+    Form7.Button4.Enabled:=false;
   Form7.Button3.Enabled:=true;
 end;
 

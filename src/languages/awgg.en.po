@@ -1666,7 +1666,7 @@ msgstr "Documents"
 
 #: unit1.categoryfilter
 msgid "Categories"
-msgstr ""
+msgstr "Categories"
 
 #: unit1.categoryimages
 msgid "Images"

@@ -68,7 +68,7 @@ end;
 
 procedure TForm8.FormCreate(Sender: TObject);
 begin
-ok:=false;
+  ok:=false;
 end;
 
 procedure TForm8.FormShow(Sender: TObject);

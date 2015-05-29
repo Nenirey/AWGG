@@ -81,72 +81,46 @@ implementation
 uses Unit1,Unit3;
 {$R *.lfm}
 
-{ TForm2 }
-{function destinyexists(destiny:string):boolean;
-var ni:integer;
-    pathnodelim:string;
-    downexists:boolean;
-begin
-downexists:=false;
-for ni:=0 to Form1.ListView1.Items.Count-1 do
-begin
-pathnodelim:=Form1.ListView1.Items[ni].SubItems[columndestiny];
-if ExpandFileName(pathnodelim+pathdelim+Form1.ListView1.Items[ni].SubItems[columnname]) = ExpandFileName(destiny) then
-downexists:=true;
-end;
-result:=downexists;
-end;}
-{function urlexists(url:string):boolean;
-var ni:integer;
-    uexists:boolean;
-begin
-uexists:=false;
-for ni:=0 to Form1.ListView1.Items.Count-1 do
-begin
-if Form1.ListView1.Items[ni].SubItems[columnurl] = url then
-uexists:=true;
-end;
-result:=uexists;
-end;}
 function checkandclose(auto:boolean=false):boolean;
-var found:boolean;
+var
+  found:boolean;
 begin
-accept:=true;
-if (Form2.Edit3.Text<>'') and (Form2.Button1.Visible=true) then
-begin
-Form6.RadioButton2.Checked:=true;
-found:=destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text);
-while (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text)) or ((found) and (Form6.RadioButton1.Checked=false)) do
-begin
-found:=destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text);
-if (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text)) or ((found) and (Form6.RadioButton1.Checked=false)) then
-begin
-Form6.RadioButton2.Checked:=true;
-Form6.Edit1.Text:='_'+Form2.Edit3.Text;
-while (destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text)) or (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text)) do
-Form6.Edit1.Text:='_'+Form6.Edit1.Text;
-Form6.Label4.Caption:=Form2.Edit3.Text;
-Form6.Label3.Caption:=Form2.DirectoryEdit1.Text;
-if auto=false then
-begin
-Form6.ShowModal;
-end
-else
-accept:=true;
-if accept=true then
-Form2.Edit3.Text:=Form6.Edit1.Text
-else
-break;
-end;
-end;
-end;
-if accept=true then
-begin
-Form2.Close;
-result:=true;
-end
-else
-result:=false;
+  accept:=true;
+  if (Form2.Edit3.Text<>'') and (Form2.Button1.Visible=true) then
+  begin
+    Form6.RadioButton2.Checked:=true;
+    found:=destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text);
+    while (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text)) or ((found) and (Form6.RadioButton1.Checked=false)) do
+    begin
+      found:=destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text);
+      if (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text)) or ((found) and (Form6.RadioButton1.Checked=false)) then
+      begin
+        Form6.RadioButton2.Checked:=true;
+        Form6.Edit1.Text:='_'+Form2.Edit3.Text;
+        while (destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text)) or (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text)) do
+          Form6.Edit1.Text:='_'+Form6.Edit1.Text;
+        Form6.Label4.Caption:=Form2.Edit3.Text;
+        Form6.Label3.Caption:=Form2.DirectoryEdit1.Text;
+        if auto=false then
+        begin
+         Form6.ShowModal;
+        end
+        else
+         accept:=true;
+        if accept=true then
+          Form2.Edit3.Text:=Form6.Edit1.Text
+        else
+         break;
+      end;
+    end;
+  end;
+  if accept=true then
+  begin
+    Form2.Close;
+    result:=true;
+  end
+  else
+    result:=false;
 end;
 
 procedure TForm2.Button2Click(Sender: TObject);
@@ -157,27 +131,27 @@ end;
 
 procedure TForm2.Button3Click(Sender: TObject);
 begin
-if Form2.ComboBox1.ItemIndex<>-1 then
+  if Form2.ComboBox1.ItemIndex<>-1 then
   begin
-  agregar:=true;
-  iniciar:=true;
-  checkandclose();
+    agregar:=true;
+    iniciar:=true;
+    checkandclose();
   end
-else
-ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
+  else
+    ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
 end;
 
 procedure TForm2.Button4Click(Sender: TObject);
 begin
-if Form2.ComboBox1.ItemIndex<>-1 then
+  if Form2.ComboBox1.ItemIndex<>-1 then
   begin
-  agregar:=true;
-  cola:=false;
-  iniciar:=false;
-  checkandclose();
+    agregar:=true;
+    cola:=false;
+    iniciar:=false;
+    checkandclose();
   end
-else
-ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
+  else
+    ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
 end;
 
 procedure TForm2.Edit1Change(Sender: TObject);
@@ -187,10 +161,10 @@ end;
 
 procedure TForm2.Edit3Change(Sender: TObject);
 begin
-case defaultdirmode of
-1:Form2.DirectoryEdit1.Text:=ddowndir;
-2:Form2.DirectoryEdit1.Text:=suggestdir(Form2.Edit3.Text);
-end;
+  case defaultdirmode of
+    1:Form2.DirectoryEdit1.Text:=ddowndir;
+    2:Form2.DirectoryEdit1.Text:=suggestdir(Form2.Edit3.Text);
+  end;
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
@@ -205,9 +179,9 @@ procedure TForm2.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState
 begin
   //ShowMessage(inttostr(Key));
   Case Key of
-  13:Form2.Button3Click(nil);
-  27:Form2.Button2Click(nil);
-  113:Form2.Button1Click(nil);
+    13:Form2.Button3Click(nil);
+    27:Form2.Button2Click(nil);
+    113:Form2.Button1Click(nil);
   end;
 end;
 
@@ -225,15 +199,16 @@ begin
 end;
 
 procedure TForm2.SpeedButton1Click(Sender: TObject);
-var i:integer;
+var
+  i:integer;
 begin
-newqueue();
+  newqueue();
   Form2.ComboBox2.Items.Clear;
-for i:=0 to Length(queues)-1 do
-    begin
+  for i:=0 to Length(queues)-1 do
+  begin
     Form2.ComboBox2.Items.Add(queuenames[i]);
-    end;
-Form2.ComboBox2.ItemIndex:=Length(queues)-1;
+  end;
+  Form2.ComboBox2.ItemIndex:=Length(queues)-1;
 end;
 
 procedure TForm2.SpeedButton2Click(Sender: TObject);
@@ -250,27 +225,27 @@ end;
 
 procedure TForm2.Button1Click(Sender: TObject);
 begin
-if Form2.ComboBox1.ItemIndex<>-1 then
+  if Form2.ComboBox1.ItemIndex<>-1 then
   begin
-  agregar:=true;
-  cola:=true;
-  iniciar:=false;
-  checkandclose();
+    agregar:=true;
+    cola:=true;
+    iniciar:=false;
+    checkandclose();
   end
-else
-ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
+  else
+    ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
 end;
 
 procedure TForm2.BitBtn1Click(Sender: TObject);
 begin
   if Form2.ComboBox1.ItemIndex<>-1 then
   begin
-  agregar:=true;
-  iniciar:=true;
-  checkandclose();
+    agregar:=true;
+    iniciar:=true;
+    checkandclose();
   end
-else
-ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
+  else
+    ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
 end;
 
 end.

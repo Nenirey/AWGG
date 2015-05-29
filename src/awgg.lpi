@@ -18,8 +18,8 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="3"/>
-      <RevisionNr Value="7"/>
-      <BuildNr Value="2475"/>
+      <RevisionNr Value="8"/>
+      <BuildNr Value="2479"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="11">
@@ -72,7 +72,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux;/usr/lib/codetyphon/binLibraries/i386-linux-qt4"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux/;/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -110,7 +110,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux;/usr/lib/codetyphon/binLibraries/i386-linux-qt4"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux/;/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -185,7 +185,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -223,7 +223,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -261,7 +261,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -305,7 +305,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux-gtk3"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux-gtk3/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -387,7 +387,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux;/usr/lib/codetyphon/binLibraries/i386-linux-qt4"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux/;/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>

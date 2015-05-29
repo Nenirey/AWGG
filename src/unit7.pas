@@ -69,9 +69,10 @@ procedure TdlgForm.FormKeyDown(Sender: TObject; var Key: Word;
 begin
   //ShowMessage(inttostr(Key));
   case Key of
-  27:begin
-    dlgcuestion:=false;
-    dlgForm.Close;
+    27:
+    begin
+      dlgcuestion:=false;
+      dlgForm.Close;
     end;
   end;
 end;

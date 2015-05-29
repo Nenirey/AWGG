@@ -15,10 +15,10 @@ object Form8: TForm8
     AnchorSideTop.Control = Edit1
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Edit1
-    Left = 46
-    Height = 13
-    Top = 34
-    Width = 30
+    Left = 37
+    Height = 15
+    Top = 35
+    Width = 39
     Anchors = [akTop, akRight]
     Caption = 'Value:'
     ParentColor = False
@@ -30,7 +30,7 @@ object Form8: TForm8
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 76
-    Height = 21
+    Height = 25
     Top = 30
     Width = 104
     Anchors = [akTop, akRight]

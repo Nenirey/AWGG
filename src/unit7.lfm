@@ -11,7 +11,7 @@ object dlgForm: TdlgForm
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.4.0.2'
+  LCLVersion = '1.4.0.4'
   object dlgbtnyes: TButton
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
@@ -20,10 +20,10 @@ object dlgForm: TdlgForm
     AnchorSideRight.Control = dlgbtnno
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 315
-    Height = 23
-    Top = 135
-    Width = 43
+    Left = 339
+    Height = 25
+    Top = 133
+    Width = 30
     Anchors = [akTop, akRight]
     AutoSize = True
     BorderSpacing.Right = 10
@@ -40,10 +40,10 @@ object dlgForm: TdlgForm
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 368
-    Height = 23
-    Top = 135
-    Width = 39
+    Left = 379
+    Height = 25
+    Top = 133
+    Width = 28
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Top = 30
