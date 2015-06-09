@@ -1677,7 +1677,7 @@ msgstr "Documents"
 
 #: unit1.categoryfilter
 msgid "Categories"
-msgstr "Catégories"
+msgstr ""
 
 #: unit1.categoryimages
 msgid "Images"
@@ -1743,3 +1743,4 @@ msgstr "Démarrer la file d'attente"
 msgctxt "unit6.stopqueuesystray"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
+

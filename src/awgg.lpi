@@ -19,7 +19,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="3"/>
       <RevisionNr Value="8"/>
-      <BuildNr Value="2479"/>
+      <BuildNr Value="2698"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="11">
@@ -110,7 +110,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux/;/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
+            <Libraries Value="C:/codetyphon/binLibraries/i386-linux"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>

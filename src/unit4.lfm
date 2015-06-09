@@ -1,7 +1,7 @@
 object Form4: TForm4
-  Left = 380
+  Left = 222
   Height = 389
-  Top = 150
+  Top = 147
   Width = 570
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -35,10 +35,10 @@ object Form4: TForm4
     AnchorSideRight.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 272
-    Height = 25
-    Top = 359
-    Width = 27
+    Left = 266
+    Height = 23
+    Top = 361
+    Width = 39
     Anchors = [akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Bottom = 5
@@ -137,10 +137,10 @@ object Form4: TForm4
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Button1
     Cursor = crHandPoint
-    Left = 262
+    Left = 251
     Height = 1
-    Top = 341
-    Width = 308
+    Top = 344
+    Width = 319
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 20
@@ -160,9 +160,9 @@ object Form4: TForm4
     AnchorSideRight.Control = Button1
     AnchorSideBottom.Control = Button1
     Left = 200
-    Height = 15
-    Top = 334
-    Width = 57
+    Height = 13
+    Top = 338
+    Width = 46
     Alignment = taRightJustify
     Anchors = [akLeft, akBottom]
     BorderSpacing.Top = 5
@@ -176,7 +176,7 @@ object Form4: TForm4
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Label4
     Left = 200
-    Height = 324
+    Height = 328
     Top = 5
     Width = 365
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -192,7 +192,7 @@ object Form4: TForm4
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Memo1
     Left = 0
-    Height = 15
+    Height = 13
     Top = 78
     Width = 200
     Alignment = taCenter

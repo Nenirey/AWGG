@@ -1666,7 +1666,7 @@ msgstr "Documentos"
 
 #: unit1.categoryfilter
 msgid "Categories"
-msgstr "Categorías"
+msgstr "Categorias"
 
 #: unit1.categoryimages
 msgid "Images"
@@ -1678,7 +1678,7 @@ msgstr "Musica"
 
 #: unit1.categoryothers
 msgid "Others"
-msgstr ""
+msgstr "Otros"
 
 #: unit1.categoryprograms
 msgid "Programs"

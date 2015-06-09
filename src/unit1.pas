@@ -25,9 +25,10 @@ unit Unit1;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, SynMemo, SynHighlighterAny,
-  synhighlighterunixshellscript, UniqueInstance, Forms, Controls, Graphics,
-  Dialogs, StdCtrls, ExtCtrls, Menus, Spin, ComCtrls, DateUtils, Process,
+  Classes, SysUtils, FileUtil, SynHighlighterAny,
+  synhighlighterunixshellscript, SynEdit, UniqueInstance, Forms, Controls,
+  Graphics, Dialogs, StdCtrls, ExtCtrls, Menus, Spin, ComCtrls, DateUtils,
+  Process,
   {$IFDEF WINDOWS}Registry, MMSystem,{$ENDIF} Math, Unit2, Unit3, Unit4, Unit5, Unit6, Unit7, Unit9, Clipbrd, PopupNotifier,
   strutils, LCLType, LCLIntf, types, versionitis, INIFiles, LCLVersion,
   PairSplitter, {DefaultTranslator}LCLTranslator, URIParser;
@@ -180,7 +181,7 @@ end;
     ProgressBar1: TProgressBar;
     SaveDialog1: TSaveDialog;
     SpinEdit1: TSpinEdit;
-    SynMemo1: TSynMemo;
+    SynEdit1: TSynEdit;
     SynUNIXShellScriptSyn1: TSynUNIXShellScriptSyn;
     Timer1: TTimer;
     Timer3: TTimer;
@@ -225,6 +226,7 @@ end;
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
+    procedure ListView1Click(Sender: TObject);
     procedure ListView1ColumnClick(Sender: TObject; Column: TListColumn);
     procedure ListView1ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
@@ -233,6 +235,7 @@ end;
       Shift: TShiftState);
     procedure ListView1SelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
+    procedure ListView2Click(Sender: TObject);
     procedure ListView2SelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure MenuItem10Click(Sender: TObject);
@@ -344,6 +347,7 @@ end;
       Y: Integer);
     procedure TreeView1ContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
+    procedure TreeView1DblClick(Sender: TObject);
     procedure TreeView1Edited(Sender: TObject; Node: TTreeNode; var S: string);
     procedure TreeView1Editing(Sender: TObject; Node: TTreeNode;
       var AllowEdit: Boolean);
@@ -415,7 +419,7 @@ var
   speedlimit:string;
   maxgdown,dtries,dtimeout,ddelay:integer;
   showstdout:boolean;
-  wgetrutebin,aria2crutebin,curlrutebin,axelrutebin,lftprutebin:string;
+  wgetrutebin,aria2crutebin,curlrutebin,axelrutebin,lftprutebin:UTF8string;
   wgetargs,aria2cargs,curlargs,axelargs,lftpargs:ansistring;
   wgetdefcontinue,wgetdefnh,wgetdefnd,wgetdefncert:boolean;
   aria2cdefcontinue,aria2cdefallocate:boolean;
@@ -484,6 +488,7 @@ var
   showdowntrayicon:boolean;
   numtraydown:integer;
   categoryextencions:array of TStringList;
+  dotherdowndir:string;
   useglobaluseragent:boolean;
   globaluseragent:string;
   function urlexists(url:string):boolean;
@@ -573,8 +578,10 @@ var
   i,x:integer;
   e:string;
 begin
+  if not DirectoryExists(ddowndir) then
+    CreateDir(UTF8ToSys(ddowndir));
   e:=UpperCase(Copy(doc,LastDelimiter('.',doc)+1,Length(doc)));
-  result:=ddowndir+pathdelim+'Others';
+  result:=dotherdowndir;
   for i:=0 to Length(categoryextencions)-1 do
   begin
     for x:=2 to categoryextencions[i].Count-1 do
@@ -584,12 +591,29 @@ begin
     end;
   end;
   if not DirectoryExists(result) then
-    CreateDir(result);
+    SysUtils.CreateDir(UTF8ToSys(result));
+end;
+
+function findcategoryall(doc:string):boolean;
+var
+  i,x:integer;
+  e:string;
+begin
+  e:=UpperCase(Copy(doc,LastDelimiter('.',doc)+1,Length(doc)));
+  result:=false;
+  for i:=0 to Length(categoryextencions)-1 do
+  begin
+    for x:=2 to categoryextencions[i].Count-1 do
+    begin
+      if UpperCase(categoryextencions[i][x])=e then
+        result:=true;
+    end;
+  end;
 end;
 
 function findcategorydir(catindex:integer;doc:string):boolean;
 var
-  i,x:integer;
+  x:integer;
   e:string;
 begin
 e:=UpperCase(Copy(doc,LastDelimiter('.',doc)+1,Length(doc)));
@@ -796,6 +820,10 @@ begin
     treeitem.ImageIndex:=23;
     treeitem.SelectedIndex:=23;
   end;
+  treeitem:=TTreeNode.Create(Form1.TreeView1.Items);
+  treeitem:=Form1.TreeView1.Items.AddChild(Form1.TreeView1.Items.TopLvlItems[3],categoryothers);
+  treeitem.ImageIndex:=23;
+  treeitem.SelectedIndex:=23;
   Form1.TreeView1.Items.TopLvlItems[3].Expand(true);
 end;
 
@@ -1284,6 +1312,7 @@ begin
   Form3.TreeView1.Items[12].Text:=Form3.TabSheet15.Caption;
   Form3.TreeView1.Items[13].Text:=Form3.TabSheet16.Caption;
   Form3.TreeView1.Items[14].Text:=Form3.TabSheet18.Caption;
+  Form1.TreeView1.Items.TopLvlItems[3][Form1.TreeView1.Items.TopLvlItems[3].SubTreeCount-2].Text:=categoryothers;
   Form3.Panel1.Caption:=Form3.PageControl1.Pages[Form3.PageControl1.TabIndex].Caption;
   Form3.CheckGroup5.Items[0]:=rsForm.sunday.Caption;
   Form3.CheckGroup5.Items[1]:=rsForm.monday.Caption;
@@ -1316,31 +1345,31 @@ begin
   Form2.ComboBox1.Items.Clear;
   Form3.ComboBox3.Items.Clear;
 
-  if (FileExists(aria2crutebin)) then
+  if FileExistsUTF8(aria2crutebin) then
   begin
     Form2.ComboBox1.Items.Add('aria2c');
     Form3.ComboBox3.Items.Add('aria2c');
   end;
 
-  if (FileExists(axelrutebin)) then
+  if FileExistsUTF8(axelrutebin) then
   begin
     Form2.ComboBox1.Items.Add('axel');
     Form3.ComboBox3.Items.Add('axel');
   end;
 
-  if (FileExists(curlrutebin)) then
+  if FileExistsUTF8(curlrutebin) then
   begin
     Form2.ComboBox1.Items.Add('curl');
     Form3.ComboBox3.Items.Add('curl');
   end;
 
-  if (FileExists(wgetrutebin)) then
+  if FileExistsUTF8(wgetrutebin) then
   begin
     Form2.ComboBox1.Items.Add('wget');
     Form3.ComboBox3.Items.Add('wget');
   end;
 
-  //if (FileExists(lftprutebin)) then
+  //if FileExistsUTF8(lftprutebin) then
   //begin
     //Form2.ComboBox1.Items.Add('lftp');
     //Form3.ComboBox3.Items.Add('lftp');
@@ -1447,7 +1476,7 @@ begin
   maxgdown:=Form1.SpinEdit1.Value;
   showstdout:=Form1.MenuItem53.Checked;
   showgridlines:=Form1.ListView1.GridLines;
-  showcommandout:=Form1.SynMemo1.Visible;
+  showcommandout:=Form1.SynEdit1.Visible;
   showdowntrayicon:=Form1.MenuItem4.Checked;
   if showcommandout then
     splitpos:=Form1.PairSplitter1.Position;
@@ -1608,6 +1637,7 @@ begin
     hiddenotifi:=iniconfigfile.ReadInteger('Config','hiddenotifi',5);
     clipboardmonitor:=iniconfigfile.ReadBool('Config','clipboardmonitor',true);
     ddowndir:=iniconfigfile.ReadString('Config','ddowndir',ddowndir);
+    dotherdowndir:=ddowndir+pathdelim+'Others';
     columncolaw:=iniconfigfile.ReadInteger('Config','columncolaw',90);
     if columncolaw<10 then columncolaw:=90;
       columnnamew:=iniconfigfile.ReadInteger('Config','columnnamew',110);
@@ -1763,7 +1793,7 @@ begin
     Form1.FloatSpinEdit1.Value:=strtofloat(speedlimit);
     Form1.SpinEdit1.Value:=maxgdown;
     Form1.MenuItem53.Checked:=showstdout;
-    Form1.SynMemo1.Visible:=showcommandout;
+    Form1.SynEdit1.Visible:=showcommandout;
     Form1.MenuItem53.Checked:=showcommandout;
     Form1.MenuItem53.Enabled:=showcommandout;
     Form1.MenuItem33.Checked:=showcommandout;
@@ -1782,28 +1812,29 @@ begin
       Form1.PairSplitter1.Position:=Form1.PairSplitter1.Height;
     Form1.PairSplitter2.Position:=splithpos;
     {$IFDEF UNIX}
-      if not FileExists(wgetrutebin) then
+      if not FileExistsUTF8(wgetrutebin) then
         wgetrutebin:='/usr/bin/wget';
-      if not FileExists(wgetrutebin) then
+      if not FileExistsUTF8(wgetrutebin) then
         wgetrutebin:=ExtractFilePath(Application.Params[0])+'wget';
-      if not FileExists(aria2crutebin) then
+      if not FileExistsUTF8(aria2crutebin) then
         aria2crutebin:='/usr/bin/aria2c';
-      if not FileExists(aria2crutebin) then
+      if not FileExistsUTF8(aria2crutebin) then
         aria2crutebin:=ExtractFilePath(Application.Params[0])+'aria2c';
-      if not FileExists(curlrutebin) then
+      if not FileExistsUTF8(curlrutebin) then
         curlrutebin:='/usr/bin/curl';
-      if not FileExists(curlrutebin) then
+      if not FileExistsUTF8(curlrutebin) then
         curlrutebin:=ExtractFilePath(Application.Params[0])+'curl';
-      if not FileExists(axelrutebin) then
+      if not FileExistsUTF8(axelrutebin) then
         axelrutebin:='/usr/bin/axel';
-      if not FileExists(axelrutebin) then
+      if not FileExistsUTF8(axelrutebin) then
         axelrutebin:=ExtractFilePath(Application.Params[0])+'axel';
-      if not FileExists(lftprutebin) then
+      if not FileExistsUTF8(lftprutebin) then
         lftprutebin:='/usr/bin/lftp';
-      if not FileExists(lftprutebin) then
+      if not FileExistsUTF8(lftprutebin) then
         lftprutebin:=ExtractFilePath(Application.Params[0])+'lftp';
     {$ENDIF}
     {$IFDEF WINDOWS}
+      {$IF FPC_FULLVERSION<=20604}
       if not FileExists(wgetrutebin) then
         wgetrutebin:=ExtractFilePath(Application.Params[0])+'wget.exe';
       if not FileExists(aria2crutebin) then
@@ -1814,6 +1845,18 @@ begin
         axelrutebin:=ExtractFilePath(Application.Params[0])+'axel.exe';
       if not FileExists(lftprutebin) then
         lftprutebin:=ExtractFilePath(Application.Params[0])+'lftp.exe';
+      {$ELSE}
+      if not FileExistsUTF8(wgetrutebin) then
+        wgetrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'wget.exe');
+      if not FileExistsUTF8(aria2crutebin) then
+        aria2crutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'aria2c.exe');
+      if not FileExistsUTF8(curlrutebin) then
+        curlrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'curl.exe');
+      if not FileExistsUTF8(axelrutebin) then
+        axelrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'axel.exe');
+      if not FileExistsUTF8(lftprutebin) then
+        lftprutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'lftp.exe');
+      {$ENDIF}
     {$ENDIF}
     Form1.Timer4.Enabled:=clipboardmonitor;
   except on e:exception do
@@ -1839,6 +1882,7 @@ begin
   clipboardmonitor:=Form3.CheckBox6.Checked;
   Form1.Timer4.Enabled:=clipboardmonitor;
   ddowndir:=Form3.DirectoryEdit1.Text;
+  dotherdowndir:=ddowndir+pathdelim+'Others';
   wgetrutebin:=Form3.FiLeNameEdit1.Text;
   aria2crutebin:=Form3.FiLeNameEdit2.Text;
   curlrutebin:=Form3.FiLeNameEdit3.Text;
@@ -2016,7 +2060,7 @@ begin
         end;
     end;
     Form3.ComboBox2.Items.Clear;
-    if FindFirst(ExtractFilePath(Application.Params[0])+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
+    if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
     begin
       Repeat
         try
@@ -2157,14 +2201,16 @@ end;
 
 procedure downloadstart(indice:integer;restart:boolean);
 var
-  tmps{$IFDEF UNIX},wgetc{$ENDIF},aria2cc,curlc:TStringList;
+  tmps{$IFDEF UNIX}{,wgetc}{$ENDIF},aria2cc{,curlc}:TStringList;
   uandp:string;
   wrn:integer;
   thnum:integer;
   downid:integer;
 begin
-  if Not DirectoryExists(Form1.ListView1.Items[indice].SubItems[columndestiny]) then
-    CreateDir(Form1.ListView1.Items[indice].SubItems[columndestiny]);
+  if Not DirectoryExistsUTF8(Form1.ListView1.Items[indice].SubItems[columndestiny]) then
+  begin
+    ForceDirectory(Form1.ListView1.Items[indice].SubItems[columndestiny]);
+  end;
   if indice<>-1 then
   begin
     if Form1.ListView1.Items[indice].SubItems[columnstatus]<>'1' then
@@ -2203,6 +2249,8 @@ begin
             for wrn:=1 to WordCount(Form1.ListView1.Items[indice].SubItems[columnparameters],[' ']) do
               tmps.Add(ExtractWord(wrn,Form1.ListView1.Items[indice].SubItems[columnparameters],[' ']));
           end;
+          tmps.Add('-e');
+          tmps.Add('recursive=off');//Descativar para la opcion -O
           tmps.Add('-S');//Mouestra la respuesta del servidor
           if Form1.ListView1.Items[indice].SubItems[columnname]<>'' then
           begin
@@ -2242,7 +2290,7 @@ begin
           if wgetdefncert then
             tmps.Add('--no-check-certificate');//No verificar certificados SSL
           tmps.Add('-P');//Destino de la descarga
-          tmps.Add(ExtractShortPathName(Form1.ListView1.Items[indice].SubItems[columndestiny]));
+          tmps.Add('"'+ExtractShortPathName(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]))+'"');
           tmps.Add('-t');
           tmps.Add(inttostr(dtries));
           tmps.Add('-T');
@@ -2340,7 +2388,7 @@ begin
               end;
           end;
           tmps.Add('-d');
-          tmps.Add(ExtractShortPathName(Form1.ListView1.Items[indice].SubItems[columndestiny]));
+          tmps.Add(ExtractShortPathName(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny])));
           if Form1.CheckBox1.Checked then
             tmps.Add('--max-download-limit='+floattostr(Form1.FloatSpinEdit1.Value)+'K');
           tmps.Add('-m');
@@ -2375,17 +2423,17 @@ begin
         if Form1.ListView1.Items[indice].SubItems[columnengine] = 'curl' then
         begin
           //Usar un archivo de configuracion limpio
-          try
-            if FileExists(configpath+'curl.conf')=false then
+          {try
+            if FileExists(UTF8ToSys(configpath)+'curl.conf')=false then
             begin
               curlc:=TStringList.Create;
               curlc.Add('#This is a cURL config file created by AWGG, please not change it.');
               curlc.SaveToFile(configpath+'curl.conf');
               tmps.Add('-config');
+              tmps.Add(ExtractShortPathName(UTF8ToSys(configpath))+'curl.conf');
             end;
-            tmps.Add(ExtractShortPathName(configpath)+'curl.conf');
           except on e:exception do
-          end;
+          end;}
           ////Parametros generales
           if WordCount(curlargs,[' '])>0 then
           begin
@@ -2403,7 +2451,7 @@ begin
           if Form1.ListView1.Items[indice].SubItems[columnname]<>'' then
           begin
             tmps.Add('-o');
-            tmps.Add(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname]));
+            tmps.Add('"'+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])+'"');
           end;
           tmps.Add('-O');
           if curldefcontinue and (not restart) then
@@ -2561,18 +2609,19 @@ begin
         //// Site Grabber implementation *********
         ////USAR un archivo de configuracion limpio
         {$IFDEF UNIX}
-          try
-            if FileExists(configpath+'.wgetrc')=false then
-            begin
-              wgetc:=TStringList.Create;
-              wgetc.Add('#This is a WGET config file created by AWGG, please not change it.');
-              wgetc.Add('passive_ftp = on');
-              wgetc.Add('recursive = on');
-              wgetc.SaveToFile(configpath+'.wgetrc');
-            end;
-            tmps.Add('--config='+ExtractShortPathName(configpath)+'.wgetrc');
-          except on e:exception do
-          end;
+          //No trabaja en versiones antiguas de wget
+          //try
+          //  if FileExists(configpath+'.wgetrc')=false then
+          //  begin
+          //    wgetc:=TStringList.Create;
+          //    wgetc.Add('#This is a WGET config file created by AWGG, please not change it.');
+          //    wgetc.Add('passive_ftp = on');
+          //    wgetc.Add('recursive = on');
+          //    wgetc.SaveToFile(configpath+'.wgetrc');
+          //  end;
+          //  tmps.Add('--config='+ExtractShortPathName(configpath)+'.wgetrc');
+          //except on e:exception do
+          //end;
         {$ENDIF}
         tmps.Add('-r');
         tmps.Add('-N');
@@ -2692,7 +2741,7 @@ begin
     end;
   end
   else
-    Form1.SynMemo1.Lines.Add(rsForm.msgmustselectdownload.Caption);
+    Form1.SynEdit1.Lines.Add(rsForm.msgmustselectdownload.Caption);
   if columncolav then
   begin
     Form1.ListView1.Columns[0].Width:=columncolaw;
@@ -2835,27 +2884,27 @@ begin
   begin
     if Form1.ListView1.Items[indice].SubItems[columntype]='0' then
     begin
-      if FileExists(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])) then
-        SysUtils.DeleteFile(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname]));
+      if FileExists(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[indice].SubItems[columnname])) then
+        SysUtils.DeleteFile(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[indice].SubItems[columnname]));
 
-      if (Form1.ListView1.Items[indice].SubItems[columnengine]='aria2c') and (FileExists(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])+'.aria2')) then
-        SysUtils.DeleteFile(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])+'.aria2');
+      if (Form1.ListView1.Items[indice].SubItems[columnengine]='aria2c') and (FileExists(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[indice].SubItems[columnname])+'.aria2')) then
+        SysUtils.DeleteFile(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[indice].SubItems[columnname])+'.aria2');
 
-      if (Form1.ListView1.Items[indice].SubItems[columnengine]='axel') and (FileExists(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])+'.st')) then
-        SysUtils.DeleteFile(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])+'.st');
+      if (Form1.ListView1.Items[indice].SubItems[columnengine]='axel') and (FileExists(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[indice].SubItems[columnname])+'.st')) then
+        SysUtils.DeleteFile(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[indice].SubItems[columnname])+'.st');
 
-      if (Form1.ListView1.Items[indice].SubItems[columnengine]='lftp') and (FileExists(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])+'.lftp-pget-status')) then
-        SysUtils.DeleteFile(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columnname])+'.lftp-pget-status');
+      if (Form1.ListView1.Items[indice].SubItems[columnengine]='lftp') and (FileExists(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[indice].SubItems[columnname])+'.lftp-pget-status')) then
+        SysUtils.DeleteFile(UTF8ToSys(Form1.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[indice].SubItems[columnname])+'.lftp-pget-status');
 
-      if FileExists(datapath+pathdelim+Form1.ListView1.Items[indice].SubItems[columnuid]+'.status') then
-        SysUtils.DeleteFile(datapath+pathdelim+Form1.ListView1.Items[indice].SubItems[columnuid]+'.status');
+      if FileExists(UTF8ToSys(datapath+pathdelim+Form1.ListView1.Items[indice].SubItems[columnuid])+'.status') then
+        SysUtils.DeleteFile(UTF8ToSys(datapath+pathdelim+Form1.ListView1.Items[indice].SubItems[columnuid])+'.status');
 
       Form1.ListView1.Items[indice].ImageIndex:=18;
     end;
     if Form1.ListView1.Items[indice].SubItems[columntype] = '1' then
     begin
-      if FileExists(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html') then
-        DeleteFile(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html');
+      if FileExists(UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html')) then
+        DeleteFile(UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html'));
       Form1.ListView1.Items[indice].ImageIndex:=51;
     end;
     Form1.ListView1.Items[indice].Caption:=rsForm.statuspaused.Caption;
@@ -2887,10 +2936,10 @@ begin
   descargado:='';
   if (Form1.ListView1.ItemIndex>-1) and (Form1.MenuItem53.Checked) and (thid=Form1.ListView1.ItemIndex) then
   begin
-    if Length(Form1.SynMemo1.Lines.Text)>0 then
-      Form1.SynMemo1.SelStart:=Length(Form1.SynMemo1.Lines.Text);
-    Form1.SynMemo1.SelEnd:=Length(Form1.SynMemo1.Lines.Text)+1;
-    Form1.SynMemo1.InsertTextAtCaret(wout[thid]);
+    if Length(Form1.SynEdit1.Lines.Text)>0 then
+      Form1.SynEdit1.SelStart:=Length(Form1.SynEdit1.Lines.Text);
+    Form1.SynEdit1.SelEnd:=Length(Form1.SynEdit1.Lines.Text)+1;
+    Form1.SynEdit1.InsertTextAtCaret(wout[thid]);
   end;
 
   /////////////////***WGET***/////////////////////
@@ -3348,23 +3397,24 @@ begin
         if (Form1.ListView1.Items[i].Selected) and (Form1.ListView1.Items[i].SubItems[columnstatus]<>'1') then
         begin
           //Borrar tambien el historial de la descarga antes de borrar.
-          if FileExists(logpath+pathdelim+UTF8ToSys(Form1.ListView1.Items[i].SubItems[columnname])+'.log') then
-            SysUtils.DeleteFile(logpath+pathdelim+UTF8ToSys(Form1.ListView1.Items[i].SubItems[columnname])+'.log');
-          if FileExists(datapath+pathdelim+Form1.ListView1.Items[i].SubItems[columnuid]+'.status') then
-            SysUtils.DeleteFile(datapath+pathdelim+Form1.ListView1.Items[i].SubItems[columnuid]+'.status');
+          if FileExists(UTF8ToSys(logpath+pathdelim+Form1.ListView1.Items[i].SubItems[columnname])+'.log') then
+            SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+Form1.ListView1.Items[i].SubItems[columnname])+'.log');
+          if FileExists(UTF8ToSys(datapath+pathdelim+Form1.ListView1.Items[i].SubItems[columnuid])+'.status') then
+            SysUtils.DeleteFile(UTF8ToSys(datapath+pathdelim+Form1.ListView1.Items[i].SubItems[columnuid])+'.status');
           if Form1.ListView1.Items[i].SubItems[columnname] <> '' then
           begin
-            if FileExists(Form1.ListView1.Items[i].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[i].SubItems[columnname])) and delfile and (Form1.ListView1.Items[i].SubItems[columntype]='0') then
-              SysUtils.DeleteFile(Form1.ListView1.Items[i].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[i].SubItems[columnname]));
+            if FileExists(UTF8ToSys(Form1.ListView1.Items[i].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[i].SubItems[columnname])) and delfile and (Form1.ListView1.Items[i].SubItems[columntype]='0') then
+              SysUtils.DeleteFile(UTF8ToSys(Form1.ListView1.Items[i].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[i].SubItems[columnname]));
           end;
           if Form1.ListView1.ItemIndex=i then
-            Form1.SynMemo1.Lines.Clear;
+            Form1.SynEdit1.Lines.Clear;
           refreshicons();
           Form1.ListView1.Items.Delete(i);
         end;
       end;
       rebuildids();
       savemydownloads();
+      Form1.ProgressBar1.Position:=0;
       if Form1.ListView2.Visible then
         Form1.TreeView1SelectionChanged(nil);
     end;
@@ -3393,19 +3443,19 @@ begin
   Case Form1.ListView1.Items[thid].SubItems[columnengine] of
     'wget':
     begin
-      wthp.Executable:=wgetrutebin;
+      wthp.Executable:=UTF8ToSys(wgetrutebin);
     end;
     'aria2c':
     begin
-      wthp.Executable:=aria2crutebin;
+      wthp.Executable:=UTF8ToSys(aria2crutebin);
     end;
     'curl':
     begin
-      wthp.Executable:=curlrutebin;
+      wthp.Executable:=UTF8ToSys(curlrutebin);
     end;
     'axel':
     begin
-      wthp.Executable:=axelrutebin;
+      wthp.Executable:=UTF8ToSys(axelrutebin);
     end;
     'lftp':
     begin
@@ -3427,7 +3477,7 @@ begin
         SysInitStdIO;
         WriteLn('Hello World');
         end;}
-        wthp.Executable:=lftprutebin;
+        wthp.Executable:=UTF8ToSys(lftprutebin);
       {$ENDIF}
     end;
   end;
@@ -3437,15 +3487,15 @@ begin
   if Not DirectoryExists(datapath) then
     CreateDir(datapath);
   Synchronize(@update);
-  wthp.CurrentDirectory:=ExtractShortPathName(Form1.ListView1.Items[thid].SubItems[columndestiny]);
+  wthp.CurrentDirectory:=UTF8ToSys(Form1.ListView1.Items[thid].SubItems[columndestiny]);
   try
     wthp.Execute;
     try
       if logger then
       begin
         if Not DirectoryExists(logpath) then
-          CreateDir(logpath);
-        AssignFile(logfile,logpath+PathDelim+UTF8ToSys(Form1.ListView1.Items[thid].SubItems[columnname])+'.log');
+          CreateDir(UTF8ToSys(logpath));
+        AssignFile(logfile,UTF8ToSys(logpath)+PathDelim+UTF8ToSys(Form1.ListView1.Items[thid].SubItems[columnname])+'.log');
         if fileExists(logpath+PathDelim+UTF8ToSys(Form1.ListView1.Items[thid].SubItems[columnname])+'.log') then
           Append(logfile)
         else
@@ -3985,6 +4035,7 @@ begin
   Form1.Visible:=false;
   TrayIcon1.Visible:=true;
   CanClose:=false;
+  saveconfig();
 end;
 
 
@@ -4052,6 +4103,7 @@ begin
       lftprutebin:='/usr/bin/lftp';
   {$ENDIF}
   {$IFDEF WINDOWS}
+    {$IF FPC_FULLVERSION<=20604}
     if FileExists(ExtractFilePath(Application.Params[0])+'wget.exe') then
       wgetrutebin:=ExtractFilePath(Application.Params[0])+'wget.exe';
     if FileExists(ExtractFilePath(Application.Params[0])+'aria2c.exe') then
@@ -4062,6 +4114,18 @@ begin
       axelrutebin:=ExtractFilePath(Application.Params[0])+'axel.exe';
     if FileExists(ExtractFilePath(Application.Params[0])+'lftp.exe') then
       lftprutebin:=ExtractFilePath(Application.Params[0])+'lftp.exe';
+    {$ELSE}
+    if FileExists(ExtractFilePath(Application.Params[0])+'wget.exe') then
+      wgetrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'wget.exe');
+    if FileExists(ExtractFilePath(Application.Params[0])+'aria2c.exe') then
+      aria2crutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'aria2c.exe');
+    if FileExists(ExtractFilePath(Application.Params[0])+'curl.exe') then
+      curlrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'curl.exe');
+    if FileExists(ExtractFilePath(Application.Params[0])+'axel.exe') then
+      axelrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'axel.exe');
+    if FileExists(ExtractFilePath(Application.Params[0])+'lftp.exe') then
+      lftprutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'lftp.exe');
+    {$ENDIF}
   {$ENDIF}
   loadmydownloads();
   loadconfig();
@@ -4089,6 +4153,11 @@ procedure TForm1.FormWindowStateChange(Sender: TObject);
 begin
   if Form1.WindowState<>wsMinimized then
   lastmainwindowstate:=Form1.WindowState;
+end;
+
+procedure TForm1.ListView1Click(Sender: TObject);
+begin
+  columncolaw:=Form1.ListView1.Columns[0].Width;
 end;
 
 procedure TForm1.ListView1ColumnClick(Sender: TObject; Column: TListColumn);
@@ -4256,43 +4325,43 @@ begin
       Form1.ToolButton4.Enabled:=false;
       Form1.ToolButton22.Enabled:=true;
     end;
-    Form1.SynMemo1.Lines.Clear;
-    if FileExists(logpath+pathdelim+UTF8ToSys(Form1.Listview1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log') and (Form1.SynMemo1.Visible) and (loadhistorylog) then
+    Form1.SynEdit1.Lines.Clear;
+    if FileExists(UTF8ToSys(logpath)+pathdelim+UTF8ToSys(Form1.Listview1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log') and (Form1.SynEdit1.Visible) and (loadhistorylog) then
     begin
       try
         lastlines:=TStringList.Create;
-        lastlines.LoadFromFile(logpath+pathdelim+UTF8ToSys(Form1.Listview1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log');
+        lastlines.LoadFromFile(UTF8ToSys(logpath)+pathdelim+UTF8ToSys(Form1.Listview1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log');
         if (lastlines.Count>=20) and (loadhistorymode=2) then
         begin
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-20]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-19]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-18]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-17]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-16]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-15]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-14]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-13]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-12]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-11]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-10]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-9]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-8]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-7]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-6]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-5]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-4]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-3]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-2]);
-          Form1.SynMemo1.Lines.Add(lastlines[lastlines.Count-1]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-20]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-19]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-18]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-17]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-16]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-15]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-14]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-13]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-12]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-11]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-10]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-9]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-8]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-7]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-6]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-5]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-4]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-3]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-2]);
+          Form1.SynEdit1.Lines.Add(lastlines[lastlines.Count-1]);
         end
         else
-          Form1.SynMemo1.Lines:=lastlines;
+          Form1.SynEdit1.Lines:=lastlines;
         lastlines.Destroy;
-        if Length(Form1.SynMemo1.Lines.Text)>0 then
-          Form1.SynMemo1.SelStart:=Length(Form1.SynMemo1.Lines.Text);
-        Form1.SynMemo1.SelEnd:=Length(Form1.SynMemo1.Lines.Text);
+        if Length(Form1.SynEdit1.Lines.Text)>0 then
+          Form1.SynEdit1.SelStart:=Length(Form1.SynEdit1.Lines.Text);
+        Form1.SynEdit1.SelEnd:=Length(Form1.SynEdit1.Lines.Text);
       except on e:exception do
-        //Form1.SynMemo1.Lines.Add(e.ToString);
+        //Form1.SynEdit1.Lines.Add(e.ToString);
       end;
     end;
     percent:=Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnpercent];
@@ -4305,6 +4374,11 @@ begin
       Form1.ProgressBar1.Position:=0;
     end;
   end;
+end;
+
+procedure TForm1.ListView2Click(Sender: TObject);
+begin
+  columncolaw:=Form1.ListView2.Columns[0].Width;
 end;
 
 procedure TForm1.ListView2SelectItem(Sender: TObject; Item: TListItem;
@@ -4745,8 +4819,8 @@ procedure TForm1.MenuItem26Click(Sender: TObject);
 begin
   if Form1.ListView1.ItemIndex<>-1 then
   begin
-    if FileExists(logpath+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log') then
-      OpenURL(ExtractShortPathName(logpath+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log'))
+    if FileExists(UTF8ToSys(logpath+pathdelim+Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log') then
+      OpenURL(ExtractShortPathName(UTF8ToSys(logpath+pathdelim+Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log'))
     else
       ShowMessage(rsForm.msgnoexisthistorylog.Caption);
   end;
@@ -4810,30 +4884,30 @@ begin
     splitpos:=50;
   if splitpos>Form1.PairSplitter1.Height-50 then
     splitpos:=splitpos-50;
-  if Form1.SynMemo1.Visible then
+  if Form1.SynEdit1.Visible then
   begin
     splitpos:=Form1.PairSplitter1.Position;
   end;
-  Form1.SynMemo1.Visible:=not Form1.SynMemo1.Visible;
-  MenuItem33.Checked:=Form1.SynMemo1.Visible;
-  if Form1.SynMemo1.Visible then
+  Form1.SynEdit1.Visible:=not Form1.SynEdit1.Visible;
+  MenuItem33.Checked:=Form1.SynEdit1.Visible;
+  if Form1.SynEdit1.Visible then
     Form1.PairSplitter1.Position:=splitpos
   else
     Form1.PairSplitter1.Position:=Form1.PairSplitter1.Height;
-  Form1.MenuItem53.Checked:=Form1.SynMemo1.Visible;
-  Form1.MenuItem53.Enabled:=Form1.SynMemo1.Visible;
-  if Form1.SynMemo1.Visible=false then
-    Form1.SynMemo1.Lines.Clear;
+  Form1.MenuItem53.Checked:=Form1.SynEdit1.Visible;
+  Form1.MenuItem53.Enabled:=Form1.SynEdit1.Visible;
+  if Form1.SynEdit1.Visible=false then
+    Form1.SynEdit1.Lines.Clear;
 end;
 
 procedure TForm1.MenuItem34Click(Sender: TObject);
 begin
   if Form1.ListView1.ItemIndex<>-1 then
   begin
-    if DirectoryExists(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]) then
+    if DirectoryExists(UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny])) then
     begin
-      if not OpenURL(UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny])) then
-        OpenURL(ExtractShortPathName(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]));
+      if not OpenURL(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]) then
+        OpenURL(ExtractShortPathName(UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny])));
     end
     else
       ShowMessage(rsForm.msgnoexistfolder.Caption+' '+Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]);
@@ -4927,15 +5001,8 @@ begin
   begin
     if Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columntype]='0' then
     begin
-      if FileExists(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])) then
-        OpenURL(ExtractShortPathName(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])))
-      else
-        ShowMessage(rsForm.msgfilenoexist.Caption);
-    end;
-    if Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columntype]='1' then
-    begin
-      if FileExists(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html') then
-        OpenURL(ExtractShortPathName(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html'))
+      if FileExists(UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])) then
+        OpenURL(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])
       else
         ShowMessage(rsForm.msgfilenoexist.Caption);
     end;
@@ -5079,10 +5146,10 @@ begin
     dlgForm.ShowModal;
     if dlgcuestion then
     begin
-      if FileExists(logpath+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log') then
-        SysUtils.DeleteFile(logpath+pathdelim+UTF8ToSys(Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log');
+      if FileExists(UTF8ToSys(logpath+pathdelim+Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log') then
+        SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+Form1.ListView1.Items[Form1.ListView1.ItemIndex].SubItems[columnname])+'.log');
     end;
-    Form1.SynMemo1.Lines.Clear;
+    Form1.SynEdit1.Lines.Clear;
   end;
 end;
 
@@ -5175,8 +5242,8 @@ end;
 
 procedure TForm1.PairSplitter1ChangeBounds(Sender: TObject);
 begin
-  splitpos:=Round(Form1.PairSplitter1.Height/1.5);
-  if Form1.SynMemo1.Visible then
+  splitpos:=Round(Form1.PairSplitter1.Height/1.3);
+  if Form1.SynEdit1.Visible then
     Form1.PairSplitter1.Position:=splitpos
   else
     Form1.PairSplitter1.Position:=Form1.PairSplitter1.Height;
@@ -5190,7 +5257,7 @@ end;
 
 procedure TForm1.PairSplitter1Resize(Sender: TObject);
 begin
-  if Form1.SynMemo1.Visible then
+  if Form1.SynEdit1.Visible then
     splitpos:=Form1.PairSplitter1.Position;
 end;
 
@@ -5277,16 +5344,13 @@ var
   fname:string='';
   url:string='';
   silent:boolean=false;
-  {$IFDEF WINDOWS}
-    registro:TRegistry;
-  {$ENDIF}
 begin
   newdownqueues();
   Form1.Timer6.Enabled:=false;
   if firststart then
   begin
     Form5.ComboBox1.Items.Clear;
-    if FindFirst(ExtractFilePath(Application.Params[0])+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
+    if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
     begin
       Repeat
         try
@@ -5306,14 +5370,15 @@ begin
     updatelangstatus();
     if ddowndir='' then //Para version portable
     begin
-      ddowndir:=GetUserDir()+'Downloads';
+      ddowndir:=SysToUTF8(GetUserDir()+'Downloads');
+      ///More compatible for modern windows version
       {$IFDEF WINDOWS}
-        registro:=TRegistry.Create;
-        registro.RootKey:=HKEY_CURRENT_USER;
-        registro.OpenKey('Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\',false);
-        ddowndir:=registro.ReadString('Personal')+PathDelim+'Downloads';
-        registro.CloseKey;
-        registro.Free;
+        //registro:=TRegistry.Create;
+        //registro.RootKey:=HKEY_CURRENT_USER;
+        //registro.OpenKey('Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\',false);
+        //ddowndir:=SysToUTF8(registro.ReadString('Personal')+PathDelim+'Downloads');
+        //registro.CloseKey;
+        //registro.Free;
       {$ENDIF}
     end;
     logpath:=ddowndir+pathdelim+'logs';
@@ -5322,12 +5387,13 @@ begin
     defaultcategory();
     categoryreload();
   end;
+  dotherdowndir:=ddowndir+pathdelim+'Others';
   updatelangstatus();
   titlegen();
   firststart:=false;
   if (Application.ParamCount>0) then
   begin
-    for i:=1 to Application.ParamCount-1 do
+    for i:=1 to Application.ParamCount do
     begin
       if Application.Params[i]='-s' then
         silent:=true;
@@ -5433,7 +5499,7 @@ end;
 
 procedure TForm1.ToolButton14Click(Sender: TObject);
 begin
-  Form1.SynMemo1.Lines.Clear;
+  Form1.SynEdit1.Lines.Clear;
 end;
 
 procedure TForm1.ToolButton15Click(Sender: TObject);
@@ -5818,6 +5884,38 @@ begin
   end;
 end;
 
+procedure TForm1.TreeView1DblClick(Sender: TObject);
+begin
+  if Form1.TreeView1.Selected.Level>0 then
+  begin
+    case Form1.TreeView1.Selected.Parent.Index of
+      3:
+      begin//categorias
+        if Form1.TreeView1.Selected.Index<Length(categoryextencions) then
+        begin
+          if DirectoryExists(UTF8ToSys(categoryextencions[Form1.TreeView1.Selected.Index][0])) then
+          begin
+            if not OpenURL(categoryextencions[Form1.TreeView1.Selected.Index][0]) then
+              OpenURL(ExtractShortPathName(UTF8ToSys(categoryextencions[Form1.TreeView1.Selected.Index][0])));
+          end
+          else
+            ShowMessage(rsForm.msgnoexistfolder.Caption+' '+categoryextencions[Form1.TreeView1.Selected.Index][0]);
+        end
+        else
+        begin
+          if DirectoryExists(UTF8ToSys(dotherdowndir)) then
+          begin
+            if not OpenURL(dotherdowndir) then
+              OpenURL(ExtractShortPathName(UTF8ToSys(dotherdowndir)));
+          end
+          else
+            ShowMessage(rsForm.msgnoexistfolder.Caption+' '+dotherdowndir);
+        end;
+      end;
+    end;
+  end;
+end;
+
 procedure TForm1.TreeView1Edited(Sender: TObject; Node: TTreeNode; var S: string
   );
 begin
@@ -5896,10 +5994,13 @@ begin
     Form1.ToolButton16.Enabled:=false;
     if Form1.TreeView1.Selected.Level>0 then
     begin
-      for i:=0 to Form1.ListView1.Columns.Count-1 do
+      if Form1.ListView2.Visible=false then
       begin
-        Form1.ListView2.Columns[i].Width:=Form1.ListView1.Columns[i].Width;
-        Form1.ListView2.Columns[i].Visible:=Form1.ListView1.Columns[i].Visible;
+        for i:=0 to Form1.ListView1.Columns.Count-1 do
+        begin
+          Form1.ListView2.Columns[i].Width:=Form1.ListView1.Columns[i].Width;
+          Form1.ListView2.Columns[i].Visible:=Form1.ListView1.Columns[i].Visible;
+        end;
       end;
       if (Form1.ListView1.ItemIndex=-1) and (Form1.ListView1.Items.Count>0) then
         Form1.ListView1.ItemIndex:=0;
@@ -5974,17 +6075,35 @@ begin
         begin//categorias
           for i:=0 to Form1.ListView1.Items.Count-1 do
           begin
-            if findcategorydir(Form1.TreeView1.Selected.Index,Form1.ListView1.Items[i].SubItems[columnname]) then
+            if Form1.TreeView1.Selected.Index<Length(categoryextencions) then
             begin
-              vitem:=TListItem.Create(Form1.ListView2.Items);
-              vitem.Caption:=Form1.ListView1.Items[i].Caption;
-              vitem.ImageIndex:=Form1.ListView1.Items[i].ImageIndex;
-              vitem.SubItems.AddStrings(Form1.ListView1.Items[i].SubItems);
-              vitem.Selected:=Form1.ListView1.Items[i].Selected;
-              Form1.ListView2.Items.AddItem(vitem);
-              vitem.Selected:=Form1.ListView1.Items[i].Selected;
-              if Form1.ListView1.Items[i].SubItems[columnstatus]='1' then
-                hilo[strtoint(Form1.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
+              if findcategorydir(Form1.TreeView1.Selected.Index,Form1.ListView1.Items[i].SubItems[columnname]) then
+              begin
+                vitem:=TListItem.Create(Form1.ListView2.Items);
+                vitem.Caption:=Form1.ListView1.Items[i].Caption;
+                vitem.ImageIndex:=Form1.ListView1.Items[i].ImageIndex;
+                vitem.SubItems.AddStrings(Form1.ListView1.Items[i].SubItems);
+                vitem.Selected:=Form1.ListView1.Items[i].Selected;
+                Form1.ListView2.Items.AddItem(vitem);
+                vitem.Selected:=Form1.ListView1.Items[i].Selected;
+                if Form1.ListView1.Items[i].SubItems[columnstatus]='1' then
+                  hilo[strtoint(Form1.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
+              end;
+            end
+            else
+            begin
+              if not findcategoryall(Form1.ListView1.Items[i].SubItems[columnname]) then
+              begin
+                vitem:=TListItem.Create(Form1.ListView2.Items);
+                vitem.Caption:=Form1.ListView1.Items[i].Caption;
+                vitem.ImageIndex:=Form1.ListView1.Items[i].ImageIndex;
+                vitem.SubItems.AddStrings(Form1.ListView1.Items[i].SubItems);
+                vitem.Selected:=Form1.ListView1.Items[i].Selected;
+                Form1.ListView2.Items.AddItem(vitem);
+                vitem.Selected:=Form1.ListView1.Items[i].Selected;
+                if Form1.ListView1.Items[i].SubItems[columnstatus]='1' then
+                  hilo[strtoint(Form1.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
+              end;
             end;
           end;
         end;
@@ -5992,20 +6111,25 @@ begin
     end
     else
     begin
-      for i:=0 to Form1.ListView1.Columns.Count-1 do
+      if Form1.ListView1.Visible=false then
       begin
-        Form1.ListView1.Columns[i].Width:=Form1.ListView2.Columns[i].Width;
-        Form1.ListView1.Columns[i].Visible:=Form1.ListView2.Columns[i].Visible;
+        for i:=0 to Form1.ListView1.Columns.Count-1 do
+        begin
+          Form1.ListView1.Columns[i].Width:=Form1.ListView2.Columns[i].Width;
+          Form1.ListView1.Columns[i].Visible:=Form1.ListView2.Columns[i].Visible;
+        end;
       end;
       Form1.ListView1.Visible:=true;
       Form1.ListView2.Visible:=false;
     end;
   end;
-//if columncolav then
-//begin
-//Form1.ListView1.Columns[0].Width:=columncolaw;
-//Form1.ListView2.Columns[0].Width:=columncolaw;
-//end;
+  {$IFDEF GTK2}
+    if columncolav then
+    begin
+      Form1.ListView1.Columns[0].Width:=columncolaw;
+      Form1.ListView2.Columns[0].Width:=columncolaw;
+    end;
+  {$ENDIF}
 end;
 
 procedure TForm1.UniqueInstance1OtherInstance(Sender: TObject;
