@@ -3036,7 +3036,7 @@ begin
         velocidad:=Copy(wout[thid],Pos(' SPD:',wout[thid])+5,length(wout[thid]))
       else
         velocidad:=Copy(wout[thid],Pos(' DL:',wout[thid])+4,length(wout[thid]));
-      velocidad:=Copy(velocidad,0,Pos('B',velocidad)+1);
+      velocidad:=Copy(velocidad,0,Pos('B',velocidad));
       if Pos(' ETA:',wout[thid])>0 then
       begin
         tiempo:=Copy(wout[thid],Pos(' ETA:',wout[thid])+5,length(wout[thid]));
@@ -3760,6 +3760,13 @@ begin
     Form1.ListView1.Columns[0].Width:=columncolaw;
     Form1.ListView2.Columns[0].Width:=columncolaw;
   end;
+  {$IFDEF LCLGTK2}
+    if columncolav then
+    begin
+      Form1.ListView1.Columns[0].Width:=columncolaw;
+      Form1.ListView2.Columns[0].Width:=columncolaw;
+    end;
+  {$ENDIF}
 end;
 
 constructor DownThread.Create(CreateSuspended:boolean;tmps:TStringlist);
@@ -4200,6 +4207,10 @@ begin
   //  Form1.TreeView1SelectionChanged(nil);
   //end;
   //rebuildids();
+  if Form1.ListView1.Visible then
+    columncolaw:=Form1.ListView1.Columns[0].Width
+  else
+    columncolaw:=Form1.ListView2.Columns[0].Width;
 end;
 
 
@@ -6123,7 +6134,7 @@ begin
       Form1.ListView2.Visible:=false;
     end;
   end;
-  {$IFDEF GTK2}
+  {$IFDEF LCLGTK2}
     if columncolav then
     begin
       Form1.ListView1.Columns[0].Width:=columncolaw;
