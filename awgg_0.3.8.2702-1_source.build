@@ -1,0 +1,28 @@
+ dpkg-buildpackage -rfakeroot -d -us -uc -S
+dpkg-buildpackage: paquete fuente awgg
+dpkg-buildpackage: versión de las fuentes 0.3.8.2702-1
+dpkg-buildpackage: source distribution precise
+dpkg-buildpackage: fuentes modificadas por Reinier <nenirey@gmail.com>
+ dpkg-source --before-build awgg-0.3.8.2702
+ fakeroot debian/rules clean
+dh clean
+   dh_testdir
+   debian/rules override_dh_auto_clean
+make[1]: Entering directory '/datos/reinier/AWGG/src3/DEBUILD/awgg-0.3.8.2702'
+rm -f -r lib
+rm -f lib *.res ../linux/awgg
+make[1]: Leaving directory '/datos/reinier/AWGG/src3/DEBUILD/awgg-0.3.8.2702'
+   dh_clean
+ dpkg-source -b awgg-0.3.8.2702
+dpkg-source: información: usando el formato de fuente «1.0»
+dpkg-source: información: construyendo «awgg» usando «awgg_0.3.8.2702.orig.tar.gz», que está presente en el sistema
+dpkg-source: información: construyendo awgg en awgg_0.3.8.2702-1.diff.gz
+dpkg-source: información: construyendo awgg en awgg_0.3.8.2702-1.dsc
+ dpkg-genchanges -S >../awgg_0.3.8.2702-1_source.changes
+dpkg-genchanges: incluyendo el código fuente completo en la subida
+ dpkg-source --after-build awgg-0.3.8.2702
+dpkg-buildpackage: source-only upload (original source is included)
+Now running lintian...
+E: awgg changes: bad-distribution-in-changes-file precise
+W: awgg source: ancient-standards-version 3.9.3 (current is 3.9.6)
+Finished running lintian.

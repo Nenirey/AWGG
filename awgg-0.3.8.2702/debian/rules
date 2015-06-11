@@ -1,0 +1,17 @@
+#!/usr/bin/make -f
+
+ROOT = $(CURDIR)/debian/awgg
+
+override_dh_auto_clean:
+	$(RM) -r lib
+	$(RM) lib *.res ../linux/awgg
+
+override_dh_auto_build:
+	lazbuild awgg.lpi
+
+override_dh_auto_install:
+	install -d -m 755 $(ROOT)/usr/bin
+	install -s -m 755 ../linux/awgg $(ROOT)/usr/bin
+
+%:
+	dh $@
