@@ -1,0 +1,10 @@
+Package: awgg
+Version: 0.3.8.2702-1
+Architecture: amd64
+Maintainer: Reinier <nenirey@gmail.com>
+Installed-Size: 5267
+Depends: libatk1.0-0 (>= 1.12.4), libc6 (>= 2.2.5), libcairo2 (>= 1.2.4), libgdk-pixbuf2.0-0 (>= 2.22.0), libglib2.0-0 (>= 2.12.0), libgtk2.0-0 (>= 2.24.0), libpango-1.0-0 (>= 1.14.0), libx11-6
+Section: net
+Priority: optional
+Description: Download Manager.
+ AWGG is a cross platform download manager that uses the most popular downloads engines (text based) like wget, aria2, cURL and axel, AWGG is most that an frontend, is multiprocess, portable and simple, includes a programer, clipboard monitor and can be integrated to firefox with flashgot plugin.
