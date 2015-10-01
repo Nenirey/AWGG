@@ -23,7 +23,7 @@ unit Unit8;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  SysUtils, Forms, StdCtrls;
 
 type
 

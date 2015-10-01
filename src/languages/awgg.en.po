@@ -212,6 +212,7 @@ msgid "Command out"
 msgstr "Command out"
 
 #: tform1.menuitem34.caption
+msgctxt "tform1.menuitem34.caption"
 msgid "Go to the destination folder"
 msgstr "Go to the destination folder"
 
@@ -267,6 +268,7 @@ msgid "Engine"
 msgstr "Engine"
 
 #: tform1.menuitem45.caption
+msgctxt "tform1.menuitem45.caption"
 msgid "Open file"
 msgstr "Open file"
 
@@ -520,6 +522,26 @@ msgctxt "tform1.menuitem93.caption"
 msgid "-"
 msgstr ""
 
+#: tform1.menuitem94.caption
+msgctxt "tform1.menuitem94.caption"
+msgid "-"
+msgstr ""
+
+#: tform1.menuitem95.caption
+msgctxt "tform1.menuitem95.caption"
+msgid "Start queue"
+msgstr "Start queue"
+
+#: tform1.menuitem96.caption
+msgctxt "tform1.menuitem96.caption"
+msgid "Stop queue"
+msgstr "Stop queue"
+
+#: tform1.menuitem97.caption
+msgctxt "tform1.menuitem97.caption"
+msgid "Save file to..."
+msgstr "Save file to..."
+
 #: tform1.opendialog1.title
 msgid "Open file list of downloads"
 msgstr "Open file list of downloads"
@@ -636,6 +658,30 @@ msgctxt "tform1.toolbutton9.hint"
 msgid "Start queue"
 msgstr "Start queue"
 
+#: tform10.button1.caption
+msgctxt "tform10.button1.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tform10.caption
+msgid "Saving file..."
+msgstr "Saving file..."
+
+#: tform10.label1.caption
+msgctxt "tform10.label1.caption"
+msgid "From: %s"
+msgstr ""
+
+#: tform10.label2.caption
+msgctxt "tform10.label2.caption"
+msgid "To: %s"
+msgstr ""
+
+#: tform10.label3.caption
+msgctxt "tform10.label3.caption"
+msgid "%"
+msgstr ""
+
 #: tform2.bitbtn1.caption
 msgctxt "tform2.bitbtn1.caption"
 msgid "Start now"
@@ -715,6 +761,14 @@ msgstr "Cancel"
 #: tform3.button3.caption
 msgid "Apply"
 msgstr "Apply"
+
+#: tform3.button4.caption
+msgid "Enable firefox integration"
+msgstr "Enable firefox integration"
+
+#: tform3.button5.caption
+msgid "Preview"
+msgstr ""
 
 #: tform3.caption
 msgctxt "TFORM3.CAPTION"
@@ -972,29 +1026,6 @@ msgstr "Extensions:"
 msgid "Connections per server:"
 msgstr "Connections per server:"
 
-#: tform3.label32.caption
-msgid "Hour(24)"
-msgstr "Hour(24)"
-
-#: tform3.label33.caption
-msgid "Minute"
-msgstr "Minute"
-
-#: tform3.label34.caption
-msgctxt "tform3.label34.caption"
-msgid ":"
-msgstr ""
-
-#: tform3.label35.caption
-msgctxt "TFORM3.LABEL35.CAPTION"
-msgid ":"
-msgstr ""
-
-#: tform3.label36.caption
-msgctxt "tform3.label36.caption"
-msgid "Date"
-msgstr "Date"
-
 #: tform3.label37.caption
 msgid "Timeout (sec):"
 msgstr "Timeout (sec):"
@@ -1123,6 +1154,10 @@ msgstr "Logs"
 #: tform3.tabsheet11.caption
 msgid "axel"
 msgstr ""
+
+#: tform3.tabsheet12.caption
+msgid "Integration"
+msgstr "Integration"
 
 #: tform3.tabsheet15.caption
 msgid "Download options"
@@ -1392,6 +1427,40 @@ msgstr "Add"
 msgid "Value:"
 msgstr "Value:"
 
+#: tform9.caption
+msgid "Download Notifications"
+msgstr ""
+
+#: tform9.label1.caption
+msgctxt "tform9.label1.caption"
+msgid "Label1"
+msgstr ""
+
+#: tform9.label2.caption
+msgctxt "tform9.label2.caption"
+msgid "Label2"
+msgstr ""
+
+#: tform9.label3.caption
+msgctxt "tform9.label3.caption"
+msgid "Label3"
+msgstr ""
+
+#: tform9.speedbutton1.hint
+msgctxt "tform9.speedbutton1.hint"
+msgid "Go to the destination folder"
+msgstr "Go to the destination folder"
+
+#: tform9.speedbutton2.hint
+msgctxt "tform9.speedbutton2.hint"
+msgid "Open file"
+msgstr "Open file"
+
+#: tform9.speedbutton4.hint
+msgctxt "tform9.speedbutton4.hint"
+msgid "Save file to..."
+msgstr "Save file to..."
+
 #: trsform.alldowntreename.caption
 msgid "All downloads"
 msgstr "All downloads"
@@ -1455,9 +1524,17 @@ msgstr "Do you want to restart the selected download?"
 msgid "Do you want to restart the selected download later?"
 msgstr "Do you want to restart the selected download leter?"
 
+#: trsform.fileexistsreplace.caption
+msgid "The file exist, do you want replace it?"
+msgstr "The file exist, do you want replace it?"
+
 #: trsform.filtresname.caption
 msgid "Filters"
 msgstr "Filters"
+
+#: trsform.firefoxhelpintegration.caption
+msgid "Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser."
+msgstr "Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser."
 
 #: trsform.friday.caption
 msgid "Friday"
@@ -1692,11 +1769,6 @@ msgstr "Videos"
 msgid "[-C -] Continue downloads."
 msgstr "[-C -] Continue downloads."
 
-#: unit1.folderdownname
-msgctxt "unit1.folderdownname"
-msgid "Downloads"
-msgstr "Downloads"
-
 #: unit1.startqueuesystray
 msgctxt "unit1.startqueuesystray"
 msgid "Start queue"
@@ -1722,6 +1794,10 @@ msgstr "[-nd] No create out dir."
 #: unit1.wgetdefarg4
 msgid "[--no-check-certificate] No check SSL."
 msgstr "[--no-check-certificate] No check SSL."
+
+#: unit5.mensaje1
+msgid "Hello world"
+msgstr ""
 
 #: unit6.startqueuesystray
 msgctxt "unit6.startqueuesystray"

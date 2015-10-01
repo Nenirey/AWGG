@@ -24,8 +24,8 @@ unit Unit9;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
-  EditBtn, ExtCtrls, ComCtrls, Spin, Buttons;
+  Forms, Controls, StdCtrls,
+  EditBtn, ComCtrls, Spin, Buttons;
 
 type
 

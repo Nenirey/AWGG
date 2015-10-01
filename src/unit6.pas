@@ -23,7 +23,7 @@ unit Unit6;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls;
+  Forms, StdCtrls;
 
 type
 
@@ -46,6 +46,8 @@ type
     dlgdeletequeue: TLabel;
     filtresname: TLabel;
     alldowntreename: TLabel;
+    firefoxhelpintegration: TLabel;
+    fileexistsreplace: TLabel;
     proxymanual: TLabel;
     proxysystem: TLabel;
     proxynot: TLabel;

@@ -48,3 +48,5 @@ TRSFORM.QUEUENAME.CAPTION=Queue
 TRSFORM.PROXYNOT.CAPTION=No proxy
 TRSFORM.PROXYSYSTEM.CAPTION=System proxy
 TRSFORM.PROXYMANUAL.CAPTION=Manual
+TRSFORM.FIREFOXHELPINTEGRATION.CAPTION=Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser.
+TRSFORM.FILEEXISTSREPLACE.CAPTION=The file exist, do you want replace it?

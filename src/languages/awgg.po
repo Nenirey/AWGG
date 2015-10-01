@@ -212,6 +212,7 @@ msgid "Command out"
 msgstr ""
 
 #: tform1.menuitem34.caption
+msgctxt "tform1.menuitem34.caption"
 msgid "Go to the destination folder"
 msgstr ""
 
@@ -267,6 +268,7 @@ msgid "Engine"
 msgstr ""
 
 #: tform1.menuitem45.caption
+msgctxt "tform1.menuitem45.caption"
 msgid "Open file"
 msgstr ""
 
@@ -520,6 +522,26 @@ msgctxt "TFORM1.MENUITEM93.CAPTION"
 msgid "-"
 msgstr ""
 
+#: tform1.menuitem94.caption
+msgctxt "TFORM1.MENUITEM94.CAPTION"
+msgid "-"
+msgstr ""
+
+#: tform1.menuitem95.caption
+msgctxt "TFORM1.MENUITEM95.CAPTION"
+msgid "Start queue"
+msgstr ""
+
+#: tform1.menuitem96.caption
+msgctxt "TFORM1.MENUITEM96.CAPTION"
+msgid "Stop queue"
+msgstr ""
+
+#: tform1.menuitem97.caption
+msgctxt "tform1.menuitem97.caption"
+msgid "Save file to..."
+msgstr ""
+
 #: tform1.opendialog1.title
 msgid "Open file list of downloads"
 msgstr ""
@@ -636,6 +658,30 @@ msgctxt "tform1.toolbutton9.hint"
 msgid "Start queue"
 msgstr ""
 
+#: tform10.button1.caption
+msgctxt "tform10.button1.caption"
+msgid "Cancel"
+msgstr ""
+
+#: tform10.caption
+msgid "Saving file..."
+msgstr ""
+
+#: tform10.label1.caption
+msgctxt "TFORM10.LABEL1.CAPTION"
+msgid "From: %s"
+msgstr ""
+
+#: tform10.label2.caption
+msgctxt "TFORM10.LABEL2.CAPTION"
+msgid "To: %s"
+msgstr ""
+
+#: tform10.label3.caption
+msgctxt "TFORM10.LABEL3.CAPTION"
+msgid "%"
+msgstr ""
+
 #: tform2.bitbtn1.caption
 msgctxt "TFORM2.BITBTN1.CAPTION"
 msgid "Start now"
@@ -714,6 +760,14 @@ msgstr ""
 
 #: tform3.button3.caption
 msgid "Apply"
+msgstr ""
+
+#: tform3.button4.caption
+msgid "Enable firefox integration"
+msgstr ""
+
+#: tform3.button5.caption
+msgid "Preview"
 msgstr ""
 
 #: tform3.caption
@@ -972,29 +1026,6 @@ msgstr ""
 msgid "Connections per server:"
 msgstr ""
 
-#: tform3.label32.caption
-msgid "Hour(24)"
-msgstr ""
-
-#: tform3.label33.caption
-msgid "Minute"
-msgstr ""
-
-#: tform3.label34.caption
-msgctxt "tform3.label34.caption"
-msgid ":"
-msgstr ""
-
-#: tform3.label35.caption
-msgctxt "TFORM3.LABEL35.CAPTION"
-msgid ":"
-msgstr ""
-
-#: tform3.label36.caption
-msgctxt "tform3.label36.caption"
-msgid "Date"
-msgstr ""
-
 #: tform3.label37.caption
 msgid "Timeout (sec):"
 msgstr ""
@@ -1122,6 +1153,10 @@ msgstr ""
 
 #: tform3.tabsheet11.caption
 msgid "axel"
+msgstr ""
+
+#: tform3.tabsheet12.caption
+msgid "Integration"
 msgstr ""
 
 #: tform3.tabsheet15.caption
@@ -1392,6 +1427,40 @@ msgstr ""
 msgid "Value:"
 msgstr ""
 
+#: tform9.caption
+msgid "Download Notifications"
+msgstr ""
+
+#: tform9.label1.caption
+msgctxt "tform9.label1.caption"
+msgid "Label1"
+msgstr ""
+
+#: tform9.label2.caption
+msgctxt "tform9.label2.caption"
+msgid "Label2"
+msgstr ""
+
+#: tform9.label3.caption
+msgctxt "tform9.label3.caption"
+msgid "Label3"
+msgstr ""
+
+#: tform9.speedbutton1.hint
+msgctxt "TFORM9.SPEEDBUTTON1.HINT"
+msgid "Go to the destination folder"
+msgstr ""
+
+#: tform9.speedbutton2.hint
+msgctxt "TFORM9.SPEEDBUTTON2.HINT"
+msgid "Open file"
+msgstr ""
+
+#: tform9.speedbutton4.hint
+msgctxt "TFORM9.SPEEDBUTTON4.HINT"
+msgid "Save file to..."
+msgstr ""
+
 #: trsform.alldowntreename.caption
 msgid "All downloads"
 msgstr ""
@@ -1455,8 +1524,16 @@ msgstr ""
 msgid "Do you want to restart the selected download later?"
 msgstr ""
 
+#: trsform.fileexistsreplace.caption
+msgid "The file exist, do you want replace it?"
+msgstr ""
+
 #: trsform.filtresname.caption
 msgid "Filters"
+msgstr ""
+
+#: trsform.firefoxhelpintegration.caption
+msgid "Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser."
 msgstr ""
 
 #: trsform.friday.caption
@@ -1670,11 +1747,6 @@ msgstr ""
 msgid "[-C -] Continue downloads."
 msgstr ""
 
-#: unit1.folderdownname
-msgctxt "unit1.folderdownname"
-msgid "Downloads"
-msgstr ""
-
 #: unit1.startqueuesystray
 msgctxt "unit1.startqueuesystray"
 msgid "Start queue"
@@ -1699,6 +1771,10 @@ msgstr ""
 
 #: unit1.wgetdefarg4
 msgid "[--no-check-certificate] No check SSL."
+msgstr ""
+
+#: unit5.mensaje1
+msgid "Hello world"
 msgstr ""
 
 #: unit6.startqueuesystray

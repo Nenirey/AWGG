@@ -18,92 +18,11 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="3"/>
-      <RevisionNr Value="8"/>
-      <BuildNr Value="2702"/>
+      <RevisionNr Value="9"/>
+      <BuildNr Value="3102"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
-    <CustomData Count="13">
-      <Item0 Name="lazpackager/copyright" Value="2015 Reinier Romero Mir"/>
-      <Item1 Name="lazpackager/deb/ppa" Value="ppa:nenirey/nenirey"/>
-      <Item2 Name="lazpackager/deb/series" Value="precise"/>
-      <Item3 Name="lazpackager/deb/tpl_changelog" Value="?PACKAGE_NAME? (?FULLVERSION?) ?SERIES?; urgency=low
-
-  * Original version ?VERSION? packaged with lazdebian
-
- -- ?MAINTAINER? &lt;?MAINTAINER_EMAIL?>  ?DATER?
-"/>
-      <Item4 Name="lazpackager/deb/tpl_control" Value="Source: ?PACKAGE_NAME?
-Maintainer: ?MAINTAINER? &lt;?MAINTAINER_EMAIL?>
-Section: misc
-Priority: optional
-Standards-Version: 3.9.3
-Build-Depends: fpc, lazarus, lcl, lcl-utils, debhelper (>= 8)
-
-Package: ?PACKAGE_NAME?
-Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends},
-Description: ?DESCRIPTION?
- ?DESCRIPTION_LONG?
-"/>
-      <Item5 Name="lazpackager/deb/tpl_copyright" Value="Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-
-Files: *
-Copyright: ?COPYRIGHT?
-License: GPL-2+
- This program is free software; you can redistribute it and/or modify
- it under the terms of the GNU General Public License as published by
- the Free Software Foundation; either version 2 of the License, or
- at your option) any later version.
- .
- This program is distributed in the hope that it will be useful,
- but WITHOUT ANY WARRANTY; without even the implied warranty of
- MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
- GNU General Public License for more details.
- .
- You should have received a copy of the GNU General Public License along
- with this program; if not, write to the Free Software Foundation, Inc.,
- 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
- .
- On Debian systems, the full text of the GNU General Public
- License version 2 can be found in the file
- /usr/share/common-licenses/GPL-2
-"/>
-      <Item6 Name="lazpackager/deb/tpl_rules" Value="#!/usr/bin/make -f
-
-ROOT = $(CURDIR)/debian/?PACKAGE_NAME?
-
-override_dh_auto_clean:
-	$(RM) -r lib
-	$(RM) lib *.res ?EXECUTABLE?
-
-override_dh_auto_build:
-	lazbuild ?PROJECT?
-
-override_dh_auto_install:
-	install -d -m 755 $(ROOT)/usr/bin
-	install -s -m 755 ?EXECUTABLE? $(ROOT)/usr/bin
-
-%:
-	dh $@
-"/>
-      <Item7 Name="lazpackager/description" Value="Download Manager."/>
-      <Item8 Name="lazpackager/description_long" Value="AWGG is a cross platform download manager that uses the most popular downloads engines (text based) like wget, aria2, cURL and axel, AWGG is most that an frontend, is multiprocess, portable and simple, includes a programer, clipboard monitor and can be integrated to firefox with flashgot plugin."/>
-      <Item9 Name="lazpackager/export_cmd" Value="?CP? *.lpi ?TEMPFOLDER?/
-?CP? *.lpr ?TEMPFOLDER?/
-?CP? *.pas ?TEMPFOLDER?/
-?CP? *.lfm ?TEMPFOLDER?/
-?CP? *.ico ?TEMPFOLDER?/
-?CP? version ?TEMPFOLDER?/
-?CP? languages -r ?TEMPFOLDER?/
-?CP? awgg ?TEMPFOLDER?/
-?CP? unix-versionitis ?TEMPFOLDER?/
-
-"/>
-      <Item10 Name="lazpackager/maintainer" Value="Reinier"/>
-      <Item11 Name="lazpackager/maintainer_email" Value="nenirey@gmail.com"/>
-      <Item12 Name="lazpackager/package_name" Value="awgg"/>
-    </CustomData>
-    <BuildModes Count="11">
+    <BuildModes Count="13">
       <Item1 Name="Default" Default="True"/>
       <Item2 Name="Debug">
         <CompilerOptions>
@@ -191,7 +110,7 @@ override_dh_auto_install:
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="C:/codetyphon/binLibraries/i386-linux"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -224,10 +143,11 @@ override_dh_auto_install:
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
-            <Filename Value="awgg"/>
+            <Filename Value="../$(TargetOS)/awgg"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="C:/codetyphon/binLibraries/x86_64-linux;C:/codetyphon/binLibraries/x86_64-linux-qt4"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <Parsing>
@@ -457,7 +377,7 @@ override_dh_auto_install:
           </Other>
         </CompilerOptions>
       </Item10>
-      <Item11 Name="Alpha64-QT5">
+      <Item11 Name="Alpha-QT5">
         <MacroValues Count="1">
           <Macro8 Name="LCLWidgetType" Value="qt5"/>
         </MacroValues>
@@ -468,7 +388,47 @@ override_dh_auto_install:
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux/;/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <TargetCPU Value="x86_64"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dbeta"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item11>
+      <Item12 Name="Betaqt4">
+        <MacroValues Count="1">
+          <Macro9 Name="LCLWidgetType" Value="qt"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -496,8 +456,47 @@ override_dh_auto_install:
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
-      </Item11>
-      <SharedMatrixOptions Count="8">
+      </Item12>
+      <Item13 Name="betaqt5">
+        <MacroValues Count="1">
+          <Macro10 Name="LCLWidgetType" Value="qt5"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dbeta"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item13>
+      <SharedMatrixOptions Count="10">
         <Item1 ID="262970800232" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item2 ID="292782621389" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
         <Item3 ID="321585814677" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
@@ -505,7 +504,9 @@ override_dh_auto_install:
         <Item5 ID="952727043054" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk"/>
         <Item6 ID="325016516933" Modes="Alpha64-GTK3" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
         <Item7 ID="659138796814" Modes="Alpha64-QT" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
-        <Item8 ID="380185753670" Modes="Alpha64-QT5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
+        <Item8 ID="380185753670" Modes="Alpha-QT5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
+        <Item9 ID="916445091724" Modes="Betaqt4" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
+        <Item10 ID="643534335870" Modes="betaqt5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
@@ -516,15 +517,18 @@ override_dh_auto_install:
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="2">
+    <RequiredPackages Count="3">
       <Item1>
         <PackageName Value="SynEdit"/>
       </Item1>
       <Item2>
-        <PackageName Value="LCL"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item2>
+      <Item3>
+        <PackageName Value="LCL"/>
+      </Item3>
     </RequiredPackages>
-    <Units Count="11">
+    <Units Count="13">
       <Unit0>
         <Filename Value="awgg.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -609,6 +613,22 @@ override_dh_auto_install:
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="Unit10"/>
       </Unit10>
+      <Unit11>
+        <Filename Value="unit11.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form9"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit11"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="unit12.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Form10"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="Unit12"/>
+      </Unit12>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

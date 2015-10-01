@@ -10,7 +10,7 @@ object Form4: TForm4
   ClientWidth = 570
   OnDeactivate = FormDeactivate
   Position = poScreenCenter
-  LCLVersion = '1.4.0.4'
+  LCLVersion = '1.4.2.0'
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Image1

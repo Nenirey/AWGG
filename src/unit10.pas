@@ -24,7 +24,7 @@ unit Unit10;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  Forms, StdCtrls,
   ButtonPanel;
 
 type

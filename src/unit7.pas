@@ -23,7 +23,7 @@ unit Unit7;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs,
+  Classes, Forms,
   StdCtrls;
 
 type

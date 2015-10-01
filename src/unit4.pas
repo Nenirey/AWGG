@@ -23,7 +23,7 @@ unit Unit4;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, StdCtrls,
+  Forms, Graphics, StdCtrls,
   ExtCtrls, LCLintf;
 
 type
