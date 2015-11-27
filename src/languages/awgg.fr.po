@@ -8,7 +8,7 @@ msgstr ""
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.7.6\n"
+"X-Generator: Poedit 1.8.6\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: fr\n"
 
@@ -16,14 +16,6 @@ msgstr ""
 msgctxt "tdlgform.caption"
 msgid "Confirm"
 msgstr "Confirmer"
-
-#: tdlgform.dlgbtnno.caption
-msgid "&No"
-msgstr "&Non"
-
-#: tdlgform.dlgbtnyes.caption
-msgid "&Yes"
-msgstr "&Oui"
 
 #: tform1.caption
 msgctxt "TFORM1.CAPTION"
@@ -108,6 +100,33 @@ msgctxt "tform1.menuitem10.caption"
 msgid "About"
 msgstr "A propos"
 
+#: tform1.menuitem100.caption
+msgid "Move file(s) to..."
+msgstr "Déplacer le(s) fichier(s) vers..."
+
+#: tform1.menuitem101.caption
+msgctxt "tform1.menuitem101.caption"
+msgid "Clear command out"
+msgstr "Effacer la sortie de commande"
+
+#: tform1.menuitem102.caption
+msgid "Copy"
+msgstr "Copier"
+
+#: tform1.menuitem103.caption
+msgctxt "tform1.menuitem103.caption"
+msgid "Select all"
+msgstr "Sélectionner tout"
+
+#: tform1.menuitem104.caption
+msgctxt "tform1.menuitem104.caption"
+msgid "-"
+msgstr "-"
+
+#: tform1.menuitem105.caption
+msgid "Show tree view panel"
+msgstr "Afficher le panneau de l'arborescence"
+
 #: tform1.menuitem11.caption
 msgid "Properties"
 msgstr "Propriétés"
@@ -147,6 +166,7 @@ msgid "Downloads"
 msgstr "Téléchargements"
 
 #: tform1.menuitem19.caption
+msgctxt "tform1.menuitem19.caption"
 msgid "Select all"
 msgstr "Sélectionner tout"
 
@@ -292,6 +312,7 @@ msgid "Restart all later"
 msgstr "Redémarrer tout plus tard"
 
 #: tform1.menuitem48.caption
+msgctxt "tform1.menuitem48.caption"
 msgid "Restart later"
 msgstr "Rédémarrer plus tard"
 
@@ -550,8 +571,23 @@ msgstr "Stopper la file d'attente"
 
 #: tform1.menuitem97.caption
 msgctxt "tform1.menuitem97.caption"
-msgid "Save file to..."
-msgstr ""
+msgid "Copy file(s) to..."
+msgstr "Copier le(s) fichier(s) vers..."
+
+#: tform1.menuitem98.caption
+msgctxt "tform1.menuitem98.caption"
+msgid "Delete from disk"
+msgstr "Supprimer du disque"
+
+#: tform1.menuitem99.caption
+msgctxt "tform1.menuitem99.caption"
+msgid "Delete from disk"
+msgstr "Supprimer du disque"
+
+#: tform1.menuitem99.hint
+msgctxt "tform1.menuitem99.hint"
+msgid "Delete from disk"
+msgstr "Supprimer du disque"
 
 #: tform1.opendialog1.title
 msgid "Open file list of downloads"
@@ -575,10 +611,6 @@ msgstr "Stopper la file d'attente"
 msgctxt "tform1.toolbutton12.hint"
 msgid "Stop all"
 msgstr "Stopper tout"
-
-#: tform1.toolbutton14.hint
-msgid "Clear command out"
-msgstr "Effacer la sortie de commande"
 
 #: tform1.toolbutton15.hint
 msgctxt "tform1.toolbutton15.hint"
@@ -638,10 +670,6 @@ msgstr "Exporter la liste des téléchargements..."
 msgid "New site grabber"
 msgstr "Nouvel aspirateur de site"
 
-#: tform1.toolbutton29.caption
-msgid "ToolButton29"
-msgstr "ToolButton29"
-
 #: tform1.toolbutton3.hint
 msgid "Start download"
 msgstr "Démarrer le téléchargement"
@@ -649,6 +677,16 @@ msgstr "Démarrer le téléchargement"
 #: tform1.toolbutton31.hint
 msgid "Enable/Disable clipboard monitor"
 msgstr "Activer/Désactiver la surveillance du presse-papier"
+
+#: tform1.toolbutton32.hint
+msgctxt "tform1.toolbutton32.hint"
+msgid "Restart later"
+msgstr "Rédémarrer plus tard"
+
+#: tform1.toolbutton33.hint
+msgctxt "tform1.toolbutton33.hint"
+msgid "Delete from disk"
+msgstr "Supprimer du disque"
 
 #: tform1.toolbutton4.hint
 msgid "Stop download"
@@ -672,24 +710,29 @@ msgstr "Démarrer la file d'attente"
 #: tform10.button1.caption
 msgctxt "tform10.button1.caption"
 msgid "Cancel"
-msgstr ""
+msgstr "Annuler"
 
 #: tform10.caption
 msgid "Saving file..."
-msgstr ""
+msgstr "Enregistrement du fichier..."
 
 #: tform10.label1.caption
 msgctxt "tform10.label1.caption"
 msgid "From: %s"
-msgstr ""
+msgstr "Depuis: %s"
 
 #: tform10.label2.caption
 msgctxt "tform10.label2.caption"
 msgid "To: %s"
-msgstr ""
+msgstr "Vers: %s"
 
 #: tform10.label3.caption
 msgctxt "tform10.label3.caption"
+msgid "0/0"
+msgstr "0/0"
+
+#: tform10.label4.caption
+msgctxt "tform10.label4.caption"
 msgid "%"
 msgstr "%"
 
@@ -775,11 +818,11 @@ msgstr "Appliquer"
 
 #: tform3.button4.caption
 msgid "Enable firefox integration"
-msgstr ""
+msgstr "Activer l'intégration à firefox"
 
 #: tform3.button5.caption
 msgid "Preview"
-msgstr ""
+msgstr "Prévisualisation"
 
 #: tform3.caption
 msgctxt "TFORM3.CAPTION"
@@ -1168,7 +1211,7 @@ msgstr "axel"
 
 #: tform3.tabsheet12.caption
 msgid "Integration"
-msgstr ""
+msgstr "Intégration"
 
 #: tform3.tabsheet15.caption
 msgid "Download options"
@@ -1287,6 +1330,10 @@ msgstr "Renommer automatiquement le fichier."
 #: tform6.radiobutton3.caption
 msgid "Manual rename the file."
 msgstr "Renommage manuel du fichier."
+
+#: tform6.radiobutton4.caption
+msgid "Update URL for this file."
+msgstr "Mettre à jour l'URL pour ce fichier."
 
 #: tform7.button1.caption
 msgctxt "TFORM7.BUTTON1.CAPTION"
@@ -1440,22 +1487,22 @@ msgstr "Valeur:"
 
 #: tform9.caption
 msgid "Download Notifications"
-msgstr ""
+msgstr "Notifications de téléchargement"
 
 #: tform9.label1.caption
 msgctxt "tform9.label1.caption"
 msgid "Label1"
-msgstr ""
+msgstr "Label1"
 
 #: tform9.label2.caption
 msgctxt "tform9.label2.caption"
 msgid "Label2"
-msgstr ""
+msgstr "Label2"
 
 #: tform9.label3.caption
 msgctxt "tform9.label3.caption"
 msgid "Label3"
-msgstr ""
+msgstr "Label3"
 
 #: tform9.speedbutton1.hint
 msgctxt "tform9.speedbutton1.hint"
@@ -1469,8 +1516,12 @@ msgstr "Ouvrir fichier"
 
 #: tform9.speedbutton4.hint
 msgctxt "tform9.speedbutton4.hint"
-msgid "Save file to..."
-msgstr ""
+msgid "Copy file to..."
+msgstr "Copier le fichier vers..."
+
+#: tform9.speedbutton5.hint
+msgid "Move file to..."
+msgstr "Déplacer le fichier vers..."
 
 #: trsform.alldowntreename.caption
 msgid "All downloads"
@@ -1537,15 +1588,16 @@ msgstr "Voulez-vous redémarrer le téléchargement sélectionné plus tard ?"
 
 #: trsform.fileexistsreplace.caption
 msgid "The file exist, do you want replace it?"
-msgstr ""
+msgstr "Le fichier existe, voulez-vous le remplacer ?"
 
 #: trsform.filtresname.caption
 msgid "Filters"
 msgstr "Filtres"
 
+# instalation -> installation ;)
 #: trsform.firefoxhelpintegration.caption
 msgid "Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser."
-msgstr ""
+msgstr "Veuillez fermer Mozilla Firefox avec de cliquer sur le bouton Ok et accepter l'installation des extensions FlashGot dans le même navigateur."
 
 #: trsform.friday.caption
 msgid "Friday"
@@ -1596,6 +1648,10 @@ msgstr "Le dossier n'existe pas"
 msgid "The history log for the download does not exist!"
 msgstr "L'historique de ce téléchargement n'existe pas!!"
 
+#: trsform.newfiletyperememberpath.caption
+msgid "Do you want to remember the path for this file type?"
+msgstr "Voulez-vous vous souvenir du chemin pour ce type de fichiers ?"
+
 #: trsform.popuptitlecomplete.caption
 msgid "Download complete"
 msgstr "Téléchargement terminé"
@@ -1629,6 +1685,10 @@ msgstr "File d'attente"
 #: trsform.queuestreename.caption
 msgid "Queues"
 msgstr "Files d'attente"
+
+#: trsform.rootdownloadpathchange.caption
+msgid "The root of the downloads folder has changed, would like to recreate the routes by categories in the new root?"
+msgstr "Le dossier racine des téléchargements a changé, voulez-vous recréer les routes vers les catégories dans la nouvelle racine ?"
 
 #: trsform.runwiththesystem.caption
 msgid "Run with the system."
@@ -1691,12 +1751,10 @@ msgstr "Mercredi"
 #: unit1.abouttext
 msgid ""
 "This program is free software under GNU GPL 2 license.\n"
-"\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
 "Copyright (c) 2015\n"
 "The project uses the following third party resources:\n"
-"\n"
 "Silk icons set 1.3 by Mark James\n"
 "http://www.famfamfam.com/lab/icons/silk/\n"
 "Tango Icon Library\n"
@@ -1709,17 +1767,14 @@ msgid ""
 "http://curl.haxx.se/\n"
 "Axel\n"
 "http://axel.alioth.debian.org/\n"
-"\n"
 "French translation: \n"
 "Tony O Gallos @ CodeTyphon Community\n"
 msgstr ""
 "Ce programme est un logiciel libre sous licence GNU GPL 2.\n"
-"\n"
 "Créé par Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
 "Copyright (c) 2015\n"
 "Ce projet utilise les ressources tierces suivantes:\n"
-"\n"
 "Silk icons set 1.3 par Mark James\n"
 "http://www.famfamfam.com/lab/icons/silk/\n"
 "Tango Icon Library\n"
@@ -1732,7 +1787,6 @@ msgstr ""
 "http://curl.haxx.se/\n"
 "Axel\n"
 "http://axel.alioth.debian.org/\n"
-"\n"
 "Traduction française: \n"
 "Tony O Gallos @ CodeTyphon Community\n"
 
@@ -1754,7 +1808,7 @@ msgstr "Documents"
 
 #: unit1.categoryfilter
 msgid "Categories"
-msgstr ""
+msgstr "Catégories"
 
 #: unit1.categoryimages
 msgid "Images"
@@ -1780,6 +1834,22 @@ msgstr "Vidéos"
 msgid "[-C -] Continue downloads."
 msgstr "[-C -] Continuer les téléchargements."
 
+#: unit1.fileexistsreplacetext
+msgid "The file \"%S\" already exists, do you want to replace it?"
+msgstr "Le fichier \"%S\" existe déjà, vouslez-vous le remplacer ?"
+
+#: unit1.fileoperationcopy
+msgid "Coping file(s)..."
+msgstr "Copie du(des) fichier(s)..."
+
+#: unit1.fileoperationmove
+msgid "Moving file(s)..."
+msgstr "Déplacement du(des) fichier(s)..."
+
+#: unit1.firefoxintegration
+msgid "Do you want to enable firefox integration?"
+msgstr "Voulez-vous activer l'intégration à firefox ?"
+
 #: unit1.startqueuesystray
 msgctxt "unit1.startqueuesystray"
 msgid "Start queue"
@@ -1789,6 +1859,14 @@ msgstr "Démarrer la file d'attente"
 msgctxt "unit1.stopqueuesystray"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
+
+#: unit1.transdestinationlabel
+msgid "To: %S"
+msgstr "Vers: %S"
+
+#: unit1.transfromlabel
+msgid "From: %S"
+msgstr "De: %S"
 
 #: unit1.wgetdefarg1
 msgid "[-c] Continue downloads."
@@ -1808,7 +1886,7 @@ msgstr "[--no-check-certificate] Ne pas vérifier le SSL."
 
 #: unit5.mensaje1
 msgid "Hello world"
-msgstr ""
+msgstr "Salut tout le monde"
 
 #: unit6.startqueuesystray
 msgctxt "unit6.startqueuesystray"
@@ -1819,4 +1897,3 @@ msgstr "Démarrer la file d'attente"
 msgctxt "unit6.stopqueuesystray"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
-

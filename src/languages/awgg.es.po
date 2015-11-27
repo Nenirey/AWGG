@@ -6,18 +6,10 @@ msgctxt "tdlgform.caption"
 msgid "Confirm"
 msgstr "Confirmar"
 
-#: tdlgform.dlgbtnno.caption
-msgid "&No"
-msgstr "&No"
-
-#: tdlgform.dlgbtnyes.caption
-msgid "&Yes"
-msgstr "&Si"
-
 #: tform1.caption
 msgctxt "TFORM1.CAPTION"
 msgid "AWGG"
-msgstr ""
+msgstr "AWGG"
 
 #: tform1.checkbox1.caption
 msgid "Limit (Kb/s):"
@@ -60,7 +52,7 @@ msgstr "Descargado"
 #: tform1.listview1.columns[4].caption
 msgctxt "tform1.listview1.columns[4].caption"
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: tform1.listview1.columns[5].caption
 msgctxt "tform1.listview1.columns[5].caption"
@@ -70,7 +62,7 @@ msgstr "Velocidad"
 #: tform1.listview1.columns[6].caption
 msgctxt "tform1.listview1.columns[6].caption"
 msgid "%"
-msgstr ""
+msgstr "%"
 
 #: tform1.listview1.columns[7].caption
 msgctxt "tform1.listview1.columns[7].caption"
@@ -96,6 +88,33 @@ msgstr "Mostrar"
 msgctxt "tform1.menuitem10.caption"
 msgid "About"
 msgstr "Acerca de"
+
+#: tform1.menuitem100.caption
+msgid "Move file(s) to..."
+msgstr "Mover archivo(s) a..."
+
+#: tform1.menuitem101.caption
+msgctxt "tform1.menuitem101.caption"
+msgid "Clear command out"
+msgstr "Limpiar salida de commandos"
+
+#: tform1.menuitem102.caption
+msgid "Copy"
+msgstr "Copiar"
+
+#: tform1.menuitem103.caption
+msgctxt "tform1.menuitem103.caption"
+msgid "Select all"
+msgstr "Seleccionar todas"
+
+#: tform1.menuitem104.caption
+msgctxt "tform1.menuitem104.caption"
+msgid "-"
+msgstr "-"
+
+#: tform1.menuitem105.caption
+msgid "Show tree view panel"
+msgstr "Mostrar arbol de funciones"
 
 #: tform1.menuitem11.caption
 msgid "Properties"
@@ -136,6 +155,7 @@ msgid "Downloads"
 msgstr "Descargas"
 
 #: tform1.menuitem19.caption
+msgctxt "tform1.menuitem19.caption"
 msgid "Select all"
 msgstr "Seleccionar todas"
 
@@ -192,7 +212,7 @@ msgstr "Reinicar ahora"
 #: tform1.menuitem3.caption
 msgctxt "tform1.menuitem3.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem30.caption
 msgid "Restart all now"
@@ -237,7 +257,7 @@ msgstr "Tamaño"
 #: tform1.menuitem39.caption
 msgctxt "TFORM1.MENUITEM39.CAPTION"
 msgid "URL"
-msgstr ""
+msgstr "URL"
 
 #: tform1.menuitem4.caption
 msgid "Show downloads icons in systray"
@@ -281,6 +301,7 @@ msgid "Restart all later"
 msgstr "Reiniciar todas mas tarde"
 
 #: tform1.menuitem48.caption
+msgctxt "tform1.menuitem48.caption"
 msgid "Restart later"
 msgstr "Reiniciar mas tarde"
 
@@ -349,7 +370,7 @@ msgstr "Salir"
 #: tform1.menuitem60.caption
 msgctxt "tform1.menuitem60.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem61.caption
 msgctxt "tform1.menuitem61.caption"
@@ -359,42 +380,42 @@ msgstr "Iniciar"
 #: tform1.menuitem62.caption
 msgctxt "tform1.menuitem62.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem63.caption
 msgctxt "tform1.menuitem63.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem64.caption
 msgctxt "tform1.menuitem64.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem65.caption
 msgctxt "tform1.menuitem65.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem66.caption
 msgctxt "tform1.menuitem66.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem67.caption
 msgctxt "tform1.menuitem67.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem68.caption
 msgctxt "tform1.menuitem68.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem69.caption
 msgctxt "tform1.menuitem69.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem7.caption
 msgid "Tools"
@@ -403,7 +424,7 @@ msgstr "Herramientas"
 #: tform1.menuitem70.caption
 msgctxt "tform1.menuitem70.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem71.caption
 msgctxt "tform1.menuitem71.caption"
@@ -417,37 +438,37 @@ msgstr "Ocultar"
 #: tform1.menuitem73.caption
 msgctxt "tform1.menuitem73.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem74.caption
 msgctxt "tform1.menuitem74.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem75.caption
 msgctxt "tform1.menuitem75.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem76.caption
 msgctxt "tform1.menuitem76.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem77.caption
 msgctxt "tform1.menuitem77.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem78.caption
 msgctxt "tform1.menuitem78.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem79.caption
 msgctxt "tform1.menuitem79.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem8.caption
 msgctxt "TFORM1.MENUITEM8.CAPTION"
@@ -457,12 +478,12 @@ msgstr "Configuracion"
 #: tform1.menuitem80.caption
 msgctxt "tform1.menuitem80.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem81.caption
 msgctxt "tform1.menuitem81.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem82.caption
 msgctxt "tform1.menuitem82.caption"
@@ -488,7 +509,7 @@ msgstr "Enviar a la cola"
 #: tform1.menuitem87.caption
 msgctxt "tform1.menuitem87.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem88.caption
 msgctxt "tform1.menuitem88.caption"
@@ -507,7 +528,7 @@ msgstr "Ayuda"
 #: tform1.menuitem90.caption
 msgctxt "tform1.menuitem90.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem91.caption
 msgid "Official web site"
@@ -520,12 +541,12 @@ msgstr "Mostrar icono en bandeja"
 #: tform1.menuitem93.caption
 msgctxt "tform1.menuitem93.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem94.caption
 msgctxt "tform1.menuitem94.caption"
 msgid "-"
-msgstr ""
+msgstr "-"
 
 #: tform1.menuitem95.caption
 msgctxt "tform1.menuitem95.caption"
@@ -539,8 +560,23 @@ msgstr "Detener cola"
 
 #: tform1.menuitem97.caption
 msgctxt "tform1.menuitem97.caption"
-msgid "Save file to..."
-msgstr "Guardar archivo a..."
+msgid "Copy file(s) to..."
+msgstr "Copiar archivo(s) a..."
+
+#: tform1.menuitem98.caption
+msgctxt "tform1.menuitem98.caption"
+msgid "Delete from disk"
+msgstr "Eliminar del disco"
+
+#: tform1.menuitem99.caption
+msgctxt "tform1.menuitem99.caption"
+msgid "Delete from disk"
+msgstr "Eliminar del disco"
+
+#: tform1.menuitem99.hint
+msgctxt "tform1.menuitem99.hint"
+msgid "Delete from disk"
+msgstr "Eliminar del disco"
 
 #: tform1.opendialog1.title
 msgid "Open file list of downloads"
@@ -564,10 +600,6 @@ msgstr "Detener cola"
 msgctxt "tform1.toolbutton12.hint"
 msgid "Stop all"
 msgstr "Detener todo"
-
-#: tform1.toolbutton14.hint
-msgid "Clear command out"
-msgstr "Limpiar salida de commandos"
 
 #: tform1.toolbutton15.hint
 msgctxt "tform1.toolbutton15.hint"
@@ -627,10 +659,6 @@ msgstr "Exportar lista de descargas..."
 msgid "New site grabber"
 msgstr "Nuevo grabador de sitios"
 
-#: tform1.toolbutton29.caption
-msgid "ToolButton29"
-msgstr ""
-
 #: tform1.toolbutton3.hint
 msgid "Start download"
 msgstr "Iniciar descarga"
@@ -638,6 +666,16 @@ msgstr "Iniciar descarga"
 #: tform1.toolbutton31.hint
 msgid "Enable/Disable clipboard monitor"
 msgstr "Habilitar/Desabilitar monitor del portapapeles"
+
+#: tform1.toolbutton32.hint
+msgctxt "tform1.toolbutton32.hint"
+msgid "Restart later"
+msgstr "Reiniciar mas tarde"
+
+#: tform1.toolbutton33.hint
+msgctxt "tform1.toolbutton33.hint"
+msgid "Delete from disk"
+msgstr "Eliminar del disco"
 
 #: tform1.toolbutton4.hint
 msgid "Stop download"
@@ -661,7 +699,7 @@ msgstr "Iniciar cola"
 #: tform10.button1.caption
 msgctxt "tform10.button1.caption"
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #: tform10.caption
 msgid "Saving file..."
@@ -670,17 +708,12 @@ msgstr "Guardando archivo..."
 #: tform10.label1.caption
 msgctxt "tform10.label1.caption"
 msgid "From: %s"
-msgstr ""
+msgstr "Desde: %s"
 
 #: tform10.label2.caption
 msgctxt "tform10.label2.caption"
 msgid "To: %s"
-msgstr ""
-
-#: tform10.label3.caption
-msgctxt "tform10.label3.caption"
-msgid "%"
-msgstr ""
+msgstr "A: %s"
 
 #: tform2.bitbtn1.caption
 msgctxt "tform2.bitbtn1.caption"
@@ -708,7 +741,7 @@ msgstr "Nueva descarga"
 
 #: tform2.label1.caption
 msgid "URL: "
-msgstr ""
+msgstr "URL: "
 
 #: tform2.label2.caption
 msgid "Destination: "
@@ -768,7 +801,7 @@ msgstr "Activar integracion con firefox"
 
 #: tform3.button5.caption
 msgid "Preview"
-msgstr ""
+msgstr "Vista previa"
 
 #: tform3.caption
 msgctxt "TFORM3.CAPTION"
@@ -887,7 +920,7 @@ msgstr "Aceptar"
 
 #: tform3.edit4.text
 msgid "localhost"
-msgstr ""
+msgstr "localhost"
 
 #: tform3.groupbox1.caption
 msgid "Load mode"
@@ -922,7 +955,7 @@ msgstr "Agente"
 #: tform3.label1.caption
 msgctxt "tform3.label1.caption"
 msgid "HTTP:"
-msgstr ""
+msgstr "HTTP:"
 
 #: tform3.label10.caption
 msgid "Start queue:"
@@ -969,7 +1002,7 @@ msgstr "Argumentos adicionales:"
 
 #: tform3.label2.caption
 msgid "SSL:"
-msgstr ""
+msgstr "SSL:"
 
 #: tform3.label20.caption
 msgid "Default engine:"
@@ -1145,15 +1178,15 @@ msgstr "Editar"
 
 #: tform3.tabsheet1.caption
 msgid "Proxy"
-msgstr ""
+msgstr "Proxy"
 
 #: tform3.tabsheet10.caption
 msgid "Logs"
-msgstr ""
+msgstr "Logs"
 
 #: tform3.tabsheet11.caption
 msgid "axel"
-msgstr ""
+msgstr "axel"
 
 #: tform3.tabsheet12.caption
 msgid "Integration"
@@ -1196,15 +1229,15 @@ msgstr "Carpetas"
 
 #: tform3.tabsheet6.caption
 msgid "wget"
-msgstr ""
+msgstr "wget"
 
 #: tform3.tabsheet7.caption
 msgid "aria2c"
-msgstr ""
+msgstr "aria2c"
 
 #: tform3.tabsheet8.caption
 msgid "curl"
-msgstr ""
+msgstr "curl"
 
 #: tform3.tabsheet9.caption
 msgctxt "tform3.tabsheet9.caption"
@@ -1224,7 +1257,7 @@ msgstr "Acerca de"
 #: tform4.label2.caption
 msgctxt "tform4.label2.caption"
 msgid "AWGG"
-msgstr ""
+msgstr "AWGG"
 
 #: tform4.label4.caption
 msgid "Web site:"
@@ -1276,6 +1309,10 @@ msgstr "Autorenombrar el archivo"
 #: tform6.radiobutton3.caption
 msgid "Manual rename the file."
 msgstr "Renombrar manualmente."
+
+#: tform6.radiobutton4.caption
+msgid "Update URL for this file."
+msgstr "Actualizar URL de esta descarga."
 
 #: tform7.button1.caption
 msgctxt "tform7.button1.caption"
@@ -1361,7 +1398,7 @@ msgstr "Autenticacion HTTP/FTP"
 
 #: tform7.label1.caption
 msgid "URL:"
-msgstr ""
+msgstr "URL:"
 
 #: tform7.label2.caption
 msgid "Name:"
@@ -1400,23 +1437,23 @@ msgstr "User agent:"
 
 #: tform7.tabsheet1.caption
 msgid "TabSheet1"
-msgstr ""
+msgstr "TabSheet1"
 
 #: tform7.tabsheet2.caption
 msgid "TabSheet2"
-msgstr ""
+msgstr "TabSheet2"
 
 #: tform7.tabsheet3.caption
 msgid "TabSheet3"
-msgstr ""
+msgstr "TabSheet3"
 
 #: tform7.tabsheet4.caption
 msgid "TabSheet4"
-msgstr ""
+msgstr "TabSheet4"
 
 #: tform7.tabsheet5.caption
 msgid "TabSheet5"
-msgstr ""
+msgstr "TabSheet5"
 
 #: tform8.caption
 msgctxt "tform8.caption"
@@ -1429,22 +1466,22 @@ msgstr "Valor:"
 
 #: tform9.caption
 msgid "Download Notifications"
-msgstr ""
+msgstr "Notificacion de descarga"
 
 #: tform9.label1.caption
 msgctxt "tform9.label1.caption"
 msgid "Label1"
-msgstr ""
+msgstr "Label1"
 
 #: tform9.label2.caption
 msgctxt "tform9.label2.caption"
 msgid "Label2"
-msgstr ""
+msgstr "Label2"
 
 #: tform9.label3.caption
 msgctxt "tform9.label3.caption"
 msgid "Label3"
-msgstr ""
+msgstr "Label3"
 
 #: tform9.speedbutton1.hint
 msgctxt "tform9.speedbutton1.hint"
@@ -1458,8 +1495,12 @@ msgstr "Abrir archivo"
 
 #: tform9.speedbutton4.hint
 msgctxt "tform9.speedbutton4.hint"
-msgid "Save file to..."
-msgstr "Guardar archivo a..."
+msgid "Copy file to..."
+msgstr "Copiar archivo a..."
+
+#: tform9.speedbutton5.hint
+msgid "Move file to..."
+msgstr "Mover archivo a..."
 
 #: trsform.alldowntreename.caption
 msgid "All downloads"
@@ -1481,7 +1522,7 @@ msgstr "Aceptar"
 
 #: trsform.caption
 msgid "rsForm"
-msgstr ""
+msgstr "rsForm"
 
 #: trsform.dlgclearhistorylogfile.caption
 msgid "Do you want to clear the history log file?"
@@ -1585,6 +1626,10 @@ msgstr "La carpeta no existe: "
 msgid "The history log for the download does not exist!"
 msgstr "No existe un historial log de la descarga!!!."
 
+#: trsform.newfiletyperememberpath.caption
+msgid "Do you want to remember the path for this file type?"
+msgstr "Desea recordar la ruta para este tipo de archivo?"
+
 #: trsform.popuptitlecomplete.caption
 msgid "Download complete"
 msgstr "Descarga completada"
@@ -1618,6 +1663,10 @@ msgstr "Cola"
 #: trsform.queuestreename.caption
 msgid "Queues"
 msgstr "Colas"
+
+#: trsform.rootdownloadpathchange.caption
+msgid "The root of the downloads folder has changed, would like to recreate the routes by categories in the new root?"
+msgstr "La raíz de la carpeta de descargas ha cambiado, quisiera recrear las rutas por categorías en la nueva raíz?"
 
 #: trsform.runwiththesystem.caption
 msgid "Run with the system."
@@ -1678,14 +1727,36 @@ msgid "Wednesday"
 msgstr "Miercoles"
 
 #: unit1.abouttext
+#, fuzzy
+#| msgid ""
+#| "This program is free software under GNU GPL 2 license.\n"
+#| "\n"
+#| "Created By Reinier Romero Mir\n"
+#| "Email: nenirey@gmail.com\n"
+#| "Copyright (c) 2015\n"
+#| "The project uses the following third party resources:\n"
+#| "\n"
+#| "Silk icons set 1.3 by Mark James\n"
+#| "http://www.famfamfam.com/lab/icons/silk/\n"
+#| "Tango Icon Library\n"
+#| "http://tango.freedesktop.org/Tango_Icon_Library\n"
+#| "aria2\n"
+#| "http://aria2.sourceforge.net/\n"
+#| "Wget\n"
+#| "http://www.gnu.org/software/wget/\n"
+#| "cURL\n"
+#| "http://curl.haxx.se/\n"
+#| "Axel\n"
+#| "http://axel.alioth.debian.org/\n"
+#| "\n"
+#| "French translation: \n"
+#| "Tony O Gallos @ CodeTyphon Community\n"
 msgid ""
 "This program is free software under GNU GPL 2 license.\n"
-"\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
 "Copyright (c) 2015\n"
 "The project uses the following third party resources:\n"
-"\n"
 "Silk icons set 1.3 by Mark James\n"
 "http://www.famfamfam.com/lab/icons/silk/\n"
 "Tango Icon Library\n"
@@ -1698,7 +1769,6 @@ msgid ""
 "http://curl.haxx.se/\n"
 "Axel\n"
 "http://axel.alioth.debian.org/\n"
-"\n"
 "French translation: \n"
 "Tony O Gallos @ CodeTyphon Community\n"
 msgstr ""
@@ -1769,6 +1839,22 @@ msgstr "Videos"
 msgid "[-C -] Continue downloads."
 msgstr "[-C -] Continuar descargas."
 
+#: unit1.fileexistsreplacetext
+msgid "The file \"%S\" already exists, do you want to replace it?"
+msgstr "El archivo \"%S\" ya existe, desea reemplazarlo?"
+
+#: unit1.fileoperationcopy
+msgid "Coping file(s)..."
+msgstr "Copiando archivo(s)..."
+
+#: unit1.fileoperationmove
+msgid "Moving file(s)..."
+msgstr "Moviendo archivo(s)..."
+
+#: unit1.firefoxintegration
+msgid "Do you want to enable firefox integration?"
+msgstr "Desea que AWGG se integre con firefox?"
+
 #: unit1.startqueuesystray
 msgctxt "unit1.startqueuesystray"
 msgid "Start queue"
@@ -1778,6 +1864,14 @@ msgstr "Iniciar cola"
 msgctxt "unit1.stopqueuesystray"
 msgid "Stop queue"
 msgstr "Detener cola"
+
+#: unit1.transdestinationlabel
+msgid "To: %S"
+msgstr "Hacia: %S"
+
+#: unit1.transfromlabel
+msgid "From: %S"
+msgstr "Desde: %S"
 
 #: unit1.wgetdefarg1
 msgid "[-c] Continue downloads."

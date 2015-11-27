@@ -1,17 +1,17 @@
 object Form6: TForm6
-  Left = 339
-  Height = 202
-  Top = 230
-  Width = 366
+  Left = 275
+  Height = 236
+  Top = 272
+  Width = 377
   AutoSize = True
   BorderIcons = []
   Caption = 'File exists'
-  ClientHeight = 202
-  ClientWidth = 366
+  ClientHeight = 236
+  ClientWidth = 377
   FormStyle = fsSystemStayOnTop
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.4.2.0'
+  LCLVersion = '1.4.4.0'
   object Label1: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -20,7 +20,7 @@ object Form6: TForm6
     Left = 15
     Height = 26
     Top = 15
-    Width = 336
+    Width = 347
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 15
     BorderSpacing.Top = 15
@@ -34,7 +34,7 @@ object Form6: TForm6
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Label1
     AnchorSideTop.Side = asrBottom
-    Left = 130
+    Left = 135
     Height = 17
     Top = 46
     Width = 106
@@ -48,7 +48,7 @@ object Form6: TForm6
     AnchorSideLeft.Control = RadioButton1
     AnchorSideTop.Control = RadioButton1
     AnchorSideTop.Side = asrBottom
-    Left = 130
+    Left = 135
     Height = 17
     Top = 68
     Width = 120
@@ -64,7 +64,7 @@ object Form6: TForm6
     AnchorSideLeft.Control = RadioButton1
     AnchorSideTop.Control = RadioButton2
     AnchorSideTop.Side = asrBottom
-    Left = 130
+    Left = 135
     Height = 17
     Top = 90
     Width = 131
@@ -77,14 +77,14 @@ object Form6: TForm6
   object Edit1: TEdit
     AnchorSideLeft.Control = Label2
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = RadioButton3
+    AnchorSideTop.Control = RadioButton4
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 64
     Height = 21
-    Top = 112
-    Width = 287
+    Top = 134
+    Width = 298
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 5
     BorderSpacing.Right = 15
@@ -99,9 +99,9 @@ object Form6: TForm6
     AnchorSideRight.Control = Button2
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 249
+    Left = 260
     Height = 23
-    Top = 148
+    Top = 170
     Width = 39
     Anchors = [akTop, akRight]
     AutoSize = True
@@ -119,27 +119,11 @@ object Form6: TForm6
     AnchorSideRight.Control = Edit1
     Left = 15
     Height = 13
-    Top = 116
+    Top = 138
     Width = 49
     BorderSpacing.Left = 15
     Caption = 'File name:'
     ParentColor = False
-  end
-  object Label3: TLabel
-    Left = 24
-    Height = 1
-    Top = 176
-    Width = 1
-    ParentColor = False
-    Visible = False
-  end
-  object Label4: TLabel
-    Left = 299
-    Height = 1
-    Top = 176
-    Width = 1
-    ParentColor = False
-    Visible = False
   end
   object Button2: TButton
     AnchorSideLeft.Control = Button1
@@ -150,9 +134,9 @@ object Form6: TForm6
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 293
+    Left = 304
     Height = 23
-    Top = 148
+    Top = 170
     Width = 58
     Anchors = [akTop, akRight]
     AutoSize = True
@@ -163,5 +147,18 @@ object Form6: TForm6
     Caption = 'Cancel'
     OnClick = Button2Click
     TabOrder = 5
+  end
+  object RadioButton4: TRadioButton
+    AnchorSideLeft.Control = RadioButton3
+    AnchorSideTop.Control = RadioButton3
+    AnchorSideTop.Side = asrBottom
+    Left = 135
+    Height = 17
+    Top = 112
+    Width = 133
+    BorderSpacing.Top = 5
+    Caption = 'Update URL for this file.'
+    OnClick = RadioButton4Click
+    TabOrder = 6
   end
 end

@@ -6,7 +6,7 @@ interface
 
 uses
   SysUtils, FileUtil, Forms, Graphics, Dialogs, Buttons,
-  StdCtrls, LCLIntF, ExtCtrls;
+  StdCtrls, LCLIntF, ExtCtrls, Classes;
 
 type
 
@@ -22,6 +22,7 @@ type
     SpeedButton2: TSpeedButton;
     SpeedButton3: TSpeedButton;
     SpeedButton4: TSpeedButton;
+    SpeedButton5: TSpeedButton;
     Timer1: TTimer;
     procedure FormClick(Sender: TObject);
     procedure FormMouseEnter(Sender: TObject);
@@ -32,6 +33,7 @@ type
     procedure SpeedButton2Click(Sender: TObject);
     procedure SpeedButton3Click(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
+    procedure SpeedButton5Click(Sender: TObject);
     procedure Timer1Timer(Sender: TObject);
   private
     { private declarations }
@@ -45,7 +47,7 @@ var
   Form9: TForm9;
 
 implementation
-uses Unit1, Unit7, Unit6;
+uses Unit1;
 {$R *.lfm}
 
 { TForm9 }
@@ -67,28 +69,30 @@ begin
 end;
 
 procedure TForm9.SpeedButton4Click(Sender: TObject);
-var confirmation:boolean=true;
 begin
   Self.SelectDirectoryDialog1.Execute;
   if Self.SelectDirectoryDialog1.FileName<>'' then
   begin
-    if FileExists(Self.SelectDirectoryDialog1.FileName+pathdelim+Self.Label1.Caption) then
-    begin
-      dlgForm.dlgText.Caption:=rsForm.fileexistsreplace.Caption;
-      dlgForm.ShowModal;
-      confirmation:=dlgCuestion;
-      if confirmation then
-        DeleteFile(Self.SelectDirectoryDialog1.FileName+pathdelim+Self.Label1.Caption);
-    end;
-    if confirmation then
-    begin
-      SetLength(copywork,Length(copywork)+1);
-      copywork[Length(copywork)-1]:=copythread.Create(true,Length(copywork)-1);
-      copywork[Length(copywork)-1].id:=Length(copywork)-1;
-      copywork[Length(copywork)-1].source:=Self.notipathfile+pathdelim+Self.Label1.Caption;
-      copywork[Length(copywork)-1].destination:=Self.SelectDirectoryDialog1.FileName+pathdelim+Self.Label1.Caption;
-      copywork[Length(copywork)-1].Start;
-    end;
+    SetLength(copywork,Length(copywork)+1);
+    copywork[Length(copywork)-1]:=copythread.Create(true,Length(copywork)-1);
+    copywork[Length(copywork)-1].id:=Length(copywork)-1;
+    copywork[Length(copywork)-1].source.Add(Self.notipathfile+pathdelim+Self.Label1.Caption);
+    copywork[Length(copywork)-1].destination:=Self.SelectDirectoryDialog1.FileName;
+    copywork[Length(copywork)-1].Start;
+  end;
+end;
+
+procedure TForm9.SpeedButton5Click(Sender: TObject);
+begin
+  Self.SelectDirectoryDialog1.Execute;
+  if Self.SelectDirectoryDialog1.FileName<>'' then
+  begin
+    SetLength(copywork,Length(copywork)+1);
+    copywork[Length(copywork)-1]:=copythread.Create(true,Length(copywork)-1,true);
+    copywork[Length(copywork)-1].id:=Length(copywork)-1;
+    copywork[Length(copywork)-1].source.Add(Self.notipathfile+pathdelim+Self.Label1.Caption);
+    copywork[Length(copywork)-1].destination:=Self.SelectDirectoryDialog1.FileName;
+    copywork[Length(copywork)-1].Start;
   end;
 end;
 

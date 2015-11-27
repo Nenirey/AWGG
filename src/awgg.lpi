@@ -17,12 +17,11 @@
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <MinorVersionNr Value="3"/>
-      <RevisionNr Value="9"/>
-      <BuildNr Value="3102"/>
+      <MinorVersionNr Value="4"/>
+      <BuildNr Value="3300"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
-    <BuildModes Count="13">
+    <BuildModes Count="14">
       <Item1 Name="Default" Default="True"/>
       <Item2 Name="Debug">
         <CompilerOptions>
@@ -110,7 +109,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
+            <Libraries Value="d:/codetyphon/binLibraries/i386-linux;C:/codetyphon/binLibraries/i386-linux-qt4"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -135,6 +134,7 @@
             <CustomOptions Value="-dbeta"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
+              <CompileReasons Run="False"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
@@ -224,7 +224,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/;/usr/lib/codetyphon/binLibraries/x86_64-linux-qt4/"/>
+            <Libraries Value="C:/codetyphon/binLibraries/x86_64-linux;C:/codetyphon/binLibraries/x86_64-linux-qt4"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
           <CodeGeneration>
@@ -289,9 +289,6 @@
               <ShowHintsForSenderNotUsed Value="True"/>
             </Verbosity>
             <CustomOptions Value="-drelease64"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
           </Other>
         </CompilerOptions>
       </Item8>
@@ -496,7 +493,47 @@
           </Other>
         </CompilerOptions>
       </Item13>
-      <SharedMatrixOptions Count="10">
+      <Item14 Name="alphacustomdraw">
+        <MacroValues Count="1">
+          <Macro11 Name="LCLWidgetType" Value="customdrawn"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../$(TargetOS)/awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <Libraries Value="/usr/lib/codetyphon/binLibraries/i386-linux-qt4/"/>
+            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+          </SearchPaths>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <GenerateDebugInfo Value="False"/>
+            </Debugging>
+            <LinkSmart Value="True"/>
+            <Options>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-dbeta"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item14>
+      <SharedMatrixOptions Count="11">
         <Item1 ID="262970800232" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item2 ID="292782621389" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
         <Item3 ID="321585814677" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
@@ -507,6 +544,7 @@
         <Item8 ID="380185753670" Modes="Alpha-QT5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
         <Item9 ID="916445091724" Modes="Betaqt4" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
         <Item10 ID="643534335870" Modes="betaqt5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
+        <Item11 ID="412440179373" Modes="alphacustomdraw" Type="IDEMacro" MacroName="LCLWidgetType" Value="customdrawn"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
@@ -517,16 +555,19 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="3">
+    <RequiredPackages Count="4">
       <Item1>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="pl_luicontrols"/>
       </Item1>
       <Item2>
-        <PackageName Value="DateTimeCtrls"/>
+        <PackageName Value="SynEdit"/>
       </Item2>
       <Item3>
-        <PackageName Value="LCL"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item3>
+      <Item4>
+        <PackageName Value="LCL"/>
+      </Item4>
     </RequiredPackages>
     <Units Count="13">
       <Unit0>

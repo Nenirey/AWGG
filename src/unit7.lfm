@@ -1,59 +1,17 @@
 object dlgForm: TdlgForm
-  Left = 320
-  Height = 168
-  Top = 298
-  Width = 417
+  Left = 290
+  Height = 166
+  Top = 228
+  Width = 413
   BorderIcons = []
   BorderStyle = bsDialog
   Caption = 'Confirm'
-  ClientHeight = 168
-  ClientWidth = 417
+  ClientHeight = 166
+  ClientWidth = 413
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.4.0.4'
-  object dlgbtnyes: TButton
-    AnchorSideLeft.Control = Owner
-    AnchorSideLeft.Side = asrCenter
-    AnchorSideTop.Control = dlgbtnno
-    AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = dlgbtnno
-    AnchorSideBottom.Control = Owner
-    AnchorSideBottom.Side = asrBottom
-    Left = 339
-    Height = 25
-    Top = 133
-    Width = 30
-    Anchors = [akTop, akRight]
-    AutoSize = True
-    BorderSpacing.Right = 10
-    BorderSpacing.Bottom = 10
-    Caption = '&Yes'
-    OnClick = dlgbtnyesClick
-    OnKeyDown = FormKeyDown
-    TabOrder = 0
-  end
-  object dlgbtnno: TButton
-    AnchorSideTop.Control = dlgtext
-    AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = Owner
-    AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = Owner
-    AnchorSideBottom.Side = asrBottom
-    Left = 379
-    Height = 25
-    Top = 133
-    Width = 28
-    Anchors = [akRight, akBottom]
-    AutoSize = True
-    BorderSpacing.Top = 30
-    BorderSpacing.Right = 10
-    BorderSpacing.Bottom = 10
-    Caption = '&No'
-    OnClick = dlgbtnnoClick
-    OnKeyDown = FormKeyDown
-    TabOrder = 1
-  end
+  LCLVersion = '1.4.4.0'
   object dlgtext: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -62,12 +20,30 @@ object dlgForm: TdlgForm
     Left = 20
     Height = 1
     Top = 20
-    Width = 377
+    Width = 373
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 20
     BorderSpacing.Top = 20
     BorderSpacing.Right = 20
     ParentColor = False
     WordWrap = True
+  end
+  object ButtonPanel1: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 126
+    Width = 401
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    CancelButton.OnClick = CancelButtonClick
+    TabOrder = 0
+    ShowButtons = [pbOK, pbCancel]
   end
 end

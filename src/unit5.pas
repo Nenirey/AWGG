@@ -23,7 +23,7 @@ unit Unit5;
 interface
 
 uses
-  Forms, StdCtrls;
+  Forms, StdCtrls, Classes, LCLTranslator;
 
 type
 

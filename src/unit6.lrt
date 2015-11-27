@@ -50,3 +50,5 @@ TRSFORM.PROXYSYSTEM.CAPTION=System proxy
 TRSFORM.PROXYMANUAL.CAPTION=Manual
 TRSFORM.FIREFOXHELPINTEGRATION.CAPTION=Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser.
 TRSFORM.FILEEXISTSREPLACE.CAPTION=The file exist, do you want replace it?
+TRSFORM.ROOTDOWNLOADPATHCHANGE.CAPTION=The root of the downloads folder has changed, would like to recreate the routes by categories in the new root?
+TRSFORM.NEWFILETYPEREMEMBERPATH.CAPTION=Do you want to remember the path for this file type?

@@ -24,20 +24,21 @@ interface
 
 uses
   Classes, Forms,
-  StdCtrls;
+  StdCtrls, ButtonPanel;
 
 type
 
   { TdlgForm }
 
   TdlgForm = class(TForm)
-    dlgbtnyes: TButton;
-    dlgbtnno: TButton;
+    ButtonPanel1: TButtonPanel;
     dlgtext: TLabel;
+    procedure CancelButtonClick(Sender: TObject);
     procedure dlgbtnnoClick(Sender: TObject);
     procedure dlgbtnyesClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
+    procedure OKButtonClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -77,7 +78,19 @@ begin
   end;
 end;
 
+procedure TdlgForm.OKButtonClick(Sender: TObject);
+begin
+  dlgcuestion:=true;
+  dlgForm.Close;
+end;
+
 procedure TdlgForm.dlgbtnnoClick(Sender: TObject);
+begin
+  dlgcuestion:=false;
+  dlgForm.Close;
+end;
+
+procedure TdlgForm.CancelButtonClick(Sender: TObject);
 begin
   dlgcuestion:=false;
   dlgForm.Close;

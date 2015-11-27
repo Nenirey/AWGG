@@ -24,7 +24,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls,
-  EditBtn, Buttons, Unit6, Unit8, URIParser;
+  EditBtn, Buttons, Unit6, Unit8, Unit7, URIParser, LCLIntF, FileUtil;
 
 type
 
@@ -37,6 +37,7 @@ type
     Button4: TButton;
     ComboBox1: TComboBox;
     ComboBox2: TComboBox;
+    ComboBox3: TComboBox;
     DirectoryEdit1: TDirectoryEdit;
     Edit1: TEdit;
     Edit2: TEdit;
@@ -53,11 +54,16 @@ type
     Label8: TLabel;
     SpeedButton1: TSpeedButton;
     SpeedButton2: TSpeedButton;
+    SpeedButton3: TSpeedButton;
+    SpeedButton4: TSpeedButton;
     procedure BitBtn1Click(Sender: TObject);
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure ComboBox3Change(Sender: TObject);
+    procedure DirectoryEdit1AcceptDirectory(Sender: TObject; var Value: String);
+    procedure DirectoryEdit1Change(Sender: TObject);
     procedure Edit1Change(Sender: TObject);
     procedure Edit3Change(Sender: TObject);
     procedure FormCreate(Sender: TObject);
@@ -66,6 +72,8 @@ type
     procedure FormShow(Sender: TObject);
     procedure SpeedButton1Click(Sender: TObject);
     procedure SpeedButton2Click(Sender: TObject);
+    procedure SpeedButton3Click(Sender: TObject);
+    procedure SpeedButton4Click(Sender: TObject);
   private
     { private declarations }
   public
@@ -75,7 +83,7 @@ type
 var
   Form2: TForm2;
   //downitem:TListItem;
-  iniciar,agregar,cola:Boolean;
+  iniciar,agregar,cola,updateurl:Boolean;
   function checkandclose(auto:boolean=false):boolean;
 implementation
 uses Unit1,Unit3;
@@ -86,21 +94,22 @@ var
   found:boolean;
 begin
   accept:=true;
+  updateurl:=false;
   if (Form2.Edit3.Text<>'') and (Form2.Button1.Visible=true) then
   begin
     Form6.RadioButton2.Checked:=true;
     found:=destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text);
-    while (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text)) or ((found) and (Form6.RadioButton1.Checked=false)) do
+    while ((FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text)) or ((found) and (Form6.RadioButton1.Checked=false))) and (Form6.RadioButton4.Checked=false) do
     begin
       found:=destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text);
+      Form6.RadioButton4.Enabled:=found;
+      Form6.RadioButton1.Enabled:=(not found);
       if (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text)) or ((found) and (Form6.RadioButton1.Checked=false)) then
       begin
         Form6.RadioButton2.Checked:=true;
         Form6.Edit1.Text:='_'+Form2.Edit3.Text;
-        while (destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text)) or (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text)) do
+        while (destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text)) or (FileExists(Form2.DirectoryEdit1.Text+pathdelim+Form6.Edit1.Text))  do
           Form6.Edit1.Text:='_'+Form6.Edit1.Text;
-        Form6.Label4.Caption:=Form2.Edit3.Text;
-        Form6.Label3.Caption:=Form2.DirectoryEdit1.Text;
         if auto=false then
         begin
          Form6.ShowModal;
@@ -114,6 +123,12 @@ begin
       end;
     end;
   end;
+  updateurl:=Form6.RadioButton4.Checked;
+    if updateurl then
+    begin
+      destinyexists(Form2.DirectoryEdit1.Text+pathdelim+Form2.Edit3.Text,Form2.Edit1.Caption);
+      savemydownloads();
+    end;
   if accept=true then
   begin
     Form2.Close;
@@ -154,6 +169,63 @@ begin
     ShowMessage(rsForm.msgmustselectdownloadengine.Caption);
 end;
 
+procedure TForm2.ComboBox3Change(Sender: TObject);
+begin
+  Form2.DirectoryEdit1.Text:=Form2.ComboBox3.Text;
+end;
+
+procedure TForm2.DirectoryEdit1AcceptDirectory(Sender: TObject;
+  var Value: String);
+var
+  ext:string='';
+  i,x:integer;
+  indice:integer=-1;
+  extexists:boolean=false;
+begin
+  if Form2.Edit3.Caption<>'' then
+  begin
+    ext:=UpperCase(Copy(Form2.Edit3.Caption,LastDelimiter('.',Form2.Edit3.Caption)+1,Length(Form2.Edit3.Caption)));
+    if ext <>'' then
+    begin
+      for i:=0 to Length(categoryextencions)-1 do
+      begin
+        if categoryextencions[i][0]=Value then
+         indice:=i;
+        for x:=2 to categoryextencions[i].Count-1 do
+        begin
+          if UpperCase(categoryextencions[i][x])=ext then
+            extexists:=true;
+        end;
+      end;
+      if extexists=false then
+      begin
+        dlgForm.dlgtext.Caption:=rsForm.newfiletyperememberpath.Caption;
+        Form2.FormStyle:=fsNormal;
+        dlgForm.ShowModal;
+        Form2.FormStyle:=fsSystemStayOnTop;
+        if dlgcuestion then
+        begin
+          if indice=-1 then
+          begin
+            SetLength(categoryextencions,Length(categoryextencions)+1);
+            indice:=Length(categoryextencions)-1;
+            categoryextencions[indice]:=TStringList.Create;
+            categoryextencions[indice].add(Value);
+            categoryextencions[indice].add(ExtractFileName(Value));
+          end;
+          categoryextencions[indice].add(ext);
+          categoryreload();
+        end;
+      end;
+    end;
+  end;
+end;
+
+procedure TForm2.DirectoryEdit1Change(Sender: TObject);
+begin
+  Form2.ComboBox3.Text:=Form2.DirectoryEdit1.Text;
+end;
+
 procedure TForm2.Edit1Change(Sender: TObject);
 begin
   Form2.Edit3.Text:=ParseURI(Form2.Edit1.Text).document;
@@ -191,11 +263,14 @@ begin
 end;
 
 procedure TForm2.FormShow(Sender: TObject);
+var
+  i:integer;
 begin
-  //Form2.AutoSize:=false;
-  //Form2.AutoSize:=true;
-  //Form2.Changed;
-  //Form2.RequestAlign;
+  Form2.ComboBox3.Items.Clear;
+  for i:=0 to Length(categoryextencions)-1 do
+  begin
+    Form2.ComboBox3.Items.Add(categoryextencions[i][0]);
+  end;
 end;
 
 procedure TForm2.SpeedButton1Click(Sender: TObject);
@@ -221,6 +296,23 @@ begin
   Form3.ShowModal;
   Form2.ComboBox2.ItemIndex:=Form3.ComboBox4.ItemIndex;
   Form2.FormStyle:=fsSystemStayOnTop;
+end;
+
+procedure TForm2.SpeedButton3Click(Sender: TObject);
+begin
+  Form2.FormStyle:=fsNormal;
+  Form3.PageControl1.ActivePageIndex:=5;
+  Form3.TreeView1.Items[Form3.PageControl1.ActivePageIndex].Selected:=true;
+  configdlg();
+  Form3.ShowModal;
+  categoryreload();
+  Form2.FormStyle:=fsSystemStayOnTop;
+end;
+
+procedure TForm2.SpeedButton4Click(Sender: TObject);
+begin
+  if not OpenURL(Form2.DirectoryEdit1.Text) then
+    OpenURL(ExtractShortPathName(UTF8ToSys(Form2.DirectoryEdit1.Text)));
 end;
 
 procedure TForm2.Button1Click(Sender: TObject);

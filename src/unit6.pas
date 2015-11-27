@@ -48,6 +48,8 @@ type
     alldowntreename: TLabel;
     firefoxhelpintegration: TLabel;
     fileexistsreplace: TLabel;
+    newfiletyperememberpath: TLabel;
+    rootdownloadpathchange: TLabel;
     proxymanual: TLabel;
     proxysystem: TLabel;
     proxynot: TLabel;

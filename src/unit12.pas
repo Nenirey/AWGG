@@ -16,7 +16,6 @@ type
     Button1: TButton;
     Label1: TLabel;
     Label2: TLabel;
-    Label3: TLabel;
     ProgressBar1: TProgressBar;
     procedure Button1Click(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
