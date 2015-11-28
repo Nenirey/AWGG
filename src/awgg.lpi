@@ -12,13 +12,13 @@
     </General>
     <i18n>
       <EnableI18N Value="True"/>
-      <OutDir Value="languages"/>
+      <OutDir Value="../languages"/>
     </i18n>
     <VersionInfo>
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
-      <MinorVersionNr Value="4"/>
-      <BuildNr Value="3300"/>
+      <MinorVersionNr Value="5"/>
+      <BuildNr Value="3434"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="14">
@@ -105,15 +105,23 @@
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
+            <Filename Value="../awgg"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
             <Libraries Value="d:/codetyphon/binLibraries/i386-linux;C:/codetyphon/binLibraries/i386-linux-qt4"/>
             <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
           </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <IncludeAssertionCode Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
           <CodeGeneration>
             <SmartLinkUnit Value="True"/>
+            <Checks>
+              <IOChecks Value="True"/>
+            </Checks>
             <Optimizations>
               <OptimizationLevel Value="3"/>
             </Optimizations>
@@ -121,7 +129,9 @@
           </CodeGeneration>
           <Linking>
             <Debugging>
-              <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseLineInfoUnit Value="False"/>
+              <UseExternalDbgSyms Value="True"/>
             </Debugging>
             <LinkSmart Value="True"/>
             <Options>
@@ -575,100 +585,88 @@
         <IsPartOfProject Value="True"/>
       </Unit0>
       <Unit1>
-        <Filename Value="unit1.pas"/>
+        <Filename Value="fmain.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form1"/>
+        <ComponentName Value="frmain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit1"/>
       </Unit1>
       <Unit2>
-        <Filename Value="unit2.pas"/>
+        <Filename Value="fnewdown.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form2"/>
+        <ComponentName Value="frnewdown"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit2"/>
       </Unit2>
       <Unit3>
-        <Filename Value="unit3.pas"/>
+        <Filename Value="fconfig.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form3"/>
+        <ComponentName Value="frconfig"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit3"/>
       </Unit3>
       <Unit4>
-        <Filename Value="unit4.pas"/>
+        <Filename Value="fabout.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form4"/>
+        <ComponentName Value="frabout"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit4"/>
       </Unit4>
       <Unit5>
-        <Filename Value="unit5.pas"/>
+        <Filename Value="flang.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form5"/>
+        <ComponentName Value="frlang"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit5"/>
       </Unit5>
       <Unit6>
-        <Filename Value="unit6.pas"/>
+        <Filename Value="fstrings.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="rsForm"/>
+        <ComponentName Value="frstrings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit6"/>
       </Unit6>
       <Unit7>
-        <Filename Value="unit7.pas"/>
+        <Filename Value="fconfirm.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="dlgForm"/>
+        <ComponentName Value="frconfirm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit7"/>
       </Unit7>
       <Unit8>
-        <Filename Value="unit8.pas"/>
+        <Filename Value="freplace.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form6"/>
+        <ComponentName Value="frreplace"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit8"/>
       </Unit8>
       <Unit9>
-        <Filename Value="unit9.pas"/>
+        <Filename Value="fsitegrabber.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form7"/>
+        <ComponentName Value="frsitegrabber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit9"/>
       </Unit9>
       <Unit10>
-        <Filename Value="unit10.pas"/>
+        <Filename Value="fadd.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form8"/>
+        <ComponentName Value="fradd"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit10"/>
       </Unit10>
       <Unit11>
-        <Filename Value="unit11.pas"/>
+        <Filename Value="fnotification.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form9"/>
+        <ComponentName Value="frnotification"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit11"/>
       </Unit11>
       <Unit12>
-        <Filename Value="unit12.pas"/>
+        <Filename Value="fcopymove.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Form10"/>
+        <ComponentName Value="frcopymove"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <UnitName Value="Unit12"/>
       </Unit12>
     </Units>
   </ProjectOptions>

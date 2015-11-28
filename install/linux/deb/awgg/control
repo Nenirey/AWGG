@@ -1,0 +1,45 @@
+Source: awgg
+Section: net
+Priority: optional
+Maintainer: Reinier Romero Mir <nenirey@gmail.com>
+Uploaders: Reinier Romero Mir <nenirey@gmail.com>
+Build-Depends: debhelper (>= 9),
+               fp-utils (>= 2.6.0),
+               fpc (>= 2.6.0),
+               lcl (>= 1.2),
+               lcl-gtk2,
+               lcl-qt4,
+               libbz2-dev,
+               libdbus-1-dev,
+               libglib2.0-dev,
+               libgtk2.0-dev,
+               libqt4pas-dev (>= 2.1)
+Standards-Version: 3.9.6
+Vcs-Git: git://github.com/Nenirey/AWGG.git
+Vcs-Browser: https://github.com/Nenirey/AWGG.git
+Homepage: https://sites.google.com/site/awggproject
+
+Package: awgg-gtk
+Architecture: any
+Depends: awgg-common (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: awgg
+Conflicts: awgg
+Replaces: awgg
+Description: Download manager.
+ AWGG is a cross platform download manager that uses the most popular downloads engines (text based) like wget, aria2, cURL and axel, AWGG is most that an frontend, is multiprocess, portable and simple, includes a programer, clipboard monitor and can be integrated to firefox with flashgot plugin.
+ This package contains the GTK2 user interface.
+
+
+Package: awgg-qt
+Architecture: any
+Depends: awgg-common (= ${source:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Provides: awgg
+Conflicts: awgg
+Replaces: awgg
+Description: Download manager.
+ AWGG is a cross platform download manager that uses the most popular downloads engines (text based) like wget, aria2, cURL and axel, AWGG is most that an frontend, is multiprocess, portable and simple, includes a programer, clipboard monitor and can be integrated to firefox with flashgot plugin.
+ This package contains the Qt4 user interface.

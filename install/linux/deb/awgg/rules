@@ -1,0 +1,46 @@
+#!/usr/bin/make -f
+
+# Set temporary HOME for lazarus primary config directory
+export HOME=$(CURDIR)/tmphome
+
+%:
+	dh $@
+
+override_dh_install:
+	cd language ;\
+		if [ -f awgg.po ] ; then mv awgg.po awgg.en.po; fi ;
+
+	# Build GTK2 version
+	./build.sh beta gtk2
+	./install/linux/install.sh --install-prefix=$(CURDIR)/debian/awgg-common
+	./clean.sh
+
+	# Build Qt4 version
+	./build.sh beta qt
+	./install/linux/install.sh --install-prefix=$(CURDIR)/debian/awgg-qt-temp
+	./clean.sh
+
+	# Separate GTK2-specific files
+	mv $(CURDIR)/debian/awgg-common/usr/lib/awgg/awgg $(CURDIR)/debian/awgg-gtk/usr/lib/awgg/
+	mv $(CURDIR)/debian/awgg-common/usr/lib/awgg/awgg.zdli $(CURDIR)/debian/awgg-gtk-dbg/usr/lib/awgg/
+
+	# Separate Qt4-specific files
+	mv $(CURDIR)/debian/awgg-qt-temp/usr/lib/awgg/awgg $(CURDIR)/debian/awgg-qt/usr/lib/awgg/
+	mkdir -p $(CURDIR)/debian/awgg-qt-dbg/usr/lib/awgg
+	mv $(CURDIR)/debian/awgg-qt-temp/usr/lib/awgg/doublecmd.zdli $(CURDIR)/debian/awgg-qt-dbg/usr/lib/awgg/
+	rm -rf $(CURDIR)/debian/awgg-qt-temp/
+
+	# Clean up common files
+	rm -rf $(CURDIR)/debian/awgg-common/usr/share/awgg/doc
+	find $(CURDIR)/debian/doublecmd-common/usr/share/ -type f | xargs chmod a-x ;
+
+	dh_install
+
+override_dh_clean:
+	./clean.sh
+
+	cd language ;\
+		if [ -f awgg.en.po ] ; then mv awgg.en.po awgg.po; fi ;
+	# Clean up temporary HOME
+	rm -rf $(CURDIR)/tmphome
+	dh_clean

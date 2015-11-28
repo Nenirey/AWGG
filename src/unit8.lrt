@@ -1,9 +1,0 @@
-TFORM6.CAPTION=File exists
-TFORM6.LABEL1.CAPTION=The file that you attempt to download already exists, what do you want to do?
-TFORM6.RADIOBUTTON1.CAPTION=Overwrite the file.
-TFORM6.RADIOBUTTON2.CAPTION=Auto rename the file.
-TFORM6.RADIOBUTTON3.CAPTION=Manual rename the file.
-TFORM6.BUTTON1.CAPTION=Ok
-TFORM6.LABEL2.CAPTION=File name:
-TFORM6.BUTTON2.CAPTION=Cancel
-TFORM6.RADIOBUTTON4.CAPTION=Update URL for this file.

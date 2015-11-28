@@ -1,0 +1,18 @@
+awgg (0.5.0) experimental; urgency=low
+
+  * Add new option to update URL in the replace dialog.
+  * Add new option to update the category extencion folders when change the default download folder.
+  * Add new option to remember news file types when new download place is selected.
+  * Best integration with firefox with more line parameters like (referer, user-agent, headers).
+  * Add new option to copy or move downloads files to other place.
+  * Add new menu option for delete download file from disk.
+  * Add new toolbar button for restart later.
+  * Add new context menu for command out panel.
+  * Move the Follow command out and Clear command out to the new context menu.
+  * Add new shortcut key to select all download (*).
+  * Add new show menu option to show/hide the tree view panel.
+  * New icon for deleted complete download files.
+  * Fix problem with [Start now] button (show too small some times).
+
+ -- Reinier Romero Mir <nenirey@gmail.com>  Wed, 18 Feb 2015 11:09:44 +0200
+
