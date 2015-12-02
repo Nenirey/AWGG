@@ -25,8 +25,8 @@ uses
   cthreads, cmem,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, datetimectrls, pl_luicontrols, fmain, fnewdown, fconfig, fabout, flang,
-  fstrings, freplace, fsitegrabber, fadd, fnotification, fcopymove, fconfirm;
+  Forms, datetimectrls, fmain, fnewdown, fconfig, fabout, flang,
+  fstrings, freplace, fsitegrabber, fadd, fnotification, fcopymove, fconfirm, un_lineinfo;
 
 {$R *.res}
 

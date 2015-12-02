@@ -3335,11 +3335,6 @@ msgctxt "TFRCONFIG.CHECKBOX15.CAPTION"
 msgid "Use multiple connections."
 msgstr ""
 
-#: tfrconfig.checkbox2.caption
-msgctxt "TFRCONFIG.CHECKBOX2.CAPTION"
-msgid "Use authentication"
-msgstr ""
-
 #: tfrconfig.checkbox3.caption
 msgctxt "TFRCONFIG.CHECKBOX3.CAPTION"
 msgid "Daily"
@@ -3348,11 +3343,6 @@ msgstr ""
 #: tfrconfig.checkbox4.caption
 msgctxt "TFRCONFIG.CHECKBOX4.CAPTION"
 msgid "Show notifications"
-msgstr ""
-
-#: tfrconfig.checkbox5.caption
-msgctxt "TFRCONFIG.CHECKBOX5.CAPTION"
-msgid "Use the same proxy for all."
 msgstr ""
 
 #: tfrconfig.checkbox6.caption
@@ -3405,6 +3395,16 @@ msgctxt "TFRCONFIG.CHECKGROUP6.CAPTION"
 msgid "Default arguments"
 msgstr ""
 
+#: tfrconfig.chsameproxy.caption
+msgctxt "TFRCONFIG.CHSAMEPROXY.CAPTION"
+msgid "Use the same proxy for all."
+msgstr ""
+
+#: tfrconfig.chuseauth.caption
+msgctxt "TFRCONFIG.CHUSEAUTH.CAPTION"
+msgid "Use authentication"
+msgstr ""
+
 #: tfrconfig.dateedit1.cancelcaption
 msgctxt "TFRCONFIG.DATEEDIT1.CANCELCAPTION"
 msgid "Cancel"
@@ -3425,8 +3425,8 @@ msgctxt "TFRCONFIG.DATEEDIT2.OKCAPTION"
 msgid "OK"
 msgstr ""
 
-#: tfrconfig.edit4.text
-msgctxt "TFRCONFIG.EDIT4.TEXT"
+#: tfrconfig.edtnoproxyhosts.text
+msgctxt "TFRCONFIG.EDTNOPROXYHOSTS.TEXT"
 msgid "localhost"
 msgstr ""
 
@@ -3463,11 +3463,6 @@ msgstr ""
 #: tfrconfig.groupbox7.caption
 msgctxt "TFRCONFIG.GROUPBOX7.CAPTION"
 msgid "User agent"
-msgstr ""
-
-#: tfrconfig.label1.caption
-msgctxt "TFRCONFIG.LABEL1.CAPTION"
-msgid "HTTP:"
 msgstr ""
 
 #: tfrconfig.label10.caption
@@ -3520,11 +3515,6 @@ msgctxt "TFRCONFIG.LABEL19.CAPTION"
 msgid "Additional arguments:"
 msgstr ""
 
-#: tfrconfig.label2.caption
-msgctxt "TFRCONFIG.LABEL2.CAPTION"
-msgid "SSL:"
-msgstr ""
-
 #: tfrconfig.label20.caption
 msgctxt "TFRCONFIG.LABEL20.CAPTION"
 msgid "Default engine:"
@@ -3560,11 +3550,6 @@ msgctxt "TFRCONFIG.LABEL26.CAPTION"
 msgid "Download stopped:"
 msgstr ""
 
-#: tfrconfig.label27.caption
-msgctxt "TFRCONFIG.LABEL27.CAPTION"
-msgid "Exp: .mozilla.org, localhost, 192.168.0.1"
-msgstr ""
-
 #: tfrconfig.label28.caption
 msgctxt "TFRCONFIG.LABEL28.CAPTION"
 msgid "Category download folder:"
@@ -3573,11 +3558,6 @@ msgstr ""
 #: tfrconfig.label29.caption
 msgctxt "TFRCONFIG.LABEL29.CAPTION"
 msgid "Category:"
-msgstr ""
-
-#: tfrconfig.label3.caption
-msgctxt "TFRCONFIG.LABEL3.CAPTION"
-msgid "FTP:"
 msgstr ""
 
 #: tfrconfig.label30.caption
@@ -3605,11 +3585,6 @@ msgctxt "TFRCONFIG.LABEL39.CAPTION"
 msgid "Delay tries (sec):"
 msgstr ""
 
-#: tfrconfig.label4.caption
-msgctxt "TFRCONFIG.LABEL4.CAPTION"
-msgid "Port:"
-msgstr ""
-
 #: tfrconfig.label40.caption
 msgctxt "TFRCONFIG.LABEL40.CAPTION"
 msgid "Default language:"
@@ -3630,29 +3605,54 @@ msgctxt "TFRCONFIG.LABEL43.CAPTION"
 msgid "Split size (can append K or M):"
 msgstr ""
 
-#: tfrconfig.label5.caption
-msgctxt "TFRCONFIG.LABEL5.CAPTION"
+#: tfrconfig.lblftphost.caption
+msgctxt "TFRCONFIG.LBLFTPHOST.CAPTION"
+msgid "FTP:"
+msgstr ""
+
+#: tfrconfig.lblftpport.caption
+msgctxt "TFRCONFIG.LBLFTPPORT.CAPTION"
 msgid "Port:"
 msgstr ""
 
-#: tfrconfig.label6.caption
-msgctxt "TFRCONFIG.LABEL6.CAPTION"
+#: tfrconfig.lblhttphost.caption
+msgctxt "TFRCONFIG.LBLHTTPHOST.CAPTION"
+msgid "HTTP:"
+msgstr ""
+
+#: tfrconfig.lblhttpport.caption
+msgctxt "TFRCONFIG.LBLHTTPPORT.CAPTION"
 msgid "Port:"
 msgstr ""
 
-#: tfrconfig.label7.caption
-msgctxt "TFRCONFIG.LABEL7.CAPTION"
+#: tfrconfig.lblnoproxyhelp.caption
+msgctxt "TFRCONFIG.LBLNOPROXYHELP.CAPTION"
+msgid "Exp: .mozilla.org, localhost, 192.168.0.1"
+msgstr ""
+
+#: tfrconfig.lblnoproxyhosts.caption
+msgctxt "TFRCONFIG.LBLNOPROXYHOSTS.CAPTION"
 msgid "No proxy for:"
 msgstr ""
 
-#: tfrconfig.label8.caption
-msgctxt "TFRCONFIG.LABEL8.CAPTION"
+#: tfrconfig.lblproxypass.caption
+msgctxt "TFRCONFIG.LBLPROXYPASS.CAPTION"
+msgid "Password:"
+msgstr ""
+
+#: tfrconfig.lblproxyuser.caption
+msgctxt "TFRCONFIG.LBLPROXYUSER.CAPTION"
 msgid "User:"
 msgstr ""
 
-#: tfrconfig.label9.caption
-msgctxt "TFRCONFIG.LABEL9.CAPTION"
-msgid "Password:"
+#: tfrconfig.lblsslhost.caption
+msgctxt "TFRCONFIG.LBLSSLHOST.CAPTION"
+msgid "SSL:"
+msgstr ""
+
+#: tfrconfig.lblsslport.caption
+msgctxt "TFRCONFIG.LBLSSLPORT.CAPTION"
+msgid "Port:"
 msgstr ""
 
 #: tfrconfig.radiobutton1.caption
@@ -3725,84 +3725,84 @@ msgctxt "TFRCONFIG.SPEEDBUTTON8.HINT"
 msgid "Edit"
 msgstr ""
 
-#: tfrconfig.tabsheet1.caption
-msgctxt "TFRCONFIG.TABSHEET1.CAPTION"
-msgid "Proxy"
-msgstr ""
-
-#: tfrconfig.tabsheet10.caption
-msgctxt "TFRCONFIG.TABSHEET10.CAPTION"
-msgid "Logs"
-msgstr ""
-
-#: tfrconfig.tabsheet11.caption
-msgctxt "TFRCONFIG.TABSHEET11.CAPTION"
-msgid "axel"
-msgstr ""
-
-#: tfrconfig.tabsheet12.caption
-msgctxt "TFRCONFIG.TABSHEET12.CAPTION"
-msgid "Integration"
-msgstr ""
-
-#: tfrconfig.tabsheet15.caption
-msgctxt "TFRCONFIG.TABSHEET15.CAPTION"
-msgid "Download options"
-msgstr ""
-
-#: tfrconfig.tabsheet16.caption
-msgctxt "TFRCONFIG.TABSHEET16.CAPTION"
-msgid "Language"
-msgstr ""
-
-#: tfrconfig.tabsheet17.caption
-msgctxt "TFRCONFIG.TABSHEET17.CAPTION"
-msgid "Sounds"
-msgstr ""
-
-#: tfrconfig.tabsheet18.caption
-msgctxt "TFRCONFIG.TABSHEET18.CAPTION"
-msgid "Queue"
-msgstr ""
-
-#: tfrconfig.tabsheet2.caption
-msgctxt "TFRCONFIG.TABSHEET2.CAPTION"
-msgid "Scheduler"
-msgstr ""
-
-#: tfrconfig.tabsheet3.caption
-msgctxt "TFRCONFIG.TABSHEET3.CAPTION"
-msgid "Notifications"
-msgstr ""
-
-#: tfrconfig.tabsheet4.caption
-msgctxt "TFRCONFIG.TABSHEET4.CAPTION"
-msgid "Clipboard monitor"
-msgstr ""
-
-#: tfrconfig.tabsheet5.caption
-msgctxt "TFRCONFIG.TABSHEET5.CAPTION"
-msgid "Folders"
-msgstr ""
-
-#: tfrconfig.tabsheet6.caption
-msgctxt "TFRCONFIG.TABSHEET6.CAPTION"
-msgid "wget"
-msgstr ""
-
-#: tfrconfig.tabsheet7.caption
-msgctxt "TFRCONFIG.TABSHEET7.CAPTION"
+#: tfrconfig.tsaria2.caption
+msgctxt "TFRCONFIG.TSARIA2.CAPTION"
 msgid "aria2c"
 msgstr ""
 
-#: tfrconfig.tabsheet8.caption
-msgctxt "TFRCONFIG.TABSHEET8.CAPTION"
+#: tfrconfig.tsautomation.caption
+msgctxt "TFRCONFIG.TSAUTOMATION.CAPTION"
+msgid "Automation"
+msgstr ""
+
+#: tfrconfig.tsaxel.caption
+msgctxt "TFRCONFIG.TSAXEL.CAPTION"
+msgid "axel"
+msgstr ""
+
+#: tfrconfig.tsclipboardm.caption
+msgctxt "TFRCONFIG.TSCLIPBOARDM.CAPTION"
+msgid "Clipboard monitor"
+msgstr ""
+
+#: tfrconfig.tscurl.caption
+msgctxt "TFRCONFIG.TSCURL.CAPTION"
 msgid "curl"
 msgstr ""
 
-#: tfrconfig.tabsheet9.caption
-msgctxt "TFRCONFIG.TABSHEET9.CAPTION"
-msgid "Automation"
+#: tfrconfig.tsdownoptions.caption
+msgctxt "TFRCONFIG.TSDOWNOPTIONS.CAPTION"
+msgid "Download options"
+msgstr ""
+
+#: tfrconfig.tsfolders.caption
+msgctxt "TFRCONFIG.TSFOLDERS.CAPTION"
+msgid "Folders"
+msgstr ""
+
+#: tfrconfig.tsintegration.caption
+msgctxt "TFRCONFIG.TSINTEGRATION.CAPTION"
+msgid "Integration"
+msgstr ""
+
+#: tfrconfig.tslang.caption
+msgctxt "TFRCONFIG.TSLANG.CAPTION"
+msgid "Language"
+msgstr ""
+
+#: tfrconfig.tslogs.caption
+msgctxt "TFRCONFIG.TSLOGS.CAPTION"
+msgid "Logs"
+msgstr ""
+
+#: tfrconfig.tsnotifications.caption
+msgctxt "TFRCONFIG.TSNOTIFICATIONS.CAPTION"
+msgid "Notifications"
+msgstr ""
+
+#: tfrconfig.tsproxy.caption
+msgctxt "TFRCONFIG.TSPROXY.CAPTION"
+msgid "Proxy"
+msgstr ""
+
+#: tfrconfig.tsqueue.caption
+msgctxt "TFRCONFIG.TSQUEUE.CAPTION"
+msgid "Queue"
+msgstr ""
+
+#: tfrconfig.tsscheduler.caption
+msgctxt "TFRCONFIG.TSSCHEDULER.CAPTION"
+msgid "Scheduler"
+msgstr ""
+
+#: tfrconfig.tssounds.caption
+msgctxt "TFRCONFIG.TSSOUNDS.CAPTION"
+msgid "Sounds"
+msgstr ""
+
+#: tfrconfig.tswget.caption
+msgctxt "TFRCONFIG.TSWGET.CAPTION"
+msgid "wget"
 msgstr ""
 
 #: tfrconfirm.caption
@@ -3895,73 +3895,73 @@ msgctxt "TFRMAIN.CAPTION"
 msgid "AWGG"
 msgstr ""
 
-#: tfrmain.checkbox1.caption
-msgctxt "TFRMAIN.CHECKBOX1.CAPTION"
+#: tfrmain.cblimit.caption
+msgctxt "TFRMAIN.CBLIMIT.CAPTION"
 msgid "Limit (Kb/s):"
 msgstr ""
 
-#: tfrmain.label1.caption
-msgctxt "TFRMAIN.LABEL1.CAPTION"
+#: tfrmain.lblmaxdowninprogress.caption
+msgctxt "TFRMAIN.LBLMAXDOWNINPROGRESS.CAPTION"
 msgid "Max. downloads in progress:"
 msgstr ""
 
-#: tfrmain.listview1.columns[0].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[0].CAPTION"
+#: tfrmain.lvmain.columns[0].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[0].CAPTION"
 msgid "Status"
 msgstr ""
 
-#: tfrmain.listview1.columns[10].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[10].CAPTION"
+#: tfrmain.lvmain.columns[10].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[10].CAPTION"
 msgid "Engine"
 msgstr ""
 
-#: tfrmain.listview1.columns[11].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[11].CAPTION"
+#: tfrmain.lvmain.columns[11].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[11].CAPTION"
 msgid "Parameters"
 msgstr ""
 
-#: tfrmain.listview1.columns[1].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[1].CAPTION"
+#: tfrmain.lvmain.columns[1].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[1].CAPTION"
 msgid "File name"
 msgstr ""
 
-#: tfrmain.listview1.columns[2].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[2].CAPTION"
+#: tfrmain.lvmain.columns[2].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[2].CAPTION"
 msgid "Size"
 msgstr ""
 
-#: tfrmain.listview1.columns[3].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[3].CAPTION"
+#: tfrmain.lvmain.columns[3].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[3].CAPTION"
 msgid "Downloaded"
 msgstr ""
 
-#: tfrmain.listview1.columns[4].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[4].CAPTION"
+#: tfrmain.lvmain.columns[4].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[4].CAPTION"
 msgid "URL"
 msgstr ""
 
-#: tfrmain.listview1.columns[5].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[5].CAPTION"
+#: tfrmain.lvmain.columns[5].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[5].CAPTION"
 msgid "Speed"
 msgstr ""
 
-#: tfrmain.listview1.columns[6].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[6].CAPTION"
+#: tfrmain.lvmain.columns[6].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[6].CAPTION"
 msgid "%"
 msgstr ""
 
-#: tfrmain.listview1.columns[7].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[7].CAPTION"
+#: tfrmain.lvmain.columns[7].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[7].CAPTION"
 msgid "Estimated"
 msgstr ""
 
-#: tfrmain.listview1.columns[8].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[8].CAPTION"
+#: tfrmain.lvmain.columns[8].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[8].CAPTION"
 msgid "Date"
 msgstr ""
 
-#: tfrmain.listview1.columns[9].caption
-msgctxt "TFRMAIN.LISTVIEW1.COLUMNS[9].CAPTION"
+#: tfrmain.lvmain.columns[9].caption
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[9].CAPTION"
 msgid "Destination"
 msgstr ""
 
@@ -4495,13 +4495,13 @@ msgctxt "TFRMAIN.MITRYDOWNHIDE.CAPTION"
 msgid "Hide"
 msgstr ""
 
-#: tfrmain.opendialog1.title
-msgctxt "TFRMAIN.OPENDIALOG1.TITLE"
+#: tfrmain.odlgimportdown.title
+msgctxt "TFRMAIN.ODLGIMPORTDOWN.TITLE"
 msgid "Open file list of downloads"
 msgstr ""
 
-#: tfrmain.savedialog1.title
-msgctxt "TFRMAIN.SAVEDIALOG1.TITLE"
+#: tfrmain.sdlgexportdown.title
+msgctxt "TFRMAIN.SDLGEXPORTDOWN.TITLE"
 msgid "Save file list of downloads"
 msgstr ""
 

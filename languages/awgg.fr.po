@@ -13,7 +13,7 @@ msgstr ""
 "Language: fr\n"
 
 #: fmain.abouttext
-#, fuzzy
+
 msgctxt "fmain.abouttext"
 msgid ""
 "This program is free software under GNU GPL 2 license.\n"
@@ -57,139 +57,139 @@ msgstr ""
 "Tony O Gallos @ CodeTyphon Community\n"
 
 #: fmain.aria2defarg1
-#, fuzzy
+
 msgctxt "fmain.aria2defarg1"
 msgid "[-c] Continue downloads"
 msgstr "[-c] Continuer les téléchargements"
 
 #: fmain.aria2defarg2
-#, fuzzy
+
 msgctxt "fmain.aria2defarg2"
 msgid "[--file-allocation=none] No allocate space."
 msgstr "[--file-allocation=none] Ne pas allouer d'espace."
 
 #: fmain.categorycompressed
-#, fuzzy
+
 msgctxt "fmain.categorycompressed"
 msgid "Compressed"
 msgstr "Compressés"
 
 #: fmain.categorydocuments
-#, fuzzy
+
 msgctxt "fmain.categorydocuments"
 msgid "Documents"
 msgstr "Documents"
 
 #: fmain.categoryfilter
-#, fuzzy
+
 msgctxt "fmain.categoryfilter"
 msgid "Categories"
 msgstr "Catégories"
 
 #: fmain.categoryimages
-#, fuzzy
+
 msgctxt "fmain.categoryimages"
 msgid "Images"
 msgstr "Images"
 
 #: fmain.categorymusic
-#, fuzzy
+
 msgctxt "fmain.categorymusic"
 msgid "Music"
 msgstr "Musique"
 
 #: fmain.categoryothers
-#, fuzzy
+
 msgctxt "fmain.categoryothers"
 msgid "Others"
 msgstr "Autres"
 
 #: fmain.categoryprograms
-#, fuzzy
+
 msgctxt "fmain.categoryprograms"
 msgid "Programs"
 msgstr "Programmes"
 
 #: fmain.categoryvideos
-#, fuzzy
+
 msgctxt "fmain.categoryvideos"
 msgid "Videos"
 msgstr "Vidéos"
 
 #: fmain.curldefarg1
-#, fuzzy
+
 msgctxt "fmain.curldefarg1"
 msgid "[-C -] Continue downloads."
 msgstr "[-C -] Continuer les téléchargements."
 
 #: fmain.fileexistsreplacetext
-#, fuzzy
+
 msgctxt "fmain.fileexistsreplacetext"
 msgid "The file \"%S\" already exists, do you want to replace it?"
 msgstr "Le fichier \"%S\" existe déjà, vouslez-vous le remplacer ?"
 
 #: fmain.fileoperationcopy
-#, fuzzy
+
 msgctxt "fmain.fileoperationcopy"
 msgid "Coping file(s)..."
 msgstr "Copie du(des) fichier(s)..."
 
 #: fmain.fileoperationmove
-#, fuzzy
+
 msgctxt "fmain.fileoperationmove"
 msgid "Moving file(s)..."
 msgstr "Déplacement du(des) fichier(s)..."
 
 #: fmain.firefoxintegration
-#, fuzzy
+
 msgctxt "fmain.firefoxintegration"
 msgid "Do you want to enable firefox integration?"
 msgstr "Voulez-vous activer l'intégration à firefox ?"
 
 #: fmain.startqueuesystray
-#, fuzzy
+
 msgctxt "fmain.startqueuesystray"
 msgid "Start queue"
 msgstr "Démarrer la file d'attente"
 
 #: fmain.stopqueuesystray
-#, fuzzy
+
 msgctxt "fmain.stopqueuesystray"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
 
 #: fmain.transdestinationlabel
-#, fuzzy
+
 msgctxt "fmain.transdestinationlabel"
 msgid "To: %S"
 msgstr "Vers: %S"
 
 #: fmain.transfromlabel
-#, fuzzy
+
 msgctxt "fmain.transfromlabel"
 msgid "From: %S"
 msgstr "De: %S"
 
 #: fmain.wgetdefarg1
-#, fuzzy
+
 msgctxt "fmain.wgetdefarg1"
 msgid "[-c] Continue downloads."
 msgstr "[-c] Continuer les téléchargements."
 
 #: fmain.wgetdefarg2
-#, fuzzy
+
 msgctxt "fmain.wgetdefarg2"
 msgid "[-nH] No create host dir."
 msgstr "[-nH] Ne pas créer le dossier hôte."
 
 #: fmain.wgetdefarg3
-#, fuzzy
+
 msgctxt "fmain.wgetdefarg3"
 msgid "[-nd] No create out dir."
 msgstr "[-nd] Ne pas créer le dossier de sortie."
 
 #: fmain.wgetdefarg4
-#, fuzzy
+
 msgctxt "fmain.wgetdefarg4"
 msgid "[--no-check-certificate] No check SSL."
 msgstr "[--no-check-certificate] Ne pas vérifier le SSL."
@@ -200,1723 +200,1723 @@ msgid "Confirm"
 msgstr "Confirmer"
 
 #: tfabout.button1.caption
-#, fuzzy
+
 msgctxt "tfabout.button1.caption"
 msgid "Ok"
 msgstr "Ok"
 
 #: tfabout.caption
-#, fuzzy
+
 msgctxt "tfabout.caption"
 msgid "About"
 msgstr "A propos"
 
 #: tfabout.label2.caption
-#, fuzzy
+
 msgctxt "tfabout.label2.caption"
 msgid "AWGG"
 msgstr "AWGG"
 
 #: tfabout.label4.caption
-#, fuzzy
+
 msgctxt "tfabout.label4.caption"
 msgid "Web site:"
 msgstr "Site web:"
 
 #: tfconfig.button1.caption
-#, fuzzy
+
 msgctxt "tfconfig.button1.caption"
 msgid "Accept"
 msgstr "Accepter"
 
 #: tfconfig.button2.caption
-#, fuzzy
+
 msgctxt "tfconfig.button2.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfconfig.button3.caption
-#, fuzzy
+
 msgctxt "tfconfig.button3.caption"
 msgid "Apply"
 msgstr "Appliquer"
 
 #: tfconfig.button4.caption
-#, fuzzy
+
 msgctxt "tfconfig.button4.caption"
 msgid "Enable firefox integration"
 msgstr "Activer l'intégration à firefox"
 
 #: tfconfig.button5.caption
-#, fuzzy
+
 msgctxt "tfconfig.button5.caption"
 msgid "Preview"
 msgstr "Prévisualisation"
 
 #: tfconfig.caption
-#, fuzzy
+
 msgctxt "tfconfig.caption"
 msgid "Configuration"
 msgstr "Configuration"
 
 #: tfconfig.checkbox1.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox1.caption"
 msgid "Save download log history."
 msgstr "Enregistrer l'historique des téléchargements."
 
 #: tfconfig.checkbox10.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox10.caption"
 msgid "Stop queue:"
 msgstr "Stopper la file d'attente:"
 
 #: tfconfig.checkbox11.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox11.caption"
 msgid "Enable scheduler"
 msgstr "Activer le planificateur"
 
 #: tfconfig.checkbox12.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox12.caption"
 msgid "Load log when select a download."
 msgstr "Charger le journal lors de la sélection d'un téléchargement."
 
 #: tfconfig.checkbox13.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox13.caption"
 msgid "Shutdown after end"
 msgstr "Éteindre à la fin"
 
 #: tfconfig.checkbox14.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox14.caption"
 msgid "Use global:"
 msgstr "Utiliser global:"
 
 #: tfconfig.checkbox15.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox15.caption"
 msgid "Use multiple connections."
 msgstr "Utiliser des connexions mutiples."
 
 #: tfconfig.checkbox2.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox2.caption"
 msgid "Use authentication"
 msgstr "Utiliser l'authentification"
 
 #: tfconfig.checkbox3.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox3.caption"
 msgid "Daily"
 msgstr "Quotidien"
 
 #: tfconfig.checkbox4.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox4.caption"
 msgid "Show notifications"
 msgstr "Afficher les notifications"
 
 #: tfconfig.checkbox5.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox5.caption"
 msgid "Use the same proxy for all."
 msgstr "Utiliser le même proxy pour tout."
 
 #: tfconfig.checkbox6.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox6.caption"
 msgid "Detect downloads in the clipboard"
 msgstr "Détecter les liens dans le presse-papier"
 
 #: tfconfig.checkbox7.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox7.caption"
 msgid "Play sounds"
 msgstr "Jouer les sons"
 
 #: tfconfig.checkbox8.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox8.caption"
 msgid "Disable limits"
 msgstr "Désactiver limites"
 
 #: tfconfig.checkbox9.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkbox9.caption"
 msgid "Rotate downloads if fail"
 msgstr "Effectuer une rotation des téléchargements en cas d'échec"
 
 #: tfconfig.checkgroup1.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkgroup1.caption"
 msgid "Default arguments"
 msgstr "Arguments par défaut"
 
 #: tfconfig.checkgroup2.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkgroup2.caption"
 msgid "Default arguments"
 msgstr "Arguments par défaut"
 
 #: tfconfig.checkgroup3.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkgroup3.caption"
 msgid "Default arguments"
 msgstr "Arguments par défaut"
 
 #: tfconfig.checkgroup4.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkgroup4.caption"
 msgid "Automation"
 msgstr "Automatisation"
 
 #: tfconfig.checkgroup5.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkgroup5.caption"
 msgid "Week days"
 msgstr "Jours de la semaine"
 
 #: tfconfig.checkgroup6.caption
-#, fuzzy
+
 msgctxt "tfconfig.checkgroup6.caption"
 msgid "Default arguments"
 msgstr "Arguments par défaut"
 
 #: tfconfig.dateedit1.cancelcaption
-#, fuzzy
+
 msgctxt "tfconfig.dateedit1.cancelcaption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfconfig.dateedit1.okcaption
-#, fuzzy
+
 msgctxt "tfconfig.dateedit1.okcaption"
 msgid "OK"
 msgstr "OK"
 
 #: tfconfig.dateedit2.cancelcaption
-#, fuzzy
+
 msgctxt "tfconfig.dateedit2.cancelcaption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfconfig.dateedit2.okcaption
-#, fuzzy
+
 msgctxt "tfconfig.dateedit2.okcaption"
 msgid "OK"
 msgstr "OK"
 
 #: tfconfig.edit4.text
-#, fuzzy
+
 msgctxt "tfconfig.edit4.text"
 msgid "localhost"
 msgstr "localhost"
 
 #: tfconfig.groupbox1.caption
-#, fuzzy
+
 msgctxt "tfconfig.groupbox1.caption"
 msgid "Load mode"
 msgstr "Mode de chargement"
 
 #: tfconfig.groupbox2.caption
-#, fuzzy
+
 msgctxt "tfconfig.groupbox2.caption"
 msgid "Connection"
 msgstr "Connexion"
 
 #: tfconfig.groupbox3.caption
-#, fuzzy
+
 msgctxt "tfconfig.groupbox3.caption"
 msgid "Engine"
 msgstr "Moteur"
 
 #: tfconfig.groupbox4.caption
-#, fuzzy
+
 msgctxt "tfconfig.groupbox4.caption"
 msgid "Sounds"
 msgstr "Sons"
 
 #: tfconfig.groupbox5.caption
-#, fuzzy
+
 msgctxt "tfconfig.groupbox5.caption"
 msgid "Rotate mode"
 msgstr "Mode de Rotation"
 
 #: tfconfig.groupbox6.caption
-#, fuzzy
+
 msgctxt "tfconfig.groupbox6.caption"
 msgid "Multiple connections"
 msgstr "Connexions multiples"
 
 #: tfconfig.groupbox7.caption
-#, fuzzy
+
 msgctxt "tfconfig.groupbox7.caption"
 msgid "User agent"
 msgstr "User agent"
 
 #: tfconfig.label1.caption
-#, fuzzy
+
 msgctxt "tfconfig.label1.caption"
 msgid "HTTP:"
 msgstr "HTTP:"
 
 #: tfconfig.label10.caption
-#, fuzzy
+
 msgctxt "tfconfig.label10.caption"
 msgid "Start queue:"
 msgstr "Démarrer la file d'attente:"
 
 #: tfconfig.label11.caption
-#, fuzzy
+
 msgctxt "tfconfig.label11.caption"
 msgid "Queue:"
 msgstr "File d'attente:"
 
 #: tfconfig.label12.caption
-#, fuzzy
+
 msgctxt "tfconfig.label12.caption"
 msgid "Hide in:"
 msgstr "Cacher après:"
 
 #: tfconfig.label13.caption
-#, fuzzy
+
 msgctxt "tfconfig.label13.caption"
 msgid " seconds"
 msgstr " secondes"
 
 #: tfconfig.label14.caption
-#, fuzzy
+
 msgctxt "tfconfig.label14.caption"
 msgid "Default download folder:"
 msgstr "Dossier de téléchargement par défaut:"
 
 #: tfconfig.label15.caption
-#, fuzzy
+
 msgctxt "tfconfig.label15.caption"
 msgid "Path of wget executable file:"
 msgstr "Chemin de l'exécutable wget:"
 
 #: tfconfig.label16.caption
-#, fuzzy
+
 msgctxt "tfconfig.label16.caption"
 msgid "Path of aria2 excecutable file:"
 msgstr "Chemin de l'exécutable aria2:"
 
 #: tfconfig.label17.caption
-#, fuzzy
+
 msgctxt "tfconfig.label17.caption"
 msgid "Path of curl excecutable file:"
 msgstr "Chemin de l'exécutable curl:"
 
 #: tfconfig.label18.caption
-#, fuzzy
+
 msgctxt "tfconfig.label18.caption"
 msgid "Additional arguments:"
 msgstr "Arguments additionnels:"
 
 #: tfconfig.label19.caption
-#, fuzzy
+
 msgctxt "tfconfig.label19.caption"
 msgid "Additional arguments:"
 msgstr "Arguments additionnels:"
 
 #: tfconfig.label2.caption
-#, fuzzy
+
 msgctxt "tfconfig.label2.caption"
 msgid "SSL:"
 msgstr "SSL:"
 
 #: tfconfig.label20.caption
-#, fuzzy
+
 msgctxt "tfconfig.label20.caption"
 msgid "Default engine:"
 msgstr "Moteur par défaut:"
 
 #: tfconfig.label21.caption
-#, fuzzy
+
 msgctxt "tfconfig.label21.caption"
 msgid "Additional arguments:"
 msgstr "Arguments additionnels:"
 
 #: tfconfig.label22.caption
-#, fuzzy
+
 msgctxt "tfconfig.label22.caption"
 msgid "Path of history logs:"
 msgstr "Chemin de l'historique"
 
 #: tfconfig.label23.caption
-#, fuzzy
+
 msgctxt "tfconfig.label23.caption"
 msgid "Path of axel excecutable file:"
 msgstr "Chemin de l'exécutable axel:"
 
 #: tfconfig.label24.caption
-#, fuzzy
+
 msgctxt "tfconfig.label24.caption"
 msgid "Additional arguments:"
 msgstr "Arguments additionnels:"
 
 #: tfconfig.label25.caption
-#, fuzzy
+
 msgctxt "tfconfig.label25.caption"
 msgid "Download complete:"
 msgstr "Téléchargement terminé:"
 
 #: tfconfig.label26.caption
-#, fuzzy
+
 msgctxt "tfconfig.label26.caption"
 msgid "Download stopped:"
 msgstr "Téléchargement stoppé:"
 
 #: tfconfig.label27.caption
-#, fuzzy
+
 msgctxt "tfconfig.label27.caption"
 msgid "Exp: .mozilla.org, localhost, 192.168.0.1"
 msgstr "par ex: .mozilla.org, localhost, 192.168.0.1"
 
 #: tfconfig.label28.caption
-#, fuzzy
+
 msgctxt "tfconfig.label28.caption"
 msgid "Category download folder:"
 msgstr "Dossier de catégorie de téléchargement:"
 
 #: tfconfig.label29.caption
-#, fuzzy
+
 msgctxt "tfconfig.label29.caption"
 msgid "Category:"
 msgstr "Catégorie:"
 
 #: tfconfig.label3.caption
-#, fuzzy
+
 msgctxt "tfconfig.label3.caption"
 msgid "FTP:"
 msgstr "FTP:"
 
 #: tfconfig.label30.caption
-#, fuzzy
+
 msgctxt "tfconfig.label30.caption"
 msgid "Extensions:"
 msgstr "Extensions:"
 
 #: tfconfig.label31.caption
-#, fuzzy
+
 msgctxt "tfconfig.label31.caption"
 msgid "Connections per server:"
 msgstr "Connexions par serveur:"
 
 #: tfconfig.label37.caption
-#, fuzzy
+
 msgctxt "tfconfig.label37.caption"
 msgid "Timeout (sec):"
 msgstr "Expiration (sec):"
 
 #: tfconfig.label38.caption
-#, fuzzy
+
 msgctxt "tfconfig.label38.caption"
 msgid "Tries:"
 msgstr "Essais:"
 
 #: tfconfig.label39.caption
-#, fuzzy
+
 msgctxt "tfconfig.label39.caption"
 msgid "Delay tries (sec):"
 msgstr "Délai entre essais (sec):"
 
 #: tfconfig.label4.caption
-#, fuzzy
+
 msgctxt "tfconfig.label4.caption"
 msgid "Port:"
 msgstr "Port:"
 
 #: tfconfig.label40.caption
-#, fuzzy
+
 msgctxt "tfconfig.label40.caption"
 msgid "Default language:"
 msgstr "Langue par défaut:"
 
 #: tfconfig.label41.caption
-#, fuzzy
+
 msgctxt "tfconfig.label41.caption"
 msgid "Tries or rotate times:"
 msgstr "Essais ou nombre de rotations:"
 
 #: tfconfig.label42.caption
-#, fuzzy
+
 msgctxt "tfconfig.label42.caption"
 msgid "Delay (downloads or tries)(sec):"
 msgstr "Délai (téléchargements ou essais) (sec):"
 
 #: tfconfig.label43.caption
-#, fuzzy
+
 msgctxt "tfconfig.label43.caption"
 msgid "Split size (can append K or M):"
 msgstr "Taille de tronçon (ajout possible de K ou M):"
 
 #: tfconfig.label5.caption
-#, fuzzy
+
 msgctxt "tfconfig.label5.caption"
 msgid "Port:"
 msgstr "Port:"
 
 #: tfconfig.label6.caption
-#, fuzzy
+
 msgctxt "tfconfig.label6.caption"
 msgid "Port:"
 msgstr "Port:"
 
 #: tfconfig.label7.caption
-#, fuzzy
+
 msgctxt "tfconfig.label7.caption"
 msgid "No proxy for:"
 msgstr "Pas de proxy pour:"
 
 #: tfconfig.label8.caption
-#, fuzzy
+
 msgctxt "tfconfig.label8.caption"
 msgid "User:"
 msgstr "Utilisateur:"
 
 #: tfconfig.label9.caption
-#, fuzzy
+
 msgctxt "tfconfig.label9.caption"
 msgid "Password:"
 msgstr "Mot de Passe:"
 
 #: tfconfig.radiobutton1.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiobutton1.caption"
 msgid "One step down"
 msgstr "Un niveau plus bas"
 
 #: tfconfig.radiobutton2.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiobutton2.caption"
 msgid "To the end"
 msgstr "vers la fin"
 
 #: tfconfig.radiobutton3.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiobutton3.caption"
 msgid "Two steps down"
 msgstr "Deux niveaux plus bas"
 
 #: tfconfig.radiobutton4.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiobutton4.caption"
 msgid "All history log"
 msgstr "Tout l'historique"
 
 #: tfconfig.radiobutton5.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiobutton5.caption"
 msgid "Last 20 lines."
 msgstr "Les 20 dernières ignes."
 
 #: tfconfig.radiobutton6.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiobutton6.caption"
 msgid "All files in single folder"
 msgstr "Tous les fichiers dans un même dossier"
 
 #: tfconfig.radiobutton7.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiobutton7.caption"
 msgid "Suggest by file type"
 msgstr "Suggérer par type de fichier"
 
 #: tfconfig.radiogroup1.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiogroup1.caption"
 msgid "Position on the screen"
 msgstr "Position à l'écran"
 
 #: tfconfig.radiogroup2.caption
-#, fuzzy
+
 msgctxt "tfconfig.radiogroup2.caption"
 msgid "Categorize"
 msgstr "Catégoriser"
 
 #: tfconfig.speedbutton4.hint
-#, fuzzy
+
 msgctxt "tfconfig.speedbutton4.hint"
 msgid "Add"
 msgstr "Ajouter"
 
 #: tfconfig.speedbutton5.hint
-#, fuzzy
+
 msgctxt "tfconfig.speedbutton5.hint"
 msgid "Delete"
 msgstr "Effacer"
 
 #: tfconfig.speedbutton6.hint
-#, fuzzy
+
 msgctxt "tfconfig.speedbutton6.hint"
 msgid "Add"
 msgstr "Ajouter"
 
 #: tfconfig.speedbutton7.hint
-#, fuzzy
+
 msgctxt "tfconfig.speedbutton7.hint"
 msgid "Delete"
 msgstr "Effacer"
 
 #: tfconfig.speedbutton8.hint
-#, fuzzy
+
 msgctxt "tfconfig.speedbutton8.hint"
 msgid "Edit"
 msgstr "Éditer"
 
 #: tfconfig.tabsheet1.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet1.caption"
 msgid "Proxy"
 msgstr "Proxy"
 
 #: tfconfig.tabsheet10.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet10.caption"
 msgid "Logs"
 msgstr "Logs"
 
 #: tfconfig.tabsheet11.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet11.caption"
 msgid "axel"
 msgstr "axel"
 
 #: tfconfig.tabsheet12.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet12.caption"
 msgid "Integration"
 msgstr "Intégration"
 
 #: tfconfig.tabsheet15.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet15.caption"
 msgid "Download options"
 msgstr "Options de téléchargement"
 
 #: tfconfig.tabsheet16.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet16.caption"
 msgid "Language"
 msgstr "Langue"
 
 #: tfconfig.tabsheet17.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet17.caption"
 msgid "Sounds"
 msgstr "Sons"
 
 #: tfconfig.tabsheet18.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet18.caption"
 msgid "Queue"
 msgstr "File d'attente"
 
 #: tfconfig.tabsheet2.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet2.caption"
 msgid "Scheduler"
 msgstr "Planificateur"
 
 #: tfconfig.tabsheet3.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet3.caption"
 msgid "Notifications"
 msgstr "Notifications"
 
 #: tfconfig.tabsheet4.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet4.caption"
 msgid "Clipboard monitor"
 msgstr "Surveillance du presse-papier"
 
 #: tfconfig.tabsheet5.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet5.caption"
 msgid "Folders"
 msgstr "Dossiers"
 
 #: tfconfig.tabsheet6.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet6.caption"
 msgid "wget"
 msgstr "wget"
 
 #: tfconfig.tabsheet7.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet7.caption"
 msgid "aria2c"
 msgstr "aria2c"
 
 #: tfconfig.tabsheet8.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet8.caption"
 msgid "curl"
 msgstr "curl"
 
 #: tfconfig.tabsheet9.caption
-#, fuzzy
+
 msgctxt "tfconfig.tabsheet9.caption"
 msgid "Automation"
 msgstr "Automatisation"
 
 #: tfcopymove.button1.caption
-#, fuzzy
+
 msgctxt "tfcopymove.button1.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfcopymove.caption
-#, fuzzy
+
 msgctxt "tfcopymove.caption"
 msgid "Saving file..."
 msgstr "Enregistrement du fichier..."
 
 #: tfcopymove.label1.caption
-#, fuzzy
+
 msgctxt "tfcopymove.label1.caption"
 msgid "From: %s"
 msgstr "Depuis: %s"
 
 #: tfcopymove.label2.caption
-#, fuzzy
+
 msgctxt "tfcopymove.label2.caption"
 msgid "To: %s"
 msgstr "Vers: %s"
 
 #: tflang.button1.caption
-#, fuzzy
+
 msgctxt "tflang.button1.caption"
 msgid "Ok"
 msgstr "Ok"
 
 #: tflang.caption
-#, fuzzy
+
 msgctxt "tflang.caption"
 msgid "Select language"
 msgstr "Choisir langue"
 
 #: tflang.label1.caption
-#, fuzzy
+
 msgctxt "tflang.label1.caption"
 msgid "Language:"
 msgstr "Langue:"
 
 #: tfmain.caption
-#, fuzzy
+
 msgctxt "tfmain.caption"
 msgid "AWGG"
 msgstr "AWGG"
 
 #: tfmain.checkbox1.caption
-#, fuzzy
+
 msgctxt "tfmain.checkbox1.caption"
 msgid "Limit (Kb/s):"
 msgstr "Limite (Ko/s):"
 
 #: tfmain.label1.caption
-#, fuzzy
+
 msgctxt "tfmain.label1.caption"
 msgid "Max. downloads in progress:"
 msgstr "Max. téléchargements simultanés:"
 
 #: tfmain.listview1.columns[0].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[0].caption"
 msgid "Status"
 msgstr "Statut"
 
 #: tfmain.listview1.columns[10].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[10].caption"
 msgid "Engine"
 msgstr "Moteur"
 
 #: tfmain.listview1.columns[11].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[11].caption"
 msgid "Parameters"
 msgstr "Paramètres"
 
 #: tfmain.listview1.columns[1].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[1].caption"
 msgid "File name"
 msgstr "Nom de fichier"
 
 #: tfmain.listview1.columns[2].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[2].caption"
 msgid "Size"
 msgstr "Taille"
 
 #: tfmain.listview1.columns[3].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[3].caption"
 msgid "Downloaded"
 msgstr "Téléchargé(s)"
 
 #: tfmain.listview1.columns[4].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[4].caption"
 msgid "URL"
 msgstr "URL"
 
 #: tfmain.listview1.columns[5].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[5].caption"
 msgid "Speed"
 msgstr "Vitesse"
 
 #: tfmain.listview1.columns[6].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[6].caption"
 msgid "%"
 msgstr "%"
 
 #: tfmain.listview1.columns[7].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[7].caption"
 msgid "Estimated"
 msgstr "Estimé"
 
 #: tfmain.listview1.columns[8].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[8].caption"
 msgid "Date"
 msgstr "Date"
 
 #: tfmain.listview1.columns[9].caption
-#, fuzzy
+
 msgctxt "tfmain.listview1.columns[9].caption"
 msgid "Destination"
 msgstr "Destination"
 
 #: tfmain.menuitem1.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem1.caption"
 msgid "Show"
 msgstr "Afficher"
 
 #: tfmain.menuitem10.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem10.caption"
 msgid "About"
 msgstr "A propos"
 
 #: tfmain.menuitem100.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem100.caption"
 msgid "Move file(s) to..."
 msgstr "Déplacer le(s) fichier(s) vers..."
 
 #: tfmain.menuitem101.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem101.caption"
 msgid "Clear command out"
 msgstr "Effacer la sortie de commande"
 
 #: tfmain.menuitem102.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem102.caption"
 msgid "Copy"
 msgstr "Copier"
 
 #: tfmain.menuitem103.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem103.caption"
 msgid "Select all"
 msgstr "Sélectionner tout"
 
 #: tfmain.menuitem104.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem104.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem105.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem105.caption"
 msgid "Show tree view panel"
 msgstr "Afficher le panneau de l'arborescence"
 
 #: tfmain.menuitem11.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem11.caption"
 msgid "Properties"
 msgstr "Propriétés"
 
 #: tfmain.menuitem12.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem12.caption"
 msgid "Copy download URL"
 msgstr "Copier l'URL de téléchargement"
 
 #: tfmain.menuitem13.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem13.caption"
 msgid "Delete"
 msgstr "Effacer"
 
 #: tfmain.menuitem14.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem14.caption"
 msgid "Stop all"
 msgstr "Stopper tout"
 
 #: tfmain.menuitem15.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem15.caption"
 msgid "Scheduler"
 msgstr "Planificateur"
 
 #: tfmain.menuitem16.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem16.caption"
 msgid "New download..."
 msgstr "Nouveau téléchargement..."
 
 #: tfmain.menuitem17.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem17.caption"
 msgid "Delete download"
 msgstr "Effacer le téléchargement"
 
 #: tfmain.menuitem18.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem18.caption"
 msgid "Downloads"
 msgstr "Téléchargements"
 
 #: tfmain.menuitem19.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem19.caption"
 msgid "Select all"
 msgstr "Sélectionner tout"
 
 #: tfmain.menuitem2.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem2.caption"
 msgid "Exit"
 msgstr "Quitter"
 
 #: tfmain.menuitem20.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem20.caption"
 msgid "Unselect all"
 msgstr "Désélectionner tout"
 
 #: tfmain.menuitem21.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem21.caption"
 msgid "Start all"
 msgstr "Démarrer tout"
 
 #: tfmain.menuitem22.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem22.caption"
 msgid "Stop all"
 msgstr "Stopper tout"
 
 #: tfmain.menuitem23.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem23.caption"
 msgid "Downloaded"
 msgstr "Téléchargé(s)"
 
 #: tfmain.menuitem24.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem24.caption"
 msgid "Parameters"
 msgstr "Paramètres"
 
 #: tfmain.menuitem25.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem25.caption"
 msgid "Show gridlines"
 msgstr "Afficher la grille"
 
 #: tfmain.menuitem26.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem26.caption"
 msgid "Open log file"
 msgstr "Ouvrir le journal"
 
 #: tfmain.menuitem27.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem27.caption"
 msgid "Start"
 msgstr "Démarrer"
 
 #: tfmain.menuitem28.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem28.caption"
 msgid "Stop"
 msgstr "Stopper"
 
 #: tfmain.menuitem29.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem29.caption"
 msgid "Restart now"
 msgstr "Redémarrer maintenant"
 
 #: tfmain.menuitem3.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem3.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem30.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem30.caption"
 msgid "Restart all now"
 msgstr "Rédémarrer tout maintenant"
 
 #: tfmain.menuitem31.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem31.caption"
 msgid "Delete all"
 msgstr "Effacer tout"
 
 #: tfmain.menuitem32.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem32.caption"
 msgid "Show"
 msgstr "Afficher"
 
 #: tfmain.menuitem33.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem33.caption"
 msgid "Command out"
 msgstr "Sortie de Commande"
 
 #: tfmain.menuitem34.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem34.caption"
 msgid "Go to the destination folder"
 msgstr "Aller au dossier de destination"
 
 #: tfmain.menuitem35.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem35.caption"
 msgid "Columns"
 msgstr "Colonnes"
 
 #: tfmain.menuitem36.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem36.caption"
 msgid "State"
 msgstr "État"
 
 #: tfmain.menuitem37.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem37.caption"
 msgid "File name"
 msgstr "Nom de fichier"
 
 #: tfmain.menuitem38.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem38.caption"
 msgid "Size"
 msgstr "Taille"
 
 #: tfmain.menuitem39.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem39.caption"
 msgid "URL"
 msgstr "URL"
 
 #: tfmain.menuitem4.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem4.caption"
 msgid "Show downloads icons in systray"
 msgstr "Afficher les icônes de téléchargement dans la zone de notification"
 
 #: tfmain.menuitem40.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem40.caption"
 msgid "Speed"
 msgstr "Vitesse"
 
 #: tfmain.menuitem41.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem41.caption"
 msgid "Percent"
 msgstr "Pourcent"
 
 #: tfmain.menuitem42.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem42.caption"
 msgid "Estimated"
 msgstr "Estimé"
 
 #: tfmain.menuitem43.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem43.caption"
 msgid "Destination"
 msgstr "Destination"
 
 #: tfmain.menuitem44.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem44.caption"
 msgid "Engine"
 msgstr "Moteur"
 
 #: tfmain.menuitem45.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem45.caption"
 msgid "Open file"
 msgstr "Ouvrir fichier"
 
 #: tfmain.menuitem46.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem46.caption"
 msgid "Open download URL"
 msgstr "Ouvrir l'URL de téléchargement"
 
 #: tfmain.menuitem47.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem47.caption"
 msgid "Restart all later"
 msgstr "Redémarrer tout plus tard"
 
 #: tfmain.menuitem48.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem48.caption"
 msgid "Restart later"
 msgstr "Rédémarrer plus tard"
 
 #: tfmain.menuitem49.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem49.caption"
 msgid "Move one step up"
 msgstr "Déplacer vers le haut"
 
 #: tfmain.menuitem5.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem5.caption"
 msgid "File"
 msgstr "Fichier"
 
 #: tfmain.menuitem50.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem50.caption"
 msgid "Move one step down"
 msgstr "Déplacer vers le bas"
 
 #: tfmain.menuitem51.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem51.caption"
 msgid "Move to the start"
 msgstr "Déplacer vers le début"
 
 #: tfmain.menuitem52.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem52.caption"
 msgid "Move to the end"
 msgstr "Déplacer vers la fin"
 
 #: tfmain.menuitem53.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem53.caption"
 msgid "Follow command out (auto scroll)"
 msgstr "Suivre la sortie de commande (défil. auto)"
 
 #: tfmain.menuitem54.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem54.caption"
 msgid "Import list of downloads..."
 msgstr "Importer la liste des téléchargements..."
 
 #: tfmain.menuitem55.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem55.caption"
 msgid "Export list of downloads..."
 msgstr "Exporter la liste des téléchargements..."
 
 #: tfmain.menuitem56.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem56.caption"
 msgid "Start queue"
 msgstr "Démarrer la file d'attente"
 
 #: tfmain.menuitem57.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem57.caption"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
 
 #: tfmain.menuitem58.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem58.caption"
 msgid "Clean history log file"
 msgstr "Effacer le fichier d'historique"
 
 #: tfmain.menuitem59.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem59.caption"
 msgid "New download..."
 msgstr "Nouveau téléchargement..."
 
 #: tfmain.menuitem6.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem6.caption"
 msgid "Exit"
 msgstr "Quitter"
 
 #: tfmain.menuitem60.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem60.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem61.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem61.caption"
 msgid "Start"
 msgstr "Démarrer"
 
 #: tfmain.menuitem62.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem62.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem63.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem63.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem64.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem64.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem65.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem65.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem66.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem66.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem67.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem67.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem68.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem68.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem69.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem69.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem7.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem7.caption"
 msgid "Tools"
 msgstr "Outils"
 
 #: tfmain.menuitem70.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem70.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem71.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem71.caption"
 msgid "Stop"
 msgstr "Stopper"
 
 #: tfmain.menuitem72.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem72.caption"
 msgid "Hide"
 msgstr "Cacher"
 
 #: tfmain.menuitem73.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem73.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem74.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem74.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem75.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem75.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem76.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem76.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem77.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem77.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem78.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem78.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem79.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem79.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem8.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem8.caption"
 msgid "Configuration"
 msgstr "Configuration"
 
 #: tfmain.menuitem80.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem80.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem81.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem81.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem82.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem82.caption"
 msgid "Date"
 msgstr "Date"
 
 #: tfmain.menuitem83.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem83.caption"
 msgid "New queue"
 msgstr "Nouvelle file d'attente"
 
 #: tfmain.menuitem84.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem84.caption"
 msgid "Delete queue"
 msgstr "Effacer la file d'attente"
 
 #: tfmain.menuitem85.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem85.caption"
 msgid "Rename queue"
 msgstr "Renommer la file d'attente"
 
 #: tfmain.menuitem86.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem86.caption"
 msgid "Send to the queue"
 msgstr "Envoyer à la file d'attente"
 
 #: tfmain.menuitem87.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem87.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem88.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem88.caption"
 msgid "New site grabber..."
 msgstr "Nouvel aspirateur de site..."
 
 #: tfmain.menuitem89.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem89.caption"
 msgid "New site grabber..."
 msgstr "Nouvel aspirateur de site..."
 
 #: tfmain.menuitem9.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem9.caption"
 msgid "Help"
 msgstr "Aide"
 
 #: tfmain.menuitem90.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem90.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem91.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem91.caption"
 msgid "Official web site"
 msgstr "Site web officiel"
 
 #: tfmain.menuitem92.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem92.caption"
 msgid "Show in systray"
 msgstr "Afficher dans la zone de notification"
 
 #: tfmain.menuitem93.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem93.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem94.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem94.caption"
 msgid "-"
 msgstr "-"
 
 #: tfmain.menuitem95.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem95.caption"
 msgid "Start queue"
 msgstr "Démarrer la file d'attente"
 
 #: tfmain.menuitem96.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem96.caption"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
 
 #: tfmain.menuitem97.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem97.caption"
 msgid "Copy file(s) to..."
 msgstr "Copier le(s) fichier(s) vers..."
 
 #: tfmain.menuitem98.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem98.caption"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
 
 #: tfmain.menuitem99.caption
-#, fuzzy
+
 msgctxt "tfmain.menuitem99.caption"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
 
 #: tfmain.menuitem99.hint
-#, fuzzy
+
 msgctxt "tfmain.menuitem99.hint"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
 
 #: tfmain.opendialog1.title
-#, fuzzy
+
 msgctxt "tfmain.opendialog1.title"
 msgid "Open file list of downloads"
 msgstr "Ouvrir le fichier de liste de téléchargements"
 
 #: tfmain.savedialog1.title
-#, fuzzy
+
 msgctxt "tfmain.savedialog1.title"
 msgid "Save file list of downloads"
 msgstr "Enregistrer la liste des téléchargements dans un fichier"
 
 #: tfmain.toolbutton1.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton1.hint"
 msgid "New download"
 msgstr "Nouveau téléchargement"
 
 #: tfmain.toolbutton11.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton11.hint"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
 
 #: tfmain.toolbutton12.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton12.hint"
 msgid "Stop all"
 msgstr "Stopper tout"
 
 #: tfmain.toolbutton15.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton15.hint"
 msgid "Start scheduler"
 msgstr "Démarrer le Planificateur"
 
 #: tfmain.toolbutton16.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton16.hint"
 msgid "Stop scheduler"
 msgstr "Stopper le Planificateur"
 
 #: tfmain.toolbutton17.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton17.hint"
 msgid "Exit"
 msgstr "Quitter"
 
 #: tfmain.toolbutton19.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton19.hint"
 msgid "Move one step up"
 msgstr "Déplacer vers le haut"
 
 #: tfmain.toolbutton2.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton2.hint"
 msgid "Delete download"
 msgstr "Effacer le téléchargement"
 
 #: tfmain.toolbutton20.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton20.hint"
 msgid "Move one step down"
 msgstr "Déplacer vers le bas"
 
 #: tfmain.toolbutton22.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton22.hint"
 msgid "Restart download"
 msgstr "Redémarrer le téléchargement"
 
 #: tfmain.toolbutton23.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton23.hint"
 msgid "Move to the start"
 msgstr "Déplacer vers le début"
 
 #: tfmain.toolbutton24.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton24.hint"
 msgid "Move to the end"
 msgstr "Déplacer vers la fin"
 
 #: tfmain.toolbutton25.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton25.hint"
 msgid "Import list of downloads..."
 msgstr "Importer la liste des téléchargements..."
 
 #: tfmain.toolbutton26.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton26.hint"
 msgid "Export list of downloads..."
 msgstr "Exporter la liste des téléchargements..."
 
 #: tfmain.toolbutton28.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton28.hint"
 msgid "New site grabber"
 msgstr "Nouvel aspirateur de site"
 
 #: tfmain.toolbutton3.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton3.hint"
 msgid "Start download"
 msgstr "Démarrer le téléchargement"
 
 #: tfmain.toolbutton31.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton31.hint"
 msgid "Enable/Disable clipboard monitor"
 msgstr "Activer/Désactiver la surveillance du presse-papier"
 
 #: tfmain.toolbutton32.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton32.hint"
 msgid "Restart later"
 msgstr "Rédémarrer plus tard"
 
 #: tfmain.toolbutton33.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton33.hint"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
 
 #: tfmain.toolbutton4.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton4.hint"
 msgid "Stop download"
 msgstr "Stopper le téléchargement"
 
 #: tfmain.toolbutton7.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton7.hint"
 msgid "Configuration"
 msgstr "Configuration"
 
 #: tfmain.toolbutton8.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton8.hint"
 msgid "Scheduler"
 msgstr "Planificateur"
 
 #: tfmain.toolbutton9.hint
-#, fuzzy
+
 msgctxt "tfmain.toolbutton9.hint"
 msgid "Start queue"
 msgstr "Démarrer la file d'attente"
 
 #: tfnewdown.bitbtn1.caption
-#, fuzzy
+
 msgctxt "tfnewdown.bitbtn1.caption"
 msgid "Start now"
 msgstr "Démarrer maintenant"
 
 #: tfnewdown.button1.caption
-#, fuzzy
+
 msgctxt "tfnewdown.button1.caption"
 msgid "To the queue [F2]"
 msgstr "Vers la file d'attente [F2]"
 
 #: tfnewdown.button2.caption
-#, fuzzy
+
 msgctxt "tfnewdown.button2.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfnewdown.button4.caption
-#, fuzzy
+
 msgctxt "tfnewdown.button4.caption"
 msgid "Paused"
 msgstr "En Pause"
 
 #: tfnewdown.caption
-#, fuzzy
+
 msgctxt "tfnewdown.caption"
 msgid "New download"
 msgstr "Nouveau téléchargement"
 
 #: tfnewdown.label1.caption
-#, fuzzy
+
 msgctxt "tfnewdown.label1.caption"
 msgid "URL: "
 msgstr "URL: "
 
 #: tfnewdown.label2.caption
-#, fuzzy
+
 msgctxt "tfnewdown.label2.caption"
 msgid "Destination: "
 msgstr "Destination:"
 
 #: tfnewdown.label3.caption
-#, fuzzy
+
 msgctxt "tfnewdown.label3.caption"
 msgid "Engine: "
 msgstr "Moteur:"
 
 #: tfnewdown.label4.caption
-#, fuzzy
+
 msgctxt "tfnewdown.label4.caption"
 msgid "Parameters:"
 msgstr "Paramètres:"
 
 #: tfnewdown.label5.caption
-#, fuzzy
+
 msgctxt "tfnewdown.label5.caption"
 msgid "File name: "
 msgstr "Nom de fichier:"
 
 #: tfnewdown.label6.caption
-#, fuzzy
+
 msgctxt "tfnewdown.label6.caption"
 msgid "HTTP/FTP User:"
 msgstr "Utilisateur HTTP/FTP:"
 
 #: tfnewdown.label7.caption
-#, fuzzy
+
 msgctxt "tfnewdown.label7.caption"
 msgid "HTTP/FTP Password:"
 msgstr "Mot de Passe HTTP/FTP:"
 
 #: tfnewdown.label8.caption
-#, fuzzy
+
 msgctxt "tfnewdown.label8.caption"
 msgid "Queue:"
 msgstr "File d'attente:"
 
 #: tfnewdown.speedbutton1.hint
-#, fuzzy
+
 msgctxt "tfnewdown.speedbutton1.hint"
 msgid "Add queue"
 msgstr "Ajouter file d'attente"
 
 #: tfnewdown.speedbutton2.hint
-#, fuzzy
+
 msgctxt "tfnewdown.speedbutton2.hint"
 msgid "Schedule"
 msgstr "Plannifier"
 
 #: tfnotification.caption
-#, fuzzy
+
 msgctxt "tfnotification.caption"
 msgid "Download Notifications"
 msgstr "Notifications de téléchargement"
 
 #: tfnotification.label1.caption
-#, fuzzy
+
 msgctxt "tfnotification.label1.caption"
 msgid "Label1"
 msgstr "Label1"
 
 #: tfnotification.label2.caption
-#, fuzzy
+
 msgctxt "tfnotification.label2.caption"
 msgid "Label2"
 msgstr "Label2"
 
 #: tfnotification.label3.caption
-#, fuzzy
+
 msgctxt "tfnotification.label3.caption"
 msgid "Label3"
 msgstr "Label3"
 
 #: tfnotification.speedbutton1.hint
-#, fuzzy
+
 msgctxt "tfnotification.speedbutton1.hint"
 msgid "Go to the destination folder"
 msgstr "Aller au dossier de destination"
 
 #: tfnotification.speedbutton2.hint
-#, fuzzy
+
 msgctxt "tfnotification.speedbutton2.hint"
 msgid "Open file"
 msgstr "Ouvrir fichier"
 
 #: tfnotification.speedbutton4.hint
-#, fuzzy
+
 msgctxt "tfnotification.speedbutton4.hint"
 msgid "Copy file to..."
 msgstr "Copier le fichier vers..."
 
 #: tfnotification.speedbutton5.hint
-#, fuzzy
+
 msgctxt "tfnotification.speedbutton5.hint"
 msgid "Move file to..."
 msgstr "Déplacer le fichier vers..."
@@ -3582,2077 +3582,2077 @@ msgid "Move file to..."
 msgstr "Déplacer le fichier vers..."
 
 #: tfrabout.button1.caption
-#, fuzzy
+
 msgctxt "tfrabout.button1.caption"
 msgid "Ok"
 msgstr "Ok"
 
 #: tfrabout.caption
-#, fuzzy
+
 msgctxt "tfrabout.caption"
 msgid "About"
 msgstr "A propos"
 
 #: tfrabout.label2.caption
-#, fuzzy
+
 msgctxt "tfrabout.label2.caption"
 msgid "AWGG"
 msgstr "AWGG"
 
 #: tfrabout.label4.caption
-#, fuzzy
+
 msgctxt "tfrabout.label4.caption"
 msgid "Web site:"
 msgstr "Site web:"
 
 #: tfradd.caption
-#, fuzzy
+
 msgctxt "tfradd.caption"
 msgid "Add"
 msgstr "Ajouter"
 
 #: tfradd.label1.caption
-#, fuzzy
+
 msgctxt "tfradd.label1.caption"
 msgid "Value:"
 msgstr "Valeur:"
 
 #: tfrconfig.button1.caption
-#, fuzzy
+
 msgctxt "tfrconfig.button1.caption"
 msgid "Accept"
 msgstr "Accepter"
 
 #: tfrconfig.button2.caption
-#, fuzzy
+
 msgctxt "tfrconfig.button2.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfrconfig.button3.caption
-#, fuzzy
+
 msgctxt "tfrconfig.button3.caption"
 msgid "Apply"
 msgstr "Appliquer"
 
 #: tfrconfig.button4.caption
-#, fuzzy
+
 msgctxt "tfrconfig.button4.caption"
 msgid "Enable firefox integration"
 msgstr "Activer l'intégration à firefox"
 
 #: tfrconfig.button5.caption
-#, fuzzy
+
 msgctxt "tfrconfig.button5.caption"
 msgid "Preview"
 msgstr "Prévisualisation"
 
 #: tfrconfig.caption
-#, fuzzy
+
 msgctxt "tfrconfig.caption"
 msgid "Configuration"
 msgstr "Configuration"
 
 #: tfrconfig.checkbox1.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox1.caption"
 msgid "Save download log history."
 msgstr "Enregistrer l'historique des téléchargements."
 
 #: tfrconfig.checkbox10.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox10.caption"
 msgid "Stop queue:"
 msgstr "Stopper la file d'attente:"
 
 #: tfrconfig.checkbox11.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox11.caption"
 msgid "Enable scheduler"
 msgstr "Activer le planificateur"
 
 #: tfrconfig.checkbox12.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox12.caption"
 msgid "Load log when select a download."
 msgstr "Charger le journal lors de la sélection d'un téléchargement."
 
 #: tfrconfig.checkbox13.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox13.caption"
 msgid "Shutdown after end"
 msgstr "Éteindre à la fin"
 
 #: tfrconfig.checkbox14.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox14.caption"
 msgid "Use global:"
 msgstr "Utiliser global:"
 
 #: tfrconfig.checkbox15.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox15.caption"
 msgid "Use multiple connections."
 msgstr "Utiliser des connexions mutiples."
 
-#: tfrconfig.checkbox2.caption
-#, fuzzy
-msgctxt "tfrconfig.checkbox2.caption"
-msgid "Use authentication"
-msgstr "Utiliser l'authentification"
-
 #: tfrconfig.checkbox3.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox3.caption"
 msgid "Daily"
 msgstr "Quotidien"
 
 #: tfrconfig.checkbox4.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox4.caption"
 msgid "Show notifications"
 msgstr "Afficher les notifications"
 
-#: tfrconfig.checkbox5.caption
-#, fuzzy
-msgctxt "tfrconfig.checkbox5.caption"
-msgid "Use the same proxy for all."
-msgstr "Utiliser le même proxy pour tout."
-
 #: tfrconfig.checkbox6.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox6.caption"
 msgid "Detect downloads in the clipboard"
 msgstr "Détecter les liens dans le presse-papier"
 
 #: tfrconfig.checkbox7.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox7.caption"
 msgid "Play sounds"
 msgstr "Jouer les sons"
 
 #: tfrconfig.checkbox8.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox8.caption"
 msgid "Disable limits"
 msgstr "Désactiver limites"
 
 #: tfrconfig.checkbox9.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkbox9.caption"
 msgid "Rotate downloads if fail"
 msgstr "Effectuer une rotation des téléchargements en cas d'échec"
 
 #: tfrconfig.checkgroup1.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkgroup1.caption"
 msgid "Default arguments"
 msgstr "Arguments par défaut"
 
 #: tfrconfig.checkgroup2.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkgroup2.caption"
 msgid "Default arguments"
 msgstr "Arguments par défaut"
 
 #: tfrconfig.checkgroup3.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkgroup3.caption"
 msgid "Default arguments"
 msgstr "Arguments par défaut"
 
 #: tfrconfig.checkgroup4.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkgroup4.caption"
 msgid "Automation"
 msgstr "Automatisation"
 
 #: tfrconfig.checkgroup5.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkgroup5.caption"
 msgid "Week days"
 msgstr "Jours de la semaine"
 
 #: tfrconfig.checkgroup6.caption
-#, fuzzy
+
 msgctxt "tfrconfig.checkgroup6.caption"
 msgid "Default arguments"
 msgstr "Arguments par défaut"
 
+#: tfrconfig.chsameproxy.caption
+
+msgctxt "tfrconfig.chsameproxy.caption"
+msgid "Use the same proxy for all."
+msgstr "Utiliser le même proxy pour tout."
+
+#: tfrconfig.chuseauth.caption
+
+msgctxt "tfrconfig.chuseauth.caption"
+msgid "Use authentication"
+msgstr "Utiliser l'authentification"
+
 #: tfrconfig.dateedit1.cancelcaption
-#, fuzzy
+
 msgctxt "tfrconfig.dateedit1.cancelcaption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfrconfig.dateedit1.okcaption
-#, fuzzy
+
 msgctxt "tfrconfig.dateedit1.okcaption"
 msgid "OK"
 msgstr "OK"
 
 #: tfrconfig.dateedit2.cancelcaption
-#, fuzzy
+
 msgctxt "tfrconfig.dateedit2.cancelcaption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfrconfig.dateedit2.okcaption
-#, fuzzy
+
 msgctxt "tfrconfig.dateedit2.okcaption"
 msgid "OK"
 msgstr "OK"
 
-#: tfrconfig.edit4.text
-#, fuzzy
-msgctxt "tfrconfig.edit4.text"
+#: tfrconfig.edtnoproxyhosts.text
+
+msgctxt "tfrconfig.edtnoproxyhosts.text"
 msgid "localhost"
 msgstr "localhost"
 
 #: tfrconfig.groupbox1.caption
-#, fuzzy
+
 msgctxt "tfrconfig.groupbox1.caption"
 msgid "Load mode"
 msgstr "Mode de chargement"
 
 #: tfrconfig.groupbox2.caption
-#, fuzzy
+
 msgctxt "tfrconfig.groupbox2.caption"
 msgid "Connection"
 msgstr "Connexion"
 
 #: tfrconfig.groupbox3.caption
-#, fuzzy
+
 msgctxt "tfrconfig.groupbox3.caption"
 msgid "Engine"
 msgstr "Moteur"
 
 #: tfrconfig.groupbox4.caption
-#, fuzzy
+
 msgctxt "tfrconfig.groupbox4.caption"
 msgid "Sounds"
 msgstr "Sons"
 
 #: tfrconfig.groupbox5.caption
-#, fuzzy
+
 msgctxt "tfrconfig.groupbox5.caption"
 msgid "Rotate mode"
 msgstr "Mode de Rotation"
 
 #: tfrconfig.groupbox6.caption
-#, fuzzy
+
 msgctxt "tfrconfig.groupbox6.caption"
 msgid "Multiple connections"
 msgstr "Connexions multiples"
 
 #: tfrconfig.groupbox7.caption
-#, fuzzy
+
 msgctxt "tfrconfig.groupbox7.caption"
 msgid "User agent"
 msgstr "User agent"
 
-#: tfrconfig.label1.caption
-#, fuzzy
-msgctxt "tfrconfig.label1.caption"
-msgid "HTTP:"
-msgstr "HTTP:"
-
 #: tfrconfig.label10.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label10.caption"
 msgid "Start queue:"
 msgstr "Démarrer la file d'attente:"
 
 #: tfrconfig.label11.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label11.caption"
 msgid "Queue:"
 msgstr "File d'attente:"
 
 #: tfrconfig.label12.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label12.caption"
 msgid "Hide in:"
 msgstr "Cacher après:"
 
 #: tfrconfig.label13.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label13.caption"
 msgid " seconds"
 msgstr " secondes"
 
 #: tfrconfig.label14.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label14.caption"
 msgid "Default download folder:"
 msgstr "Dossier de téléchargement par défaut:"
 
 #: tfrconfig.label15.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label15.caption"
 msgid "Path of wget executable file:"
 msgstr "Chemin de l'exécutable wget:"
 
 #: tfrconfig.label16.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label16.caption"
 msgid "Path of aria2 excecutable file:"
 msgstr "Chemin de l'exécutable aria2:"
 
 #: tfrconfig.label17.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label17.caption"
 msgid "Path of curl excecutable file:"
 msgstr "Chemin de l'exécutable curl:"
 
 #: tfrconfig.label18.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label18.caption"
 msgid "Additional arguments:"
 msgstr "Arguments additionnels:"
 
 #: tfrconfig.label19.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label19.caption"
 msgid "Additional arguments:"
 msgstr "Arguments additionnels:"
 
-#: tfrconfig.label2.caption
-#, fuzzy
-msgctxt "tfrconfig.label2.caption"
-msgid "SSL:"
-msgstr "SSL:"
-
 #: tfrconfig.label20.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label20.caption"
 msgid "Default engine:"
 msgstr "Moteur par défaut:"
 
 #: tfrconfig.label21.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label21.caption"
 msgid "Additional arguments:"
 msgstr "Arguments additionnels:"
 
 #: tfrconfig.label22.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label22.caption"
 msgid "Path of history logs:"
 msgstr "Chemin de l'historique"
 
 #: tfrconfig.label23.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label23.caption"
 msgid "Path of axel excecutable file:"
 msgstr "Chemin de l'exécutable axel:"
 
 #: tfrconfig.label24.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label24.caption"
 msgid "Additional arguments:"
 msgstr "Arguments additionnels:"
 
 #: tfrconfig.label25.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label25.caption"
 msgid "Download complete:"
 msgstr "Téléchargement terminé:"
 
 #: tfrconfig.label26.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label26.caption"
 msgid "Download stopped:"
 msgstr "Téléchargement stoppé:"
 
-#: tfrconfig.label27.caption
-#, fuzzy
-msgctxt "tfrconfig.label27.caption"
-msgid "Exp: .mozilla.org, localhost, 192.168.0.1"
-msgstr "par ex: .mozilla.org, localhost, 192.168.0.1"
-
 #: tfrconfig.label28.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label28.caption"
 msgid "Category download folder:"
 msgstr "Dossier de catégorie de téléchargement:"
 
 #: tfrconfig.label29.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label29.caption"
 msgid "Category:"
 msgstr "Catégorie:"
 
-#: tfrconfig.label3.caption
-#, fuzzy
-msgctxt "tfrconfig.label3.caption"
-msgid "FTP:"
-msgstr "FTP:"
-
 #: tfrconfig.label30.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label30.caption"
 msgid "Extensions:"
 msgstr "Extensions:"
 
 #: tfrconfig.label31.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label31.caption"
 msgid "Connections per server:"
 msgstr "Connexions par serveur:"
 
 #: tfrconfig.label37.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label37.caption"
 msgid "Timeout (sec):"
 msgstr "Expiration (sec):"
 
 #: tfrconfig.label38.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label38.caption"
 msgid "Tries:"
 msgstr "Essais:"
 
 #: tfrconfig.label39.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label39.caption"
 msgid "Delay tries (sec):"
 msgstr "Délai entre essais (sec):"
 
-#: tfrconfig.label4.caption
-#, fuzzy
-msgctxt "tfrconfig.label4.caption"
-msgid "Port:"
-msgstr "Port:"
-
 #: tfrconfig.label40.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label40.caption"
 msgid "Default language:"
 msgstr "Langue par défaut:"
 
 #: tfrconfig.label41.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label41.caption"
 msgid "Tries or rotate times:"
 msgstr "Essais ou nombre de rotations:"
 
 #: tfrconfig.label42.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label42.caption"
 msgid "Delay (downloads or tries)(sec):"
 msgstr "Délai (téléchargements ou essais) (sec):"
 
 #: tfrconfig.label43.caption
-#, fuzzy
+
 msgctxt "tfrconfig.label43.caption"
 msgid "Split size (can append K or M):"
 msgstr "Taille de tronçon (ajout possible de K ou M):"
 
-#: tfrconfig.label5.caption
-#, fuzzy
-msgctxt "tfrconfig.label5.caption"
+#: tfrconfig.lblftphost.caption
+
+msgctxt "tfrconfig.lblftphost.caption"
+msgid "FTP:"
+msgstr "FTP:"
+
+#: tfrconfig.lblftpport.caption
+
+msgctxt "tfrconfig.lblftpport.caption"
 msgid "Port:"
 msgstr "Port:"
 
-#: tfrconfig.label6.caption
-#, fuzzy
-msgctxt "tfrconfig.label6.caption"
+#: tfrconfig.lblhttphost.caption
+
+msgctxt "tfrconfig.lblhttphost.caption"
+msgid "HTTP:"
+msgstr "HTTP:"
+
+#: tfrconfig.lblhttpport.caption
+
+msgctxt "tfrconfig.lblhttpport.caption"
 msgid "Port:"
 msgstr "Port:"
 
-#: tfrconfig.label7.caption
-#, fuzzy
-msgctxt "tfrconfig.label7.caption"
+#: tfrconfig.lblnoproxyhelp.caption
+
+msgctxt "tfrconfig.lblnoproxyhelp.caption"
+msgid "Exp: .mozilla.org, localhost, 192.168.0.1"
+msgstr "par ex: .mozilla.org, localhost, 192.168.0.1"
+
+#: tfrconfig.lblnoproxyhosts.caption
+
+msgctxt "tfrconfig.lblnoproxyhosts.caption"
 msgid "No proxy for:"
 msgstr "Pas de proxy pour:"
 
-#: tfrconfig.label8.caption
-#, fuzzy
-msgctxt "tfrconfig.label8.caption"
-msgid "User:"
-msgstr "Utilisateur:"
+#: tfrconfig.lblproxypass.caption
 
-#: tfrconfig.label9.caption
-#, fuzzy
-msgctxt "tfrconfig.label9.caption"
+msgctxt "tfrconfig.lblproxypass.caption"
 msgid "Password:"
 msgstr "Mot de Passe:"
 
+#: tfrconfig.lblproxyuser.caption
+
+msgctxt "tfrconfig.lblproxyuser.caption"
+msgid "User:"
+msgstr "Utilisateur:"
+
+#: tfrconfig.lblsslhost.caption
+
+msgctxt "tfrconfig.lblsslhost.caption"
+msgid "SSL:"
+msgstr "SSL:"
+
+#: tfrconfig.lblsslport.caption
+
+msgctxt "tfrconfig.lblsslport.caption"
+msgid "Port:"
+msgstr "Port:"
+
 #: tfrconfig.radiobutton1.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiobutton1.caption"
 msgid "One step down"
 msgstr "Un niveau plus bas"
 
 #: tfrconfig.radiobutton2.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiobutton2.caption"
 msgid "To the end"
 msgstr "vers la fin"
 
 #: tfrconfig.radiobutton3.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiobutton3.caption"
 msgid "Two steps down"
 msgstr "Deux niveaux plus bas"
 
 #: tfrconfig.radiobutton4.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiobutton4.caption"
 msgid "All history log"
 msgstr "Tout l'historique"
 
 #: tfrconfig.radiobutton5.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiobutton5.caption"
 msgid "Last 20 lines."
 msgstr "Les 20 dernières ignes."
 
 #: tfrconfig.radiobutton6.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiobutton6.caption"
 msgid "All files in single folder"
 msgstr "Tous les fichiers dans un même dossier"
 
 #: tfrconfig.radiobutton7.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiobutton7.caption"
 msgid "Suggest by file type"
 msgstr "Suggérer par type de fichier"
 
 #: tfrconfig.radiogroup1.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiogroup1.caption"
 msgid "Position on the screen"
 msgstr "Position à l'écran"
 
 #: tfrconfig.radiogroup2.caption
-#, fuzzy
+
 msgctxt "tfrconfig.radiogroup2.caption"
 msgid "Categorize"
 msgstr "Catégoriser"
 
 #: tfrconfig.speedbutton4.hint
-#, fuzzy
+
 msgctxt "tfrconfig.speedbutton4.hint"
 msgid "Add"
 msgstr "Ajouter"
 
 #: tfrconfig.speedbutton5.hint
-#, fuzzy
+
 msgctxt "tfrconfig.speedbutton5.hint"
 msgid "Delete"
 msgstr "Effacer"
 
 #: tfrconfig.speedbutton6.hint
-#, fuzzy
+
 msgctxt "tfrconfig.speedbutton6.hint"
 msgid "Add"
 msgstr "Ajouter"
 
 #: tfrconfig.speedbutton7.hint
-#, fuzzy
+
 msgctxt "tfrconfig.speedbutton7.hint"
 msgid "Delete"
 msgstr "Effacer"
 
 #: tfrconfig.speedbutton8.hint
-#, fuzzy
+
 msgctxt "tfrconfig.speedbutton8.hint"
 msgid "Edit"
 msgstr "Éditer"
 
-#: tfrconfig.tabsheet1.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet1.caption"
-msgid "Proxy"
-msgstr "Proxy"
+#: tfrconfig.tsaria2.caption
 
-#: tfrconfig.tabsheet10.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet10.caption"
-msgid "Logs"
-msgstr "Logs"
-
-#: tfrconfig.tabsheet11.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet11.caption"
-msgid "axel"
-msgstr "axel"
-
-#: tfrconfig.tabsheet12.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet12.caption"
-msgid "Integration"
-msgstr "Intégration"
-
-#: tfrconfig.tabsheet15.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet15.caption"
-msgid "Download options"
-msgstr "Options de téléchargement"
-
-#: tfrconfig.tabsheet16.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet16.caption"
-msgid "Language"
-msgstr "Langue"
-
-#: tfrconfig.tabsheet17.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet17.caption"
-msgid "Sounds"
-msgstr "Sons"
-
-#: tfrconfig.tabsheet18.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet18.caption"
-msgid "Queue"
-msgstr "File d'attente"
-
-#: tfrconfig.tabsheet2.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet2.caption"
-msgid "Scheduler"
-msgstr "Planificateur"
-
-#: tfrconfig.tabsheet3.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet3.caption"
-msgid "Notifications"
-msgstr "Notifications"
-
-#: tfrconfig.tabsheet4.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet4.caption"
-msgid "Clipboard monitor"
-msgstr "Surveillance du presse-papier"
-
-#: tfrconfig.tabsheet5.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet5.caption"
-msgid "Folders"
-msgstr "Dossiers"
-
-#: tfrconfig.tabsheet6.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet6.caption"
-msgid "wget"
-msgstr "wget"
-
-#: tfrconfig.tabsheet7.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet7.caption"
+msgctxt "tfrconfig.tsaria2.caption"
 msgid "aria2c"
 msgstr "aria2c"
 
-#: tfrconfig.tabsheet8.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet8.caption"
-msgid "curl"
-msgstr "curl"
+#: tfrconfig.tsautomation.caption
 
-#: tfrconfig.tabsheet9.caption
-#, fuzzy
-msgctxt "tfrconfig.tabsheet9.caption"
+msgctxt "tfrconfig.tsautomation.caption"
 msgid "Automation"
 msgstr "Automatisation"
 
+#: tfrconfig.tsaxel.caption
+
+msgctxt "tfrconfig.tsaxel.caption"
+msgid "axel"
+msgstr "axel"
+
+#: tfrconfig.tsclipboardm.caption
+
+msgctxt "tfrconfig.tsclipboardm.caption"
+msgid "Clipboard monitor"
+msgstr "Surveillance du presse-papier"
+
+#: tfrconfig.tscurl.caption
+
+msgctxt "tfrconfig.tscurl.caption"
+msgid "curl"
+msgstr "curl"
+
+#: tfrconfig.tsdownoptions.caption
+
+msgctxt "tfrconfig.tsdownoptions.caption"
+msgid "Download options"
+msgstr "Options de téléchargement"
+
+#: tfrconfig.tsfolders.caption
+
+msgctxt "tfrconfig.tsfolders.caption"
+msgid "Folders"
+msgstr "Dossiers"
+
+#: tfrconfig.tsintegration.caption
+
+msgctxt "tfrconfig.tsintegration.caption"
+msgid "Integration"
+msgstr "Intégration"
+
+#: tfrconfig.tslang.caption
+
+msgctxt "tfrconfig.tslang.caption"
+msgid "Language"
+msgstr "Langue"
+
+#: tfrconfig.tslogs.caption
+
+msgctxt "tfrconfig.tslogs.caption"
+msgid "Logs"
+msgstr "Logs"
+
+#: tfrconfig.tsnotifications.caption
+
+msgctxt "tfrconfig.tsnotifications.caption"
+msgid "Notifications"
+msgstr "Notifications"
+
+#: tfrconfig.tsproxy.caption
+
+msgctxt "tfrconfig.tsproxy.caption"
+msgid "Proxy"
+msgstr "Proxy"
+
+#: tfrconfig.tsqueue.caption
+
+msgctxt "tfrconfig.tsqueue.caption"
+msgid "Queue"
+msgstr "File d'attente"
+
+#: tfrconfig.tsscheduler.caption
+
+msgctxt "tfrconfig.tsscheduler.caption"
+msgid "Scheduler"
+msgstr "Planificateur"
+
+#: tfrconfig.tssounds.caption
+
+msgctxt "tfrconfig.tssounds.caption"
+msgid "Sounds"
+msgstr "Sons"
+
+#: tfrconfig.tswget.caption
+
+msgctxt "tfrconfig.tswget.caption"
+msgid "wget"
+msgstr "wget"
+
 #: tfrconfirm.caption
-#, fuzzy
+
 msgctxt "tfrconfirm.caption"
 msgid "Confirm"
 msgstr "Confirmer"
 
 #: tfrcopymove.button1.caption
-#, fuzzy
+
 msgctxt "tfrcopymove.button1.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfrcopymove.caption
-#, fuzzy
+
 msgctxt "tfrcopymove.caption"
 msgid "Saving file..."
 msgstr "Enregistrement du fichier..."
 
 #: tfrcopymove.label1.caption
-#, fuzzy
+
 msgctxt "tfrcopymove.label1.caption"
 msgid "From: %s"
 msgstr "Depuis: %s"
 
 #: tfrcopymove.label2.caption
-#, fuzzy
+
 msgctxt "tfrcopymove.label2.caption"
 msgid "To: %s"
 msgstr "Vers: %s"
 
 #: tfreplace.button1.caption
-#, fuzzy
+
 msgctxt "tfreplace.button1.caption"
 msgid "Ok"
 msgstr "Ok"
 
 #: tfreplace.button2.caption
-#, fuzzy
+
 msgctxt "tfreplace.button2.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfreplace.caption
-#, fuzzy
+
 msgctxt "tfreplace.caption"
 msgid "File exists"
 msgstr "Le fichier existe"
 
 #: tfreplace.label1.caption
-#, fuzzy
+
 msgctxt "tfreplace.label1.caption"
 msgid "The file that you attempt to download already exists, what do you want to do?"
 msgstr "Le fichier que vous essayez de télécharger existe déjà, que voulez-vous faire ?"
 
 #: tfreplace.label2.caption
-#, fuzzy
+
 msgctxt "tfreplace.label2.caption"
 msgid "File name:"
 msgstr "Nom de fichier:"
 
 #: tfreplace.radiobutton1.caption
-#, fuzzy
+
 msgctxt "tfreplace.radiobutton1.caption"
 msgid "Overwrite the file."
 msgstr "Écraser le fichier."
 
 #: tfreplace.radiobutton2.caption
-#, fuzzy
+
 msgctxt "tfreplace.radiobutton2.caption"
 msgid "Auto rename the file."
 msgstr "Renommer automatiquement le fichier."
 
 #: tfreplace.radiobutton3.caption
-#, fuzzy
+
 msgctxt "tfreplace.radiobutton3.caption"
 msgid "Manual rename the file."
 msgstr "Renommage manuel du fichier."
 
 #: tfreplace.radiobutton4.caption
-#, fuzzy
+
 msgctxt "tfreplace.radiobutton4.caption"
 msgid "Update URL for this file."
 msgstr "Mettre à jour l'URL pour ce fichier."
 
 #: tfrlang.button1.caption
-#, fuzzy
+
 msgctxt "tfrlang.button1.caption"
 msgid "Ok"
 msgstr "Ok"
 
 #: tfrlang.caption
-#, fuzzy
+
 msgctxt "tfrlang.caption"
 msgid "Select language"
 msgstr "Choisir langue"
 
 #: tfrlang.label1.caption
-#, fuzzy
+
 msgctxt "tfrlang.label1.caption"
 msgid "Language:"
 msgstr "Langue:"
 
 #: tfrmain.caption
-#, fuzzy
+
 msgctxt "tfrmain.caption"
 msgid "AWGG"
 msgstr "AWGG"
 
-#: tfrmain.checkbox1.caption
-#, fuzzy
-msgctxt "tfrmain.checkbox1.caption"
+#: tfrmain.cblimit.caption
+
+msgctxt "tfrmain.cblimit.caption"
 msgid "Limit (Kb/s):"
 msgstr "Limite (Ko/s):"
 
-#: tfrmain.label1.caption
-#, fuzzy
-msgctxt "tfrmain.label1.caption"
+#: tfrmain.lblmaxdowninprogress.caption
+
+msgctxt "tfrmain.lblmaxdowninprogress.caption"
 msgid "Max. downloads in progress:"
 msgstr "Max. téléchargements simultanés:"
 
-#: tfrmain.listview1.columns[0].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[0].caption"
+#: tfrmain.lvmain.columns[0].caption
+
+msgctxt "tfrmain.lvmain.columns[0].caption"
 msgid "Status"
 msgstr "Statut"
 
-#: tfrmain.listview1.columns[10].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[10].caption"
+#: tfrmain.lvmain.columns[10].caption
+
+msgctxt "tfrmain.lvmain.columns[10].caption"
 msgid "Engine"
 msgstr "Moteur"
 
-#: tfrmain.listview1.columns[11].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[11].caption"
+#: tfrmain.lvmain.columns[11].caption
+
+msgctxt "tfrmain.lvmain.columns[11].caption"
 msgid "Parameters"
 msgstr "Paramètres"
 
-#: tfrmain.listview1.columns[1].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[1].caption"
+#: tfrmain.lvmain.columns[1].caption
+
+msgctxt "tfrmain.lvmain.columns[1].caption"
 msgid "File name"
 msgstr "Nom de fichier"
 
-#: tfrmain.listview1.columns[2].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[2].caption"
+#: tfrmain.lvmain.columns[2].caption
+
+msgctxt "tfrmain.lvmain.columns[2].caption"
 msgid "Size"
 msgstr "Taille"
 
-#: tfrmain.listview1.columns[3].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[3].caption"
+#: tfrmain.lvmain.columns[3].caption
+
+msgctxt "tfrmain.lvmain.columns[3].caption"
 msgid "Downloaded"
 msgstr "Téléchargé(s)"
 
-#: tfrmain.listview1.columns[4].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[4].caption"
+#: tfrmain.lvmain.columns[4].caption
+
+msgctxt "tfrmain.lvmain.columns[4].caption"
 msgid "URL"
 msgstr "URL"
 
-#: tfrmain.listview1.columns[5].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[5].caption"
+#: tfrmain.lvmain.columns[5].caption
+
+msgctxt "tfrmain.lvmain.columns[5].caption"
 msgid "Speed"
 msgstr "Vitesse"
 
-#: tfrmain.listview1.columns[6].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[6].caption"
+#: tfrmain.lvmain.columns[6].caption
+
+msgctxt "tfrmain.lvmain.columns[6].caption"
 msgid "%"
 msgstr "%"
 
-#: tfrmain.listview1.columns[7].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[7].caption"
+#: tfrmain.lvmain.columns[7].caption
+
+msgctxt "tfrmain.lvmain.columns[7].caption"
 msgid "Estimated"
 msgstr "Estimé"
 
-#: tfrmain.listview1.columns[8].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[8].caption"
+#: tfrmain.lvmain.columns[8].caption
+
+msgctxt "tfrmain.lvmain.columns[8].caption"
 msgid "Date"
 msgstr "Date"
 
-#: tfrmain.listview1.columns[9].caption
-#, fuzzy
-msgctxt "tfrmain.listview1.columns[9].caption"
+#: tfrmain.lvmain.columns[9].caption
+
+msgctxt "tfrmain.lvmain.columns[9].caption"
 msgid "Destination"
 msgstr "Destination"
 
 #: tfrmain.miadddown.caption
-#, fuzzy
+
 msgctxt "tfrmain.miadddown.caption"
 msgid "New download..."
 msgstr "Nouveau téléchargement..."
 
 #: tfrmain.miaddgrabber.caption
-#, fuzzy
+
 msgctxt "tfrmain.miaddgrabber.caption"
 msgid "New site grabber..."
 msgstr "Nouvel aspirateur de site..."
 
 #: tfrmain.micommandclear.caption
-#, fuzzy
+
 msgctxt "tfrmain.micommandclear.caption"
 msgid "Clear command out"
 msgstr "Effacer la sortie de commande"
 
 #: tfrmain.micommandcopy.caption
-#, fuzzy
+
 msgctxt "tfrmain.micommandcopy.caption"
 msgid "Copy"
 msgstr "Copier"
 
 #: tfrmain.micommandfollow.caption
-#, fuzzy
+
 msgctxt "tfrmain.micommandfollow.caption"
 msgid "Follow command out (auto scroll)"
 msgstr "Suivre la sortie de commande (défil. auto)"
 
 #: tfrmain.micommandselectall.caption
-#, fuzzy
+
 msgctxt "tfrmain.micommandselectall.caption"
 msgid "Select all"
 msgstr "Sélectionner tout"
 
 #: tfrmain.miexit.caption
-#, fuzzy
+
 msgctxt "tfrmain.miexit.caption"
 msgid "Exit"
 msgstr "Quitter"
 
 #: tfrmain.miline1.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline1.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline10.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline10.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline11.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline11.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline12.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline12.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline13.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline13.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline14.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline14.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline15.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline15.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline16.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline16.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline17.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline17.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline18.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline18.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline19.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline19.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline2.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline2.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline20.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline20.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline21.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline21.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline22.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline22.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline23.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline23.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline24.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline24.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline25.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline25.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline3.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline3.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline4.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline4.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline5.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline5.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline6.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline6.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline7.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline7.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline8.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline8.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.miline9.caption
-#, fuzzy
+
 msgctxt "tfrmain.miline9.caption"
 msgid "-"
 msgstr "-"
 
 #: tfrmain.milistclearlog.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistclearlog.caption"
 msgid "Clean history log file"
 msgstr "Effacer le fichier d'historique"
 
 #: tfrmain.milistcopyfiles.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistcopyfiles.caption"
 msgid "Copy file(s) to..."
 msgstr "Copier le(s) fichier(s) vers..."
 
 #: tfrmain.milistcopyurl.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistcopyurl.caption"
 msgid "Copy download URL"
 msgstr "Copier l'URL de téléchargement"
 
 #: tfrmain.milistdeletedown.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistdeletedown.caption"
 msgid "Delete"
 msgstr "Effacer"
 
 #: tfrmain.milistdeletedowndisk.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistdeletedowndisk.caption"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
 
 #: tfrmain.milistmovefiles.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistmovefiles.caption"
 msgid "Move file(s) to..."
 msgstr "Déplacer le(s) fichier(s) vers..."
 
 #: tfrmain.milistopendestination.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistopendestination.caption"
 msgid "Go to the destination folder"
 msgstr "Aller au dossier de destination"
 
 #: tfrmain.milistopenfile.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistopenfile.caption"
 msgid "Open file"
 msgstr "Ouvrir fichier"
 
 #: tfrmain.milistopenlog.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistopenlog.caption"
 msgid "Open log file"
 msgstr "Ouvrir le journal"
 
 #: tfrmain.milistopenurl.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistopenurl.caption"
 msgid "Open download URL"
 msgstr "Ouvrir l'URL de téléchargement"
 
 #: tfrmain.milistproperties.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistproperties.caption"
 msgid "Properties"
 msgstr "Propriétés"
 
 #: tfrmain.milistrestartlater.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistrestartlater.caption"
 msgid "Restart later"
 msgstr "Rédémarrer plus tard"
 
 #: tfrmain.milistrestartnow.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistrestartnow.caption"
 msgid "Restart now"
 msgstr "Redémarrer maintenant"
 
 #: tfrmain.milistsendtoqueue.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistsendtoqueue.caption"
 msgid "Send to the queue"
 msgstr "Envoyer à la file d'attente"
 
 #: tfrmain.milistshowtrayicon.caption
-#, fuzzy
+
 msgctxt "tfrmain.milistshowtrayicon.caption"
 msgid "Show in systray"
 msgstr "Afficher dans la zone de notification"
 
 #: tfrmain.miliststartdown.caption
-#, fuzzy
+
 msgctxt "tfrmain.miliststartdown.caption"
 msgid "Start"
 msgstr "Démarrer"
 
 #: tfrmain.miliststeepdown.caption
-#, fuzzy
+
 msgctxt "tfrmain.miliststeepdown.caption"
 msgid "Move one step down"
 msgstr "Déplacer vers le bas"
 
 #: tfrmain.miliststeepup.caption
-#, fuzzy
+
 msgctxt "tfrmain.miliststeepup.caption"
 msgid "Move one step up"
 msgstr "Déplacer vers le haut"
 
 #: tfrmain.miliststopdown.caption
-#, fuzzy
+
 msgctxt "tfrmain.miliststopdown.caption"
 msgid "Stop"
 msgstr "Stopper"
 
 #: tfrmain.milisttodown.caption
-#, fuzzy
+
 msgctxt "tfrmain.milisttodown.caption"
 msgid "Move to the end"
 msgstr "Déplacer vers la fin"
 
 #: tfrmain.milisttoup.caption
-#, fuzzy
+
 msgctxt "tfrmain.milisttoup.caption"
 msgid "Move to the start"
 msgstr "Déplacer vers le début"
 
 #: tfrmain.mimainabout.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainabout.caption"
 msgid "About"
 msgstr "A propos"
 
 #: tfrmain.mimainadddown.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainadddown.caption"
 msgid "New download..."
 msgstr "Nouveau téléchargement..."
 
 #: tfrmain.mimainaddgrabber.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainaddgrabber.caption"
 msgid "New site grabber..."
 msgstr "Nouvel aspirateur de site..."
 
 #: tfrmain.mimaincolumns.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimaincolumns.caption"
 msgid "Columns"
 msgstr "Colonnes"
 
 #: tfrmain.mimainconfig.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainconfig.caption"
 msgid "Configuration"
 msgstr "Configuration"
 
 #: tfrmain.mimaindeleteall.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimaindeleteall.caption"
 msgid "Delete all"
 msgstr "Effacer tout"
 
 #: tfrmain.mimaindeletedown.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimaindeletedown.caption"
 msgid "Delete download"
 msgstr "Effacer le téléchargement"
 
 #: tfrmain.mimaindeletedowndisk.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimaindeletedowndisk.caption"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
 
 #: tfrmain.mimaindeletedowndisk.hint
-#, fuzzy
+
 msgctxt "tfrmain.mimaindeletedowndisk.hint"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
 
 #: tfrmain.mimaindownloads.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimaindownloads.caption"
 msgid "Downloads"
 msgstr "Téléchargements"
 
 #: tfrmain.mimainexit.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainexit.caption"
 msgid "Exit"
 msgstr "Quitter"
 
 #: tfrmain.mimainexportdown.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainexportdown.caption"
 msgid "Export list of downloads..."
 msgstr "Exporter la liste des téléchargements..."
 
 #: tfrmain.mimainfile.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainfile.caption"
 msgid "File"
 msgstr "Fichier"
 
 #: tfrmain.mimainhelp.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainhelp.caption"
 msgid "Help"
 msgstr "Aide"
 
 #: tfrmain.mimainhomepage.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainhomepage.caption"
 msgid "Official web site"
 msgstr "Site web officiel"
 
 #: tfrmain.mimainimportdown.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainimportdown.caption"
 msgid "Import list of downloads..."
 msgstr "Importer la liste des téléchargements..."
 
 #: tfrmain.mimainrestartalllater.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainrestartalllater.caption"
 msgid "Restart all later"
 msgstr "Redémarrer tout plus tard"
 
 #: tfrmain.mimainrestartallnow.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainrestartallnow.caption"
 msgid "Restart all now"
 msgstr "Rédémarrer tout maintenant"
 
 #: tfrmain.mimainscheduler.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainscheduler.caption"
 msgid "Scheduler"
 msgstr "Planificateur"
 
 #: tfrmain.mimainselectall.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainselectall.caption"
 msgid "Select all"
 msgstr "Sélectionner tout"
 
 #: tfrmain.mimainshow.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshow.caption"
 msgid "Show"
 msgstr "Afficher"
 
 #: tfrmain.mimainshowcommand.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowcommand.caption"
 msgid "Command out"
 msgstr "Sortie de Commande"
 
 #: tfrmain.mimainshowcurrent.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowcurrent.caption"
 msgid "Downloaded"
 msgstr "Téléchargé(s)"
 
 #: tfrmain.mimainshowdate.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowdate.caption"
 msgid "Date"
 msgstr "Date"
 
 #: tfrmain.mimainshowdestination.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowdestination.caption"
 msgid "Destination"
 msgstr "Destination"
 
 #: tfrmain.mimainshowengine.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowengine.caption"
 msgid "Engine"
 msgstr "Moteur"
 
 #: tfrmain.mimainshowestimated.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowestimated.caption"
 msgid "Estimated"
 msgstr "Estimé"
 
 #: tfrmain.mimainshowgrid.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowgrid.caption"
 msgid "Show gridlines"
 msgstr "Afficher la grille"
 
 #: tfrmain.mimainshowname.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowname.caption"
 msgid "File name"
 msgstr "Nom de fichier"
 
 #: tfrmain.mimainshowparameters.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowparameters.caption"
 msgid "Parameters"
 msgstr "Paramètres"
 
 #: tfrmain.mimainshowpercent.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowpercent.caption"
 msgid "Percent"
 msgstr "Pourcent"
 
 #: tfrmain.mimainshowsize.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowsize.caption"
 msgid "Size"
 msgstr "Taille"
 
 #: tfrmain.mimainshowspeed.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowspeed.caption"
 msgid "Speed"
 msgstr "Vitesse"
 
 #: tfrmain.mimainshowstate.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowstate.caption"
 msgid "State"
 msgstr "État"
 
 #: tfrmain.mimainshowtraydowns.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowtraydowns.caption"
 msgid "Show downloads icons in systray"
 msgstr "Afficher les icônes de téléchargement dans la zone de notification"
 
 #: tfrmain.mimainshowtree.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowtree.caption"
 msgid "Show tree view panel"
 msgstr "Afficher le panneau de l'arborescence"
 
 #: tfrmain.mimainshowurl.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainshowurl.caption"
 msgid "URL"
 msgstr "URL"
 
 #: tfrmain.mimainstartall.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainstartall.caption"
 msgid "Start all"
 msgstr "Démarrer tout"
 
 #: tfrmain.mimainstartqueue.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainstartqueue.caption"
 msgid "Start queue"
 msgstr "Démarrer la file d'attente"
 
 #: tfrmain.mimainstopall.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainstopall.caption"
 msgid "Stop all"
 msgstr "Stopper tout"
 
 #: tfrmain.mimainstopqueue.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainstopqueue.caption"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
 
 #: tfrmain.mimaintools.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimaintools.caption"
 msgid "Tools"
 msgstr "Outils"
 
 #: tfrmain.mimainunselectall.caption
-#, fuzzy
+
 msgctxt "tfrmain.mimainunselectall.caption"
 msgid "Unselect all"
 msgstr "Désélectionner tout"
 
 #: tfrmain.mishowmainform.caption
-#, fuzzy
+
 msgctxt "tfrmain.mishowmainform.caption"
 msgid "Show"
 msgstr "Afficher"
 
 #: tfrmain.mistopall.caption
-#, fuzzy
+
 msgctxt "tfrmain.mistopall.caption"
 msgid "Stop all"
 msgstr "Stopper tout"
 
 #: tfrmain.mitraydownstart.caption
-#, fuzzy
+
 msgctxt "tfrmain.mitraydownstart.caption"
 msgid "Start"
 msgstr "Démarrer"
 
 #: tfrmain.mitraydownstop.caption
-#, fuzzy
+
 msgctxt "tfrmain.mitraydownstop.caption"
 msgid "Stop"
 msgstr "Stopper"
 
 #: tfrmain.mitreeaddqueue.caption
-#, fuzzy
+
 msgctxt "tfrmain.mitreeaddqueue.caption"
 msgid "New queue"
 msgstr "Nouvelle file d'attente"
 
 #: tfrmain.mitreedeletequeue.caption
-#, fuzzy
+
 msgctxt "tfrmain.mitreedeletequeue.caption"
 msgid "Delete queue"
 msgstr "Effacer la file d'attente"
 
 #: tfrmain.mitreerenamequeue.caption
-#, fuzzy
+
 msgctxt "tfrmain.mitreerenamequeue.caption"
 msgid "Rename queue"
 msgstr "Renommer la file d'attente"
 
 #: tfrmain.mitreestartqueue.caption
-#, fuzzy
+
 msgctxt "tfrmain.mitreestartqueue.caption"
 msgid "Start queue"
 msgstr "Démarrer la file d'attente"
 
 #: tfrmain.mitreestopqueue.caption
-#, fuzzy
+
 msgctxt "tfrmain.mitreestopqueue.caption"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
 
 #: tfrmain.mitrydownhide.caption
-#, fuzzy
+
 msgctxt "tfrmain.mitrydownhide.caption"
 msgid "Hide"
 msgstr "Cacher"
 
-#: tfrmain.opendialog1.title
-#, fuzzy
-msgctxt "tfrmain.opendialog1.title"
+#: tfrmain.odlgimportdown.title
+
+msgctxt "tfrmain.odlgimportdown.title"
 msgid "Open file list of downloads"
 msgstr "Ouvrir le fichier de liste de téléchargements"
 
-#: tfrmain.savedialog1.title
-#, fuzzy
-msgctxt "tfrmain.savedialog1.title"
+#: tfrmain.sdlgexportdown.title
+
+msgctxt "tfrmain.sdlgexportdown.title"
 msgid "Save file list of downloads"
 msgstr "Enregistrer la liste des téléchargements dans un fichier"
 
 #: tfrmain.tbadddown.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbadddown.hint"
 msgid "New download"
 msgstr "Nouveau téléchargement"
 
 #: tfrmain.tbaddgrabber.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbaddgrabber.hint"
 msgid "New site grabber"
 msgstr "Nouvel aspirateur de site"
 
 #: tfrmain.tbclipboard.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbclipboard.hint"
 msgid "Enable/Disable clipboard monitor"
 msgstr "Activer/Désactiver la surveillance du presse-papier"
 
 #: tfrmain.tbconfig.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbconfig.hint"
 msgid "Configuration"
 msgstr "Configuration"
 
 #: tfrmain.tbdeldowndisk.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbdeldowndisk.hint"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
 
 #: tfrmain.tbdeletedown.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbdeletedown.hint"
 msgid "Delete download"
 msgstr "Effacer le téléchargement"
 
 #: tfrmain.tbexit.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbexit.hint"
 msgid "Exit"
 msgstr "Quitter"
 
 #: tfrmain.tbexportdown.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbexportdown.hint"
 msgid "Export list of downloads..."
 msgstr "Exporter la liste des téléchargements..."
 
 #: tfrmain.tbimportdown.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbimportdown.hint"
 msgid "Import list of downloads..."
 msgstr "Importer la liste des téléchargements..."
 
 #: tfrmain.tbrestartlater.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbrestartlater.hint"
 msgid "Restart later"
 msgstr "Rédémarrer plus tard"
 
 #: tfrmain.tbrestartnow.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbrestartnow.hint"
 msgid "Restart download"
 msgstr "Redémarrer le téléchargement"
 
 #: tfrmain.tbscheduler.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbscheduler.hint"
 msgid "Scheduler"
 msgstr "Planificateur"
 
 #: tfrmain.tbstartdown.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbstartdown.hint"
 msgid "Start download"
 msgstr "Démarrer le téléchargement"
 
 #: tfrmain.tbstartqueue.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbstartqueue.hint"
 msgid "Start queue"
 msgstr "Démarrer la file d'attente"
 
 #: tfrmain.tbstartscheduler.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbstartscheduler.hint"
 msgid "Start scheduler"
 msgstr "Démarrer le Planificateur"
 
 #: tfrmain.tbsteepdown.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbsteepdown.hint"
 msgid "Move one step down"
 msgstr "Déplacer vers le bas"
 
 #: tfrmain.tbsteepup.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbsteepup.hint"
 msgid "Move one step up"
 msgstr "Déplacer vers le haut"
 
 #: tfrmain.tbstopall.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbstopall.hint"
 msgid "Stop all"
 msgstr "Stopper tout"
 
 #: tfrmain.tbstopdown.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbstopdown.hint"
 msgid "Stop download"
 msgstr "Stopper le téléchargement"
 
 #: tfrmain.tbstopqueue.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbstopqueue.hint"
 msgid "Stop queue"
 msgstr "Stopper la file d'attente"
 
 #: tfrmain.tbstopscheduler.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbstopscheduler.hint"
 msgid "Stop scheduler"
 msgstr "Stopper le Planificateur"
 
 #: tfrmain.tbtodown.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbtodown.hint"
 msgid "Move to the end"
 msgstr "Déplacer vers la fin"
 
 #: tfrmain.tbtoup.hint
-#, fuzzy
+
 msgctxt "tfrmain.tbtoup.hint"
 msgid "Move to the start"
 msgstr "Déplacer vers le début"
 
 #: tfrnewdown.bitbtn1.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.bitbtn1.caption"
 msgid "Start now"
 msgstr "Démarrer maintenant"
 
 #: tfrnewdown.button1.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.button1.caption"
 msgid "To the queue [F2]"
 msgstr "Vers la file d'attente [F2]"
 
 #: tfrnewdown.button2.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.button2.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfrnewdown.button4.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.button4.caption"
 msgid "Paused"
 msgstr "En Pause"
 
 #: tfrnewdown.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.caption"
 msgid "New download"
 msgstr "Nouveau téléchargement"
 
 #: tfrnewdown.label1.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.label1.caption"
 msgid "URL: "
 msgstr "URL: "
 
 #: tfrnewdown.label2.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.label2.caption"
 msgid "Destination: "
 msgstr "Destination:"
 
 #: tfrnewdown.label3.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.label3.caption"
 msgid "Engine: "
 msgstr "Moteur:"
 
 #: tfrnewdown.label4.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.label4.caption"
 msgid "Parameters:"
 msgstr "Paramètres:"
 
 #: tfrnewdown.label5.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.label5.caption"
 msgid "File name: "
 msgstr "Nom de fichier:"
 
 #: tfrnewdown.label6.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.label6.caption"
 msgid "HTTP/FTP User:"
 msgstr "Utilisateur HTTP/FTP:"
 
 #: tfrnewdown.label7.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.label7.caption"
 msgid "HTTP/FTP Password:"
 msgstr "Mot de Passe HTTP/FTP:"
 
 #: tfrnewdown.label8.caption
-#, fuzzy
+
 msgctxt "tfrnewdown.label8.caption"
 msgid "Queue:"
 msgstr "File d'attente:"
 
 #: tfrnewdown.speedbutton1.hint
-#, fuzzy
+
 msgctxt "tfrnewdown.speedbutton1.hint"
 msgid "Add queue"
 msgstr "Ajouter file d'attente"
 
 #: tfrnewdown.speedbutton2.hint
-#, fuzzy
+
 msgctxt "tfrnewdown.speedbutton2.hint"
 msgid "Schedule"
 msgstr "Plannifier"
 
 #: tfrnotification.caption
-#, fuzzy
+
 msgctxt "tfrnotification.caption"
 msgid "Download Notifications"
 msgstr "Notifications de téléchargement"
 
 #: tfrnotification.label1.caption
-#, fuzzy
+
 msgctxt "tfrnotification.label1.caption"
 msgid "Label1"
 msgstr "Label1"
 
 #: tfrnotification.label2.caption
-#, fuzzy
+
 msgctxt "tfrnotification.label2.caption"
 msgid "Label2"
 msgstr "Label2"
 
 #: tfrnotification.label3.caption
-#, fuzzy
+
 msgctxt "tfrnotification.label3.caption"
 msgid "Label3"
 msgstr "Label3"
 
 #: tfrnotification.speedbutton1.hint
-#, fuzzy
+
 msgctxt "tfrnotification.speedbutton1.hint"
 msgid "Go to the destination folder"
 msgstr "Aller au dossier de destination"
 
 #: tfrnotification.speedbutton2.hint
-#, fuzzy
+
 msgctxt "tfrnotification.speedbutton2.hint"
 msgid "Open file"
 msgstr "Ouvrir fichier"
 
 #: tfrnotification.speedbutton4.hint
-#, fuzzy
+
 msgctxt "tfrnotification.speedbutton4.hint"
 msgid "Copy file to..."
 msgstr "Copier le fichier vers..."
 
 #: tfrnotification.speedbutton5.hint
-#, fuzzy
+
 msgctxt "tfrnotification.speedbutton5.hint"
 msgid "Move file to..."
 msgstr "Déplacer le fichier vers..."
 
 #: tfrreplace.button1.caption
-#, fuzzy
+
 msgctxt "tfrreplace.button1.caption"
 msgid "Ok"
 msgstr "Ok"
 
 #: tfrreplace.button2.caption
-#, fuzzy
+
 msgctxt "tfrreplace.button2.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfrreplace.caption
-#, fuzzy
+
 msgctxt "tfrreplace.caption"
 msgid "File exists"
 msgstr "Le fichier existe"
 
 #: tfrreplace.label1.caption
-#, fuzzy
+
 msgctxt "tfrreplace.label1.caption"
 msgid "The file that you attempt to download already exists, what do you want to do?"
 msgstr "Le fichier que vous essayez de télécharger existe déjà, que voulez-vous faire ?"
 
 #: tfrreplace.label2.caption
-#, fuzzy
+
 msgctxt "tfrreplace.label2.caption"
 msgid "File name:"
 msgstr "Nom de fichier:"
 
 #: tfrreplace.radiobutton1.caption
-#, fuzzy
+
 msgctxt "tfrreplace.radiobutton1.caption"
 msgid "Overwrite the file."
 msgstr "Écraser le fichier."
 
 #: tfrreplace.radiobutton2.caption
-#, fuzzy
+
 msgctxt "tfrreplace.radiobutton2.caption"
 msgid "Auto rename the file."
 msgstr "Renommer automatiquement le fichier."
 
 #: tfrreplace.radiobutton3.caption
-#, fuzzy
+
 msgctxt "tfrreplace.radiobutton3.caption"
 msgid "Manual rename the file."
 msgstr "Renommage manuel du fichier."
 
 #: tfrreplace.radiobutton4.caption
-#, fuzzy
+
 msgctxt "tfrreplace.radiobutton4.caption"
 msgid "Update URL for this file."
 msgstr "Mettre à jour l'URL pour ce fichier."
 
 #: tfrsitegrabber.button1.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.button1.caption"
 msgid "Finish"
 msgstr "Fin"
 
 #: tfrsitegrabber.button2.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.button2.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfrsitegrabber.button3.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.button3.caption"
 msgid "< Back"
 msgstr "< Précédent"
 
 #: tfrsitegrabber.button4.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.button4.caption"
 msgid "Next >"
 msgstr "Suivant >"
 
 #: tfrsitegrabber.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.caption"
 msgid "New Site Grabber"
 msgstr "Nouvel Aspirateur de Site"
 
 #: tfrsitegrabber.checkbox1.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.checkbox1.caption"
 msgid "Convert to locals links"
 msgstr "Convertir en liens locaux"
 
 #: tfrsitegrabber.checkbox2.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.checkbox2.caption"
 msgid "Follow FTP links"
 msgstr "Suivre les liens FTP"
 
 #: tfrsitegrabber.checkbox3.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.checkbox3.caption"
 msgid "No parent links"
 msgstr "Pas de liens parents"
 
 #: tfrsitegrabber.checkbox4.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.checkbox4.caption"
 msgid "Page requisites"
 msgstr "Requis par la page"
 
 #: tfrsitegrabber.checkbox5.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.checkbox5.caption"
 msgid "Span hosts"
 msgstr "Répartir les hôtes"
 
 #: tfrsitegrabber.checkbox6.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.checkbox6.caption"
 msgid "Follow relative links"
 msgstr "Suivre les liens relatifs"
 
 #: tfrsitegrabber.groupbox1.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox1.caption"
 msgid "File reject filter"
 msgstr "Filtre de fichiers rejetés"
 
 #: tfrsitegrabber.groupbox2.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox2.caption"
 msgid "Domain reject filter"
 msgstr "Filtre de rejet de domaine"
 
 #: tfrsitegrabber.groupbox3.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox3.caption"
 msgid "Follow domain filter"
 msgstr "Suivre le filtre de domaine"
 
 #: tfrsitegrabber.groupbox4.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox4.caption"
 msgid "Include directory list"
 msgstr "Inclure la liste des répertoires"
 
 #: tfrsitegrabber.groupbox5.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox5.caption"
 msgid "Exclude directory list"
 msgstr "Liste d'exclusion de répertoires"
 
 #: tfrsitegrabber.groupbox6.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox6.caption"
 msgid "File accept filter"
 msgstr "Filtre de fichiers acceptés"
 
 #: tfrsitegrabber.groupbox7.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox7.caption"
 msgid "Follow tags list"
 msgstr "Suivre la liste des tags"
 
 #: tfrsitegrabber.groupbox8.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox8.caption"
 msgid "Ignore tags list"
 msgstr "Ignorer la liste des tags"
 
 #: tfrsitegrabber.groupbox9.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.groupbox9.caption"
 msgid "HTTP/FTP Authentication"
 msgstr "Authentification HTTP/FTP"
 
 #: tfrsitegrabber.label1.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label1.caption"
 msgid "URL:"
 msgstr "URL:"
 
 #: tfrsitegrabber.label2.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label2.caption"
 msgid "Name:"
 msgstr "Nom:"
 
 #: tfrsitegrabber.label3.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label3.caption"
 msgid "Destination:"
 msgstr "Destination:"
 
 #: tfrsitegrabber.label4.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label4.caption"
 msgid "User:"
 msgstr "Utilisateur:"
 
 #: tfrsitegrabber.label5.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label5.caption"
 msgid "Password:"
 msgstr "Mot de Passe:"
 
 #: tfrsitegrabber.label6.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label6.caption"
 msgid "Queue:"
 msgstr "File d'attente:"
 
 #: tfrsitegrabber.label7.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label7.caption"
 msgid "Max level:"
 msgstr "Niveau Max:"
 
 #: tfrsitegrabber.label8.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label8.caption"
 msgid "Welcome to the site grabber wizard"
 msgstr "Bienvenue dans l'assistant aspirateur de site"
 
 #: tfrsitegrabber.label9.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.label9.caption"
 msgid "User agent:"
 msgstr "User agent:"
 
 #: tfrsitegrabber.tabsheet1.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.tabsheet1.caption"
 msgid "TabSheet1"
 msgstr "TabSheet1"
 
 #: tfrsitegrabber.tabsheet2.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.tabsheet2.caption"
 msgid "TabSheet2"
 msgstr "TabSheet2"
 
 #: tfrsitegrabber.tabsheet3.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.tabsheet3.caption"
 msgid "TabSheet3"
 msgstr "TabSheet3"
 
 #: tfrsitegrabber.tabsheet4.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.tabsheet4.caption"
 msgid "TabSheet4"
 msgstr "TabSheet4"
 
 #: tfrsitegrabber.tabsheet5.caption
-#, fuzzy
+
 msgctxt "tfrsitegrabber.tabsheet5.caption"
 msgid "TabSheet5"
 msgstr "TabSheet5"
 
 #: tfrstrings.alldowntreename.caption
-#, fuzzy
+
 msgctxt "tfrstrings.alldowntreename.caption"
 msgid "All downloads"
 msgstr "Tous les téléchargements"
 
 #: tfrstrings.automaticstartscheduler.caption
-#, fuzzy
+
 msgctxt "tfrstrings.automaticstartscheduler.caption"
 msgid "Automatic start the scheduler."
 msgstr "Démarrer automatiquement le planificateur."
 
 #: tfrstrings.btnnewdownstartnow.caption
-#, fuzzy
+
 msgctxt "tfrstrings.btnnewdownstartnow.caption"
 msgid "Start now"
 msgstr "Démarrer maintenant"
 
 #: tfrstrings.btnpropertiesok.caption
-#, fuzzy
+
 msgctxt "tfrstrings.btnpropertiesok.caption"
 msgid "Ok"
 msgstr "Ok"
@@ -5662,499 +5662,499 @@ msgid "frstrings"
 msgstr ""
 
 #: tfrstrings.dlgclearhistorylogfile.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgclearhistorylogfile.caption"
 msgid "Do you want to clear the history log file?"
 msgstr "Voulez-vous effacer le fichier d'historique ?"
 
 #: tfrstrings.dlgconfirm.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgconfirm.caption"
 msgid "Confirm"
 msgstr "Confirmer"
 
 #: tfrstrings.dlgdeletealldownloads.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgdeletealldownloads.caption"
 msgid "Do you want to delete all downloads?"
 msgstr "Voulez-vous effacer tous les téléchargements ?"
 
 #: tfrstrings.dlgdeletedown.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgdeletedown.caption"
 msgid "Do you want to delete the selected download(s)?"
 msgstr "Voulez-vous effacer le(s) téléchargements(s) sélectionné(s) ?"
 
 #: tfrstrings.dlgdeletedownandfile.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgdeletedownandfile.caption"
 msgid "Do you want to delete the selected download(s) and file(s) in disk?"
 msgstr "Voulez-vous effacer le(s) téléchargement(s) et fichier(s) sélectionné(s) du disque ?"
 
 #: tfrstrings.dlgdeletequeue.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgdeletequeue.caption"
 msgid "Do you want to delete the selected queue?"
 msgstr "Voulez-vous effacer la file d'attente sélectionnée ?"
 
 #: tfrstrings.dlgrestartalldownloads.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgrestartalldownloads.caption"
 msgid "Do you want to restart all downloads?"
 msgstr "Voulez-vous redémarrer tous les téléchargements ?"
 
 #: tfrstrings.dlgrestartalldownloadslatter.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgrestartalldownloadslatter.caption"
 msgid "Do you want to restart all downloads later?"
 msgstr "Voulez-vous redémarrer tous les téléchargements plus tard ?"
 
 #: tfrstrings.dlgrestartselecteddownload.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgrestartselecteddownload.caption"
 msgid "Do you want to restart the selected download?"
 msgstr "Vouslez-vous redémarrer le téléchargement sélectionné ?"
 
 #: tfrstrings.dlgrestartselecteddownloadletter.caption
-#, fuzzy
+
 msgctxt "tfrstrings.dlgrestartselecteddownloadletter.caption"
 msgid "Do you want to restart the selected download later?"
 msgstr "Voulez-vous redémarrer le téléchargement sélectionné plus tard ?"
 
 #: tfrstrings.fileexistsreplace.caption
-#, fuzzy
+
 msgctxt "tfrstrings.fileexistsreplace.caption"
 msgid "The file exist, do you want replace it?"
 msgstr "Le fichier existe, voulez-vous le remplacer ?"
 
 #: tfrstrings.filtresname.caption
-#, fuzzy
+
 msgctxt "tfrstrings.filtresname.caption"
 msgid "Filters"
 msgstr "Filtres"
 
 #: tfrstrings.firefoxhelpintegration.caption
-#, fuzzy
+
 msgctxt "tfrstrings.firefoxhelpintegration.caption"
 msgid "Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser."
 msgstr "Veuillez fermer Mozilla Firefox avec de cliquer sur le bouton Ok et accepter l'installation des extensions FlashGot dans le même navigateur."
 
 #: tfrstrings.friday.caption
-#, fuzzy
+
 msgctxt "tfrstrings.friday.caption"
 msgid "Friday"
 msgstr "Vendredi"
 
 #: tfrstrings.monday.caption
-#, fuzzy
+
 msgctxt "tfrstrings.monday.caption"
 msgid "Monday"
 msgstr "Lundi"
 
 #: tfrstrings.msgcloseinprogressdownload.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgcloseinprogressdownload.caption"
 msgid "Downloads exist in progress, do you want to close anyway?"
 msgstr "Des téléchargements sont en cours, voulez-vous fermer tout de même  ?"
 
 #: tfrstrings.msgerrorconfigload.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgerrorconfigload.caption"
 msgid "Error loading config file: "
 msgstr "Erreur durant le chargement du fichier de config:"
 
 #: tfrstrings.msgerrorconfigsave.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgerrorconfigsave.caption"
 msgid "Error saving config file: "
 msgstr "Erreur durant l'enregistrement du fichier de config:"
 
 #: tfrstrings.msgerrordownlistsave.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgerrordownlistsave.caption"
 msgid "Error saving the download list"
 msgstr "Erreur durant l'enregistrement de la liste des téléchargements"
 
 #: tfrstrings.msgfilenoexist.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgfilenoexist.caption"
 msgid "The file not exists."
 msgstr "Le fichier n'existe pas."
 
 #: tfrstrings.msgmustselectdownload.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgmustselectdownload.caption"
 msgid "You must select a download."
 msgstr "Vous devez sélectionner un téléchargement."
 
 #: tfrstrings.msgmustselectdownloadengine.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgmustselectdownloadengine.caption"
 msgid "You must select a download engine!!'"
 msgstr "Vous devez sélectionner un moteur de téléchargement !!'"
 
 #: tfrstrings.msgmustselectweekday.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgmustselectweekday.caption"
 msgid "You must select one week day!!"
 msgstr "Vous devez sélectionner un jour de la semaine!!"
 
 #: tfrstrings.msgnoexistfolder.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgnoexistfolder.caption"
 msgid "The folder not exists: "
 msgstr "Le dossier n'existe pas"
 
 #: tfrstrings.msgnoexisthistorylog.caption
-#, fuzzy
+
 msgctxt "tfrstrings.msgnoexisthistorylog.caption"
 msgid "The history log for the download does not exist!"
 msgstr "L'historique de ce téléchargement n'existe pas!!"
 
 #: tfrstrings.newfiletyperememberpath.caption
-#, fuzzy
+
 msgctxt "tfrstrings.newfiletyperememberpath.caption"
 msgid "Do you want to remember the path for this file type?"
 msgstr "Voulez-vous vous souvenir du chemin pour ce type de fichiers ?"
 
 #: tfrstrings.popuptitlecomplete.caption
-#, fuzzy
+
 msgctxt "tfrstrings.popuptitlecomplete.caption"
 msgid "Download complete"
 msgstr "Téléchargement terminé"
 
 #: tfrstrings.popuptitlestoped.caption
-#, fuzzy
+
 msgctxt "tfrstrings.popuptitlestoped.caption"
 msgid "Download stopped:"
 msgstr "Téléchargement stoppé:"
 
 #: tfrstrings.proxymanual.caption
-#, fuzzy
+
 msgctxt "tfrstrings.proxymanual.caption"
 msgid "Manual"
 msgstr "Manuel"
 
 #: tfrstrings.proxynot.caption
-#, fuzzy
+
 msgctxt "tfrstrings.proxynot.caption"
 msgid "No proxy"
 msgstr "Pas de proxy"
 
 #: tfrstrings.proxysystem.caption
-#, fuzzy
+
 msgctxt "tfrstrings.proxysystem.caption"
 msgid "System proxy"
 msgstr "Proxy du Système"
 
 #: tfrstrings.queuemainname.caption
-#, fuzzy
+
 msgctxt "tfrstrings.queuemainname.caption"
 msgid "Main"
 msgstr "Principale"
 
 #: tfrstrings.queuename.caption
-#, fuzzy
+
 msgctxt "tfrstrings.queuename.caption"
 msgid "Queue"
 msgstr "File d'attente"
 
 #: tfrstrings.queuestreename.caption
-#, fuzzy
+
 msgctxt "tfrstrings.queuestreename.caption"
 msgid "Queues"
 msgstr "Files d'attente"
 
 #: tfrstrings.rootdownloadpathchange.caption
-#, fuzzy
+
 msgctxt "tfrstrings.rootdownloadpathchange.caption"
 msgid "The root of the downloads folder has changed, would like to recreate the routes by categories in the new root?"
 msgstr "Le dossier racine des téléchargements a changé, voulez-vous recréer les routes vers les catégories dans la nouvelle racine ?"
 
 #: tfrstrings.runwiththesystem.caption
-#, fuzzy
+
 msgctxt "tfrstrings.runwiththesystem.caption"
 msgid "Run with the system."
 msgstr "Démarrer avec le système."
 
 #: tfrstrings.saturday.caption
-#, fuzzy
+
 msgctxt "tfrstrings.saturday.caption"
 msgid "Saturday"
 msgstr "Samedi"
 
 #: tfrstrings.startinthesystray.caption
-#, fuzzy
+
 msgctxt "tfrstrings.startinthesystray.caption"
 msgid "Start in the systray."
 msgstr "Démarrer dans la zone de notification."
 
 #: tfrstrings.statuscomplete.caption
-#, fuzzy
+
 msgctxt "tfrstrings.statuscomplete.caption"
 msgid "Complete"
 msgstr "Terminé"
 
 #: tfrstrings.statuserror.caption
-#, fuzzy
+
 msgctxt "tfrstrings.statuserror.caption"
 msgid "Error"
 msgstr "Erreur"
 
 #: tfrstrings.statusinprogres.caption
-#, fuzzy
+
 msgctxt "tfrstrings.statusinprogres.caption"
 msgid "In progress"
 msgstr "En cours"
 
 #: tfrstrings.statuspaused.caption
-#, fuzzy
+
 msgctxt "tfrstrings.statuspaused.caption"
 msgid "Paused"
 msgstr "En Pause"
 
 #: tfrstrings.statusstoped.caption
-#, fuzzy
+
 msgctxt "tfrstrings.statusstoped.caption"
 msgid "Stopped"
 msgstr "Stoppé"
 
 #: tfrstrings.sunday.caption
-#, fuzzy
+
 msgctxt "tfrstrings.sunday.caption"
 msgid "Sunday"
 msgstr "Dimanche"
 
 #: tfrstrings.thursday.caption
-#, fuzzy
+
 msgctxt "tfrstrings.thursday.caption"
 msgid "Thursday"
 msgstr "Jeudi"
 
 #: tfrstrings.titlenewdown.caption
-#, fuzzy
+
 msgctxt "tfrstrings.titlenewdown.caption"
 msgid "New download"
 msgstr "Nouveau téléchargement"
 
 #: tfrstrings.titlepropertiesdown.caption
-#, fuzzy
+
 msgctxt "tfrstrings.titlepropertiesdown.caption"
 msgid "Download properties"
 msgstr "Propriétés du téléchargement"
 
 #: tfrstrings.tuesday.caption
-#, fuzzy
+
 msgctxt "tfrstrings.tuesday.caption"
 msgid "Tuesday"
 msgstr "Mardi"
 
 #: tfrstrings.wednesday.caption
-#, fuzzy
+
 msgctxt "tfrstrings.wednesday.caption"
 msgid "Wednesday"
 msgstr "Mercredi"
 
 #: tfsitegrabber.button1.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.button1.caption"
 msgid "Finish"
 msgstr "Fin"
 
 #: tfsitegrabber.button2.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.button2.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
 #: tfsitegrabber.button3.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.button3.caption"
 msgid "< Back"
 msgstr "< Précédent"
 
 #: tfsitegrabber.button4.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.button4.caption"
 msgid "Next >"
 msgstr "Suivant >"
 
 #: tfsitegrabber.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.caption"
 msgid "New Site Grabber"
 msgstr "Nouvel Aspirateur de Site"
 
 #: tfsitegrabber.checkbox1.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.checkbox1.caption"
 msgid "Convert to locals links"
 msgstr "Convertir en liens locaux"
 
 #: tfsitegrabber.checkbox2.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.checkbox2.caption"
 msgid "Follow FTP links"
 msgstr "Suivre les liens FTP"
 
 #: tfsitegrabber.checkbox3.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.checkbox3.caption"
 msgid "No parent links"
 msgstr "Pas de liens parents"
 
 #: tfsitegrabber.checkbox4.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.checkbox4.caption"
 msgid "Page requisites"
 msgstr "Requis par la page"
 
 #: tfsitegrabber.checkbox5.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.checkbox5.caption"
 msgid "Span hosts"
 msgstr "Répartir les hôtes"
 
 #: tfsitegrabber.checkbox6.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.checkbox6.caption"
 msgid "Follow relative links"
 msgstr "Suivre les liens relatifs"
 
 #: tfsitegrabber.groupbox1.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox1.caption"
 msgid "File reject filter"
 msgstr "Filtre de fichiers rejetés"
 
 #: tfsitegrabber.groupbox2.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox2.caption"
 msgid "Domain reject filter"
 msgstr "Filtre de rejet de domaine"
 
 #: tfsitegrabber.groupbox3.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox3.caption"
 msgid "Follow domain filter"
 msgstr "Suivre le filtre de domaine"
 
 #: tfsitegrabber.groupbox4.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox4.caption"
 msgid "Include directory list"
 msgstr "Inclure la liste des répertoires"
 
 #: tfsitegrabber.groupbox5.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox5.caption"
 msgid "Exclude directory list"
 msgstr "Liste d'exclusion de répertoires"
 
 #: tfsitegrabber.groupbox6.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox6.caption"
 msgid "File accept filter"
 msgstr "Filtre de fichiers acceptés"
 
 #: tfsitegrabber.groupbox7.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox7.caption"
 msgid "Follow tags list"
 msgstr "Suivre la liste des tags"
 
 #: tfsitegrabber.groupbox8.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox8.caption"
 msgid "Ignore tags list"
 msgstr "Ignorer la liste des tags"
 
 #: tfsitegrabber.groupbox9.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.groupbox9.caption"
 msgid "HTTP/FTP Authentication"
 msgstr "Authentification HTTP/FTP"
 
 #: tfsitegrabber.label1.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label1.caption"
 msgid "URL:"
 msgstr "URL:"
 
 #: tfsitegrabber.label2.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label2.caption"
 msgid "Name:"
 msgstr "Nom:"
 
 #: tfsitegrabber.label3.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label3.caption"
 msgid "Destination:"
 msgstr "Destination:"
 
 #: tfsitegrabber.label4.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label4.caption"
 msgid "User:"
 msgstr "Utilisateur:"
 
 #: tfsitegrabber.label5.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label5.caption"
 msgid "Password:"
 msgstr "Mot de Passe:"
 
 #: tfsitegrabber.label6.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label6.caption"
 msgid "Queue:"
 msgstr "File d'attente:"
 
 #: tfsitegrabber.label7.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label7.caption"
 msgid "Max level:"
 msgstr "Niveau Max:"
 
 #: tfsitegrabber.label8.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label8.caption"
 msgid "Welcome to the site grabber wizard"
 msgstr "Bienvenue dans l'assistant aspirateur de site"
 
 #: tfsitegrabber.label9.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.label9.caption"
 msgid "User agent:"
 msgstr "User agent:"
 
 #: tfsitegrabber.tabsheet1.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.tabsheet1.caption"
 msgid "TabSheet1"
 msgstr "TabSheet1"
 
 #: tfsitegrabber.tabsheet2.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.tabsheet2.caption"
 msgid "TabSheet2"
 msgstr "TabSheet2"
 
 #: tfsitegrabber.tabsheet3.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.tabsheet3.caption"
 msgid "TabSheet3"
 msgstr "TabSheet3"
 
 #: tfsitegrabber.tabsheet4.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.tabsheet4.caption"
 msgid "TabSheet4"
 msgstr "TabSheet4"
 
 #: tfsitegrabber.tabsheet5.caption
-#, fuzzy
+
 msgctxt "tfsitegrabber.tabsheet5.caption"
 msgid "TabSheet5"
 msgstr "TabSheet5"
@@ -6428,176 +6428,3 @@ msgstr "Mardi"
 msgctxt "trsform.wednesday.caption"
 msgid "Wednesday"
 msgstr "Mercredi"
-
-#: unit1.abouttext
-msgctxt "unit1.abouttext"
-msgid ""
-"This program is free software under GNU GPL 2 license.\n"
-"Created By Reinier Romero Mir\n"
-"Email: nenirey@gmail.com\n"
-"Copyright (c) 2015\n"
-"The project uses the following third party resources:\n"
-"Silk icons set 1.3 by Mark James\n"
-"http://www.famfamfam.com/lab/icons/silk/\n"
-"Tango Icon Library\n"
-"http://tango.freedesktop.org/Tango_Icon_Library\n"
-"aria2\n"
-"http://aria2.sourceforge.net/\n"
-"Wget\n"
-"http://www.gnu.org/software/wget/\n"
-"cURL\n"
-"http://curl.haxx.se/\n"
-"Axel\n"
-"http://axel.alioth.debian.org/\n"
-"French translation: \n"
-"Tony O Gallos @ CodeTyphon Community\n"
-msgstr ""
-"Ce programme est un logiciel libre sous licence GNU GPL 2.\n"
-"Créé par Reinier Romero Mir\n"
-"Email: nenirey@gmail.com\n"
-"Copyright (c) 2015\n"
-"Ce projet utilise les ressources tierces suivantes:\n"
-"Silk icons set 1.3 par Mark James\n"
-"http://www.famfamfam.com/lab/icons/silk/\n"
-"Tango Icon Library\n"
-"http://tango.freedesktop.org/Tango_Icon_Library\n"
-"aria2\n"
-"http://aria2.sourceforge.net/\n"
-"Wget\n"
-"http://www.gnu.org/software/wget/\n"
-"cURL\n"
-"http://curl.haxx.se/\n"
-"Axel\n"
-"http://axel.alioth.debian.org/\n"
-"Traduction française: \n"
-"Tony O Gallos @ CodeTyphon Community\n"
-
-#: unit1.aria2defarg1
-msgctxt "unit1.aria2defarg1"
-msgid "[-c] Continue downloads"
-msgstr "[-c] Continuer les téléchargements"
-
-#: unit1.aria2defarg2
-msgctxt "unit1.aria2defarg2"
-msgid "[--file-allocation=none] No allocate space."
-msgstr "[--file-allocation=none] Ne pas allouer d'espace."
-
-#: unit1.categorycompressed
-msgctxt "unit1.categorycompressed"
-msgid "Compressed"
-msgstr "Compressés"
-
-#: unit1.categorydocuments
-msgctxt "unit1.categorydocuments"
-msgid "Documents"
-msgstr "Documents"
-
-#: unit1.categoryfilter
-msgctxt "unit1.categoryfilter"
-msgid "Categories"
-msgstr "Catégories"
-
-#: unit1.categoryimages
-msgctxt "unit1.categoryimages"
-msgid "Images"
-msgstr "Images"
-
-#: unit1.categorymusic
-msgctxt "unit1.categorymusic"
-msgid "Music"
-msgstr "Musique"
-
-#: unit1.categoryothers
-msgctxt "unit1.categoryothers"
-msgid "Others"
-msgstr "Autres"
-
-#: unit1.categoryprograms
-msgctxt "unit1.categoryprograms"
-msgid "Programs"
-msgstr "Programmes"
-
-#: unit1.categoryvideos
-msgctxt "unit1.categoryvideos"
-msgid "Videos"
-msgstr "Vidéos"
-
-#: unit1.curldefarg1
-msgctxt "unit1.curldefarg1"
-msgid "[-C -] Continue downloads."
-msgstr "[-C -] Continuer les téléchargements."
-
-#: unit1.fileexistsreplacetext
-msgctxt "unit1.fileexistsreplacetext"
-msgid "The file \"%S\" already exists, do you want to replace it?"
-msgstr "Le fichier \"%S\" existe déjà, vouslez-vous le remplacer ?"
-
-#: unit1.fileoperationcopy
-msgctxt "unit1.fileoperationcopy"
-msgid "Coping file(s)..."
-msgstr "Copie du(des) fichier(s)..."
-
-#: unit1.fileoperationmove
-msgctxt "unit1.fileoperationmove"
-msgid "Moving file(s)..."
-msgstr "Déplacement du(des) fichier(s)..."
-
-#: unit1.firefoxintegration
-msgctxt "unit1.firefoxintegration"
-msgid "Do you want to enable firefox integration?"
-msgstr "Voulez-vous activer l'intégration à firefox ?"
-
-#: unit1.startqueuesystray
-msgctxt "unit1.startqueuesystray"
-msgid "Start queue"
-msgstr "Démarrer la file d'attente"
-
-#: unit1.stopqueuesystray
-msgctxt "unit1.stopqueuesystray"
-msgid "Stop queue"
-msgstr "Stopper la file d'attente"
-
-#: unit1.transdestinationlabel
-msgctxt "unit1.transdestinationlabel"
-msgid "To: %S"
-msgstr "Vers: %S"
-
-#: unit1.transfromlabel
-msgctxt "unit1.transfromlabel"
-msgid "From: %S"
-msgstr "De: %S"
-
-#: unit1.wgetdefarg1
-msgctxt "unit1.wgetdefarg1"
-msgid "[-c] Continue downloads."
-msgstr "[-c] Continuer les téléchargements."
-
-#: unit1.wgetdefarg2
-msgctxt "unit1.wgetdefarg2"
-msgid "[-nH] No create host dir."
-msgstr "[-nH] Ne pas créer le dossier hôte."
-
-#: unit1.wgetdefarg3
-msgctxt "unit1.wgetdefarg3"
-msgid "[-nd] No create out dir."
-msgstr "[-nd] Ne pas créer le dossier de sortie."
-
-#: unit1.wgetdefarg4
-msgctxt "unit1.wgetdefarg4"
-msgid "[--no-check-certificate] No check SSL."
-msgstr "[--no-check-certificate] Ne pas vérifier le SSL."
-
-#: unit5.mensaje1
-msgid "Hello world"
-msgstr "Salut tout le monde"
-
-#: unit6.startqueuesystray
-msgctxt "unit6.startqueuesystray"
-msgid "Start queue"
-msgstr "Démarrer la file d'attente"
-
-#: unit6.stopqueuesystray
-msgctxt "unit6.stopqueuesystray"
-msgid "Stop queue"
-msgstr "Stopper la file d'attente"
-

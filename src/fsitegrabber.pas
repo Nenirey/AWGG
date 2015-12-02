@@ -146,7 +146,7 @@ procedure Tfrsitegrabber.SpeedButton2Click(Sender: TObject);
 begin
   frsitegrabber.FormStyle:=fsNormal;
   frconfig.PageControl1.ActivePageIndex:=1;
-  frconfig.TreeView1.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
+  frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   frconfig.ComboBox4.ItemIndex:=frsitegrabber.ComboBox1.ItemIndex;
   frconfig.ComboBox4Change(nil);

@@ -68,11 +68,6 @@ update_awgg_svn()
   # Save revision number
   AWGG_REVISION=`$(pwd)/update-revision.sh ../../ $AWGG_SOURCE_DIR`
 
-  # Remove help files
-  rm -rf $AWGG_SOURCE_DIR/doc/en
-  rm -rf $AWGG_SOURCE_DIR/doc/ru
-  rm -rf $AWGG_SOURCE_DIR/doc/uk
-
   # Prepare debian directory
   mkdir -p $AWGG_SOURCE_DIR/debian
   cp -r $AWGG_SOURCE_DIR/install/linux/deb/awgg/* $AWGG_SOURCE_DIR/debian

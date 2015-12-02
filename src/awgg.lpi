@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="3434"/>
+      <BuildNr Value="3505"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="14">
@@ -110,22 +110,30 @@
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
             <Libraries Value="d:/codetyphon/binLibraries/i386-linux;C:/codetyphon/binLibraries/i386-linux-qt4"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+            <UnitOutputDirectory Value="../units/$(TargetCPU)-$(TargetOS)-$(LCLWidgetType)"/>
           </SearchPaths>
+          <Conditionals Value="if (TargetOS = 'linux') then
+begin
+  LinkerOptions += ' -z relro --as-needed';
+end;
+
+if LCLWidgetType &lt;> GetIDEValue('LCLWidgetType') then
+begin
+  UnitPath += '$(FallbackOutputRoot)/LazControls/lib/$(TargetCPU)-$(TargetOS)/$(LCLWidgetType);';
+  UnitPath += '$(FallbackOutputRoot)/SynEdit/units/$(TargetCPU)-$(TargetOS)/$(LCLWidgetType);';
+end;"/>
           <Parsing>
             <SyntaxOptions>
               <IncludeAssertionCode Value="True"/>
             </SyntaxOptions>
           </Parsing>
           <CodeGeneration>
-            <SmartLinkUnit Value="True"/>
             <Checks>
               <IOChecks Value="True"/>
             </Checks>
             <Optimizations>
-              <OptimizationLevel Value="3"/>
+              <OptimizationLevel Value="2"/>
             </Optimizations>
-            <SmallerCode Value="True"/>
           </CodeGeneration>
           <Linking>
             <Debugging>
@@ -133,18 +141,22 @@
               <UseLineInfoUnit Value="False"/>
               <UseExternalDbgSyms Value="True"/>
             </Debugging>
-            <LinkSmart Value="True"/>
             <Options>
+              <PassLinkerOptions Value="True"/>
               <Win32>
                 <GraphicApplication Value="True"/>
               </Win32>
             </Options>
           </Linking>
           <Other>
+            <Verbosity>
+              <ShowNotes Value="False"/>
+              <ShowHints Value="False"/>
+            </Verbosity>
             <CustomOptions Value="-dbeta"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
-              <CompileReasons Run="False"/>
+              <CompileReasons Compile="False" Build="False" Run="False"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
@@ -565,19 +577,16 @@
         <FormatVersion Value="1"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="4">
+    <RequiredPackages Count="3">
       <Item1>
-        <PackageName Value="pl_luicontrols"/>
+        <PackageName Value="SynEdit"/>
       </Item1>
       <Item2>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item2>
       <Item3>
-        <PackageName Value="DateTimeCtrls"/>
-      </Item3>
-      <Item4>
         <PackageName Value="LCL"/>
-      </Item4>
+      </Item3>
     </RequiredPackages>
     <Units Count="13">
       <Unit0>

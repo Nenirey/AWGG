@@ -87,12 +87,12 @@ end;
 
   Tfrmain = class(TForm)
     ApplicationProperties1: TApplicationProperties;
-    CheckBox1: TCheckBox;
-    FloatSpinEdit1: TFloatSpinEdit;
-    ImageList1: TImageList;
-    Label1: TLabel;
-    ListView1: TListView;
-    ListView2: TListView;
+    cbLimit: TCheckBox;
+    fseLimit: TFloatSpinEdit;
+    ilSrc: TImageList;
+    lblMaxDownInProgress: TLabel;
+    lvMain: TListView;
+    lvFilter: TListView;
     mnuMain: TMainMenu;
     miShowMainForm: TMenuItem;
     mimainAbout: TMenuItem;
@@ -199,28 +199,28 @@ end;
     milistCopyFiles: TMenuItem;
     milistDeleteDownDisk: TMenuItem;
     mimainDeleteDownDisk: TMenuItem;
-    OpenDialog1: TOpenDialog;
-    PairSplitter1: TPairSplitter;
-    PairSplitter2: TPairSplitter;
-    PairSplitterSide1: TPairSplitterSide;
-    PairSplitterSide2: TPairSplitterSide;
-    PairSplitterSide3: TPairSplitterSide;
-    PairSplitterSide4: TPairSplitterSide;
+    odlgImportdown: TOpenDialog;
+    psVertical: TPairSplitter;
+    psHorizontal: TPairSplitter;
+    psVerticalUpSide: TPairSplitterSide;
+    psVerticalDownSide: TPairSplitterSide;
+    psHorizontalLeftSide: TPairSplitterSide;
+    psHorizontalRightSide: TPairSplitterSide;
     pmTrayIcon: TPopupMenu;
     pmDownList: TPopupMenu;
     pmTreeView: TPopupMenu;
     pmTrayDown: TPopupMenu;
     pmCommandOut: TPopupMenu;
-    ProgressBar1: TProgressBar;
-    SaveDialog1: TSaveDialog;
+    pbMain: TProgressBar;
+    sdlgExportDown: TSaveDialog;
     SelectDirectoryDialog1: TSelectDirectoryDialog;
-    SpinEdit1: TSpinEdit;
+    seMaxDownInProgress: TSpinEdit;
     SynEdit1: TSynEdit;
     SynUNIXShellScriptSyn1: TSynUNIXShellScriptSyn;
     AutoSaveTimer: TTimer;
     ClipboardTimer: TTimer;
     FirstStartTimer: TTimer;
-    ToolBar1: TToolBar;
+    tbrMain: TToolBar;
     tbAddDown: TToolButton;
     tbSeparator3: TToolButton;
     tbStopQueue: TToolButton;
@@ -254,24 +254,24 @@ end;
     tbScheduler: TToolButton;
     tbStartQueue: TToolButton;
     MainTrayIcon: TTrayIcon;
-    TreeView1: TTreeView;
+    tvMain: TTreeView;
     UniqueInstance1: TUniqueInstance;
     procedure ApplicationProperties1Exception(Sender: TObject; E: Exception);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
-    procedure ListView1Click(Sender: TObject);
-    procedure ListView1ColumnClick(Sender: TObject; Column: TListColumn);
-    procedure ListView1ContextPopup(Sender: TObject; MousePos: TPoint;
+    procedure lvMainClick(Sender: TObject);
+    procedure lvMainColumnClick(Sender: TObject; Column: TListColumn);
+    procedure lvMainContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
-    procedure ListView1DblClick(Sender: TObject);
-    procedure ListView1KeyDown(Sender: TObject; var Key: Word;
+    procedure lvMainDblClick(Sender: TObject);
+    procedure lvMainKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure ListView1SelectItem(Sender: TObject; Item: TListItem;
+    procedure lvMainSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
-    procedure ListView2Click(Sender: TObject);
-    procedure ListView2SelectItem(Sender: TObject; Item: TListItem;
+    procedure lvFilterClick(Sender: TObject);
+    procedure lvFilterSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure milistMoveFilesClick(Sender: TObject);
     procedure micommandClearClick(Sender: TObject);
@@ -348,17 +348,17 @@ end;
     procedure milistCopyFilesClick(Sender: TObject);
     procedure milistDeleteDownDiskClick(Sender: TObject);
     procedure mimainDeleteDownDiskClick(Sender: TObject);
-    procedure PairSplitter1ChangeBounds(Sender: TObject);
-    procedure PairSplitter1MouseUp(Sender: TObject; Button: TMouseButton;
+    procedure psVerticalChangeBounds(Sender: TObject);
+    procedure psVerticalMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure PairSplitter1Resize(Sender: TObject);
-    procedure PairSplitter2ChangeBounds(Sender: TObject);
-    procedure PairSplitter2MouseUp(Sender: TObject; Button: TMouseButton;
+    procedure psVerticalResize(Sender: TObject);
+    procedure psHorizontalChangeBounds(Sender: TObject);
+    procedure psHorizontalMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure PairSplitter2Resize(Sender: TObject);
-    procedure PairSplitterSide3MouseUp(Sender: TObject; Button: TMouseButton;
+    procedure psHorizontalResize(Sender: TObject);
+    procedure psHorizontalLeftSideMouseUp(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
-    procedure PairSplitterSide3Resize(Sender: TObject);
+    procedure psHorizontalLeftSideResize(Sender: TObject);
     procedure pmCommandOutPopup(Sender: TObject);
     procedure AutoSaveTimerTimer(Sender: TObject);
     procedure ClipboardTimerStartTimer(Sender: TObject);
@@ -392,15 +392,15 @@ end;
     procedure MainTrayIconDblClick(Sender: TObject);
     procedure MainTrayIconMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
-    procedure TreeView1ContextPopup(Sender: TObject; MousePos: TPoint;
+    procedure tvMainContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
-    procedure TreeView1DblClick(Sender: TObject);
-    procedure TreeView1Edited(Sender: TObject; Node: TTreeNode; var S: string);
-    procedure TreeView1Editing(Sender: TObject; Node: TTreeNode;
+    procedure tvMainDblClick(Sender: TObject);
+    procedure tvMainEdited(Sender: TObject; Node: TTreeNode; var S: string);
+    procedure tvMainEditing(Sender: TObject; Node: TTreeNode;
       var AllowEdit: Boolean);
-    procedure TreeView1KeyDown(Sender: TObject; var Key: Word;
+    procedure tvMainKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
-    procedure TreeView1SelectionChanged(Sender: TObject);
+    procedure tvMainSelectionChanged(Sender: TObject);
     procedure UniqueInstance1OtherInstance(Sender: TObject;
       ParamCount: Integer; Parameters: array of String);
   private
@@ -882,9 +882,9 @@ begin
       trayicons[x].PopUpMenu:=frmain.pmTrayDown;
       trayicons[x].OnDblClick:=@trayicons[x].showinmain;
     end;
-    if x<frmain.ListView1.Items.Count then
+    if x<frmain.lvMain.Items.Count then
     begin
-      if (frmain.ListView1.Items[x].SubItems[columnstatus]='1') and showdowntrayicon then
+      if (frmain.lvMain.Items[x].SubItems[columnstatus]='1') and showdowntrayicon then
         trayicons[x].Show;
     end;
   end;
@@ -976,9 +976,9 @@ var
   i:integer;
 begin
   result:=0;
-  for i:=0 to frmain.ListView2.Items.Count-1 do
+  for i:=0 to frmain.lvFilter.Items.Count-1 do
   begin
-    if frmain.ListView2.Items[i].SubItems[columnuid]=uid then
+    if frmain.lvFilter.Items[i].SubItems[columnuid]=uid then
       result:=i;
   end;
 end;
@@ -1005,14 +1005,14 @@ procedure queueindexselect();
 begin
   frnewdown.ComboBox2.ItemIndex:=0;
   frsitegrabber.ComboBox1.ItemIndex:=0;
-  if (frmain.TreeView1.SelectionCount>0) then
+  if (frmain.tvMain.SelectionCount>0) then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:begin//colas
-            frnewdown.ComboBox2.ItemIndex:=frmain.TreeView1.Selected.Index;
-            frsitegrabber.ComboBox1.ItemIndex:=frmain.TreeView1.Selected.Index;
+            frnewdown.ComboBox2.ItemIndex:=frmain.tvMain.Selected.Index;
+            frsitegrabber.ComboBox1.ItemIndex:=frmain.tvMain.Selected.Index;
           end;
       end;
     end;
@@ -1023,15 +1023,15 @@ procedure queuemenu.sendtoqueue(Sender:TObject);
 var
   i:integer;
 begin
-  if (frmain.ListView1.ItemIndex<>-1) or (frmain.ListView1.SelCount>0) then
+  if (frmain.lvMain.ItemIndex<>-1) or (frmain.lvMain.SelCount>0) then
   begin
-    for i:=0 to frmain.ListView1.Items.Count-1 do
+    for i:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      if frmain.ListView1.Items[i].Selected and (frmain.milistSendToQueue.IndexOf(self)<>-1) then
-        frmain.ListView1.Items[i].SubItems[columnqueue]:=inttostr(frmain.milistSendToQueue.IndexOf(self));
+      if frmain.lvMain.Items[i].Selected and (frmain.milistSendToQueue.IndexOf(self)<>-1) then
+        frmain.lvMain.Items[i].SubItems[columnqueue]:=inttostr(frmain.milistSendToQueue.IndexOf(self));
     end;
   end;
-  frmain.TreeView1SelectionChanged(nil);
+  frmain.tvMainSelectionChanged(nil);
   savemydownloads();
 end;
 
@@ -1056,10 +1056,10 @@ var
   i: integer;
   tmptreeindex: integer=0;
 begin
-  if frmain.TreeView1.Items.SelectionCount>0 then
-    tmptreeindex:=frmain.TreeView1.Selected.AbsoluteIndex;
+  if frmain.tvMain.Items.SelectionCount>0 then
+    tmptreeindex:=frmain.tvMain.Selected.AbsoluteIndex;
 
-  frmain.TreeView1.Items[1].DeleteChildren;
+  frmain.tvMain.Items[1].DeleteChildren;
   frmain.milistSendToQueue.Clear;
 
   for i:=frmain.pmTrayIcon.Items.Count-1 downto 0 do
@@ -1072,8 +1072,8 @@ begin
   begin
     qtimer[i].qtindex:=i;
     stimer[i].stindex:=i;
-    treeitem:=TTreeNode.Create(frmain.TreeView1.Items);
-    treeitem:=frmain.TreeView1.Items.AddChild(frmain.TreeView1.Items[1],queuenames[i]);
+    treeitem:=TTreeNode.Create(frmain.tvMain.Items);
+    treeitem:=frmain.tvMain.Items.AddChild(frmain.tvMain.Items[1],queuenames[i]);
 
     if queuemanual[i] or stimer[i].Enabled then
     begin
@@ -1120,9 +1120,9 @@ begin
     frmain.milistSendToQueue.Add(menuitem);
   end;
 
-  frmain.TreeView1.Items[1].Expand(true);
-  if (tmptreeindex>=0) and (tmptreeindex<frmain.TreeView1.Items.Count) then
-    frmain.TreeView1.Items[tmptreeindex].Selected:=true;
+  frmain.tvMain.Items[1].Expand(true);
+  if (tmptreeindex>=0) and (tmptreeindex<frmain.tvMain.Items.Count) then
+    frmain.tvMain.Items[tmptreeindex].Selected:=true;
 end;
 
 procedure categoryreload();
@@ -1130,23 +1130,23 @@ var
   treeitem:TTreeNode;
   i:integer;
 begin
-  frmain.TreeView1.Items.TopLvlItems[3].DeleteChildren;
+  frmain.tvMain.Items.TopLvlItems[3].DeleteChildren;
   if Assigned(frnewdown) then
     frnewdown.ComboBox3.Items.Clear;
   for i:=0 to Length(categoryextencions)-1 do
   begin
-    treeitem:=TTreeNode.Create(frmain.TreeView1.Items);
-    treeitem:=frmain.TreeView1.Items.AddChild(frmain.TreeView1.Items.TopLvlItems[3],categoryextencions[i][1]);
+    treeitem:=TTreeNode.Create(frmain.tvMain.Items);
+    treeitem:=frmain.tvMain.Items.AddChild(frmain.tvMain.Items.TopLvlItems[3],categoryextencions[i][1]);
     treeitem.ImageIndex:=23;
     treeitem.SelectedIndex:=23;
     if Assigned(frnewdown) then
       frnewdown.ComboBox3.Items.Add(categoryextencions[i][0]);
   end;
-  treeitem:=TTreeNode.Create(frmain.TreeView1.Items);
-  treeitem:=frmain.TreeView1.Items.AddChild(frmain.TreeView1.Items.TopLvlItems[3],categoryothers);
+  treeitem:=TTreeNode.Create(frmain.tvMain.Items);
+  treeitem:=frmain.tvMain.Items.AddChild(frmain.tvMain.Items.TopLvlItems[3],categoryothers);
   treeitem.ImageIndex:=23;
   treeitem.SelectedIndex:=23;
-  frmain.TreeView1.Items.TopLvlItems[3].Expand(true);
+  frmain.tvMain.Items.TopLvlItems[3].Expand(true);
 end;
 
 procedure resetqtmp();
@@ -1265,18 +1265,18 @@ begin
       queuepoweroff:=queuepowerofftmp;
       queuesheduledone:=queuesheduledonetmp;
       resetqtmp();
-      frmain.TreeView1.Items[1].Selected:=true;
+      frmain.tvMain.Items[1].Selected:=true;
       newdownqueues();
       queuesreload();
     end;
   end;
 
-  for i:=0 to frmain.ListView1.Items.Count-1 do
+  for i:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.ListView1.Items[i].SubItems[columnqueue]=inttostr(indice) then
-      frmain.ListView1.Items[i].SubItems[columnqueue]:='0';
-    if (strtoint(frmain.ListView1.Items[i].SubItems[columnqueue])>=indice) and (strtoint(frmain.ListView1.Items[i].SubItems[columnqueue])>0) then
-      frmain.ListView1.Items[i].SubItems[columnqueue]:=inttostr(strtoint(frmain.ListView1.Items[i].SubItems[columnqueue])-1);
+    if frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(indice) then
+      frmain.lvMain.Items[i].SubItems[columnqueue]:='0';
+    if (strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])>=indice) and (strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])>0) then
+      frmain.lvMain.Items[i].SubItems[columnqueue]:=inttostr(strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])-1);
   end;
 end;
 
@@ -1376,9 +1376,9 @@ var
   match:boolean;
 begin
   match:=false;
-  for n:=0 to frmain.ListView1.Items.Count-1 do
+  for n:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.ListView1.items[n].SubItems[columnuid]=uid then
+    if frmain.lvMain.items[n].SubItems[columnuid]=uid then
       match:=true;
   end;
   result:=match;
@@ -1404,10 +1404,10 @@ var
   n:integer;
 begin
   qtimer[indice].Enabled:=false;
-  for n:=0 to frmain.ListView1.Items.Count-1 do
+  for n:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if (frmain.ListView1.Items[n].SubItems[columnqueue]=inttostr(indice)) and (frmain.ListView1.Items[n].SubItems[columnstatus]='1') then
-      hilo[strtoint(frmain.ListView1.Items[n].SubItems[columnid])].shutdown();
+    if (frmain.lvMain.Items[n].SubItems[columnqueue]=inttostr(indice)) and (frmain.lvMain.Items[n].SubItems[columnstatus]='1') then
+      hilo[strtoint(frmain.lvMain.Items[n].SubItems[columnid])].shutdown();
   end;
 end;
 
@@ -1417,9 +1417,9 @@ var
   uexists:boolean;
 begin
   uexists:=false;
-  for ni:=0 to frmain.ListView1.Items.Count-1 do
+  for ni:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.ListView1.Items[ni].SubItems[columnurl] = url then
+    if frmain.lvMain.Items[ni].SubItems[columnurl] = url then
       uexists:=true;
   end;
   result:=uexists;
@@ -1473,11 +1473,11 @@ procedure rebuildids();
 var
   x:integer;
 begin
-  SetLength(trayicons,frmain.ListView1.Items.Count);
-  for x:=0 to frmain.ListView1.Items.Count-1 do
+  SetLength(trayicons,frmain.lvMain.Items.Count);
+  for x:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.ListView1.Items[x].SubItems[columnstatus]='1' then
-      hilo[strtoint(frmain.ListView1.Items[x].SubItems[columnid])].thid:=x;
+    if frmain.lvMain.Items[x].SubItems[columnstatus]='1' then
+      hilo[strtoint(frmain.lvMain.Items[x].SubItems[columnid])].thid:=x;
     try
       if Assigned(trayicons[x]) then
       begin
@@ -1501,29 +1501,29 @@ begin
       end;
     except on e:exception do
     end;
-    if (frmain.ListView1.Items[x].SubItems[columnstatus]='1') and showdowntrayicon then
+    if (frmain.lvMain.Items[x].SubItems[columnstatus]='1') and showdowntrayicon then
       trayicons[x].Show;
   end;
-  if frmain.ListView2.Visible then
+  if frmain.lvFilter.Visible then
   begin
-    for x:=0 to frmain.ListView2.Items.Count-1 do
+    for x:=0 to frmain.lvFilter.Items.Count-1 do
     begin
-      if frmain.ListView2.Items[x].SubItems[columnstatus]='1' then
-        hilo[strtoint(frmain.ListView2.Items[x].SubItems[columnid])].thid2:=x;
+      if frmain.lvFilter.Items[x].SubItems[columnstatus]='1' then
+        hilo[strtoint(frmain.lvFilter.Items[x].SubItems[columnid])].thid2:=x;
     end;
   end;
 end;
 
 procedure movestepup(steps:integer);
 begin
-  if (frmain.ListView1.SelCount>0) and (steps>=0) then
+  if (frmain.lvMain.SelCount>0) and (steps>=0) then
   begin
-    frmain.ListView1.MultiSelect:=false;
-    frmain.ListView1.Items.Move(frmain.ListView1.ItemIndex,steps);
-    frmain.ListView1.MultiSelect:=true;
+    frmain.lvMain.MultiSelect:=false;
+    frmain.lvMain.Items.Move(frmain.lvMain.ItemIndex,steps);
+    frmain.lvMain.MultiSelect:=true;
     rebuildids();
-    if frmain.ListView2.Visible then
-      frmain.TreeView1SelectionChanged(nil);
+    if frmain.lvFilter.Visible then
+      frmain.tvMainSelectionChanged(nil);
   end;
 end;
 
@@ -1532,32 +1532,32 @@ var
   i:integer;
   indexup:integer=0;
 begin
-  for i:=0 to frmain.ListView1.Items.Count-1 do
+  for i:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if (frmain.ListView1.Items[i].SubItems[columnqueue]=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue]) and (i<frmain.ListView1.ItemIndex) then
+    if (frmain.lvMain.Items[i].SubItems[columnqueue]=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]) and (i<frmain.lvMain.ItemIndex) then
       indexup:=i;
   end;
-  if (frmain.ListView1.SelCount>0) and (indexup>=0) and (indexup<frmain.ListView1.Items.Count) then
+  if (frmain.lvMain.SelCount>0) and (indexup>=0) and (indexup<frmain.lvMain.Items.Count) then
   begin
-    frmain.ListView1.MultiSelect:=false;
-    frmain.ListView1.Items.Move(frmain.ListView1.ItemIndex,indexup);
-    frmain.ListView1.MultiSelect:=true;
+    frmain.lvMain.MultiSelect:=false;
+    frmain.lvMain.Items.Move(frmain.lvMain.ItemIndex,indexup);
+    frmain.lvMain.MultiSelect:=true;
     rebuildids();
-    if frmain.ListView2.Visible then
-      frmain.TreeView1SelectionChanged(nil);
+    if frmain.lvFilter.Visible then
+      frmain.tvMainSelectionChanged(nil);
   end;
 end;
 
 procedure movestepdown(steps:integer);
 begin
-  if (frmain.ListView1.SelCount>0) and (steps<frmain.ListView1.Items.Count) then
+  if (frmain.lvMain.SelCount>0) and (steps<frmain.lvMain.Items.Count) then
   begin
-    frmain.ListView1.MultiSelect:=false;
-    frmain.ListView1.Items.Move(frmain.ListView1.ItemIndex,steps);
-    frmain.ListView1.MultiSelect:=true;
+    frmain.lvMain.MultiSelect:=false;
+    frmain.lvMain.Items.Move(frmain.lvMain.ItemIndex,steps);
+    frmain.lvMain.MultiSelect:=true;
     rebuildids();
-    if frmain.ListView2.Visible then
-      frmain.TreeView1SelectionChanged(nil);
+    if frmain.lvFilter.Visible then
+      frmain.tvMainSelectionChanged(nil);
   end;
 end;
 
@@ -1566,22 +1566,22 @@ var
   i:integer;
   indexdown:integer=0;
 begin
-  for i:=0 to frmain.ListView1.Items.Count-1 do
+  for i:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if (frmain.ListView1.Items[i].SubItems[columnqueue]=frmain.ListView1.Items[indice].SubItems[columnqueue]) and (i>indice+numsteps) then
+    if (frmain.lvMain.Items[i].SubItems[columnqueue]=frmain.lvMain.Items[indice].SubItems[columnqueue]) and (i>indice+numsteps) then
     begin
       indexdown:=i;
       break;
     end;
   end;
-  if (indexdown<frmain.ListView1.Items.Count) then
+  if (indexdown<frmain.lvMain.Items.Count) then
   begin
-    frmain.ListView1.MultiSelect:=false;
-    frmain.ListView1.Items.Move(indice,indexdown);
-    frmain.ListView1.MultiSelect:=true;
+    frmain.lvMain.MultiSelect:=false;
+    frmain.lvMain.Items.Move(indice,indexdown);
+    frmain.lvMain.MultiSelect:=true;
     rebuildids();
-    if frmain.ListView2.Visible then
-      frmain.TreeView1SelectionChanged(nil);
+    if frmain.lvFilter.Visible then
+      frmain.tvMainSelectionChanged(nil);
   end;
 end;
 
@@ -1589,46 +1589,46 @@ procedure updatelangstatus();
 var
   x:integer;
 begin
-  for x:=0 to frmain.ListView1.Items.Count-1 do
+  for x:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    case frmain.ListView1.Items[x].SubItems[columnstatus] of
-      '0':frmain.ListView1.Items[x].Caption:=frstrings.statuspaused.Caption;
-      '1':frmain.ListView1.Items[x].Caption:=frstrings.statusinprogres.Caption;
-      '2':frmain.ListView1.Items[x].Caption:=frstrings.statusstoped.Caption;
-      '3':frmain.ListView1.Items[x].Caption:=frstrings.statuscomplete.Caption;
-      '4':frmain.ListView1.Items[x].Caption:=frstrings.statuserror.Caption;
+    case frmain.lvMain.Items[x].SubItems[columnstatus] of
+      '0':frmain.lvMain.Items[x].Caption:=frstrings.statuspaused.Caption;
+      '1':frmain.lvMain.Items[x].Caption:=frstrings.statusinprogres.Caption;
+      '2':frmain.lvMain.Items[x].Caption:=frstrings.statusstoped.Caption;
+      '3':frmain.lvMain.Items[x].Caption:=frstrings.statuscomplete.Caption;
+      '4':frmain.lvMain.Items[x].Caption:=frstrings.statuserror.Caption;
     end;
   end;
-  for x:=0 to frmain.ListView2.Columns.Count-1 do
-    frmain.ListView2.Columns[x].Caption:=frmain.ListView1.Columns[x].Caption;
+  for x:=0 to frmain.lvFilter.Columns.Count-1 do
+    frmain.lvFilter.Columns[x].Caption:=frmain.lvMain.Columns[x].Caption;
 
-  frmain.TreeView1.Items[0].Text:=frstrings.alldowntreename.Caption;
-  frmain.TreeView1.Items[1].Text:=frstrings.queuestreename.Caption;
-  frmain.TreeView1.Items[1].Items[0].Text:=frstrings.queuemainname.Caption;
-  frmain.TreeView1.Items[frmain.TreeView1.Items[1].Count+2].Text:=frstrings.filtresname.Caption;
-  frmain.TreeView1.Items[frmain.TreeView1.Items[1].Count+3].Text:=frstrings.statuscomplete.Caption;
-  frmain.TreeView1.Items[frmain.TreeView1.Items[1].Count+4].Text:=frstrings.statusinprogres.Caption;
-  frmain.TreeView1.Items[frmain.TreeView1.Items[1].Count+5].Text:=frstrings.statusstoped.Caption;
-  frmain.TreeView1.Items[frmain.TreeView1.Items[1].Count+6].Text:=frstrings.statuserror.Caption;
-  frmain.TreeView1.Items[frmain.TreeView1.Items[1].Count+7].Text:=frstrings.statuspaused.Caption;
-  frmain.TreeView1.Items.TopLvlItems[3].Text:=categoryfilter;
-  frconfig.TreeView1.Items[0].Text:=frconfig.TabSheet1.Caption;
-  frconfig.TreeView1.Items[1].Text:=frconfig.TabSheet2.Caption;
-  frconfig.TreeView1.Items[2].Text:=frconfig.TabSheet3.Caption;
-  frconfig.TreeView1.Items[3].Text:=frconfig.TabSheet17.Caption;
-  frconfig.TreeView1.Items[4].Text:=frconfig.TabSheet4.Caption;
-  frconfig.TreeView1.Items[5].Text:=frconfig.TabSheet5.Caption;
-  frconfig.TreeView1.Items[6].Text:=frconfig.TabSheet6.Caption;
-  frconfig.TreeView1.Items[7].Text:=frconfig.TabSheet7.Caption;
-  frconfig.TreeView1.Items[8].Text:=frconfig.TabSheet8.Caption;
-  frconfig.TreeView1.Items[9].Text:=frconfig.TabSheet11.Caption;
-  frconfig.TreeView1.Items[10].Text:=frconfig.TabSheet9.Caption;
-  frconfig.TreeView1.Items[11].Text:=frconfig.TabSheet10.Caption;
-  frconfig.TreeView1.Items[12].Text:=frconfig.TabSheet15.Caption;
-  frconfig.TreeView1.Items[13].Text:=frconfig.TabSheet16.Caption;
-  frconfig.TreeView1.Items[14].Text:=frconfig.TabSheet18.Caption;
-  frconfig.TreeView1.Items[15].Text:=frconfig.TabSheet12.Caption;
-  frmain.TreeView1.Items.TopLvlItems[3][frmain.TreeView1.Items.TopLvlItems[3].SubTreeCount-2].Text:=categoryothers;
+  frmain.tvMain.Items[0].Text:=frstrings.alldowntreename.Caption;
+  frmain.tvMain.Items[1].Text:=frstrings.queuestreename.Caption;
+  frmain.tvMain.Items[1].Items[0].Text:=frstrings.queuemainname.Caption;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+2].Text:=frstrings.filtresname.Caption;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+3].Text:=frstrings.statuscomplete.Caption;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+4].Text:=frstrings.statusinprogres.Caption;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+5].Text:=frstrings.statusstoped.Caption;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+6].Text:=frstrings.statuserror.Caption;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+7].Text:=frstrings.statuspaused.Caption;
+  frmain.tvMain.Items.TopLvlItems[3].Text:=categoryfilter;
+  frconfig.tvConfig.Items[0].Text:=frconfig.tsProxy.Caption;
+  frconfig.tvConfig.Items[1].Text:=frconfig.tsScheduler.Caption;
+  frconfig.tvConfig.Items[2].Text:=frconfig.tsNotifications.Caption;
+  frconfig.tvConfig.Items[3].Text:=frconfig.tsSounds.Caption;
+  frconfig.tvConfig.Items[4].Text:=frconfig.tsClipboardm.Caption;
+  frconfig.tvConfig.Items[5].Text:=frconfig.tsFolders.Caption;
+  frconfig.tvConfig.Items[6].Text:=frconfig.tsWget.Caption;
+  frconfig.tvConfig.Items[7].Text:=frconfig.tsAria2.Caption;
+  frconfig.tvConfig.Items[8].Text:=frconfig.tsCurl.Caption;
+  frconfig.tvConfig.Items[9].Text:=frconfig.tsAxel.Caption;
+  frconfig.tvConfig.Items[10].Text:=frconfig.tsAutomation.Caption;
+  frconfig.tvConfig.Items[11].Text:=frconfig.tsLogs.Caption;
+  frconfig.tvConfig.Items[12].Text:=frconfig.tsDownOptions.Caption;
+  frconfig.tvConfig.Items[13].Text:=frconfig.tsLang.Caption;
+  frconfig.tvConfig.Items[14].Text:=frconfig.tsQueue.Caption;
+  frconfig.tvConfig.Items[15].Text:=frconfig.tsIntegration.Caption;
+  frmain.tvMain.Items.TopLvlItems[3][frmain.tvMain.Items.TopLvlItems[3].SubTreeCount-2].Text:=categoryothers;
   frconfig.Panel1.Caption:=frconfig.PageControl1.Pages[frconfig.PageControl1.TabIndex].Caption;
   frconfig.CheckGroup5.Items[0]:=frstrings.sunday.Caption;
   frconfig.CheckGroup5.Items[1]:=frstrings.monday.Caption;
@@ -1642,9 +1642,9 @@ begin
   queuenames[0]:=frstrings.queuemainname.Caption;
   if frconfig.ComboBox4.Items.Count>0 then
     frconfig.ComboBox4.Items[0]:=frstrings.queuemainname.Caption;
-  frconfig.ComboBox1.Items[0]:=frstrings.proxynot.Caption;
-  frconfig.ComboBox1.Items[1]:=frstrings.proxysystem.Caption;
-  frconfig.ComboBox1.Items[2]:=frstrings.proxymanual.Caption;
+  frconfig.cbProxy.Items[0]:=frstrings.proxynot.Caption;
+  frconfig.cbProxy.Items[1]:=frstrings.proxysystem.Caption;
+  frconfig.cbProxy.Items[2]:=frstrings.proxymanual.Caption;
   frconfig.CheckGroup1.Items[0]:=wgetdefarg1;
   frconfig.CheckGroup1.Items[1]:=wgetdefarg2;
   frconfig.CheckGroup1.Items[2]:=wgetdefarg3;
@@ -1764,70 +1764,70 @@ begin
     FileUtil.CopyFile(ExtractShortPathName(configpath)+'awgg.ini',ExtractShortPathName(configpath)+'awgg.ini.bak',[cffOverwriteFile]);
     SysUtils.DeleteFile(configpath+'awgg.ini');
   end;
-  if frmain.ListView1.Visible then
+  if frmain.lvMain.Visible then
   begin
-    columncolaw:=frmain.ListView1.Column[0].Width;
-    columnnamew:=frmain.ListView1.Column[columnname+1].Width;
-    columnurlw:=frmain.ListView1.Column[columnurl+1].Width;
-    columnpercentw:=frmain.ListView1.Column[columnpercent+1].Width;
-    columnsizew:=frmain.ListView1.Column[columnsize+1].Width;
-    columncurrentw:=frmain.ListView1.Column[columncurrent+1].Width;
-    columnspeedw:=frmain.ListView1.Column[columnspeed+1].Width;
-    columnestimatew:=frmain.ListView1.Column[columnestimate+1].Width;
-    columndatew:=frmain.ListView1.Column[columndate+1].Width;
-    columndestinyw:=frmain.ListView1.Column[columndestiny+1].Width;
-    columnenginew:=frmain.ListView1.Column[columnengine+1].Width;
-    columnparametersw:=frmain.ListView1.Column[columnparameters+1].Width;
-    columncolav:=frmain.ListView1.Column[0].Visible;
-    columnnamev:=frmain.ListView1.Column[columnname+1].Visible;
-    columnurlv:=frmain.ListView1.Column[columnurl+1].Visible;
-    columnpercentv:=frmain.ListView1.Column[columnpercent+1].Visible;
-    columnsizev:=frmain.ListView1.Column[columnsize+1].Visible;
-    columnspeedv:=frmain.ListView1.Column[columnspeed+1].Visible;
-    columnestimatev:=frmain.ListView1.Column[columnestimate+1].Visible;
-    columndatev:=frmain.ListView1.Column[columndate+1].Visible;
-    columndestinyv:=frmain.ListView1.Column[columndestiny+1].Visible;
-    columnenginev:=frmain.ListView1.Column[columnengine+1].Visible;
-    columnparametersv:=frmain.ListView1.Column[columnparameters+1].Visible;
+    columncolaw:=frmain.lvMain.Column[0].Width;
+    columnnamew:=frmain.lvMain.Column[columnname+1].Width;
+    columnurlw:=frmain.lvMain.Column[columnurl+1].Width;
+    columnpercentw:=frmain.lvMain.Column[columnpercent+1].Width;
+    columnsizew:=frmain.lvMain.Column[columnsize+1].Width;
+    columncurrentw:=frmain.lvMain.Column[columncurrent+1].Width;
+    columnspeedw:=frmain.lvMain.Column[columnspeed+1].Width;
+    columnestimatew:=frmain.lvMain.Column[columnestimate+1].Width;
+    columndatew:=frmain.lvMain.Column[columndate+1].Width;
+    columndestinyw:=frmain.lvMain.Column[columndestiny+1].Width;
+    columnenginew:=frmain.lvMain.Column[columnengine+1].Width;
+    columnparametersw:=frmain.lvMain.Column[columnparameters+1].Width;
+    columncolav:=frmain.lvMain.Column[0].Visible;
+    columnnamev:=frmain.lvMain.Column[columnname+1].Visible;
+    columnurlv:=frmain.lvMain.Column[columnurl+1].Visible;
+    columnpercentv:=frmain.lvMain.Column[columnpercent+1].Visible;
+    columnsizev:=frmain.lvMain.Column[columnsize+1].Visible;
+    columnspeedv:=frmain.lvMain.Column[columnspeed+1].Visible;
+    columnestimatev:=frmain.lvMain.Column[columnestimate+1].Visible;
+    columndatev:=frmain.lvMain.Column[columndate+1].Visible;
+    columndestinyv:=frmain.lvMain.Column[columndestiny+1].Visible;
+    columnenginev:=frmain.lvMain.Column[columnengine+1].Visible;
+    columnparametersv:=frmain.lvMain.Column[columnparameters+1].Visible;
   end
   else
   begin
-    columncolaw:=frmain.ListView2.Column[0].Width;
-    columnnamew:=frmain.ListView2.Column[columnname+1].Width;
-    columnurlw:=frmain.ListView2.Column[columnurl+1].Width;
-    columnpercentw:=frmain.ListView2.Column[columnpercent+1].Width;
-    columnsizew:=frmain.ListView2.Column[columnsize+1].Width;
-    columncurrentw:=frmain.ListView2.Column[columncurrent+1].Width;
-    columnspeedw:=frmain.ListView2.Column[columnspeed+1].Width;
-    columnestimatew:=frmain.ListView2.Column[columnestimate+1].Width;
-    columndatew:=frmain.ListView2.Column[columndate+1].Width;
-    columndestinyw:=frmain.ListView2.Column[columndestiny+1].Width;
-    columnenginew:=frmain.ListView2.Column[columnengine+1].Width;
-    columnparametersw:=frmain.ListView2.Column[columnparameters+1].Width;
-    columncolav:=frmain.ListView2.Column[0].Visible;
-    columnnamev:=frmain.ListView2.Column[columnname+1].Visible;
-    columnurlv:=frmain.ListView2.Column[columnurl+1].Visible;
-    columnpercentv:=frmain.ListView2.Column[columnpercent+1].Visible;
-    columnsizev:=frmain.ListView2.Column[columnsize+1].Visible;
-    columnspeedv:=frmain.ListView2.Column[columnspeed+1].Visible;
-    columnestimatev:=frmain.ListView2.Column[columnestimate+1].Visible;
-    columndatev:=frmain.ListView2.Column[columndate+1].Visible;
-    columndestinyv:=frmain.ListView2.Column[columndestiny+1].Visible;
-    columnenginev:=frmain.ListView2.Column[columnengine+1].Visible;
-    columnparametersv:=frmain.ListView2.Column[columnparameters+1].Visible;
+    columncolaw:=frmain.lvFilter.Column[0].Width;
+    columnnamew:=frmain.lvFilter.Column[columnname+1].Width;
+    columnurlw:=frmain.lvFilter.Column[columnurl+1].Width;
+    columnpercentw:=frmain.lvFilter.Column[columnpercent+1].Width;
+    columnsizew:=frmain.lvFilter.Column[columnsize+1].Width;
+    columncurrentw:=frmain.lvFilter.Column[columncurrent+1].Width;
+    columnspeedw:=frmain.lvFilter.Column[columnspeed+1].Width;
+    columnestimatew:=frmain.lvFilter.Column[columnestimate+1].Width;
+    columndatew:=frmain.lvFilter.Column[columndate+1].Width;
+    columndestinyw:=frmain.lvFilter.Column[columndestiny+1].Width;
+    columnenginew:=frmain.lvFilter.Column[columnengine+1].Width;
+    columnparametersw:=frmain.lvFilter.Column[columnparameters+1].Width;
+    columncolav:=frmain.lvFilter.Column[0].Visible;
+    columnnamev:=frmain.lvFilter.Column[columnname+1].Visible;
+    columnurlv:=frmain.lvFilter.Column[columnurl+1].Visible;
+    columnpercentv:=frmain.lvFilter.Column[columnpercent+1].Visible;
+    columnsizev:=frmain.lvFilter.Column[columnsize+1].Visible;
+    columnspeedv:=frmain.lvFilter.Column[columnspeed+1].Visible;
+    columnestimatev:=frmain.lvFilter.Column[columnestimate+1].Visible;
+    columndatev:=frmain.lvFilter.Column[columndate+1].Visible;
+    columndestinyv:=frmain.lvFilter.Column[columndestiny+1].Visible;
+    columnenginev:=frmain.lvFilter.Column[columnengine+1].Visible;
+    columnparametersv:=frmain.lvFilter.Column[columnparameters+1].Visible;
   end;
-  limited:=frmain.CheckBox1.Checked;
-  speedlimit:=frmain.FloatSpinEdit1.Text;
-  maxgdown:=frmain.SpinEdit1.Value;
+  limited:=frmain.cbLimit.Checked;
+  speedlimit:=frmain.fseLimit.Text;
+  maxgdown:=frmain.seMaxDownInProgress.Value;
   showstdout:=frmain.micommandFollow.Checked;
-  showgridlines:=frmain.ListView1.GridLines;
+  showgridlines:=frmain.lvMain.GridLines;
   showcommandout:=frmain.SynEdit1.Visible;
   showdowntrayicon:=frmain.mimainShowTrayDowns.Checked;
-  showtreeviewpanel:=frmain.TreeView1.Visible;
+  showtreeviewpanel:=frmain.tvMain.Visible;
   if showcommandout then
-    splitpos:=frmain.PairSplitter1.Position;
-  if frmain.PairSplitter2.Position>10 then
-    splithpos:=frmain.PairSplitter2.Position;
+    splitpos:=frmain.psVertical.Position;
+  if frmain.psHorizontal.Position>10 then
+    splithpos:=frmain.psHorizontal.Position;
   try
     iniconfigfile:=TMEMINIFile.Create(configpath+'awgg.ini');
     iniconfigfile.WriteString('Config','version',versionitis.version);
@@ -2101,30 +2101,30 @@ begin
       //defaultcategory();
     end;
     iniconfigfile.Free;
-    frmain.ListView1.Column[0].Width:=columncolaw;
-    frmain.ListView1.Column[columnname+1].Width:=columnnamew;
-    frmain.ListView1.Column[columnurl+1].Width:=columnurlw;
-    frmain.ListView1.Column[columnpercent+1].Width:=columnpercentw;
-    frmain.ListView1.Column[columnsize+1].Width:=columnsizew;
-    frmain.ListView1.Column[columncurrent+1].Width:=columncurrentw;
-    frmain.ListView1.Column[columnspeed+1].Width:=columnspeedw;
-    frmain.ListView1.Column[columnestimate+1].Width:=columnestimatew;
-    frmain.ListView1.Column[columndate+1].Width:=columndatew;
-    frmain.ListView1.Column[columndestiny+1].Width:=columndestinyw;
-    frmain.ListView1.Column[columnengine+1].Width:=columnenginew;
-    frmain.ListView1.Column[columnparameters+1].Width:=columnparametersw;
-    frmain.ListView1.Column[0].Visible:=columncolav;
-    frmain.ListView1.Column[columnname+1].Visible:=columnnamev;
-    frmain.ListView1.Column[columnurl+1].Visible:=columnurlv;
-    frmain.ListView1.Column[columnpercent+1].Visible:=columnpercentv;
-    frmain.ListView1.Column[columnsize+1].Visible:=columnsizev;
-    frmain.ListView1.Column[columncurrent+1].Visible:=columncurrentv;
-    frmain.ListView1.Column[columnspeed+1].Visible:=columnspeedv;
-    frmain.ListView1.Column[columnestimate+1].Visible:=columnestimatev;
-    frmain.ListView1.Column[columndate+1].Visible:=columndatev;
-    frmain.ListView1.Column[columndestiny+1].Visible:=columndestinyv;
-    frmain.ListView1.Column[columnengine+1].Visible:=columnenginev;
-    frmain.ListView1.Column[columnparameters+1].Visible:=columnparametersv;
+    frmain.lvMain.Column[0].Width:=columncolaw;
+    frmain.lvMain.Column[columnname+1].Width:=columnnamew;
+    frmain.lvMain.Column[columnurl+1].Width:=columnurlw;
+    frmain.lvMain.Column[columnpercent+1].Width:=columnpercentw;
+    frmain.lvMain.Column[columnsize+1].Width:=columnsizew;
+    frmain.lvMain.Column[columncurrent+1].Width:=columncurrentw;
+    frmain.lvMain.Column[columnspeed+1].Width:=columnspeedw;
+    frmain.lvMain.Column[columnestimate+1].Width:=columnestimatew;
+    frmain.lvMain.Column[columndate+1].Width:=columndatew;
+    frmain.lvMain.Column[columndestiny+1].Width:=columndestinyw;
+    frmain.lvMain.Column[columnengine+1].Width:=columnenginew;
+    frmain.lvMain.Column[columnparameters+1].Width:=columnparametersw;
+    frmain.lvMain.Column[0].Visible:=columncolav;
+    frmain.lvMain.Column[columnname+1].Visible:=columnnamev;
+    frmain.lvMain.Column[columnurl+1].Visible:=columnurlv;
+    frmain.lvMain.Column[columnpercent+1].Visible:=columnpercentv;
+    frmain.lvMain.Column[columnsize+1].Visible:=columnsizev;
+    frmain.lvMain.Column[columncurrent+1].Visible:=columncurrentv;
+    frmain.lvMain.Column[columnspeed+1].Visible:=columnspeedv;
+    frmain.lvMain.Column[columnestimate+1].Visible:=columnestimatev;
+    frmain.lvMain.Column[columndate+1].Visible:=columndatev;
+    frmain.lvMain.Column[columndestiny+1].Visible:=columndestinyv;
+    frmain.lvMain.Column[columnengine+1].Visible:=columnenginev;
+    frmain.lvMain.Column[columnparameters+1].Visible:=columnparametersv;
 
     frmain.mimainShowState.Checked:=columncolav;
     frmain.mimainShowName.Checked:=columnnamev;
@@ -2138,11 +2138,11 @@ begin
     frmain.mimainShowDestination.Checked:=columndestinyv;
     frmain.mimainShowEngine.Checked:=columnenginev;
     frmain.mimainShowParameters.Checked:=columnparametersv;
-    frmain.ListView1.GridLines:=showgridlines;
-    frmain.ListView2.GridLines:=showgridlines;
-    frmain.CheckBox1.Checked:=limited;
-    frmain.FloatSpinEdit1.Value:=strtofloat(speedlimit);
-    frmain.SpinEdit1.Value:=maxgdown;
+    frmain.lvMain.GridLines:=showgridlines;
+    frmain.lvFilter.GridLines:=showgridlines;
+    frmain.cbLimit.Checked:=limited;
+    frmain.fseLimit.Value:=strtofloat(speedlimit);
+    frmain.seMaxDownInProgress.Value:=maxgdown;
     frmain.micommandFollow.Checked:=showstdout;
     frmain.SynEdit1.Visible:=showcommandout;
     frmain.micommandFollow.Checked:=showcommandout;
@@ -2153,20 +2153,20 @@ begin
     frmain.tbClipBoard.Down:=clipboardmonitor;
     frmain.mimainShowTrayDowns.Checked:=showdowntrayicon;
     frmain.mimainShowTree.Checked:=showtreeviewpanel;
-    frmain.TreeView1.Visible:=showtreeviewpanel;
+    frmain.tvMain.Visible:=showtreeviewpanel;
     //if splitpos<20 then
       //splitpos:=20;
     //if splitpos>frmain.PairSplitter1.Height-20 then
       //splitpos:=splitpos-20;
-    splitpos:=Round(frmain.PairSplitter1.Height/1.5);
+    splitpos:=Round(frmain.psVertical.Height/1.5);
     if showstdout then
-      frmain.PairSplitter1.Position:=splitpos
+      frmain.psVertical.Position:=splitpos
     else
-      frmain.PairSplitter1.Position:=frmain.PairSplitter1.Height;
+      frmain.psVertical.Position:=frmain.psVertical.Height;
     if showtreeviewpanel then
-      frmain.PairSplitter2.Position:=splithpos
+      frmain.psHorizontal.Position:=splithpos
     else
-      frmain.PairSplitter2.Position:=0;
+      frmain.psHorizontal.Position:=0;
     {$IFDEF UNIX}
       if not FileExistsUTF8(wgetrutebin) then
         wgetrutebin:='/usr/bin/wget';
@@ -2222,17 +2222,17 @@ end;
 
 procedure setconfig();
 begin
-  useproxy:=frconfig.ComboBox1.ItemIndex;
-  phttp:=frconfig.Edit1.Text;
-  phttpport:=frconfig.SpinEdit1.Text;
-  phttps:=frconfig.Edit2.Text;
-  phttpsport:=frconfig.SpinEdit2.Text;
-  pftp:=frconfig.Edit3.Text;
-  pftpport:=frconfig.SpinEdit3.Text;
-  nphost:=frconfig.Edit4.Text;
-  useaut:=frconfig.CheckBox2.Checked;
-  puser:=frconfig.Edit5.Text;
-  ppassword:=frconfig.Edit6.Text;
+  useproxy:=frconfig.cbProxy.ItemIndex;
+  phttp:=frconfig.edtHTTPhost.Text;
+  phttpport:=frconfig.seHTTPport.Text;
+  phttps:=frconfig.edtSSLhost.Text;
+  phttpsport:=frconfig.seSSLport.Text;
+  pftp:=frconfig.edtFTPhost.Text;
+  pftpport:=frconfig.seFTPport.Text;
+  nphost:=frconfig.edtNoProxyHosts.Text;
+  useaut:=frconfig.chUseAuth.Checked;
+  puser:=frconfig.edtProxyUser.Text;
+  ppassword:=frconfig.edtProxyPass.Text;
   shownotifi:=frconfig.CheckBox4.Checked;
   hiddenotifi:=frconfig.SpinEdit4.Value;
   clipboardmonitor:=frconfig.CheckBox6.Checked;
@@ -2283,7 +2283,7 @@ begin
   queuedelay:=frconfig.SpinEdit14.Value;
   useglobaluseragent:=frconfig.CheckBox14.Checked;
   globaluseragent:=frconfig.Edit11.Text;
-  sameproxyforall:=frconfig.CheckBox5.Checked;
+  sameproxyforall:=frconfig.chSameProxy.Checked;
   loadhistorylog:=frconfig.CheckBox12.Checked;
   if frconfig.RadioButton4.Checked=true then
     loadhistorymode:=1;
@@ -2329,17 +2329,17 @@ var
   i:integer;
 begin
   try
-    frconfig.ComboBox1.ItemIndex:=useproxy;
-    frconfig.Edit1.Text:=phttp;
-    frconfig.SpinEdit1.Value:=strtoint(phttpport);
-    frconfig.Edit2.Text:=phttps;
-    frconfig.SpinEdit2.Value:=strtoint(phttpsport);
-    frconfig.Edit3.Text:=pftp;
-    frconfig.SpinEdit3.Value:=strtoint(pftpport);
-    frconfig.Edit4.Text:=nphost;
-    frconfig.CheckBox2.Checked:=useaut;
-    frconfig.Edit5.Text:=puser;
-    frconfig.Edit6.Text:=ppassword;
+    frconfig.cbProxy.ItemIndex:=useproxy;
+    frconfig.edtHTTPhost.Text:=phttp;
+    frconfig.seHTTPport.Value:=strtoint(phttpport);
+    frconfig.edtSSLhost.Text:=phttps;
+    frconfig.seSSLport.Value:=strtoint(phttpsport);
+    frconfig.edtFTPhost.Text:=pftp;
+    frconfig.seFTPport.Value:=strtoint(pftpport);
+    frconfig.edtNoProxyHosts.Text:=nphost;
+    frconfig.chUseAuth.Checked:=useaut;
+    frconfig.edtProxyUser.Text:=puser;
+    frconfig.edtProxyPass.Text:=ppassword;
     frconfig.CheckBox6.Checked:=clipboardmonitor;
     frconfig.DirectoryEdit1.Text:=ddowndir;
     frconfig.CheckBox4.Checked:=shownotifi;
@@ -2373,51 +2373,51 @@ begin
     Case useproxy of
       0,1:
         begin
-          frconfig.Edit1.Enabled:=false;
-          frconfig.Edit2.Enabled:=false;
-          frconfig.Edit3.Enabled:=false;
-          frconfig.Edit4.Enabled:=false;
-          frconfig.Edit5.Enabled:=false;
-          frconfig.Edit6.Enabled:=false;
-          frconfig.Label1.Enabled:=false;
-          frconfig.Label2.Enabled:=false;
-          frconfig.Label3.Enabled:=false;
-          frconfig.Label4.Enabled:=false;
-          frconfig.Label5.Enabled:=false;
-          frconfig.Label6.Enabled:=false;
-          frconfig.Label7.Enabled:=false;
-          frconfig.Label8.Enabled:=false;
-          frconfig.Label9.Enabled:=false;
-          frconfig.Label27.Enabled:=false;
-          frconfig.SpinEdit1.Enabled:=false;
-          frconfig.SpinEdit2.Enabled:=false;
-          frconfig.SpinEdit3.Enabled:=false;
-          frconfig.CheckBox5.Enabled:=false;
-          frconfig.CheckBox2.Enabled:=false;
+          frconfig.edtHTTPhost.Enabled:=false;
+          frconfig.edtSSLhost.Enabled:=false;
+          frconfig.edtFTPhost.Enabled:=false;
+          frconfig.edtNoProxyHosts.Enabled:=false;
+          frconfig.edtProxyUser.Enabled:=false;
+          frconfig.edtProxyPass.Enabled:=false;
+          frconfig.lblHTTPhost.Enabled:=false;
+          frconfig.lblSSLhost.Enabled:=false;
+          frconfig.lblFTPhost.Enabled:=false;
+          frconfig.lblHTTPport.Enabled:=false;
+          frconfig.lblSSLport.Enabled:=false;
+          frconfig.lblFTPport.Enabled:=false;
+          frconfig.lblNoProxyHosts.Enabled:=false;
+          frconfig.lblProxyUser.Enabled:=false;
+          frconfig.lblProxyPass.Enabled:=false;
+          frconfig.lblNoProxyHelp.Enabled:=false;
+          frconfig.seHTTPport.Enabled:=false;
+          frconfig.seSSLport.Enabled:=false;
+          frconfig.seFTPport.Enabled:=false;
+          frconfig.chSameProxy.Enabled:=false;
+          frconfig.chUseAuth.Enabled:=false;
         end;
       2,3:
         begin
-          frconfig.Edit1.Enabled:=true;
-          frconfig.Edit2.Enabled:=true;
-          frconfig.Edit3.Enabled:=true;
-          frconfig.Edit4.Enabled:=true;
-          frconfig.Edit5.Enabled:=true;
-          frconfig.Edit6.Enabled:=true;
-          frconfig.Label1.Enabled:=true;
-          frconfig.Label2.Enabled:=true;
-          frconfig.Label3.Enabled:=true;
-          frconfig.Label4.Enabled:=true;
-          frconfig.Label5.Enabled:=true;
-          frconfig.Label6.Enabled:=true;
-          frconfig.Label7.Enabled:=true;
-          frconfig.Label8.Enabled:=true;
-          frconfig.Label9.Enabled:=true;
-          frconfig.Label27.Enabled:=true;
-          frconfig.SpinEdit1.Enabled:=true;
-          frconfig.SpinEdit2.Enabled:=true;
-          frconfig.SpinEdit3.Enabled:=true;
-          frconfig.CheckBox5.Enabled:=true;
-          frconfig.CheckBox2.Enabled:=true;
+          frconfig.edtHTTPhost.Enabled:=true;
+          frconfig.edtSSLhost.Enabled:=true;
+          frconfig.edtFTPhost.Enabled:=true;
+          frconfig.edtNoProxyHosts.Enabled:=true;
+          frconfig.edtProxyUser.Enabled:=true;
+          frconfig.edtProxyPass.Enabled:=true;
+          frconfig.lblHTTPhost.Enabled:=true;
+          frconfig.lblSSLhost.Enabled:=true;
+          frconfig.lblFTPhost.Enabled:=true;
+          frconfig.lblHTTPport.Enabled:=true;
+          frconfig.lblSSLport.Enabled:=true;
+          frconfig.lblFTPport.Enabled:=true;
+          frconfig.lblNoProxyHosts.Enabled:=true;
+          frconfig.lblProxyUser.Enabled:=true;
+          frconfig.lblProxyPass.Enabled:=true;
+          frconfig.lblNoProxyHelp.Enabled:=true;
+          frconfig.seHTTPport.Enabled:=true;
+          frconfig.seSSLport.Enabled:=true;
+          frconfig.seFTPport.Enabled:=true;
+          frconfig.chSameProxy.Enabled:=true;
+          frconfig.chUseAuth.Enabled:=true;
         end;
     end;
     frconfig.ComboBox2.Items.Clear;
@@ -2447,7 +2447,7 @@ begin
     frconfig.SpinEdit14.Value:=queuedelay;
     frconfig.CheckBox14.Checked:=useglobaluseragent;
     frconfig.Edit11.Text:=globaluseragent;
-    frconfig.CheckBox5.Checked:=sameproxyforall;
+    frconfig.chSameProxy.Checked:=sameproxyforall;
     frconfig.CheckBox12.Checked:=loadhistorylog;
     if loadhistorymode=1 then
       frconfig.RadioButton4.Checked:=true;
@@ -2460,13 +2460,13 @@ begin
     end;
     ///////////////////////
     frconfig.ComboBox4.ItemIndex:=0;
-    if (frmain.TreeView1.SelectionCount>0) then
+    if (frmain.tvMain.SelectionCount>0) then
     begin
-      if frmain.TreeView1.Selected.Level>0 then
+      if frmain.tvMain.Selected.Level>0 then
       begin
-        case frmain.TreeView1.Selected.Parent.Index of
+        case frmain.tvMain.Selected.Parent.Index of
           1:begin//colas
-              frconfig.ComboBox4.ItemIndex:=frmain.TreeView1.Selected.Index;
+              frconfig.ComboBox4.ItemIndex:=frmain.tvMain.Selected.Index;
             end;
         end;
       end;
@@ -2500,14 +2500,14 @@ end;
 
 procedure startsheduletimer();
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:begin//colas
-            if qtimerenable[frmain.TreeView1.Selected.Index] then
-              stimer[frmain.TreeView1.Selected.Index].Enabled:=true
+            if qtimerenable[frmain.tvMain.Selected.Index] then
+              stimer[frmain.tvMain.Selected.Index].Enabled:=true
             else
             begin
               frconfig.PageControl1.TabIndex:=1;
@@ -2536,21 +2536,21 @@ begin
     stimer[i].Enabled:=false;
     qtimer[i].Enabled:=false;
   end;
-  for  i:=0 to frmain.ListView1.Items.Count-1 do
+  for  i:=0 to frmain.lvMain.Items.Count-1 do
   begin
     try
-      if frmain.ListView1.Items[i].SubItems[columnstatus]='1' then
+      if frmain.lvMain.Items[i].SubItems[columnstatus]='1' then
       begin
       if force then
-        hilo[strtoint(frmain.ListView1.Items[i].SubItems[columnid])].wthp.Terminate(0)
+        hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].wthp.Terminate(0)
       else
-        hilo[strtoint(frmain.ListView1.Items[i].SubItems[columnid])].shutdown();
+        hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].shutdown();
       end;
       sleep(1);
     except on e:exception do
     end;
   end;
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
     frmain.tbStartDown.Enabled:=true;
     frmain.tbStopDown.Enabled:=false;
@@ -2565,19 +2565,19 @@ var
   thnum:integer;
   downid:integer;
 begin
-  if Not DirectoryExistsUTF8(frmain.ListView1.Items[indice].SubItems[columndestiny]) then
+  if Not DirectoryExistsUTF8(frmain.lvMain.Items[indice].SubItems[columndestiny]) then
   begin
-    ForceDirectory(frmain.ListView1.Items[indice].SubItems[columndestiny]);
+    ForceDirectory(frmain.lvMain.Items[indice].SubItems[columndestiny]);
   end;
   if indice<>-1 then
   begin
-    if frmain.ListView1.Items[indice].SubItems[columnstatus]<>'1' then
+    if frmain.lvMain.Items[indice].SubItems[columnstatus]<>'1' then
     begin
       tmps:=TstringList.Create;
-      if frmain.ListView1.Items[indice].SubItems[columntype]='0' then
+      if frmain.lvMain.Items[indice].SubItems[columntype]='0' then
       begin
         ///////////////////***WGET****////////////////////
-        if frmain.ListView1.Items[indice].SubItems[columnengine]='wget' then
+        if frmain.lvMain.Items[indice].SubItems[columnengine]='wget' then
         begin
         ////USAR un archivo de configuracion limpio
           {$IFDEF UNIX}
@@ -2602,18 +2602,18 @@ begin
               tmps.Add(ExtractWord(wrn,wgetargs,[' ']));
           end;
           ////Parametros para cada descarga
-          if WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' '])>0 then
+          if WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' '])>0 then
           begin
-            for wrn:=1 to WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']) do
-              tmps.Add(ExtractWord(wrn,frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']));
+            for wrn:=1 to WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']) do
+              tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
           end;
           tmps.Add('-e');
           tmps.Add('recursive=off');//Descativar para la opcion -O
           tmps.Add('-S');//Mouestra la respuesta del servidor
-          if frmain.ListView1.Items[indice].SubItems[columnname]<>'' then
+          if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
           begin
             tmps.Add('-O');
-            tmps.Add(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columnname]));
+            tmps.Add(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columnname]));
           end;
           if useaut then
             uandp:=puser+':'+ppassword+'@'
@@ -2639,8 +2639,8 @@ begin
           if wgetdefcontinue then
             tmps.Add('-c');//Continuar descarga
           tmps.Add('--progress=bar:force');
-          if frmain.CheckBox1.Checked then
-            tmps.Add('--limit-rate='+floattostr(frmain.FloatSpinEdit1.Value)+'k');//limite de velocidad
+          if frmain.cbLimit.Checked then
+            tmps.Add('--limit-rate='+floattostr(frmain.fseLimit.Value)+'k');//limite de velocidad
           if wgetdefnh then
             tmps.Add('-nH');//No crear directorios del Host
           if wgetdefnd then
@@ -2648,60 +2648,60 @@ begin
           if wgetdefncert then
             tmps.Add('--no-check-certificate');//No verificar certificados SSL
           tmps.Add('-P');//Destino de la descarga
-          tmps.Add('"'+ExtractShortPathName(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]))+'"');
+          tmps.Add('"'+ExtractShortPathName(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]))+'"');
           tmps.Add('-t');
           tmps.Add(inttostr(dtries));
           tmps.Add('-T');
           tmps.Add(inttostr(dtimeout));
           tmps.Add('-w');
           tmps.Add(inttostr(ddelay));
-          if (frmain.ListView1.Items[indice].SubItems[columnuser]<>'') and (frmain.ListView1.Items[indice].SubItems[columnpass]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnuser]<>'') and (frmain.lvMain.Items[indice].SubItems[columnpass]<>'') then
           begin
-            if UpperCase(Copy(frmain.ListView1.Items[indice].SubItems[columnurl],0,3))='HTT' then
+            if UpperCase(Copy(frmain.lvMain.Items[indice].SubItems[columnurl],0,3))='HTT' then
             begin
-              tmps.Add('--http-user='+frmain.ListView1.Items[indice].SubItems[columnuser]);
-              tmps.Add('--http-password='+frmain.ListView1.Items[indice].SubItems[columnpass]);
+              tmps.Add('--http-user='+frmain.lvMain.Items[indice].SubItems[columnuser]);
+              tmps.Add('--http-password='+frmain.lvMain.Items[indice].SubItems[columnpass]);
             end;
-            if UpperCase(Copy(frmain.ListView1.Items[indice].SubItems[columnurl],0,3))='FTP' then
+            if UpperCase(Copy(frmain.lvMain.Items[indice].SubItems[columnurl],0,3))='FTP' then
             begin
-              tmps.Add('--ftp-user='+frmain.ListView1.Items[indice].SubItems[columnuser]);
-              tmps.Add('--ftp-password='+frmain.ListView1.Items[indice].SubItems[columnpass]);
+              tmps.Add('--ftp-user='+frmain.lvMain.Items[indice].SubItems[columnuser]);
+              tmps.Add('--ftp-password='+frmain.lvMain.Items[indice].SubItems[columnpass]);
             end;
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnuseragent]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnuseragent]<>'') then
           begin
-            tmps.Add('--user-agent="'+frmain.ListView1.Items[indice].SubItems[columnuseragent]+'"');
+            tmps.Add('--user-agent="'+frmain.lvMain.Items[indice].SubItems[columnuseragent]+'"');
           end
           else
           begin
             if useglobaluseragent then
               tmps.Add('--user-agent="'+globaluseragent+'"');
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columncookie]<>'') and FileExists(frmain.ListView1.Items[indice].SubItems[columncookie]) then
+          if (frmain.lvMain.Items[indice].SubItems[columncookie]<>'') and FileExists(frmain.lvMain.Items[indice].SubItems[columncookie]) then
           begin
             tmps.Add('--content-disposition');
-            tmps.Add('--load-cookies='+frmain.ListView1.Items[indice].SubItems[columncookie]);
+            tmps.Add('--load-cookies='+frmain.lvMain.Items[indice].SubItems[columncookie]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnreferer]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnreferer]<>'') then
           begin
-            tmps.Add('--referer='+frmain.ListView1.Items[indice].SubItems[columnreferer]);
+            tmps.Add('--referer='+frmain.lvMain.Items[indice].SubItems[columnreferer]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnpost]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnpost]<>'') then
           begin
-            tmps.Add('--post-data='+frmain.ListView1.Items[indice].SubItems[columnpost]);
+            tmps.Add('--post-data='+frmain.lvMain.Items[indice].SubItems[columnpost]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnheader]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnheader]<>'') then
           begin
-            tmps.Add('--header=Cookie:"'+frmain.ListView1.Items[indice].SubItems[columnheader]+'"');
+            tmps.Add('--header=Cookie:"'+frmain.lvMain.Items[indice].SubItems[columnheader]+'"');
           end;
-          if FileExists(frmain.ListView1.Items[indice].SubItems[columnurl]) then
+          if FileExists(frmain.lvMain.Items[indice].SubItems[columnurl]) then
             tmps.Add('-i');//Fichero de entrada
-          tmps.Add(frmain.ListView1.Items[indice].SubItems[columnurl]);
+          tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);
         end;
         /////////////////***END***//////////////////
 
         /////////////////***ARIA2***///////////////
-        if frmain.ListView1.Items[indice].SubItems[columnengine] = 'aria2c' then
+        if frmain.lvMain.Items[indice].SubItems[columnengine] = 'aria2c' then
         begin
           //Usar un archivo de configuracion limpio
           try
@@ -2730,17 +2730,17 @@ begin
             tmps.Add(inttostr(aria2splitnum));
           end;
           ////Parametros para cada descarga
-          if WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' '])>0 then
+          if WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' '])>0 then
           begin
-            for wrn:=1 to WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']) do
-              tmps.Add(ExtractWord(wrn,frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']));
+            for wrn:=1 to WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']) do
+              tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
           end;
           tmps.Add('--check-certificate=false');//Ignorar certificados
           tmps.Add('--summary-interval=1');//intervalo del sumario de descargas
-          if frmain.ListView1.Items[indice].SubItems[columnname]<>'' then
+          if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
           begin
             tmps.Add('-o');
-            tmps.Add(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columnname]));
+            tmps.Add(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columnname]));
           end;
           if aria2cdefcontinue and (not restart) then
             tmps.Add('-c');
@@ -2765,55 +2765,55 @@ begin
               end;
           end;
           tmps.Add('-d');
-          tmps.Add(ExtractShortPathName(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny])));
-          if frmain.CheckBox1.Checked then
-            tmps.Add('--max-download-limit='+floattostr(frmain.FloatSpinEdit1.Value)+'K');
+          tmps.Add(ExtractShortPathName(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny])));
+          if frmain.cbLimit.Checked then
+            tmps.Add('--max-download-limit='+floattostr(frmain.fseLimit.Value)+'K');
           tmps.Add('-m');
           tmps.Add(inttostr(dtries));
           tmps.Add('-t');
           tmps.Add(inttostr(dtimeout));
           tmps.Add('--retry-wait='+inttostr(ddelay));
-          if (frmain.ListView1.Items[indice].SubItems[columnuser]<>'') and (frmain.ListView1.Items[indice].SubItems[columnpass]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnuser]<>'') and (frmain.lvMain.Items[indice].SubItems[columnpass]<>'') then
           begin
-            if UpperCase(Copy(frmain.ListView1.Items[indice].SubItems[columnurl],0,3))='HTT' then
+            if UpperCase(Copy(frmain.lvMain.Items[indice].SubItems[columnurl],0,3))='HTT' then
             begin
-              tmps.Add('--http-user='+frmain.ListView1.Items[indice].SubItems[columnuser]);
-              tmps.Add('--http-passwd='+frmain.ListView1.Items[indice].SubItems[columnpass]);
+              tmps.Add('--http-user='+frmain.lvMain.Items[indice].SubItems[columnuser]);
+              tmps.Add('--http-passwd='+frmain.lvMain.Items[indice].SubItems[columnpass]);
             end;
-            if UpperCase(Copy(frmain.ListView1.Items[indice].SubItems[columnurl],0,3))='FTP' then
+            if UpperCase(Copy(frmain.lvMain.Items[indice].SubItems[columnurl],0,3))='FTP' then
             begin
-              tmps.Add('--ftp-user='+frmain.ListView1.Items[indice].SubItems[columnuser]);
-              tmps.Add('--ftp-passwd='+frmain.ListView1.Items[indice].SubItems[columnpass]);
+              tmps.Add('--ftp-user='+frmain.lvMain.Items[indice].SubItems[columnuser]);
+              tmps.Add('--ftp-passwd='+frmain.lvMain.Items[indice].SubItems[columnpass]);
             end;
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnuseragent]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnuseragent]<>'') then
           begin
-            tmps.Add('--user-agent="'+frmain.ListView1.Items[indice].SubItems[columnuseragent]+'"');
+            tmps.Add('--user-agent="'+frmain.lvMain.Items[indice].SubItems[columnuseragent]+'"');
           end
           else
           begin
             if useglobaluseragent then
               tmps.Add('--user-agent="'+globaluseragent+'"');
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columncookie]<>'') and FileExists(frmain.ListView1.Items[indice].SubItems[columncookie]) then
+          if (frmain.lvMain.Items[indice].SubItems[columncookie]<>'') and FileExists(frmain.lvMain.Items[indice].SubItems[columncookie]) then
           begin
-            tmps.Add('--load-cookies='+frmain.ListView1.Items[indice].SubItems[columncookie]);
+            tmps.Add('--load-cookies='+frmain.lvMain.Items[indice].SubItems[columncookie]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnreferer]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnreferer]<>'') then
           begin
-           tmps.Add('--referer='+frmain.ListView1.Items[indice].SubItems[columnreferer]);
+           tmps.Add('--referer='+frmain.lvMain.Items[indice].SubItems[columnreferer]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnheader]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnheader]<>'') then
           begin
-           tmps.Add('--header="'+frmain.ListView1.Items[indice].SubItems[columnheader]+'"');
+           tmps.Add('--header="'+frmain.lvMain.Items[indice].SubItems[columnheader]+'"');
           end;
 
-          tmps.Add(frmain.ListView1.Items[indice].SubItems[columnurl]);
+          tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);
         end;
         ///////////////***END***////////////////
 
         //////////////***CURL***////////////////
-        if frmain.ListView1.Items[indice].SubItems[columnengine] = 'curl' then
+        if frmain.lvMain.Items[indice].SubItems[columnengine] = 'curl' then
         begin
           //Usar un archivo de configuracion limpio
           {try
@@ -2834,17 +2834,17 @@ begin
               tmps.Add(ExtractWord(wrn,curlargs,[' ']));
           end;
           ////Parametros para cada descarga
-          if WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' '])>0 then
+          if WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' '])>0 then
           begin
-            for wrn:=1 to WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']) do
-              tmps.Add(ExtractWord(wrn,frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']));
+            for wrn:=1 to WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']) do
+              tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
           end;
           tmps.Add('-k');//Ignorar certificados
           tmps.Add('-i');//Muestra la respuesta del servidor
-          if frmain.ListView1.Items[indice].SubItems[columnname]<>'' then
+          if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
           begin
             tmps.Add('-o');
-            tmps.Add(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columnname]));
+            tmps.Add(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columnname]));
           end;
           tmps.Add('-O');
           if curldefcontinue and (not restart) then
@@ -2852,10 +2852,10 @@ begin
             tmps.Add('-C');
             tmps.Add('-');
           end;
-          if frmain.CheckBox1.Checked then
+          if frmain.cbLimit.Checked then
           begin
             tmps.Add('--limit-rate');
-            tmps.Add(inttostr(round(frmain.FloatSpinEdit1.Value))+'K');
+            tmps.Add(inttostr(round(frmain.fseLimit.Value))+'K');
           end;
           Case useproxy of
             0:
@@ -2885,15 +2885,15 @@ begin
           tmps.Add(inttostr(dtimeout));
           tmps.Add('--retry-delay');
           tmps.Add(inttostr(ddelay));
-          if (frmain.ListView1.Items[indice].SubItems[columnuser]<>'') and (frmain.ListView1.Items[indice].SubItems[columnpass]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnuser]<>'') and (frmain.lvMain.Items[indice].SubItems[columnpass]<>'') then
           begin
             tmps.Add('-u');
-            tmps.Add(frmain.ListView1.Items[indice].SubItems[columnuser]+':'+frmain.ListView1.Items[indice].SubItems[columnpass]);
+            tmps.Add(frmain.lvMain.Items[indice].SubItems[columnuser]+':'+frmain.lvMain.Items[indice].SubItems[columnpass]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnuseragent]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnuseragent]<>'') then
           begin
             tmps.Add('-A');
-            tmps.Add('"'+frmain.ListView1.Items[indice].SubItems[columnuseragent]+'"');
+            tmps.Add('"'+frmain.lvMain.Items[indice].SubItems[columnuseragent]+'"');
           end
           else
           begin
@@ -2903,32 +2903,32 @@ begin
               tmps.Add('"'+globaluseragent+'"');
             end;
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columncookie]<>'') and FileExists(frmain.ListView1.Items[indice].SubItems[columncookie]) then
+          if (frmain.lvMain.Items[indice].SubItems[columncookie]<>'') and FileExists(frmain.lvMain.Items[indice].SubItems[columncookie]) then
           begin
             tmps.Add('-b');
-            tmps.Add(frmain.ListView1.Items[indice].SubItems[columncookie]);
+            tmps.Add(frmain.lvMain.Items[indice].SubItems[columncookie]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnreferer]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnreferer]<>'') then
           begin
             tmps.Add('--referer');
-            tmps.Add(frmain.ListView1.Items[indice].SubItems[columnreferer]);
+            tmps.Add(frmain.lvMain.Items[indice].SubItems[columnreferer]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnpost]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnpost]<>'') then
           begin
             tmps.Add('-d');
-            tmps.Add(frmain.ListView1.Items[indice].SubItems[columnpost]);
+            tmps.Add(frmain.lvMain.Items[indice].SubItems[columnpost]);
           end;
-          if (frmain.ListView1.Items[indice].SubItems[columnheader]<>'') then
+          if (frmain.lvMain.Items[indice].SubItems[columnheader]<>'') then
           begin
             tmps.Add('-b');
-            tmps.Add('"'+frmain.ListView1.Items[indice].SubItems[columnheader]+'"');
+            tmps.Add('"'+frmain.lvMain.Items[indice].SubItems[columnheader]+'"');
           end;
-          tmps.Add(frmain.ListView1.Items[indice].SubItems[columnurl]);
+          tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);
         end;
         /////////////////***END***////////////////////
 
         /////////////////***AXEL***//////////////////
-        if frmain.ListView1.Items[indice].SubItems[columnengine] = 'axel' then
+        if frmain.lvMain.Items[indice].SubItems[columnengine] = 'axel' then
         begin
           ////Parametros generales
           if WordCount(axelargs,[' '])>0 then
@@ -2937,15 +2937,15 @@ begin
               tmps.Add(ExtractWord(wrn,axelargs,[' ']));
           end;
           ////Parametros para cada descarga
-          if WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' '])>0 then
+          if WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' '])>0 then
           begin
-           for wrn:=1 to WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']) do
-             tmps.Add(ExtractWord(wrn,frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']));
+           for wrn:=1 to WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']) do
+             tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
           end;
-          if frmain.CheckBox1.Checked then
+          if frmain.cbLimit.Checked then
           begin
             tmps.Add('-s');
-            tmps.Add(floattostr(frmain.FloatSpinEdit1.Value*1024));
+            tmps.Add(floattostr(frmain.fseLimit.Value*1024));
           end;
           tmps.Add('-v');
           tmps.Add('-a');
@@ -2955,30 +2955,30 @@ begin
            //Tal vez modificar la configuracion de .axelrc al vuelo
               end;}
           end;
-          if frmain.ListView1.Items[indice].SubItems[columnname]<>'' then
+          if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
           begin
             tmps.Add('-o');
-            tmps.Add(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname]));
+            tmps.Add(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname]));
           end;
-          if frmain.ListView1.Items[indice].SubItems[columnheader]<>'' then
+          if frmain.lvMain.Items[indice].SubItems[columnheader]<>'' then
           begin
-            tmps.add('--header="'+frmain.ListView1.Items[indice].SubItems[columnheader]+'"');
+            tmps.add('--header="'+frmain.lvMain.Items[indice].SubItems[columnheader]+'"');
           end;
-          if frmain.ListView1.Items[indice].SubItems[columnuseragent]<>'' then
+          if frmain.lvMain.Items[indice].SubItems[columnuseragent]<>'' then
           begin
-            tmps.Add('--user-agent="'+frmain.ListView1.Items[indice].SubItems[columnuseragent]+'"');
+            tmps.Add('--user-agent="'+frmain.lvMain.Items[indice].SubItems[columnuseragent]+'"');
           end
           else
           begin
             if useglobaluseragent then
               tmps.Add('--user-agent="'+globaluseragent+'"');
           end;
-          tmps.Add(frmain.ListView1.Items[indice].SubItems[columnurl]);
+          tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);
         end;
         ///////////////////***END***///////////////////
 
         ///////////////////***LFTP***//////////////////
-        if frmain.ListView1.Items[indice].SubItems[columnengine] = 'lftp' then
+        if frmain.lvMain.Items[indice].SubItems[columnengine] = 'lftp' then
         begin
           ////Parametros generales
           if WordCount(lftpargs,[' '])>0 then
@@ -2987,12 +2987,12 @@ begin
               tmps.Add(ExtractWord(wrn,lftpargs,[' ']));
           end;
           ////Parametros para cada descarga
-          if WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' '])>0 then
+          if WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' '])>0 then
           begin
-            for wrn:=1 to WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']) do
-              tmps.Add(ExtractWord(wrn,frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']));
+            for wrn:=1 to WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']) do
+              tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
           end;
-          if frmain.CheckBox1.Checked then
+          if frmain.cbLimit.Checked then
           begin
             //tmps.Add('-s');
             //tmps.Add(floattostr(frmain.FloatSpinEdit1.Value*1024));
@@ -3002,38 +3002,38 @@ begin
             begin
               tmps.Add('-c');
               {$IFDEF UNIX}
-                tmps.Add('pget -c -n 4 "'+frmain.ListView1.Items[indice].SubItems[columnurl]+'" -o "'+ExtractShortPathName(frmain.ListView1.Items[indice].SubItems[columnname])+'"');
+                tmps.Add('pget -c -n 4 "'+frmain.lvMain.Items[indice].SubItems[columnurl]+'" -o "'+ExtractShortPathName(frmain.lvMain.Items[indice].SubItems[columnname])+'"');
               {$ENDIF}
               {$IFDEF WINDOWS}
-                tmps.Add('"pget -c -n 4 '+frmain.ListView1.Items[indice].SubItems[columnurl]+' -o '+ExtractShortPathName(frmain.ListView1.Items[indice].SubItems[columnname])+'"');
+                tmps.Add('"pget -c -n 4 '+frmain.lvMain.Items[indice].SubItems[columnurl]+' -o '+ExtractShortPathName(frmain.lvMain.Items[indice].SubItems[columnname])+'"');
               {$ENDIF}
             end;
             2:
             begin
               tmps.Add('-c');
               {$IFDEF UNIX}
-                tmps.Add('set http:proxy "http://'+puser+':'+ppassword+'@'+phttp+':'+phttpport+'" && pget -c -n 4 "'+frmain.ListView1.Items[indice].SubItems[columnurl]+'" -o "'+ExtractShortPathName(frmain.ListView1.Items[indice].SubItems[columnname])+'"');
+                tmps.Add('set http:proxy "http://'+puser+':'+ppassword+'@'+phttp+':'+phttpport+'" && pget -c -n 4 "'+frmain.lvMain.Items[indice].SubItems[columnurl]+'" -o "'+ExtractShortPathName(frmain.lvMain.Items[indice].SubItems[columnname])+'"');
               {$ENDIF}
               {$IFDEF WINDOWS}
-                tmps.Add('set http:proxy http://'+puser+':'+ppassword+'@'+phttp+':'+phttpport+' && pget -c -n 4 '+frmain.ListView1.Items[indice].SubItems[columnurl]+' -o "'+ExtractShortPathName(frmain.ListView1.Items[indice].SubItems[columnname])+'"');
+                tmps.Add('set http:proxy http://'+puser+':'+ppassword+'@'+phttp+':'+phttpport+' && pget -c -n 4 '+frmain.lvMain.Items[indice].SubItems[columnurl]+' -o "'+ExtractShortPathName(frmain.lvMain.Items[indice].SubItems[columnname])+'"');
               {$ENDIF}
             end;
           end;
-          if frmain.ListView1.Items[indice].SubItems[columnname]<>'' then
+          if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
           begin
             //tmps.Add('-c');
-            //tmps.Add('pget -c -n 8 '+frmain.ListView1.Items[indice].SubItems[columnurl]+'" -o "'+ExtractShortPathName(frmain.ListView1.Items[indice].SubItems[columnname])+'"');
+            //tmps.Add('pget -c -n 8 '+frmain.lvMain.Items[indice].SubItems[columnurl]+'" -o "'+ExtractShortPathName(frmain.lvMain.Items[indice].SubItems[columnname])+'"');
           end
           else
           begin
             tmps.Add('-e');
-            tmps.Add('pget "'+frmain.ListView1.Items[indice].SubItems[columnurl]+'"');
+            tmps.Add('pget "'+frmain.lvMain.Items[indice].SubItems[columnurl]+'"');
           end;
         end;
         //////////////////////***END***////////////////////
       end;
 
-      if frmain.ListView1.Items[indice].SubItems[columntype] = '1' then
+      if frmain.lvMain.Items[indice].SubItems[columntype] = '1' then
       begin
         //// Site Grabber implementation *********
         ////USAR un archivo de configuracion limpio
@@ -3059,10 +3059,10 @@ begin
         tmps.Add('--no-remove-listing');
         tmps.Add('--restrict-file-names=windows');//Nombre de archivos compatibles
         //Parametros por descargas
-        if WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' '])>0 then
+        if WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' '])>0 then
         begin
-          for wrn:=1 to WordCount(frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']) do
-            tmps.Add(ExtractWord(wrn,frmain.ListView1.Items[indice].SubItems[columnparameters],[' ']));
+          for wrn:=1 to WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']) do
+            tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
         end;
         if useaut then
           uandp:=puser+':'+ppassword+'@'
@@ -3085,46 +3085,46 @@ begin
             end;
           end;
         end;
-        if frmain.CheckBox1.Checked then
-          tmps.Add('--limit-rate='+floattostr(frmain.FloatSpinEdit1.Value)+'k');//limite de velocidad
+        if frmain.cbLimit.Checked then
+          tmps.Add('--limit-rate='+floattostr(frmain.fseLimit.Value)+'k');//limite de velocidad
         if wgetdefncert then
           tmps.Add('--no-check-certificate');//No verificar certificados SSL
         tmps.Add('-P');//Destino de la descarga
-        tmps.Add(ExtractShortPathName(frmain.ListView1.Items[indice].SubItems[columndestiny]));
+        tmps.Add(ExtractShortPathName(frmain.lvMain.Items[indice].SubItems[columndestiny]));
         tmps.Add('-t');
         tmps.Add(inttostr(dtries));
         tmps.Add('-T');
         tmps.Add(inttostr(dtimeout));
-        if (frmain.ListView1.Items[indice].SubItems[columnuser]<>'') and (frmain.ListView1.Items[indice].SubItems[columnpass]<>'') then
+        if (frmain.lvMain.Items[indice].SubItems[columnuser]<>'') and (frmain.lvMain.Items[indice].SubItems[columnpass]<>'') then
         begin
-          if UpperCase(Copy(frmain.ListView1.Items[indice].SubItems[columnurl],0,3))='HTT' then
+          if UpperCase(Copy(frmain.lvMain.Items[indice].SubItems[columnurl],0,3))='HTT' then
           begin
-            tmps.Add('--http-user='+frmain.ListView1.Items[indice].SubItems[columnuser]);
-            tmps.Add('--http-password='+frmain.ListView1.Items[indice].SubItems[columnpass]);
+            tmps.Add('--http-user='+frmain.lvMain.Items[indice].SubItems[columnuser]);
+            tmps.Add('--http-password='+frmain.lvMain.Items[indice].SubItems[columnpass]);
           end;
-          if UpperCase(Copy(frmain.ListView1.Items[indice].SubItems[columnurl],0,3))='FTP' then
+          if UpperCase(Copy(frmain.lvMain.Items[indice].SubItems[columnurl],0,3))='FTP' then
           begin
-            tmps.Add('--ftp-user='+frmain.ListView1.Items[indice].SubItems[columnuser]);
-            tmps.Add('--ftp-password='+frmain.ListView1.Items[indice].SubItems[columnpass]);
+            tmps.Add('--ftp-user='+frmain.lvMain.Items[indice].SubItems[columnuser]);
+            tmps.Add('--ftp-password='+frmain.lvMain.Items[indice].SubItems[columnpass]);
           end;
         end;
-        if FileExists(frmain.ListView1.Items[indice].SubItems[columnurl]) then
+        if FileExists(frmain.lvMain.Items[indice].SubItems[columnurl]) then
           tmps.Add('-i');//Fichero de entrada
-        tmps.Add(frmain.ListView1.Items[indice].SubItems[columnurl]);
+        tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);
       end;
-    frmain.ListView1.Items[indice].SubItems[columnstatus]:='1';
-    frmain.ListView1.Items[indice].Caption:=frstrings.statusinprogres.Caption;
-    if frmain.ListView1.Items[indice].SubItems[columntype] = '0' then
-      frmain.ListView1.Items[indice].ImageIndex:=2;
-    if frmain.ListView1.Items[indice].SubItems[columntype] = '1' then
-      frmain.ListView1.Items[indice].ImageIndex:=52;
-    downid:=strtoint(frmain.ListView1.Items[indice].SubItems[columnid]);
+    frmain.lvMain.Items[indice].SubItems[columnstatus]:='1';
+    frmain.lvMain.Items[indice].Caption:=frstrings.statusinprogres.Caption;
+    if frmain.lvMain.Items[indice].SubItems[columntype] = '0' then
+      frmain.lvMain.Items[indice].ImageIndex:=2;
+    if frmain.lvMain.Items[indice].SubItems[columntype] = '1' then
+      frmain.lvMain.Items[indice].ImageIndex:=52;
+    downid:=strtoint(frmain.lvMain.Items[indice].SubItems[columnid]);
 
     //El tama;o del array de hilos no debe ser menor que el propio id o la catidad de items
-    if downid>=frmain.ListView1.Items.Count then
+    if downid>=frmain.lvMain.Items.Count then
       thnum:=downid
     else
-      thnum:=frmain.ListView1.Items.Count;
+      thnum:=frmain.lvMain.Items.Count;
     SetLength(hilo,thnum);
     SetLength(trayicons,thnum);
     if Assigned(trayicons[downid])=false then
@@ -3147,21 +3147,21 @@ begin
       raise hilo[downid].FatalException;
     hilo[downid].Start;
     tmps.Free;
-    if (frmain.ListView2.Visible) then
+    if (frmain.lvFilter.Visible) then
     begin
       rebuildids();
-      //frmain.TreeView1SelectionChanged(nil);
-      hilo[downid].thid2:=finduid(frmain.ListView1.Items[indice].SubItems[columnuid]);
-      if (frmain.ListView2.Items.Count>hilo[downid].thid2) then
+      //frmain.tvMainSelectionChanged(nil);
+      hilo[downid].thid2:=finduid(frmain.lvMain.Items[indice].SubItems[columnuid]);
+      if (frmain.lvFilter.Items.Count>hilo[downid].thid2) then
       begin
-        if (frmain.ListView1.Items[indice].SubItems[columnuid]=frmain.ListView2.Items[hilo[downid].thid2].SubItems[columnuid]) then
+        if (frmain.lvMain.Items[indice].SubItems[columnuid]=frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columnuid]) then
         begin
-          frmain.ListView2.Items[hilo[downid].thid2].SubItems[columnstatus]:='1';
-          frmain.ListView2.Items[hilo[downid].thid2].Caption:=frstrings.statusinprogres.Caption;
-          if frmain.ListView2.Items[hilo[downid].thid2].SubItems[columntype] = '0' then
-            frmain.ListView2.Items[hilo[downid].thid2].ImageIndex:=2;
-          if frmain.ListView2.Items[hilo[downid].thid2].SubItems[columntype] = '1' then
-            frmain.ListView2.Items[hilo[downid].thid2].ImageIndex:=52;
+          frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columnstatus]:='1';
+          frmain.lvFilter.Items[hilo[downid].thid2].Caption:=frstrings.statusinprogres.Caption;
+          if frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columntype] = '0' then
+            frmain.lvFilter.Items[hilo[downid].thid2].ImageIndex:=2;
+          if frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columntype] = '1' then
+            frmain.lvFilter.Items[hilo[downid].thid2].ImageIndex:=52;
         end;
       end;
     end;
@@ -3175,8 +3175,8 @@ begin
     frmain.SynEdit1.Lines.Add(frstrings.msgmustselectdownload.Caption);
   if columncolav then
   begin
-    frmain.ListView1.Columns[0].Width:=columncolaw;
-    frmain.ListView2.Columns[0].Width:=columncolaw;
+    frmain.lvMain.Columns[0].Width:=columncolaw;
+    frmain.lvFilter.Columns[0].Width:=columncolaw;
   end;
 end;
 
@@ -3187,24 +3187,24 @@ var
   downexists:boolean;
 begin
   downexists:=false;
-  for ni:=0 to frmain.ListView1.Items.Count-1 do
+  for ni:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    pathnodelim:=frmain.ListView1.Items[ni].SubItems[columndestiny];
-    if ExpandFileName(pathnodelim+pathdelim+frmain.ListView1.Items[ni].SubItems[columnname]) = ExpandFileName(destiny) then
+    pathnodelim:=frmain.lvMain.Items[ni].SubItems[columndestiny];
+    if ExpandFileName(pathnodelim+pathdelim+frmain.lvMain.Items[ni].SubItems[columnname]) = ExpandFileName(destiny) then
     begin
       downexists:=true;
       if newurl<>'' then
       begin
-        frmain.ListView1.Items[ni].SubItems[columnurl]:=newurl;
+        frmain.lvMain.Items[ni].SubItems[columnurl]:=newurl;
         if iniciar and frnewdown.Button4.Visible then
         begin
-          queuemanual[strtoint(frmain.ListView1.Items[ni].SubItems[columnqueue])]:=true;
+          queuemanual[strtoint(frmain.lvMain.Items[ni].SubItems[columnqueue])]:=true;
           downloadstart(ni,false);
         end;
         if cola then
         begin
-          queuemanual[strtoint(frmain.ListView1.Items[ni].SubItems[columnqueue])]:=true;
-          qtimer[strtoint(frmain.ListView1.Items[ni].SubItems[columnqueue])].Enabled:=true;
+          queuemanual[strtoint(frmain.lvMain.Items[ni].SubItems[columnqueue])]:=true;
+          qtimer[strtoint(frmain.lvMain.Items[ni].SubItems[columnqueue])].Enabled:=true;
         end;
       end;
     end;
@@ -3217,14 +3217,14 @@ var
   i,maxcdown:integer;
 begin
   maxcdown:=0;
-  for i:=0 to frmain.ListView1.Items.Count-1 do
+  for i:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if (frmain.ListView1.Items[i].SubItems[columnstatus]='1') and (frmain.ListView1.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) then
+    if (frmain.lvMain.Items[i].SubItems[columnstatus]='1') and (frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) then
       inc(maxcdown);
   end;
-  for i:=0 to frmain.ListView1.Items.Count-1 do
+  for i:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if (frmain.ListView1.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) and (maxcdown<frmain.SpinEdit1.Value) and ((frmain.ListView1.Items[i].SubItems[columnstatus]='') or (frmain.ListView1.Items[i].SubItems[columnstatus]='2') or (frmain.ListView1.Items[i].SubItems[columnstatus]='0') or (frmain.ListView1.Items[i].SubItems[columnstatus]='4')) and (strtoint(frmain.ListView1.Items[i].SubItems[columntries])>0) then
+    if (frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) and (maxcdown<frmain.seMaxDownInProgress.Value) and ((frmain.lvMain.Items[i].SubItems[columnstatus]='') or (frmain.lvMain.Items[i].SubItems[columnstatus]='2') or (frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='4')) and (strtoint(frmain.lvMain.Items[i].SubItems[columntries])>0) then
     begin
       inc(maxcdown);
       downloadstart(i,false);
@@ -3238,15 +3238,15 @@ var
 begin
   frmain.tbStartQueue.Enabled:=false;
   frmain.tbStopQueue.Enabled:=true;
-  frmain.TreeView1.Items[1].Items[self.qtindex].ImageIndex:=46;
-  frmain.TreeView1.Items[1].Items[self.qtindex].SelectedIndex:=46;
-  frmain.TreeView1.Items[1].Items[self.qtindex].StateIndex:=40;
+  frmain.tvMain.Items[1].Items[self.qtindex].ImageIndex:=46;
+  frmain.tvMain.Items[1].Items[self.qtindex].SelectedIndex:=46;
+  frmain.tvMain.Items[1].Items[self.qtindex].StateIndex:=40;
   frmain.pmTrayIcon.Items[self.qtindex+5].Caption:=stopqueuesystray+' ('+queuenames[self.qtindex]+')';
   frmain.pmTrayIcon.Items[self.qtindex+5].ImageIndex:=8;
-  for n:=0 to frmain.ListView1.Items.Count-1 do
+  for n:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.ListView1.Items[n].SubItems[columnqueue]=inttostr(self.qtindex) then
-      frmain.ListView1.Items[n].SubItems[columntries]:=inttostr(triesrotate);
+    if frmain.lvMain.Items[n].SubItems[columnqueue]=inttostr(self.qtindex) then
+      frmain.lvMain.Items[n].SubItems[columntries]:=inttostr(triesrotate);
   end;
 end;
 
@@ -3254,9 +3254,9 @@ procedure queuetimer.ontimestop(Sender:TObject);
 begin
   frmain.tbStartQueue.Enabled:=true;
   frmain.tbStopQueue.Enabled:=false;
-  frmain.TreeView1.Items[1].Items[self.qtindex].ImageIndex:=47;
-  frmain.TreeView1.Items[1].Items[self.qtindex].SelectedIndex:=47;
-  frmain.TreeView1.Items[1].Items[self.qtindex].StateIndex:=40;
+  frmain.tvMain.Items[1].Items[self.qtindex].ImageIndex:=47;
+  frmain.tvMain.Items[1].Items[self.qtindex].SelectedIndex:=47;
+  frmain.tvMain.Items[1].Items[self.qtindex].StateIndex:=40;
   frmain.pmTrayIcon.Items[self.qtindex+5].Caption:=startqueuesystray+' ('+queuenames[self.qtindex]+')';
   frmain.pmTrayIcon.Items[self.qtindex+5].ImageIndex:=7;
 end;
@@ -3322,7 +3322,7 @@ begin
       queuemanual[self.stindex]:=false;
       queuesheduledone[self.stindex]:=true;
       if queuelimits[self.stindex] then
-        frmain.CheckBox1.Checked:=false;
+        frmain.cbLimit.Checked:=false;
       if qtimer[self.stindex].Enabled =false then
         qtimer[self.stindex].Interval:=1000;
       qtimer[self.stindex].Enabled:=true;
@@ -3353,44 +3353,44 @@ end;
 
 procedure restartdownload(indice:integer;ahora:boolean;update:boolean=true);
 begin
-  if frmain.ListView1.Items[indice].SubItems[columnstatus] <> '1' then
+  if frmain.lvMain.Items[indice].SubItems[columnstatus] <> '1' then
   begin
-    if frmain.ListView1.Items[indice].SubItems[columntype]='0' then
+    if frmain.lvMain.Items[indice].SubItems[columntype]='0' then
     begin
-      if FileExists(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname])) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname]));
+      if FileExists(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])) then
+        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname]));
 
-      if (frmain.ListView1.Items[indice].SubItems[columnengine]='aria2c') and (FileExists(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname])+'.aria2')) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname])+'.aria2');
+      if (frmain.lvMain.Items[indice].SubItems[columnengine]='aria2c') and (FileExists(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.aria2')) then
+        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.aria2');
 
-      if (frmain.ListView1.Items[indice].SubItems[columnengine]='axel') and (FileExists(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname])+'.st')) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname])+'.st');
+      if (frmain.lvMain.Items[indice].SubItems[columnengine]='axel') and (FileExists(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.st')) then
+        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.st');
 
-      if (frmain.ListView1.Items[indice].SubItems[columnengine]='lftp') and (FileExists(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname])+'.lftp-pget-status')) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.ListView1.Items[indice].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[indice].SubItems[columnname])+'.lftp-pget-status');
+      if (frmain.lvMain.Items[indice].SubItems[columnengine]='lftp') and (FileExists(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.lftp-pget-status')) then
+        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.lftp-pget-status');
 
-      if FileExists(UTF8ToSys(datapath+pathdelim+frmain.ListView1.Items[indice].SubItems[columnuid])+'.status') then
-        SysUtils.DeleteFile(UTF8ToSys(datapath+pathdelim+frmain.ListView1.Items[indice].SubItems[columnuid])+'.status');
+      if FileExists(UTF8ToSys(datapath+pathdelim+frmain.lvMain.Items[indice].SubItems[columnuid])+'.status') then
+        SysUtils.DeleteFile(UTF8ToSys(datapath+pathdelim+frmain.lvMain.Items[indice].SubItems[columnuid])+'.status');
 
-      frmain.ListView1.Items[indice].ImageIndex:=18;
+      frmain.lvMain.Items[indice].ImageIndex:=18;
     end;
-    if frmain.ListView1.Items[indice].SubItems[columntype] = '1' then
+    if frmain.lvMain.Items[indice].SubItems[columntype] = '1' then
     begin
-      if FileExists(UTF8ToSys(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html')) then
-        DeleteFile(UTF8ToSys(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl]).Host+ParseURI(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html'));
-      frmain.ListView1.Items[indice].ImageIndex:=51;
+      if FileExists(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Host+ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html')) then
+        DeleteFile(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Host+ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html'));
+      frmain.lvMain.Items[indice].ImageIndex:=51;
     end;
-    frmain.ListView1.Items[indice].Caption:=frstrings.statuspaused.Caption;
-    frmain.ListView1.Items[indice].SubItems[columnstatus]:='0';
-    frmain.ListView1.Items[indice].SubItems[columnpercent]:='-';
-    frmain.ListView1.Items[indice].SubItems[columnspeed]:='--';
-    frmain.ListView1.Items[indice].SubItems[columnestimate]:='--';
-    frmain.ListView1.Items[indice].SubItems[columncurrent]:='0';
-    if frmain.ListView2.Visible and update then
-      frmain.TreeView1SelectionChanged(nil);
+    frmain.lvMain.Items[indice].Caption:=frstrings.statuspaused.Caption;
+    frmain.lvMain.Items[indice].SubItems[columnstatus]:='0';
+    frmain.lvMain.Items[indice].SubItems[columnpercent]:='-';
+    frmain.lvMain.Items[indice].SubItems[columnspeed]:='--';
+    frmain.lvMain.Items[indice].SubItems[columnestimate]:='--';
+    frmain.lvMain.Items[indice].SubItems[columncurrent]:='0';
+    if frmain.lvFilter.Visible and update then
+      frmain.tvMainSelectionChanged(nil);
     if ahora then
     begin
-      queuemanual[strtoint(frmain.ListView1.Items[indice].SubItems[columnqueue])]:=true;
+      queuemanual[strtoint(frmain.lvMain.Items[indice].SubItems[columnqueue])]:=true;
       downloadstart(indice,true);
     end;
   end;
@@ -3408,7 +3408,7 @@ begin
   tamano:='';
   tiempo:='';
   descargado:='';
-  if (frmain.ListView1.ItemIndex>-1) and (frmain.micommandFollow.Checked) and (thid=frmain.ListView1.ItemIndex) then
+  if (frmain.lvMain.ItemIndex>-1) and (frmain.micommandFollow.Checked) and (thid=frmain.lvMain.ItemIndex) then
   begin
     if Length(frmain.SynEdit1.Lines.Text)>0 then
       frmain.SynEdit1.SelStart:=Length(frmain.SynEdit1.Lines.Text);
@@ -3417,7 +3417,7 @@ begin
   end;
 
   /////////////////***WGET***/////////////////////
-  if frmain.ListView1.Items[thid].SubItems[columnengine] = 'wget' then
+  if frmain.lvMain.Items[thid].SubItems[columnengine] = 'wget' then
   begin
     if Pos(#10+'Longitud: ',wout[thid])>0 then
     begin
@@ -3513,7 +3513,7 @@ begin
   ///////////////////***END***///////////////////
 
   ///////////////////***ARIA2***///////////////////
-  if frmain.ListView1.Items[thid].SubItems[columnengine] = 'aria2c' then
+  if frmain.lvMain.Items[thid].SubItems[columnengine] = 'aria2c' then
   begin
     if Pos('%) ',wout[thid])>0 then
     begin
@@ -3549,7 +3549,7 @@ begin
   /////////////////////***END***//////////////////////
 
   ////////////////////***CURL***//////////////////////
-  if frmain.ListView1.Items[thid].SubItems[columnengine] = 'curl' then
+  if frmain.lvMain.Items[thid].SubItems[columnengine] = 'curl' then
   begin
     if (Pos(':',wout[thid])>0) and (WordCount(wout[thid],[' '])=13) then
     begin
@@ -3563,13 +3563,13 @@ begin
   ///////////////////***END***////////////////////////
 
   ///////////////////***AXEL***////////////////////////
-  if frmain.ListView1.Items[thid].SubItems[columnengine] = 'axel' then
+  if frmain.lvMain.Items[thid].SubItems[columnengine] = 'axel' then
   begin
     if Pos('File size: ',wout[thid])>0 then
       tamano:=Copy(wout[thid],Pos('File size: ',wout[thid])+11,length(wout[thid]));
     tamano:=Copy(tamano,0,Pos('bytes',tamano)-1);
-    if FileExists(frmain.ListView1.Items[thid].SubItems[columndestiny]+pathdelim+UTF8ToSys(frmain.ListView1.Items[thid].SubItems[columnname])) then
-      descargado:=inttostr(FileSize(frmain.ListView1.Items[thid].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[thid].SubItems[columnname]));
+    if FileExists(frmain.lvMain.Items[thid].SubItems[columndestiny]+pathdelim+UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columnname])) then
+      descargado:=inttostr(FileSize(frmain.lvMain.Items[thid].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[thid].SubItems[columnname]));
     if (Pos('%] [',wout[thid])>0) and (WordCount(wout[thid],[']'])>=4) then
     begin
       porciento:=ExtractWord(1,wout[thid],[']']);
@@ -3585,78 +3585,78 @@ begin
   ////////////////////***END***////////////////////////////
 
   ////////////////////***LFTP***///////////////////////////
-  if frmain.ListView1.Items[thid].SubItems[columnengine] = 'lftp' then
+  if frmain.lvMain.Items[thid].SubItems[columnengine] = 'lftp' then
   begin
     //LFTP UPDATE ****
   end;
   ////////////////////***END***//////////////////////////
 
   if descargado<>'' then
-    frmain.ListView1.Items[thid].SubItems[columncurrent]:=AnsiReplaceStr(descargado,LineEnding,'');
+    frmain.lvMain.Items[thid].SubItems[columncurrent]:=AnsiReplaceStr(descargado,LineEnding,'');
   if porciento<>'' then
-    frmain.ListView1.Items[thid].SubItems[columnpercent]:=AnsiReplaceStr(porciento,LineEnding,'');
+    frmain.lvMain.Items[thid].SubItems[columnpercent]:=AnsiReplaceStr(porciento,LineEnding,'');
   if velocidad<>'' then
-    frmain.ListView1.Items[thid].SubItems[columnspeed]:=AnsiReplaceStr(velocidad,LineEnding,'');
+    frmain.lvMain.Items[thid].SubItems[columnspeed]:=AnsiReplaceStr(velocidad,LineEnding,'');
   if tiempo<>'' then
-    frmain.ListView1.Items[thid].SubItems[columnestimate]:=AnsiReplaceStr(tiempo,LineEnding,'');
+    frmain.lvMain.Items[thid].SubItems[columnestimate]:=AnsiReplaceStr(tiempo,LineEnding,'');
   if tamano<>'' then
-    frmain.ListView1.Items[thid].SubItems[columnsize]:=AnsiReplaceStr(tamano,LineEnding,'');
+    frmain.lvMain.Items[thid].SubItems[columnsize]:=AnsiReplaceStr(tamano,LineEnding,'');
   ////////////////////////////////////
-  if (frmain.ListView2.Visible) then
+  if (frmain.lvFilter.Visible) then
   begin
-    if (frmain.ListView2.Items.Count>thid2) then
+    if (frmain.lvFilter.Items.Count>thid2) then
     begin
-      if (frmain.ListView1.Items[thid].SubItems[columnuid]=frmain.ListView2.Items[thid2].SubItems[columnuid]) then
+      if (frmain.lvMain.Items[thid].SubItems[columnuid]=frmain.lvFilter.Items[thid2].SubItems[columnuid]) then
       begin
         if descargado<>'' then
-          frmain.ListView2.Items[thid2].SubItems[columncurrent]:=AnsiReplaceStr(descargado,LineEnding,'');
+          frmain.lvFilter.Items[thid2].SubItems[columncurrent]:=AnsiReplaceStr(descargado,LineEnding,'');
         if porciento<>'' then
-          frmain.ListView2.Items[thid2].SubItems[columnpercent]:=AnsiReplaceStr(porciento,LineEnding,'');
+          frmain.lvFilter.Items[thid2].SubItems[columnpercent]:=AnsiReplaceStr(porciento,LineEnding,'');
         if velocidad<>'' then
-          frmain.ListView2.Items[thid2].SubItems[columnspeed]:=AnsiReplaceStr(velocidad,LineEnding,'');
+          frmain.lvFilter.Items[thid2].SubItems[columnspeed]:=AnsiReplaceStr(velocidad,LineEnding,'');
         if tiempo<>'' then
-          frmain.ListView2.Items[thid2].SubItems[columnestimate]:=AnsiReplaceStr(tiempo,LineEnding,'');
+          frmain.lvFilter.Items[thid2].SubItems[columnestimate]:=AnsiReplaceStr(tiempo,LineEnding,'');
         if tamano<>'' then
-          frmain.ListView2.Items[thid2].SubItems[columnsize]:=AnsiReplaceStr(tamano,LineEnding,'');
+          frmain.lvFilter.Items[thid2].SubItems[columnsize]:=AnsiReplaceStr(tamano,LineEnding,'');
       end;
     end;
   end;
   ////////////////////////////////////
   try
-    if (porciento<>'') and (thid=frmain.ListView1.ItemIndex) then
+    if (porciento<>'') and (thid=frmain.lvMain.ItemIndex) then
     begin
-      frmain.ProgressBar1.Style:=pbstNormal;
-      frmain.ProgressBar1.Position:=strtoint(Copy(porciento,0,Pos('%',porciento)-1));
+      frmain.pbMain.Style:=pbstNormal;
+      frmain.pbMain.Position:=strtoint(Copy(porciento,0,Pos('%',porciento)-1));
     end;
-    if ((frmain.ListView1.Items[thid].SubItems[columnpercent]='') or (frmain.ListView1.Items[thid].SubItems[columnpercent]='-')) and (frmain.ListView1.Items[thid].SubItems[columnstatus]='1') and (thid=frmain.ListView1.ItemIndex) then
-      frmain.ProgressBar1.Style:=pbstMarquee;
+    if ((frmain.lvMain.Items[thid].SubItems[columnpercent]='') or (frmain.lvMain.Items[thid].SubItems[columnpercent]='-')) and (frmain.lvMain.Items[thid].SubItems[columnstatus]='1') and (thid=frmain.lvMain.ItemIndex) then
+      frmain.pbMain.Style:=pbstMarquee;
   except on e:exception do
   end;
 
   if descargado = '' then
   begin
-    descargado:=frmain.ListView1.Items[thid].SubItems[columncurrent];
+    descargado:=frmain.lvMain.Items[thid].SubItems[columncurrent];
     if descargado = '' then
       descargado:='-';
   end;
   if porciento = '' then
   begin
-    porciento:=frmain.ListView1.Items[thid].SubItems[columnpercent];
+    porciento:=frmain.lvMain.Items[thid].SubItems[columnpercent];
     if porciento = '' then
       porciento:='-';
   end;
   if tiempo = '' then
   begin
-    tiempo:=frmain.ListView1.Items[thid].SubItems[columnestimate];
+    tiempo:=frmain.lvMain.Items[thid].SubItems[columnestimate];
     if tiempo = '' then
       tiempo:='-';
   end;
 
   try
-    AssignFile(statusfile,datapath+PathDelim+frmain.ListView1.Items[thid].SubItems[columnuid]+'.status');
-    if fileExists(configpath+PathDelim+frmain.ListView1.Items[thid].SubItems[columnuid]+'.status')=false then
+    AssignFile(statusfile,datapath+PathDelim+frmain.lvMain.Items[thid].SubItems[columnuid]+'.status');
+    if fileExists(configpath+PathDelim+frmain.lvMain.Items[thid].SubItems[columnuid]+'.status')=false then
       ReWrite(statusfile);
-    Write(statusfile,frmain.ListView1.Items[thid].SubItems[columnstatus]+'/'+descargado+'/'+porciento+'/'+tiempo);
+    Write(statusfile,frmain.lvMain.Items[thid].SubItems[columnstatus]+'/'+descargado+'/'+porciento+'/'+tiempo);
     CloseFile(statusfile);
   except on e:exception do
     CloseFile(statusfile);
@@ -3667,7 +3667,7 @@ begin
   icono.Height:=frmain.MainTrayIcon.Icon.Height;
   icono.Canvas.Brush.Color:=clWhite;
   icono.Canvas.Pen.Color:=clBlack;
-  if frmain.ListView1.Items[thid].SubItems[columnstatus]='1' then
+  if frmain.lvMain.Items[thid].SubItems[columnstatus]='1' then
     icono.Canvas.Font.Color:=clBlack
   else
     icono.Canvas.Font.Color:=clRed;
@@ -3700,7 +3700,7 @@ begin
   trayicons[thid].Icon.Assign(icono);
   trayicons[thid].Animate:=true;///////////Esto es necesario para Qt si no el icono no se actualiza
   trayicons[thid].AnimateInterval:=0;//////y un intervalo que no parpadee
-  trayicons[thid].Hint:=frmain.ListView1.Items[thid].SubItems[columnname]+' '+velocidad;
+  trayicons[thid].Hint:=frmain.lvMain.Items[thid].SubItems[columnname]+' '+velocidad;
   icono.Destroy;
 end;
 
@@ -3716,14 +3716,14 @@ begin
       SysUtils.DeleteFile(configpath+'awgg.dat');
     end;
     inidownloadsfile:=TMEMINIFile.Create(configpath+'awgg.dat');
-    inidownloadsfile.WriteInteger('Total','value',frmain.ListView1.Items.Count);
-    for wn:=0 to frmain.ListView1.Items.Count-1 do
+    inidownloadsfile.WriteInteger('Total','value',frmain.lvMain.Items.Count);
+    for wn:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      if frmain.ListView1.Items[wn].SubItems[columnstatus]<> '1' then
+      if frmain.lvMain.Items[wn].SubItems[columnstatus]<> '1' then
       begin
-        inidownloadsfile.WriteString('Download'+inttostr(wn),'columnstatus',frmain.ListView1.Items[wn].SubItems[columnstatus]);
-        inidownloadsfile.WriteInteger('Download'+inttostr(wn),'icon',frmain.ListView1.Items[wn].ImageIndex);
-        inidownloadsfile.WriteString('Download'+inttostr(wn),'status',frmain.ListView1.Items[wn].Caption);
+        inidownloadsfile.WriteString('Download'+inttostr(wn),'columnstatus',frmain.lvMain.Items[wn].SubItems[columnstatus]);
+        inidownloadsfile.WriteInteger('Download'+inttostr(wn),'icon',frmain.lvMain.Items[wn].ImageIndex);
+        inidownloadsfile.WriteString('Download'+inttostr(wn),'status',frmain.lvMain.Items[wn].Caption);
       end
       else
       begin
@@ -3731,29 +3731,29 @@ begin
         inidownloadsfile.WriteInteger('Download'+inttostr(wn),'icon',3);
         inidownloadsfile.WriteString('Download'+inttostr(wn),'status','Detenido');
       end;
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnname',frmain.ListView1.Items[wn].SubItems[columnname]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnsize',frmain.ListView1.Items[wn].SubItems[columnsize]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columncurrent',frmain.ListView1.Items[wn].SubItems[columncurrent]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnurl',frmain.ListView1.Items[wn].SubItems[columnurl]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnspeed',frmain.ListView1.Items[wn].SubItems[columnspeed]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnpercent',frmain.ListView1.Items[wn].SubItems[columnpercent]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnestimate',frmain.ListView1.Items[wn].SubItems[columnestimate]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columndate',frmain.ListView1.Items[wn].SubItems[columndate]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columndestiny',frmain.ListView1.Items[wn].SubItems[columndestiny]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnengine',frmain.ListView1.Items[wn].SubItems[columnengine]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnparameters',frmain.ListView1.Items[wn].SubItems[columnparameters]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuser',frmain.ListView1.Items[wn].SubItems[columnuser]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnpass',frmain.ListView1.Items[wn].SubItems[columnpass]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuid',frmain.ListView1.Items[wn].SubItems[columnuid]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnqueue',frmain.ListView1.Items[wn].SubItems[columnqueue]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columntype',frmain.ListView1.Items[wn].SubItems[columntype]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columncookie',frmain.ListView1.Items[wn].SubItems[columncookie]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnreferer',frmain.ListView1.Items[wn].SubItems[columnreferer]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnpost',frmain.ListView1.Items[wn].SubItems[columnpost]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnheader',frmain.ListView1.Items[wn].SubItems[columnheader]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuseragent',frmain.ListView1.Items[wn].SubItems[columnuseragent]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnname',frmain.lvMain.Items[wn].SubItems[columnname]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnsize',frmain.lvMain.Items[wn].SubItems[columnsize]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columncurrent',frmain.lvMain.Items[wn].SubItems[columncurrent]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnurl',frmain.lvMain.Items[wn].SubItems[columnurl]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnspeed',frmain.lvMain.Items[wn].SubItems[columnspeed]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnpercent',frmain.lvMain.Items[wn].SubItems[columnpercent]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnestimate',frmain.lvMain.Items[wn].SubItems[columnestimate]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columndate',frmain.lvMain.Items[wn].SubItems[columndate]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columndestiny',frmain.lvMain.Items[wn].SubItems[columndestiny]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnengine',frmain.lvMain.Items[wn].SubItems[columnengine]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnparameters',frmain.lvMain.Items[wn].SubItems[columnparameters]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuser',frmain.lvMain.Items[wn].SubItems[columnuser]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnpass',frmain.lvMain.Items[wn].SubItems[columnpass]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuid',frmain.lvMain.Items[wn].SubItems[columnuid]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnqueue',frmain.lvMain.Items[wn].SubItems[columnqueue]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columntype',frmain.lvMain.Items[wn].SubItems[columntype]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columncookie',frmain.lvMain.Items[wn].SubItems[columncookie]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnreferer',frmain.lvMain.Items[wn].SubItems[columnreferer]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnpost',frmain.lvMain.Items[wn].SubItems[columnpost]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnheader',frmain.lvMain.Items[wn].SubItems[columnheader]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuseragent',frmain.lvMain.Items[wn].SubItems[columnuseragent]);
     end;
-    if (frmain.ListView1.Items.Count=0) and inidownloadsfile.SectionExists('Download0') then
+    if (frmain.lvMain.Items.Count=0) and inidownloadsfile.SectionExists('Download0') then
     begin
       inidownloadsfile.EraseSection('Download0');
       inidownloadsfile.WriteInteger('Total','value',0);
@@ -3794,11 +3794,11 @@ var
   fname:string;
   defaultdir:string='';
 begin
-  frmain.OpenDialog1.Execute;
-  if {$IFDEF LCLQT}(frmain.OpenDialog1.UserChoice=1){$else}frmain.OpenDialog1.FileName<>''{$endif} then
+  frmain.odlgImportdown.Execute;
+  if {$IFDEF LCLQT}(frmain.OpenDialog1.UserChoice=1){$else}frmain.odlgImportdown.FileName<>''{$endif} then
   begin
     urls:=TStringList.Create;
-    urls.LoadFromFile(frmain.OpenDialog1.FileName);
+    urls.LoadFromFile(frmain.odlgImportdown.FileName);
     for nurl:=0 to urls.Count-1 do
     begin
       if urlexists(urls[nurl])=false then
@@ -3807,7 +3807,7 @@ begin
           1:defaultdir:=ddowndir;
           2:defaultdir:=suggestdir(ParseURI(urls[nurl]).Document);
         end;
-        imitem:=TListItem.Create(frmain.ListView1.Items);
+        imitem:=TListItem.Create(frmain.lvMain.Items);
         imitem.Caption:=frstrings.statuspaused.Caption;
         imitem.ImageIndex:=18;
         fname:=ParseURI(urls[nurl]).Document;
@@ -3825,7 +3825,7 @@ begin
         imitem.SubItems.Add(defaultengine);//Motor
         imitem.SubItems.Add('');//Parametros
         imitem.SubItems.Add('0');//status
-        imitem.SubItems.Add(inttostr(frmain.ListView1.Items.Count));//id
+        imitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
         imitem.SubItems.Add('');//user
         imitem.SubItems.Add('');//pass
         imitem.SubItems.Add(inttostr(triesrotate));//tries
@@ -3837,12 +3837,12 @@ begin
         imitem.SubItems.Add('');//post
         imitem.SubItems.Add('');//header
         imitem.SubItems.Add('');//useragent
-        frmain.ListView1.Items.AddItem(imitem);
+        frmain.lvMain.Items.AddItem(imitem);
       end;
     end;
     urls.Destroy;
   end;
-  frmain.TreeView1SelectionChanged(nil);
+  frmain.tvMainSelectionChanged(nil);
   savemydownloads();
 end;
 
@@ -3851,15 +3851,15 @@ var
   nurl:integer;
   urlist:TStringList;
 begin
-  frmain.SaveDialog1.Execute;
-  if {$IFDEF LCLQT}frmain.SaveDialog1.UserChoice=1{$else}frmain.SaveDialog1.FileName<>''{$endif} then
+  frmain.sdlgExportDown.Execute;
+  if {$IFDEF LCLQT}frmain.SaveDialog1.UserChoice=1{$else}frmain.sdlgExportDown.FileName<>''{$endif} then
   begin
     urlist:=TstringList.Create;
-    for nurl:=0 to frmain.ListView1.Items.Count-1 do
+    for nurl:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      urlist.Add(frmain.ListView1.Items[nurl].SubItems[columnurl]);
+      urlist.Add(frmain.lvMain.Items[nurl].SubItems[columnurl]);
     end;
-    urlist.SaveToFile(frmain.SaveDialog1.FileName);
+    urlist.SaveToFile(frmain.sdlgExportDown.FileName);
   end;
 end;
 
@@ -3869,62 +3869,62 @@ var
   nombres:string;
 begin
   nombres:='';
-  SetLength(trayicons,frmain.ListView1.Items.Count);
-  if (frmain.ListView1.SelCount>0) or (frmain.ListView1.ItemIndex<>-1) then
+  SetLength(trayicons,frmain.lvMain.Items.Count);
+  if (frmain.lvMain.SelCount>0) or (frmain.lvMain.ItemIndex<>-1) then
   begin
     n:=0;
-    if frmain.ListView1.SelCount>1 then
+    if frmain.lvMain.SelCount>1 then
     begin
-      for i:=0 to frmain.ListView1.Items.Count-1 do
+      for i:=0 to frmain.lvMain.Items.Count-1 do
       begin
-        if (frmain.ListView1.Items[i].Selected) then
+        if (frmain.lvMain.Items[i].Selected) then
         begin
           if (Length(nombres)<100) and (n<5) then
           begin
             inc(n);
-            nombres:=nombres+frmain.ListView1.Items[i].SubItems[columnname]+#10;
+            nombres:=nombres+frmain.lvMain.Items[i].SubItems[columnname]+#10;
           end;
         end;
       end;
-      if frmain.ListView1.SelCount>n then
+      if frmain.lvMain.SelCount>n then
       nombres:=nombres+'...';
     end
     else
-      nombres:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname];
-    total:=frmain.ListView1.Items.Count-1;
+      nombres:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+    total:=frmain.lvMain.Items.Count-1;
     frconfirm.Caption:=frstrings.dlgconfirm.Caption;
     if delfile then
-      frconfirm.dlgtext.Caption:=frstrings.dlgdeletedownandfile.Caption+' ['+inttostr(frmain.ListView1.SelCount)+']'+#10#13+#10#13+nombres
+      frconfirm.dlgtext.Caption:=frstrings.dlgdeletedownandfile.Caption+' ['+inttostr(frmain.lvMain.SelCount)+']'+#10#13+#10#13+nombres
     else
-      frconfirm.dlgtext.Caption:=frstrings.dlgdeletedown.Caption+' ['+inttostr(frmain.ListView1.SelCount)+']'+#10#13+#10#13+nombres;
+      frconfirm.dlgtext.Caption:=frstrings.dlgdeletedown.Caption+' ['+inttostr(frmain.lvMain.SelCount)+']'+#10#13+#10#13+nombres;
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
       for i:=total downto 0 do
       begin
-        if (frmain.ListView1.Items[i].Selected) and (frmain.ListView1.Items[i].SubItems[columnstatus]<>'1') then
+        if (frmain.lvMain.Items[i].Selected) and (frmain.lvMain.Items[i].SubItems[columnstatus]<>'1') then
         begin
           //Borrar tambien el historial de la descarga antes de borrar.
-          if FileExists(UTF8ToSys(logpath+pathdelim+frmain.ListView1.Items[i].SubItems[columnname])+'.log') then
-            SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+frmain.ListView1.Items[i].SubItems[columnname])+'.log');
-          if FileExists(UTF8ToSys(datapath+pathdelim+frmain.ListView1.Items[i].SubItems[columnuid])+'.status') then
-            SysUtils.DeleteFile(UTF8ToSys(datapath+pathdelim+frmain.ListView1.Items[i].SubItems[columnuid])+'.status');
-          if frmain.ListView1.Items[i].SubItems[columnname] <> '' then
+          if FileExists(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])+'.log') then
+            SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])+'.log');
+          if FileExists(UTF8ToSys(datapath+pathdelim+frmain.lvMain.Items[i].SubItems[columnuid])+'.status') then
+            SysUtils.DeleteFile(UTF8ToSys(datapath+pathdelim+frmain.lvMain.Items[i].SubItems[columnuid])+'.status');
+          if frmain.lvMain.Items[i].SubItems[columnname] <> '' then
           begin
-            if FileExists(UTF8ToSys(frmain.ListView1.Items[i].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[i].SubItems[columnname])) and delfile and (frmain.ListView1.Items[i].SubItems[columntype]='0') then
-              SysUtils.DeleteFile(UTF8ToSys(frmain.ListView1.Items[i].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[i].SubItems[columnname]));
+            if FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])) and delfile and (frmain.lvMain.Items[i].SubItems[columntype]='0') then
+              SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname]));
           end;
-          if frmain.ListView1.ItemIndex=i then
+          if frmain.lvMain.ItemIndex=i then
             frmain.SynEdit1.Lines.Clear;
           refreshicons();
-          frmain.ListView1.Items.Delete(i);
+          frmain.lvMain.Items.Delete(i);
         end;
       end;
       rebuildids();
       savemydownloads();
-      frmain.ProgressBar1.Position:=0;
-      if frmain.ListView2.Visible then
-        frmain.TreeView1SelectionChanged(nil);
+      frmain.pbMain.Position:=0;
+      if frmain.lvFilter.Visible then
+        frmain.tvMainSelectionChanged(nil);
     end;
   end
   else
@@ -3934,7 +3934,7 @@ end;
 procedure DownThread.shutdown;
 begin
   manualshutdown:=true;
-  if frmain.ListView1.Items[thid].SubItems[columnengine]='lftp' then
+  if frmain.lvMain.Items[thid].SubItems[columnengine]='lftp' then
     hilo[thid].wthp.Terminate(0);
 end;
 
@@ -3948,7 +3948,7 @@ var
 begin
   completado:=false;
   wthp.Options:=[poUsePipes,poStderrToOutPut,poNoConsole];
-  Case frmain.ListView1.Items[thid].SubItems[columnengine] of
+  Case frmain.lvMain.Items[thid].SubItems[columnengine] of
     'wget':
     begin
       wthp.Executable:=UTF8ToSys(wgetrutebin);
@@ -3997,7 +3997,7 @@ begin
   if Not DirectoryExists(datapath) then
     CreateDir(datapath);
   Synchronize(@update);
-  wthp.CurrentDirectory:=UTF8ToSys(frmain.ListView1.Items[thid].SubItems[columndestiny]);
+  wthp.CurrentDirectory:=UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columndestiny]);
   try
     wthp.Execute;
     try
@@ -4005,8 +4005,8 @@ begin
       begin
         if Not DirectoryExists(logpath) then
           CreateDir(UTF8ToSys(logpath));
-        AssignFile(logfile,UTF8ToSys(logpath)+PathDelim+UTF8ToSys(frmain.ListView1.Items[thid].SubItems[columnname])+'.log');
-        if fileExists(logpath+PathDelim+UTF8ToSys(frmain.ListView1.Items[thid].SubItems[columnname])+'.log') then
+        AssignFile(logfile,UTF8ToSys(logpath)+PathDelim+UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columnname])+'.log');
+        if fileExists(logpath+PathDelim+UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columnname])+'.log') then
           Append(logfile)
         else
           ReWrite(logfile);
@@ -4031,9 +4031,9 @@ begin
             Write(logfile,AnsiReplaceStr(AnsiReplaceStr(wout[thid],#13,#10),#10,LineEnding));
           except on e:exception do
           end;
-          if (Pos('(OK):download',wout[thid])>0) or (Pos('100%[',wout[thid])>0) or (Pos('%AWGG100OK%',wout[thid])>0) or (Pos('[100%]',wout[thid])>0) or (Pos(' guardado [',wout[thid])>0) or (Pos(' saved [',wout[thid])>0) or (Pos('ERROR 400: Bad Request.',wout[thid])>0) or (Pos('The file is already fully retrieved; nothing to do.',wout[thid])>0) or (Pos('El fichero ya ha sido totalmente recuperado, no hay nada que hacer.',wout[thid])>0) and (frmain.ListView1.Items[thid].SubItems[columntype]='0') then
+          if (Pos('(OK):download',wout[thid])>0) or (Pos('100%[',wout[thid])>0) or (Pos('%AWGG100OK%',wout[thid])>0) or (Pos('[100%]',wout[thid])>0) or (Pos(' guardado [',wout[thid])>0) or (Pos(' saved [',wout[thid])>0) or (Pos('ERROR 400: Bad Request.',wout[thid])>0) or (Pos('The file is already fully retrieved; nothing to do.',wout[thid])>0) or (Pos('El fichero ya ha sido totalmente recuperado, no hay nada que hacer.',wout[thid])>0) and (frmain.lvMain.Items[thid].SubItems[columntype]='0') then
             completado:=true;
-          if (Pos('FINISHED --',wout[thid])>0) or (Pos('Downloaded: ',wout[thid])>0) and (frmain.ListView1.Items[thid].SubItems[columntype]='1') then
+          if (Pos('FINISHED --',wout[thid])>0) or (Pos('Downloaded: ',wout[thid])>0) and (frmain.lvMain.Items[thid].SubItems[columntype]='1') then
             completado:=true;
           //end;
       {$IFDEF UNIX}
@@ -4072,7 +4072,7 @@ var
   punto:string='';
 begin
   otherlistview:=false;
-  case frmain.ListView1.Items[thid].SubItems[columnengine] of
+  case frmain.lvMain.Items[thid].SubItems[columnengine] of
     'wget':
     begin
       case wthp.ExitStatus of
@@ -4095,62 +4095,62 @@ begin
       end;
     end;
   end;
-  if (frmain.ListView2.Visible) then
+  if (frmain.lvFilter.Visible) then
   begin
-    if (frmain.ListView2.Items.Count>=thid2) then
+    if (frmain.lvFilter.Items.Count>=thid2) then
     begin
-      if (frmain.ListView1.Items[thid].SubItems[columnuid]=frmain.ListView2.Items[thid2].SubItems[columnuid]) then
+      if (frmain.lvMain.Items[thid].SubItems[columnuid]=frmain.lvFilter.Items[thid2].SubItems[columnuid]) then
       begin
         otherlistview:=true;
       end;
     end;
   end;
-  frmain.ListView1.Items[thid].SubItems[columnspeed]:='--';
-  if frmain.ListView1.ItemIndex=thid then
-    frmain.ProgressBar1.Style:=pbstNormal;
+  frmain.lvMain.Items[thid].SubItems[columnspeed]:='--';
+  if frmain.lvMain.ItemIndex=thid then
+    frmain.pbMain.Style:=pbstNormal;
   if completado then
   begin
-    qtimer[strtoint(frmain.ListView1.Items[thid].SubItems[columnqueue])].Interval:=1000;
-    frmain.ListView1.Items[thid].SubItems[columnstatus]:='3';
-    frmain.ListView1.Items[thid].Caption:=frstrings.statuscomplete.Caption;
-    frmain.ListView1.Items[thid].SubItems[columnpercent]:='100%';
+    qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Interval:=1000;
+    frmain.lvMain.Items[thid].SubItems[columnstatus]:='3';
+    frmain.lvMain.Items[thid].Caption:=frstrings.statuscomplete.Caption;
+    frmain.lvMain.Items[thid].SubItems[columnpercent]:='100%';
     ///Tama;o automatico
-    if (Pos(',',frmain.ListView1.Items[thid].SubItems[columnsize])>0) then
+    if (Pos(',',frmain.lvMain.Items[thid].SubItems[columnsize])>0) then
       punto:=',';
-    if (Pos('.',frmain.ListView1.Items[thid].SubItems[columnsize])>0) then
+    if (Pos('.',frmain.lvMain.Items[thid].SubItems[columnsize])>0) then
       punto:='.';
-    if (Pos(',',frmain.ListView1.Items[thid].SubItems[columnsize])>0) or (Pos('.',frmain.ListView1.Items[thid].SubItems[columnsize])>0) then
-      tmpsize:=prettysize(FileSize(frmain.ListView1.Items[thid].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[thid].SubItems[columnname]),frmain.ListView1.Items[thid].SubItems[columnengine],-1,punto)
+    if (Pos(',',frmain.lvMain.Items[thid].SubItems[columnsize])>0) or (Pos('.',frmain.lvMain.Items[thid].SubItems[columnsize])>0) then
+      tmpsize:=prettysize(FileSize(frmain.lvMain.Items[thid].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[thid].SubItems[columnname]),frmain.lvMain.Items[thid].SubItems[columnengine],-1,punto)
     else
-      tmpsize:=prettysize(FileSize(frmain.ListView1.Items[thid].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[thid].SubItems[columnname]),frmain.ListView1.Items[thid].SubItems[columnengine],0,punto);
+      tmpsize:=prettysize(FileSize(frmain.lvMain.Items[thid].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[thid].SubItems[columnname]),frmain.lvMain.Items[thid].SubItems[columnengine],0,punto);
     if Pos('-',tmpsize)<1 then
-    frmain.ListView1.Items[thid].SubItems[columncurrent]:=tmpsize;
-    if frmain.ListView1.ItemIndex=thid then
-      frmain.ProgressBar1.Position:=100;
-    if frmain.ListView1.Items[thid].SubItems[columntype] = '0' then
-      frmain.ListView1.Items[thid].ImageIndex:=4;
-    if frmain.ListView1.Items[thid].SubItems[columntype] = '1' then
-      frmain.ListView1.Items[thid].ImageIndex:=54;
+    frmain.lvMain.Items[thid].SubItems[columncurrent]:=tmpsize;
+    if frmain.lvMain.ItemIndex=thid then
+      frmain.pbMain.Position:=100;
+    if frmain.lvMain.Items[thid].SubItems[columntype] = '0' then
+      frmain.lvMain.Items[thid].ImageIndex:=4;
+    if frmain.lvMain.Items[thid].SubItems[columntype] = '1' then
+      frmain.lvMain.Items[thid].ImageIndex:=54;
     if otherlistview then
     begin
-      frmain.ListView2.Items[thid2].SubItems[columnstatus]:='3';
-      frmain.ListView2.Items[thid2].Caption:=frstrings.statuscomplete.Caption;
-      frmain.ListView2.Items[thid2].SubItems[columnpercent]:='100%';
+      frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='3';
+      frmain.lvFilter.Items[thid2].Caption:=frstrings.statuscomplete.Caption;
+      frmain.lvFilter.Items[thid2].SubItems[columnpercent]:='100%';
       //tama;o automatico
-      frmain.ListView2.Items[thid2].SubItems[columncurrent]:=frmain.ListView1.Items[thid].SubItems[columncurrent];
-      frmain.ListView2.Items[thid2].SubItems[columnspeed]:='--';
-      if frmain.ListView2.Items[thid2].SubItems[columntype] = '0' then
-        frmain.ListView2.Items[thid2].ImageIndex:=4;
-      if frmain.ListView2.Items[thid2].SubItems[columntype] = '1' then
-        frmain.ListView2.Items[thid2].ImageIndex:=54;
+      frmain.lvFilter.Items[thid2].SubItems[columncurrent]:=frmain.lvMain.Items[thid].SubItems[columncurrent];
+      frmain.lvFilter.Items[thid2].SubItems[columnspeed]:='--';
+      if frmain.lvFilter.Items[thid2].SubItems[columntype] = '0' then
+        frmain.lvFilter.Items[thid2].ImageIndex:=4;
+      if frmain.lvFilter.Items[thid2].SubItems[columntype] = '1' then
+        frmain.lvFilter.Items[thid2].ImageIndex:=54;
     end;
     if (shownotifi) and (frmain.Focused=false) then
     begin
       //////Many notifi forms
-      //if frmain.ListView1.Items[thid].SubItems[columnname]<>'' then
-        createnewnotifi(frstrings.popuptitlecomplete.Caption,frmain.ListView1.Items[thid].SubItems[columnname],'',frmain.ListView1.Items[thid].SubItems[columndestiny],true);
+      //if frmain.lvMain.Items[thid].SubItems[columnname]<>'' then
+        createnewnotifi(frstrings.popuptitlecomplete.Caption,frmain.lvMain.Items[thid].SubItems[columnname],'',frmain.lvMain.Items[thid].SubItems[columndestiny],true);
       //else
-        //createnewnotifi(rsForm.popuptitlecomplete.Caption,frmain.ListView1.Items[thid].SubItems[columnurl],'',frmain.ListView1.Items[thid].SubItems[columndestiny],true);
+        //createnewnotifi(rsForm.popuptitlecomplete.Caption,frmain.lvMain.Items[thid].SubItems[columnurl],'',frmain.lvMain.Items[thid].SubItems[columndestiny],true);
       //////
       try
         if playsounds then
@@ -4166,48 +4166,48 @@ begin
   begin
     if manualshutdown then
     begin
-      frmain.ListView1.Items[thid].SubItems[columnstatus]:='2';
-      frmain.ListView1.Items[thid].Caption:=frstrings.statusstoped.Caption;
-      if frmain.ListView1.Items[thid].SubItems[columntype] = '0' then
-        frmain.ListView1.Items[thid].ImageIndex:=3;
-      if frmain.ListView1.Items[thid].SubItems[columntype] = '1' then
-        frmain.ListView1.Items[thid].ImageIndex:=53;
+      frmain.lvMain.Items[thid].SubItems[columnstatus]:='2';
+      frmain.lvMain.Items[thid].Caption:=frstrings.statusstoped.Caption;
+      if frmain.lvMain.Items[thid].SubItems[columntype] = '0' then
+        frmain.lvMain.Items[thid].ImageIndex:=3;
+      if frmain.lvMain.Items[thid].SubItems[columntype] = '1' then
+        frmain.lvMain.Items[thid].ImageIndex:=53;
       if otherlistview then
       begin
-        frmain.ListView2.Items[thid2].SubItems[columnstatus]:='2';
-        frmain.ListView2.Items[thid2].Caption:=frstrings.statusstoped.Caption;
-        if frmain.ListView1.Items[thid2].SubItems[columntype] = '0' then
-          frmain.ListView2.Items[thid2].ImageIndex:=3;
-        if frmain.ListView2.Items[thid2].SubItems[columntype] = '1' then
-          frmain.ListView2.Items[thid2].ImageIndex:=53;
+        frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='2';
+        frmain.lvFilter.Items[thid2].Caption:=frstrings.statusstoped.Caption;
+        if frmain.lvMain.Items[thid2].SubItems[columntype] = '0' then
+          frmain.lvFilter.Items[thid2].ImageIndex:=3;
+        if frmain.lvFilter.Items[thid2].SubItems[columntype] = '1' then
+          frmain.lvFilter.Items[thid2].ImageIndex:=53;
       end;
     end
     else
     begin
-      frmain.ListView1.Items[thid].SubItems[columnstatus]:='4';
-      frmain.ListView1.Items[thid].Caption:=frstrings.statuserror.Caption;
-      if frmain.ListView1.Items[thid].SubItems[columntype] = '0' then
-        frmain.ListView1.Items[thid].ImageIndex:=3;
-      if frmain.ListView1.Items[thid].SubItems[columntype] = '1' then
-        frmain.ListView1.Items[thid].ImageIndex:=53;
+      frmain.lvMain.Items[thid].SubItems[columnstatus]:='4';
+      frmain.lvMain.Items[thid].Caption:=frstrings.statuserror.Caption;
+      if frmain.lvMain.Items[thid].SubItems[columntype] = '0' then
+        frmain.lvMain.Items[thid].ImageIndex:=3;
+      if frmain.lvMain.Items[thid].SubItems[columntype] = '1' then
+        frmain.lvMain.Items[thid].ImageIndex:=53;
       if otherlistview then
       begin
-        frmain.ListView2.Items[thid2].SubItems[columnstatus]:='4';
-        frmain.ListView2.Items[thid2].Caption:=frstrings.statuserror.Caption;
-        if frmain.ListView1.Items[thid2].SubItems[columntype] = '0' then
-          frmain.ListView2.Items[thid2].ImageIndex:=3;
-        if frmain.ListView2.Items[thid2].SubItems[columntype] = '1' then
-          frmain.ListView2.Items[thid2].ImageIndex:=53;
+        frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='4';
+        frmain.lvFilter.Items[thid2].Caption:=frstrings.statuserror.Caption;
+        if frmain.lvMain.Items[thid2].SubItems[columntype] = '0' then
+          frmain.lvFilter.Items[thid2].ImageIndex:=3;
+        if frmain.lvFilter.Items[thid2].SubItems[columntype] = '1' then
+          frmain.lvFilter.Items[thid2].ImageIndex:=53;
       end;
-      if qtimer[strtoint(frmain.ListView1.Items[thid].SubItems[columnqueue])].Enabled then
+      if qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled then
       begin
-        qtimer[strtoint(frmain.ListView1.Items[thid].SubItems[columnqueue])].Interval:=queuedelay*1000;
+        qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Interval:=queuedelay*1000;
       end;
     end;
-    frmain.ListView1.Items[thid].SubItems[columnspeed]:='--';
+    frmain.lvMain.Items[thid].SubItems[columnspeed]:='--';
     if otherlistview then
-      frmain.ListView1.Items[thid].SubItems[columnspeed]:='--';
-    if frmain.ListView1.ItemIndex=thid then
+      frmain.lvMain.Items[thid].SubItems[columnspeed]:='--';
+    if frmain.lvMain.ItemIndex=thid then
     begin
       frmain.tbStartDown.Enabled:=true;
       frmain.tbStopDown.Enabled:=false;
@@ -4221,34 +4221,34 @@ begin
       outlines.Add(timetostr(Time()));
       outlines.AddText(wout[thid]);
       //////Many notifi forms
-      //if frmain.ListView1.Items[thid].SubItems[columnname]<>'' then
-        createnewnotifi(frstrings.popuptitlestoped.Caption,frmain.ListView1.Items[thid].SubItems[columnname],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.ListView1.Items[thid].SubItems[columndestiny],false);
+      //if frmain.lvMain.Items[thid].SubItems[columnname]<>'' then
+        createnewnotifi(frstrings.popuptitlestoped.Caption,frmain.lvMain.Items[thid].SubItems[columnname],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.lvMain.Items[thid].SubItems[columndestiny],false);
       //else
-        //createnewnotifi(rsForm.popuptitlestoped.Caption,frmain.ListView1.Items[thid].SubItems[columnurl],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.ListView1.Items[thid].SubItems[columndestiny],false);
+        //createnewnotifi(rsForm.popuptitlestoped.Caption,frmain.lvMain.Items[thid].SubItems[columnurl],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.lvMain.Items[thid].SubItems[columndestiny],false);
       outlines.Destroy;
-      if frmain.ListView1.Items[thid].SubItems[columntries]<>'' then
-        frmain.ListView1.Items[thid].SubItems[columntries]:=inttostr(strtoint(frmain.ListView1.Items[thid].SubItems[columntries])-1);
+      if frmain.lvMain.Items[thid].SubItems[columntries]<>'' then
+        frmain.lvMain.Items[thid].SubItems[columntries]:=inttostr(strtoint(frmain.lvMain.Items[thid].SubItems[columntries])-1);
       //////Mover la descarga si ocurrio un error
-      if qtimer[strtoint(frmain.ListView1.Items[thid].SubItems[columnqueue])].Enabled and queuerotate then
+      if qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled and queuerotate then
       begin
-        if thid<frmain.ListView1.Items.Count-1 then
+        if thid<frmain.lvMain.Items.Count-1 then
         begin
-          frmain.ListView1.MultiSelect:=false;
+          frmain.lvMain.MultiSelect:=false;
           if rotatemode=0 then
             moveonestepdown(thid);
           if rotatemode=1 then
-            frmain.ListView1.Items.Move(thid,frmain.ListView1.Items.Count-1);
+            frmain.lvMain.Items.Move(thid,frmain.lvMain.Items.Count-1);
           if rotatemode=2 then
           begin
-            if (thid+1)<(frmain.ListView1.Items.Count-1) then
+            if (thid+1)<(frmain.lvMain.Items.Count-1) then
               moveonestepdown(thid,1)
             else
               moveonestepdown(thid);
           end;
-          frmain.ListView1.MultiSelect:=true;
+          frmain.lvMain.MultiSelect:=true;
           rebuildids();
-          if frmain.ListView2.Visible then
-            frmain.TreeView1SelectionChanged(nil);
+          if frmain.lvFilter.Visible then
+            frmain.tvMainSelectionChanged(nil);
         end;
       end;
       try
@@ -4260,14 +4260,14 @@ begin
   end;
   //if columncolav then
   //begin
-    //frmain.ListView1.Columns[0].Width:=columncolaw;
-    //frmain.ListView2.Columns[0].Width:=columncolaw;
+    //frmain.lvMain.Columns[0].Width:=columncolaw;
+    //frmain.lvFilter.Columns[0].Width:=columncolaw;
   //end;
   {$IFDEF LCLGTK2}
     //if columncolav then
     //begin
-      //frmain.ListView1.Columns[0].Width:=columncolaw;
-      //frmain.ListView2.Columns[0].Width:=columncolaw;
+      //frmain.lvMain.Columns[0].Width:=columncolaw;
+      //frmain.lvFilter.Columns[0].Width:=columncolaw;
     //end;
   {$ENDIF}
 end;
@@ -4302,7 +4302,7 @@ begin
   for ns:=0 to nt-1 do
   begin
     try
-      fitem:=TListItem.Create(frmain.ListView1.Items);
+      fitem:=TListItem.Create(frmain.lvMain.Items);
       fitem.Caption:=inidownloadsfile.ReadString('Download'+inttostr(ns),'status','');
       fitem.ImageIndex:=inidownloadsfile.ReadInteger('Download'+inttostr(ns),'icon',-1);
       fitem.SubItems.Add('');
@@ -4415,7 +4415,7 @@ begin
         end;
         ftext.Destroy;
       end;
-      frmain.ListView1.Items.AddItem(fitem);
+      frmain.lvMain.Items.AddItem(fitem);
     except on e:exception do
       //ShowMessage('Error loading download list '+e.Message);
     end;
@@ -4489,9 +4489,9 @@ var
 begin
   enprogreso:=false;
   confirmar:=true;
-  for n:=0 to frmain.ListView1.Items.Count-1 do
+  for n:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.ListView1.Items[n].SubItems[columnstatus]='1' then
+    if frmain.lvMain.Items[n].SubItems[columnstatus]='1' then
       enprogreso:=true;
   end;
   if enprogreso then
@@ -4571,10 +4571,17 @@ begin
     Append(exceptstr)
   else
     Rewrite(exceptstr);
+  Writeln(exceptstr,'------------------------------------------');
+  Writeln(exceptstr,DateTostr(SysUtils.Now())+' '+TimeTostr(SysUtils.Now()));
+  Writeln(exceptstr,'AWGG '+versionitis.version+' Build with FPC '+versionitis.fpcversion+' and LCL '+lcl_version);
+  Writeln(exceptstr,'CPU: '+versionitis.targetcpu);
+  Writeln(exceptstr,'OS: '+versionitis.targetos);
+  Writeln(exceptstr,'');
   Writeln(exceptstr,Exception(ExceptObject).ClassName+':'+Exception(ExceptObject).Message+#10#13);
   System.DumpExceptionBackTrace(exceptstr);
+  Writeln(exceptstr,'------------------------------------------');
   CloseFile(exceptstr);
-  MessageDlg(Application.Title, 'Error:' + LineEnding + e.Message, mtError, [mbOK], 0);
+  MessageDlg(Application.Title,'Oh!! this is rare, take calm and please report to nenirey@gmail.com and attach the file:'+LineEnding+SysToUTF8(configpath+pathdelim+'awgg.err')+LineEnding+'Error:' + LineEnding + e.Message, mtError, [mbOK], 0);
 end;
 
 
@@ -4685,7 +4692,7 @@ begin
   end
   else
     frmain.WindowState:=lastmainwindowstate;
-  frmain.ListView2.Columns:=frmain.ListView1.Columns;
+  frmain.lvFilter.Columns:=frmain.lvMain.Columns;
 end;
 
 procedure Tfrmain.FormResize(Sender: TObject);
@@ -4699,29 +4706,29 @@ begin
   lastmainwindowstate:=frmain.WindowState;
 end;
 
-procedure Tfrmain.ListView1Click(Sender: TObject);
+procedure Tfrmain.lvMainClick(Sender: TObject);
 begin
-  //columncolaw:=frmain.ListView1.Columns[0].Width;
+  //columncolaw:=frmain.lvMain.Columns[0].Width;
 end;
 
-procedure Tfrmain.ListView1ColumnClick(Sender: TObject; Column: TListColumn);
+procedure Tfrmain.lvMainColumnClick(Sender: TObject; Column: TListColumn);
 //var
 //  n:integer;
 begin
   //Commentado temporalmente porque afecta el orden de todas las colas
-  //for n:=0 to frmain.ListView1.Columns.Count-1 do
+  //for n:=0 to frmain.lvMain.Columns.Count-1 do
   //begin
-  //  frmain.ListView1.Columns[n].Caption:=AnsiReplaceStr(frmain.ListView1.Columns[n].Caption,'  ٧','');
-  //  frmain.ListView1.Columns[n].Caption:=AnsiReplaceStr(frmain.ListView1.Columns[n].Caption,'  ٨','');
-  //  if (frmain.ListView2.Visible) then
+  //  frmain.lvMain.Columns[n].Caption:=AnsiReplaceStr(frmain.lvMain.Columns[n].Caption,'  ٧','');
+  //  frmain.lvMain.Columns[n].Caption:=AnsiReplaceStr(frmain.lvMain.Columns[n].Caption,'  ٨','');
+  //  if (frmain.lvFilter.Visible) then
   //  begin
-  //    frmain.ListView2.Columns[n].Caption:=AnsiReplaceStr(frmain.ListView2.Columns[n].Caption,'  ٧','');
-  //    frmain.ListView2.Columns[n].Caption:=AnsiReplaceStr(frmain.ListView2.Columns[n].Caption,'  ٨','');
+  //    frmain.lvFilter.Columns[n].Caption:=AnsiReplaceStr(frmain.lvFilter.Columns[n].Caption,'  ٧','');
+  //    frmain.lvFilter.Columns[n].Caption:=AnsiReplaceStr(frmain.lvFilter.Columns[n].Caption,'  ٨','');
   //  end;
   //end;
-  //if frmain.ListView1.SortDirection=sdAscending then
+  //if frmain.lvMain.SortDirection=sdAscending then
   //begin
-  //  frmain.ListView1.SortDirection:=sdDescending;
+  //  frmain.lvMain.SortDirection:=sdDescending;
   //  {$IFDEF LCLQT}
   //  {$ELSE}
   //    Column.Caption:=Column.Caption+'  ٧';
@@ -4729,36 +4736,36 @@ begin
   //end
   //else
   //begin
-  //  frmain.ListView1.SortDirection:=sdAscending;
+  //  frmain.lvMain.SortDirection:=sdAscending;
   //  {$IFDEF LCLQT}
   //  {$ELSE}
   //    Column.Caption:=Column.Caption+'  ٨';
   //  {$ENDIF}
   //end;
-  //frmain.ListView1.SortColumn:=column.Index;
-  //frmain.ListView1.SortType:=stText;
-  //if (frmain.ListView2.Visible) then
+  //frmain.lvMain.SortColumn:=column.Index;
+  //frmain.lvMain.SortType:=stText;
+  //if (frmain.lvFilter.Visible) then
   //begin
-  //  frmain.ListView2.SortColumn:=Column.Index;
-  //  frmain.ListView2.SortType:=stText;
-  //  frmain.TreeView1SelectionChanged(nil);
+  //  frmain.lvFilter.SortColumn:=Column.Index;
+  //  frmain.lvFilter.SortType:=stText;
+  //  frmain.tvMainSelectionChanged(nil);
   //end;
   //rebuildids();
-  //if frmain.ListView1.Visible then
-    //columncolaw:=frmain.ListView1.Columns[0].Width
+  //if frmain.lvMain.Visible then
+    //columncolaw:=frmain.lvMain.Columns[0].Width
   //else
-    //columncolaw:=frmain.ListView2.Columns[0].Width;
+    //columncolaw:=frmain.lvFilter.Columns[0].Width;
 end;
 
 
-procedure Tfrmain.ListView1ContextPopup(Sender: TObject; MousePos: TPoint;
+procedure Tfrmain.lvMainContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: Boolean);
 var
   i:integer;
 begin
-  if frmain.ListView1.SelCount>0 then
+  if frmain.lvMain.SelCount>0 then
   begin
-    case frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnstatus] of
+    case frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus] of
       '0':
       begin
         frmain.milistStartDown.Enabled:=true;
@@ -4816,11 +4823,11 @@ begin
         frmain.milistMoveFiles.Enabled:=true;
       end;
     end;
-    if (frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnstatus]='1') then
+    if (frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]='1') then
     begin
       frmain.milistShowTrayIcon.Enabled:=true;
-      if Assigned(trayicons[frmain.ListView1.ItemIndex]) then
-        frmain.milistShowTrayIcon.Checked:=trayicons[frmain.ListView1.ItemIndex].Visible
+      if Assigned(trayicons[frmain.lvMain.ItemIndex]) then
+        frmain.milistShowTrayIcon.Checked:=trayicons[frmain.lvMain.ItemIndex].Visible
     end
     else
     begin
@@ -4829,7 +4836,7 @@ begin
     handled:=true;
     for i:=0 to frmain.milistSendToQueue.Count-1 do
     begin
-      if (inttostr(i)=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue]) and (frmain.ListView1.SelCount<2) then
+      if (inttostr(i)=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]) and (frmain.lvMain.SelCount<2) then
         frmain.milistSendToQueue.Items[i].Enabled:=false
       else
         frmain.milistSendToQueue.Items[i].Enabled:=true;
@@ -4837,18 +4844,18 @@ begin
     frmain.pmDownList.PopUp;
   end;
 end;
-procedure Tfrmain.ListView1DblClick(Sender: TObject);
+procedure Tfrmain.lvMainDblClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    if (frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnstatus]='3') then
+    if (frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]='3') then
     begin
       frmain.milistOpenFileClick(nil);
     end;
   end;
 end;
 
-procedure Tfrmain.ListView1KeyDown(Sender: TObject; var Key: Word;
+procedure Tfrmain.lvMainKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
   //ShowMessage(inttostr(key));
@@ -4862,21 +4869,21 @@ begin
       else
       deleteitems(false);
     end;
-    13: frmain.ListView1DblClick(nil);
+    13: frmain.lvMainDblClick(nil);
     45,107:frmain.tbAddDownClick(nil);
     106:frmain.mimainSelectAllClick(nil);
   end;
 end;
 
-procedure Tfrmain.ListView1SelectItem(Sender: TObject; Item: TListItem;
+procedure Tfrmain.lvMainSelectItem(Sender: TObject; Item: TListItem;
   Selected: Boolean);
 var
   lastlines:TStringList;
   percent:string;
 begin
-  if (frmain.ListView1.ItemIndex<>-1) then
+  if (frmain.lvMain.ItemIndex<>-1) then
   begin
-    if frmain.Listview1.Items[frmain.ListView1.ItemIndex].SubItems[columnstatus]='1' then
+    if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]='1' then
     begin
       frmain.tbStartDown.Enabled:=false;
       frmain.tbStopDown.Enabled:=true;
@@ -4890,7 +4897,7 @@ begin
       frmain.tbRestartNow.Enabled:=true;
       frmain.tbRestartLater.Enabled:=true;
     end;
-    if qtimer[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue])].Enabled then
+    if qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled then
     begin
       frmain.tbStartQueue.Enabled:=false;
       frmain.tbStopQueue.Enabled:=true;
@@ -4902,11 +4909,11 @@ begin
     end;
 
     frmain.SynEdit1.Lines.Clear;
-    if FileExists(UTF8ToSys(logpath)+pathdelim+UTF8ToSys(frmain.Listview1.Items[frmain.ListView1.ItemIndex].SubItems[columnname])+'.log') and (frmain.SynEdit1.Visible) and (loadhistorylog) then
+    if FileExists(UTF8ToSys(logpath)+pathdelim+UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log') and (frmain.SynEdit1.Visible) and (loadhistorylog) then
     begin
       try
         lastlines:=TStringList.Create;
-        lastlines.LoadFromFile(UTF8ToSys(logpath)+pathdelim+UTF8ToSys(frmain.Listview1.Items[frmain.ListView1.ItemIndex].SubItems[columnname])+'.log');
+        lastlines.LoadFromFile(UTF8ToSys(logpath)+pathdelim+UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log');
         if (lastlines.Count>=20) and (loadhistorymode=2) then
         begin
           frmain.SynEdit1.Lines.Add(lastlines[lastlines.Count-20]);
@@ -4940,58 +4947,58 @@ begin
         //frmain.SynEdit1.Lines.Add(e.ToString);
       end;
     end;
-    percent:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnpercent];
+    percent:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpercent];
     try
-      frmain.ProgressBar1.Style:=pbstNormal;
+      frmain.pbMain.Style:=pbstNormal;
       if (percent<>'') and (percent<>'-') then
-        frmain.ProgressBar1.Position:=strtoint(Copy(percent,0,Pos('%',percent)-1))
+        frmain.pbMain.Position:=strtoint(Copy(percent,0,Pos('%',percent)-1))
       else
-        frmain.ProgressBar1.Position:=0;
+        frmain.pbMain.Position:=0;
     except on e:exception do
-      frmain.ProgressBar1.Position:=0;
+      frmain.pbMain.Position:=0;
     end;
   end;
 end;
 
-procedure Tfrmain.ListView2Click(Sender: TObject);
+procedure Tfrmain.lvFilterClick(Sender: TObject);
 begin
-  //columncolaw:=frmain.ListView2.Columns[0].Width;
+  //columncolaw:=frmain.lvFilter.Columns[0].Width;
 end;
 
-procedure Tfrmain.ListView2SelectItem(Sender: TObject; Item: TListItem;
+procedure Tfrmain.lvFilterSelectItem(Sender: TObject; Item: TListItem;
   Selected: Boolean);
 var
   indice:integer=0;
   x:integer;
 begin
-  if (frmain.ListView1.Items.Count>0) then
+  if (frmain.lvMain.Items.Count>0) then
   begin
     if item.SubItems[columnstatus] = '1' then
       indice:=hilo[strtoint(item.SubItems[columnid])].thid
     else
     begin
-      for x:=0 to frmain.ListView1.Items.Count-1 do
+      for x:=0 to frmain.lvMain.Items.Count-1 do
       begin
-        if frmain.ListView1.Items[x].SubItems[columnuid]=Item.SubItems[columnuid] then
+        if frmain.lvMain.Items[x].SubItems[columnuid]=Item.SubItems[columnuid] then
           indice:=x;
       end;
     end;
-    if (frmain.ListView2.SelCount>1) and (indice<frmain.ListView1.Items.Count) then
+    if (frmain.lvFilter.SelCount>1) and (indice<frmain.lvMain.Items.Count) then
     begin
-      frmain.ListView1.Items[indice].Selected:=true;
-      frmain.ListView1.ItemIndex:=indice;
+      frmain.lvMain.Items[indice].Selected:=true;
+      frmain.lvMain.ItemIndex:=indice;
     end
     else
     begin
-      if frmain.ListView1.SelCount>1 then
+      if frmain.lvMain.SelCount>1 then
       begin
-        for x:=0 to frmain.ListView1.Items.Count-1 do
-          frmain.ListView1.Items[x].Selected:=false;
+        for x:=0 to frmain.lvMain.Items.Count-1 do
+          frmain.lvMain.Items[x].Selected:=false;
       end;
-      frmain.ListView1.MultiSelect:=false;
-      if (indice <> -1) and (indice<frmain.ListView1.Items.Count) then
-        frmain.ListView1.ItemIndex:=indice;
-      frmain.ListView1.MultiSelect:=true;
+      frmain.lvMain.MultiSelect:=false;
+      if (indice <> -1) and (indice<frmain.lvMain.Items.Count) then
+        frmain.lvMain.ItemIndex:=indice;
+      frmain.lvMain.MultiSelect:=true;
     end;
   end;
 end;
@@ -5006,10 +5013,10 @@ begin
     SetLength(copywork,Length(copywork)+1);
     copywork[Length(copywork)-1]:=copythread.Create(true,Length(copywork)-1,true);
     copywork[Length(copywork)-1].id:=Length(copywork)-1;
-    for i:=0 to frmain.ListView1.Items.Count-1 do
+    for i:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      if (frmain.ListView1.Items[i].Selected) and (frmain.ListView1.Items[i].SubItems[columnstatus]='3') and (FileExists(UTF8ToSys(frmain.ListView1.Items[i].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[i].SubItems[columnname]))) then
-        copywork[Length(copywork)-1].source.Add(frmain.ListView1.Items[i].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[i].SubItems[columnname]);
+      if (frmain.lvMain.Items[i].Selected) and (frmain.lvMain.Items[i].SubItems[columnstatus]='3') and (FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname]))) then
+        copywork[Length(copywork)-1].source.Add(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname]);
     end;
     copywork[Length(copywork)-1].destination:=frmain.SelectDirectoryDialog1.FileName;
     copywork[Length(copywork)-1].Start;
@@ -5034,20 +5041,20 @@ end;
 
 procedure Tfrmain.mimainShowTreeClick(Sender: TObject);
 begin
-  if frmain.TreeView1.Visible and (frmain.PairSplitter2.Position>10) then
-    splithpos:=frmain.PairSplitter2.Position;
-  frmain.TreeView1.Visible:=(not frmain.TreeView1.Visible);
-  frmain.mimainShowTree.Checked:=frmain.TreeView1.Visible;
-  if frmain.TreeView1.Visible then
+  if frmain.tvMain.Visible and (frmain.psHorizontal.Position>10) then
+    splithpos:=frmain.psHorizontal.Position;
+  frmain.tvMain.Visible:=(not frmain.tvMain.Visible);
+  frmain.mimainShowTree.Checked:=frmain.tvMain.Visible;
+  if frmain.tvMain.Visible then
   begin
     if splithpos<10 then
       splithpos:=170;
-    frmain.PairSplitter2.Position:=splithpos;
+    frmain.psHorizontal.Position:=splithpos;
   end
   else
   begin
-    frmain.PairSplitter2.Position:=0;
-    frmain.TreeView1.Items.SelectOnlyThis(frmain.TreeView1.Items[0]);
+    frmain.psHorizontal.Position:=0;
+    frmain.tvMain.Items.SelectOnlyThis(frmain.tvMain.Items[0]);
   end;
 end;
 
@@ -5104,20 +5111,23 @@ var
   tmpstr:string='';
   paramlist:string='';
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    if frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columntype] = '0' then
+    if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntype] = '0' then
     begin
       //////THIS ORDER IS IMPORTANT/////////
-      frnewdown.Edit1.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl];
-      frnewdown.Edit3.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname];
-      frnewdown.DirectoryEdit1.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny];
+      frnewdown.Edit1.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
+      frnewdown.Edit3.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+      frnewdown.DirectoryEdit1.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
       enginereload();
-      frnewdown.ComboBox1.ItemIndex:=frnewdown.ComboBox1.Items.IndexOf(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnengine]);
-      frnewdown.Edit2.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+      frnewdown.ComboBox1.ItemIndex:=frnewdown.ComboBox1.Items.IndexOf(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]);
+      frnewdown.Edit2.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
       frmain.ClipBoardTimer.Enabled:=false;
-      frnewdown.Edit4.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnuser];
-      frnewdown.Edit5.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnpass];
+      frnewdown.Edit4.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
+      frnewdown.Edit5.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
+      frnewdown.Show;
+      frnewdown.Update;
+      frnewdown.Visible:=false;
       ///////CONFIRM DIALOG MODE///////////
       frnewdown.Caption:=frstrings.titlepropertiesdown.Caption;
       frnewdown.Button1.Visible:=false;
@@ -5125,7 +5135,7 @@ begin
       frnewdown.BitBtn1.Caption:=frstrings.btnpropertiesok.Caption;
       frnewdown.BitBtn1.GlyphShowMode:=gsmNever;
       ////////////////////////////////////
-      frnewdown.ComboBox2.ItemIndex:=strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue]);
+      frnewdown.ComboBox2.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
       frnewdown.ShowModal;
       ///////NEW DOWNLOAD DIALOG MODE///////////
       frnewdown.Caption:=frstrings.titlenewdown.Caption;
@@ -5138,56 +5148,56 @@ begin
       frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
       if agregar then
       begin
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname]:=frnewdown.Edit3.Text;
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl]:=frnewdown.Edit1.Text;
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny]:=frnewdown.DirectoryEdit1.Text;
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnengine]:=frnewdown.ComboBox1.Text;
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters]:=frnewdown.Edit2.Text;
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnuser]:=frnewdown.Edit4.Text;
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnpass]:=frnewdown.Edit5.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frnewdown.Edit3.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frnewdown.Edit1.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frnewdown.DirectoryEdit1.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]:=frnewdown.ComboBox1.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=frnewdown.Edit2.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frnewdown.Edit4.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frnewdown.Edit5.Text;
         if frnewdown.ComboBox2.ItemIndex>=0 then
-          frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue]:=inttostr(frnewdown.ComboBox2.ItemIndex);
-        frmain.TreeView1SelectionChanged(nil);
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frnewdown.ComboBox2.ItemIndex);
+        frmain.tvMainSelectionChanged(nil);
         savemydownloads();
       end;
     end;
-    if frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columntype] = '1' then
+    if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntype] = '1' then
     begin
       newgrabberqueues();
-      frsitegrabber.ComboBox1.ItemIndex:=strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue]);
-      frsitegrabber.Edit2.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname];
-      frsitegrabber.Edit1.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl];
-      frsitegrabber.DirectoryEdit1.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny];
-      frsitegrabber.Edit3.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnuser];
-      frsitegrabber.Edit4.Text:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnpass];
-      frsitegrabber.ComboBox1.ItemIndex:=strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue]);
-      if Pos('-k',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      frsitegrabber.ComboBox1.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
+      frsitegrabber.Edit2.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+      frsitegrabber.Edit1.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
+      frsitegrabber.DirectoryEdit1.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
+      frsitegrabber.Edit3.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
+      frsitegrabber.Edit4.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
+      frsitegrabber.ComboBox1.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
+      if Pos('-k',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
         frsitegrabber.CheckBox1.Checked:=true
       else
         frsitegrabber.CheckBox1.Checked:=false;
-      if Pos('--follow-ftp',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('--follow-ftp',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
         frsitegrabber.CheckBox2.Checked:=true
       else
         frsitegrabber.CheckBox2.Checked:=false;
-      if Pos('-np',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-np',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
         frsitegrabber.CheckBox3.Checked:=true
       else
         frsitegrabber.CheckBox3.Checked:=false;
-      if Pos('-p',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-p',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
         frsitegrabber.CheckBox4.Checked:=true
       else
         frsitegrabber.CheckBox4.Checked:=false;
-      if Pos('-H',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-H',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
         frsitegrabber.CheckBox5.Checked:=true
       else
         frsitegrabber.CheckBox5.Checked:=false;
-      if Pos('-L',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-L',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
         frsitegrabber.CheckBox6.Checked:=true
       else
         frsitegrabber.CheckBox6.Checked:=false;
-      if Pos('-l ',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-l ',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-l ',tmpstr)+3,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos(' ',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5195,9 +5205,9 @@ begin
       end
       else
         frsitegrabber.Spinedit1.Value:=5;
-      if Pos('-R "',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-R "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-R "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5205,9 +5215,9 @@ begin
       end
       else
         frsitegrabber.Memo1.Text:='';
-      if Pos('-A "',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-A "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-A "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5215,9 +5225,9 @@ begin
       end
       else
         frsitegrabber.Memo6.Text:='';
-      if Pos('-D "',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-D "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-D "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5225,9 +5235,9 @@ begin
       end
       else
         frsitegrabber.Memo3.Text:='';
-      if Pos('--exclude-domains "',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('--exclude-domains "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('--exclude-domains "',tmpstr)+19,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5235,9 +5245,9 @@ begin
       end
       else
         frsitegrabber.Memo2.Text:='';
-      if Pos('-I "',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-I "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-I "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5245,9 +5255,9 @@ begin
       end
       else
         frsitegrabber.Memo4.Text:='';
-      if Pos('-X "',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-X "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-X "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5255,9 +5265,9 @@ begin
       end
       else
         frsitegrabber.Memo5.Text:='';
-      if Pos('--follow-tags="',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('--follow-tags="',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('--follow-tags="',tmpstr)+15,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5265,9 +5275,9 @@ begin
       end
       else
         frsitegrabber.Memo7.Text:='';
-      if Pos('--ignore-tags="',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('--ignore-tags="',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('--ignore-tags="',tmpstr)+15,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5275,9 +5285,9 @@ begin
       end
       else
         frsitegrabber.Memo8.Text:='';
-      if Pos('-U "',frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters])>0 then
+      if Pos('-U "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
-        tmpstr:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters];
+        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-U "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
@@ -5322,14 +5332,14 @@ begin
           paramlist:=paramlist+' --ignore-tags="'+frsitegrabber.Memo8.Lines.Text+'"';
         if Length(frsitegrabber.Edit5.Text)>0 then
           paramlist:=paramlist+' -U "'+frsitegrabber.Edit5.Text+'"';
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname]:=frsitegrabber.Edit2.Text;//Nombre del sitio
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl]:=frsitegrabber.Edit1.Text;//URL
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny]:=frsitegrabber.DirectoryEdit1.Text;//Destino
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnparameters]:=paramlist;//Parametros
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnuser]:=frsitegrabber.Edit3.Text;//user
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnpass]:=frsitegrabber.Edit4.Text;//pass
-        frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue]:=inttostr(frsitegrabber.ComboBox1.ItemIndex);//queue
-        frmain.TreeView1SelectionChanged(nil);
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frsitegrabber.Edit2.Text;//Nombre del sitio
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frsitegrabber.Edit1.Text;//URL
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frsitegrabber.DirectoryEdit1.Text;//Destino
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=paramlist;//Parametros
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frsitegrabber.Edit3.Text;//user
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frsitegrabber.Edit4.Text;//pass
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frsitegrabber.ComboBox1.ItemIndex);//queue
+        frmain.tvMainSelectionChanged(nil);
         savemydownloads();
       end;
     end;
@@ -5338,8 +5348,8 @@ end;
 
 procedure Tfrmain.milistCopyURLClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
-  ClipBoard.AsText:=frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl];
+  if frmain.lvMain.ItemIndex<>-1 then
+  ClipBoard.AsText:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
 end;
 
 procedure Tfrmain.milistDeleteDownClick(Sender: TObject);
@@ -5355,7 +5365,7 @@ end;
 procedure Tfrmain.mimainSchedulerClick(Sender: TObject);
 begin
   frconfig.PageControl1.ActivePageIndex:=1;
-  frconfig.TreeView1.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
+  frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   frconfig.Show;
 end;
@@ -5374,18 +5384,18 @@ procedure Tfrmain.mimainSelectAllClick(Sender: TObject);
 var
   x:integer;
 begin
-  if frmain.ListView1.Visible then
+  if frmain.lvMain.Visible then
   begin
-    for x:=0 to frmain.ListView1.Items.Count-1 do
+    for x:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      frmain.ListView1.Items[x].Selected:=true;
+      frmain.lvMain.Items[x].Selected:=true;
     end;
   end
   else
   begin
-    for x:=0 to frmain.ListView2.Items.Count-1 do
+    for x:=0 to frmain.lvFilter.Items.Count-1 do
     begin
-      frmain.ListView2.Items[x].Selected:=true;
+      frmain.lvFilter.Items[x].Selected:=true;
     end;
   end;
 end;
@@ -5399,11 +5409,11 @@ procedure Tfrmain.mimainUnselectAllClick(Sender: TObject);
 var
   x:integer;
 begin
-  for x:=0 to frmain.ListView1.Items.Count-1 do
+  for x:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    frmain.ListView1.Items[x].Selected:=false;
+    frmain.lvMain.Items[x].Selected:=false;
   end;
-  frmain.TreeView1SelectionChanged(nil);
+  frmain.tvMainSelectionChanged(nil);
 end;
 
 procedure Tfrmain.mimainStartAllClick(Sender: TObject);
@@ -5411,11 +5421,11 @@ var
   x:integer;
 begin
   frmain.mimainSelectAllClick(nil);
-  for x:=0 to frmain.ListView1.Items.Count-1 do
+  for x:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.ListView1.Items[x].Selected then
+    if frmain.lvMain.Items[x].Selected then
     begin
-      queuemanual[strtoint(frmain.ListView1.Items[x].SubItems[columnqueue])]:=true;
+      queuemanual[strtoint(frmain.lvMain.Items[x].SubItems[columnqueue])]:=true;
       downloadstart(x,false);
     end;
   end;
@@ -5426,42 +5436,42 @@ var
   x:integer;
 begin
   frmain.mimainSelectAllClick(nil);
-  for x:=0 to frmain.ListView1.Items.Count-1 do
+  for x:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if (frmain.ListView1.Items[x].SubItems[columnstatus]='1') and (frmain.ListView1.Items[x].Selected)then
+    if (frmain.lvMain.Items[x].SubItems[columnstatus]='1') and (frmain.lvMain.Items[x].Selected)then
     begin
-    hilo[strtoint(frmain.ListView1.Items[x].SubItems[columnid])].shutdown();
+    hilo[strtoint(frmain.lvMain.Items[x].SubItems[columnid])].shutdown();
     end;
   end;
 end;
 
 procedure Tfrmain.mimainShowCurrentClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columncurrent+1].Visible:=not frmain.ListView1.Column[columncurrent+1].Visible;
-  frmain.ListView2.Column[columncurrent+1].Visible:=not frmain.ListView2.Column[columncurrent+1].Visible;
-  frmain.mimainShowCurrent.Checked:=frmain.ListView1.Column[columncurrent+1].Visible;
+  frmain.lvMain.Column[columncurrent+1].Visible:=not frmain.lvMain.Column[columncurrent+1].Visible;
+  frmain.lvFilter.Column[columncurrent+1].Visible:=not frmain.lvFilter.Column[columncurrent+1].Visible;
+  frmain.mimainShowCurrent.Checked:=frmain.lvMain.Column[columncurrent+1].Visible;
 end;
 
 procedure Tfrmain.mimainShowParametersClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columnparameters+1].Visible:=not frmain.ListView1.Column[columnparameters+1].Visible;
-  frmain.ListView2.Column[columnparameters+1].Visible:=not frmain.ListView2.Column[columnparameters+1].Visible;
-  frmain.mimainShowParameters.Checked:=frmain.ListView1.Column[columnparameters+1].Visible;
+  frmain.lvMain.Column[columnparameters+1].Visible:=not frmain.lvMain.Column[columnparameters+1].Visible;
+  frmain.lvFilter.Column[columnparameters+1].Visible:=not frmain.lvFilter.Column[columnparameters+1].Visible;
+  frmain.mimainShowParameters.Checked:=frmain.lvMain.Column[columnparameters+1].Visible;
 end;
 
 procedure Tfrmain.mimainShowGridClick(Sender: TObject);
 begin
-  frmain.ListView1.GridLines:=not frmain.ListView1.GridLines;
-  frmain.ListView2.GridLines:=not frmain.ListView2.GridLines;
-  frmain.mimainshowgrid.Checked:=frmain.ListView1.GridLines;
+  frmain.lvMain.GridLines:=not frmain.lvMain.GridLines;
+  frmain.lvFilter.GridLines:=not frmain.lvFilter.GridLines;
+  frmain.mimainshowgrid.Checked:=frmain.lvMain.GridLines;
 end;
 
 procedure Tfrmain.milistOpenLogClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    if FileExists(UTF8ToSys(logpath+pathdelim+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname])+'.log') then
-      OpenURL(ExtractShortPathName(UTF8ToSys(logpath+pathdelim+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname])+'.log'))
+    if FileExists(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log') then
+      OpenURL(ExtractShortPathName(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log'))
     else
       ShowMessage(frstrings.msgnoexisthistorylog.Caption);
   end;
@@ -5469,17 +5479,17 @@ end;
 
 procedure Tfrmain.milistStartDownClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    queuemanual[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue])]:=true;
-    downloadstart(frmain.ListView1.ItemIndex,false);
+    queuemanual[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])]:=true;
+    downloadstart(frmain.lvMain.ItemIndex,false);
   end;
 end;
 
 procedure Tfrmain.milistStopDownClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
-    hilo[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnid])].shutdown();
+  if frmain.lvMain.ItemIndex<>-1 then
+    hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])].shutdown();
 end;
 
 procedure Tfrmain.milistRestartNowClick(Sender: TObject);
@@ -5502,16 +5512,16 @@ begin
   if dlgcuestion then
   begin
     frmain.mimainSelectAllClick(nil);
-    for x:=0 to frmain.ListView1.Items.Count-1 do
+    for x:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      if (frmain.ListView1.Items[x].Subitems[columnstatus]<>'1') and (frmain.ListView1.Items[x].Selected=true) then
+      if (frmain.lvMain.Items[x].Subitems[columnstatus]<>'1') and (frmain.lvMain.Items[x].Selected=true) then
       begin
-        queuemanual[strtoint(frmain.ListView1.Items[x].SubItems[columnqueue])]:=true;
+        queuemanual[strtoint(frmain.lvMain.Items[x].SubItems[columnqueue])]:=true;
         restartdownload(x,true,false);
       end;
     end;
-    if frmain.ListView2.Visible then
-      frmain.TreeView1SelectionChanged(nil);
+    if frmain.lvFilter.Visible then
+      frmain.tvMainSelectionChanged(nil);
   end;
 end;
 
@@ -5526,18 +5536,18 @@ procedure Tfrmain.mimainShowCommandClick(Sender: TObject);
 begin
   if splitpos<50 then
     splitpos:=50;
-  if splitpos>frmain.PairSplitter1.Height-50 then
+  if splitpos>frmain.psVertical.Height-50 then
     splitpos:=splitpos-50;
   if frmain.SynEdit1.Visible then
   begin
-    splitpos:=frmain.PairSplitter1.Position;
+    splitpos:=frmain.psVertical.Position;
   end;
   frmain.SynEdit1.Visible:=not frmain.SynEdit1.Visible;
   mimainShowCommand.Checked:=frmain.SynEdit1.Visible;
   if frmain.SynEdit1.Visible then
-    frmain.PairSplitter1.Position:=splitpos
+    frmain.psVertical.Position:=splitpos
   else
-    frmain.PairSplitter1.Position:=frmain.PairSplitter1.Height;
+    frmain.psVertical.Position:=frmain.psVertical.Height;
   frmain.micommandFollow.Checked:=frmain.SynEdit1.Visible;
   frmain.micommandFollow.Enabled:=frmain.SynEdit1.Visible;
   if frmain.SynEdit1.Visible=false then
@@ -5546,58 +5556,58 @@ end;
 
 procedure Tfrmain.milistOpenDestinationClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    if DirectoryExists(UTF8ToSys(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny])) then
+    if DirectoryExists(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny])) then
     begin
-      if not OpenURL(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny]) then
-        OpenURL(ExtractShortPathName(UTF8ToSys(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny])));
+      if not OpenURL(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]) then
+        OpenURL(ExtractShortPathName(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny])));
     end
     else
-      ShowMessage(frstrings.msgnoexistfolder.Caption+' '+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny]);
+      ShowMessage(frstrings.msgnoexistfolder.Caption+' '+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]);
   end;
 end;
 
 procedure Tfrmain.mimainShowStateClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[0].Visible:=not frmain.ListView1.Column[0].Visible;
-  frmain.ListView2.Column[0].Visible:=not frmain.ListView2.Column[0].Visible;
-  frmain.mimainShowState.Checked:=frmain.ListView1.Column[0].Visible;
+  frmain.lvMain.Column[0].Visible:=not frmain.lvMain.Column[0].Visible;
+  frmain.lvFilter.Column[0].Visible:=not frmain.lvFilter.Column[0].Visible;
+  frmain.mimainShowState.Checked:=frmain.lvMain.Column[0].Visible;
 end;
 
 procedure Tfrmain.mimainShowNameClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columnname+1].Visible:=not frmain.ListView1.Column[columnname+1].Visible;
-  frmain.ListView2.Column[columnname+1].Visible:=not frmain.ListView2.Column[columnname+1].Visible;
-  frmain.mimainShowName.Checked:=frmain.ListView1.Column[columnname+1].Visible;
+  frmain.lvMain.Column[columnname+1].Visible:=not frmain.lvMain.Column[columnname+1].Visible;
+  frmain.lvFilter.Column[columnname+1].Visible:=not frmain.lvFilter.Column[columnname+1].Visible;
+  frmain.mimainShowName.Checked:=frmain.lvMain.Column[columnname+1].Visible;
 end;
 
 procedure Tfrmain.mimainShowSizeClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columnsize+1].Visible:=not frmain.ListView1.Column[columnsize+1].Visible;
-  frmain.ListView2.Column[columnsize+1].Visible:=not frmain.ListView2.Column[columnsize+1].Visible;
-  frmain.mimainShowSize.Checked:=frmain.ListView1.Column[columnsize+1].Visible;
+  frmain.lvMain.Column[columnsize+1].Visible:=not frmain.lvMain.Column[columnsize+1].Visible;
+  frmain.lvFilter.Column[columnsize+1].Visible:=not frmain.lvFilter.Column[columnsize+1].Visible;
+  frmain.mimainShowSize.Checked:=frmain.lvMain.Column[columnsize+1].Visible;
 end;
 
 procedure Tfrmain.mimainShowURLClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columnurl+1].Visible:=not frmain.ListView1.Column[columnurl+1].Visible;
-  frmain.ListView2.Column[columnurl+1].Visible:=not frmain.ListView2.Column[columnurl+1].Visible;
-  frmain.mimainShowURL.Checked:=frmain.ListView1.Column[columnurl+1].Visible;
+  frmain.lvMain.Column[columnurl+1].Visible:=not frmain.lvMain.Column[columnurl+1].Visible;
+  frmain.lvFilter.Column[columnurl+1].Visible:=not frmain.lvFilter.Column[columnurl+1].Visible;
+  frmain.mimainShowURL.Checked:=frmain.lvMain.Column[columnurl+1].Visible;
 end;
 
 procedure Tfrmain.MenuItem3Click(Sender: TObject);
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          queuemanual[frmain.TreeView1.Selected.Index]:=true;
-          qtimer[frmain.TreeView1.Selected.Index].Interval:=1000;
-          qtimer[frmain.TreeView1.Selected.Index].Enabled:=true;
+          queuemanual[frmain.tvMain.Selected.Index]:=true;
+          qtimer[frmain.tvMain.Selected.Index].Interval:=1000;
+          qtimer[frmain.tvMain.Selected.Index].Enabled:=true;
         end;
       end;
     end;
@@ -5606,47 +5616,47 @@ end;
 
 procedure Tfrmain.mimainShowSpeedClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columnspeed+1].Visible:=not frmain.ListView1.Column[columnspeed+1].Visible;
-  frmain.ListView2.Column[columnspeed+1].Visible:=not frmain.ListView2.Column[columnspeed+1].Visible;
-  frmain.mimainShowSpeed.Checked:=frmain.ListView1.Column[columnspeed+1].Visible;
+  frmain.lvMain.Column[columnspeed+1].Visible:=not frmain.lvMain.Column[columnspeed+1].Visible;
+  frmain.lvFilter.Column[columnspeed+1].Visible:=not frmain.lvFilter.Column[columnspeed+1].Visible;
+  frmain.mimainShowSpeed.Checked:=frmain.lvMain.Column[columnspeed+1].Visible;
 end;
 
 procedure Tfrmain.mimainShowPercentClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columnpercent+1].Visible:=not frmain.ListView1.Column[columnpercent+1].Visible;
-  frmain.ListView2.Column[columnpercent+1].Visible:=not frmain.ListView2.Column[columnpercent+1].Visible;
-  frmain.mimainShowPercent.Checked:=frmain.ListView1.Column[columnpercent+1].Visible;
+  frmain.lvMain.Column[columnpercent+1].Visible:=not frmain.lvMain.Column[columnpercent+1].Visible;
+  frmain.lvFilter.Column[columnpercent+1].Visible:=not frmain.lvFilter.Column[columnpercent+1].Visible;
+  frmain.mimainShowPercent.Checked:=frmain.lvMain.Column[columnpercent+1].Visible;
 end;
 
 procedure Tfrmain.mimainShowEstimatedClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columnestimate+1].Visible:=not frmain.ListView1.Column[columnestimate+1].Visible;
-  frmain.ListView2.Column[columnestimate+1].Visible:=not frmain.ListView2.Column[columnestimate+1].Visible;
-  frmain.mimainShowEstimated.Checked:=frmain.ListView1.Column[columnestimate+1].Visible;
+  frmain.lvMain.Column[columnestimate+1].Visible:=not frmain.lvMain.Column[columnestimate+1].Visible;
+  frmain.lvFilter.Column[columnestimate+1].Visible:=not frmain.lvFilter.Column[columnestimate+1].Visible;
+  frmain.mimainShowEstimated.Checked:=frmain.lvMain.Column[columnestimate+1].Visible;
 end;
 
 procedure Tfrmain.mimainShowDestinationClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columndestiny+1].Visible:=not frmain.ListView1.Column[columndestiny+1].Visible;
-  frmain.ListView2.Column[columndestiny+1].Visible:=not frmain.ListView2.Column[columndestiny+1].Visible;
-  frmain.mimainShowDestination.Checked:=frmain.ListView1.Column[columndestiny+1].Visible;
+  frmain.lvMain.Column[columndestiny+1].Visible:=not frmain.lvMain.Column[columndestiny+1].Visible;
+  frmain.lvFilter.Column[columndestiny+1].Visible:=not frmain.lvFilter.Column[columndestiny+1].Visible;
+  frmain.mimainShowDestination.Checked:=frmain.lvMain.Column[columndestiny+1].Visible;
 end;
 
 procedure Tfrmain.mimainShowEngineClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columnengine+1].Visible:=not frmain.ListView1.Column[columnengine+1].Visible;
-  frmain.ListView2.Column[columnengine+1].Visible:=not frmain.ListView2.Column[columnengine+1].Visible;
-  frmain.mimainShowEngine.Checked:=frmain.ListView1.Column[columnengine+1].Visible;
+  frmain.lvMain.Column[columnengine+1].Visible:=not frmain.lvMain.Column[columnengine+1].Visible;
+  frmain.lvFilter.Column[columnengine+1].Visible:=not frmain.lvFilter.Column[columnengine+1].Visible;
+  frmain.mimainShowEngine.Checked:=frmain.lvMain.Column[columnengine+1].Visible;
 end;
 
 procedure Tfrmain.milistOpenFileClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    if frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columntype]='0' then
+    if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntype]='0' then
     begin
-      if FileExists(UTF8ToSys(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname])) then
-        OpenURL(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname])
+      if FileExists(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])) then
+        OpenURL(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])
       else
         ShowMessage(frstrings.msgfilenoexist.Caption);
     end;
@@ -5655,8 +5665,8 @@ end;
 
 procedure Tfrmain.milistOpenURLClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
-    OpenURL(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnurl]);
+  if frmain.lvMain.ItemIndex<>-1 then
+    OpenURL(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]);
 end;
 
 procedure Tfrmain.mimainRestartAllLaterClick(Sender: TObject);
@@ -5669,33 +5679,33 @@ begin
   if dlgcuestion then
   begin
     frmain.mimainSelectAllClick(nil);
-    for x:=0 to frmain.ListView1.Items.Count-1 do
+    for x:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      if (frmain.ListView1.Items[x].Subitems[columnstatus]<>'1') and frmain.ListView1.Items[x].Selected then
+      if (frmain.lvMain.Items[x].Subitems[columnstatus]<>'1') and frmain.lvMain.Items[x].Selected then
         restartdownload(x,false,false);
     end;
   end;
-  if frmain.ListView2.Visible then
-    frmain.TreeView1SelectionChanged(nil);
+  if frmain.lvFilter.Visible then
+    frmain.tvMainSelectionChanged(nil);
 end;
 
 procedure Tfrmain.milistRestartLaterClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
     frconfirm.Caption:=frstrings.dlgconfirm.Caption;
-    frconfirm.dlgtext.Caption:=frstrings.dlgrestartselecteddownloadletter.Caption+#10#13+#10#13+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname];
+    frconfirm.dlgtext.Caption:=frstrings.dlgrestartselecteddownloadletter.Caption+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
-      restartdownload(frmain.ListView1.ItemIndex,false);
+      restartdownload(frmain.lvMain.ItemIndex,false);
     end;
   end;
 end;
 
 procedure Tfrmain.milistSteepUpClick(Sender: TObject);
 begin
-  movestepup(frmain.ListView1.ItemIndex-1);
+  movestepup(frmain.lvMain.ItemIndex-1);
 end;
 
 procedure Tfrmain.mimainShowTrayDownsClick(Sender: TObject);
@@ -5710,7 +5720,7 @@ begin
     begin
       if showdowntrayicon then
       begin
-        if frmain.ListView1.Items[i].SubItems[columnstatus]='1' then
+        if frmain.lvMain.Items[i].SubItems[columnstatus]='1' then
           trayicons[i].Visible:=true;
       end
       else
@@ -5721,7 +5731,7 @@ end;
 
 procedure Tfrmain.milistSteepDownClick(Sender: TObject);
 begin
-  movestepdown(frmain.ListView1.ItemIndex+1);
+  movestepdown(frmain.lvMain.ItemIndex+1);
 end;
 
 procedure Tfrmain.milistToUpClick(Sender: TObject);
@@ -5731,7 +5741,7 @@ end;
 
 procedure Tfrmain.milistToDownClick(Sender: TObject);
 begin
-  movestepdown(frmain.ListView1.Items.Count-1);
+  movestepdown(frmain.lvMain.Items.Count-1);
 end;
 
 procedure Tfrmain.micommandFollowClick(Sender: TObject);
@@ -5751,16 +5761,16 @@ end;
 
 procedure Tfrmain.mimainStartQueueClick(Sender: TObject);
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          queuemanual[frmain.TreeView1.Selected.Index]:=true;
-          qtimer[frmain.TreeView1.Selected.Index].Interval:=1000;
-          qtimer[frmain.TreeView1.Selected.Index].Enabled:=true;
+          queuemanual[frmain.tvMain.Selected.Index]:=true;
+          qtimer[frmain.tvMain.Selected.Index].Interval:=1000;
+          qtimer[frmain.tvMain.Selected.Index].Enabled:=true;
         end;
       end;
     end;
@@ -5769,14 +5779,14 @@ end;
 
 procedure Tfrmain.mimainStopQueueClick(Sender: TObject);
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          stopqueue(frmain.TreeView1.Selected.Index);
+          stopqueue(frmain.tvMain.Selected.Index);
         end;
       end;
     end;
@@ -5785,15 +5795,15 @@ end;
 
 procedure Tfrmain.milistClearLogClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
     frconfirm.Caption:=frstrings.dlgconfirm.Caption;
     frconfirm.dlgtext.Caption:=frstrings.dlgclearhistorylogfile.Caption;
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
-      if FileExists(UTF8ToSys(logpath+pathdelim+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname])+'.log') then
-        SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname])+'.log');
+      if FileExists(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log') then
+        SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log');
     end;
     frmain.SynEdit1.Lines.Clear;
   end;
@@ -5811,7 +5821,7 @@ end;
 
 procedure Tfrmain.mitraydownStartClick(Sender: TObject);
 begin
-  if frmain.ListView1.Items[numtraydown].SubItems[columnstatus]<>'1' then
+  if frmain.lvMain.Items[numtraydown].SubItems[columnstatus]<>'1' then
   begin
     downloadstart(numtraydown,false);
   end;
@@ -5824,10 +5834,10 @@ end;
 
 procedure Tfrmain.mitraydownStopClick(Sender: TObject);
 begin
-  if frmain.ListView1.Items[numtraydown].SubItems[columnstatus]='1' then
-    hilo[strtoint(frmain.ListView1.Items[numtraydown].SubItems[columnid])].shutdown();
-  if qtimer[strtoint(frmain.ListView1.Items[numtraydown].SubItems[columnqueue])].Enabled then
-      frmain.ListView1.Items[numtraydown].SubItems[columntries]:='0';
+  if frmain.lvMain.Items[numtraydown].SubItems[columnstatus]='1' then
+    hilo[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnid])].shutdown();
+  if qtimer[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnqueue])].Enabled then
+      frmain.lvMain.Items[numtraydown].SubItems[columntries]:='0';
 end;
 
 procedure Tfrmain.mitrydownHideClick(Sender: TObject);
@@ -5837,9 +5847,9 @@ end;
 
 procedure Tfrmain.mimainShowDateClick(Sender: TObject);
 begin
-  frmain.ListView1.Column[columndate+1].Visible:=not frmain.ListView1.Column[columndate+1].Visible;
-  frmain.ListView2.Column[columndate+1].Visible:=not frmain.ListView2.Column[columndate+1].Visible;
-  frmain.mimainShowDate.Checked:=frmain.ListView1.Column[columndate+1].Visible;
+  frmain.lvMain.Column[columndate+1].Visible:=not frmain.lvMain.Column[columndate+1].Visible;
+  frmain.lvFilter.Column[columndate+1].Visible:=not frmain.lvFilter.Column[columndate+1].Visible;
+  frmain.mimainShowDate.Checked:=frmain.lvMain.Column[columndate+1].Visible;
 end;
 
 procedure Tfrmain.mitreeAddQueueClick(Sender: TObject);
@@ -5849,12 +5859,12 @@ end;
 
 procedure Tfrmain.mitreeDeleteQueueClick(Sender: TObject);
 begin
-  deletequeue(frmain.TreeView1.Selected.Index);
+  deletequeue(frmain.tvMain.Selected.Index);
 end;
 
 procedure Tfrmain.mitreeRenameQueueClick(Sender: TObject);
 begin
-  frmain.TreeView1.Selected.EditText;
+  frmain.tvMain.Selected.EditText;
 end;
 
 procedure Tfrmain.mimainAddGrabberClick(Sender: TObject);
@@ -5869,7 +5879,7 @@ end;
 
 procedure Tfrmain.mimainConfigClick(Sender: TObject);
 begin
-  frconfig.TreeView1.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
+  frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   frconfig.Show;
 end;
@@ -5881,25 +5891,25 @@ end;
 
 procedure Tfrmain.milistShowTrayIconClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    trayicons[frmain.ListView1.ItemIndex].Visible:=not trayicons[frmain.ListView1.ItemIndex].Visible;
-    frmain.milistShowTrayIcon.Checked:=trayicons[frmain.ListView1.ItemIndex].Visible;
+    trayicons[frmain.lvMain.ItemIndex].Visible:=not trayicons[frmain.lvMain.ItemIndex].Visible;
+    frmain.milistShowTrayIcon.Checked:=trayicons[frmain.lvMain.ItemIndex].Visible;
   end;
 end;
 
 procedure Tfrmain.mitreeStartQueueClick(Sender: TObject);
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          queuemanual[frmain.TreeView1.Selected.Index]:=true;
-          qtimer[frmain.TreeView1.Selected.Index].Interval:=1000;
-          qtimer[frmain.TreeView1.Selected.Index].Enabled:=true;
+          queuemanual[frmain.tvMain.Selected.Index]:=true;
+          qtimer[frmain.tvMain.Selected.Index].Interval:=1000;
+          qtimer[frmain.tvMain.Selected.Index].Enabled:=true;
         end;
       end;
     end;
@@ -5908,14 +5918,14 @@ end;
 
 procedure Tfrmain.mitreeStopQueueClick(Sender: TObject);
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          stopqueue(frmain.TreeView1.Selected.Index);
+          stopqueue(frmain.tvMain.Selected.Index);
         end;
       end;
     end;
@@ -5932,10 +5942,10 @@ begin
     SetLength(copywork,Length(copywork)+1);
     copywork[Length(copywork)-1]:=copythread.Create(true,Length(copywork)-1);
     copywork[Length(copywork)-1].id:=Length(copywork)-1;
-    for i:=0 to frmain.ListView1.Items.Count-1 do
+    for i:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      if (frmain.ListView1.Items[i].Selected) and (frmain.ListView1.Items[i].SubItems[columnstatus]='3') and (FileExists(UTF8ToSys(frmain.ListView1.Items[i].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[i].SubItems[columnname]))) then
-        copywork[Length(copywork)-1].source.Add(frmain.ListView1.Items[i].SubItems[columndestiny]+pathdelim+frmain.ListView1.Items[i].SubItems[columnname]);
+      if (frmain.lvMain.Items[i].Selected) and (frmain.lvMain.Items[i].SubItems[columnstatus]='3') and (FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname]))) then
+        copywork[Length(copywork)-1].source.Add(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname]);
     end;
     copywork[Length(copywork)-1].destination:=frmain.SelectDirectoryDialog1.FileName;
     copywork[Length(copywork)-1].Start;
@@ -5952,52 +5962,52 @@ begin
   deleteitems(true);
 end;
 
-procedure Tfrmain.PairSplitter1ChangeBounds(Sender: TObject);
+procedure Tfrmain.psVerticalChangeBounds(Sender: TObject);
 begin
-  splitpos:=Round(frmain.PairSplitter1.Height/1.3);
+  splitpos:=Round(frmain.psVertical.Height/1.3);
   if frmain.SynEdit1.Visible then
-    frmain.PairSplitter1.Position:=splitpos
+    frmain.psVertical.Position:=splitpos
   else
-    frmain.PairSplitter1.Position:=frmain.PairSplitter1.Height;
+    frmain.psVertical.Position:=frmain.psVertical.Height;
 end;
 
-procedure Tfrmain.PairSplitter1MouseUp(Sender: TObject; Button: TMouseButton;
+procedure Tfrmain.psVerticalMouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  splitpos:=frmain.PairSplitter1.Position;
+  splitpos:=frmain.psVertical.Position;
 end;
 
-procedure Tfrmain.PairSplitter1Resize(Sender: TObject);
+procedure Tfrmain.psVerticalResize(Sender: TObject);
 begin
   if frmain.SynEdit1.Visible then
-    splitpos:=frmain.PairSplitter1.Position;
+    splitpos:=frmain.psVertical.Position;
 end;
 
-procedure Tfrmain.PairSplitter2ChangeBounds(Sender: TObject);
+procedure Tfrmain.psHorizontalChangeBounds(Sender: TObject);
 begin
-  splithpos:=frmain.PairSplitter2.Position;
+  splithpos:=frmain.psHorizontal.Position;
 end;
 
-procedure Tfrmain.PairSplitter2MouseUp(Sender: TObject; Button: TMouseButton;
+procedure Tfrmain.psHorizontalMouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
-  splithpos:=frmain.PairSplitter2.Position;
+  splithpos:=frmain.psHorizontal.Position;
 end;
 
-procedure Tfrmain.PairSplitter2Resize(Sender: TObject);
+procedure Tfrmain.psHorizontalResize(Sender: TObject);
 begin
-  splithpos:=frmain.PairSplitter2.Position;
+  splithpos:=frmain.psHorizontal.Position;
 end;
 
-procedure Tfrmain.PairSplitterSide3MouseUp(Sender: TObject;
+procedure Tfrmain.psHorizontalLeftSideMouseUp(Sender: TObject;
   Button: TMouseButton; Shift: TShiftState; X, Y: Integer);
 begin
-  splithpos:=frmain.PairSplitter2.Position;
+  splithpos:=frmain.psHorizontal.Position;
 end;
 
-procedure Tfrmain.PairSplitterSide3Resize(Sender: TObject);
+procedure Tfrmain.psHorizontalLeftSideResize(Sender: TObject);
 begin
-  splithpos:=frmain.PairSplitter2.Position;
+  splithpos:=frmain.psHorizontal.Position;
 end;
 
 procedure Tfrmain.pmCommandOutPopup(Sender: TObject);
@@ -6039,9 +6049,9 @@ begin
     tmpclip:=Copy(sameclip,0,6);
     if (tmpclip='http:/') or (tmpclip='https:') or (tmpclip='ftp://') then
     begin
-      for cbn:=0 to frmain.ListView1.Items.Count-1 do
+      for cbn:=0 to frmain.lvMain.Items.Count-1 do
       begin
-        if sameclip=frmain.ListView1.Items[cbn].SubItems[columnurl] then
+        if sameclip=frmain.lvMain.Items[cbn].SubItems[columnurl] then
           noesta:=false;
       end;
       if noesta then
@@ -6190,7 +6200,7 @@ begin
     frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Avtivar el clipboardmonitor
     if (agregar or silent) and (updateurl=false) then
     begin
-      downitem:=TListItem.Create(frmain.ListView1.Items);
+      downitem:=TListItem.Create(frmain.lvMain.Items);
       downitem.Caption:=frstrings.statuspaused.Caption;
       downitem.ImageIndex:=18;
       downitem.SubItems.Add(frnewdown.Edit3.Text);//Nombre de archivo
@@ -6205,7 +6215,7 @@ begin
       downitem.SubItems.Add(frnewdown.ComboBox1.Text);//Motor
       downitem.SubItems.Add(frnewdown.Edit2.Text);//Parametros
       downitem.SubItems.Add('0');//status
-      downitem.SubItems.Add(inttostr(frmain.ListView1.Items.Count));//id
+      downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
       downitem.SubItems.Add(frnewdown.Edit4.Text);//user
       downitem.SubItems.Add(frnewdown.Edit5.Text);//pass
       downitem.SubItems.Add(inttostr(triesrotate));//tries
@@ -6220,18 +6230,18 @@ begin
       downitem.SubItems.Add(post);//post
       downitem.SubItems.Add(header);//header
       downitem.SubItems.Add(useragent);//useragent
-      frmain.ListView1.Items.AddItem(downitem);
+      frmain.lvMain.Items.AddItem(downitem);
       tmpindex:=downitem.Index;
       if cola then
       begin
-        queuemanual[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
-        qtimer[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
+        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+        qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
       end;
-      frmain.TreeView1SelectionChanged(nil);
+      frmain.tvMainSelectionChanged(nil);
       savemydownloads();
       if iniciar or silent then
       begin
-        queuemanual[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
+        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
         downloadstart(tmpindex,false);
       end;
     end;
@@ -6241,22 +6251,22 @@ end;
 
 procedure Tfrmain.tbStopQueueClick(Sender: TObject);
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          stopqueue(frmain.TreeView1.Selected.Index);
+          stopqueue(frmain.tvMain.Selected.Index);
         end;
       end;
     end
     else
     begin
-      if frmain.ListView1.ItemIndex<>-1 then
+      if frmain.lvMain.ItemIndex<>-1 then
       begin
-        stopqueue(strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue]));
+        stopqueue(strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]));
       end;
     end;
   end;
@@ -6279,14 +6289,14 @@ end;
 
 procedure Tfrmain.tbStopSchedulerClick(Sender: TObject);
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          stimer[frmain.TreeView1.Selected.Index].Enabled:=false;
+          stimer[frmain.tvMain.Selected.Index].Enabled:=false;
         end;
       end;
     end;
@@ -6334,7 +6344,7 @@ begin
   frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Activar el clipboardmonitor.
   if agregar and (updateurl=false) then
   begin
-    downitem:=TListItem.Create(frmain.ListView1.Items);
+    downitem:=TListItem.Create(frmain.lvMain.Items);
     downitem.Caption:=frstrings.statuspaused.Caption;
     downitem.ImageIndex:=18;
     downitem.SubItems.Add(frnewdown.Edit3.Text);//Nombre de archivo
@@ -6349,7 +6359,7 @@ begin
     downitem.SubItems.Add(frnewdown.ComboBox1.Text);//Motor
     downitem.SubItems.Add(frnewdown.Edit2.Text);//Parametros
     downitem.SubItems.Add('0');//status
-    downitem.SubItems.Add(inttostr(frmain.ListView1.Items.Count));//id
+    downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
     downitem.SubItems.Add(frnewdown.Edit4.Text);//user
     downitem.SubItems.Add(frnewdown.Edit5.Text);//pass
     downitem.SubItems.Add(inttostr(triesrotate));//tries
@@ -6361,18 +6371,18 @@ begin
     downitem.SubItems.Add('');//post
     downitem.SubItems.Add('');//header
     downitem.SubItems.Add('');//useragent
-    frmain.ListView1.Items.AddItem(downitem);
+    frmain.lvMain.Items.AddItem(downitem);
     tmpindex:=downitem.Index;
     if cola then
     begin
-      queuemanual[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
-      qtimer[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
+      queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+      qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
     end;
-    frmain.TreeView1SelectionChanged(nil);
+    frmain.tvMainSelectionChanged(nil);
     savemydownloads();
     if iniciar then
     begin
-      queuemanual[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
+      queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
       downloadstart(tmpindex,false);
     end;
   end;
@@ -6380,20 +6390,20 @@ end;
 
 procedure Tfrmain.tbSteepDownClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
-  moveonestepdown(frmain.ListView1.ItemIndex);
+  if frmain.lvMain.ItemIndex<>-1 then
+  moveonestepdown(frmain.lvMain.ItemIndex);
 end;
 
 procedure Tfrmain.tbRestartNowClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
     frconfirm.Caption:=frstrings.dlgconfirm.Caption;
-    frconfirm.dlgtext.Caption:=frstrings.dlgrestartselecteddownload.Caption+#10#13+#10#13+frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnname];
+    frconfirm.dlgtext.Caption:=frstrings.dlgrestartselecteddownload.Caption+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
-      restartdownload(frmain.ListView1.ItemIndex,true);
+      restartdownload(frmain.lvMain.ItemIndex,true);
     end;
   end;
 end;
@@ -6405,7 +6415,7 @@ end;
 
 procedure Tfrmain.tbToDownClick(Sender: TObject);
 begin
-  movestepdown(frmain.ListView1.Items.Count-1);
+  movestepdown(frmain.lvMain.Items.Count-1);
 end;
 
 procedure Tfrmain.tbImportDownClick(Sender: TObject);
@@ -6480,7 +6490,7 @@ begin
       paramlist:=paramlist+' --ignore-tags="'+frsitegrabber.Memo8.Lines.Text+'"';
     if Length(frsitegrabber.Edit5.Text)>0 then
       paramlist:=paramlist+' -U "'+frsitegrabber.Edit5.Text+'"';
-    downitem:=TListItem.Create(frmain.ListView1.Items);
+    downitem:=TListItem.Create(frmain.lvMain.Items);
     downitem.Caption:=frstrings.statuspaused.Caption;
     downitem.ImageIndex:=51;
     downitem.SubItems.Add(frsitegrabber.Edit2.Text);//Nombre del sitio
@@ -6495,7 +6505,7 @@ begin
     downitem.SubItems.Add('wget');//Motor
     downitem.SubItems.Add(paramlist);//Parametros
     downitem.SubItems.Add('0');//status
-    downitem.SubItems.Add(inttostr(frmain.ListView1.Items.Count));//id
+    downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
     downitem.SubItems.Add(frsitegrabber.Edit3.Text);//user
     downitem.SubItems.Add(frsitegrabber.Edit4.Text);//pass
     downitem.SubItems.Add(inttostr(triesrotate));//tries
@@ -6506,8 +6516,8 @@ begin
     downitem.SubItems.Add('');//referer;
     downitem.SubItems.Add('');//post;
     downitem.SubItems.Add('');//header;
-    frmain.ListView1.Items.AddItem(downitem);
-    frmain.TreeView1SelectionChanged(nil);
+    frmain.lvMain.Items.AddItem(downitem);
+    frmain.tvMainSelectionChanged(nil);
     savemydownloads();
   end;
 end;
@@ -6530,10 +6540,10 @@ end;
 
 procedure Tfrmain.tbStartDownClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    queuemanual[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue])]:=true;
-    downloadstart(frmain.ListView1.ItemIndex,false);
+    queuemanual[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])]:=true;
+    downloadstart(frmain.lvMain.ItemIndex,false);
   end
   else
     ShowMessage(frstrings.msgmustselectdownload.Caption);
@@ -6541,11 +6551,11 @@ end;
 
 procedure Tfrmain.tbStopDownClick(Sender: TObject);
 begin
-  if frmain.ListView1.ItemIndex<>-1 then
+  if frmain.lvMain.ItemIndex<>-1 then
   begin
-    hilo[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnid])].shutdown();
-    if qtimer[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue])].Enabled then
-      frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columntries]:='0';
+    hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])].shutdown();
+    if qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled then
+      frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntries]:='0';
     frmain.tbStartDown.Enabled:=true;
     frmain.tbStopDown.Enabled:=false;
     frmain.tbRestartNow.Enabled:=true;
@@ -6557,7 +6567,7 @@ end;
 
 procedure Tfrmain.tbConfigClick(Sender: TObject);
 begin
-  frconfig.TreeView1.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
+  frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   frconfig.Show;
 end;
@@ -6565,33 +6575,33 @@ end;
 procedure Tfrmain.tbSchedulerClick(Sender: TObject);
 begin
   frconfig.PageControl1.ActivePageIndex:=1;
-  frconfig.TreeView1.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
+  frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   frconfig.Show;
 end;
 
 procedure Tfrmain.tbStartQueueClick(Sender: TObject);
 begin
-  if frmain.TreeView1.SelectionCount>0 then
+  if frmain.tvMain.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          queuemanual[frmain.TreeView1.Selected.Index]:=true;
-          qtimer[frmain.TreeView1.Selected.Index].Interval:=1000;
-          qtimer[frmain.TreeView1.Selected.Index].Enabled:=true;
+          queuemanual[frmain.tvMain.Selected.Index]:=true;
+          qtimer[frmain.tvMain.Selected.Index].Interval:=1000;
+          qtimer[frmain.tvMain.Selected.Index].Enabled:=true;
         end;
       end;
     end
     else
     begin
-      if frmain.ListView1.ItemIndex<>-1 then
+      if frmain.lvMain.ItemIndex<>-1 then
       begin
-        queuemanual[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue])]:=true;
-        qtimer[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue])].Interval:=1000;
-        qtimer[strtoint(frmain.ListView1.Items[frmain.ListView1.ItemIndex].SubItems[columnqueue])].Enabled:=true;
+        queuemanual[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])]:=true;
+        qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Interval:=1000;
+        qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled:=true;
       end;
     end;
   end;
@@ -6626,35 +6636,35 @@ var
 begin
   nc:=0;
   strhint:='';
-  for n:=0 to frmain.ListView1.Items.Count-1 do
+  for n:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.ListView1.Items[n].SubItems[columnstatus]='1' then
-      strhint+=frmain.ListView1.Items[n].SubItems[columnpercent]+' '+frmain.ListView1.Items[n].SubItems[columnname]+' '+frmain.ListView1.Items[n].SubItems[columnspeed]+' '+frmain.ListView1.Items[n].SubItems[columnestimate]+#10;
-    if frmain.ListView1.Items[n].SubItems[columnstatus]='3' then
+    if frmain.lvMain.Items[n].SubItems[columnstatus]='1' then
+      strhint+=frmain.lvMain.Items[n].SubItems[columnpercent]+' '+frmain.lvMain.Items[n].SubItems[columnname]+' '+frmain.lvMain.Items[n].SubItems[columnspeed]+' '+frmain.lvMain.Items[n].SubItems[columnestimate]+#10;
+    if frmain.lvMain.Items[n].SubItems[columnstatus]='3' then
       inc(nc);
   end;
   if strhint<>'' then
-    frmain.MainTrayIcon.Hint:='AWGG ['+inttostr(nc)+'/'+inttostr(frmain.ListView1.Items.Count)+']'+#10+Copy(strhint,0,Length(strhint)-1)
+    frmain.MainTrayIcon.Hint:='AWGG ['+inttostr(nc)+'/'+inttostr(frmain.lvMain.Items.Count)+']'+#10+Copy(strhint,0,Length(strhint)-1)
   else
-    frmain.MainTrayIcon.Hint:='AWGG ['+inttostr(nc)+'/'+inttostr(frmain.ListView1.Items.Count)+']'+#10+'v'+version;
+    frmain.MainTrayIcon.Hint:='AWGG ['+inttostr(nc)+'/'+inttostr(frmain.lvMain.Items.Count)+']'+#10+'v'+version;
 end;
 
-procedure Tfrmain.TreeView1ContextPopup(Sender: TObject; MousePos: TPoint;
+procedure Tfrmain.tvMainContextPopup(Sender: TObject; MousePos: TPoint;
   var Handled: Boolean);
 begin
-  if frmain.TreeView1.Items.SelectionCount>0 then
+  if frmain.tvMain.Items.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin
-          if frmain.TreeView1.Selected.Index<>0 then
+          if frmain.tvMain.Selected.Index<>0 then
           begin
             frmain.mitreeAddQueue.Enabled:=true;
             frmain.mitreeDeleteQueue.Enabled:=true;
             frmain.mitreeRenameQueue.Enabled:=true;
-            if qtimer[frmain.TreeView1.Selected.Index].Enabled then
+            if qtimer[frmain.tvMain.Selected.Index].Enabled then
             begin
               frmain.mitreeStartQueue.Enabled:=false;
               frmain.mitreeStopQueue.Enabled:=true;
@@ -6671,7 +6681,7 @@ begin
             frmain.mitreeAddQueue.Enabled:=true;
             frmain.mitreeDeleteQueue.Enabled:=false;
             frmain.mitreeRenameQueue.Enabled:=false;
-            if qtimer[frmain.TreeView1.Selected.Index].Enabled then
+            if qtimer[frmain.tvMain.Selected.Index].Enabled then
             begin
               frmain.mitreeStartQueue.Enabled:=false;
               frmain.mitreeStopQueue.Enabled:=true;
@@ -6689,7 +6699,7 @@ begin
     else
     begin
       //////elementos de la rais
-      case frmain.TreeView1.Selected.Index of
+      case frmain.tvMain.Selected.Index of
         1:
         begin
           frmain.mitreeAddQueue.Enabled:=true;
@@ -6702,22 +6712,22 @@ begin
   end;
 end;
 
-procedure Tfrmain.TreeView1DblClick(Sender: TObject);
+procedure Tfrmain.tvMainDblClick(Sender: TObject);
 begin
-  if frmain.TreeView1.Selected.Level>0 then
+  if frmain.tvMain.Selected.Level>0 then
   begin
-    case frmain.TreeView1.Selected.Parent.Index of
+    case frmain.tvMain.Selected.Parent.Index of
       3:
       begin//categorias
-        if frmain.TreeView1.Selected.Index<Length(categoryextencions) then
+        if frmain.tvMain.Selected.Index<Length(categoryextencions) then
         begin
-          if DirectoryExists(UTF8ToSys(categoryextencions[frmain.TreeView1.Selected.Index][0])) then
+          if DirectoryExists(UTF8ToSys(categoryextencions[frmain.tvMain.Selected.Index][0])) then
           begin
-            if not OpenURL(categoryextencions[frmain.TreeView1.Selected.Index][0]) then
-              OpenURL(ExtractShortPathName(UTF8ToSys(categoryextencions[frmain.TreeView1.Selected.Index][0])));
+            if not OpenURL(categoryextencions[frmain.tvMain.Selected.Index][0]) then
+              OpenURL(ExtractShortPathName(UTF8ToSys(categoryextencions[frmain.tvMain.Selected.Index][0])));
           end
           else
-            ShowMessage(frstrings.msgnoexistfolder.Caption+' '+categoryextencions[frmain.TreeView1.Selected.Index][0]);
+            ShowMessage(frstrings.msgnoexistfolder.Caption+' '+categoryextencions[frmain.tvMain.Selected.Index][0]);
         end
         else
         begin
@@ -6734,26 +6744,26 @@ begin
   end;
 end;
 
-procedure Tfrmain.TreeView1Edited(Sender: TObject; Node: TTreeNode; var S: string
+procedure Tfrmain.tvMainEdited(Sender: TObject; Node: TTreeNode; var S: string
   );
 begin
-  if frmain.TreeView1.Items.SelectionCount>0 then
+  if frmain.tvMain.Items.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
       //elementos de las ramas
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          if frmain.TreeView1.Selected.Index<>0 then
+          if frmain.tvMain.Selected.Index<>0 then
           begin
-            queuenames[frmain.TreeView1.Selected.Index]:=s;
-            frmain.milistSendToQueue.Items[frmain.TreeView1.Selected.Index].Caption:=s;
-            frnewdown.ComboBox2.Items[frmain.TreeView1.Selected.Index]:=s;
-            if qtimer[frmain.TreeView1.Selected.Index].Enabled then
-              frmain.pmTrayIcon.Items[frmain.TreeView1.Selected.Index+5].Caption:=stopqueuesystray+' ('+s+')'
+            queuenames[frmain.tvMain.Selected.Index]:=s;
+            frmain.milistSendToQueue.Items[frmain.tvMain.Selected.Index].Caption:=s;
+            frnewdown.ComboBox2.Items[frmain.tvMain.Selected.Index]:=s;
+            if qtimer[frmain.tvMain.Selected.Index].Enabled then
+              frmain.pmTrayIcon.Items[frmain.tvMain.Selected.Index+5].Caption:=stopqueuesystray+' ('+s+')'
             else
-              frmain.pmTrayIcon.Items[frmain.TreeView1.Selected.Index+5].Caption:=startqueuesystray+' ('+s+')';
+              frmain.pmTrayIcon.Items[frmain.tvMain.Selected.Index+5].Caption:=startqueuesystray+' ('+s+')';
             savemydownloads();
           end;
         end;
@@ -6762,20 +6772,20 @@ begin
   end;
 end;
 
-procedure Tfrmain.TreeView1Editing(Sender: TObject; Node: TTreeNode;
+procedure Tfrmain.tvMainEditing(Sender: TObject; Node: TTreeNode;
   var AllowEdit: Boolean);
 begin
-  if frmain.TreeView1.Items.SelectionCount>0 then
+  if frmain.tvMain.Items.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
       //elementos de las ramas
-      if frmain.TreeView1.Selected.Parent.Index<>1 then
+      if frmain.tvMain.Selected.Parent.Index<>1 then
         allowedit:=false;
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          if frmain.TreeView1.Selected.Index=0 then
+          if frmain.tvMain.Selected.Index=0 then
             allowedit:=false;
         end;
       end;
@@ -6788,20 +6798,20 @@ begin
   end;
 end;
 
-procedure Tfrmain.TreeView1KeyDown(Sender: TObject; var Key: Word;
+procedure Tfrmain.tvMainKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
-  if frmain.TreeView1.Items.SelectionCount>0 then
+  if frmain.tvMain.Items.SelectionCount>0 then
   begin
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      case frmain.TreeView1.Selected.Parent.Index of
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin
-          if frmain.TreeView1.Selected.Index<>0 then
+          if frmain.tvMain.Selected.Index<>0 then
           begin
             case key of
-              46:deletequeue(frmain.TreeView1.Selected.Index);
+              46:deletequeue(frmain.tvMain.Selected.Index);
             end;
           end
         end;
@@ -6810,7 +6820,7 @@ begin
     else
     begin
       //////elementos de la rais
-      case frmain.TreeView1.Selected.Index of
+      case frmain.tvMain.Selected.Index of
         1:
         begin
 
@@ -6820,53 +6830,53 @@ begin
   end;
 end;
 
-procedure Tfrmain.TreeView1SelectionChanged(Sender: TObject);
+procedure Tfrmain.tvMainSelectionChanged(Sender: TObject);
 var
   i:integer;
   sts:string;
   vitem:TListItem;
 begin
   sts:='';
-  frmain.ListView2.Items.Clear;
-  if (frmain.TreeView1.SelectionCount>0) then
+  frmain.lvFilter.Items.Clear;
+  if (frmain.tvMain.SelectionCount>0) then
   begin
     frmain.tbStartQueue.Enabled:=false;
     frmain.tbStopQueue.Enabled:=false;
     frmain.tbStartScheduler.Enabled:=false;
     frmain.tbStopScheduler.Enabled:=false;
-    if frmain.TreeView1.Selected.Level>0 then
+    if frmain.tvMain.Selected.Level>0 then
     begin
-      if frmain.ListView2.Visible=false then
+      if frmain.lvFilter.Visible=false then
       begin
-        for i:=0 to frmain.ListView1.Columns.Count-1 do
+        for i:=0 to frmain.lvMain.Columns.Count-1 do
         begin
-          frmain.ListView2.Columns[i].Width:=frmain.ListView1.Columns[i].Width;
-          frmain.ListView2.Columns[i].Visible:=frmain.ListView1.Columns[i].Visible;
+          frmain.lvFilter.Columns[i].Width:=frmain.lvMain.Columns[i].Width;
+          frmain.lvFilter.Columns[i].Visible:=frmain.lvMain.Columns[i].Visible;
         end;
       end;
-      if (frmain.ListView1.ItemIndex=-1) and (frmain.ListView1.Items.Count>0) then
-        frmain.ListView1.ItemIndex:=0;
-      frmain.ListView1.Visible:=false;
-      frmain.ListView2.Visible:=true;
-      case frmain.TreeView1.Selected.Parent.Index of
+      if (frmain.lvMain.ItemIndex=-1) and (frmain.lvMain.Items.Count>0) then
+        frmain.lvMain.ItemIndex:=0;
+      frmain.lvMain.Visible:=false;
+      frmain.lvFilter.Visible:=true;
+      case frmain.tvMain.Selected.Parent.Index of
         1:
         begin//colas
-          for i:=0 to frmain.ListView1.Items.Count-1 do
+          for i:=0 to frmain.lvMain.Items.Count-1 do
           begin
-            if frmain.ListView1.Items[i].SubItems[columnqueue]=inttostr(frmain.TreeView1.Selected.Index) then
+            if frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(frmain.tvMain.Selected.Index) then
             begin
-              vitem:=TListItem.Create(frmain.ListView2.Items);
-              vitem.Caption:=frmain.ListView1.Items[i].Caption;
-              vitem.ImageIndex:=frmain.ListView1.Items[i].ImageIndex;
-              vitem.SubItems.AddStrings(frmain.ListView1.Items[i].SubItems);
-              vitem.Selected:=frmain.ListView1.Items[i].Selected;
-              frmain.ListView2.Items.AddItem(vitem);
-              vitem.Selected:=frmain.ListView1.Items[i].Selected;
-              if frmain.ListView1.Items[i].SubItems[columnstatus]='1' then
-              hilo[strtoint(frmain.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
+              vitem:=TListItem.Create(frmain.lvFilter.Items);
+              vitem.Caption:=frmain.lvMain.Items[i].Caption;
+              vitem.ImageIndex:=frmain.lvMain.Items[i].ImageIndex;
+              vitem.SubItems.AddStrings(frmain.lvMain.Items[i].SubItems);
+              vitem.Selected:=frmain.lvMain.Items[i].Selected;
+              frmain.lvFilter.Items.AddItem(vitem);
+              vitem.Selected:=frmain.lvMain.Items[i].Selected;
+              if frmain.lvMain.Items[i].SubItems[columnstatus]='1' then
+              hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].thid2:=vitem.Index;
             end;
           end;
-          if qtimer[frmain.TreeView1.Selected.Index].Enabled then
+          if qtimer[frmain.tvMain.Selected.Index].Enabled then
           begin
             frmain.tbStartQueue.Enabled:=false;
             frmain.tbStopQueue.Enabled:=true;
@@ -6877,7 +6887,7 @@ begin
             frmain.tbStopQueue.Enabled:=false;
           end;
 
-          if stimer[frmain.TreeView1.Selected.Index].Enabled then
+          if stimer[frmain.tvMain.Selected.Index].Enabled then
           begin
             frmain.tbStartScheduler.Enabled:=false;
             frmain.tbStopScheduler.Enabled:=true;
@@ -6890,61 +6900,61 @@ begin
         end;
         2:
         begin //filtros
-          case frmain.TreeView1.Selected.Index of
+          case frmain.tvMain.Selected.Index of
             0:sts:='3';
             1:sts:='1';
             2:sts:='2';
             3:sts:='4';
             4:sts:='0';
           end;
-          for i:=0 to frmain.ListView1.Items.Count-1 do
+          for i:=0 to frmain.lvMain.Items.Count-1 do
           begin
-            if frmain.ListView1.Items[i].SubItems[columnstatus]=sts then
+            if frmain.lvMain.Items[i].SubItems[columnstatus]=sts then
             begin
-              vitem:=TListItem.Create(frmain.ListView2.Items);
-              vitem.Caption:=frmain.ListView1.Items[i].Caption;
-              vitem.ImageIndex:=frmain.ListView1.Items[i].ImageIndex;
-              vitem.SubItems.AddStrings(frmain.ListView1.Items[i].SubItems);
-              vitem.Selected:=frmain.ListView1.Items[i].Selected;
-              frmain.ListView2.Items.AddItem(vitem);
-              vitem.Selected:=frmain.ListView1.Items[i].Selected;
-              if frmain.ListView1.Items[i].SubItems[columnstatus]='1' then
-                hilo[strtoint(frmain.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
+              vitem:=TListItem.Create(frmain.lvFilter.Items);
+              vitem.Caption:=frmain.lvMain.Items[i].Caption;
+              vitem.ImageIndex:=frmain.lvMain.Items[i].ImageIndex;
+              vitem.SubItems.AddStrings(frmain.lvMain.Items[i].SubItems);
+              vitem.Selected:=frmain.lvMain.Items[i].Selected;
+              frmain.lvFilter.Items.AddItem(vitem);
+              vitem.Selected:=frmain.lvMain.Items[i].Selected;
+              if frmain.lvMain.Items[i].SubItems[columnstatus]='1' then
+                hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].thid2:=vitem.Index;
             end;
           end;
         end;
         3:
         begin//categorias
-          for i:=0 to frmain.ListView1.Items.Count-1 do
+          for i:=0 to frmain.lvMain.Items.Count-1 do
           begin
-            if frmain.TreeView1.Selected.Index<Length(categoryextencions) then
+            if frmain.tvMain.Selected.Index<Length(categoryextencions) then
             begin
-              if findcategorydir(frmain.TreeView1.Selected.Index,frmain.ListView1.Items[i].SubItems[columnname]) then
+              if findcategorydir(frmain.tvMain.Selected.Index,frmain.lvMain.Items[i].SubItems[columnname]) then
               begin
-                vitem:=TListItem.Create(frmain.ListView2.Items);
-                vitem.Caption:=frmain.ListView1.Items[i].Caption;
-                vitem.ImageIndex:=frmain.ListView1.Items[i].ImageIndex;
-                vitem.SubItems.AddStrings(frmain.ListView1.Items[i].SubItems);
-                vitem.Selected:=frmain.ListView1.Items[i].Selected;
-                frmain.ListView2.Items.AddItem(vitem);
-                vitem.Selected:=frmain.ListView1.Items[i].Selected;
-                if frmain.ListView1.Items[i].SubItems[columnstatus]='1' then
-                  hilo[strtoint(frmain.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
+                vitem:=TListItem.Create(frmain.lvFilter.Items);
+                vitem.Caption:=frmain.lvMain.Items[i].Caption;
+                vitem.ImageIndex:=frmain.lvMain.Items[i].ImageIndex;
+                vitem.SubItems.AddStrings(frmain.lvMain.Items[i].SubItems);
+                vitem.Selected:=frmain.lvMain.Items[i].Selected;
+                frmain.lvFilter.Items.AddItem(vitem);
+                vitem.Selected:=frmain.lvMain.Items[i].Selected;
+                if frmain.lvMain.Items[i].SubItems[columnstatus]='1' then
+                  hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].thid2:=vitem.Index;
               end;
             end
             else
             begin
-              if not findcategoryall(frmain.ListView1.Items[i].SubItems[columnname]) then
+              if not findcategoryall(frmain.lvMain.Items[i].SubItems[columnname]) then
               begin
-                vitem:=TListItem.Create(frmain.ListView2.Items);
-                vitem.Caption:=frmain.ListView1.Items[i].Caption;
-                vitem.ImageIndex:=frmain.ListView1.Items[i].ImageIndex;
-                vitem.SubItems.AddStrings(frmain.ListView1.Items[i].SubItems);
-                vitem.Selected:=frmain.ListView1.Items[i].Selected;
-                frmain.ListView2.Items.AddItem(vitem);
-                vitem.Selected:=frmain.ListView1.Items[i].Selected;
-                if frmain.ListView1.Items[i].SubItems[columnstatus]='1' then
-                  hilo[strtoint(frmain.ListView1.Items[i].SubItems[columnid])].thid2:=vitem.Index;
+                vitem:=TListItem.Create(frmain.lvFilter.Items);
+                vitem.Caption:=frmain.lvMain.Items[i].Caption;
+                vitem.ImageIndex:=frmain.lvMain.Items[i].ImageIndex;
+                vitem.SubItems.AddStrings(frmain.lvMain.Items[i].SubItems);
+                vitem.Selected:=frmain.lvMain.Items[i].Selected;
+                frmain.lvFilter.Items.AddItem(vitem);
+                vitem.Selected:=frmain.lvMain.Items[i].Selected;
+                if frmain.lvMain.Items[i].SubItems[columnstatus]='1' then
+                  hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].thid2:=vitem.Index;
               end;
             end;
           end;
@@ -6953,21 +6963,21 @@ begin
     end
     else
     begin
-      if frmain.ListView1.Visible=false then
+      if frmain.lvMain.Visible=false then
       begin
-        for i:=0 to frmain.ListView1.Columns.Count-1 do
+        for i:=0 to frmain.lvMain.Columns.Count-1 do
         begin
-          frmain.ListView1.Columns[i].Width:=frmain.ListView2.Columns[i].Width;
-          frmain.ListView1.Columns[i].Visible:=frmain.ListView2.Columns[i].Visible;
+          frmain.lvMain.Columns[i].Width:=frmain.lvFilter.Columns[i].Width;
+          frmain.lvMain.Columns[i].Visible:=frmain.lvFilter.Columns[i].Visible;
         end;
         //if columncolav then
         //begin
-          //frmain.ListView1.Columns[0].Width:=columncolaw;
-          //frmain.ListView2.Columns[0].Width:=columncolaw;
+          //frmain.lvMain.Columns[0].Width:=columncolaw;
+          //frmain.lvFilter.Columns[0].Width:=columncolaw;
         //end;
       end;
-      frmain.ListView1.Visible:=true;
-      frmain.ListView2.Visible:=false;
+      frmain.lvMain.Visible:=true;
+      frmain.lvFilter.Visible:=false;
     end;
   end;
 end;
@@ -7053,7 +7063,7 @@ begin
     frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Activar el clipboardmonitor
     if (agregar or silent) and (updateurl=false) then
     begin
-      downitem:=TListItem.Create(frmain.ListView1.Items);
+      downitem:=TListItem.Create(frmain.lvMain.Items);
       downitem.Caption:=frstrings.statuspaused.Caption;
       downitem.ImageIndex:=18;
       downitem.SubItems.Add(frnewdown.Edit3.Text);//Nombre de archivo
@@ -7068,7 +7078,7 @@ begin
       downitem.SubItems.Add(frnewdown.ComboBox1.Text);//Motor
       downitem.SubItems.Add(frnewdown.Edit2.Text);//Parametros
       downitem.SubItems.Add('0');//status
-      downitem.SubItems.Add(inttostr(frmain.ListView1.Items.Count));//id
+      downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
       downitem.SubItems.Add(frnewdown.Edit4.Text);//user
       downitem.SubItems.Add(frnewdown.Edit5.Text);//pass
       downitem.SubItems.Add(inttostr(triesrotate));//tries
@@ -7083,19 +7093,19 @@ begin
       downitem.SubItems.Add(post);//post
       downitem.SubItems.Add(header);//header
       downitem.SubItems.Add(useragent);//useragent
-      frmain.ListView1.Items.AddItem(downitem);
+      frmain.lvMain.Items.AddItem(downitem);
       tmpindex:=downitem.Index;
       if cola then
       begin
-        queuemanual[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
-        qtimer[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
+        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+        qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
       end;
-      frmain.TreeView1SelectionChanged(nil);
+      frmain.tvMainSelectionChanged(nil);
       if not silent then
         savemydownloads();
       if iniciar or silent then
       begin
-        queuemanual[strtoint(frmain.ListView1.Items[tmpindex].SubItems[columnqueue])]:=true;
+        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
         downloadstart(tmpindex,false);
         if frmain.AutoSaveTimer.Enabled=false then
           frmain.AutoSaveTimer.Enabled:=true;
@@ -7112,18 +7122,18 @@ end;
 procedure downtrayicon.showinmain(Sender:TObject);
 begin
   frmain.Show;
-  frmain.TreeView1.Items[0].Selected:=true;
-  frmain.ListView1.MultiSelect:=false;
-  frmain.ListView1.Items[self.downindex].Selected:=true;
-  frmain.ListView1.MultiSelect:=true;
+  frmain.tvMain.Items[0].Selected:=true;
+  frmain.lvMain.MultiSelect:=false;
+  frmain.lvMain.Items[self.downindex].Selected:=true;
+  frmain.lvMain.MultiSelect:=true;
 end;
 
 procedure downtrayicon.contextmenu(Sender:TObject;Boton:TMouseButton;SShift:TShiftState;x:LongInt;y:LongInt);
 begin
   numtraydown:=self.downindex;
-  if self.downindex<frmain.ListView1.Items.Count then
+  if self.downindex<frmain.lvMain.Items.Count then
   begin
-    if frmain.ListView1.Items[self.downindex].SubItems[columnstatus]='1' then
+    if frmain.lvMain.Items[self.downindex].SubItems[columnstatus]='1' then
     begin
       frmain.mitraydownStart.Enabled:=false;
       frmain.mitraydownStop.Enabled:=true;

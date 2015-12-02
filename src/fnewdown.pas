@@ -170,8 +170,12 @@ begin
 end;
 
 procedure Tfrnewdown.ComboBox3Change(Sender: TObject);
+var
+  newpath:string='';
 begin
-  frnewdown.DirectoryEdit1.Text:=frnewdown.ComboBox3.Text;
+  newpath:=frnewdown.ComboBox3.Text;
+  frnewdown.DirectoryEdit1.Text:=newpath;
+  frnewdown.DirectoryEdit1AcceptDirectory(nil,newpath);
 end;
 
 procedure Tfrnewdown.DirectoryEdit1AcceptDirectory(Sender: TObject;
@@ -290,7 +294,7 @@ procedure Tfrnewdown.SpeedButton2Click(Sender: TObject);
 begin
   frnewdown.FormStyle:=fsNormal;
   frconfig.PageControl1.ActivePageIndex:=1;
-  frconfig.TreeView1.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
+  frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   frconfig.ComboBox4.ItemIndex:=frnewdown.ComboBox2.ItemIndex;
   frconfig.ShowModal;
@@ -302,7 +306,7 @@ procedure Tfrnewdown.SpeedButton3Click(Sender: TObject);
 begin
   frnewdown.FormStyle:=fsNormal;
   frconfig.PageControl1.ActivePageIndex:=5;
-  frconfig.TreeView1.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
+  frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
   frconfig.ShowModal;
   categoryreload();
