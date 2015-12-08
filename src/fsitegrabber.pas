@@ -32,67 +32,67 @@ type
   { Tfrsitegrabber }
 
   Tfrsitegrabber = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    Button4: TButton;
-    CheckBox1: TCheckBox;
-    CheckBox2: TCheckBox;
-    CheckBox3: TCheckBox;
-    CheckBox4: TCheckBox;
-    CheckBox5: TCheckBox;
-    CheckBox6: TCheckBox;
-    ComboBox1: TComboBox;
-    DirectoryEdit1: TDirectoryEdit;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
-    Edit4: TEdit;
-    Edit5: TEdit;
-    GroupBox1: TGroupBox;
-    GroupBox2: TGroupBox;
-    GroupBox3: TGroupBox;
-    GroupBox4: TGroupBox;
-    GroupBox5: TGroupBox;
-    GroupBox6: TGroupBox;
-    GroupBox7: TGroupBox;
-    GroupBox8: TGroupBox;
-    GroupBox9: TGroupBox;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    Label9: TLabel;
-    Memo1: TMemo;
-    Memo2: TMemo;
-    Memo3: TMemo;
-    Memo4: TMemo;
-    Memo5: TMemo;
-    Memo6: TMemo;
-    Memo7: TMemo;
-    Memo8: TMemo;
+    btnFinish: TButton;
+    btnCancel: TButton;
+    btnBack: TButton;
+    btnNext: TButton;
+    chLinkToLocal: TCheckBox;
+    chFollowFTPLink: TCheckBox;
+    chNoParentLink: TCheckBox;
+    chPageRequisites: TCheckBox;
+    chSpanHosts: TCheckBox;
+    chFollowRelativeLink: TCheckBox;
+    cbQueue: TComboBox;
+    deDestination: TDirectoryEdit;
+    edtURL: TEdit;
+    edtSiteName: TEdit;
+    edtUser: TEdit;
+    edtPassword: TEdit;
+    edtUserAgent: TEdit;
+    gbFileRejectFilter: TGroupBox;
+    gbDomainRejectFilter: TGroupBox;
+    gbFollowDomainFilter: TGroupBox;
+    gbIncludeDirectory: TGroupBox;
+    gbExcludeDirectory: TGroupBox;
+    gbFileAcceptFilter: TGroupBox;
+    gbFollowTags: TGroupBox;
+    gbIgnoreTags: TGroupBox;
+    bgAuthentication: TGroupBox;
+    lblURL: TLabel;
+    lblSiteName: TLabel;
+    lblDestination: TLabel;
+    lblUser: TLabel;
+    lblPassword: TLabel;
+    lblQueue: TLabel;
+    lblMaxLevel: TLabel;
+    lblWelcome: TLabel;
+    lblUserAgent: TLabel;
+    mFileRejectFilter: TMemo;
+    mDomainRejectFilter: TMemo;
+    mFollowDomainFilter: TMemo;
+    mIncludeDirectory: TMemo;
+    mExcludeDirectory: TMemo;
+    mFileAcceptFilter: TMemo;
+    mFollowTags: TMemo;
+    mIgnoreTags: TMemo;
     PageControl1: TPageControl;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpinEdit1: TSpinEdit;
-    TabSheet1: TTabSheet;
-    TabSheet2: TTabSheet;
-    TabSheet3: TTabSheet;
-    TabSheet4: TTabSheet;
-    TabSheet5: TTabSheet;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
-    procedure Edit1Change(Sender: TObject);
-    procedure Edit2Change(Sender: TObject);
+    btnAddQueue: TSpeedButton;
+    btnSchedule: TSpeedButton;
+    seMaxLevel: TSpinEdit;
+    tsWelcome: TTabSheet;
+    tsBasicOptions: TTabSheet;
+    tsFilters: TTabSheet;
+    tsDirectory: TTabSheet;
+    tsTags: TTabSheet;
+    procedure btnFinishClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnBackClick(Sender: TObject);
+    procedure btnNextClick(Sender: TObject);
+    procedure edtURLChange(Sender: TObject);
+    procedure edtSiteNameChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
+    procedure btnAddQueueClick(Sender: TObject);
+    procedure btnScheduleClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -110,87 +110,87 @@ uses fmain, fconfig;
 
 procedure validatesite();
 begin
-  if (Length(frsitegrabber.Edit2.Text)>0) and (Length(frsitegrabber.Edit1.Text)>0) then
+  if (Length(frsitegrabber.edtSiteName.Text)>0) and (Length(frsitegrabber.edtURL.Text)>0) then
   begin
-    frsitegrabber.Button1.Enabled:=true;
-    frsitegrabber.Button4.Enabled:=true;
+    frsitegrabber.btnFinish.Enabled:=true;
+    frsitegrabber.btnNext.Enabled:=true;
   end
   else
   begin
-    frsitegrabber.Button1.Enabled:=false;
-    frsitegrabber.Button4.Enabled:=false;
+    frsitegrabber.btnFinish.Enabled:=false;
+    frsitegrabber.btnNext.Enabled:=false;
   end;
 end;
 
 procedure Tfrsitegrabber.FormCreate(Sender: TObject);
 begin
   grbadd:=false;
-  frsitegrabber.Button3.Enabled:=false;
+  frsitegrabber.btnBack.Enabled:=false;
   validatesite();
 end;
 
-procedure Tfrsitegrabber.SpeedButton1Click(Sender: TObject);
+procedure Tfrsitegrabber.btnAddQueueClick(Sender: TObject);
 var
   i:integer;
 begin
   newqueue();
-  frsitegrabber.ComboBox1.Items.Clear;
+  frsitegrabber.cbQueue.Items.Clear;
   for i:=0 to Length(queues)-1 do
   begin
-    frsitegrabber.ComboBox1.Items.Add(queuenames[i]);
+    frsitegrabber.cbQueue.Items.Add(queuenames[i]);
   end;
-  frsitegrabber.ComboBox1.ItemIndex:=Length(queues)-1;
+  frsitegrabber.cbQueue.ItemIndex:=Length(queues)-1;
 end;
 
-procedure Tfrsitegrabber.SpeedButton2Click(Sender: TObject);
+procedure Tfrsitegrabber.btnScheduleClick(Sender: TObject);
 begin
   frsitegrabber.FormStyle:=fsNormal;
   frconfig.PageControl1.ActivePageIndex:=1;
   frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
-  frconfig.ComboBox4.ItemIndex:=frsitegrabber.ComboBox1.ItemIndex;
-  frconfig.ComboBox4Change(nil);
+  frconfig.cbQueue.ItemIndex:=frsitegrabber.cbQueue.ItemIndex;
+  frconfig.cbQueueChange(nil);
   frconfig.ShowModal;
-  frsitegrabber.ComboBox1.ItemIndex:=frconfig.ComboBox4.ItemIndex;
+  frsitegrabber.cbQueue.ItemIndex:=frconfig.cbQueue.ItemIndex;
   frsitegrabber.FormStyle:=fsSystemStayOnTop;
 end;
 
-procedure Tfrsitegrabber.Button1Click(Sender: TObject);
+procedure Tfrsitegrabber.btnFinishClick(Sender: TObject);
 begin
   grbadd:=true;
   frsitegrabber.Close;
 end;
 
-procedure Tfrsitegrabber.Button2Click(Sender: TObject);
+procedure Tfrsitegrabber.btnCancelClick(Sender: TObject);
 begin
   grbadd:=false;
   frsitegrabber.Close;
 end;
 
-procedure Tfrsitegrabber.Button3Click(Sender: TObject);
+procedure Tfrsitegrabber.btnBackClick(Sender: TObject);
 begin
   if frsitegrabber.PageControl1.TabIndex>0 then
     frsitegrabber.PageControl1.TabIndex:=frsitegrabber.PageControl1.TabIndex-1;
   if frsitegrabber.PageControl1.TabIndex=0 then
-    frsitegrabber.Button3.Enabled:=false;
-  frsitegrabber.Button4.Enabled:=true;
+    frsitegrabber.btnBack.Enabled:=false;
+  frsitegrabber.btnNext.Enabled:=true;
 end;
 
-procedure Tfrsitegrabber.Button4Click(Sender: TObject);
+procedure Tfrsitegrabber.btnNextClick(Sender: TObject);
 begin
   if frsitegrabber.PageControl1.TabIndex<frsitegrabber.PageControl1.PageCount-1 then
     frsitegrabber.PageControl1.TabIndex:=frsitegrabber.PageControl1.TabIndex+1;
   if (frsitegrabber.PageControl1.TabIndex=frsitegrabber.PageControl1.PageCount-1) then
-    frsitegrabber.Button4.Enabled:=false;
-  frsitegrabber.Button3.Enabled:=true;
+    frsitegrabber.btnNext.Enabled:=false;
+  frsitegrabber.btnBack.Enabled:=true;
 end;
 
-procedure Tfrsitegrabber.Edit1Change(Sender: TObject);
+procedure Tfrsitegrabber.edtURLChange(Sender: TObject);
 begin
   validatesite();
 end;
 
-procedure Tfrsitegrabber.Edit2Change(Sender: TObject);
+procedure Tfrsitegrabber.edtSiteNameChange(Sender: TObject);
 begin
   validatesite();
 end;

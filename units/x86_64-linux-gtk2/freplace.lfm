@@ -1,7 +1,7 @@
 object frreplace: Tfrreplace
-  Left = 287
+  Left = 350
   Height = 236
-  Top = 245
+  Top = 173
   Width = 377
   AutoSize = True
   BorderIcons = []
@@ -12,7 +12,7 @@ object frreplace: Tfrreplace
   OnCreate = FormCreate
   Position = poScreenCenter
   LCLVersion = '1.4.4.0'
-  object Label1: TLabel
+  object lblFileExistInformation: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
@@ -29,10 +29,10 @@ object frreplace: Tfrreplace
     ParentColor = False
     WordWrap = True
   end
-  object RadioButton1: TRadioButton
+  object rbOverwrite: TRadioButton
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
-    AnchorSideTop.Control = Label1
+    AnchorSideTop.Control = lblFileExistInformation
     AnchorSideTop.Side = asrBottom
     Left = 135
     Height = 17
@@ -40,13 +40,13 @@ object frreplace: Tfrreplace
     Width = 106
     BorderSpacing.Top = 5
     Caption = 'Overwrite the file.'
-    OnChange = RadioButton1Change
-    OnClick = RadioButton1Change
+    OnChange = rbOverwriteChange
+    OnClick = rbOverwriteChange
     TabOrder = 0
   end
-  object RadioButton2: TRadioButton
-    AnchorSideLeft.Control = RadioButton1
-    AnchorSideTop.Control = RadioButton1
+  object rbAutoRename: TRadioButton
+    AnchorSideLeft.Control = rbOverwrite
+    AnchorSideTop.Control = rbOverwrite
     AnchorSideTop.Side = asrBottom
     Left = 135
     Height = 17
@@ -55,14 +55,14 @@ object frreplace: Tfrreplace
     BorderSpacing.Top = 5
     Caption = 'Auto rename the file.'
     Checked = True
-    OnChange = RadioButton2Change
-    OnClick = RadioButton2Change
+    OnChange = rbAutoRenameChange
+    OnClick = rbAutoRenameChange
     TabOrder = 4
     TabStop = True
   end
-  object RadioButton3: TRadioButton
-    AnchorSideLeft.Control = RadioButton1
-    AnchorSideTop.Control = RadioButton2
+  object rbManualRename: TRadioButton
+    AnchorSideLeft.Control = rbOverwrite
+    AnchorSideTop.Control = rbAutoRename
     AnchorSideTop.Side = asrBottom
     Left = 135
     Height = 17
@@ -70,14 +70,14 @@ object frreplace: Tfrreplace
     Width = 131
     BorderSpacing.Top = 5
     Caption = 'Manual rename the file.'
-    OnChange = RadioButton3Change
-    OnClick = RadioButton3Change
+    OnChange = rbManualRenameChange
+    OnClick = rbManualRenameChange
     TabOrder = 1
   end
-  object Edit1: TEdit
-    AnchorSideLeft.Control = Label2
+  object edtFileName: TEdit
+    AnchorSideLeft.Control = lblFileName
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = RadioButton4
+    AnchorSideTop.Control = rbUpdateURL
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
@@ -91,12 +91,12 @@ object frreplace: Tfrreplace
     Enabled = False
     TabOrder = 2
   end
-  object Button1: TButton
-    AnchorSideLeft.Control = Button2
+  object btnOk: TButton
+    AnchorSideLeft.Control = btnCancel
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Control = edtFileName
     AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = Button2
+    AnchorSideRight.Control = btnCancel
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 260
@@ -109,14 +109,14 @@ object frreplace: Tfrreplace
     BorderSpacing.Right = 5
     BorderSpacing.Bottom = 5
     Caption = 'Ok'
-    OnClick = Button1Click
+    OnClick = btnOkClick
     TabOrder = 3
   end
-  object Label2: TLabel
+  object lblFileName: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Control = edtFileName
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = Edit1
+    AnchorSideRight.Control = edtFileName
     Left = 15
     Height = 13
     Top = 138
@@ -125,10 +125,10 @@ object frreplace: Tfrreplace
     Caption = 'File name:'
     ParentColor = False
   end
-  object Button2: TButton
-    AnchorSideLeft.Control = Button1
+  object btnCancel: TButton
+    AnchorSideLeft.Control = btnOk
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Control = edtFileName
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
@@ -145,12 +145,12 @@ object frreplace: Tfrreplace
     BorderSpacing.Right = 15
     BorderSpacing.Bottom = 8
     Caption = 'Cancel'
-    OnClick = Button2Click
+    OnClick = btnCancelClick
     TabOrder = 5
   end
-  object RadioButton4: TRadioButton
-    AnchorSideLeft.Control = RadioButton3
-    AnchorSideTop.Control = RadioButton3
+  object rbUpdateURL: TRadioButton
+    AnchorSideLeft.Control = rbManualRename
+    AnchorSideTop.Control = rbManualRename
     AnchorSideTop.Side = asrBottom
     Left = 135
     Height = 17
@@ -158,7 +158,7 @@ object frreplace: Tfrreplace
     Width = 133
     BorderSpacing.Top = 5
     Caption = 'Update URL for this file.'
-    OnClick = RadioButton4Click
+    OnClick = rbUpdateURLClick
     TabOrder = 6
   end
 end

@@ -1,24 +1,24 @@
 object frcopymove: Tfrcopymove
-  Left = 160
+  Left = 354
   Height = 109
-  Top = 282
+  Top = 497
   Width = 615
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
-  Caption = 'Saving file...'
+  Caption = 'File operations'
   ClientHeight = 109
   ClientWidth = 615
   OnCloseQuery = FormCloseQuery
   Position = poDesktopCenter
   ShowInTaskBar = stAlways
   LCLVersion = '1.4.4.0'
-  object Label1: TLabel
-    AnchorSideLeft.Control = ProgressBar1
+  object lblFrom: TLabel
+    AnchorSideLeft.Control = pbCopyMove
     AnchorSideTop.Control = Owner
-    AnchorSideRight.Control = ProgressBar1
+    AnchorSideRight.Control = pbCopyMove
     AnchorSideRight.Side = asrBottom
     Left = 5
-    Height = 13
+    Height = 15
     Top = 10
     Width = 605
     Anchors = [akTop, akLeft, akRight]
@@ -26,30 +26,30 @@ object frcopymove: Tfrcopymove
     Caption = 'From: %s'
     ParentColor = False
   end
-  object Label2: TLabel
-    AnchorSideLeft.Control = Label1
-    AnchorSideTop.Control = Label1
+  object lblTo: TLabel
+    AnchorSideLeft.Control = lblFrom
+    AnchorSideTop.Control = lblFrom
     AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = ProgressBar1
+    AnchorSideRight.Control = pbCopyMove
     AnchorSideRight.Side = asrBottom
     Left = 5
-    Height = 13
-    Top = 28
+    Height = 15
+    Top = 30
     Width = 605
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 5
     Caption = 'To: %s'
     ParentColor = False
   end
-  object ProgressBar1: TProgressBar
+  object pbCopyMove: TProgressBar
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = Label2
+    AnchorSideTop.Control = lblTo
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 5
     Height = 20
-    Top = 46
+    Top = 50
     Width = 605
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
@@ -59,22 +59,22 @@ object frcopymove: Tfrcopymove
     Step = 1
     TabOrder = 0
   end
-  object Button1: TButton
+  object btnCancel: TButton
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
-    AnchorSideTop.Control = ProgressBar1
+    AnchorSideTop.Control = pbCopyMove
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 278
-    Height = 23
-    Top = 71
-    Width = 58
+    Left = 280
+    Height = 27
+    Top = 75
+    Width = 55
     AutoSize = True
     BorderSpacing.Top = 5
     BorderSpacing.Bottom = 3
     Caption = 'Cancel'
-    OnClick = Button1Click
+    OnClick = btnCancelClick
     TabOrder = 1
   end
 end

@@ -107,7 +107,7 @@ procedure AddLineInfoPath(const Path: String);
  Paths can be absolute or relative to the directory with the executable module.
 }
 
-procedure GetModuleByAddr(addr: pointer; var baseaddr: pointer; var filename: string);
+procedure GetModuleByAddr(addr: pointer; var baseaddr: pointer; var filename: ansistring);
 {
   This function allows you to know which executable (i.e. the main exe
     or one of the dlls loaded by it) owns this part of the virtual
@@ -246,7 +246,7 @@ type
     opcode_base : Byte;
   end;
 
-procedure GetModuleByAddr(addr: pointer; var baseaddr: pointer; var filename: string);
+procedure GetModuleByAddr(addr: pointer; var baseaddr: pointer; var filename: ansistring);
 {$ifdef unix}
 var
   dlinfo: dl_info;

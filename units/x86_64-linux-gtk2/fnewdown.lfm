@@ -1,9 +1,10 @@
 object frnewdown: Tfrnewdown
-  Left = 301
+  Left = 240
   Height = 178
-  Top = 368
+  Top = 262
   Width = 545
   AutoSize = True
+  BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
   Caption = 'New download'
   ClientHeight = 178
@@ -16,97 +17,97 @@ object frnewdown: Tfrnewdown
   Position = poScreenCenter
   ShowInTaskBar = stAlways
   LCLVersion = '1.4.4.0'
-  object Edit1: TEdit
-    AnchorSideLeft.Control = Label1
+  object edtURL: TEdit
+    AnchorSideLeft.Control = lblURL
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 38
-    Height = 25
+    Left = 31
+    Height = 21
     Top = 3
-    Width = 504
+    Width = 511
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     BorderSpacing.Right = 3
-    OnChange = Edit1Change
+    OnChange = edtURLChange
     OnKeyDown = FormKeyDown
     TabOrder = 0
   end
-  object Label1: TLabel
+  object lblURL: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Control = edtURL
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = Edit1
+    AnchorSideRight.Control = edtURL
     Left = 5
-    Height = 15
-    Top = 8
-    Width = 33
+    Height = 13
+    Top = 7
+    Width = 26
     BorderSpacing.Left = 5
     Caption = 'URL: '
     ParentColor = False
   end
-  object Button1: TButton
-    AnchorSideLeft.Control = SpeedButton2
+  object btnToQueue: TButton
+    AnchorSideLeft.Control = btnSchedule
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = BitBtn1
-    AnchorSideRight.Control = BitBtn1
-    AnchorSideBottom.Control = BitBtn1
+    AnchorSideTop.Control = btnStart
+    AnchorSideRight.Control = btnStart
+    AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 205
-    Height = 30
-    Top = 145
-    Width = 125
+    Left = 195
+    Height = 26
+    Top = 123
+    Width = 113
     Anchors = [akTop, akLeft, akBottom]
     AutoSize = True
     Caption = 'To the queue [F2]'
-    OnClick = Button1Click
+    OnClick = btnToQueueClick
     OnKeyDown = FormKeyDown
     TabOrder = 1
   end
-  object Button2: TButton
-    AnchorSideLeft.Control = Button4
+  object btnCancel: TButton
+    AnchorSideLeft.Control = btnPaused
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = BitBtn1
+    AnchorSideTop.Control = btnStart
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = BitBtn1
+    AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 485
-    Height = 30
-    Top = 145
-    Width = 57
+    Left = 484
+    Height = 26
+    Top = 123
+    Width = 58
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 3
     Caption = 'Cancel'
-    OnClick = Button2Click
+    OnClick = btnCancelClick
     OnKeyDown = FormKeyDown
     TabOrder = 2
   end
-  object Label2: TLabel
+  object lblDestination: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = DirectoryEdit1
+    AnchorSideTop.Control = deDestination
     AnchorSideTop.Side = asrCenter
     Left = 5
-    Height = 15
-    Top = 36
-    Width = 81
+    Height = 13
+    Top = 31
+    Width = 61
     BorderSpacing.Left = 5
     Caption = 'Destination: '
     ParentColor = False
   end
-  object ComboBox1: TComboBox
-    AnchorSideLeft.Control = Label3
+  object cbEngine: TComboBox
+    AnchorSideLeft.Control = lblEngine
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit3
+    AnchorSideTop.Control = edtFileName
     AnchorSideTop.Side = asrBottom
-    Left = 56
-    Height = 27
-    Top = 87
+    Left = 44
+    Height = 21
+    Top = 75
     Width = 100
     BorderSpacing.Top = 3
-    ItemHeight = 0
+    ItemHeight = 13
     Items.Strings = (
       ''
     )
@@ -114,47 +115,47 @@ object frnewdown: Tfrnewdown
     Style = csDropDownList
     TabOrder = 3
   end
-  object Label3: TLabel
+  object lblEngine: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = ComboBox1
+    AnchorSideTop.Control = cbEngine
     AnchorSideTop.Side = asrCenter
     Left = 5
-    Height = 15
-    Top = 93
-    Width = 51
+    Height = 13
+    Top = 79
+    Width = 39
     BorderSpacing.Left = 5
     Caption = 'Engine: '
     ParentColor = False
   end
-  object Button4: TButton
-    AnchorSideLeft.Control = BitBtn1
+  object btnPaused: TButton
+    AnchorSideLeft.Control = btnStart
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = BitBtn1
-    AnchorSideRight.Control = Button2
-    AnchorSideBottom.Control = BitBtn1
+    AnchorSideTop.Control = btnStart
+    AnchorSideRight.Control = btnCancel
+    AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 425
-    Height = 30
-    Top = 145
-    Width = 60
+    Left = 423
+    Height = 26
+    Top = 123
+    Width = 61
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     Caption = 'Paused'
-    OnClick = Button4Click
+    OnClick = btnPausedClick
     OnKeyDown = FormKeyDown
     TabOrder = 4
   end
-  object DirectoryEdit1: TDirectoryEdit
-    AnchorSideLeft.Control = Label2
+  object deDestination: TDirectoryEdit
+    AnchorSideLeft.Control = lblDestination
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit1
+    AnchorSideTop.Control = edtURL
     AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = SpeedButton4
-    Left = 86
-    Height = 25
-    Top = 31
-    Width = 433
-    OnAcceptDirectory = DirectoryEdit1AcceptDirectory
+    AnchorSideRight.Control = btnGoDestination
+    Left = 66
+    Height = 21
+    Top = 27
+    Width = 453
+    OnAcceptDirectory = deDestinationAcceptDirectory
     ShowHidden = False
     ButtonWidth = 23
     NumGlyphs = 1
@@ -162,117 +163,117 @@ object frnewdown: Tfrnewdown
     BorderSpacing.Top = 3
     MaxLength = 0
     TabOrder = 5
-    OnChange = DirectoryEdit1Change
+    OnChange = deDestinationChange
     OnKeyDown = FormKeyDown
   end
-  object Label4: TLabel
-    AnchorSideLeft.Control = ComboBox1
+  object lblParameters: TLabel
+    AnchorSideLeft.Control = cbEngine
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit2
+    AnchorSideTop.Control = edtParameters
     AnchorSideTop.Side = asrCenter
-    Left = 161
-    Height = 15
-    Top = 93
-    Width = 78
+    Left = 149
+    Height = 13
+    Top = 79
+    Width = 59
     BorderSpacing.Left = 5
     Caption = 'Parameters:'
     ParentColor = False
   end
-  object Edit2: TEdit
-    AnchorSideLeft.Control = Label4
+  object edtParameters: TEdit
+    AnchorSideLeft.Control = lblParameters
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = ComboBox1
+    AnchorSideTop.Control = cbEngine
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 239
-    Height = 25
-    Top = 88
-    Width = 303
+    Left = 208
+    Height = 21
+    Top = 75
+    Width = 334
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 3
     OnKeyDown = FormKeyDown
     TabOrder = 6
   end
-  object Label5: TLabel
+  object lblFileName: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = Edit3
+    AnchorSideTop.Control = edtFileName
     AnchorSideTop.Side = asrCenter
     Left = 5
-    Height = 15
-    Top = 64
-    Width = 69
+    Height = 13
+    Top = 55
+    Width = 52
     BorderSpacing.Left = 5
     Caption = 'File name: '
     ParentColor = False
   end
-  object Edit3: TEdit
-    AnchorSideLeft.Control = Label5
+  object edtFileName: TEdit
+    AnchorSideLeft.Control = lblFileName
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = DirectoryEdit1
+    AnchorSideTop.Control = deDestination
     AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = SpeedButton3
-    Left = 74
-    Height = 25
-    Top = 59
-    Width = 445
+    AnchorSideRight.Control = btnCategoryGo
+    Left = 57
+    Height = 21
+    Top = 51
+    Width = 462
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
-    OnChange = Edit3Change
+    OnChange = edtFileNameChange
     TabOrder = 7
   end
-  object Label6: TLabel
+  object lblUser: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = Edit4
+    AnchorSideTop.Control = edtUser
     AnchorSideTop.Side = asrCenter
     Left = 5
-    Height = 15
-    Top = 122
-    Width = 96
+    Height = 13
+    Top = 103
+    Width = 76
     BorderSpacing.Left = 5
     Caption = 'HTTP/FTP User:'
     ParentColor = False
   end
-  object Edit4: TEdit
-    AnchorSideLeft.Control = Label6
+  object edtUser: TEdit
+    AnchorSideLeft.Control = lblUser
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = ComboBox1
+    AnchorSideTop.Control = cbEngine
     AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = Edit2
-    AnchorSideBottom.Control = Button2
-    Left = 101
-    Height = 25
-    Top = 117
-    Width = 138
+    AnchorSideRight.Control = edtParameters
+    AnchorSideBottom.Control = btnCancel
+    Left = 81
+    Height = 21
+    Top = 99
+    Width = 127
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     TabOrder = 8
   end
-  object Label7: TLabel
-    AnchorSideLeft.Control = Edit4
+  object lblPassword: TLabel
+    AnchorSideLeft.Control = edtUser
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit5
+    AnchorSideTop.Control = edtPassword
     AnchorSideTop.Side = asrCenter
-    Left = 249
-    Height = 15
-    Top = 122
-    Width = 125
+    Left = 218
+    Height = 13
+    Top = 103
+    Width = 100
     BorderSpacing.Left = 10
     Caption = 'HTTP/FTP Password:'
     ParentColor = False
   end
-  object Edit5: TEdit
-    AnchorSideLeft.Control = Label7
+  object edtPassword: TEdit
+    AnchorSideLeft.Control = lblPassword
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = ComboBox1
+    AnchorSideTop.Control = cbEngine
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = Button2
-    Left = 374
-    Height = 25
-    Top = 117
-    Width = 168
+    AnchorSideBottom.Control = btnCancel
+    Left = 318
+    Height = 21
+    Top = 99
+    Width = 224
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     BorderSpacing.Right = 3
@@ -280,47 +281,47 @@ object frnewdown: Tfrnewdown
     PasswordChar = '*'
     TabOrder = 9
   end
-  object Label8: TLabel
+  object lblQueue: TLabel
     AnchorSideLeft.Control = Owner
-    AnchorSideTop.Control = ComboBox2
+    AnchorSideTop.Control = cbQueue
     AnchorSideTop.Side = asrCenter
     Left = 4
-    Height = 15
-    Top = 153
-    Width = 46
+    Height = 13
+    Top = 130
+    Width = 36
     BorderSpacing.Left = 4
     Caption = 'Queue:'
     ParentColor = False
   end
-  object ComboBox2: TComboBox
-    AnchorSideLeft.Control = Label8
+  object cbQueue: TComboBox
+    AnchorSideLeft.Control = lblQueue
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = BitBtn1
+    AnchorSideTop.Control = btnStart
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = SpeedButton1
-    AnchorSideBottom.Control = Button2
+    AnchorSideRight.Control = btnAddQueue
+    AnchorSideBottom.Control = btnCancel
     AnchorSideBottom.Side = asrBottom
-    Left = 50
-    Height = 31
-    Top = 145
+    Left = 40
+    Height = 21
+    Top = 126
     Width = 109
     AutoSize = False
     BorderSpacing.Top = 3
-    ItemHeight = 0
+    ItemHeight = 13
     Style = csDropDownList
     TabOrder = 10
   end
-  object SpeedButton1: TSpeedButton
-    AnchorSideLeft.Control = ComboBox2
+  object btnAddQueue: TSpeedButton
+    AnchorSideLeft.Control = cbQueue
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = BitBtn1
-    AnchorSideRight.Control = SpeedButton2
-    AnchorSideBottom.Control = BitBtn1
+    AnchorSideTop.Control = btnStart
+    AnchorSideRight.Control = btnSchedule
+    AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 159
-    Height = 30
+    Left = 149
+    Height = 26
     Hint = 'Add queue'
-    Top = 145
+    Top = 123
     Width = 23
     Anchors = [akTop, akLeft, akBottom]
     Glyph.Data = {
@@ -359,22 +360,22 @@ object frnewdown: Tfrnewdown
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
-    OnClick = SpeedButton1Click
+    OnClick = btnAddQueueClick
     ShowCaption = False
     ShowHint = True
     ParentShowHint = False
   end
-  object SpeedButton2: TSpeedButton
-    AnchorSideLeft.Control = SpeedButton1
+  object btnSchedule: TSpeedButton
+    AnchorSideLeft.Control = btnAddQueue
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = BitBtn1
-    AnchorSideRight.Control = Button1
-    AnchorSideBottom.Control = BitBtn1
+    AnchorSideTop.Control = btnStart
+    AnchorSideRight.Control = btnToQueue
+    AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 182
-    Height = 30
+    Left = 172
+    Height = 26
     Hint = 'Schedule'
-    Top = 145
+    Top = 123
     Width = 23
     Anchors = [akTop, akLeft, akBottom]
     Glyph.Data = {
@@ -413,22 +414,22 @@ object frnewdown: Tfrnewdown
       F40200B5F48000B5F4D100B5F4CA00B5F407FFFFFF00FFFFFF00FFFFFF00FFFF
       FF0000B5F41700B5F4D100B5F4C900B5F427FFFFFF00FFFFFF00
     }
-    OnClick = SpeedButton2Click
+    OnClick = btnScheduleClick
     ShowHint = True
     ParentShowHint = False
   end
-  object BitBtn1: TBitBtn
-    AnchorSideLeft.Control = Button1
+  object btnStart: TBitBtn
+    AnchorSideLeft.Control = btnToQueue
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit4
+    AnchorSideTop.Control = edtUser
     AnchorSideTop.Side = asrBottom
-    AnchorSideRight.Control = Button4
-    AnchorSideBottom.Control = ComboBox2
+    AnchorSideRight.Control = btnPaused
+    AnchorSideBottom.Control = cbQueue
     AnchorSideBottom.Side = asrBottom
-    Left = 330
-    Height = 30
-    Top = 145
-    Width = 95
+    Left = 308
+    Height = 26
+    Top = 123
+    Width = 115
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
     BorderSpacing.Top = 3
@@ -469,36 +470,36 @@ object frnewdown: Tfrnewdown
       000004733AFF2D8859FF859C90FF000000000000000000000000000000000000
       0000000000000000000000000000000000000000000000000000
     }
-    OnClick = BitBtn1Click
+    OnClick = btnStartClick
     TabOrder = 11
   end
-  object ComboBox3: TComboBox
-    AnchorSideLeft.Control = DirectoryEdit1
-    AnchorSideTop.Control = DirectoryEdit1
-    AnchorSideRight.Control = DirectoryEdit1
+  object cbDestination: TComboBox
+    AnchorSideLeft.Control = deDestination
+    AnchorSideTop.Control = deDestination
+    AnchorSideRight.Control = deDestination
     AnchorSideRight.Side = asrBottom
-    AnchorSideBottom.Control = DirectoryEdit1
+    AnchorSideBottom.Control = deDestination
     AnchorSideBottom.Side = asrBottom
-    Left = 86
-    Height = 25
-    Top = 31
-    Width = 410
+    Left = 66
+    Height = 21
+    Top = 27
+    Width = 430
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Right = 23
-    ItemHeight = 0
-    OnChange = ComboBox3Change
+    ItemHeight = 13
+    OnChange = cbDestinationChange
     TabOrder = 12
   end
-  object SpeedButton3: TSpeedButton
-    AnchorSideLeft.Control = Edit3
+  object btnCategoryGo: TSpeedButton
+    AnchorSideLeft.Control = edtFileName
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = Edit3
+    AnchorSideTop.Control = edtFileName
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 519
     Height = 22
-    Top = 60
+    Top = 50
     Width = 23
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 3
@@ -538,18 +539,18 @@ object frnewdown: Tfrnewdown
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF009E9E9E629D9D9DE89B9B9BF999999992FFFFFF00FFFFFF00
     }
-    OnClick = SpeedButton3Click
+    OnClick = btnCategoryGoClick
   end
-  object SpeedButton4: TSpeedButton
-    AnchorSideLeft.Control = DirectoryEdit1
+  object btnGoDestination: TSpeedButton
+    AnchorSideLeft.Control = deDestination
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = DirectoryEdit1
+    AnchorSideTop.Control = deDestination
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 519
     Height = 22
-    Top = 32
+    Top = 26
     Width = 23
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 3
@@ -589,6 +590,6 @@ object frnewdown: Tfrnewdown
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
-    OnClick = SpeedButton4Click
+    OnClick = btnGoDestinationClick
   end
 end

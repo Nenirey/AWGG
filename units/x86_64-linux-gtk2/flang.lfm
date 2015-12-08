@@ -1,7 +1,7 @@
 object frlang: Tfrlang
-  Left = 382
+  Left = 384
   Height = 125
-  Top = 282
+  Top = 284
   Width = 298
   BorderIcons = []
   BorderStyle = bsDialog
@@ -11,46 +11,46 @@ object frlang: Tfrlang
   FormStyle = fsSystemStayOnTop
   Position = poScreenCenter
   LCLVersion = '1.4.4.0'
-  object Label1: TLabel
-    AnchorSideTop.Control = ComboBox1
+  object lblLang: TLabel
+    AnchorSideTop.Control = cbLang
     AnchorSideTop.Side = asrCenter
-    AnchorSideRight.Control = ComboBox1
-    Left = 46
-    Height = 13
-    Top = 56
-    Width = 51
+    AnchorSideRight.Control = cbLang
+    Left = 30
+    Height = 15
+    Top = 55
+    Width = 67
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Language:'
     ParentColor = False
   end
-  object ComboBox1: TComboBox
+  object cbLang: TComboBox
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = Owner
     AnchorSideTop.Side = asrCenter
     Left = 99
-    Height = 21
-    Top = 52
+    Height = 29
+    Top = 48
     Width = 100
-    ItemHeight = 13
+    ItemHeight = 0
     Style = csDropDownList
     TabOrder = 0
   end
-  object Button1: TButton
+  object btnOk: TButton
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 130
-    Height = 23
-    Top = 97
-    Width = 39
+    Left = 135
+    Height = 27
+    Top = 93
+    Width = 29
     Anchors = [akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Bottom = 5
     Caption = 'Ok'
-    OnClick = Button1Click
+    OnClick = btnOkClick
     TabOrder = 1
   end
 end

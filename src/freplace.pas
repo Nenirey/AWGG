@@ -30,22 +30,22 @@ type
   { Tfrreplace }
 
   Tfrreplace = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Edit1: TEdit;
-    Label1: TLabel;
-    Label2: TLabel;
-    RadioButton1: TRadioButton;
-    RadioButton2: TRadioButton;
-    RadioButton3: TRadioButton;
-    RadioButton4: TRadioButton;
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
+    btnOk: TButton;
+    btnCancel: TButton;
+    edtFileName: TEdit;
+    lblFileExistInformation: TLabel;
+    lblFileName: TLabel;
+    rbOverwrite: TRadioButton;
+    rbAutoRename: TRadioButton;
+    rbManualRename: TRadioButton;
+    rbUpdateURL: TRadioButton;
+    procedure btnOkClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
-    procedure RadioButton1Change(Sender: TObject);
-    procedure RadioButton2Change(Sender: TObject);
-    procedure RadioButton3Change(Sender: TObject);
-    procedure RadioButton4Click(Sender: TObject);
+    procedure rbOverwriteChange(Sender: TObject);
+    procedure rbAutoRenameChange(Sender: TObject);
+    procedure rbManualRenameChange(Sender: TObject);
+    procedure rbUpdateURLClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -60,18 +60,18 @@ uses fmain,fnewdown;
 {$R *.lfm}
 
 { Tfrreplace }
-procedure Tfrreplace.Button1Click(Sender: TObject);
+procedure Tfrreplace.btnOkClick(Sender: TObject);
 begin
   accept:=true;
-  if frreplace.RadioButton1.Checked then
-    DeleteFile(frnewdown.DirectoryEdit1.Text+pathdelim+frnewdown.Edit3.Text);
-  if ((frreplace.RadioButton3.Checked) and (destinyexists(frnewdown.DirectoryEdit1.Text+pathdelim+frreplace.Edit1.Text) or FileExists(frnewdown.DirectoryEdit1.Text+pathdelim+frreplace.Edit1.Text))) then
+  if frreplace.rbOverwrite.Checked then
+    DeleteFile(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text);
+  if ((frreplace.rbManualRename.Checked) and (destinyexists(frnewdown.deDestination.Text+pathdelim+frreplace.edtFileName.Text) or FileExists(frnewdown.deDestination.Text+pathdelim+frreplace.edtFileName.Text))) then
     frreplace.Activate
   else
     frreplace.Close;
 end;
 
-procedure Tfrreplace.Button2Click(Sender: TObject);
+procedure Tfrreplace.btnCancelClick(Sender: TObject);
 begin
   accept:=false;
   frreplace.Close;
@@ -82,32 +82,32 @@ begin
   accept:=false;
 end;
 
-procedure Tfrreplace.RadioButton1Change(Sender: TObject);
+procedure Tfrreplace.rbOverwriteChange(Sender: TObject);
 begin
-  if frreplace.RadioButton1.Checked then
-    frreplace.Edit1.Text:=frnewdown.Edit3.Text;
+  if frreplace.rbOverwrite.Checked then
+    frreplace.edtFileName.Text:=frnewdown.edtFileName.Text;
 end;
 
-procedure Tfrreplace.RadioButton2Change(Sender: TObject);
+procedure Tfrreplace.rbAutoRenameChange(Sender: TObject);
 begin
-  while (frreplace.RadioButton2.Checked) and (destinyexists(frnewdown.DirectoryEdit1.Text+pathdelim+frreplace.Edit1.Text) or FileExists(frnewdown.DirectoryEdit1.Text+pathdelim+frreplace.Edit1.Text)) do
-    frreplace.Edit1.Text:='_'+frreplace.Edit1.Text;
+  while (frreplace.rbAutoRename.Checked) and (destinyexists(frnewdown.deDestination.Text+pathdelim+frreplace.edtFileName.Text) or FileExists(frnewdown.deDestination.Text+pathdelim+frreplace.edtFileName.Text)) do
+    frreplace.edtFileName.Text:='_'+frreplace.edtFileName.Text;
 end;
 
-procedure Tfrreplace.RadioButton3Change(Sender: TObject);
+procedure Tfrreplace.rbManualRenameChange(Sender: TObject);
 begin
-  if frreplace.RadioButton3.Checked then
+  if frreplace.rbManualRename.Checked then
   begin
-    frreplace.Edit1.Enabled:=true;
-    frreplace.Edit1.Text:=frnewdown.Edit3.Text;
+    frreplace.edtFileName.Enabled:=true;
+    frreplace.edtFileName.Text:=frnewdown.edtFileName.Text;
   end
   else
-    frreplace.Edit1.Enabled:=false;
+    frreplace.edtFileName.Enabled:=false;
 end;
 
-procedure Tfrreplace.RadioButton4Click(Sender: TObject);
+procedure Tfrreplace.rbUpdateURLClick(Sender: TObject);
 begin
-  frreplace.Edit1.Text:=frnewdown.Edit3.Text;
+  frreplace.edtFileName.Text:=frnewdown.edtFileName.Text;
 end;
 
 end.

@@ -32,10 +32,10 @@ type
   { Tfradd }
 
   Tfradd = class(TForm)
-    ButtonPanel1: TButtonPanel;
-    Edit1: TEdit;
-    Label1: TLabel;
-    procedure ButtonPanel1Click(Sender: TObject);
+    bpAdd: TButtonPanel;
+    edtValue: TEdit;
+    lblValue: TLabel;
+    procedure bpAddClick(Sender: TObject);
     procedure CancelButtonClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormShow(Sender: TObject);
@@ -56,7 +56,7 @@ implementation
 
 { Tfradd }
 
-procedure Tfradd.ButtonPanel1Click(Sender: TObject);
+procedure Tfradd.bpAddClick(Sender: TObject);
 begin
 
 end;
@@ -73,7 +73,7 @@ end;
 
 procedure Tfradd.FormShow(Sender: TObject);
 begin
-  fradd.Edit1.SetFocus;
+  fradd.edtValue.SetFocus;
 end;
 
 procedure Tfradd.OKButtonClick(Sender: TObject);

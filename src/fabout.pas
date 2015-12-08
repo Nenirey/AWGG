@@ -31,18 +31,18 @@ type
   { Tfrabout }
 
   Tfrabout = class(TForm)
-    Button1: TButton;
-    Image1: TImage;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Memo1: TMemo;
-    procedure Button1Click(Sender: TObject);
+    btnOk: TButton;
+    imgLogo: TImage;
+    lblAboutName: TLabel;
+    lblAboutVersion: TLabel;
+    lblWebLink: TLabel;
+    lblWebSite: TLabel;
+    mAboutText: TMemo;
+    procedure btnOkClick(Sender: TObject);
     procedure FormDeactivate(Sender: TObject);
-    procedure Label3Click(Sender: TObject);
-    procedure Label3MouseEnter(Sender: TObject);
-    procedure Label3MouseLeave(Sender: TObject);
+    procedure lblWebLinkClick(Sender: TObject);
+    procedure lblWebLinkMouseEnter(Sender: TObject);
+    procedure lblWebLinkMouseLeave(Sender: TObject);
   private
     { private declarations }
   public
@@ -58,7 +58,7 @@ implementation
 
 { Tfrabout }
 
-procedure Tfrabout.Button1Click(Sender: TObject);
+procedure Tfrabout.btnOkClick(Sender: TObject);
 begin
   frabout.Close;
 end;
@@ -68,19 +68,19 @@ begin
   frabout.Close;
 end;
 
-procedure Tfrabout.Label3Click(Sender: TObject);
+procedure Tfrabout.lblWebLinkClick(Sender: TObject);
 begin
-  OpenURL(Label3.Caption);
+  OpenURL(lblWebLink.Caption);
 end;
 
-procedure Tfrabout.Label3MouseEnter(Sender: TObject);
+procedure Tfrabout.lblWebLinkMouseEnter(Sender: TObject);
 begin
-  Label3.Font.Color:=clRed;
+  lblWebLink.Font.Color:=clRed;
 end;
 
-procedure Tfrabout.Label3MouseLeave(Sender: TObject);
+procedure Tfrabout.lblWebLinkMouseLeave(Sender: TObject);
 begin
-  Label3.Font.Color:=clBlue;
+  lblWebLink.Font.Color:=clBlue;
 end;
 
 end.

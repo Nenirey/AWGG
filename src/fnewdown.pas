@@ -31,49 +31,48 @@ type
   { Tfrnewdown }
 
   Tfrnewdown = class(TForm)
-    BitBtn1: TBitBtn;
-    Button1: TButton;
-    Button2: TButton;
-    Button4: TButton;
-    ComboBox1: TComboBox;
-    ComboBox2: TComboBox;
-    ComboBox3: TComboBox;
-    DirectoryEdit1: TDirectoryEdit;
-    Edit1: TEdit;
-    Edit2: TEdit;
-    Edit3: TEdit;
-    Edit4: TEdit;
-    Edit5: TEdit;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    SpeedButton1: TSpeedButton;
-    SpeedButton2: TSpeedButton;
-    SpeedButton3: TSpeedButton;
-    SpeedButton4: TSpeedButton;
-    procedure BitBtn1Click(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
-    procedure Button2Click(Sender: TObject);
-    procedure Button3Click(Sender: TObject);
-    procedure Button4Click(Sender: TObject);
-    procedure ComboBox3Change(Sender: TObject);
-    procedure DirectoryEdit1AcceptDirectory(Sender: TObject; var Value: String);
-    procedure DirectoryEdit1Change(Sender: TObject);
-    procedure Edit1Change(Sender: TObject);
-    procedure Edit3Change(Sender: TObject);
+    btnStart: TBitBtn;
+    btnToQueue: TButton;
+    btnCancel: TButton;
+    btnPaused: TButton;
+    cbEngine: TComboBox;
+    cbQueue: TComboBox;
+    cbDestination: TComboBox;
+    deDestination: TDirectoryEdit;
+    edtURL: TEdit;
+    edtParameters: TEdit;
+    edtFileName: TEdit;
+    edtUser: TEdit;
+    edtPassword: TEdit;
+    lblURL: TLabel;
+    lblDestination: TLabel;
+    lblEngine: TLabel;
+    lblParameters: TLabel;
+    lblFileName: TLabel;
+    lblUser: TLabel;
+    lblPassword: TLabel;
+    lblQueue: TLabel;
+    btnAddQueue: TSpeedButton;
+    btnSchedule: TSpeedButton;
+    btnCategoryGo: TSpeedButton;
+    btnGoDestination: TSpeedButton;
+    procedure btnStartClick(Sender: TObject);
+    procedure btnToQueueClick(Sender: TObject);
+    procedure btnCancelClick(Sender: TObject);
+    procedure btnPausedClick(Sender: TObject);
+    procedure cbDestinationChange(Sender: TObject);
+    procedure deDestinationAcceptDirectory(Sender: TObject; var Value: String);
+    procedure deDestinationChange(Sender: TObject);
+    procedure edtURLChange(Sender: TObject);
+    procedure edtFileNameChange(Sender: TObject);
     procedure FormCreate(Sender: TObject);
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure FormKeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
-    procedure SpeedButton1Click(Sender: TObject);
-    procedure SpeedButton2Click(Sender: TObject);
-    procedure SpeedButton3Click(Sender: TObject);
-    procedure SpeedButton4Click(Sender: TObject);
+    procedure btnAddQueueClick(Sender: TObject);
+    procedure btnScheduleClick(Sender: TObject);
+    procedure btnCategoryGoClick(Sender: TObject);
+    procedure btnGoDestinationClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -95,21 +94,21 @@ var
 begin
   accept:=true;
   updateurl:=false;
-  if (frnewdown.Edit3.Text<>'') and (frnewdown.Button1.Visible=true) then
+  if (frnewdown.edtFileName.Text<>'') and (frnewdown.btnToQueue.Visible=true) then
   begin
-    frreplace.RadioButton2.Checked:=true;
-    found:=destinyexists(frnewdown.DirectoryEdit1.Text+pathdelim+frnewdown.Edit3.Text);
-    while ((FileExists(frnewdown.DirectoryEdit1.Text+pathdelim+frnewdown.Edit3.Text)) or ((found) and (frreplace.RadioButton1.Checked=false))) and (frreplace.RadioButton4.Checked=false) do
+    frreplace.rbAutoRename.Checked:=true;
+    found:=destinyexists(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text);
+    while ((FileExists(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text)) or ((found) and (frreplace.rbOverwrite.Checked=false))) and (frreplace.rbUpdateURL.Checked=false) do
     begin
-      found:=destinyexists(frnewdown.DirectoryEdit1.Text+pathdelim+frnewdown.Edit3.Text);
-      frreplace.RadioButton4.Enabled:=found;
-      frreplace.RadioButton1.Enabled:=(not found);
-      if (FileExists(frnewdown.DirectoryEdit1.Text+pathdelim+frnewdown.Edit3.Text)) or ((found) and (frreplace.RadioButton1.Checked=false)) then
+      found:=destinyexists(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text);
+      frreplace.rbUpdateURL.Enabled:=found;
+      frreplace.rbOverwrite.Enabled:=(not found);
+      if (FileExists(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text)) or ((found) and (frreplace.rbOverwrite.Checked=false)) then
       begin
-        frreplace.RadioButton2.Checked:=true;
-        frreplace.Edit1.Text:='_'+frnewdown.Edit3.Text;
-        while (destinyexists(frnewdown.DirectoryEdit1.Text+pathdelim+frreplace.Edit1.Text)) or (FileExists(frnewdown.DirectoryEdit1.Text+pathdelim+frreplace.Edit1.Text))  do
-          frreplace.Edit1.Text:='_'+frreplace.Edit1.Text;
+        frreplace.rbAutoRename.Checked:=true;
+        frreplace.edtFileName.Text:='_'+frnewdown.edtFileName.Text;
+        while (destinyexists(frnewdown.deDestination.Text+pathdelim+frreplace.edtFileName.Text)) or (FileExists(frnewdown.deDestination.Text+pathdelim+frreplace.edtFileName.Text))  do
+          frreplace.edtFileName.Text:='_'+frreplace.edtFileName.Text;
         if auto=false then
         begin
          frreplace.ShowModal;
@@ -117,16 +116,16 @@ begin
         else
          accept:=true;
         if accept=true then
-          frnewdown.Edit3.Text:=frreplace.Edit1.Text
+          frnewdown.edtFileName.Text:=frreplace.edtFileName.Text
         else
          break;
       end;
     end;
   end;
-  updateurl:=frreplace.RadioButton4.Checked;
+  updateurl:=frreplace.rbUpdateURL.Checked;
     if updateurl then
     begin
-      destinyexists(frnewdown.DirectoryEdit1.Text+pathdelim+frnewdown.Edit3.Text,frnewdown.Edit1.Caption);
+      destinyexists(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text,frnewdown.edtURL.Caption);
       savemydownloads();
     end;
   if accept=true then
@@ -138,27 +137,15 @@ begin
     result:=false;
 end;
 
-procedure Tfrnewdown.Button2Click(Sender: TObject);
+procedure Tfrnewdown.btnCancelClick(Sender: TObject);
 begin
   agregar:=false;
   frnewdown.Close;
 end;
 
-procedure Tfrnewdown.Button3Click(Sender: TObject);
+procedure Tfrnewdown.btnPausedClick(Sender: TObject);
 begin
-  if frnewdown.ComboBox1.ItemIndex<>-1 then
-  begin
-    agregar:=true;
-    iniciar:=true;
-    checkandclose();
-  end
-  else
-    ShowMessage(frstrings.msgmustselectdownloadengine.Caption);
-end;
-
-procedure Tfrnewdown.Button4Click(Sender: TObject);
-begin
-  if frnewdown.ComboBox1.ItemIndex<>-1 then
+  if frnewdown.cbEngine.ItemIndex<>-1 then
   begin
     agregar:=true;
     cola:=false;
@@ -166,19 +153,19 @@ begin
     checkandclose();
   end
   else
-    ShowMessage(frstrings.msgmustselectdownloadengine.Caption);
+    ShowMessage(fstrings.msgmustselectdownloadengine);
 end;
 
-procedure Tfrnewdown.ComboBox3Change(Sender: TObject);
+procedure Tfrnewdown.cbDestinationChange(Sender: TObject);
 var
   newpath:string='';
 begin
-  newpath:=frnewdown.ComboBox3.Text;
-  frnewdown.DirectoryEdit1.Text:=newpath;
-  frnewdown.DirectoryEdit1AcceptDirectory(nil,newpath);
+  newpath:=frnewdown.cbDestination.Text;
+  frnewdown.deDestination.Text:=newpath;
+  frnewdown.deDestinationAcceptDirectory(nil,newpath);
 end;
 
-procedure Tfrnewdown.DirectoryEdit1AcceptDirectory(Sender: TObject;
+procedure Tfrnewdown.deDestinationAcceptDirectory(Sender: TObject;
   var Value: String);
 var
   ext:string='';
@@ -186,9 +173,9 @@ var
   indice:integer=-1;
   extexists:boolean=false;
 begin
-  if frnewdown.Edit3.Caption<>'' then
+  if frnewdown.edtFileName.Caption<>'' then
   begin
-    ext:=UpperCase(Copy(frnewdown.Edit3.Caption,LastDelimiter('.',frnewdown.Edit3.Caption)+1,Length(frnewdown.Edit3.Caption)));
+    ext:=UpperCase(Copy(frnewdown.edtFileName.Caption,LastDelimiter('.',frnewdown.edtFileName.Caption)+1,Length(frnewdown.edtFileName.Caption)));
     if ext <>'' then
     begin
       for i:=0 to Length(categoryextencions)-1 do
@@ -203,7 +190,7 @@ begin
       end;
       if extexists=false then
       begin
-        frconfirm.dlgtext.Caption:=frstrings.newfiletyperememberpath.Caption;
+        frconfirm.dlgtext.Caption:=fstrings.newfiletyperememberpath;
         frnewdown.FormStyle:=fsNormal;
         frconfirm.ShowModal;
         frnewdown.FormStyle:=fsSystemStayOnTop;
@@ -225,21 +212,21 @@ begin
   end;
 end;
 
-procedure Tfrnewdown.DirectoryEdit1Change(Sender: TObject);
+procedure Tfrnewdown.deDestinationChange(Sender: TObject);
 begin
-  frnewdown.ComboBox3.Text:=frnewdown.DirectoryEdit1.Text;
+  frnewdown.cbDestination.Text:=frnewdown.deDestination.Text;
 end;
 
-procedure Tfrnewdown.Edit1Change(Sender: TObject);
+procedure Tfrnewdown.edtURLChange(Sender: TObject);
 begin
-  frnewdown.Edit3.Text:=ParseURI(frnewdown.Edit1.Text).document;
+  frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).document;
 end;
 
-procedure Tfrnewdown.Edit3Change(Sender: TObject);
+procedure Tfrnewdown.edtFileNameChange(Sender: TObject);
 begin
   case defaultdirmode of
-    1:frnewdown.DirectoryEdit1.Text:=ddowndir;
-    2:frnewdown.DirectoryEdit1.Text:=suggestdir(frnewdown.Edit3.Text);
+    1:frnewdown.deDestination.Text:=ddowndir;
+    2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
   end;
 end;
 
@@ -255,9 +242,9 @@ procedure Tfrnewdown.FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftSt
 begin
   //ShowMessage(inttostr(Key));
   Case Key of
-    13:frnewdown.Button3Click(nil);
-    27:frnewdown.Button2Click(nil);
-    113:frnewdown.Button1Click(nil);
+    13:frnewdown.btnStartClick(nil);
+    27:frnewdown.btnCancelClick(nil);
+    113:frnewdown.btnToQueueClick(nil);
   end;
 end;
 
@@ -270,39 +257,39 @@ procedure Tfrnewdown.FormShow(Sender: TObject);
 var
   i:integer;
 begin
-  frnewdown.ComboBox3.Items.Clear;
+  frnewdown.cbDestination.Items.Clear;
   for i:=0 to Length(categoryextencions)-1 do
   begin
-    frnewdown.ComboBox3.Items.Add(categoryextencions[i][0]);
+    frnewdown.cbDestination.Items.Add(categoryextencions[i][0]);
   end;
 end;
 
-procedure Tfrnewdown.SpeedButton1Click(Sender: TObject);
+procedure Tfrnewdown.btnAddQueueClick(Sender: TObject);
 var
   i:integer;
 begin
   newqueue();
-  frnewdown.ComboBox2.Items.Clear;
+  frnewdown.cbQueue.Items.Clear;
   for i:=0 to Length(queues)-1 do
   begin
-    frnewdown.ComboBox2.Items.Add(queuenames[i]);
+    frnewdown.cbQueue.Items.Add(queuenames[i]);
   end;
-  frnewdown.ComboBox2.ItemIndex:=Length(queues)-1;
+  frnewdown.cbQueue.ItemIndex:=Length(queues)-1;
 end;
 
-procedure Tfrnewdown.SpeedButton2Click(Sender: TObject);
+procedure Tfrnewdown.btnScheduleClick(Sender: TObject);
 begin
   frnewdown.FormStyle:=fsNormal;
   frconfig.PageControl1.ActivePageIndex:=1;
   frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
   configdlg();
-  frconfig.ComboBox4.ItemIndex:=frnewdown.ComboBox2.ItemIndex;
+  frconfig.cbQueue.ItemIndex:=frnewdown.cbQueue.ItemIndex;
   frconfig.ShowModal;
-  frnewdown.ComboBox2.ItemIndex:=frconfig.ComboBox4.ItemIndex;
+  frnewdown.cbQueue.ItemIndex:=frconfig.cbQueue.ItemIndex;
   frnewdown.FormStyle:=fsSystemStayOnTop;
 end;
 
-procedure Tfrnewdown.SpeedButton3Click(Sender: TObject);
+procedure Tfrnewdown.btnCategoryGoClick(Sender: TObject);
 begin
   frnewdown.FormStyle:=fsNormal;
   frconfig.PageControl1.ActivePageIndex:=5;
@@ -313,15 +300,15 @@ begin
   frnewdown.FormStyle:=fsSystemStayOnTop;
 end;
 
-procedure Tfrnewdown.SpeedButton4Click(Sender: TObject);
+procedure Tfrnewdown.btnGoDestinationClick(Sender: TObject);
 begin
-  if not OpenURL(frnewdown.DirectoryEdit1.Text) then
-    OpenURL(ExtractShortPathName(UTF8ToSys(frnewdown.DirectoryEdit1.Text)));
+  if not OpenURL(frnewdown.deDestination.Text) then
+    OpenURL(ExtractShortPathName(UTF8ToSys(frnewdown.deDestination.Text)));
 end;
 
-procedure Tfrnewdown.Button1Click(Sender: TObject);
+procedure Tfrnewdown.btnToQueueClick(Sender: TObject);
 begin
-  if frnewdown.ComboBox1.ItemIndex<>-1 then
+  if frnewdown.cbEngine.ItemIndex<>-1 then
   begin
     agregar:=true;
     cola:=true;
@@ -329,19 +316,19 @@ begin
     checkandclose();
   end
   else
-    ShowMessage(frstrings.msgmustselectdownloadengine.Caption);
+    ShowMessage(fstrings.msgmustselectdownloadengine);
 end;
 
-procedure Tfrnewdown.BitBtn1Click(Sender: TObject);
+procedure Tfrnewdown.btnStartClick(Sender: TObject);
 begin
-  if frnewdown.ComboBox1.ItemIndex<>-1 then
+  if frnewdown.cbEngine.ItemIndex<>-1 then
   begin
     agregar:=true;
     iniciar:=true;
     checkandclose();
   end
   else
-    ShowMessage(frstrings.msgmustselectdownloadengine.Caption);
+    ShowMessage(fstrings.msgmustselectdownloadengine);
 end;
 
 end.

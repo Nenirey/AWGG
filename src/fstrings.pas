@@ -20,89 +20,106 @@ unit fstrings;
 }
 {$mode objfpc}{$H+}
 
-interface
+Interface
 
-uses
-  Forms, StdCtrls;
+resourcestring
 
-type
-
-  { Tfrstrings }
-
-  Tfrstrings = class(TForm)
-    dlgdeletedownandfile: TLabel;
-    dlgdeletedown: TLabel;
-    dlgconfirm: TLabel;
-    btnpropertiesok: TLabel;
-    btnnewdownstartnow: TLabel;
-    dlgrestartalldownloads: TLabel;
-    dlgdeletealldownloads: TLabel;
-    dlgrestartalldownloadslatter: TLabel;
-    dlgrestartselecteddownloadletter: TLabel;
-    dlgclearhistorylogfile: TLabel;
-    dlgrestartselecteddownload: TLabel;
-    friday: TLabel;
-    automaticstartscheduler: TLabel;
-    dlgdeletequeue: TLabel;
-    filtresname: TLabel;
-    alldowntreename: TLabel;
-    firefoxhelpintegration: TLabel;
-    fileexistsreplace: TLabel;
-    newfiletyperememberpath: TLabel;
-    rootdownloadpathchange: TLabel;
-    proxymanual: TLabel;
-    proxysystem: TLabel;
-    proxynot: TLabel;
-    queuename: TLabel;
-    queuestreename: TLabel;
-    queuemainname: TLabel;
-    statuserror: TLabel;
-    startinthesystray: TLabel;
-    runwiththesystem: TLabel;
-    msgmustselectweekday: TLabel;
-    msgmustselectdownloadengine: TLabel;
-    saturday: TLabel;
-    thursday: TLabel;
-    wednesday: TLabel;
-    tuesday: TLabel;
-    monday: TLabel;
-    sunday: TLabel;
-    statuspaused: TLabel;
-    msgfilenoexist: TLabel;
-    msgnoexisthistorylog: TLabel;
-    titlenewdown: TLabel;
-    titlepropertiesdown: TLabel;
-    msgcloseinprogressdownload: TLabel;
-    popuptitlestoped: TLabel;
-    statusstoped: TLabel;
-    popuptitlecomplete: TLabel;
-    statuscomplete: TLabel;
-    msgerrordownlistsave: TLabel;
-    msgmustselectdownload: TLabel;
-    msgnoexistfolder: TLabel;
-    statusinprogres: TLabel;
-    msgerrorconfigload: TLabel;
-    msgerrorconfigsave: TLabel;
-    procedure FormCreate(Sender: TObject);
-  private
-    { private declarations }
-  public
-    { public declarations }
-  end;
-
-var
-  frstrings: Tfrstrings;
-
-implementation
-
-{$R *.lfm}
-
-{ Tfrstrings }
-
-procedure Tfrstrings.FormCreate(Sender: TObject);
-begin
-
-end;
-
+startqueuesystray='Start queue';
+stopqueuesystray='Stop queue';
+categorycompressed='Compressed';
+categoryprograms='Programs';
+categoryimages='Images';
+categorydocuments='Documents';
+categoryvideos='Videos';
+categorymusic='Music';
+categoryothers='Others';
+categoryfilter='Categories';
+abouttext='This program is free software under GNU GPL 2 license.'+
+lineending+lineending+'Created By Reinier Romero Mir'+
+lineending+'Email: nenirey@gmail.com'+
+lineending+'Copyright (c) 2015'+
+lineending+'The project uses the following third party resources:'+
+lineending+lineending+'Silk icons set 1.3 by Mark James'+
+lineending+'http://www.famfamfam.com/lab/icons/silk/'+
+lineending+'Tango Icon Library'+
+lineending+'http://tango.freedesktop.org/Tango_Icon_Library'+
+lineending+'aria2'+
+lineending+'http://aria2.sourceforge.net/'+
+lineending+'Wget'+
+lineending+'http://www.gnu.org/software/wget/'+
+lineending+'cURL'+
+lineending+'http://curl.haxx.se/'+
+lineending+'Axel'+
+lineending+'http://axel.alioth.debian.org/'+
+lineending+lineending+'French translation: '+
+lineending+'Tony O Gallos @ CodeTyphon Community';
+wgetdefarg1='[-c] Continue downloads.';
+wgetdefarg2='[-nH] No create host dir.';
+wgetdefarg3='[-nd] No create out dir.';
+wgetdefarg4='[--no-check-certificate] No check SSL.';
+aria2defarg1='[-c] Continue downloads';
+aria2defarg2='[--file-allocation=none] No allocate space.';
+curldefarg1='[-C -] Continue downloads.';
+firefoxintegration='Do you want to enable firefox integration?';
+transfromlabel='From: %S';
+transdestinationlabel='To: %S';
+fileexistsreplacetext='The file "%S" already exists, do you want to replace it?';
+fileoperationcopy='Coping file(s)...';
+fileoperationmove='Moving file(s)...';
+msgerrorconfigsave='Error saving config file: ';
+msgerrorconfigload='Error loading config file: ';
+statusinprogres='In progress';
+msgnoexistfolder='The folder not exists: ';
+msgmustselectdownload='You must select a download.';
+msgerrordownlistsave='Error saving the download list';
+dlgdeletedownandfile='Do you want to delete the selected download(s) and file(s) in disk?';
+dlgdeletedown='Do you want to delete the selected download(s)?';
+dlgconfirm='Confirm';
+statuscomplete='Complete';
+popuptitlecomplete='Download complete';
+statusstoped='Stopped';
+popuptitlestoped= 'Download stopped:';
+msgcloseinprogressdownload= 'Downloads exist in progress, do you want to close anyway?';
+titlepropertiesdown= 'Download properties';
+btnpropertiesok= 'Ok';
+titlenewdown= 'New download';
+btnnewdownstartnow= 'Start now';
+msgnoexisthistorylog= 'The history log for the download does not exist!';
+dlgrestartalldownloads= 'Do you want to restart all downloads?';
+dlgdeletealldownloads= 'Do you want to delete all downloads?';
+msgfilenoexist= 'The file not exists.';
+dlgrestartalldownloadslatter= 'Do you want to restart all downloads later?';
+statuspaused= 'Paused';
+dlgrestartselecteddownloadletter= 'Do you want to restart the selected download later?';
+dlgclearhistorylogfile= 'Do you want to clear the history log file?';
+dlgrestartselecteddownload= 'Do you want to restart the selected download?';
+sunday= 'Sunday';
+monday= 'Monday';
+tuesday= 'Tuesday';
+wednesday= 'Wednesday';
+thursday= 'Thursday';
+friday= 'Friday';
+saturday= 'Saturday';
+msgmustselectdownloadengine= 'You must select a download engine!!''';
+msgmustselectweekday= 'You must select one week day!!';
+runwiththesystem= 'Run with the system.';
+automaticstartscheduler= 'Automatic start the scheduler.';
+startinthesystray= 'Start in the systray.';
+statuserror= 'Error';
+queuemainname= 'Main';
+dlgdeletequeue= 'Do you want to delete the selected queue?';
+queuestreename= 'Queues';
+filtresname= 'Filters';
+alldowntreename='All downloads';
+queuename= 'Queue';
+proxynot= 'No proxy';
+proxysystem= 'System proxy';
+proxymanual='Manual';
+firefoxhelpintegration='Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser.';
+fileexistsreplace= 'The file exist, do you want replace it?';
+rootdownloadpathchange= 'The root of the downloads folder has changed, would like to recreate the routes by categories in the new root?';
+newfiletyperememberpath= 'Do you want to remember the path for this file type?';
+msgerrorinforme='Oh!! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:'+LineEnding+'%s'+LineEnding+'Error description:'+LineEnding+'%s'+LineEnding+'Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue';
+Implementation
 end.
 

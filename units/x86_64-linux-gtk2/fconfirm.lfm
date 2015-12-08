@@ -1,7 +1,7 @@
 object frconfirm: Tfrconfirm
-  Left = 338
+  Left = 366
   Height = 166
-  Top = 225
+  Top = 234
   Width = 413
   BorderIcons = []
   BorderStyle = bsDialog
@@ -28,7 +28,7 @@ object frconfirm: Tfrconfirm
     ParentColor = False
     WordWrap = True
   end
-  object ButtonPanel1: TButtonPanel
+  object bpConfirm: TButtonPanel
     Left = 6
     Height = 34
     Top = 126

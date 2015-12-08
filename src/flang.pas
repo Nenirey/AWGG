@@ -30,10 +30,10 @@ type
   { Tfrlang }
 
   Tfrlang = class(TForm)
-    Button1: TButton;
-    ComboBox1: TComboBox;
-    Label1: TLabel;
-    procedure Button1Click(Sender: TObject);
+    btnOk: TButton;
+    cbLang: TComboBox;
+    lblLang: TLabel;
+    procedure btnOkClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -49,7 +49,7 @@ implementation
 
 { Tfrlang }
 
-procedure Tfrlang.Button1Click(Sender: TObject);
+procedure Tfrlang.btnOkClick(Sender: TObject);
 begin
   frlang.Close;
 end;

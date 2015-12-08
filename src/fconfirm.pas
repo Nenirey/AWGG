@@ -31,7 +31,7 @@ type
   { Tfrconfirm }
 
   Tfrconfirm = class(TForm)
-    ButtonPanel1: TButtonPanel;
+    bpConfirm: TButtonPanel;
     dlgtext: TLabel;
     procedure CancelButtonClick(Sender: TObject);
     procedure dlgbtnnoClick(Sender: TObject);

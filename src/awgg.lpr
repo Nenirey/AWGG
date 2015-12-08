@@ -36,16 +36,13 @@ begin
   Application.Initialize;
   Application.CreateForm(Tfrmain, frmain);
   Application.CreateForm(Tfrnewdown, frnewdown);
-  Application.CreateForm(Tfrconfig, frconfig);
-  Application.CreateForm(Tfrabout, frabout);
   Application.CreateForm(Tfrlang, frlang);
-  Application.CreateForm(Tfrstrings, frstrings);
-  Application.CreateForm(Tfrconfirm, frconfirm);
   Application.CreateForm(Tfrreplace, frreplace);
+  Application.CreateForm(Tfrconfirm, frconfirm);
+  Application.CreateForm(Tfrconfig, frconfig);
   Application.CreateForm(Tfrsitegrabber, frsitegrabber);
   Application.CreateForm(Tfradd, fradd);
-  Application.CreateForm(Tfrnotification, frnotification);
-  Application.CreateForm(Tfrcopymove, frcopymove);
+  Application.CreateForm(Tfrabout, frabout);
   Application.Run;
 end.
 

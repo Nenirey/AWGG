@@ -13,11 +13,11 @@ type
   { Tfrcopymove }
 
   Tfrcopymove = class(TForm)
-    Button1: TButton;
-    Label1: TLabel;
-    Label2: TLabel;
-    ProgressBar1: TProgressBar;
-    procedure Button1Click(Sender: TObject);
+    btnCancel: TButton;
+    lblFrom: TLabel;
+    lblTo: TLabel;
+    pbCopyMove: TProgressBar;
+    procedure btnCancelClick(Sender: TObject);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
   private
     { private declarations }
@@ -33,7 +33,7 @@ implementation
 uses fmain;
 { Tfrcopymove }
 
-procedure Tfrcopymove.Button1Click(Sender: TObject);
+procedure Tfrcopymove.btnCancelClick(Sender: TObject);
 begin
   copywork[self.id].stop;
 end;

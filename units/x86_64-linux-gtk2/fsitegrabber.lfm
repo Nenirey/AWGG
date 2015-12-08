@@ -1,8 +1,8 @@
 object frsitegrabber: Tfrsitegrabber
   AnchorSideRight.Side = asrCenter
-  Left = 301
+  Left = 298
   Height = 428
-  Top = 89
+  Top = 34
   Width = 463
   Caption = 'New Site Grabber'
   ClientHeight = 428
@@ -12,9 +12,9 @@ object frsitegrabber: Tfrsitegrabber
   OnShow = FormCreate
   Position = poScreenCenter
   LCLVersion = '1.4.4.0'
-  object Button1: TButton
-    AnchorSideRight.Control = Button2
-    AnchorSideBottom.Control = Button2
+  object btnFinish: TButton
+    AnchorSideRight.Control = btnCancel
+    AnchorSideBottom.Control = btnCancel
     AnchorSideBottom.Side = asrBottom
     Left = 332
     Height = 23
@@ -25,10 +25,10 @@ object frsitegrabber: Tfrsitegrabber
     BorderSpacing.Right = 10
     Caption = 'Finish'
     Enabled = False
-    OnClick = Button1Click
+    OnClick = btnFinishClick
     TabOrder = 0
   end
-  object Button2: TButton
+  object btnCancel: TButton
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
@@ -42,34 +42,34 @@ object frsitegrabber: Tfrsitegrabber
     BorderSpacing.Right = 10
     BorderSpacing.Bottom = 10
     Caption = 'Cancel'
-    OnClick = Button2Click
+    OnClick = btnCancelClick
     TabOrder = 1
   end
   object PageControl1: TPageControl
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
-    AnchorSideBottom.Control = Button2
+    AnchorSideBottom.Control = btnCancel
     Left = 0
     Height = 390
     Top = 0
     Width = 463
-    ActivePage = TabSheet1
+    ActivePage = tsTags
     Align = alTop
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 0
+    TabIndex = 4
     TabOrder = 2
-    object TabSheet1: TTabSheet
-      Caption = 'TabSheet1'
+    object tsWelcome: TTabSheet
+      Caption = 'tsWelcome'
       ClientHeight = 382
       ClientWidth = 455
-      object Label1: TLabel
+      object lblURL: TLabel
         AnchorSideLeft.Control = Owner
-        AnchorSideTop.Control = Edit1
+        AnchorSideTop.Control = edtURL
         AnchorSideTop.Side = asrCenter
-        AnchorSideRight.Control = Edit1
+        AnchorSideRight.Control = edtURL
         Left = 45
         Height = 13
         Top = 83
@@ -79,11 +79,11 @@ object frsitegrabber: Tfrsitegrabber
         Caption = 'URL:'
         ParentColor = False
       end
-      object Edit1: TEdit
-        AnchorSideLeft.Control = DirectoryEdit1
-        AnchorSideTop.Control = Edit2
+      object edtURL: TEdit
+        AnchorSideLeft.Control = deDestination
+        AnchorSideTop.Control = edtSiteName
         AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Control = tsWelcome
         AnchorSideRight.Side = asrCenter
         Left = 68
         Height = 21
@@ -92,13 +92,13 @@ object frsitegrabber: Tfrsitegrabber
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 15
         BorderSpacing.Right = 10
-        OnChange = Edit1Change
+        OnChange = edtURLChange
         TabOrder = 0
       end
-      object Label2: TLabel
-        AnchorSideTop.Control = Edit2
+      object lblSiteName: TLabel
+        AnchorSideTop.Control = edtSiteName
         AnchorSideTop.Side = asrCenter
-        AnchorSideRight.Control = Edit2
+        AnchorSideRight.Control = edtSiteName
         Left = 37
         Height = 13
         Top = 47
@@ -107,11 +107,11 @@ object frsitegrabber: Tfrsitegrabber
         Caption = 'Name:'
         ParentColor = False
       end
-      object Edit2: TEdit
-        AnchorSideLeft.Control = DirectoryEdit1
-        AnchorSideTop.Control = Label8
+      object edtSiteName: TEdit
+        AnchorSideLeft.Control = deDestination
+        AnchorSideTop.Control = lblWelcome
         AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Control = tsWelcome
         AnchorSideRight.Side = asrCenter
         Left = 68
         Height = 21
@@ -119,15 +119,15 @@ object frsitegrabber: Tfrsitegrabber
         Width = 317
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 20
-        OnChange = Edit2Change
+        OnChange = edtSiteNameChange
         TabOrder = 1
       end
-      object DirectoryEdit1: TDirectoryEdit
-        AnchorSideLeft.Control = Label3
+      object deDestination: TDirectoryEdit
+        AnchorSideLeft.Control = lblDestination
         AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = Edit1
+        AnchorSideTop.Control = edtURL
         AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = TabSheet1
+        AnchorSideRight.Control = tsWelcome
         AnchorSideRight.Side = asrCenter
         Left = 68
         Height = 21
@@ -141,9 +141,9 @@ object frsitegrabber: Tfrsitegrabber
         MaxLength = 0
         TabOrder = 2
       end
-      object Label3: TLabel
-        AnchorSideLeft.Control = TabSheet1
-        AnchorSideTop.Control = DirectoryEdit1
+      object lblDestination: TLabel
+        AnchorSideLeft.Control = tsWelcome
+        AnchorSideTop.Control = deDestination
         AnchorSideTop.Side = asrCenter
         Left = 10
         Height = 13
@@ -153,10 +153,10 @@ object frsitegrabber: Tfrsitegrabber
         Caption = 'Destination:'
         ParentColor = False
       end
-      object Label6: TLabel
-        AnchorSideTop.Control = ComboBox1
+      object lblQueue: TLabel
+        AnchorSideTop.Control = cbQueue
         AnchorSideTop.Side = asrCenter
-        AnchorSideRight.Control = ComboBox1
+        AnchorSideRight.Control = cbQueue
         Left = 140
         Height = 13
         Top = 338
@@ -165,10 +165,10 @@ object frsitegrabber: Tfrsitegrabber
         Caption = 'Queue:'
         ParentColor = False
       end
-      object ComboBox1: TComboBox
-        AnchorSideLeft.Control = GroupBox9
+      object cbQueue: TComboBox
+        AnchorSideLeft.Control = bgAuthentication
         AnchorSideLeft.Side = asrCenter
-        AnchorSideTop.Control = GroupBox9
+        AnchorSideTop.Control = bgAuthentication
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = PageControl1
         Left = 176
@@ -180,8 +180,8 @@ object frsitegrabber: Tfrsitegrabber
         Style = csDropDownList
         TabOrder = 3
       end
-      object Label8: TLabel
-        AnchorSideTop.Control = TabSheet1
+      object lblWelcome: TLabel
+        AnchorSideTop.Control = tsWelcome
         Left = 0
         Height = 13
         Top = 10
@@ -194,10 +194,10 @@ object frsitegrabber: Tfrsitegrabber
         ParentColor = False
         ParentFont = False
       end
-      object SpeedButton1: TSpeedButton
-        AnchorSideLeft.Control = ComboBox1
+      object btnAddQueue: TSpeedButton
+        AnchorSideLeft.Control = cbQueue
         AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = ComboBox1
+        AnchorSideTop.Control = cbQueue
         AnchorSideTop.Side = asrCenter
         Left = 277
         Height = 22
@@ -239,12 +239,12 @@ object frsitegrabber: Tfrsitegrabber
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
-        OnClick = SpeedButton1Click
+        OnClick = btnAddQueueClick
       end
-      object SpeedButton2: TSpeedButton
-        AnchorSideLeft.Control = SpeedButton1
+      object btnSchedule: TSpeedButton
+        AnchorSideLeft.Control = btnAddQueue
         AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = SpeedButton1
+        AnchorSideTop.Control = btnAddQueue
         AnchorSideTop.Side = asrCenter
         Left = 300
         Height = 22
@@ -286,11 +286,11 @@ object frsitegrabber: Tfrsitegrabber
           F40200B5F48000B5F4D100B5F4CA00B5F407FFFFFF00FFFFFF00FFFFFF00FFFF
           FF0000B5F41700B5F4D100B5F4C900B5F427FFFFFF00FFFFFF00
         }
-        OnClick = SpeedButton2Click
+        OnClick = btnScheduleClick
       end
-      object GroupBox9: TGroupBox
-        AnchorSideLeft.Control = DirectoryEdit1
-        AnchorSideRight.Control = DirectoryEdit1
+      object bgAuthentication: TGroupBox
+        AnchorSideLeft.Control = deDestination
+        AnchorSideRight.Control = deDestination
         AnchorSideRight.Side = asrBottom
         Left = 68
         Height = 120
@@ -301,10 +301,10 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 102
         ClientWidth = 313
         TabOrder = 4
-        object Label4: TLabel
-          AnchorSideTop.Control = Edit3
+        object lblUser: TLabel
+          AnchorSideTop.Control = edtUser
           AnchorSideTop.Side = asrCenter
-          AnchorSideRight.Control = Edit3
+          AnchorSideRight.Control = edtUser
           Left = 83
           Height = 13
           Top = 25
@@ -313,11 +313,11 @@ object frsitegrabber: Tfrsitegrabber
           Caption = 'User:'
           ParentColor = False
         end
-        object Edit3: TEdit
-          AnchorSideLeft.Control = DirectoryEdit1
+        object edtUser: TEdit
+          AnchorSideLeft.Control = deDestination
           AnchorSideLeft.Side = asrCenter
-          AnchorSideTop.Control = GroupBox9
-          AnchorSideRight.Control = GroupBox9
+          AnchorSideTop.Control = bgAuthentication
+          AnchorSideRight.Control = bgAuthentication
           AnchorSideRight.Side = asrBottom
           Left = 109
           Height = 21
@@ -328,10 +328,10 @@ object frsitegrabber: Tfrsitegrabber
           BorderSpacing.Right = 15
           TabOrder = 0
         end
-        object Label5: TLabel
-          AnchorSideTop.Control = Edit4
+        object lblPassword: TLabel
+          AnchorSideTop.Control = edtPassword
           AnchorSideTop.Side = asrCenter
-          AnchorSideRight.Control = Edit4
+          AnchorSideRight.Control = edtPassword
           Left = 59
           Height = 13
           Top = 62
@@ -340,11 +340,11 @@ object frsitegrabber: Tfrsitegrabber
           Caption = 'Password:'
           ParentColor = False
         end
-        object Edit4: TEdit
-          AnchorSideLeft.Control = Edit3
-          AnchorSideTop.Control = Edit3
+        object edtPassword: TEdit
+          AnchorSideLeft.Control = edtUser
+          AnchorSideTop.Control = edtUser
           AnchorSideTop.Side = asrBottom
-          AnchorSideRight.Control = Edit3
+          AnchorSideRight.Control = edtUser
           AnchorSideRight.Side = asrBottom
           Left = 109
           Height = 21
@@ -358,42 +358,42 @@ object frsitegrabber: Tfrsitegrabber
         end
       end
     end
-    object TabSheet2: TTabSheet
-      Caption = 'TabSheet2'
-      ClientHeight = 386
-      ClientWidth = 459
-      object Label7: TLabel
-        AnchorSideLeft.Control = TabSheet2
-        AnchorSideTop.Control = SpinEdit1
+    object tsBasicOptions: TTabSheet
+      Caption = 'tsBasicOptions'
+      ClientHeight = 382
+      ClientWidth = 455
+      object lblMaxLevel: TLabel
+        AnchorSideLeft.Control = tsBasicOptions
+        AnchorSideTop.Control = seMaxLevel
         AnchorSideTop.Side = asrCenter
         Left = 15
-        Height = 15
-        Top = 20
-        Width = 63
+        Height = 13
+        Top = 19
+        Width = 49
         BorderSpacing.Left = 15
         Caption = 'Max level:'
         ParentColor = False
       end
-      object SpinEdit1: TSpinEdit
-        AnchorSideLeft.Control = Label7
+      object seMaxLevel: TSpinEdit
+        AnchorSideLeft.Control = lblMaxLevel
         AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = TabSheet2
-        Left = 78
-        Height = 25
+        AnchorSideTop.Control = tsBasicOptions
+        Left = 64
+        Height = 21
         Top = 15
         Width = 50
         BorderSpacing.Top = 15
         TabOrder = 0
         Value = 10
       end
-      object CheckBox1: TCheckBox
-        AnchorSideLeft.Control = TabSheet2
-        AnchorSideTop.Control = SpinEdit1
+      object chLinkToLocal: TCheckBox
+        AnchorSideLeft.Control = tsBasicOptions
+        AnchorSideTop.Control = seMaxLevel
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 21
-        Top = 55
-        Width = 162
+        Height = 17
+        Top = 51
+        Width = 122
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         Caption = 'Convert to locals links'
@@ -401,105 +401,105 @@ object frsitegrabber: Tfrsitegrabber
         State = cbChecked
         TabOrder = 1
       end
-      object CheckBox2: TCheckBox
-        AnchorSideLeft.Control = CheckBox1
-        AnchorSideTop.Control = CheckBox1
+      object chFollowFTPLink: TCheckBox
+        AnchorSideLeft.Control = chLinkToLocal
+        AnchorSideTop.Control = chLinkToLocal
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 21
-        Top = 91
-        Width = 119
+        Height = 17
+        Top = 83
+        Width = 92
         BorderSpacing.Top = 15
         Caption = 'Follow FTP links'
         TabOrder = 2
       end
-      object CheckBox3: TCheckBox
-        AnchorSideLeft.Control = CheckBox1
-        AnchorSideTop.Control = CheckBox2
+      object chNoParentLink: TCheckBox
+        AnchorSideLeft.Control = chLinkToLocal
+        AnchorSideTop.Control = chFollowFTPLink
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 21
-        Top = 127
-        Width = 119
+        Height = 17
+        Top = 115
+        Width = 89
         BorderSpacing.Top = 15
         Caption = 'No parent links'
         TabOrder = 3
       end
-      object CheckBox4: TCheckBox
-        AnchorSideLeft.Control = CheckBox1
-        AnchorSideTop.Control = CheckBox3
+      object chPageRequisites: TCheckBox
+        AnchorSideLeft.Control = chLinkToLocal
+        AnchorSideTop.Control = chNoParentLink
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 21
-        Top = 163
-        Width = 120
+        Height = 17
+        Top = 147
+        Width = 91
         BorderSpacing.Top = 15
         Caption = 'Page requisites'
         Checked = True
         State = cbChecked
         TabOrder = 4
       end
-      object CheckBox5: TCheckBox
-        AnchorSideLeft.Control = CheckBox1
-        AnchorSideTop.Control = CheckBox4
+      object chSpanHosts: TCheckBox
+        AnchorSideLeft.Control = chLinkToLocal
+        AnchorSideTop.Control = chPageRequisites
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 21
-        Top = 199
-        Width = 95
+        Height = 17
+        Top = 179
+        Width = 71
         BorderSpacing.Top = 15
         Caption = 'Span hosts'
         Checked = True
         State = cbChecked
         TabOrder = 5
       end
-      object CheckBox6: TCheckBox
-        AnchorSideLeft.Control = CheckBox1
-        AnchorSideTop.Control = CheckBox5
+      object chFollowRelativeLink: TCheckBox
+        AnchorSideLeft.Control = chLinkToLocal
+        AnchorSideTop.Control = chSpanHosts
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 21
-        Top = 235
-        Width = 144
+        Height = 17
+        Top = 211
+        Width = 110
         BorderSpacing.Top = 15
         Caption = 'Follow relative links'
         Checked = True
         State = cbChecked
         TabOrder = 6
       end
-      object Label9: TLabel
-        AnchorSideTop.Control = Edit5
+      object lblUserAgent: TLabel
+        AnchorSideTop.Control = edtUserAgent
         AnchorSideTop.Side = asrCenter
-        AnchorSideRight.Control = Edit5
-        Left = 229
-        Height = 15
-        Top = 20
-        Width = 75
+        AnchorSideRight.Control = edtUserAgent
+        Left = 247
+        Height = 13
+        Top = 19
+        Width = 57
         Anchors = [akTop, akRight]
         Caption = 'User agent:'
         ParentColor = False
       end
-      object Edit5: TEdit
-        AnchorSideTop.Control = SpinEdit1
-        AnchorSideRight.Control = TabSheet2
+      object edtUserAgent: TEdit
+        AnchorSideTop.Control = seMaxLevel
+        AnchorSideRight.Control = tsBasicOptions
         AnchorSideRight.Side = asrBottom
         Left = 304
-        Height = 25
+        Height = 21
         Top = 15
-        Width = 140
+        Width = 136
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 15
         TabOrder = 7
       end
     end
-    object TabSheet3: TTabSheet
-      Caption = 'TabSheet3'
-      ClientHeight = 386
-      ClientWidth = 459
-      object GroupBox1: TGroupBox
-        AnchorSideLeft.Control = TabSheet3
-        AnchorSideTop.Control = TabSheet3
-        AnchorSideRight.Control = TabSheet3
+    object tsFilters: TTabSheet
+      Caption = 'tsFilters'
+      ClientHeight = 382
+      ClientWidth = 455
+      object gbFileRejectFilter: TGroupBox
+        AnchorSideLeft.Control = tsFilters
+        AnchorSideTop.Control = tsFilters
+        AnchorSideRight.Control = tsFilters
         AnchorSideRight.Side = asrBottom
         Left = 10
         Height = 86
@@ -513,12 +513,12 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 68
         ClientWidth = 431
         TabOrder = 0
-        object Memo1: TMemo
-          AnchorSideLeft.Control = GroupBox1
-          AnchorSideTop.Control = GroupBox1
-          AnchorSideRight.Control = GroupBox1
+        object mFileRejectFilter: TMemo
+          AnchorSideLeft.Control = gbFileRejectFilter
+          AnchorSideTop.Control = gbFileRejectFilter
+          AnchorSideRight.Control = gbFileRejectFilter
           AnchorSideRight.Side = asrBottom
-          AnchorSideBottom.Control = GroupBox1
+          AnchorSideBottom.Control = gbFileRejectFilter
           AnchorSideBottom.Side = asrBottom
           Left = 5
           Height = 58
@@ -532,11 +532,11 @@ object frsitegrabber: Tfrsitegrabber
           TabOrder = 0
         end
       end
-      object GroupBox2: TGroupBox
-        AnchorSideLeft.Control = GroupBox1
-        AnchorSideTop.Control = GroupBox6
+      object gbDomainRejectFilter: TGroupBox
+        AnchorSideLeft.Control = gbFileRejectFilter
+        AnchorSideTop.Control = gbFileAcceptFilter
         AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = GroupBox1
+        AnchorSideRight.Control = gbFileRejectFilter
         AnchorSideRight.Side = asrBottom
         Left = 10
         Height = 89
@@ -548,12 +548,12 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 71
         ClientWidth = 431
         TabOrder = 1
-        object Memo2: TMemo
-          AnchorSideLeft.Control = GroupBox2
-          AnchorSideTop.Control = GroupBox2
-          AnchorSideRight.Control = GroupBox2
+        object mDomainRejectFilter: TMemo
+          AnchorSideLeft.Control = gbDomainRejectFilter
+          AnchorSideTop.Control = gbDomainRejectFilter
+          AnchorSideRight.Control = gbDomainRejectFilter
           AnchorSideRight.Side = asrBottom
-          AnchorSideBottom.Control = GroupBox2
+          AnchorSideBottom.Control = gbDomainRejectFilter
           AnchorSideBottom.Side = asrBottom
           Left = 5
           Height = 61
@@ -567,13 +567,13 @@ object frsitegrabber: Tfrsitegrabber
           TabOrder = 0
         end
       end
-      object GroupBox3: TGroupBox
-        AnchorSideLeft.Control = GroupBox1
-        AnchorSideTop.Control = GroupBox2
+      object gbFollowDomainFilter: TGroupBox
+        AnchorSideLeft.Control = gbFileRejectFilter
+        AnchorSideTop.Control = gbDomainRejectFilter
         AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = GroupBox1
+        AnchorSideRight.Control = gbFileRejectFilter
         AnchorSideRight.Side = asrBottom
-        AnchorSideBottom.Control = TabSheet3
+        AnchorSideBottom.Control = tsFilters
         AnchorSideBottom.Side = asrBottom
         Left = 10
         Height = 86
@@ -586,12 +586,12 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 68
         ClientWidth = 431
         TabOrder = 2
-        object Memo3: TMemo
-          AnchorSideLeft.Control = GroupBox3
-          AnchorSideTop.Control = GroupBox3
-          AnchorSideRight.Control = GroupBox3
+        object mFollowDomainFilter: TMemo
+          AnchorSideLeft.Control = gbFollowDomainFilter
+          AnchorSideTop.Control = gbFollowDomainFilter
+          AnchorSideRight.Control = gbFollowDomainFilter
           AnchorSideRight.Side = asrBottom
-          AnchorSideBottom.Control = GroupBox3
+          AnchorSideBottom.Control = gbFollowDomainFilter
           AnchorSideBottom.Side = asrBottom
           Left = 5
           Height = 58
@@ -605,11 +605,11 @@ object frsitegrabber: Tfrsitegrabber
           TabOrder = 0
         end
       end
-      object GroupBox6: TGroupBox
-        AnchorSideLeft.Control = TabSheet3
-        AnchorSideTop.Control = GroupBox1
+      object gbFileAcceptFilter: TGroupBox
+        AnchorSideLeft.Control = tsFilters
+        AnchorSideTop.Control = gbFileRejectFilter
         AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = TabSheet3
+        AnchorSideRight.Control = tsFilters
         AnchorSideRight.Side = asrBottom
         Left = 10
         Height = 91
@@ -623,12 +623,12 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 73
         ClientWidth = 431
         TabOrder = 3
-        object Memo6: TMemo
-          AnchorSideLeft.Control = GroupBox6
-          AnchorSideTop.Control = GroupBox6
-          AnchorSideRight.Control = GroupBox6
+        object mFileAcceptFilter: TMemo
+          AnchorSideLeft.Control = gbFileAcceptFilter
+          AnchorSideTop.Control = gbFileAcceptFilter
+          AnchorSideRight.Control = gbFileAcceptFilter
           AnchorSideRight.Side = asrBottom
-          AnchorSideBottom.Control = GroupBox6
+          AnchorSideBottom.Control = gbFileAcceptFilter
           AnchorSideBottom.Side = asrBottom
           Left = 5
           Height = 63
@@ -643,16 +643,16 @@ object frsitegrabber: Tfrsitegrabber
         end
       end
     end
-    object TabSheet4: TTabSheet
-      Caption = 'TabSheet4'
-      ClientHeight = 386
-      ClientWidth = 459
-      object GroupBox4: TGroupBox
-        AnchorSideLeft.Control = TabSheet4
-        AnchorSideTop.Control = TabSheet4
-        AnchorSideRight.Control = TabSheet4
+    object tsDirectory: TTabSheet
+      Caption = 'tsDirectory'
+      ClientHeight = 382
+      ClientWidth = 455
+      object gbIncludeDirectory: TGroupBox
+        AnchorSideLeft.Control = tsDirectory
+        AnchorSideTop.Control = tsDirectory
+        AnchorSideRight.Control = tsDirectory
         AnchorSideRight.Side = asrBottom
-        AnchorSideBottom.Control = TabSheet4
+        AnchorSideBottom.Control = tsDirectory
         AnchorSideBottom.Side = asrCenter
         Left = 5
         Height = 179
@@ -666,12 +666,12 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 161
         ClientWidth = 441
         TabOrder = 0
-        object Memo4: TMemo
-          AnchorSideLeft.Control = GroupBox4
-          AnchorSideTop.Control = GroupBox4
-          AnchorSideRight.Control = GroupBox4
+        object mIncludeDirectory: TMemo
+          AnchorSideLeft.Control = gbIncludeDirectory
+          AnchorSideTop.Control = gbIncludeDirectory
+          AnchorSideRight.Control = gbIncludeDirectory
           AnchorSideRight.Side = asrBottom
-          AnchorSideBottom.Control = GroupBox4
+          AnchorSideBottom.Control = gbIncludeDirectory
           AnchorSideBottom.Side = asrBottom
           Left = 5
           Height = 151
@@ -685,13 +685,13 @@ object frsitegrabber: Tfrsitegrabber
           TabOrder = 0
         end
       end
-      object GroupBox5: TGroupBox
-        AnchorSideLeft.Control = GroupBox4
-        AnchorSideTop.Control = GroupBox4
+      object gbExcludeDirectory: TGroupBox
+        AnchorSideLeft.Control = gbIncludeDirectory
+        AnchorSideTop.Control = gbIncludeDirectory
         AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = GroupBox4
+        AnchorSideRight.Control = gbIncludeDirectory
         AnchorSideRight.Side = asrBottom
-        AnchorSideBottom.Control = TabSheet4
+        AnchorSideBottom.Control = tsDirectory
         AnchorSideBottom.Side = asrBottom
         Left = 5
         Height = 183
@@ -704,12 +704,12 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 165
         ClientWidth = 441
         TabOrder = 1
-        object Memo5: TMemo
-          AnchorSideLeft.Control = GroupBox5
-          AnchorSideTop.Control = GroupBox5
-          AnchorSideRight.Control = GroupBox5
+        object mExcludeDirectory: TMemo
+          AnchorSideLeft.Control = gbExcludeDirectory
+          AnchorSideTop.Control = gbExcludeDirectory
+          AnchorSideRight.Control = gbExcludeDirectory
           AnchorSideRight.Side = asrBottom
-          AnchorSideBottom.Control = GroupBox5
+          AnchorSideBottom.Control = gbExcludeDirectory
           AnchorSideBottom.Side = asrBottom
           Left = 5
           Height = 155
@@ -724,14 +724,14 @@ object frsitegrabber: Tfrsitegrabber
         end
       end
     end
-    object TabSheet5: TTabSheet
-      Caption = 'TabSheet5'
-      ClientHeight = 386
-      ClientWidth = 459
-      object GroupBox7: TGroupBox
-        AnchorSideLeft.Control = TabSheet5
-        AnchorSideTop.Control = TabSheet5
-        AnchorSideRight.Control = TabSheet5
+    object tsTags: TTabSheet
+      Caption = 'tsTags'
+      ClientHeight = 382
+      ClientWidth = 455
+      object gbFollowTags: TGroupBox
+        AnchorSideLeft.Control = tsTags
+        AnchorSideTop.Control = tsTags
+        AnchorSideRight.Control = tsTags
         AnchorSideRight.Side = asrBottom
         Left = 5
         Height = 169
@@ -745,12 +745,12 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 151
         ClientWidth = 441
         TabOrder = 0
-        object Memo7: TMemo
-          AnchorSideLeft.Control = GroupBox7
-          AnchorSideTop.Control = GroupBox7
-          AnchorSideRight.Control = GroupBox7
+        object mFollowTags: TMemo
+          AnchorSideLeft.Control = gbFollowTags
+          AnchorSideTop.Control = gbFollowTags
+          AnchorSideRight.Control = gbFollowTags
           AnchorSideRight.Side = asrBottom
-          AnchorSideBottom.Control = GroupBox7
+          AnchorSideBottom.Control = gbFollowTags
           AnchorSideBottom.Side = asrBottom
           Left = 5
           Height = 141
@@ -764,13 +764,13 @@ object frsitegrabber: Tfrsitegrabber
           TabOrder = 0
         end
       end
-      object GroupBox8: TGroupBox
-        AnchorSideLeft.Control = TabSheet5
-        AnchorSideTop.Control = GroupBox7
+      object gbIgnoreTags: TGroupBox
+        AnchorSideLeft.Control = tsTags
+        AnchorSideTop.Control = gbFollowTags
         AnchorSideTop.Side = asrBottom
-        AnchorSideRight.Control = TabSheet5
+        AnchorSideRight.Control = tsTags
         AnchorSideRight.Side = asrBottom
-        AnchorSideBottom.Control = TabSheet5
+        AnchorSideBottom.Control = tsTags
         AnchorSideBottom.Side = asrBottom
         Left = 5
         Height = 198
@@ -785,12 +785,12 @@ object frsitegrabber: Tfrsitegrabber
         ClientHeight = 180
         ClientWidth = 441
         TabOrder = 1
-        object Memo8: TMemo
-          AnchorSideLeft.Control = GroupBox8
-          AnchorSideTop.Control = GroupBox8
-          AnchorSideRight.Control = GroupBox8
+        object mIgnoreTags: TMemo
+          AnchorSideLeft.Control = gbIgnoreTags
+          AnchorSideTop.Control = gbIgnoreTags
+          AnchorSideRight.Control = gbIgnoreTags
           AnchorSideRight.Side = asrBottom
-          AnchorSideBottom.Control = GroupBox8
+          AnchorSideBottom.Control = gbIgnoreTags
           AnchorSideBottom.Side = asrBottom
           Left = 5
           Height = 170
@@ -806,9 +806,9 @@ object frsitegrabber: Tfrsitegrabber
       end
     end
   end
-  object Button3: TButton
-    AnchorSideRight.Control = Button4
-    AnchorSideBottom.Control = Button2
+  object btnBack: TButton
+    AnchorSideRight.Control = btnNext
+    AnchorSideBottom.Control = btnCancel
     AnchorSideBottom.Side = asrBottom
     Left = 193
     Height = 23
@@ -819,12 +819,12 @@ object frsitegrabber: Tfrsitegrabber
     BorderSpacing.Right = 10
     Caption = '< Back'
     Enabled = False
-    OnClick = Button3Click
+    OnClick = btnBackClick
     TabOrder = 3
   end
-  object Button4: TButton
-    AnchorSideRight.Control = Button1
-    AnchorSideBottom.Control = Button2
+  object btnNext: TButton
+    AnchorSideRight.Control = btnFinish
+    AnchorSideBottom.Control = btnCancel
     AnchorSideBottom.Side = asrBottom
     Left = 262
     Height = 23
@@ -834,7 +834,7 @@ object frsitegrabber: Tfrsitegrabber
     AutoSize = True
     BorderSpacing.Right = 10
     Caption = 'Next >'
-    OnClick = Button4Click
+    OnClick = btnNextClick
     TabOrder = 4
   end
 end

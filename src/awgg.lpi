@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="3505"/>
+      <BuildNr Value="3713"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="14">
@@ -272,6 +272,7 @@ end;"/>
             <CustomOptions Value="-dbeta64"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
+              <CompileReasons Compile="False" Build="False" Run="False"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
@@ -579,10 +580,10 @@ end;"/>
     </RunParams>
     <RequiredPackages Count="3">
       <Item1>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item1>
       <Item2>
-        <PackageName Value="DateTimeCtrls"/>
+        <PackageName Value="SynEdit"/>
       </Item2>
       <Item3>
         <PackageName Value="LCL"/>

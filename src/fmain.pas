@@ -29,7 +29,7 @@ uses
   synhighlighterunixshellscript, SynEdit, UniqueInstance, Forms, Controls,
   Graphics, Dialogs, StdCtrls, ExtCtrls, Menus, Spin, ComCtrls, DateUtils,
   Process,
-  {$IFDEF WINDOWS}Registry, MMSystem,{$ENDIF} Math, fnewdown, fconfig, fabout, flang, fstrings, freplace, fsitegrabber, fnotification, fcopymove, fconfirm, Clipbrd,
+  {$IFDEF WINDOWS}Registry, MMSystem,{$ENDIF} Math, fnewdown, fconfig, fabout, fstrings, flang, freplace, fsitegrabber, fnotification, fcopymove, fconfirm, Clipbrd,
   strutils, LCLIntf, types, versionitis, INIFiles, LCLVersion,
   PairSplitter, {DefaultTranslator}LCLTranslator, URIParser;
 
@@ -560,51 +560,6 @@ var
 implementation
 {$R *.lfm}
 { Tfrmain }
-resourcestring
-startqueuesystray='Start queue';
-stopqueuesystray='Stop queue';
-//folderdownname='Downloads';
-categorycompressed='Compressed';
-categoryprograms='Programs';
-categoryimages='Images';
-categorydocuments='Documents';
-categoryvideos='Videos';
-categorymusic='Music';
-categoryothers='Others';
-categoryfilter='Categories';
-abouttext='This program is free software under GNU GPL 2 license.'+
-#10#13+'Created By Reinier Romero Mir'+
-#13+'Email: nenirey@gmail.com'+
-#13+'Copyright (c) 2015'+
-#13+'The project uses the following third party resources:'+
-#10#13+'Silk icons set 1.3 by Mark James'+
-#13+'http://www.famfamfam.com/lab/icons/silk/'+
-#13+'Tango Icon Library'+
-#13+'http://tango.freedesktop.org/Tango_Icon_Library'+
-#13+'aria2'+
-#13+'http://aria2.sourceforge.net/'+
-#13+'Wget'+
-#13+'http://www.gnu.org/software/wget/'
-+#13+'cURL'+
-#13+'http://curl.haxx.se/'+
-#13+'Axel'+
-#13+'http://axel.alioth.debian.org/'+
-#10#13+'French translation: '+
-#10+'Tony O Gallos @ CodeTyphon Community';
-wgetdefarg1='[-c] Continue downloads.';
-wgetdefarg2='[-nH] No create host dir.';
-wgetdefarg3='[-nd] No create out dir.';
-wgetdefarg4='[--no-check-certificate] No check SSL.';
-aria2defarg1='[-c] Continue downloads';
-aria2defarg2='[--file-allocation=none] No allocate space.';
-curldefarg1='[-C -] Continue downloads.';
-firefoxintegration='Do you want to enable firefox integration?';
-transfromlabel='From: %S';
-transdestinationlabel='To: %S';
-fileexistsreplacetext='The file "%S" already exists, do you want to replace it?';
-fileoperationcopy='Coping file(s)...';
-fileoperationmove='Moving file(s)...';
-
 function strshort(str:string;maxlength:integer):string;
 begin
   if Length(str)>maxlength then
@@ -626,7 +581,7 @@ begin
   pform.id:=idform;
   delsrc:=deletesource;
   if deletesource then
-    pform.Caption:=fileoperationmove
+    pform.Caption:=fstrings.fileoperationmove
   else
     pform.Caption:=fileoperationcopy;
   pform.Show;
@@ -697,13 +652,13 @@ end;
 
 procedure copythread.update;
 begin
-  pform.ProgressBar1.Position:=percent;
+  pform.pbCopyMove.Position:=percent;
   if delsrc then
     pform.Caption:=inttostr(percent)+'% '+inttostr(findex+1)+'/'+inttostr(source.Count)+' '+fileoperationmove
   else
     pform.Caption:=inttostr(percent)+'% '+inttostr(findex+1)+'/'+inttostr(source.Count)+' '+fileoperationcopy;
-  pform.Label1.Caption:=strshort(format(transfromlabel,[source[findex]]),90);
-  pform.Label2.Caption:=strshort(format(transdestinationlabel,[destination+pathdelim+ExtractFilename(Source[findex])]),90);
+  pform.lblFrom.Caption:=strshort(format(transfromlabel,[source[findex]]),90);
+  pform.lblTo.Caption:=strshort(format(transdestinationlabel,[destination+pathdelim+ExtractFilename(Source[findex])]),90);
 end;
 
 procedure copythread.confirm;
@@ -744,22 +699,22 @@ begin
   ABitmap.Canvas.FillRect(0, 0, notiforms.Width, notiforms.Height);
   ABitmap.Canvas.Brush.Color:=clWhite;
   ABitmap.Canvas.RoundRect(0, 0, notiforms.Width, notiforms.Height, 20, 20);
-  notiforms.SpeedButton1.Enabled:=ok;
-  notiforms.SpeedButton2.Enabled:=ok;
-  notiforms.SpeedButton4.Enabled:=ok;
-  notiforms.SpeedButton5.Enabled:=ok;
-  notiforms.SpeedButton1.OnClick:=notiforms.SpeedButton1.OnClick;
-  notiforms.SpeedButton2.OnClick:=notiforms.SpeedButton2.OnClick;
-  notiforms.SpeedButton3.OnClick:=notiforms.SpeedButton3.OnClick;
-  notiforms.SpeedButton4.OnClick:=notiforms.SpeedButton4.OnClick;
-  notiforms.SpeedButton5.OnClick:=notiforms.SpeedButton5.OnClick;
+  notiforms.btnGoPath.Enabled:=ok;
+  notiforms.btnOpenFile.Enabled:=ok;
+  notiforms.btnCopyTo.Enabled:=ok;
+  notiforms.btnMoveTo.Enabled:=ok;
+  notiforms.btnGoPath.OnClick:=notiforms.btnGoPath.OnClick;
+  notiforms.btnOpenFile.OnClick:=notiforms.btnOpenFile.OnClick;
+  notiforms.btnClose.OnClick:=notiforms.btnClose.OnClick;
+  notiforms.btnCopyTo.OnClick:=notiforms.btnCopyTo.OnClick;
+  notiforms.btnMoveTo.OnClick:=notiforms.btnMoveTo.OnClick;
   notiforms.OnMouseEnter:=notiforms.OnMouseEnter;
   notiforms.OnMouseLeave:=notiforms.OnMouseLeave;
   notiforms.OnClick:=notiforms.OnClick;
-  notiforms.Label1.Caption:=name;
-  notiforms.Label2.Caption:=note;
-  notiforms.Label3.Caption:=title;
-  notiforms.Label2.Hint:=note;
+  notiforms.lblFileName.Caption:=name;
+  notiforms.lblDescriptionError.Caption:=note;
+  notiforms.lblTitle.Caption:=title;
+  notiforms.lblDescriptionError.Hint:=note;
   notiforms.notipathfile:=fpath;
   if simulation<>-1 then
     posicion:=simulation
@@ -776,8 +731,8 @@ begin
         7: begin notiforms.Left:=Round(Screen.Width/4);notiforms.Top:=Screen.Height-notiforms.Height;end;
         8: begin notiforms.Left:=Screen.Width-notiforms.Width;notiforms.Top:=Screen.Height-notiforms.Height;end;
       end;
-  notiforms.Timer1.Interval:=hiddenotifi*1000;
-  notiforms.Timer1.Enabled:=true;
+  notiforms.HideTimer.Interval:=hiddenotifi*1000;
+  notiforms.HideTimer.Enabled:=true;
   notiforms.Show;
   notiforms.SetShape(ABitmap);
   ABitmap.Free;
@@ -987,32 +942,32 @@ procedure newdownqueues();
 var
   i:integer;
 begin
-  frnewdown.ComboBox2.Items.Clear;
+  frnewdown.cbQueue.Items.Clear;
   for i:=0 to Length(queues)-1 do
-    frnewdown.ComboBox2.Items.Add(queuenames[i]);
+    frnewdown.cbQueue.Items.Add(queuenames[i]);
 end;
 
 procedure newgrabberqueues();
 var
   i:integer;
 begin
-  frsitegrabber.ComboBox1.Items.Clear;
+  frsitegrabber.cbQueue.Items.Clear;
   for i:=0 to Length(queues)-1 do
-    frsitegrabber.ComboBox1.Items.Add(queuenames[i]);
+    frsitegrabber.cbQueue.Items.Add(queuenames[i]);
 end;
 
 procedure queueindexselect();
 begin
-  frnewdown.ComboBox2.ItemIndex:=0;
-  frsitegrabber.ComboBox1.ItemIndex:=0;
+  frnewdown.cbQueue.ItemIndex:=0;
+  frsitegrabber.cbQueue.ItemIndex:=0;
   if (frmain.tvMain.SelectionCount>0) then
   begin
     if frmain.tvMain.Selected.Level>0 then
     begin
       case frmain.tvMain.Selected.Parent.Index of
         1:begin//colas
-            frnewdown.ComboBox2.ItemIndex:=frmain.tvMain.Selected.Index;
-            frsitegrabber.ComboBox1.ItemIndex:=frmain.tvMain.Selected.Index;
+            frnewdown.cbQueue.ItemIndex:=frmain.tvMain.Selected.Index;
+            frsitegrabber.cbQueue.ItemIndex:=frmain.tvMain.Selected.Index;
           end;
       end;
     end;
@@ -1132,7 +1087,7 @@ var
 begin
   frmain.tvMain.Items.TopLvlItems[3].DeleteChildren;
   if Assigned(frnewdown) then
-    frnewdown.ComboBox3.Items.Clear;
+    frnewdown.cbDestination.Items.Clear;
   for i:=0 to Length(categoryextencions)-1 do
   begin
     treeitem:=TTreeNode.Create(frmain.tvMain.Items);
@@ -1140,7 +1095,7 @@ begin
     treeitem.ImageIndex:=23;
     treeitem.SelectedIndex:=23;
     if Assigned(frnewdown) then
-      frnewdown.ComboBox3.Items.Add(categoryextencions[i][0]);
+      frnewdown.cbDestination.Items.Add(categoryextencions[i][0]);
   end;
   treeitem:=TTreeNode.Create(frmain.tvMain.Items);
   treeitem:=frmain.tvMain.Items.AddChild(frmain.tvMain.Items.TopLvlItems[3],categoryothers);
@@ -1179,7 +1134,7 @@ procedure deletequeue(indice:integer);
 var
   i:integer;
 begin
-  frconfirm.dlgtext.Caption:=frstrings.dlgdeletequeue.Caption+#10#13+#10#13+queuenames[indice];
+  frconfirm.dlgtext.Caption:=fstrings.dlgdeletequeue+#10#13+#10#13+queuenames[indice];
   frconfirm.ShowModal;
   if dlgcuestion then
   begin
@@ -1284,7 +1239,7 @@ procedure newqueue();
 var
   nam:string;
 begin
-  nam:=frstrings.queuename.Caption+' '+inttostr(Length(queues)+1);
+  nam:=fstrings.queuename+' '+inttostr(Length(queues)+1);
 
   SetLength(queues,Length(queues)+1);
   SetLength(queuenames,Length(queuenames)+1);
@@ -1592,25 +1547,25 @@ begin
   for x:=0 to frmain.lvMain.Items.Count-1 do
   begin
     case frmain.lvMain.Items[x].SubItems[columnstatus] of
-      '0':frmain.lvMain.Items[x].Caption:=frstrings.statuspaused.Caption;
-      '1':frmain.lvMain.Items[x].Caption:=frstrings.statusinprogres.Caption;
-      '2':frmain.lvMain.Items[x].Caption:=frstrings.statusstoped.Caption;
-      '3':frmain.lvMain.Items[x].Caption:=frstrings.statuscomplete.Caption;
-      '4':frmain.lvMain.Items[x].Caption:=frstrings.statuserror.Caption;
+      '0':frmain.lvMain.Items[x].Caption:=fstrings.statuspaused;
+      '1':frmain.lvMain.Items[x].Caption:=fstrings.statusinprogres;
+      '2':frmain.lvMain.Items[x].Caption:=fstrings.statusstoped;
+      '3':frmain.lvMain.Items[x].Caption:=fstrings.statuscomplete;
+      '4':frmain.lvMain.Items[x].Caption:=fstrings.statuserror;
     end;
   end;
   for x:=0 to frmain.lvFilter.Columns.Count-1 do
     frmain.lvFilter.Columns[x].Caption:=frmain.lvMain.Columns[x].Caption;
 
-  frmain.tvMain.Items[0].Text:=frstrings.alldowntreename.Caption;
-  frmain.tvMain.Items[1].Text:=frstrings.queuestreename.Caption;
-  frmain.tvMain.Items[1].Items[0].Text:=frstrings.queuemainname.Caption;
-  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+2].Text:=frstrings.filtresname.Caption;
-  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+3].Text:=frstrings.statuscomplete.Caption;
-  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+4].Text:=frstrings.statusinprogres.Caption;
-  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+5].Text:=frstrings.statusstoped.Caption;
-  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+6].Text:=frstrings.statuserror.Caption;
-  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+7].Text:=frstrings.statuspaused.Caption;
+  frmain.tvMain.Items[0].Text:=fstrings.alldowntreename;
+  frmain.tvMain.Items[1].Text:=fstrings.queuestreename;
+  frmain.tvMain.Items[1].Items[0].Text:=fstrings.queuemainname;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+2].Text:=fstrings.filtresname;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+3].Text:=fstrings.statuscomplete;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+4].Text:=fstrings.statusinprogres;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+5].Text:=fstrings.statusstoped;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+6].Text:=fstrings.statuserror;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+7].Text:=fstrings.statuspaused;
   frmain.tvMain.Items.TopLvlItems[3].Text:=categoryfilter;
   frconfig.tvConfig.Items[0].Text:=frconfig.tsProxy.Caption;
   frconfig.tvConfig.Items[1].Text:=frconfig.tsScheduler.Caption;
@@ -1629,75 +1584,76 @@ begin
   frconfig.tvConfig.Items[14].Text:=frconfig.tsQueue.Caption;
   frconfig.tvConfig.Items[15].Text:=frconfig.tsIntegration.Caption;
   frmain.tvMain.Items.TopLvlItems[3][frmain.tvMain.Items.TopLvlItems[3].SubTreeCount-2].Text:=categoryothers;
-  frconfig.Panel1.Caption:=frconfig.PageControl1.Pages[frconfig.PageControl1.TabIndex].Caption;
-  frconfig.CheckGroup5.Items[0]:=frstrings.sunday.Caption;
-  frconfig.CheckGroup5.Items[1]:=frstrings.monday.Caption;
-  frconfig.CheckGroup5.Items[2]:=frstrings.tuesday.Caption;
-  frconfig.CheckGroup5.Items[3]:=frstrings.wednesday.Caption;
-  frconfig.CheckGroup5.Items[4]:=frstrings.thursday.Caption;
-  frconfig.CheckGroup5.Items[5]:=frstrings.friday.Caption;
-  frconfig.CheckGroup5.Items[6]:=frstrings.saturday.Caption;
-  frconfig.CheckGroup4.Items[0]:=frstrings.runwiththesystem.Caption;
-  frconfig.CheckGroup4.Items[1]:=frstrings.startinthesystray.Caption;
-  queuenames[0]:=frstrings.queuemainname.Caption;
-  if frconfig.ComboBox4.Items.Count>0 then
-    frconfig.ComboBox4.Items[0]:=frstrings.queuemainname.Caption;
-  frconfig.cbProxy.Items[0]:=frstrings.proxynot.Caption;
-  frconfig.cbProxy.Items[1]:=frstrings.proxysystem.Caption;
-  frconfig.cbProxy.Items[2]:=frstrings.proxymanual.Caption;
-  frconfig.CheckGroup1.Items[0]:=wgetdefarg1;
-  frconfig.CheckGroup1.Items[1]:=wgetdefarg2;
-  frconfig.CheckGroup1.Items[2]:=wgetdefarg3;
-  frconfig.CheckGroup1.Items[3]:=wgetdefarg4;
-  frconfig.CheckGroup2.Items[0]:=aria2defarg1;
-  frconfig.CheckGroup2.Items[1]:=aria2defarg2;
-  frconfig.CheckGroup3.Items[0]:=curldefarg1;
+  frconfig.pConfigInfo.Caption:=frconfig.PageControl1.Pages[frconfig.PageControl1.TabIndex].Caption;
+  frconfig.chgWeekDays.Items[0]:=fstrings.sunday;
+  frconfig.chgWeekDays.Items[1]:=fstrings.monday;
+  frconfig.chgWeekDays.Items[2]:=fstrings.tuesday;
+  frconfig.chgWeekDays.Items[3]:=fstrings.wednesday;
+  frconfig.chgWeekDays.Items[4]:=fstrings.thursday;
+  frconfig.chgWeekDays.Items[5]:=fstrings.friday;
+  frconfig.chgWeekDays.Items[6]:=fstrings.saturday;
+  frconfig.chgAutomation.Items[0]:=fstrings.runwiththesystem;
+  frconfig.chgAutomation.Items[1]:=fstrings.startinthesystray;
+  queuenames[0]:=fstrings.queuemainname;
+  if frconfig.cbQueue.Items.Count>0 then
+    frconfig.cbQueue.Items[0]:=fstrings.queuemainname;
+  frconfig.cbProxy.Items[0]:=fstrings.proxynot;
+  frconfig.cbProxy.Items[1]:=fstrings.proxysystem;
+  frconfig.cbProxy.Items[2]:=fstrings.proxymanual;
+  frconfig.chgWgetDefArguments.Items[0]:=wgetdefarg1;
+  frconfig.chgWgetDefArguments.Items[1]:=wgetdefarg2;
+  frconfig.chgWgetDefArguments.Items[2]:=wgetdefarg3;
+  frconfig.chgWgetDefArguments.Items[3]:=wgetdefarg4;
+  frconfig.chgAria2DefArguments.Items[0]:=aria2defarg1;
+  frconfig.chgAria2DefArguments.Items[1]:=aria2defarg2;
+  frconfig.chgCurlDefArguments.Items[0]:=curldefarg1;
   queuesreload();
   newdownqueues();
 end;
 
 procedure enginereload();
 begin
-  frnewdown.ComboBox1.Items.Clear;
-  frconfig.ComboBox3.Items.Clear;
+  frnewdown.cbEngine.Items.Clear;
+  frconfig.cbDefEngine.Items.Clear;
 
   if FileExistsUTF8(aria2crutebin) then
   begin
-    frnewdown.ComboBox1.Items.Add('aria2c');
-    frconfig.ComboBox3.Items.Add('aria2c');
+    frnewdown.cbEngine.Items.Add('aria2c');
+    frconfig.cbDefEngine.Items.Add('aria2c');
   end;
 
   if FileExistsUTF8(axelrutebin) then
   begin
-    frnewdown.ComboBox1.Items.Add('axel');
-    frconfig.ComboBox3.Items.Add('axel');
+    frnewdown.cbEngine.Items.Add('axel');
+    frconfig.cbDefEngine.Items.Add('axel');
   end;
 
   if FileExistsUTF8(curlrutebin) then
   begin
-    frnewdown.ComboBox1.Items.Add('curl');
-    frconfig.ComboBox3.Items.Add('curl');
+    frnewdown.cbEngine.Items.Add('curl');
+    frconfig.cbDefEngine.Items.Add('curl');
   end;
 
   if FileExistsUTF8(wgetrutebin) then
   begin
-    frnewdown.ComboBox1.Items.Add('wget');
-    frconfig.ComboBox3.Items.Add('wget');
+    frnewdown.cbEngine.Items.Add('wget');
+    frconfig.cbDefEngine.Items.Add('wget');
   end;
 
+   //Solo con expect y unbuffer
   //if FileExistsUTF8(lftprutebin) then
   //begin
-    //fnewdown.ComboBox1.Items.Add('lftp');
-    //fconfig.ComboBox3.Items.Add('lftp');
+    //frnewdown.cbEngine.Items.Add('lftp');
+    //frconfig.cbDefEngine.Items.Add('lftp');
   //end;
 
   //Seleccionar wget por defecto
-  frnewdown.ComboBox1.ItemIndex:=frnewdown.ComboBox1.Items.IndexOf(defaultengine);
-  frconfig.ComboBox3.ItemIndex:=frconfig.ComboBox3.Items.IndexOf(defaultengine);
-  if frnewdown.ComboBox1.ItemIndex=-1 then
-    frnewdown.ComboBox1.ItemIndex:=0;
-  if frconfig.ComboBox3.ItemIndex=-1 then
-    frconfig.ComboBox3.ItemIndex:=0;
+  frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
+  frconfig.cbDefEngine.ItemIndex:=frconfig.cbDefEngine.Items.IndexOf(defaultengine);
+  if frnewdown.cbEngine.ItemIndex=-1 then
+    frnewdown.cbEngine.ItemIndex:=0;
+  if frconfig.cbDefEngine.ItemIndex=-1 then
+    frconfig.cbDefEngine.ItemIndex:=0;
 end;
 
 procedure autostart();
@@ -1961,7 +1917,7 @@ begin
     iniconfigfile.Free;
     autostart();
   except on e:exception do
-    ShowMessage(frstrings.msgerrorconfigsave.caption+e.ToString);
+    ShowMessage(fstrings.msgerrorconfigsave+e.ToString);
   end;
 end;
 procedure loadconfig();
@@ -2233,93 +2189,93 @@ begin
   useaut:=frconfig.chUseAuth.Checked;
   puser:=frconfig.edtProxyUser.Text;
   ppassword:=frconfig.edtProxyPass.Text;
-  shownotifi:=frconfig.CheckBox4.Checked;
-  hiddenotifi:=frconfig.SpinEdit4.Value;
-  clipboardmonitor:=frconfig.CheckBox6.Checked;
+  shownotifi:=frconfig.chShowNotifications.Checked;
+  hiddenotifi:=frconfig.seHideSeconds.Value;
+  clipboardmonitor:=frconfig.chClipboardMonitor.Checked;
   frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
-  ddowndir:=frconfig.DirectoryEdit1.Text;
+  ddowndir:=frconfig.deDownFolder.Text;
   dotherdowndir:=ddowndir+pathdelim+'Others';
-  wgetrutebin:=frconfig.FiLeNameEdit1.Text;
-  aria2crutebin:=frconfig.FiLeNameEdit2.Text;
-  curlrutebin:=frconfig.FiLeNameEdit3.Text;
-  axelrutebin:=frconfig.FileNameEdit4.Text;
-  wgetargs:=frconfig.Edit7.Text;
-  aria2cargs:=frconfig.Edit8.Text;
-  curlargs:=frconfig.Edit9.Text;
-  axelargs:=frconfig.Edit10.Text;
-  wgetdefcontinue:=frconfig.CheckGroup1.Checked[0];
-  wgetdefnh:=frconfig.CheckGroup1.Checked[1];
-  wgetdefnd:=frconfig.CheckGroup1.Checked[2];
-  wgetdefncert:=frconfig.CheckGroup1.Checked[3];
-  aria2cdefcontinue:=frconfig.CheckGroup2.Checked[0];
-  aria2cdefallocate:=frconfig.CheckGroup2.Checked[1];
-  aria2splitsize:=frconfig.Edit12.Text;
-  aria2splitnum:=frconfig.SpinEdit5.Value;
-  aria2split:=frconfig.CheckBox15.Checked;
-  curldefcontinue:=frconfig.CheckGroup3.Checked[0];
-  autostartwithsystem:=frconfig.CheckGroup4.Checked[0];
-  autostartminimized:=frconfig.CheckGroup4.Checked[1];
-  logger:=frconfig.Checkbox1.Checked;
-  logpath:=frconfig.DirectoryEdit2.Text;
-  notifipos:=frconfig.RadioGroup1.ItemIndex;
-  dtimeout:=frconfig.SpinEdit10.Value;
-  dtries:=frconfig.SpinEdit11.Value;
-  ddelay:=frconfig.SpinEdit12.Value;
-  deflanguage:=frconfig.ComboBox2.Text;
-  defaultengine:=frconfig.ComboBox3.Text;
-  playsounds:=frconfig.CheckBox7.Checked;
-  queuelimits[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckBox8.Checked;
-  queuepoweroff[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckBox13.Checked;
-  queuerotate:=frconfig.CheckBox9.Checked;
-  downcompsound:=frconfig.FileNameEdit6.Text;
-  downstopsound:=frconfig.FileNameEdit7.Text;
-  triesrotate:=frconfig.SpinEdit13.Value;
-  if frconfig.RadioButton1.Checked then
+  wgetrutebin:=frconfig.fneWgetpath.Text;
+  aria2crutebin:=frconfig.fneAria2Path.Text;
+  curlrutebin:=frconfig.fneCurlPath.Text;
+  axelrutebin:=frconfig.fneAxelPath.Text;
+  wgetargs:=frconfig.edtWgetAdditionalArgs.Text;
+  aria2cargs:=frconfig.edtAria2AdditionalArgs.Text;
+  curlargs:=frconfig.edtCurlAdditionalArgs.Text;
+  axelargs:=frconfig.edtAxelAdditionalArgs.Text;
+  wgetdefcontinue:=frconfig.chgWgetDefArguments.Checked[0];
+  wgetdefnh:=frconfig.chgWgetDefArguments.Checked[1];
+  wgetdefnd:=frconfig.chgWgetDefArguments.Checked[2];
+  wgetdefncert:=frconfig.chgWgetDefArguments.Checked[3];
+  aria2cdefcontinue:=frconfig.chgAria2DefArguments.Checked[0];
+  aria2cdefallocate:=frconfig.chgAria2DefArguments.Checked[1];
+  aria2splitsize:=frconfig.edtAria2SplitSize.Text;
+  aria2splitnum:=frconfig.seAria2Connections.Value;
+  aria2split:=frconfig.chAria2UseMultiConnections.Checked;
+  curldefcontinue:=frconfig.chgCurlDefArguments.Checked[0];
+  autostartwithsystem:=frconfig.chgAutomation.Checked[0];
+  autostartminimized:=frconfig.chgAutomation.Checked[1];
+  logger:=frconfig.chSaveDownLogs.Checked;
+  logpath:=frconfig.deLogsPath.Text;
+  notifipos:=frconfig.rgPosition.ItemIndex;
+  dtimeout:=frconfig.seDownTimeOut.Value;
+  dtries:=frconfig.seDownTries.Value;
+  ddelay:=frconfig.seDownDelayTries.Value;
+  deflanguage:=frconfig.cbDefLanguage.Text;
+  defaultengine:=frconfig.cbDefEngine.Text;
+  playsounds:=frconfig.chPlaySounds.Checked;
+  queuelimits[frconfig.cbQueue.ItemIndex]:=frconfig.chDisableLimits.Checked;
+  queuepoweroff[frconfig.cbQueue.ItemIndex]:=frconfig.chShutdown.Checked;
+  queuerotate:=frconfig.chQueueRotate.Checked;
+  downcompsound:=frconfig.fneSoundComplete.Text;
+  downstopsound:=frconfig.fneSoundStopped.Text;
+  triesrotate:=frconfig.seQueueTriesRotate.Value;
+  if frconfig.rbQueueRMOneStep.Checked then
     rotatemode:=0;
-  if frconfig.RadioButton2.Checked then
+  if frconfig.rbQueueRMToEnd.Checked then
     rotatemode:=1;
-  if frconfig.RadioButton3.Checked then
+  if frconfig.rbQueueRMTwoStop.Checked then
     rotatemode:=2;
-  queuedelay:=frconfig.SpinEdit14.Value;
-  useglobaluseragent:=frconfig.CheckBox14.Checked;
-  globaluseragent:=frconfig.Edit11.Text;
+  queuedelay:=frconfig.seQueueDelaySec.Value;
+  useglobaluseragent:=frconfig.chDownUseAgent.Checked;
+  globaluseragent:=frconfig.edtDownAgent.Text;
   sameproxyforall:=frconfig.chSameProxy.Checked;
-  loadhistorylog:=frconfig.CheckBox12.Checked;
-  if frconfig.RadioButton4.Checked=true then
+  loadhistorylog:=frconfig.chLoadLogs.Checked;
+  if frconfig.rbLogsLoadAll.Checked=true then
     loadhistorymode:=1;
-  if frconfig.RadioButton5.Checked=true then
+  if frconfig.rbLogsLoadLines.Checked=true then
     loadhistorymode:=2;
-  if frconfig.RadioButton6.Checked=true then
+  if frconfig.rbCategoryOneFolder.Checked=true then
     defaultdirmode:=1;
-  if frconfig.RadioButton7.Checked=true then
+  if frconfig.rbCategoryByType.Checked=true then
     defaultdirmode:=2;
-  qtimerenable[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckBox11.Checked;
-  qallday[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckBox3.Checked;
+  qtimerenable[frconfig.cbQueue.ItemIndex]:=frconfig.chEnableScheduler.Checked;
+  qallday[frconfig.cbQueue.ItemIndex]:=frconfig.chDaily.Checked;
 
   //queuestarttimes[fconfig.ComboBox4.ItemIndex]:=strtotime(inttostr(fconfig.SpinEdit6.Value)+':'+inttostr(fconfig.SpinEdit7.Value)+':00');
   //queuestoptimes[fconfig.ComboBox4.ItemIndex]:=strtotime(inttostr(fconfig.SpinEdit8.Value)+':'+inttostr(fconfig.SpinEdit9.Value)+':00');
 
-  queuestarttimes[frconfig.ComboBox4.ItemIndex]:=frconfig.DateTimePicker1.Time;
-  queuestoptimes[frconfig.ComboBox4.ItemIndex]:=frconfig.DateTimePicker2.Time;
+  queuestarttimes[frconfig.cbQueue.ItemIndex]:=frconfig.dtpStartQueue.Time;
+  queuestoptimes[frconfig.cbQueue.ItemIndex]:=frconfig.dtpStopQueue.Time;
 
-  queuestartdates[frconfig.ComboBox4.ItemIndex]:=frconfig.DateEdit1.Date;
-  qstop[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckBox10.Checked;
-  queuestopdates[frconfig.ComboBox4.ItemIndex]:=frconfig.DateEdit2.Date;
-  qdomingo[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckGroup5.Checked[0];
-  qlunes[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckGroup5.Checked[1];
-  qmartes[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckGroup5.Checked[2];
-  qmiercoles[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckGroup5.Checked[3];
-  qjueves[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckGroup5.Checked[4];
-  qviernes[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckGroup5.Checked[5];
-  qsabado[frconfig.ComboBox4.ItemIndex]:=frconfig.CheckGroup5.Checked[6];
-  if frconfig.ListBox1.ItemIndex<>-1 then
-    categoryextencionstmp[frconfig.ListBox1.ItemIndex][0]:=frconfig.DirectoryEdit3.Text;
+  queuestartdates[frconfig.cbQueue.ItemIndex]:=frconfig.deStartQueue.Date;
+  qstop[frconfig.cbQueue.ItemIndex]:=frconfig.chStopQueue.Checked;
+  queuestopdates[frconfig.cbQueue.ItemIndex]:=frconfig.deStopQueue.Date;
+  qdomingo[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[0];
+  qlunes[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[1];
+  qmartes[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[2];
+  qmiercoles[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[3];
+  qjueves[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[4];
+  qviernes[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[5];
+  qsabado[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[6];
+  if frconfig.lbCategory.ItemIndex<>-1 then
+    categoryextencionstmp[frconfig.lbCategory.ItemIndex][0]:=frconfig.deCategoryDownFolder.Text;
   categoryextencions:=categoryextencionstmp;
   SetDefaultLang(deflanguage);
   updatelangstatus();
   titlegen();
   saveconfig();
-  stimer[frconfig.ComboBox4.ItemIndex].Enabled:=qtimerenable[frconfig.ComboBox4.ItemIndex];
+  stimer[frconfig.cbQueue.ItemIndex].Enabled:=qtimerenable[frconfig.cbQueue.ItemIndex];
   categoryreload();
 end;
 
@@ -2340,36 +2296,36 @@ begin
     frconfig.chUseAuth.Checked:=useaut;
     frconfig.edtProxyUser.Text:=puser;
     frconfig.edtProxyPass.Text:=ppassword;
-    frconfig.CheckBox6.Checked:=clipboardmonitor;
-    frconfig.DirectoryEdit1.Text:=ddowndir;
-    frconfig.CheckBox4.Checked:=shownotifi;
-    frconfig.SpinEdit4.Value:=hiddenotifi;
-    frconfig.FiLeNameEdit1.Text:=wgetrutebin;
-    frconfig.FiLeNameEdit2.Text:=aria2crutebin;
-    frconfig.FiLeNameEdit3.Text:=curlrutebin;
-    frconfig.FileNameEdit4.Text:=axelrutebin;
-    frconfig.Edit7.Text:=wgetargs;
-    frconfig.Edit8.Text:=aria2cargs;
-    frconfig.Edit9.Text:=curlargs;
-    frconfig.Edit10.Text:=axelargs;
-    frconfig.CheckGroup1.Checked[0]:=wgetdefcontinue;
-    frconfig.CheckGroup1.Checked[1]:=wgetdefnh;
-    frconfig.CheckGroup1.Checked[2]:=wgetdefnd;
-    frconfig.CheckGroup1.Checked[3]:=wgetdefncert;
-    frconfig.CheckGroup2.Checked[0]:=aria2cdefcontinue;
-    frconfig.CheckGroup2.Checked[1]:=aria2cdefallocate;
-    frconfig.SpinEdit5.Value:=aria2splitnum;
-    frconfig.Edit12.Text:=aria2splitsize;
-    frconfig.CheckBox15.Checked:=aria2split;
-    frconfig.CheckGroup3.Checked[0]:=curldefcontinue;
-    frconfig.CheckGroup4.Checked[0]:=autostartwithsystem;
-    frconfig.CheckGroup4.Checked[1]:=autostartminimized;
-    frconfig.Checkbox1.Checked:=logger;
-    frconfig.DirectoryEdit2.Text:=logpath;
-    frconfig.RadioGroup1.ItemIndex:=notifipos;
-    frconfig.SpinEdit10.Value:=dtimeout;
-    frconfig.SpinEdit11.Value:=dtries;
-    frconfig.SpinEdit12.Value:=ddelay;
+    frconfig.chClipboardMonitor.Checked:=clipboardmonitor;
+    frconfig.deDownFolder.Text:=ddowndir;
+    frconfig.chShowNotifications.Checked:=shownotifi;
+    frconfig.seHideSeconds.Value:=hiddenotifi;
+    frconfig.fneWgetpath.Text:=wgetrutebin;
+    frconfig.fneAria2Path.Text:=aria2crutebin;
+    frconfig.fneCurlPath.Text:=curlrutebin;
+    frconfig.fneAxelPath.Text:=axelrutebin;
+    frconfig.edtWgetAdditionalArgs.Text:=wgetargs;
+    frconfig.edtAria2AdditionalArgs.Text:=aria2cargs;
+    frconfig.edtCurlAdditionalArgs.Text:=curlargs;
+    frconfig.edtAxelAdditionalArgs.Text:=axelargs;
+    frconfig.chgWgetDefArguments.Checked[0]:=wgetdefcontinue;
+    frconfig.chgWgetDefArguments.Checked[1]:=wgetdefnh;
+    frconfig.chgWgetDefArguments.Checked[2]:=wgetdefnd;
+    frconfig.chgWgetDefArguments.Checked[3]:=wgetdefncert;
+    frconfig.chgAria2DefArguments.Checked[0]:=aria2cdefcontinue;
+    frconfig.chgAria2DefArguments.Checked[1]:=aria2cdefallocate;
+    frconfig.seAria2Connections.Value:=aria2splitnum;
+    frconfig.edtAria2SplitSize.Text:=aria2splitsize;
+    frconfig.chAria2UseMultiConnections.Checked:=aria2split;
+    frconfig.chgCurlDefArguments.Checked[0]:=curldefcontinue;
+    frconfig.chgAutomation.Checked[0]:=autostartwithsystem;
+    frconfig.chgAutomation.Checked[1]:=autostartminimized;
+    frconfig.chSaveDownLogs.Checked:=logger;
+    frconfig.deLogsPath.Text:=logpath;
+    frconfig.rgPosition.ItemIndex:=notifipos;
+    frconfig.seDownTimeOut.Value:=dtimeout;
+    frconfig.seDownTries.Value:=dtries;
+    frconfig.seDownDelayTries.Value:=ddelay;
     Case useproxy of
       0,1:
         begin
@@ -2420,77 +2376,77 @@ begin
           frconfig.chUseAuth.Enabled:=true;
         end;
     end;
-    frconfig.ComboBox2.Items.Clear;
+    frconfig.cbDefLanguage.Items.Clear;
     if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
     begin
       Repeat
         try
-          frconfig.ComboBox2.Items.Add(Copy(itemfile.name,Pos('awgg.',itemfile.name)+5,Pos('.po',itemfile.name)-6));
+          frconfig.cbDefLanguage.Items.Add(Copy(itemfile.name,Pos('awgg.',itemfile.name)+5,Pos('.po',itemfile.name)-6));
         except
         on E:Exception do ShowMessage('The file '+itemfile.Name+' of language is not valid');
         end;
       Until FindNext(itemfile)<>0;
     end;
-    frconfig.ComboBox2.ItemIndex:=frconfig.ComboBox2.Items.IndexOf(deflanguage);
+    frconfig.cbDefLanguage.ItemIndex:=frconfig.cbDefLanguage.Items.IndexOf(deflanguage);
     enginereload();
-    frconfig.CheckBox7.Checked:=playsounds;
-    frconfig.CheckBox9.Checked:=queuerotate;
-    frconfig.FileNameEdit6.Text:=downcompsound;
-    frconfig.FileNameEdit7.Text:=downstopsound;
-    frconfig.SpinEdit13.Value:=triesrotate;
+    frconfig.chPlaySounds.Checked:=playsounds;
+    frconfig.chQueueRotate.Checked:=queuerotate;
+    frconfig.fneSoundComplete.Text:=downcompsound;
+    frconfig.fneSoundStopped.Text:=downstopsound;
+    frconfig.seQueueTriesRotate.Value:=triesrotate;
     if rotatemode=0 then
-      frconfig.RadioButton1.Checked:=true;
+      frconfig.rbQueueRMOneStep.Checked:=true;
     if rotatemode=1 then
-      frconfig.RadioButton2.Checked:=true;
+      frconfig.rbQueueRMToEnd.Checked:=true;
     if rotatemode=2 then
-      frconfig.RadioButton3.Checked:=true;
-    frconfig.SpinEdit14.Value:=queuedelay;
-    frconfig.CheckBox14.Checked:=useglobaluseragent;
-    frconfig.Edit11.Text:=globaluseragent;
+      frconfig.rbQueueRMTwoStop.Checked:=true;
+    frconfig.seQueueDelaySec.Value:=queuedelay;
+    frconfig.chDownUseAgent.Checked:=useglobaluseragent;
+    frconfig.edtDownAgent.Text:=globaluseragent;
     frconfig.chSameProxy.Checked:=sameproxyforall;
-    frconfig.CheckBox12.Checked:=loadhistorylog;
+    frconfig.chLoadLogs.Checked:=loadhistorylog;
     if loadhistorymode=1 then
-      frconfig.RadioButton4.Checked:=true;
+      frconfig.rbLogsLoadAll.Checked:=true;
     if loadhistorymode=2 then
-      frconfig.RadioButton5.Checked:=true;
-    frconfig.ComboBox4.Items.Clear;
+      frconfig.rbLogsLoadLines.Checked:=true;
+    frconfig.cbQueue.Items.Clear;
     for i:=0 to Length(queues)-1 do
     begin
-      frconfig.ComboBox4.Items.Add(queuenames[i]);
+      frconfig.cbQueue.Items.Add(queuenames[i]);
     end;
     ///////////////////////
-    frconfig.ComboBox4.ItemIndex:=0;
+    frconfig.cbQueue.ItemIndex:=0;
     if (frmain.tvMain.SelectionCount>0) then
     begin
       if frmain.tvMain.Selected.Level>0 then
       begin
         case frmain.tvMain.Selected.Parent.Index of
           1:begin//colas
-              frconfig.ComboBox4.ItemIndex:=frmain.tvMain.Selected.Index;
+              frconfig.cbQueue.ItemIndex:=frmain.tvMain.Selected.Index;
             end;
         end;
       end;
     end;
     ///////////////////////
-    frconfig.CheckBox11.Checked:=qtimerenable[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckBox3.Checked:=qallday[frconfig.ComboBox4.ItemIndex];
-    frconfig.DateTimePicker1.Time:=queuestarttimes[frconfig.ComboBox4.ItemIndex];
-    frconfig.DateEdit1.Date:=queuestartdates[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckBox10.Checked:=qstop[frconfig.ComboBox4.ItemIndex];
-    frconfig.DateTimePicker2.Time:=queuestoptimes[frconfig.ComboBox4.ItemIndex];
-    frconfig.DateEdit2.Date:=queuestopdates[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckGroup5.Checked[0]:=qdomingo[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckGroup5.Checked[1]:=qlunes[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckGroup5.Checked[2]:=qmartes[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckGroup5.Checked[3]:=qmiercoles[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckGroup5.Checked[4]:=qjueves[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckGroup5.Checked[5]:=qviernes[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckGroup5.Checked[6]:=qsabado[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckBox8.Checked:=queuelimits[frconfig.ComboBox4.ItemIndex];
-    frconfig.CheckBox13.Checked:=queuepoweroff[frconfig.ComboBox4.ItemIndex];
+    frconfig.chEnableScheduler.Checked:=qtimerenable[frconfig.cbQueue.ItemIndex];
+    frconfig.chDaily.Checked:=qallday[frconfig.cbQueue.ItemIndex];
+    frconfig.dtpStartQueue.Time:=queuestarttimes[frconfig.cbQueue.ItemIndex];
+    frconfig.deStartQueue.Date:=queuestartdates[frconfig.cbQueue.ItemIndex];
+    frconfig.chStopQueue.Checked:=qstop[frconfig.cbQueue.ItemIndex];
+    frconfig.dtpStopQueue.Time:=queuestoptimes[frconfig.cbQueue.ItemIndex];
+    frconfig.deStopQueue.Date:=queuestopdates[frconfig.cbQueue.ItemIndex];
+    frconfig.chgWeekDays.Checked[0]:=qdomingo[frconfig.cbQueue.ItemIndex];
+    frconfig.chgWeekDays.Checked[1]:=qlunes[frconfig.cbQueue.ItemIndex];
+    frconfig.chgWeekDays.Checked[2]:=qmartes[frconfig.cbQueue.ItemIndex];
+    frconfig.chgWeekDays.Checked[3]:=qmiercoles[frconfig.cbQueue.ItemIndex];
+    frconfig.chgWeekDays.Checked[4]:=qjueves[frconfig.cbQueue.ItemIndex];
+    frconfig.chgWeekDays.Checked[5]:=qviernes[frconfig.cbQueue.ItemIndex];
+    frconfig.chgWeekDays.Checked[6]:=qsabado[frconfig.cbQueue.ItemIndex];
+    frconfig.chDisableLimits.Checked:=queuelimits[frconfig.cbQueue.ItemIndex];
+    frconfig.chShutdown.Checked:=queuepoweroff[frconfig.cbQueue.ItemIndex];
     case defaultdirmode of
-      1:frconfig.RadioButton6.Checked:=true;
-      2:frconfig.RadioButton6.Checked:=false;
+      1:frconfig.rbCategoryOneFolder.Checked:=true;
+      2:frconfig.rbCategoryOneFolder.Checked:=false;
     end;
     categoryextencionstmp:=categoryextencions;
   except on e:exception do
@@ -3113,7 +3069,7 @@ begin
         tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);
       end;
     frmain.lvMain.Items[indice].SubItems[columnstatus]:='1';
-    frmain.lvMain.Items[indice].Caption:=frstrings.statusinprogres.Caption;
+    frmain.lvMain.Items[indice].Caption:=fstrings.statusinprogres;
     if frmain.lvMain.Items[indice].SubItems[columntype] = '0' then
       frmain.lvMain.Items[indice].ImageIndex:=2;
     if frmain.lvMain.Items[indice].SubItems[columntype] = '1' then
@@ -3157,7 +3113,7 @@ begin
         if (frmain.lvMain.Items[indice].SubItems[columnuid]=frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columnuid]) then
         begin
           frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columnstatus]:='1';
-          frmain.lvFilter.Items[hilo[downid].thid2].Caption:=frstrings.statusinprogres.Caption;
+          frmain.lvFilter.Items[hilo[downid].thid2].Caption:=fstrings.statusinprogres;
           if frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columntype] = '0' then
             frmain.lvFilter.Items[hilo[downid].thid2].ImageIndex:=2;
           if frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columntype] = '1' then
@@ -3172,7 +3128,7 @@ begin
     end;
   end
   else
-    frmain.SynEdit1.Lines.Add(frstrings.msgmustselectdownload.Caption);
+    frmain.SynEdit1.Lines.Add(fstrings.msgmustselectdownload);
   if columncolav then
   begin
     frmain.lvMain.Columns[0].Width:=columncolaw;
@@ -3196,7 +3152,7 @@ begin
       if newurl<>'' then
       begin
         frmain.lvMain.Items[ni].SubItems[columnurl]:=newurl;
-        if iniciar and frnewdown.Button4.Visible then
+        if iniciar and frnewdown.btnPaused.Visible then
         begin
           queuemanual[strtoint(frmain.lvMain.Items[ni].SubItems[columnqueue])]:=true;
           downloadstart(ni,false);
@@ -3380,7 +3336,7 @@ begin
         DeleteFile(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Host+ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html'));
       frmain.lvMain.Items[indice].ImageIndex:=51;
     end;
-    frmain.lvMain.Items[indice].Caption:=frstrings.statuspaused.Caption;
+    frmain.lvMain.Items[indice].Caption:=fstrings.statuspaused;
     frmain.lvMain.Items[indice].SubItems[columnstatus]:='0';
     frmain.lvMain.Items[indice].SubItems[columnpercent]:='-';
     frmain.lvMain.Items[indice].SubItems[columnspeed]:='--';
@@ -3795,7 +3751,7 @@ var
   defaultdir:string='';
 begin
   frmain.odlgImportdown.Execute;
-  if {$IFDEF LCLQT}(frmain.OpenDialog1.UserChoice=1){$else}frmain.odlgImportdown.FileName<>''{$endif} then
+  if {$IFDEF LCLQT}(frmain.odlgImportdown.UserChoice=1){$else}frmain.odlgImportdown.FileName<>''{$endif} then
   begin
     urls:=TStringList.Create;
     urls.LoadFromFile(frmain.odlgImportdown.FileName);
@@ -3808,7 +3764,7 @@ begin
           2:defaultdir:=suggestdir(ParseURI(urls[nurl]).Document);
         end;
         imitem:=TListItem.Create(frmain.lvMain.Items);
-        imitem.Caption:=frstrings.statuspaused.Caption;
+        imitem.Caption:=fstrings.statuspaused;
         imitem.ImageIndex:=18;
         fname:=ParseURI(urls[nurl]).Document;
         while destinyexists(defaultdir+pathdelim+fname) do
@@ -3852,7 +3808,7 @@ var
   urlist:TStringList;
 begin
   frmain.sdlgExportDown.Execute;
-  if {$IFDEF LCLQT}frmain.SaveDialog1.UserChoice=1{$else}frmain.sdlgExportDown.FileName<>''{$endif} then
+  if {$IFDEF LCLQT}frmain.sdlgExportDown.UserChoice=1{$else}frmain.sdlgExportDown.FileName<>''{$endif} then
   begin
     urlist:=TstringList.Create;
     for nurl:=0 to frmain.lvMain.Items.Count-1 do
@@ -3892,11 +3848,11 @@ begin
     else
       nombres:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
     total:=frmain.lvMain.Items.Count-1;
-    frconfirm.Caption:=frstrings.dlgconfirm.Caption;
+    frconfirm.Caption:=fstrings.dlgconfirm;
     if delfile then
-      frconfirm.dlgtext.Caption:=frstrings.dlgdeletedownandfile.Caption+' ['+inttostr(frmain.lvMain.SelCount)+']'+#10#13+#10#13+nombres
+      frconfirm.dlgtext.Caption:=fstrings.dlgdeletedownandfile+' ['+inttostr(frmain.lvMain.SelCount)+']'+#10#13+#10#13+nombres
     else
-      frconfirm.dlgtext.Caption:=frstrings.dlgdeletedown.Caption+' ['+inttostr(frmain.lvMain.SelCount)+']'+#10#13+#10#13+nombres;
+      frconfirm.dlgtext.Caption:=fstrings.dlgdeletedown+' ['+inttostr(frmain.lvMain.SelCount)+']'+#10#13+#10#13+nombres;
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
@@ -3928,7 +3884,7 @@ begin
     end;
   end
   else
-    ShowMessage(frstrings.msgmustselectdownload.Caption);
+    ShowMessage(fstrings.msgmustselectdownload);
 end;
 
 procedure DownThread.shutdown;
@@ -3987,6 +3943,7 @@ begin
         end;}
         wthp.Executable:=UTF8ToSys(lftprutebin);
       {$ENDIF}
+      //wthp.Executable:=UTF8ToSys(lftprutebin);
     end;
   end;
   wthp.Parameters.AddStrings(wpr);
@@ -4112,7 +4069,7 @@ begin
   begin
     qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Interval:=1000;
     frmain.lvMain.Items[thid].SubItems[columnstatus]:='3';
-    frmain.lvMain.Items[thid].Caption:=frstrings.statuscomplete.Caption;
+    frmain.lvMain.Items[thid].Caption:=fstrings.statuscomplete;
     frmain.lvMain.Items[thid].SubItems[columnpercent]:='100%';
     ///Tama;o automatico
     if (Pos(',',frmain.lvMain.Items[thid].SubItems[columnsize])>0) then
@@ -4134,7 +4091,7 @@ begin
     if otherlistview then
     begin
       frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='3';
-      frmain.lvFilter.Items[thid2].Caption:=frstrings.statuscomplete.Caption;
+      frmain.lvFilter.Items[thid2].Caption:=fstrings.statuscomplete;
       frmain.lvFilter.Items[thid2].SubItems[columnpercent]:='100%';
       //tama;o automatico
       frmain.lvFilter.Items[thid2].SubItems[columncurrent]:=frmain.lvMain.Items[thid].SubItems[columncurrent];
@@ -4148,7 +4105,7 @@ begin
     begin
       //////Many notifi forms
       //if frmain.lvMain.Items[thid].SubItems[columnname]<>'' then
-        createnewnotifi(frstrings.popuptitlecomplete.Caption,frmain.lvMain.Items[thid].SubItems[columnname],'',frmain.lvMain.Items[thid].SubItems[columndestiny],true);
+        createnewnotifi(fstrings.popuptitlecomplete,frmain.lvMain.Items[thid].SubItems[columnname],'',frmain.lvMain.Items[thid].SubItems[columndestiny],true);
       //else
         //createnewnotifi(rsForm.popuptitlecomplete.Caption,frmain.lvMain.Items[thid].SubItems[columnurl],'',frmain.lvMain.Items[thid].SubItems[columndestiny],true);
       //////
@@ -4167,7 +4124,7 @@ begin
     if manualshutdown then
     begin
       frmain.lvMain.Items[thid].SubItems[columnstatus]:='2';
-      frmain.lvMain.Items[thid].Caption:=frstrings.statusstoped.Caption;
+      frmain.lvMain.Items[thid].Caption:=fstrings.statusstoped;
       if frmain.lvMain.Items[thid].SubItems[columntype] = '0' then
         frmain.lvMain.Items[thid].ImageIndex:=3;
       if frmain.lvMain.Items[thid].SubItems[columntype] = '1' then
@@ -4175,7 +4132,7 @@ begin
       if otherlistview then
       begin
         frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='2';
-        frmain.lvFilter.Items[thid2].Caption:=frstrings.statusstoped.Caption;
+        frmain.lvFilter.Items[thid2].Caption:=fstrings.statusstoped;
         if frmain.lvMain.Items[thid2].SubItems[columntype] = '0' then
           frmain.lvFilter.Items[thid2].ImageIndex:=3;
         if frmain.lvFilter.Items[thid2].SubItems[columntype] = '1' then
@@ -4185,7 +4142,7 @@ begin
     else
     begin
       frmain.lvMain.Items[thid].SubItems[columnstatus]:='4';
-      frmain.lvMain.Items[thid].Caption:=frstrings.statuserror.Caption;
+      frmain.lvMain.Items[thid].Caption:=fstrings.statuserror;
       if frmain.lvMain.Items[thid].SubItems[columntype] = '0' then
         frmain.lvMain.Items[thid].ImageIndex:=3;
       if frmain.lvMain.Items[thid].SubItems[columntype] = '1' then
@@ -4193,7 +4150,7 @@ begin
       if otherlistview then
       begin
         frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='4';
-        frmain.lvFilter.Items[thid2].Caption:=frstrings.statuserror.Caption;
+        frmain.lvFilter.Items[thid2].Caption:=fstrings.statuserror;
         if frmain.lvMain.Items[thid2].SubItems[columntype] = '0' then
           frmain.lvFilter.Items[thid2].ImageIndex:=3;
         if frmain.lvFilter.Items[thid2].SubItems[columntype] = '1' then
@@ -4222,7 +4179,7 @@ begin
       outlines.AddText(wout[thid]);
       //////Many notifi forms
       //if frmain.lvMain.Items[thid].SubItems[columnname]<>'' then
-        createnewnotifi(frstrings.popuptitlestoped.Caption,frmain.lvMain.Items[thid].SubItems[columnname],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.lvMain.Items[thid].SubItems[columndestiny],false);
+        createnewnotifi(fstrings.popuptitlestoped,frmain.lvMain.Items[thid].SubItems[columnname],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.lvMain.Items[thid].SubItems[columndestiny],false);
       //else
         //createnewnotifi(rsForm.popuptitlestoped.Caption,frmain.lvMain.Items[thid].SubItems[columnurl],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.lvMain.Items[thid].SubItems[columndestiny],false);
       outlines.Destroy;
@@ -4496,8 +4453,8 @@ begin
   end;
   if enprogreso then
   begin
-    frconfirm.Caption:=frstrings.dlgconfirm.Caption;
-    frconfirm.dlgtext.Caption:=frstrings.msgcloseinprogressdownload.Caption;
+    frconfirm.Caption:=fstrings.dlgconfirm;
+    frconfirm.dlgtext.Caption:=fstrings.msgcloseinprogressdownload;
     frconfirm.ShowModal;
     if dlgcuestion then
       confirmar:=true
@@ -4581,7 +4538,11 @@ begin
   System.DumpExceptionBackTrace(exceptstr);
   Writeln(exceptstr,'------------------------------------------');
   CloseFile(exceptstr);
-  MessageDlg(Application.Title,'Oh!! this is rare, take calm and please report to nenirey@gmail.com and attach the file:'+LineEnding+SysToUTF8(configpath+pathdelim+'awgg.err')+LineEnding+'Error:' + LineEnding + e.Message, mtError, [mbOK], 0);
+  case MessageDlg(Application.Title,format(msgerrorinforme,[SysToUTF8(configpath+'awgg.err'),e.Message]), mtError, [mbOK,mbCancel,mbIgnore], 0) of
+   1:OpenURL('mailto:nenirey@gmai.com?subject=AWGG support error;body='+e.Message);//Ok
+   2:Application.Terminate();//Cancel
+   5:;//Ignore
+  end;
 end;
 
 
@@ -5099,10 +5060,10 @@ begin
   {$IFDEF cpux86_64}
     cpu:='x86_64';
   {$ENDIF}
-  frabout.Label1.Caption:='AWGG';
-  frabout.Label2.Caption:='(Advanced WGET GUI)'+#10#13+'Version: '+versionitis.version+#10#13+'Compiled using:'+#10#13+'Lazarus: '+lcl_version+#10#13+'FPC: '+versionitis.fpcversion+#10#13+'Platform: '+cpu+'-'+versionitis.targetos+'-'+widgetset;
-  frabout.Memo1.Text:=abouttext;
-  frabout.Label3.Caption:='http://sites.google.com/site/awggproject';
+  frabout.lblAboutName.Caption:='AWGG';
+  frabout.lblAboutVersion.Caption:='(Advanced WGET GUI)'+#10#13+'Version: '+versionitis.version+#10#13+'Compiled using:'+#10#13+'Lazarus: '+lcl_version+#10#13+'FPC: '+versionitis.fpcversion+#10#13+'Platform: '+cpu+'-'+versionitis.targetos+'-'+widgetset;
+  frabout.mAboutText.Text:=abouttext;
+  frabout.lblWebLink.Caption:='http://sites.google.com/site/awggproject';
   frabout.Show;
 end;
 
@@ -5116,47 +5077,47 @@ begin
     if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntype] = '0' then
     begin
       //////THIS ORDER IS IMPORTANT/////////
-      frnewdown.Edit1.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
-      frnewdown.Edit3.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
-      frnewdown.DirectoryEdit1.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
+      frnewdown.edtURL.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
+      frnewdown.edtFileName.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+      frnewdown.deDestination.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
       enginereload();
-      frnewdown.ComboBox1.ItemIndex:=frnewdown.ComboBox1.Items.IndexOf(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]);
-      frnewdown.Edit2.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
+      frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]);
+      frnewdown.edtParameters.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
       frmain.ClipBoardTimer.Enabled:=false;
-      frnewdown.Edit4.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
-      frnewdown.Edit5.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
+      frnewdown.edtUser.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
+      frnewdown.edtPassword.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
       frnewdown.Show;
       frnewdown.Update;
       frnewdown.Visible:=false;
       ///////CONFIRM DIALOG MODE///////////
-      frnewdown.Caption:=frstrings.titlepropertiesdown.Caption;
-      frnewdown.Button1.Visible:=false;
-      frnewdown.Button4.Visible:=false;
-      frnewdown.BitBtn1.Caption:=frstrings.btnpropertiesok.Caption;
-      frnewdown.BitBtn1.GlyphShowMode:=gsmNever;
+      frnewdown.Caption:=fstrings.titlepropertiesdown;
+      frnewdown.btnToQueue.Visible:=false;
+      frnewdown.btnPaused.Visible:=false;
+      frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
+      frnewdown.btnStart.GlyphShowMode:=gsmNever;
       ////////////////////////////////////
-      frnewdown.ComboBox2.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
+      frnewdown.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
       frnewdown.ShowModal;
       ///////NEW DOWNLOAD DIALOG MODE///////////
-      frnewdown.Caption:=frstrings.titlenewdown.Caption;
-      frnewdown.Button1.Visible:=true;
-      frnewdown.Button4.Visible:=true;
-      frnewdown.BitBtn1.Caption:=frstrings.btnnewdownstartnow.Caption;
-      frnewdown.BitBtn1.GlyphShowMode:=gsmApplication;
+      frnewdown.Caption:=fstrings.titlenewdown;
+      frnewdown.btnToQueue.Visible:=true;
+      frnewdown.btnPaused.Visible:=true;
+      frnewdown.btnStart.Caption:=fstrings.btnnewdownstartnow;
+      frnewdown.btnStart.GlyphShowMode:=gsmApplication;
       frnewdown.UpdateRolesForForm;
       ////////////////////////////////////
       frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
       if agregar then
       begin
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frnewdown.Edit3.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frnewdown.Edit1.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frnewdown.DirectoryEdit1.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]:=frnewdown.ComboBox1.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=frnewdown.Edit2.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frnewdown.Edit4.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frnewdown.Edit5.Text;
-        if frnewdown.ComboBox2.ItemIndex>=0 then
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frnewdown.ComboBox2.ItemIndex);
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frnewdown.edtFileName.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frnewdown.edtURL.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frnewdown.deDestination.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]:=frnewdown.cbEngine.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frnewdown.edtUser.Text;
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frnewdown.edtPassword.Text;
+        if frnewdown.cbQueue.ItemIndex>=0 then
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
         frmain.tvMainSelectionChanged(nil);
         savemydownloads();
       end;
@@ -5164,181 +5125,181 @@ begin
     if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntype] = '1' then
     begin
       newgrabberqueues();
-      frsitegrabber.ComboBox1.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
-      frsitegrabber.Edit2.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
-      frsitegrabber.Edit1.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
-      frsitegrabber.DirectoryEdit1.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
-      frsitegrabber.Edit3.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
-      frsitegrabber.Edit4.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
-      frsitegrabber.ComboBox1.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
+      frsitegrabber.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
+      frsitegrabber.edtSiteName.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+      frsitegrabber.edtURL.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
+      frsitegrabber.deDestination.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
+      frsitegrabber.edtUser.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
+      frsitegrabber.edtPassword.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
+      frsitegrabber.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
       if Pos('-k',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.CheckBox1.Checked:=true
+        frsitegrabber.chLinkToLocal.Checked:=true
       else
-        frsitegrabber.CheckBox1.Checked:=false;
+        frsitegrabber.chLinkToLocal.Checked:=false;
       if Pos('--follow-ftp',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.CheckBox2.Checked:=true
+        frsitegrabber.chFollowFTPLink.Checked:=true
       else
-        frsitegrabber.CheckBox2.Checked:=false;
+        frsitegrabber.chFollowFTPLink.Checked:=false;
       if Pos('-np',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.CheckBox3.Checked:=true
+        frsitegrabber.chNoParentLink.Checked:=true
       else
-        frsitegrabber.CheckBox3.Checked:=false;
+        frsitegrabber.chNoParentLink.Checked:=false;
       if Pos('-p',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.CheckBox4.Checked:=true
+        frsitegrabber.chPageRequisites.Checked:=true
       else
-        frsitegrabber.CheckBox4.Checked:=false;
+        frsitegrabber.chPageRequisites.Checked:=false;
       if Pos('-H',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.CheckBox5.Checked:=true
+        frsitegrabber.chSpanHosts.Checked:=true
       else
-        frsitegrabber.CheckBox5.Checked:=false;
+        frsitegrabber.chSpanHosts.Checked:=false;
       if Pos('-L',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.CheckBox6.Checked:=true
+        frsitegrabber.chFollowRelativeLink.Checked:=true
       else
-        frsitegrabber.CheckBox6.Checked:=false;
+        frsitegrabber.chFollowRelativeLink.Checked:=false;
       if Pos('-l ',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-l ',tmpstr)+3,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos(' ',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.SpinEdit1.Value:=strtoint(tmpstr);
+        frsitegrabber.seMaxLevel.Value:=strtoint(tmpstr);
       end
       else
-        frsitegrabber.Spinedit1.Value:=5;
+        frsitegrabber.seMaxLevel.Value:=5;
       if Pos('-R "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-R "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Memo1.Text:=tmpstr;
+        frsitegrabber.mFileRejectFilter.Text:=tmpstr;
       end
       else
-        frsitegrabber.Memo1.Text:='';
+        frsitegrabber.mFileRejectFilter.Text:='';
       if Pos('-A "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-A "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Memo6.Text:=tmpstr;
+        frsitegrabber.mFileAcceptFilter.Text:=tmpstr;
       end
       else
-        frsitegrabber.Memo6.Text:='';
+        frsitegrabber.mFileAcceptFilter.Text:='';
       if Pos('-D "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-D "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Memo3.Text:=tmpstr;
+        frsitegrabber.mFollowDomainFilter.Text:=tmpstr;
       end
       else
-        frsitegrabber.Memo3.Text:='';
+        frsitegrabber.mFollowDomainFilter.Text:='';
       if Pos('--exclude-domains "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('--exclude-domains "',tmpstr)+19,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Memo2.Text:=tmpstr;
+        frsitegrabber.mDomainRejectFilter.Text:=tmpstr;
       end
       else
-        frsitegrabber.Memo2.Text:='';
+        frsitegrabber.mDomainRejectFilter.Text:='';
       if Pos('-I "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-I "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Memo4.Text:=tmpstr;
+        frsitegrabber.mIncludeDirectory.Text:=tmpstr;
       end
       else
-        frsitegrabber.Memo4.Text:='';
+        frsitegrabber.mIncludeDirectory.Text:='';
       if Pos('-X "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-X "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Memo5.Text:=tmpstr;
+        frsitegrabber.mExcludeDirectory.Text:=tmpstr;
       end
       else
-        frsitegrabber.Memo5.Text:='';
+        frsitegrabber.mExcludeDirectory.Text:='';
       if Pos('--follow-tags="',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('--follow-tags="',tmpstr)+15,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Memo7.Text:=tmpstr;
+        frsitegrabber.mFollowTags.Text:=tmpstr;
       end
       else
-        frsitegrabber.Memo7.Text:='';
+        frsitegrabber.mFollowTags.Text:='';
       if Pos('--ignore-tags="',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('--ignore-tags="',tmpstr)+15,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Memo8.Text:=tmpstr;
+        frsitegrabber.mIgnoreTags.Text:=tmpstr;
       end
       else
-        frsitegrabber.Memo8.Text:='';
+        frsitegrabber.mIgnoreTags.Text:='';
       if Pos('-U "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
       begin
         tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
         tmpstr:=Copy(tmpstr,Pos('-U "',tmpstr)+4,Length(tmpstr));
         tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
         //ShowMessage(tmpstr);
-        frsitegrabber.Edit5.Text:=tmpstr;
+        frsitegrabber.edtUserAgent.Text:=tmpstr;
       end
       else
-        frsitegrabber.Edit5.Text:='';
+        frsitegrabber.edtUserAgent.Text:='';
       frsitegrabber.PageControl1.TabIndex:=0;
       frmain.ClipBoardTimer.Enabled:=false;
       frsitegrabber.ShowModal;
       frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
       if grbadd then
       begin
-        paramlist:=paramlist+'-l '+inttostr(frsitegrabber.SpinEdit1.Value);
-        if frsitegrabber.CheckBox1.Checked then
+        paramlist:=paramlist+'-l '+inttostr(frsitegrabber.seMaxLevel.Value);
+        if frsitegrabber.chLinkToLocal.Checked then
           paramlist:=paramlist+' -k';
-        if frsitegrabber.CheckBox2.Checked then
+        if frsitegrabber.chFollowFTPLink.Checked then
           paramlist:=paramlist+' --follow-ftp';
-        if frsitegrabber.CheckBox3.Checked then
+        if frsitegrabber.chNoParentLink.Checked then
           paramlist:=paramlist+' -np';
-        if frsitegrabber.CheckBox4.Checked then
+        if frsitegrabber.chPageRequisites.Checked then
           paramlist:=paramlist+' -p';
-        if frsitegrabber.CheckBox5.Checked then
+        if frsitegrabber.chSpanHosts.Checked then
           paramlist:=paramlist+' -H';
-        if frsitegrabber.CheckBox6.Checked then
+        if frsitegrabber.chFollowRelativeLink.Checked then
           paramlist:=paramlist+' -L';
-        if Length(frsitegrabber.Memo1.Lines.Text)>0 then
-          paramlist:=paramlist+' -R "'+frsitegrabber.Memo1.Lines.Text+'"';
-        if Length(frsitegrabber.Memo2.Lines.Text)>0 then
-          paramlist:=paramlist+' --exclude-domains "'+frsitegrabber.Memo2.Lines.Text+'"';
-        if Length(frsitegrabber.Memo3.Lines.Text)>0 then
-          paramlist:=paramlist+' -D "'+frsitegrabber.Memo3.Lines.Text+'"';
-        if Length(frsitegrabber.Memo4.Lines.Text)>0 then
-          paramlist:=paramlist+' -I "'+frsitegrabber.Memo4.Lines.Text+'"';
-        if Length(frsitegrabber.Memo5.Lines.Text)>0 then
-          paramlist:=paramlist+' -X "'+frsitegrabber.Memo5.Lines.Text+'"';
-        if Length(frsitegrabber.Memo6.Lines.Text)>0 then
-          paramlist:=paramlist+' -A "'+frsitegrabber.Memo6.Lines.Text+'"';
-        if Length(frsitegrabber.Memo7.Lines.Text)>0 then
-          paramlist:=paramlist+' --follow-tags="'+frsitegrabber.Memo7.Lines.Text+'"';
-        if Length(frsitegrabber.Memo8.Lines.Text)>0 then
-          paramlist:=paramlist+' --ignore-tags="'+frsitegrabber.Memo8.Lines.Text+'"';
-        if Length(frsitegrabber.Edit5.Text)>0 then
-          paramlist:=paramlist+' -U "'+frsitegrabber.Edit5.Text+'"';
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frsitegrabber.Edit2.Text;//Nombre del sitio
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frsitegrabber.Edit1.Text;//URL
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frsitegrabber.DirectoryEdit1.Text;//Destino
+        if Length(frsitegrabber.mFileRejectFilter.Lines.Text)>0 then
+          paramlist:=paramlist+' -R "'+frsitegrabber.mFileRejectFilter.Lines.Text+'"';
+        if Length(frsitegrabber.mDomainRejectFilter.Lines.Text)>0 then
+          paramlist:=paramlist+' --exclude-domains "'+frsitegrabber.mDomainRejectFilter.Lines.Text+'"';
+        if Length(frsitegrabber.mFollowDomainFilter.Lines.Text)>0 then
+          paramlist:=paramlist+' -D "'+frsitegrabber.mFollowDomainFilter.Lines.Text+'"';
+        if Length(frsitegrabber.mIncludeDirectory.Lines.Text)>0 then
+          paramlist:=paramlist+' -I "'+frsitegrabber.mIncludeDirectory.Lines.Text+'"';
+        if Length(frsitegrabber.mExcludeDirectory.Lines.Text)>0 then
+          paramlist:=paramlist+' -X "'+frsitegrabber.mExcludeDirectory.Lines.Text+'"';
+        if Length(frsitegrabber.mFileAcceptFilter.Lines.Text)>0 then
+          paramlist:=paramlist+' -A "'+frsitegrabber.mFileAcceptFilter.Lines.Text+'"';
+        if Length(frsitegrabber.mFollowTags.Lines.Text)>0 then
+          paramlist:=paramlist+' --follow-tags="'+frsitegrabber.mFollowTags.Lines.Text+'"';
+        if Length(frsitegrabber.mIgnoreTags.Lines.Text)>0 then
+          paramlist:=paramlist+' --ignore-tags="'+frsitegrabber.mIgnoreTags.Lines.Text+'"';
+        if Length(frsitegrabber.edtUserAgent.Text)>0 then
+          paramlist:=paramlist+' -U "'+frsitegrabber.edtUserAgent.Text+'"';
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frsitegrabber.edtSiteName.Text;//Nombre del sitio
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frsitegrabber.edtURL.Text;//URL
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frsitegrabber.deDestination.Text;//Destino
         frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=paramlist;//Parametros
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frsitegrabber.Edit3.Text;//user
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frsitegrabber.Edit4.Text;//pass
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frsitegrabber.ComboBox1.ItemIndex);//queue
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frsitegrabber.edtUser.Text;//user
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frsitegrabber.edtPassword.Text;//pass
+        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frsitegrabber.cbQueue.ItemIndex);//queue
         frmain.tvMainSelectionChanged(nil);
         savemydownloads();
       end;
@@ -5473,7 +5434,7 @@ begin
     if FileExists(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log') then
       OpenURL(ExtractShortPathName(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log'))
     else
-      ShowMessage(frstrings.msgnoexisthistorylog.Caption);
+      ShowMessage(fstrings.msgnoexisthistorylog);
   end;
 end;
 
@@ -5506,8 +5467,8 @@ procedure Tfrmain.mimainRestartAllNowClick(Sender: TObject);
 var
   x:integer;
 begin
-  frconfirm.Caption:=frstrings.dlgconfirm.Caption;
-  frconfirm.dlgtext.Caption:=frstrings.dlgrestartalldownloads.Caption;
+  frconfirm.Caption:=fstrings.dlgconfirm;
+  frconfirm.dlgtext.Caption:=fstrings.dlgrestartalldownloads;
   frconfirm.ShowModal;
   if dlgcuestion then
   begin
@@ -5564,7 +5525,7 @@ begin
         OpenURL(ExtractShortPathName(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny])));
     end
     else
-      ShowMessage(frstrings.msgnoexistfolder.Caption+' '+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]);
+      ShowMessage(fstrings.msgnoexistfolder+' '+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]);
   end;
 end;
 
@@ -5658,7 +5619,7 @@ begin
       if FileExists(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])) then
         OpenURL(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])
       else
-        ShowMessage(frstrings.msgfilenoexist.Caption);
+        ShowMessage(fstrings.msgfilenoexist);
     end;
   end;
 end;
@@ -5673,8 +5634,8 @@ procedure Tfrmain.mimainRestartAllLaterClick(Sender: TObject);
 var
   x:integer;
 begin
-  frconfirm.Caption:=frstrings.dlgconfirm.Caption;
-  frconfirm.dlgtext.Caption:=frstrings.dlgrestartalldownloadslatter.Caption;
+  frconfirm.Caption:=fstrings.dlgconfirm;
+  frconfirm.dlgtext.Caption:=fstrings.dlgrestartalldownloadslatter;
   frconfirm.ShowModal;
   if dlgcuestion then
   begin
@@ -5693,8 +5654,8 @@ procedure Tfrmain.milistRestartLaterClick(Sender: TObject);
 begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
-    frconfirm.Caption:=frstrings.dlgconfirm.Caption;
-    frconfirm.dlgtext.Caption:=frstrings.dlgrestartselecteddownloadletter.Caption+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+    frconfirm.Caption:=fstrings.dlgconfirm;
+    frconfirm.dlgtext.Caption:=fstrings.dlgrestartselecteddownloadletter+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
@@ -5797,8 +5758,8 @@ procedure Tfrmain.milistClearLogClick(Sender: TObject);
 begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
-    frconfirm.Caption:=frstrings.dlgconfirm.Caption;
-    frconfirm.dlgtext.Caption:=frstrings.dlgclearhistorylogfile.Caption;
+    frconfirm.Caption:=fstrings.dlgconfirm;
+    frconfirm.dlgtext.Caption:=fstrings.dlgclearhistorylogfile;
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
@@ -6084,22 +6045,22 @@ begin
   frmain.FirstStartTimer.Enabled:=false;
   if firststart then
   begin
-    frlang.ComboBox1.Items.Clear;
+    frlang.cbLang.Items.Clear;
     if FindFirst(ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+'languages'+pathdelim+'awgg.*.po',faAnyFile,itemfile)=0 then
     begin
       Repeat
         try
-          frlang.ComboBox1.Items.Add(Copy(itemfile.name,Pos('awgg.',itemfile.name)+5,Pos('.po',itemfile.name)-6));
+          frlang.cbLang.Items.Add(Copy(itemfile.name,Pos('awgg.',itemfile.name)+5,Pos('.po',itemfile.name)-6));
         except
         on E:Exception do ShowMessage('The file '+itemfile.Name+' of language is not valid');
         end;
       Until FindNext(itemfile)<>0;
     end;
-    if frlang.ComboBox1.Items.Count>0 then
+    if frlang.cbLang.Items.Count>0 then
     begin
-      frlang.ComboBox1.ItemIndex:=0;
+      frlang.cbLang.ItemIndex:=0;
       frlang.ShowModal;
-      deflanguage:=frlang.ComboBox1.Text;
+      deflanguage:=frlang.cbLang.Text;
     end;
     SetDefaultLang(deflanguage);
     updatelangstatus();
@@ -6125,7 +6086,7 @@ begin
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
-      ShowMessage(frstrings.firefoxhelpintegration.Caption);
+      ShowMessage(fstrings.firefoxhelpintegration);
       setfirefoxintegration();
       OpenURL('http://sites.google.com/site/awggproject');
     end;
@@ -6175,23 +6136,23 @@ begin
         url:=Application.Params[i];
       end;
     end;
-    frnewdown.Edit1.Text:=url;
+    frnewdown.edtURL.Text:=url;
     if fname<>'' then
-      frnewdown.Edit3.Text:=fname
+      frnewdown.edtFileName.Text:=fname
     else
-      frnewdown.Edit3.Text:=ParseURI(frnewdown.Edit1.Text).Document;
+      frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
     case defaultdirmode of
-      1:frnewdown.DirectoryEdit1.Text:=ddowndir;
-      2:frnewdown.DirectoryEdit1.Text:=suggestdir(frnewdown.Edit3.Text);
+      1:frnewdown.deDestination.Text:=ddowndir;
+      2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
     end;
-    frnewdown.Edit2.Text:='';
-    frnewdown.Edit4.Text:='';
-    frnewdown.Edit5.Text:='';
-    frnewdown.ComboBox1.ItemIndex:=frnewdown.ComboBox1.Items.IndexOf(defaultengine);
+    frnewdown.edtParameters.Text:='';
+    frnewdown.edtUser.Text:='';
+    frnewdown.edtPassword.Text:='';
+    frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
     frmain.ClipBoardTimer.Enabled:=false;//Desactivar temporalmente el clipboard monitor
     enginereload();
-    if frnewdown.ComboBox2.ItemIndex=-1 then
-      frnewdown.ComboBox2.ItemIndex:=0;
+    if frnewdown.cbQueue.ItemIndex=-1 then
+      frnewdown.cbQueue.ItemIndex:=0;
     //queueindexselect();
     if (frnewdown.Visible=false) and (silent=false) then
       frnewdown.ShowModal;
@@ -6201,29 +6162,29 @@ begin
     if (agregar or silent) and (updateurl=false) then
     begin
       downitem:=TListItem.Create(frmain.lvMain.Items);
-      downitem.Caption:=frstrings.statuspaused.Caption;
+      downitem.Caption:=fstrings.statuspaused;
       downitem.ImageIndex:=18;
-      downitem.SubItems.Add(frnewdown.Edit3.Text);//Nombre de archivo
+      downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
       downitem.SubItems.Add('');//Tama;o
       downitem.SubItems.Add('');//Descargado
-      downitem.SubItems.Add(frnewdown.Edit1.Text);//URL
+      downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
       downitem.SubItems.Add('');//Velocidad
       downitem.SubItems.Add('');//Porciento
       downitem.SubItems.Add('');//Estimado
       downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
-      downitem.SubItems.Add(frnewdown.DirectoryEdit1.Text);//Destino
-      downitem.SubItems.Add(frnewdown.ComboBox1.Text);//Motor
-      downitem.SubItems.Add(frnewdown.Edit2.Text);//Parametros
+      downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
+      downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
+      downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
       downitem.SubItems.Add('0');//status
       downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
-      downitem.SubItems.Add(frnewdown.Edit4.Text);//user
-      downitem.SubItems.Add(frnewdown.Edit5.Text);//pass
+      downitem.SubItems.Add(frnewdown.edtUser.Text);//user
+      downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
       downitem.SubItems.Add(inttostr(triesrotate));//tries
       downitem.SubItems.Add(uidgen());//uid
       if silent then
         downitem.SubItems.Add('0')//silent defualt queue
       else
-        downitem.SubItems.Add(inttostr(frnewdown.ComboBox2.ItemIndex));//queue
+        downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
       downitem.SubItems.Add('0');//type
       downitem.SubItems.Add(fcookie);//cookie
       downitem.SubItems.Add(referer);//referer
@@ -6322,19 +6283,19 @@ begin
   if Length(ClipBoard.AsText)<=256 then
     tmpclip:=ClipBoard.AsText;
   if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) then
-    frnewdown.Edit1.Text:=tmpclip
+    frnewdown.edtURL.Text:=tmpclip
   else
-    frnewdown.Edit1.Text:='http://';
+    frnewdown.edtURL.Text:='http://';
   tmpclip:='';
-  frnewdown.Edit3.Text:=ParseURI(frnewdown.Edit1.Text).Document;
+  frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
   case defaultdirmode of
-    1:frnewdown.DirectoryEdit1.Text:=ddowndir;
-    2:frnewdown.DirectoryEdit1.Text:=suggestdir(frnewdown.Edit3.Text);
+    1:frnewdown.deDestination.Text:=ddowndir;
+    2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
   end;
-  frnewdown.Edit2.Text:='';
-  frnewdown.Edit4.Text:='';
-  frnewdown.Edit5.Text:='';
-  frnewdown.ComboBox1.ItemIndex:=frnewdown.ComboBox1.Items.IndexOf(defaultengine);
+  frnewdown.edtParameters.Text:='';
+  frnewdown.edtUser.Text:='';
+  frnewdown.edtPassword.Text:='';
+  frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
   frmain.ClipBoardTimer.Enabled:=false;//Descativar temporalmete el clipboardmonitor
   //Recargar engines
   enginereload();
@@ -6345,26 +6306,26 @@ begin
   if agregar and (updateurl=false) then
   begin
     downitem:=TListItem.Create(frmain.lvMain.Items);
-    downitem.Caption:=frstrings.statuspaused.Caption;
+    downitem.Caption:=fstrings.statuspaused;
     downitem.ImageIndex:=18;
-    downitem.SubItems.Add(frnewdown.Edit3.Text);//Nombre de archivo
+    downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
     downitem.SubItems.Add('');//Tama;o
     downitem.SubItems.Add('');//Descargado
-    downitem.SubItems.Add(frnewdown.Edit1.Text);//URL
+    downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
     downitem.SubItems.Add('');//Velocidad
     downitem.SubItems.Add('');//Porciento
     downitem.SubItems.Add('');//Estimado
     downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
-    downitem.SubItems.Add(frnewdown.DirectoryEdit1.Text);//Destino
-    downitem.SubItems.Add(frnewdown.ComboBox1.Text);//Motor
-    downitem.SubItems.Add(frnewdown.Edit2.Text);//Parametros
+    downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
+    downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
+    downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
     downitem.SubItems.Add('0');//status
     downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
-    downitem.SubItems.Add(frnewdown.Edit4.Text);//user
-    downitem.SubItems.Add(frnewdown.Edit5.Text);//pass
+    downitem.SubItems.Add(frnewdown.edtUser.Text);//user
+    downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
     downitem.SubItems.Add(inttostr(triesrotate));//tries
     downitem.SubItems.Add(uidgen());//uid
-    downitem.SubItems.Add(inttostr(frnewdown.ComboBox2.ItemIndex));//queue
+    downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
     downitem.SubItems.Add('0');//type
     downitem.SubItems.Add('');//cookie
     downitem.SubItems.Add('');//referer
@@ -6398,8 +6359,8 @@ procedure Tfrmain.tbRestartNowClick(Sender: TObject);
 begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
-    frconfirm.Caption:=frstrings.dlgconfirm.Caption;
-    frconfirm.dlgtext.Caption:=frstrings.dlgrestartselecteddownload.Caption+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+    frconfirm.Caption:=fstrings.dlgconfirm;
+    frconfirm.dlgtext.Caption:=fstrings.dlgrestartselecteddownload+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
@@ -6434,22 +6395,22 @@ var
   tmpclip:string='';
   paramlist:string='';
 begin
-  frsitegrabber.Edit2.Text:='';
+  frsitegrabber.edtSiteName.Text:='';
   if Length(ClipBoard.AsText)<=256 then
   tmpclip:=ClipBoard.AsText;
   if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) then
-    frsitegrabber.Edit1.Text:=tmpclip
+    frsitegrabber.edtURL.Text:=tmpclip
   else
-    frsitegrabber.Edit1.Text:='http://';
+    frsitegrabber.edtURL.Text:='http://';
   tmpclip:='';
-  frsitegrabber.Edit2.Text:=ParseURI(frsitegrabber.Edit1.Text).Host;
-  frsitegrabber.DirectoryEdit1.Text:=ddowndir+pathdelim+'Sites';
+  frsitegrabber.edtSiteName.Text:=ParseURI(frsitegrabber.edtURL.Text).Host;
+  frsitegrabber.deDestination.Text:=ddowndir+pathdelim+'Sites';
   if not DirectoryExists(ddowndir+pathdelim+'Sites') then
     CreateDir(ddowndir+pathdelim+'Sites');
-  frsitegrabber.Edit3.Text:='';
-  frsitegrabber.Edit4.Text:='';
-  frsitegrabber.Edit5.Text:=globaluseragent;
-  frsitegrabber.ComboBox1.ItemIndex:=frsitegrabber.ComboBox1.Items.IndexOf(defaultengine);
+  frsitegrabber.edtUser.Text:='';
+  frsitegrabber.edtPassword.Text:='';
+  frsitegrabber.edtUserAgent.Text:=globaluseragent;
+  frsitegrabber.cbQueue.ItemIndex:=frsitegrabber.cbQueue.Items.IndexOf(defaultengine);
   frmain.ClipBoardTimer.Enabled:=false;//Descativar temporalmete el clipboardmonitor
   newgrabberqueues();
   queueindexselect();
@@ -6459,58 +6420,58 @@ begin
   frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Activar el clipboardmonitor.
   if grbadd then
   begin
-    paramlist:=paramlist+'-l '+inttostr(frsitegrabber.SpinEdit1.Value);
-    if frsitegrabber.CheckBox1.Checked then
+    paramlist:=paramlist+'-l '+inttostr(frsitegrabber.seMaxLevel.Value);
+    if frsitegrabber.chLinkToLocal.Checked then
       paramlist:=paramlist+' -k';
-    if frsitegrabber.CheckBox2.Checked then
+    if frsitegrabber.chFollowFTPLink.Checked then
      paramlist:=paramlist+' --follow-ftp';
-    if frsitegrabber.CheckBox3.Checked then
+    if frsitegrabber.chNoParentLink.Checked then
       paramlist:=paramlist+' -np';
-    if frsitegrabber.CheckBox4.Checked then
+    if frsitegrabber.chPageRequisites.Checked then
       paramlist:=paramlist+' -p';
-    if frsitegrabber.CheckBox5.Checked then
+    if frsitegrabber.chSpanHosts.Checked then
       paramlist:=paramlist+' -H';
-    if frsitegrabber.CheckBox6.Checked then
+    if frsitegrabber.chFollowRelativeLink.Checked then
       paramlist:=paramlist+' -L';
-    if Length(frsitegrabber.Memo1.Lines.Text)>0 then
-      paramlist:=paramlist+' -R "'+frsitegrabber.Memo1.Lines.Text+'"';
-    if Length(frsitegrabber.Memo2.Lines.Text)>0 then
-      paramlist:=paramlist+' --exclude-domains "'+frsitegrabber.Memo2.Lines.Text+'"';
-    if Length(frsitegrabber.Memo3.Lines.Text)>0 then
-      paramlist:=paramlist+' -D "'+frsitegrabber.Memo3.Lines.Text+'"';
-    if Length(frsitegrabber.Memo4.Lines.Text)>0 then
-      paramlist:=paramlist+' -I "'+frsitegrabber.Memo4.Lines.Text+'"';
-    if Length(frsitegrabber.Memo5.Lines.Text)>0 then
-      paramlist:=paramlist+' -X "'+frsitegrabber.Memo5.Lines.Text+'"';
-    if Length(frsitegrabber.Memo6.Lines.Text)>0 then
-      paramlist:=paramlist+' -A "'+frsitegrabber.Memo6.Lines.Text+'"';
-    if Length(frsitegrabber.Memo7.Lines.Text)>0 then
-      paramlist:=paramlist+' --follow-tags="'+frsitegrabber.Memo7.Lines.Text+'"';
-    if Length(frsitegrabber.Memo8.Lines.Text)>0 then
-      paramlist:=paramlist+' --ignore-tags="'+frsitegrabber.Memo8.Lines.Text+'"';
-    if Length(frsitegrabber.Edit5.Text)>0 then
-      paramlist:=paramlist+' -U "'+frsitegrabber.Edit5.Text+'"';
+    if Length(frsitegrabber.mFileRejectFilter.Lines.Text)>0 then
+      paramlist:=paramlist+' -R "'+frsitegrabber.mFileRejectFilter.Lines.Text+'"';
+    if Length(frsitegrabber.mDomainRejectFilter.Lines.Text)>0 then
+      paramlist:=paramlist+' --exclude-domains "'+frsitegrabber.mDomainRejectFilter.Lines.Text+'"';
+    if Length(frsitegrabber.mFollowDomainFilter.Lines.Text)>0 then
+      paramlist:=paramlist+' -D "'+frsitegrabber.mFollowDomainFilter.Lines.Text+'"';
+    if Length(frsitegrabber.mIncludeDirectory.Lines.Text)>0 then
+      paramlist:=paramlist+' -I "'+frsitegrabber.mIncludeDirectory.Lines.Text+'"';
+    if Length(frsitegrabber.mExcludeDirectory.Lines.Text)>0 then
+      paramlist:=paramlist+' -X "'+frsitegrabber.mExcludeDirectory.Lines.Text+'"';
+    if Length(frsitegrabber.mFileAcceptFilter.Lines.Text)>0 then
+      paramlist:=paramlist+' -A "'+frsitegrabber.mFileAcceptFilter.Lines.Text+'"';
+    if Length(frsitegrabber.mFollowTags.Lines.Text)>0 then
+      paramlist:=paramlist+' --follow-tags="'+frsitegrabber.mFollowTags.Lines.Text+'"';
+    if Length(frsitegrabber.mIgnoreTags.Lines.Text)>0 then
+      paramlist:=paramlist+' --ignore-tags="'+frsitegrabber.mIgnoreTags.Lines.Text+'"';
+    if Length(frsitegrabber.edtUserAgent.Text)>0 then
+      paramlist:=paramlist+' -U "'+frsitegrabber.edtUserAgent.Text+'"';
     downitem:=TListItem.Create(frmain.lvMain.Items);
-    downitem.Caption:=frstrings.statuspaused.Caption;
+    downitem.Caption:=fstrings.statuspaused;
     downitem.ImageIndex:=51;
-    downitem.SubItems.Add(frsitegrabber.Edit2.Text);//Nombre del sitio
+    downitem.SubItems.Add(frsitegrabber.edtSiteName.Text);//Nombre del sitio
     downitem.SubItems.Add('');//Tama;o
     downitem.SubItems.Add('');//Descargado
-    downitem.SubItems.Add(frsitegrabber.Edit1.Text);//URL
+    downitem.SubItems.Add(frsitegrabber.edtURL.Text);//URL
     downitem.SubItems.Add('');//Velocidad
     downitem.SubItems.Add('');//Porciento
     downitem.SubItems.Add('');//Estimado
     downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
-    downitem.SubItems.Add(frsitegrabber.DirectoryEdit1.Text);//Destino
+    downitem.SubItems.Add(frsitegrabber.deDestination.Text);//Destino
     downitem.SubItems.Add('wget');//Motor
     downitem.SubItems.Add(paramlist);//Parametros
     downitem.SubItems.Add('0');//status
     downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
-    downitem.SubItems.Add(frsitegrabber.Edit3.Text);//user
-    downitem.SubItems.Add(frsitegrabber.Edit4.Text);//pass
+    downitem.SubItems.Add(frsitegrabber.edtUser.Text);//user
+    downitem.SubItems.Add(frsitegrabber.edtPassword.Text);//pass
     downitem.SubItems.Add(inttostr(triesrotate));//tries
     downitem.SubItems.Add(uidgen());//uid
-    downitem.SubItems.Add(inttostr(frsitegrabber.ComboBox1.ItemIndex));//queue
+    downitem.SubItems.Add(inttostr(frsitegrabber.cbQueue.ItemIndex));//queue
     downitem.SubItems.Add('1');//type
     downitem.SubItems.Add('');//cookie;
     downitem.SubItems.Add('');//referer;
@@ -6546,7 +6507,7 @@ begin
     downloadstart(frmain.lvMain.ItemIndex,false);
   end
   else
-    ShowMessage(frstrings.msgmustselectdownload.Caption);
+    ShowMessage(fstrings.msgmustselectdownload);
 end;
 
 procedure Tfrmain.tbStopDownClick(Sender: TObject);
@@ -6562,7 +6523,7 @@ begin
     frmain.tbRestartLater.Enabled:=true;
   end
   else
-    ShowMessage(frstrings.msgmustselectdownload.Caption);
+    ShowMessage(fstrings.msgmustselectdownload);
 end;
 
 procedure Tfrmain.tbConfigClick(Sender: TObject);
@@ -6727,7 +6688,7 @@ begin
               OpenURL(ExtractShortPathName(UTF8ToSys(categoryextencions[frmain.tvMain.Selected.Index][0])));
           end
           else
-            ShowMessage(frstrings.msgnoexistfolder.Caption+' '+categoryextencions[frmain.tvMain.Selected.Index][0]);
+            ShowMessage(fstrings.msgnoexistfolder+' '+categoryextencions[frmain.tvMain.Selected.Index][0]);
         end
         else
         begin
@@ -6737,7 +6698,7 @@ begin
               OpenURL(ExtractShortPathName(UTF8ToSys(dotherdowndir)));
           end
           else
-            ShowMessage(frstrings.msgnoexistfolder.Caption+' '+dotherdowndir);
+            ShowMessage(fstrings.msgnoexistfolder+' '+dotherdowndir);
         end;
       end;
     end;
@@ -6759,7 +6720,7 @@ begin
           begin
             queuenames[frmain.tvMain.Selected.Index]:=s;
             frmain.milistSendToQueue.Items[frmain.tvMain.Selected.Index].Caption:=s;
-            frnewdown.ComboBox2.Items[frmain.tvMain.Selected.Index]:=s;
+            frnewdown.cbQueue.Items[frmain.tvMain.Selected.Index]:=s;
             if qtimer[frmain.tvMain.Selected.Index].Enabled then
               frmain.pmTrayIcon.Items[frmain.tvMain.Selected.Index+5].Caption:=stopqueuesystray+' ('+s+')'
             else
@@ -7038,23 +6999,23 @@ begin
         url:=Parameters[i];
       end;
     end;
-    frnewdown.Edit1.Text:=url;
+    frnewdown.edtURL.Text:=url;
     if fname<>'' then
-      frnewdown.Edit3.Text:=fname
+      frnewdown.edtFileName.Text:=fname
     else
-      frnewdown.Edit3.Text:=ParseURI(frnewdown.Edit1.Text).Document;
+      frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
     case defaultdirmode of
-      1:frnewdown.DirectoryEdit1.Text:=ddowndir;
-      2:frnewdown.DirectoryEdit1.Text:=suggestdir(frnewdown.Edit3.Text);
+      1:frnewdown.deDestination.Text:=ddowndir;
+      2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
     end;
-    frnewdown.Edit2.Text:='';
-    frnewdown.Edit4.Text:='';
-    frnewdown.Edit5.Text:='';
-    frnewdown.ComboBox1.ItemIndex:=frnewdown.ComboBox1.Items.IndexOf(defaultengine);
+    frnewdown.edtParameters.Text:='';
+    frnewdown.edtUser.Text:='';
+    frnewdown.edtPassword.Text:='';
+    frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
     frmain.ClipBoardTimer.Enabled:=false;//Desactivar temporalmente el clipboardmonitor
     enginereload();
-    if frnewdown.ComboBox2.ItemIndex=-1 then
-      frnewdown.ComboBox2.ItemIndex:=0;
+    if frnewdown.cbQueue.ItemIndex=-1 then
+      frnewdown.cbQueue.ItemIndex:=0;
     //queueindexselect();
     if (frnewdown.Visible=false) and (silent=false) then
       frnewdown.ShowModal;
@@ -7064,29 +7025,29 @@ begin
     if (agregar or silent) and (updateurl=false) then
     begin
       downitem:=TListItem.Create(frmain.lvMain.Items);
-      downitem.Caption:=frstrings.statuspaused.Caption;
+      downitem.Caption:=fstrings.statuspaused;
       downitem.ImageIndex:=18;
-      downitem.SubItems.Add(frnewdown.Edit3.Text);//Nombre de archivo
+      downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
       downitem.SubItems.Add('');//Tama;o
       downitem.SubItems.Add('');//Descargado
-      downitem.SubItems.Add(frnewdown.Edit1.Text);//URL
+      downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
       downitem.SubItems.Add('');//Velocidad
       downitem.SubItems.Add('');//Porciento
       downitem.SubItems.Add('');//Estimado
       downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
-      downitem.SubItems.Add(frnewdown.DirectoryEdit1.Text);//Destino
-      downitem.SubItems.Add(frnewdown.ComboBox1.Text);//Motor
-      downitem.SubItems.Add(frnewdown.Edit2.Text);//Parametros
+      downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
+      downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
+      downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
       downitem.SubItems.Add('0');//status
       downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
-      downitem.SubItems.Add(frnewdown.Edit4.Text);//user
-      downitem.SubItems.Add(frnewdown.Edit5.Text);//pass
+      downitem.SubItems.Add(frnewdown.edtUser.Text);//user
+      downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
       downitem.SubItems.Add(inttostr(triesrotate));//tries
       downitem.SubItems.Add(uidgen());//uid
       if silent then
         downitem.SubItems.Add('0')
       else
-        downitem.SubItems.Add(inttostr(frnewdown.ComboBox2.ItemIndex));//queue
+        downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
       downitem.SubItems.Add('0');//type
       downitem.SubItems.Add(fcookie);//cookie
       downitem.SubItems.Add(referer);//referer
