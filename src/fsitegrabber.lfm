@@ -1,12 +1,12 @@
 object frsitegrabber: Tfrsitegrabber
   AnchorSideRight.Side = asrCenter
-  Left = 298
+  Left = 320
   Height = 428
-  Top = 34
-  Width = 463
+  Top = 156
+  Width = 462
   Caption = 'New Site Grabber'
   ClientHeight = 428
-  ClientWidth = 463
+  ClientWidth = 462
   FormStyle = fsSystemStayOnTop
   OnCreate = FormCreate
   OnShow = FormCreate
@@ -16,10 +16,10 @@ object frsitegrabber: Tfrsitegrabber
     AnchorSideRight.Control = btnCancel
     AnchorSideBottom.Control = btnCancel
     AnchorSideBottom.Side = asrBottom
-    Left = 332
-    Height = 23
-    Top = 395
-    Width = 53
+    Left = 323
+    Height = 25
+    Top = 393
+    Width = 57
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 10
@@ -33,10 +33,10 @@ object frsitegrabber: Tfrsitegrabber
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 395
-    Height = 23
-    Top = 395
-    Width = 58
+    Left = 390
+    Height = 25
+    Top = 393
+    Width = 62
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 10
@@ -51,29 +51,29 @@ object frsitegrabber: Tfrsitegrabber
     AnchorSideRight.Control = Owner
     AnchorSideBottom.Control = btnCancel
     Left = 0
-    Height = 390
+    Height = 388
     Top = 0
-    Width = 463
-    ActivePage = tsTags
+    Width = 462
+    ActivePage = tsWelcome
     Align = alTop
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 4
+    TabIndex = 0
     TabOrder = 2
     object tsWelcome: TTabSheet
       Caption = 'tsWelcome'
-      ClientHeight = 382
-      ClientWidth = 455
+      ClientHeight = 380
+      ClientWidth = 454
       object lblURL: TLabel
         AnchorSideLeft.Control = Owner
         AnchorSideTop.Control = edtURL
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = edtURL
-        Left = 45
-        Height = 13
-        Top = 83
-        Width = 23
+        Left = 49
+        Height = 15
+        Top = 87
+        Width = 24
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 10
         Caption = 'URL:'
@@ -85,10 +85,10 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = tsWelcome
         AnchorSideRight.Side = asrCenter
-        Left = 68
-        Height = 21
-        Top = 79
-        Width = 317
+        Left = 73
+        Height = 23
+        Top = 83
+        Width = 308
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 15
         BorderSpacing.Right = 10
@@ -99,10 +99,10 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideTop.Control = edtSiteName
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = edtSiteName
-        Left = 37
-        Height = 13
-        Top = 47
-        Width = 31
+        Left = 38
+        Height = 15
+        Top = 49
+        Width = 35
         Anchors = [akTop, akRight]
         Caption = 'Name:'
         ParentColor = False
@@ -113,10 +113,10 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = tsWelcome
         AnchorSideRight.Side = asrCenter
-        Left = 68
-        Height = 21
-        Top = 43
-        Width = 317
+        Left = 73
+        Height = 23
+        Top = 45
+        Width = 308
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 20
         OnChange = edtSiteNameChange
@@ -129,10 +129,10 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = tsWelcome
         AnchorSideRight.Side = asrCenter
-        Left = 68
-        Height = 21
-        Top = 115
-        Width = 317
+        Left = 73
+        Height = 23
+        Top = 121
+        Width = 308
         ShowHidden = False
         ButtonWidth = 23
         NumGlyphs = 1
@@ -146,9 +146,9 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideTop.Control = deDestination
         AnchorSideTop.Side = asrCenter
         Left = 10
-        Height = 13
-        Top = 119
-        Width = 58
+        Height = 15
+        Top = 125
+        Width = 63
         BorderSpacing.Left = 10
         Caption = 'Destination:'
         ParentColor = False
@@ -157,10 +157,10 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideTop.Control = cbQueue
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = cbQueue
-        Left = 140
-        Height = 13
+        Left = 139
+        Height = 15
         Top = 338
-        Width = 36
+        Width = 38
         Anchors = [akTop, akRight]
         Caption = 'Queue:'
         ParentColor = False
@@ -171,21 +171,21 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideTop.Control = bgAuthentication
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = PageControl1
-        Left = 176
-        Height = 21
+        Left = 177
+        Height = 23
         Top = 334
         Width = 101
         BorderSpacing.Top = 30
-        ItemHeight = 13
+        ItemHeight = 15
         Style = csDropDownList
         TabOrder = 3
       end
       object lblWelcome: TLabel
         AnchorSideTop.Control = tsWelcome
         Left = 0
-        Height = 13
+        Height = 15
         Top = 10
-        Width = 455
+        Width = 454
         Align = alTop
         Alignment = taCenter
         BorderSpacing.Top = 10
@@ -199,9 +199,9 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = cbQueue
         AnchorSideTop.Side = asrCenter
-        Left = 277
+        Left = 278
         Height = 22
-        Top = 333
+        Top = 334
         Width = 23
         Glyph.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
@@ -246,9 +246,9 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = btnAddQueue
         AnchorSideTop.Side = asrCenter
-        Left = 300
+        Left = 301
         Height = 22
-        Top = 333
+        Top = 334
         Width = 23
         Glyph.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
@@ -292,21 +292,21 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideLeft.Control = deDestination
         AnchorSideRight.Control = deDestination
         AnchorSideRight.Side = asrBottom
-        Left = 68
+        Left = 73
         Height = 120
         Top = 184
-        Width = 317
+        Width = 308
         Anchors = [akTop, akLeft, akRight]
         Caption = 'HTTP/FTP Authentication'
-        ClientHeight = 102
-        ClientWidth = 313
+        ClientHeight = 100
+        ClientWidth = 304
         TabOrder = 4
         object lblUser: TLabel
           AnchorSideTop.Control = edtUser
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = edtUser
-          Left = 83
-          Height = 13
+          Left = 74
+          Height = 15
           Top = 25
           Width = 26
           Anchors = [akTop, akRight]
@@ -319,8 +319,8 @@ object frsitegrabber: Tfrsitegrabber
           AnchorSideTop.Control = bgAuthentication
           AnchorSideRight.Control = bgAuthentication
           AnchorSideRight.Side = asrBottom
-          Left = 109
-          Height = 21
+          Left = 100
+          Height = 23
           Top = 21
           Width = 189
           Anchors = [akTop, akRight]
@@ -332,10 +332,10 @@ object frsitegrabber: Tfrsitegrabber
           AnchorSideTop.Control = edtPassword
           AnchorSideTop.Side = asrCenter
           AnchorSideRight.Control = edtPassword
-          Left = 59
-          Height = 13
-          Top = 62
-          Width = 50
+          Left = 47
+          Height = 15
+          Top = 64
+          Width = 53
           Anchors = [akTop, akRight]
           Caption = 'Password:'
           ParentColor = False
@@ -346,9 +346,9 @@ object frsitegrabber: Tfrsitegrabber
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = edtUser
           AnchorSideRight.Side = asrBottom
-          Left = 109
-          Height = 21
-          Top = 58
+          Left = 100
+          Height = 23
+          Top = 60
           Width = 189
           Anchors = [akTop, akLeft, akRight]
           BorderSpacing.Top = 16
@@ -360,8 +360,8 @@ object frsitegrabber: Tfrsitegrabber
     end
     object tsBasicOptions: TTabSheet
       Caption = 'tsBasicOptions'
-      ClientHeight = 382
-      ClientWidth = 455
+      ClientHeight = 388
+      ClientWidth = 461
       object lblMaxLevel: TLabel
         AnchorSideLeft.Control = tsBasicOptions
         AnchorSideTop.Control = seMaxLevel
@@ -494,8 +494,8 @@ object frsitegrabber: Tfrsitegrabber
     end
     object tsFilters: TTabSheet
       Caption = 'tsFilters'
-      ClientHeight = 382
-      ClientWidth = 455
+      ClientHeight = 388
+      ClientWidth = 461
       object gbFileRejectFilter: TGroupBox
         AnchorSideLeft.Control = tsFilters
         AnchorSideTop.Control = tsFilters
@@ -510,7 +510,7 @@ object frsitegrabber: Tfrsitegrabber
         BorderSpacing.Top = 10
         BorderSpacing.Right = 10
         Caption = 'File reject filter'
-        ClientHeight = 68
+        ClientHeight = 66
         ClientWidth = 431
         TabOrder = 0
         object mFileRejectFilter: TMemo
@@ -545,7 +545,7 @@ object frsitegrabber: Tfrsitegrabber
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
         Caption = 'Domain reject filter'
-        ClientHeight = 71
+        ClientHeight = 69
         ClientWidth = 431
         TabOrder = 1
         object mDomainRejectFilter: TMemo
@@ -583,7 +583,7 @@ object frsitegrabber: Tfrsitegrabber
         BorderSpacing.Top = 5
         BorderSpacing.Bottom = 5
         Caption = 'Follow domain filter'
-        ClientHeight = 68
+        ClientHeight = 66
         ClientWidth = 431
         TabOrder = 2
         object mFollowDomainFilter: TMemo
@@ -620,7 +620,7 @@ object frsitegrabber: Tfrsitegrabber
         BorderSpacing.Top = 5
         BorderSpacing.Right = 10
         Caption = 'File accept filter'
-        ClientHeight = 73
+        ClientHeight = 71
         ClientWidth = 431
         TabOrder = 3
         object mFileAcceptFilter: TMemo
@@ -645,8 +645,8 @@ object frsitegrabber: Tfrsitegrabber
     end
     object tsDirectory: TTabSheet
       Caption = 'tsDirectory'
-      ClientHeight = 382
-      ClientWidth = 455
+      ClientHeight = 388
+      ClientWidth = 461
       object gbIncludeDirectory: TGroupBox
         AnchorSideLeft.Control = tsDirectory
         AnchorSideTop.Control = tsDirectory
@@ -663,7 +663,7 @@ object frsitegrabber: Tfrsitegrabber
         BorderSpacing.Top = 5
         BorderSpacing.Right = 5
         Caption = 'Include directory list'
-        ClientHeight = 161
+        ClientHeight = 159
         ClientWidth = 441
         TabOrder = 0
         object mIncludeDirectory: TMemo
@@ -701,7 +701,7 @@ object frsitegrabber: Tfrsitegrabber
         BorderSpacing.Top = 10
         BorderSpacing.Bottom = 5
         Caption = 'Exclude directory list'
-        ClientHeight = 165
+        ClientHeight = 163
         ClientWidth = 441
         TabOrder = 1
         object mExcludeDirectory: TMemo
@@ -726,8 +726,8 @@ object frsitegrabber: Tfrsitegrabber
     end
     object tsTags: TTabSheet
       Caption = 'tsTags'
-      ClientHeight = 382
-      ClientWidth = 455
+      ClientHeight = 380
+      ClientWidth = 454
       object gbFollowTags: TGroupBox
         AnchorSideLeft.Control = tsTags
         AnchorSideTop.Control = tsTags
@@ -736,14 +736,14 @@ object frsitegrabber: Tfrsitegrabber
         Left = 5
         Height = 169
         Top = 5
-        Width = 445
+        Width = 444
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 5
         BorderSpacing.Top = 5
         BorderSpacing.Right = 5
         Caption = 'Follow tags list'
-        ClientHeight = 151
-        ClientWidth = 441
+        ClientHeight = 149
+        ClientWidth = 440
         TabOrder = 0
         object mFollowTags: TMemo
           AnchorSideLeft.Control = gbFollowTags
@@ -753,9 +753,9 @@ object frsitegrabber: Tfrsitegrabber
           AnchorSideBottom.Control = gbFollowTags
           AnchorSideBottom.Side = asrBottom
           Left = 5
-          Height = 141
+          Height = 139
           Top = 5
-          Width = 431
+          Width = 430
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderSpacing.Left = 5
           BorderSpacing.Top = 5
@@ -773,17 +773,17 @@ object frsitegrabber: Tfrsitegrabber
         AnchorSideBottom.Control = tsTags
         AnchorSideBottom.Side = asrBottom
         Left = 5
-        Height = 198
+        Height = 196
         Top = 179
-        Width = 445
+        Width = 444
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 5
         BorderSpacing.Top = 5
         BorderSpacing.Right = 5
         BorderSpacing.Bottom = 5
         Caption = 'Ignore tags list'
-        ClientHeight = 180
-        ClientWidth = 441
+        ClientHeight = 176
+        ClientWidth = 440
         TabOrder = 1
         object mIgnoreTags: TMemo
           AnchorSideLeft.Control = gbIgnoreTags
@@ -793,9 +793,9 @@ object frsitegrabber: Tfrsitegrabber
           AnchorSideBottom.Control = gbIgnoreTags
           AnchorSideBottom.Side = asrBottom
           Left = 5
-          Height = 170
+          Height = 166
           Top = 5
-          Width = 431
+          Width = 430
           Anchors = [akTop, akLeft, akRight, akBottom]
           BorderSpacing.Left = 5
           BorderSpacing.Top = 5
@@ -810,10 +810,10 @@ object frsitegrabber: Tfrsitegrabber
     AnchorSideRight.Control = btnNext
     AnchorSideBottom.Control = btnCancel
     AnchorSideBottom.Side = asrBottom
-    Left = 193
-    Height = 23
-    Top = 395
-    Width = 59
+    Left = 180
+    Height = 25
+    Top = 393
+    Width = 62
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 10
@@ -826,10 +826,10 @@ object frsitegrabber: Tfrsitegrabber
     AnchorSideRight.Control = btnFinish
     AnchorSideBottom.Control = btnCancel
     AnchorSideBottom.Side = asrBottom
-    Left = 262
-    Height = 23
-    Top = 395
-    Width = 60
+    Left = 252
+    Height = 25
+    Top = 393
+    Width = 61
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 10

@@ -7,10 +7,10 @@ AWGG_VER=0.5.0
 PACK_DIR=$(pwd)/linux/release
 
 # Temp dir for creating *.tar.bz2 package
-BUILD_PACK_DIR=/var/tmp/awgg-$(date +%y.%m.%d)
+BUILD_PACK_DIR=/tmp/awgg-$(date +%y.%m.%d)
 
 # Create temp dir for building
-BUILD_AWGG_TMP_DIR=/var/tmp/awgg-$AWGG_VER
+BUILD_AWGG_TMP_DIR=/tmp/awgg-$AWGG_VER
 
 help()
 {

@@ -1,7 +1,28 @@
 AWGG is a cross platform and multilanguage download manager
-that uses the most popular downloads engines (text based) like wget, aria2, cURL and axel,
+that uses the most popular downloads engines (text based) like wget, aria2, cURL, axel and youtube-dl,
 AWGG is most that an frontend, is multiprocess, portable and simple, includes a programer,
-clipboard monitor and can be integrated to firefox with flashgot plugin and chrome with Simple Get plugin.
+clipboard monitor, drop box and can be integrated to firefox with flashgot plugin.
+
+Changes in (0.5.0):
+
+-Add support for youtube-dl engine.
+-Add option for use an external downloader for youtube-dl engine.
+-Add ability to download videos from youtube with out browser addons (thanks to the youtube-dl engine).
+-Add option to optain and select the available video formats from youtube and others.
+-Add a drop box to drag and drop text and links to download.
+-Add button to set the position in queue on the new download form.
+-Add ability to select the major engine for specific sites.
+-Add new button in the download notification to start the download when this fail.
+-Add total progress in copy/move file operation dialog and increace performance.
+-Now the download list show tooltips when the mouse is over a download with additional information.
+-The program capture the file name from the engine (not in all cases with curl).
+-The main icon have a new look (made with LazPaint).
+-The source was complete rewrite for easy maintenance.
+-The tray icons are disabled by default on linux platform to prevent an error in Ubuntu.
+-Include some debugger information and code for capture errors to awgg.err file.
+-The Complete and Paused download icon was change for a better look.
+-Fix some bugs.
+
 
 Changes in (0.4.0):
 

@@ -2,7 +2,7 @@ unit fsitegrabber;
 {
   New site grabber form of AWGG
 
-  Copyright (C) 2015 Reinier Romero Mir
+  Copyright (C) 2016 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -145,8 +145,8 @@ end;
 procedure Tfrsitegrabber.btnScheduleClick(Sender: TObject);
 begin
   frsitegrabber.FormStyle:=fsNormal;
-  frconfig.PageControl1.ActivePageIndex:=1;
-  frconfig.tvConfig.Items[frconfig.PageControl1.ActivePageIndex].Selected:=true;
+  frconfig.pcConfig.ActivePageIndex:=1;
+  frconfig.tvConfig.Items[frconfig.pcConfig.ActivePageIndex].Selected:=true;
   configdlg();
   frconfig.cbQueue.ItemIndex:=frsitegrabber.cbQueue.ItemIndex;
   frconfig.cbQueueChange(nil);

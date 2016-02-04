@@ -2,7 +2,7 @@ AWGG
 =====
 
 AWGG comes from *Advanced Wget GUI*.
-AWGG is a lightweight multiplatform and multilanguage download manager, basically a [wget][1] frontend and other tools like [aria2][2], [curl][3] and [axel][4]. AWGG is written in [Free Pascal][5] , using the [Lazarus IDE][6].
+AWGG is a lightweight multiplatform and multilanguage download manager, basically a [wget][1] frontend and other tools like [aria2][2], [curl][3], [youtube-dl][9] and [axel][4]. AWGG is written in [Free Pascal][5] , using the [Lazarus IDE][6].
 
 Features:
 
@@ -15,8 +15,9 @@ Features:
 - Proxy configuration.
 - Multiple queues.
 - Supports HTTP, HTTPS, FTP.
+- Drop box.
 
-Copyright (C) 2015 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
+Copyright (C) 2014-2016 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
 
 [Official web site][8]
 
@@ -28,3 +29,4 @@ Copyright (C) 2015 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
 [6]: http://www.lazarus.freepascal.org/
 [7]: mailto:nenirey@gmail.com
 [8]: http://sites.google.com/site/awggproject
+[9]: http://yt-dl.org

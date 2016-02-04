@@ -2,7 +2,7 @@ unit fstrings;
 {
   Resource strings form of AWGG
 
-  Copyright (C) 2015 Reinier Romero Mir
+  Copyright (C) 2016 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -37,22 +37,17 @@ categoryfilter='Categories';
 abouttext='This program is free software under GNU GPL 2 license.'+
 lineending+lineending+'Created By Reinier Romero Mir'+
 lineending+'Email: nenirey@gmail.com'+
-lineending+'Copyright (c) 2015'+
-lineending+'The project uses the following third party resources:'+
-lineending+lineending+'Silk icons set 1.3 by Mark James'+
-lineending+'http://www.famfamfam.com/lab/icons/silk/'+
-lineending+'Tango Icon Library'+
-lineending+'http://tango.freedesktop.org/Tango_Icon_Library'+
-lineending+'aria2'+
-lineending+'http://aria2.sourceforge.net/'+
-lineending+'Wget'+
-lineending+'http://www.gnu.org/software/wget/'+
-lineending+'cURL'+
-lineending+'http://curl.haxx.se/'+
-lineending+'Axel'+
-lineending+'http://axel.alioth.debian.org/'+
-lineending+lineending+'French translation: '+
-lineending+'Tony O Gallos @ CodeTyphon Community';
+lineending+'Copyright (c) 2014-2016'+
+lineending+lineending+'The project uses the following third party resources:'+
+lineending+'- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/'+
+lineending+'- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)'+
+lineending+'- aria2 (http://aria2.sourceforge.net)'+
+lineending+'- Wget (http://www.gnu.org/software/wget/)'+
+lineending+'- cURL (http://curl.haxx.se)'+
+lineending+'- Axel (http://axel.alioth.debian.org)'+
+lineending+'- youtube-dl (http://yt-dl.org)'+
+lineending+'- FlashGot (http://flashgot.net)'+
+lineending+lineending+'French translation: Tony O Gallos @ CodeTyphon Community';
 wgetdefarg1='[-c] Continue downloads.';
 wgetdefarg2='[-nH] No create host dir.';
 wgetdefarg3='[-nd] No create out dir.';
@@ -120,6 +115,16 @@ fileexistsreplace= 'The file exist, do you want replace it?';
 rootdownloadpathchange= 'The root of the downloads folder has changed, would like to recreate the routes by categories in the new root?';
 newfiletyperememberpath= 'Do you want to remember the path for this file type?';
 msgerrorinforme='Oh!! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:'+LineEnding+'%s'+LineEnding+'Error description:'+LineEnding+'%s'+LineEnding+'Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue';
+videoformatloading='Loading available formats, please wait';
+videonameloading='Loading video name, please wait';
+videoselectformat='Select video format:';
+videoname='Name:';
+errorloadingformat='Error loading video formats, please press reload button';
+errorloadingname='Error loading video name, please press reload button';
+commonvideodescription='The best quality video in %s format (if exists)';
+commonaudiodescription='The best quality audio in %s format (if exists)';
+msgcopyoperationerror='Error to copy file, details:'+lineending+'%s';
+msgmoveoperationerror='Error to move file, details:'+lineending+'$s';
 Implementation
 end.
 

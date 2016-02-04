@@ -1,24 +1,24 @@
 object frcopymove: Tfrcopymove
-  Left = 354
-  Height = 109
-  Top = 497
+  Left = 120
+  Height = 134
+  Top = 58
   Width = 615
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsSingle
   Caption = 'File operations'
-  ClientHeight = 109
+  ClientHeight = 134
   ClientWidth = 615
   OnCloseQuery = FormCloseQuery
   Position = poDesktopCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.4.4.0'
+  LCLVersion = '1.6.0.2'
   object lblFrom: TLabel
     AnchorSideLeft.Control = pbCopyMove
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = pbCopyMove
     AnchorSideRight.Side = asrBottom
     Left = 5
-    Height = 15
+    Height = 13
     Top = 10
     Width = 605
     Anchors = [akTop, akLeft, akRight]
@@ -33,8 +33,8 @@ object frcopymove: Tfrcopymove
     AnchorSideRight.Control = pbCopyMove
     AnchorSideRight.Side = asrBottom
     Left = 5
-    Height = 15
-    Top = 30
+    Height = 13
+    Top = 28
     Width = 605
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 5
@@ -49,7 +49,7 @@ object frcopymove: Tfrcopymove
     AnchorSideRight.Side = asrBottom
     Left = 5
     Height = 20
-    Top = 50
+    Top = 46
     Width = 605
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
@@ -62,19 +62,37 @@ object frcopymove: Tfrcopymove
   object btnCancel: TButton
     AnchorSideLeft.Control = Owner
     AnchorSideLeft.Side = asrCenter
-    AnchorSideTop.Control = pbCopyMove
+    AnchorSideTop.Control = pbTotal
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 280
-    Height = 27
-    Top = 75
-    Width = 55
+    Left = 278
+    Height = 23
+    Top = 96
+    Width = 58
     AutoSize = True
     BorderSpacing.Top = 5
     BorderSpacing.Bottom = 3
     Caption = 'Cancel'
     OnClick = btnCancelClick
     TabOrder = 1
+  end
+  object pbTotal: TProgressBar
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = pbCopyMove
+    AnchorSideTop.Side = asrBottom
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 5
+    Height = 20
+    Top = 71
+    Width = 605
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 5
+    BorderSpacing.Top = 5
+    BorderSpacing.Right = 5
+    Smooth = True
+    Step = 1
+    TabOrder = 2
   end
 end

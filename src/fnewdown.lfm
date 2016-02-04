@@ -1,7 +1,7 @@
 object frnewdown: Tfrnewdown
-  Left = 240
+  Left = 238
   Height = 178
-  Top = 262
+  Top = 147
   Width = 545
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
@@ -23,10 +23,10 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 31
-    Height = 21
+    Left = 29
+    Height = 23
     Top = 3
-    Width = 511
+    Width = 513
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     BorderSpacing.Right = 3
@@ -40,26 +40,27 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = edtURL
     Left = 5
-    Height = 13
+    Height = 15
     Top = 7
-    Width = 26
+    Width = 24
     BorderSpacing.Left = 5
-    Caption = 'URL: '
+    Caption = 'URL:'
     ParentColor = False
   end
   object btnToQueue: TButton
-    AnchorSideLeft.Control = btnSchedule
+    AnchorSideLeft.Control = btnToEnd
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = btnStart
     AnchorSideRight.Control = btnStart
     AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 195
+    Left = 194
     Height = 26
-    Top = 123
-    Width = 113
+    Top = 133
+    Width = 119
     Anchors = [akTop, akLeft, akBottom]
     AutoSize = True
+    BorderSpacing.Left = 1
     Caption = 'To the queue [F2]'
     OnClick = btnToQueueClick
     OnKeyDown = FormKeyDown
@@ -73,10 +74,10 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 484
+    Left = 480
     Height = 26
-    Top = 123
-    Width = 58
+    Top = 133
+    Width = 62
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 3
@@ -90,11 +91,11 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = deDestination
     AnchorSideTop.Side = asrCenter
     Left = 5
-    Height = 13
-    Top = 31
-    Width = 61
+    Height = 15
+    Top = 33
+    Width = 27
     BorderSpacing.Left = 5
-    Caption = 'Destination: '
+    Caption = 'Path:'
     ParentColor = False
   end
   object cbEngine: TComboBox
@@ -103,14 +104,15 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = edtFileName
     AnchorSideTop.Side = asrBottom
     Left = 44
-    Height = 21
-    Top = 75
-    Width = 100
+    Height = 23
+    Top = 81
+    Width = 95
     BorderSpacing.Top = 3
-    ItemHeight = 13
+    ItemHeight = 15
     Items.Strings = (
       ''
     )
+    OnChange = cbEngineChange
     OnKeyDown = FormKeyDown
     Style = csDropDownList
     TabOrder = 3
@@ -120,11 +122,11 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = cbEngine
     AnchorSideTop.Side = asrCenter
     Left = 5
-    Height = 13
-    Top = 79
+    Height = 15
+    Top = 85
     Width = 39
     BorderSpacing.Left = 5
-    Caption = 'Engine: '
+    Caption = 'Engine:'
     ParentColor = False
   end
   object btnPaused: TButton
@@ -134,12 +136,13 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Control = btnCancel
     AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 423
+    Left = 415
     Height = 26
-    Top = 123
-    Width = 61
+    Top = 133
+    Width = 64
     Anchors = [akTop, akRight, akBottom]
     AutoSize = True
+    BorderSpacing.Right = 1
     Caption = 'Paused'
     OnClick = btnPausedClick
     OnKeyDown = FormKeyDown
@@ -151,10 +154,11 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = edtURL
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = btnGoDestination
-    Left = 66
-    Height = 21
-    Top = 27
-    Width = 453
+    Left = 32
+    Height = 23
+    Hint = 'Select the path folder'
+    Top = 29
+    Width = 487
     OnAcceptDirectory = deDestinationAcceptDirectory
     ShowHidden = False
     ButtonWidth = 23
@@ -162,19 +166,21 @@ object frnewdown: Tfrnewdown
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     MaxLength = 0
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 5
     OnChange = deDestinationChange
     OnKeyDown = FormKeyDown
   end
   object lblParameters: TLabel
-    AnchorSideLeft.Control = cbEngine
+    AnchorSideLeft.Control = btnMore
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = edtParameters
     AnchorSideTop.Side = asrCenter
-    Left = 149
-    Height = 13
-    Top = 79
-    Width = 59
+    Left = 167
+    Height = 15
+    Top = 85
+    Width = 62
     BorderSpacing.Left = 5
     Caption = 'Parameters:'
     ParentColor = False
@@ -186,10 +192,10 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 208
-    Height = 21
-    Top = 75
-    Width = 334
+    Left = 229
+    Height = 23
+    Top = 81
+    Width = 313
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Right = 3
     OnKeyDown = FormKeyDown
@@ -200,11 +206,11 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = edtFileName
     AnchorSideTop.Side = asrCenter
     Left = 5
-    Height = 13
-    Top = 55
-    Width = 52
+    Height = 15
+    Top = 59
+    Width = 35
     BorderSpacing.Left = 5
-    Caption = 'File name: '
+    Caption = 'Name:'
     ParentColor = False
   end
   object edtFileName: TEdit
@@ -213,13 +219,14 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = deDestination
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = btnCategoryGo
-    Left = 57
-    Height = 21
-    Top = 51
-    Width = 462
+    Left = 40
+    Height = 23
+    Top = 55
+    Width = 479
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     OnChange = edtFileNameChange
+    OnKeyDown = FormKeyDown
     TabOrder = 7
   end
   object lblUser: TLabel
@@ -227,9 +234,9 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = edtUser
     AnchorSideTop.Side = asrCenter
     Left = 5
-    Height = 13
-    Top = 103
-    Width = 76
+    Height = 15
+    Top = 111
+    Width = 84
     BorderSpacing.Left = 5
     Caption = 'HTTP/FTP User:'
     ParentColor = False
@@ -241,12 +248,13 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = edtParameters
     AnchorSideBottom.Control = btnCancel
-    Left = 81
-    Height = 21
-    Top = 99
-    Width = 127
+    Left = 89
+    Height = 23
+    Top = 107
+    Width = 140
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
+    OnKeyDown = FormKeyDown
     TabOrder = 8
   end
   object lblPassword: TLabel
@@ -254,10 +262,10 @@ object frnewdown: Tfrnewdown
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = edtPassword
     AnchorSideTop.Side = asrCenter
-    Left = 218
-    Height = 13
-    Top = 103
-    Width = 100
+    Left = 239
+    Height = 15
+    Top = 111
+    Width = 111
     BorderSpacing.Left = 10
     Caption = 'HTTP/FTP Password:'
     ParentColor = False
@@ -270,14 +278,15 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnCancel
-    Left = 318
-    Height = 21
-    Top = 99
-    Width = 224
+    Left = 350
+    Height = 23
+    Top = 107
+    Width = 192
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     BorderSpacing.Right = 3
     EchoMode = emPassword
+    OnKeyDown = FormKeyDown
     PasswordChar = '*'
     TabOrder = 9
   end
@@ -286,9 +295,9 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Control = cbQueue
     AnchorSideTop.Side = asrCenter
     Left = 4
-    Height = 13
-    Top = 130
-    Width = 36
+    Height = 15
+    Top = 139
+    Width = 38
     BorderSpacing.Left = 4
     Caption = 'Queue:'
     ParentColor = False
@@ -296,18 +305,21 @@ object frnewdown: Tfrnewdown
   object cbQueue: TComboBox
     AnchorSideLeft.Control = lblQueue
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = btnStart
-    AnchorSideTop.Side = asrCenter
+    AnchorSideTop.Control = edtUser
+    AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = btnAddQueue
-    AnchorSideBottom.Control = btnCancel
+    AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 40
-    Height = 21
-    Top = 126
-    Width = 109
+    Left = 42
+    Height = 23
+    Top = 135
+    Width = 88
+    Anchors = [akTop, akLeft, akBottom]
     AutoSize = False
-    BorderSpacing.Top = 3
-    ItemHeight = 13
+    BorderSpacing.Top = 5
+    BorderSpacing.Bottom = 3
+    ItemHeight = 15
+    OnKeyDown = FormKeyDown
     Style = csDropDownList
     TabOrder = 10
   end
@@ -318,12 +330,14 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Control = btnSchedule
     AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 149
+    Left = 131
     Height = 26
     Hint = 'Add queue'
-    Top = 123
-    Width = 23
+    Top = 133
+    Width = 20
     Anchors = [akTop, akLeft, akBottom]
+    AutoSize = True
+    BorderSpacing.Left = 1
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -372,12 +386,14 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Control = btnToQueue
     AnchorSideBottom.Control = btnStart
     AnchorSideBottom.Side = asrBottom
-    Left = 172
+    Left = 152
     Height = 26
     Hint = 'Schedule'
-    Top = 123
-    Width = 23
+    Top = 133
+    Width = 20
     Anchors = [akTop, akLeft, akBottom]
+    AutoSize = True
+    BorderSpacing.Left = 1
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
       2000000000000004000064000000640000000000000000000000FFFFFF00A2A2
@@ -421,17 +437,18 @@ object frnewdown: Tfrnewdown
   object btnStart: TBitBtn
     AnchorSideLeft.Control = btnToQueue
     AnchorSideLeft.Side = asrBottom
-    AnchorSideTop.Control = edtUser
-    AnchorSideTop.Side = asrBottom
+    AnchorSideTop.Control = cbQueue
+    AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = btnPaused
     AnchorSideBottom.Control = cbQueue
     AnchorSideBottom.Side = asrBottom
-    Left = 308
+    Left = 314
     Height = 26
-    Top = 123
-    Width = 115
+    Top = 133
+    Width = 101
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
+    BorderSpacing.Left = 1
     BorderSpacing.Top = 3
     Caption = 'Start now'
     Glyph.Data = {
@@ -471,6 +488,7 @@ object frnewdown: Tfrnewdown
       0000000000000000000000000000000000000000000000000000
     }
     OnClick = btnStartClick
+    OnKeyDown = FormKeyDown
     TabOrder = 11
   end
   object cbDestination: TComboBox
@@ -480,14 +498,15 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = deDestination
     AnchorSideBottom.Side = asrBottom
-    Left = 66
-    Height = 21
-    Top = 27
-    Width = 430
+    Left = 32
+    Height = 23
+    Top = 29
+    Width = 464
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Right = 23
-    ItemHeight = 13
+    ItemHeight = 15
     OnChange = cbDestinationChange
+    OnKeyDown = FormKeyDown
     TabOrder = 12
   end
   object btnCategoryGo: TSpeedButton
@@ -499,7 +518,8 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Side = asrBottom
     Left = 519
     Height = 22
-    Top = 50
+    Hint = 'Configure the category file'
+    Top = 55
     Width = 23
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 3
@@ -540,19 +560,23 @@ object frnewdown: Tfrnewdown
       FF009E9E9E629D9D9DE89B9B9BF999999992FFFFFF00FFFFFF00
     }
     OnClick = btnCategoryGoClick
+    ShowHint = True
+    ParentShowHint = False
   end
   object btnGoDestination: TSpeedButton
     AnchorSideLeft.Control = deDestination
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = deDestination
-    AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
+    AnchorSideBottom.Control = deDestination
+    AnchorSideBottom.Side = asrBottom
     Left = 519
-    Height = 22
-    Top = 26
+    Height = 23
+    Hint = 'Open the path folder'
+    Top = 29
     Width = 23
-    Anchors = [akTop, akRight]
+    Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 3
     Glyph.Data = {
       36040000424D3604000000000000360000002800000010000000100000000100
@@ -591,5 +615,170 @@ object frnewdown: Tfrnewdown
       FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
     }
     OnClick = btnGoDestinationClick
+    ShowHint = True
+    ParentShowHint = False
+  end
+  object btnMore: TSpeedButton
+    AnchorSideLeft.Control = cbEngine
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = cbEngine
+    AnchorSideTop.Side = asrCenter
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 139
+    Height = 22
+    Hint = 'Select the video format'
+    Top = 81
+    Width = 23
+    BorderSpacing.Right = 3
+    Enabled = False
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF002E2E2ED8292929FA242424CCFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00080808D9050505FF020202DCFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00343434FA2F2F2F61353535FF575757FF575757FF575757FF575757FF5757
+      57FF575757FF1A1A1AFF0808084F050505EFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF003A3A3AFF353535C6303030F56EDF9DFE77E0A3FE73E09EFE5EDD93FE55DE
+      93FE50DE91FE101010F40C0C0CA4090909FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00404040D03B3B3B6C363636D54FCB5CFF57D77AFF42D16AFF70C75EFFB6B8
+      50FFCBAE3FFF151515D71111116C0D0D0DD0FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00454545DF404040C33B3B3BD04FC445FF4BBA2CFFD8BD60FFFFBA62FFFFB9
+      65FFDBBB7DFF1A1A1AD2151515C3111111DFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF004B4B4BDA464646A2414141CF7FBF36FFDDC569FFFFC270FFFFBF67FFAECB
+      ACFF68E0F9FF1F1F1FD01A1A1AA2161616DAFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00515151D44C4C4C81474747CCF8C66EFFFFC877FFFFC572FFFFC46CFF98D8
+      CFFF99E4EBFF242424CE202020811B1B1BD4FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00565656E2515151D0686868FF575757FF575757FF575757FF575757FF5757
+      57FF575757FF2A2A2AF6252525D0202020E2FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF005B5B5BD457575781525252CD72E29EFF7CE3A4FF78E3A0FF63E095FF5AE1
+      95FF55E293FF303030D02B2B2B81262626D4FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00606060DA5C5C5CA2575757CF4FCB5CFF57D77AFF42D16AFF70C75EFFB6B8
+      50FFCBAE3FFF363636D0313131A22C2C2CDAFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00646464DF606060C35C5C5CD04FC445FF4BBA2CFFD8BD60FFFFBA62FFFFB9
+      65FFDBBB7DFF3B3B3BD2363636C3313131DFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00686868D165656584616161D47FBF36FFDDC569FFFFC270FFFFBF67FFAECB
+      ACFF68E0F9FF414141D63C3C3C6C373737D0FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF006C6C6CFF696969ED656565FAE5BA6CF6ECBC74F6EBB86EF6EBB668F680CB
+      CDF680D7EAF6474747FA424242CC3D3D3DFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF006F6F6FF86C6C6C9B696969FF575757FF575757FF575757FF575757FF5757
+      57FF575757FF4D4D4DFF4848488D434343D5FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00717171D46F6F6FF36D6D6DDDFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00525252D64D4D4DF9494949D7FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = btnMoreClick
+    ShowHint = True
+    ParentShowHint = False
+  end
+  object btnToEnd: TSpeedButton
+    AnchorSideLeft.Control = btnSchedule
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = btnStart
+    AnchorSideBottom.Control = btnStart
+    AnchorSideBottom.Side = asrBottom
+    Left = 173
+    Height = 26
+    Hint = 'Position in queue'
+    Top = 133
+    Width = 20
+    Anchors = [akTop, akLeft, akBottom]
+    AutoSize = True
+    BorderSpacing.Left = 1
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF0000FFFF0000FFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00995B1EC496581AC9FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00868688FF868688FF868688FF868688FF9F6327CFAF7841FFAD753DFF9759
+      1BD1868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00AB723A06A86E35D9B5804BFFCCA37AFFCCA37AFFAE76
+      3FFF97591BDB95571906FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00AF7841B8AC743CF7C19263FFCEA67EFFCDA47CFFB17A
+      44FF9A5D20F7985A1DBBFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00868688FF868688FF868688FF868688FFB5804BFFD0A983FFCFA881FFA266
+      2BFF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B17A44FFD2AC87FFD1AB85FFA66C
+      32FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B7834FFFD3AE8AFFD3AE8AFFAB72
+      3AFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00868688FF868688FF868688FF868688FFBE9369FFD2B597FFD1B394FFB687
+      57FF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C29A71FFD4B89CFFD3B699FFBA8D
+      61FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C49D75FFD5B99EFFD4B89CFFBD92
+      67FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00868688FF868688FF868688FF868688FFC59E77FFC59E77FFC29A71FFC198
+      6EFF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    OnClick = btnToEndClick
+    ShowHint = True
+    ParentShowHint = False
+  end
+  object btnToUp: TSpeedButton
+    AnchorSideLeft.Control = btnSchedule
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = btnStart
+    AnchorSideBottom.Control = btnStart
+    AnchorSideBottom.Side = asrBottom
+    Left = 173
+    Height = 26
+    Hint = 'Position in queue'
+    Top = 133
+    Width = 20
+    Anchors = [akTop, akLeft, akBottom]
+    AutoSize = True
+    BorderSpacing.Left = 1
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00868688FF868688FF868688FF868688FFC59E77FFC59E77FFC29A71FFC198
+      6EFF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C49D75FFD5B99EFFD4B89CFFBD92
+      67FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00C29A71FFD4B89CFFD3B699FFBA8D
+      61FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00868688FF868688FF868688FF868688FFBE9369FFD2B597FFD1B394FFB687
+      57FF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B7834FFFD3AE8AFFD3AE8AFFAB72
+      3AFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00B17A44FFD2AC87FFD1AB85FFA66C
+      32FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00868688FF868688FF868688FF868688FFB5804BFFD0A983FFCFA881FFA266
+      2BFF868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00AF7841B8AC743CF7C19263FFCEA67EFFCDA47CFFB17A
+      44FF9A5D20F7985A1DBBFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00AB723A06A86E35D9B5804BFFCCA37AFFCCA37AFFAE76
+      3FFF97591BDB95571906FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00868688FF868688FF868688FF868688FF9F6327CFAF7841FFAD753DFF9759
+      1BD1868688FF868688FF868688FF868688FFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00995B1EC496581AC9FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF000000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000FFFF0000
+      FFFF0000FFFF0000FFFF0000FFFF0000FFFFFFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
+    Visible = False
+    OnClick = btnToUpClick
+    ShowHint = True
+    ParentShowHint = False
   end
 end

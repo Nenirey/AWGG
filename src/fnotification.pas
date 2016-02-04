@@ -1,5 +1,23 @@
 unit fnotification;
+{
+  Notification form of AWGG
 
+  Copyright (C) 2016 Reinier Romero Mir
+  nenirey@gmail.com
+
+  This library is free software; you can redistribute it and/or modify it
+  under the terms of the GNU Library General Public License as published by
+  the Free Software Foundation; either version 2 of the License.
+
+  This program is distributed in the hope that it will be useful, but WITHOUT
+  ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or
+  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Library General Public License
+  for more details.
+
+  You should have received a copy of the GNU Library General Public License
+  along with this library; if not, write to the Free Software Foundation,
+  Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
+}
 {$mode objfpc}{$H+}
 
 interface
@@ -24,7 +42,10 @@ type
     btnCopyTo: TSpeedButton;
     btnMoveTo: TSpeedButton;
     HideTimer: TTimer;
+    btnStartDown: TSpeedButton;
+    procedure btnStartDownClick(Sender: TObject);
     procedure FormClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
     procedure FormMouseEnter(Sender: TObject);
     procedure FormMouseLeave(Sender: TObject);
     procedure FormPaint(Sender: TObject);
@@ -41,6 +62,7 @@ type
   public
     { public declarations }
     notipathfile:string;
+    notiuid:string;
   end;
 
 var
@@ -71,7 +93,8 @@ end;
 procedure Tfrnotification.btnCopyToClick(Sender: TObject);
 begin
   Self.sdlgDirectory.Execute;
-  if Self.sdlgDirectory.FileName<>'' then
+  //if Self.sdlgDirectory.FileName<>'' then
+  if {$IFDEF LCLQT}(Self.sdlgDirectory.UserChoice=1){$else}{$IFDEF LCLQT5}(Self.sdlgDirectory.UserChoice=1){$ELSE}Self.sdlgDirectory.FileName<>''{$endif}{$ENDIF} then
   begin
     SetLength(copywork,Length(copywork)+1);
     copywork[Length(copywork)-1]:=copythread.Create(true,Length(copywork)-1);
@@ -85,7 +108,8 @@ end;
 procedure Tfrnotification.btnMoveToClick(Sender: TObject);
 begin
   Self.sdlgDirectory.Execute;
-  if Self.sdlgDirectory.FileName<>'' then
+  //if Self.sdlgDirectory.FileName<>'' then
+  if {$IFDEF LCLQT}(Self.sdlgDirectory.UserChoice=1){$else}{$IFDEF LCLQT5}(Self.sdlgDirectory.UserChoice=1){$ELSE}Self.sdlgDirectory.FileName<>''{$endif}{$ENDIF} then
   begin
     SetLength(copywork,Length(copywork)+1);
     copywork[Length(copywork)-1]:=copythread.Create(true,Length(copywork)-1,true);
@@ -111,6 +135,26 @@ procedure Tfrnotification.FormClick(Sender: TObject);
 begin
   //Self.Close;
   //Self.Free;
+end;
+
+procedure Tfrnotification.btnStartDownClick(Sender: TObject);
+var
+  i:integer;
+begin
+  for i:=0 to frmain.lvMain.Items.Count-1 do
+  begin
+    if frmain.lvMain.Items[i].SubItems[columnuid]=notiuid then
+    begin
+      downloadstart(i,false);
+      break;
+    end;
+  end;
+  Self.btnStartDown.Enabled:=false;
+end;
+
+procedure Tfrnotification.FormCreate(Sender: TObject);
+begin
+
 end;
 
 procedure Tfrnotification.FormMouseEnter(Sender: TObject);

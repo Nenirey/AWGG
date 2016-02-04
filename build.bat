@@ -1,7 +1,7 @@
 @echo off
 
 rem the next two line must be changed before run on your computer
-set lazpath=C:\Lazarus
+set lazpath=c:\Lazarus
 
 set PATH=%lazpath%;%PATH%
 
@@ -36,6 +36,12 @@ pause
 GOTO:EOF
 
 :beta
+
+  rem Build versionitis
+  lazbuild src\versionitis.lpi
+
+  rem update version info
+  src\versionitis -verbose
 
   rem Build AWGG
   call :replace_old

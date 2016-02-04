@@ -27,12 +27,12 @@ override_dh_install:
 	# Separate Qt4-specific files
 	mv $(CURDIR)/debian/awgg-qt-temp/usr/lib/awgg/awgg $(CURDIR)/debian/awgg-qt/usr/lib/awgg/
 	mkdir -p $(CURDIR)/debian/awgg-qt-dbg/usr/lib/awgg
-	mv $(CURDIR)/debian/awgg-qt-temp/usr/lib/awgg/doublecmd.zdli $(CURDIR)/debian/awgg-qt-dbg/usr/lib/awgg/
+	mv $(CURDIR)/debian/awgg-qt-temp/usr/lib/awgg/awgg.zdli $(CURDIR)/debian/awgg-qt-dbg/usr/lib/awgg/
 	rm -rf $(CURDIR)/debian/awgg-qt-temp/
 
 	# Clean up common files
 	rm -rf $(CURDIR)/debian/awgg-common/usr/share/awgg/doc
-	find $(CURDIR)/debian/doublecmd-common/usr/share/ -type f | xargs chmod a-x ;
+	find $(CURDIR)/debian/awgg-common/usr/share/ -type f | xargs chmod a-x ;
 
 	dh_install
 

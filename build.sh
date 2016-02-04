@@ -37,6 +37,12 @@ build_default()
 build_beta()
 {
 
+  # Build versionitis
+  $lazbuild src/versionitis.lpi
+
+  # Update version
+  src/versionitis -verbose
+
   # Build AWGG
   $lazbuild src/awgg.lpi --bm=beta $AWGG_ARCH
   

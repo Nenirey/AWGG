@@ -9,63 +9,12 @@
         <Filename Value="versionitis.lpr"/>
         <IsPartOfProject Value="True"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="0"/>
-        <WindowIndex Value="0"/>
-        <TopLine Value="92"/>
-        <CursorPos X="54" Y="102"/>
+        <TopLine Value="19"/>
+        <CursorPos X="3" Y="33"/>
         <UsageCount Value="28"/>
         <Loaded Value="True"/>
       </Unit0>
     </Units>
-    <General>
-      <ActiveWindowIndexAtStart Value="0"/>
-    </General>
-    <JumpHistory Count="11" HistoryIndex="10">
-      <Position1>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="27" Column="37" TopLine="3"/>
-      </Position1>
-      <Position2>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="30" Column="26" TopLine="4"/>
-      </Position2>
-      <Position3>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="11" Column="58" TopLine="9"/>
-      </Position3>
-      <Position4>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="32" Column="22" TopLine="10"/>
-      </Position4>
-      <Position5>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="18" Column="3" TopLine="4"/>
-      </Position5>
-      <Position6>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="19" Column="35" TopLine="9"/>
-      </Position6>
-      <Position7>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="79" Column="43" TopLine="64"/>
-      </Position7>
-      <Position8>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="81" Column="3" TopLine="64"/>
-      </Position8>
-      <Position9>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="85" Column="25" TopLine="71"/>
-      </Position9>
-      <Position10>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="95" Column="20" TopLine="84"/>
-      </Position10>
-      <Position11>
-        <Filename Value="versionitis.lpr"/>
-        <Caret Line="113" Column="16" TopLine="89"/>
-      </Position11>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
-  <EditorMacros Count="0"/>
 </CONFIG>

@@ -13,6 +13,7 @@
 @del /Q awgg*.exe
 @del /Q awgg*.dbg
 @del /Q awgg.zdli
+@del /Q units\*.*
 
 @echo Clean up tools output directories
 @del /Q /S tools\lib\*.*

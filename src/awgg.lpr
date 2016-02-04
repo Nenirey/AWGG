@@ -2,7 +2,7 @@ program awgg;
 {
   AWGG
 
-  Copyright (C) 2014 Reinier Romero Mir
+  Copyright (C) 2016 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -25,8 +25,9 @@ uses
   cthreads, cmem,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, datetimectrls, fmain, fnewdown, fconfig, fabout, flang,
-  fstrings, freplace, fsitegrabber, fadd, fnotification, fcopymove, fconfirm, un_lineinfo;
+  Forms, datetimectrls, fmain, fnewdown, fconfig, fabout,
+  flang, fstrings, freplace, fsitegrabber, fadd, fnotification, fcopymove,
+  fconfirm, un_lineinfo, fddbox, fvideoformat;
 
 {$R *.res}
 
@@ -43,6 +44,8 @@ begin
   Application.CreateForm(Tfrsitegrabber, frsitegrabber);
   Application.CreateForm(Tfradd, fradd);
   Application.CreateForm(Tfrabout, frabout);
+  Application.CreateForm(Tfrddbox, frddbox);
+  Application.CreateForm(Tfrvideoformat, frvideoformat);
   Application.Run;
 end.
 

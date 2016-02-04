@@ -54,8 +54,7 @@ Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescrip
 [Files]
 Source: "awgg\awgg.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "awgg\awgg.zdli"; DestDir: "{app}"; Flags: ignoreversion
-Source: "awgg\awgg.xml"; DestDir: "{app}"; Flags: onlyifdoesntexist
-Source: "awgg\language\*"; DestDir: "{app}\language"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "awgg\languages\*"; DestDir: "{app}\language"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
 Source: "awgg\*.dll"; DestDir: "{app}"; Flags: skipifsourcedoesntexist
 

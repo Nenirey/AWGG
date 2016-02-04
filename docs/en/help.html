@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+  <title>Basic Help</title>
+  <link rel="STYLESHEET" type="text/css" href="awgg.css"/>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+  <div class="CHAPTER">
+	<h1>Basic Help</h1>
+	
+	<div class="TOC">
+	  <dl>
+	    <dt class="bold"><a name="TOC">Content</a></dt>
+		<dt>1. <a href="#intro">Introduction</a></dt>
+		<dt>2. <a href="#congif_files">Configuration files</a></dt>
+		<dt>3. <a href="#iface">Interface</a></dt>
+		<dd>
+		  <dl>
+			<dt>3.1. <a href="#iface_menu">Menu bar</a></dt>
+			<dd>
+			  <dl>
+				<dt>3.1.1. <a href="#mnu_file">"Files"</a></dt>
+				<dt>3.1.2. <a href="#mnu_select">"Show"</a></dt>
+				<dt>3.1.3. <a href="#mnu_commands">"Downloads"</a></dt>
+				<dt>3.1.4. <a href="#mnu_tabs">"Tools"</a></dt>
+  				<dt>3.1.7. <a href="#mnu_help">"Help"</a></dt>
+			  </dl>
+			</dd>
+			<dt>3.2. <a href="toolbar.html">Button toolbar</a></dt>
+		  </dl>
+		</dd>
+	  </dl>
+	</div>
+	
+	<hr/>
+	
+	<p>AWGG&nbsp;&mdash; is a project started by Cuban programmer Reinier Romero Mir
+	(nenirey@gmail.com), as a frontend of wget (http://www.gnu.org/software/wget/).</p>
+	<p>AWGG is a cross-platform (both GNU/Linux and Windows) download manager, supporting
+	http/s ftp/s protocols.
+	The Windows version comes installed with wget (engine). Other engines can be installed manually.</p>
+	<p class="FIGURE"><img title="AWGG" alt="Double Commander" src="images/imgDC/pic05.png" width="684" height="404"/></p>
+
+	<div class="SECT1">
+	  <h2><a name="intro">1. Introduction</a></h2>
+	  <p>On the program <a href="http://sites.google.com/site/awggproject/">download page</a>
+	  you can see several versions which are available to download. First, you must choose which operating system (Windows or Linux)
+	  and whether 32 or 64 bit. After that you can select the type of distribution.
+	  For Windows there is an setup <tt>.zip</tt> or an portable <tt>.zip</tt> (which is the so-called portable version).</p>
+	  <p>For Linux there are versions for most popular Linux distributions and desktop environments.
+	  You can download compiled <tt>deb</tt> packages for Debian-based distributions (e.g,
+	  Ubuntu). Also available is a portable version of the archive <tt>tar.bz2</tt>, it is the same  source from which you can build the program yourself. For various DE there are versions, based on
+	  GTK2 toolkit, and versions for KDE, based on Qt. I must note that the program is not yet available from the repositories.</p>
+	  <p>On the first launch AWGG will ask your language, and set it for the interface.
+          AWGG is translated into 3 languages so far. The language can be changed in the menu via
+	  "<a href="#5_1_1_yazik">Tools  &nbsp;&rarr; Configuration&nbsp;&rarr; Language</a>".
+	  Also AWGG uses the current system theme. It looks like this (in Puppy Linux):</p>
+	  <p class="FIGURE"><img title="Main program window" alt="Main window" src="images/imgDC/pic1.png" width="646" height="505"/></p>
+
+	  <p>As can be seen from the figure, there are on download list, a tree view, a progress bar
+	  and a command out bar that is a log viewer (it shows the output from the download engine).</p>
+	</div>
+
+	<div class="SECT1">
+	  <h2><a name="congif_files">2. Сonfiguration files</a></h2>
+	  <p>AWGG keeps settings in configuration files in the program directory or in the user's home directory.
+	  The main files are:</p>
+	  <ul>
+		<li><p><tt>awgg.ini</tt>&nbsp;&mdash; all the main program settings
+	   	</p></li>
+		<li><p><tt>awgg.dat</tt>&nbsp;&mdash; downloads data</p></li>
+	  </ul>
+	</div>
+	
+	<div class="SECT1">
+	  <h2><a name="iface">3. Interface</a></h2>
+	  <p>AWGG's interface</p>
+          <img title="Main program window" alt="Main window" src="images/imgDC/pic15-4.png" width="646" height="505"/>
+	</div>
+	
+	<div class="SECT2">
+	  <h3><a name="iface_menu">3.1. Menu bar</a></h3>
+	  <p class="FIGURE"><img title="Menu bar" alt="Menu bar" src="images/imgDC/pic2.png" width="279" height="47"/></p>
+
+	  <p>The Menu Bar provides access to all the features of AWGG. But do not forget that the majority of actions can be performed in other way: by using buttons on the toolbar.
+	</p>
+	</div>
+	
+	<div class="SECT3">
+	  <h4><a name="mnu_file">3.1.1. "Files"</a></h4>
+	  <p>This menu contains almost all the actions that can be made on files. Please consider all the items:</p>
+	  
+	  <p><a name="01_ssilka"><span class="bold">New download...</span></a>. With this item, AWGG add a download link to the download list and places it in a queue, selected in the New download window.</p>
+	  <p class="FIGURE"><img alt="New download" title="New download" src="images/imgDC/pic10-5.png" width="525" height="181"/></p>
+
+	  <p><span class="italic">URL:</span>&nbsp;&mdash; here is the url to the download file.</p>
+	  <p><span class="italic">Destination:</span>&nbsp;&mdash; the folder, on which the download store the output file.</p>
+          <p><span class="italic">File Name:</span>&nbsp;&mdash; the name of download output file, this it is obtained automatically of the URL but you can specify manually, if one leaves in white the name it will be given by the engine.</p>
+          <p><span class="italic">Engine:</span>&nbsp;&mdash; this is the engine that was use to download the file.</p>
+          <p><span class="italic">Parameters:</span>&nbsp;&mdash; here you can pass command parameters to the engine for this specific download.</p>
+          <p><span class="italic">HTTP/FTP User and Password:</span>&nbsp;&mdash; some URls requires user and password to allow the access, it can specify them here.</p>
+          <p><span class="italic">Queue:</span>&nbsp;&mdash; the queue (like a group) in that the download will be contained.</p>
+          <p><span class="FIGURE">[+] button</span>&nbsp;&mdash; add new queue to queue list, you can add the download to it.</p>
+          <p><span class="FIGURE">[clock] button</span>&nbsp;&mdash; click here to schedule configuration of this queue.</p>
+          <p><span class="FIGURE">[To the queue F2] button</span>&nbsp;&mdash; this button add the download to the end of selected queue and start it ( the queue).</p>
+          <p><span class="FIGURE">[Start now] button</span>&nbsp;&mdash; this button add the download to the end of selected queue and start it (the download).</p>
+          <p><span class="FIGURE">[Paused] button</span>&nbsp;&mdash; this button add the download to the end of selected queue in pause status (the download).</p>
+          <p><span class="FIGURE">[Cancel] button</span>&nbsp;&mdash; this button cancel any operation.</p>
+          <p><a name="02_ssilka2"><span class="bold">Delete download</span></a> This item ask you for delete the dowloads selected.</p>
+          <p class="FIGURE"><img alt="New download" title="New download" src="images/imgDC/pic10-6.png" width="423" height="200"/></p>
+
+          <p><a name="02_ssilka2"><span class="bold">Delete from disk</span></a> This item ask you for delete the dowloads selected and the download file fron the disk.</p>
+
+          <p><a name="02_ssilka2"><span class="bold">New site grabber...</span></a> This item launch the Site grabber wizzard.</p>
+          <p class="FIGURE"><img alt="New download" title="New download" src="images/imgDC/pic10-7.png" width="471" height="462"/></p>
+	  <p>This window is like the New download windows except for the engine option and the buttons, you must to type a name in Name: text edit before continue the assistent then click in [Button]<a name="03_svoistva"><span class="bold"> Next >...</span></a>
+	  and then setting the new page window like this:</p>
+	  <p class="FIGURE"><img alt="Show file properties" title="Show file properties" src="images/imgDC/pic11.png" width="471" height="462"/>&nbsp;
+          <br>You can press [Finish] button in here to add this site grabber to the download queue or continue to more advanced options in the wizzard.<br>
+
+          <p><a name="02_ssilka2"><span class="bold">Import list of downloads</span></a> This item browse for a text file with a list of downloads links, the links most by placed one per line.</p>
+          <p><a name="02_ssilka2"><span class="bold">Export list of downloads</span></a> This item make the inverse operation of the first, save the downloads list to a text file.</p>
+          <p><a name="02_ssilka2"><span class="bold">Exit</span></a> This item terminate the program execution, the window close button send it to the systray.</p>
+        </div>
+	
+	<p class="NAVBACK"><a href="#TOC">top</a></p>
+	
+	<div class="SECT3">
+	  <h4><a name="mnu_select">3.1.2."Show"</a></h4>
+	  <p>There are some commands in this group with which you can configure what information is show in AWGG</p>
+	  
+	  <p><span class="bold"><a name="11_videlit_gruppu">Columns</a></span>, this show/hide all columns information of the download list.</p>
+          <p><span class="bold"><a name="11_videlit_gruppu">Command out</a></span>, this show/hide a log panel with the ouput of current selected download.</p>
+          <p><span class="bold"><a name="11_videlit_gruppu">Show gridlines</a></span>, this show/hide a grid in the download list, (this no cause effect in qt version).</p>
+          <p><span class="bold"><a name="11_videlit_gruppu">Show downloads icons in systray</a></span>, this active a systray icon for all downloads in progress.</p>
+          <p><span class="bold"><a name="11_videlit_gruppu">Show treeview panel</a></span>, this show/hide the tree view panel in the left side of the main window.</p>
+          <p><span class="bold"><a name="11_videlit_gruppu">Drop box</a></span>, this active a drop zone to drag links from the browser.</p>
+	  <p class="FIGURE"><img alt="Command out" title="Command out" src="images/imgDC/pic14-9.png" width="684" height="532"/></p>
+	</div>
+	
+	<p class="NAVBACK"><a href="#TOC">top</a></p>
+	
+	<div class="SECT3">
+	  <h4><a name="mnu_commands">3.1.3. "Downloads"</a></h4>
+	  <p>First item is <span class="bold"><a name="21_poisk">Select all</a></span>, this item select all downloads for the current filter status, category or queue.</p>
+	  <p class="FIGURE"><img alt="Search" title="Search" src="images/imgDC/pic15.png"/></p>
+
+	  <br>
+	  <p>Second item is <span class="bold"><a name="22_lichnue_catalogi">Unselect all</a></span>, this item make the opose to the first item.
+
+	  <p>Third item is <span class="bold"><a name="23_pusk_term">Start all</a></span>, this item start all downloads in all queues.</p>
+	  
+	  <p>Fourth item is <span class="bold"><a name="24_otkr_VFS">Stop all</a></span>, this item make the opose to the first item.</p>
+	  
+	  <p>Fifth item <span class="bold"><a name="25_pomenyat_mestami">Start queue</a></span>, this item start the selected queue.</p>
+	  
+	  <p>Sixth item is <span class="bold"><a name="26_dve_paneli">Stop queue</a></span>, this item stop the selected queue.</p>
+
+          <p>Seventh item is <span class="bold"><a name="27_dve_paneli">Restart all now</a></span>, this item restart all download to start from 0 and all download are started, note that this cause a lost off current downloads progress.
+
+          <p>Eighth item is <span class="bold"><a name="27_dve_paneli">Restart all latter</a></span>, this item restart all download to start from 0 and set all download to pause status, note that this cause a lost off current downloads progress.
+	</div>
+	
+	<p class="NAVBACK"><a href="#TOC">top</a></p>
+
+	<div class="SECT3">
+	  <h4><a name="mnu_tabs">3.1.4. "Tools"</a></h4>
+	  <p>This group manages the configuration and scheduler options.</p>
+	  
+	  <p>First item is <span class="bold"><a name="31_new_tab">Configuration</a></span> this show the configuration window:</p>
+	  <p class="FIGURE"><img alt="Search" title="Search" src="images/imgDC/pic15-1.png"/></p>
+	  <p>Second item is <span class="bold"><a name="32_otkr_vkladka">Scheduler</a></span> this access to the direct scheduler configuraion option window:</p>
+	  <p class="FIGURE"><img alt="Search" title="Search" src="images/imgDC/pic15-2.png"/></p>
+          The scheduler setting affect only the queue selected in the queue list box, so you can set different schedule times for all queues.
+          <p>Third item is <span class="bold"><a name="31_new_tab">Notifications</a></span> this show the configuration window:</p>
+          <p class="FIGURE"><img alt="Search" title="Search" src="images/imgDC/pic15-3.png"/></p>
+        </div>
+	
+	<p class="NAVBACK"><a href="#TOC">top</a></p>
+	
+  </div>
+  
+</body>
+
+</html>

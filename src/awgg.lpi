@@ -18,8 +18,8 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="3713"/>
-      <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2015" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
+      <BuildNr Value="4800"/>
+      <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2016" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="14">
       <Item1 Name="Default" Default="True"/>
@@ -27,11 +27,11 @@
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
+            <Filename Value="../awgg"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+            <UnitOutputDirectory Value="../units/$(TargetCPU)-$(TargetOS)-$(LCLWidgetType)"/>
           </SearchPaths>
           <Parsing>
             <SyntaxOptions>
@@ -59,6 +59,7 @@
           <Other>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
+              <CompileReasons Compile="False" Build="False" Run="False"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
@@ -102,6 +103,11 @@
         </CompilerOptions>
       </Item3>
       <Item4 Name="Beta">
+        <MacroValues Count="3">
+          <Macro1 Name="LCLWidgetType" Value="qt"/>
+          <Macro2 Name="LCLWidgetType" Value="win32"/>
+          <Macro3 Name="LCLWidgetType" Value="gtk2"/>
+        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -109,7 +115,7 @@
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="d:/codetyphon/binLibraries/i386-linux;C:/codetyphon/binLibraries/i386-linux-qt4"/>
+            <Libraries Value="F:/codetyphon/binLibraries/i386-linux;F:/codetyphon/binLibraries/i386-linux-qt4"/>
             <UnitOutputDirectory Value="../units/$(TargetCPU)-$(TargetOS)-$(LCLWidgetType)"/>
           </SearchPaths>
           <Conditionals Value="if (TargetOS = 'linux') then
@@ -131,6 +137,7 @@ end;"/>
             <Checks>
               <IOChecks Value="True"/>
             </Checks>
+            <TargetOS Value="linux"/>
             <Optimizations>
               <OptimizationLevel Value="2"/>
             </Optimizations>
@@ -404,27 +411,33 @@ end;"/>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
+            <Filename Value="../awgg"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="/usr/lib/codetyphon/binLibraries/x86_64-linux/"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
+            <UnitOutputDirectory Value="../units/$(TargetCPU)-$(TargetOS)-$(LCLWidgetType)"/>
           </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <IncludeAssertionCode Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
           <CodeGeneration>
-            <SmartLinkUnit Value="True"/>
-            <TargetCPU Value="x86_64"/>
+            <Checks>
+              <IOChecks Value="True"/>
+            </Checks>
             <Optimizations>
-              <OptimizationLevel Value="3"/>
+              <OptimizationLevel Value="2"/>
             </Optimizations>
-            <SmallerCode Value="True"/>
           </CodeGeneration>
           <Linking>
             <Debugging>
-              <GenerateDebugInfo Value="False"/>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseLineInfoUnit Value="False"/>
+              <UseExternalDbgSyms Value="True"/>
             </Debugging>
-            <LinkSmart Value="True"/>
             <Options>
+              <PassLinkerOptions Value="True"/>
               <Win32>
                 <GraphicApplication Value="True"/>
               </Win32>
@@ -434,6 +447,7 @@ end;"/>
             <CustomOptions Value="-dbeta"/>
             <ExecuteBefore>
               <Command Value="$(SrcOS)-versionitis -verbose"/>
+              <CompileReasons Compile="False" Build="False" Run="False"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
@@ -556,7 +570,7 @@ end;"/>
           </Other>
         </CompilerOptions>
       </Item14>
-      <SharedMatrixOptions Count="11">
+      <SharedMatrixOptions Count="12">
         <Item1 ID="262970800232" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item2 ID="292782621389" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
         <Item3 ID="321585814677" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
@@ -568,6 +582,7 @@ end;"/>
         <Item9 ID="916445091724" Modes="Betaqt4" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
         <Item10 ID="643534335870" Modes="betaqt5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
         <Item11 ID="412440179373" Modes="alphacustomdraw" Type="IDEMacro" MacroName="LCLWidgetType" Value="customdrawn"/>
+        <Item12 ID="315442815544" Modes="Default,Debug,Alpha,Beta,Release,Alpha64,Beta64,Release64,Alpha64-GTK3,Alpha64-QT,Alpha-QT5,Betaqt4,betaqt5,alphacustomdraw" Value="-dDisableUTF8RTL"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
@@ -580,16 +595,16 @@ end;"/>
     </RunParams>
     <RequiredPackages Count="3">
       <Item1>
-        <PackageName Value="DateTimeCtrls"/>
+        <PackageName Value="SynEdit"/>
       </Item1>
       <Item2>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item2>
       <Item3>
         <PackageName Value="LCL"/>
       </Item3>
     </RequiredPackages>
-    <Units Count="13">
+    <Units Count="15">
       <Unit0>
         <Filename Value="awgg.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -678,6 +693,20 @@ end;"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit12>
+      <Unit13>
+        <Filename Value="fddbox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frddbox"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="fvideoformat.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frvideoformat"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit14>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -713,29 +742,4 @@ end;"/>
       </ExecuteBefore>
     </Other>
   </CompilerOptions>
-  <Debugging>
-    <Exceptions Count="7">
-      <Item1>
-        <Name Value="EAbort"/>
-      </Item1>
-      <Item2>
-        <Name Value="ECodetoolError"/>
-      </Item2>
-      <Item3>
-        <Name Value="EFOpenError"/>
-      </Item3>
-      <Item4>
-        <Name Value="EInOutError"/>
-      </Item4>
-      <Item5>
-        <Name Value="RunError(5)"/>
-      </Item5>
-      <Item6>
-        <Name Value="RunError(103)"/>
-      </Item6>
-      <Item7>
-        <Name Value="ERangeError"/>
-      </Item7>
-    </Exceptions>
-  </Debugging>
 </CONFIG>

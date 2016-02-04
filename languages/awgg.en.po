@@ -123,47 +123,37 @@ msgid ""
 "\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
-"Copyright (c) 2015\n"
+"Copyright (c) 2014-2016\n"
+"\n"
 "The project uses the following third party resources:\n"
+"- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
+"- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)\n"
+"- aria2 (http://aria2.sourceforge.net)\n"
+"- Wget (http://www.gnu.org/software/wget/)\n"
+"- cURL (http://curl.haxx.se)\n"
+"- Axel (http://axel.alioth.debian.org)\n"
+"- youtube-dl (http://yt-dl.org)\n"
+"- FlashGot (http://flashgot.net)\n"
 "\n"
-"Silk icons set 1.3 by Mark James\n"
-"http://www.famfamfam.com/lab/icons/silk/\n"
-"Tango Icon Library\n"
-"http://tango.freedesktop.org/Tango_Icon_Library\n"
-"aria2\n"
-"http://aria2.sourceforge.net/\n"
-"Wget\n"
-"http://www.gnu.org/software/wget/\n"
-"cURL\n"
-"http://curl.haxx.se/\n"
-"Axel\n"
-"http://axel.alioth.debian.org/\n"
-"\n"
-"French translation: \n"
-"Tony O Gallos @ CodeTyphon Community\n"
+"French translation: Tony O Gallos @ CodeTyphon Community\n"
 msgstr ""
 "This program is free software under GNU GPL 2 license.\n"
 "\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
-"Copyright (c) 2015\n"
+"Copyright (c) 2014-2016\n"
+"\n"
 "The project uses the following third party resources:\n"
+"- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
+"- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)\n"
+"- aria2 (http://aria2.sourceforge.net)\n"
+"- Wget (http://www.gnu.org/software/wget/)\n"
+"- cURL (http://curl.haxx.se)\n"
+"- Axel (http://axel.alioth.debian.org)\n"
+"- youtube-dl (http://yt-dl.org)\n"
+"- FlashGot (http://flashgot.net)\n"
 "\n"
-"Silk icons set 1.3 by Mark James\n"
-"http://www.famfamfam.com/lab/icons/silk/\n"
-"Tango Icon Library\n"
-"http://tango.freedesktop.org/Tango_Icon_Library\n"
-"aria2\n"
-"http://aria2.sourceforge.net/\n"
-"Wget\n"
-"http://www.gnu.org/software/wget/\n"
-"cURL\n"
-"http://curl.haxx.se/\n"
-"Axel\n"
-"http://axel.alioth.debian.org/\n"
-"\n"
-"French translation: \n"
-"Tony O Gallos @ CodeTyphon Community\n"
+"French translation: Tony O Gallos @ CodeTyphon Community\n"
 
 #: fstrings.alldowntreename
 msgctxt "fstrings.alldowntreename"
@@ -235,6 +225,14 @@ msgctxt "fstrings.categoryvideos"
 msgid "Videos"
 msgstr "Videos"
 
+#: fstrings.commonaudiodescription
+msgid "The best quality audio in %s format (if exists)"
+msgstr "The best quality audio in %s format (if exists)"
+
+#: fstrings.commonvideodescription
+msgid "The best quality video in %s format (if exists)"
+msgstr "The best quality video in %s format (if exists)"
+
 #: fstrings.curldefarg1
 msgctxt "fstrings.curldefarg1"
 msgid "[-C -] Continue downloads."
@@ -290,6 +288,14 @@ msgctxt "fstrings.dlgrestartselecteddownloadletter"
 msgid "Do you want to restart the selected download later?"
 msgstr "Do you want to restart the selected download leter?"
 
+#: fstrings.errorloadingformat
+msgid "Error loading video formats, please press reload button"
+msgstr "Error loading video formats, please press reload button"
+
+#: fstrings.errorloadingname
+msgid "Error loading video name, please press reload button"
+msgstr "Error loading video name, please press reload button"
+
 #: fstrings.fileexistsreplace
 msgctxt "fstrings.fileexistsreplace"
 msgid "The file exist, do you want replace it?"
@@ -340,6 +346,14 @@ msgctxt "fstrings.msgcloseinprogressdownload"
 msgid "Downloads exist in progress, do you want to close anyway?"
 msgstr "Downloads exist in progress, do you want to close anyway?"
 
+#: fstrings.msgcopyoperationerror
+msgid ""
+"Error to copy file, details:\n"
+"%s\n"
+msgstr ""
+"Error to copy file, details:\n"
+"%s\n"
+
 #: fstrings.msgerrorconfigload
 msgctxt "fstrings.msgerrorconfigload"
 msgid "Error loading config file: "
@@ -373,6 +387,14 @@ msgstr ""
 msgctxt "fstrings.msgfilenoexist"
 msgid "The file not exists."
 msgstr "The file not exists."
+
+#: fstrings.msgmoveoperationerror
+msgid ""
+"Error to move file, details:\n"
+"$s\n"
+msgstr ""
+"Error to move file, details:\n"
+"$s\n"
 
 #: fstrings.msgmustselectdownload
 msgctxt "fstrings.msgmustselectdownload"
@@ -534,6 +556,23 @@ msgctxt "fstrings.tuesday"
 msgid "Tuesday"
 msgstr "Tuesday"
 
+#: fstrings.videoformatloading
+msgid "Loading available formats, please wait"
+msgstr "Loading available formats, please wait"
+
+#: fstrings.videoname
+msgctxt "fstrings.videoname"
+msgid "Name:"
+msgstr "Name:"
+
+#: fstrings.videonameloading
+msgid "Loading video name, please wait"
+msgstr "Loading video name, please wait"
+
+#: fstrings.videoselectformat
+msgid "Select video format:"
+msgstr "Select video format:"
+
 #: fstrings.wednesday
 msgctxt "fstrings.wednesday"
 msgid "Wednesday"
@@ -593,6 +632,10 @@ msgstr "New download"
 msgctxt "tfnotification.caption"
 msgid "Download Notifications"
 msgstr "Download Notifications"
+
+#: tform1.caption
+msgid "Form1"
+msgstr ""
 
 #: tfrabout.btnok.caption
 msgctxt "tfrabout.btnok.caption"
@@ -739,6 +782,11 @@ msgctxt "tfrconfig.chgwgetdefarguments.caption"
 msgid "Default arguments"
 msgstr "Default arguments"
 
+#: tfrconfig.chgyoutubedldefarguments.caption
+msgctxt "tfrconfig.chgyoutubedldefarguments.caption"
+msgid "Default arguments"
+msgstr "Default arguments"
+
 #: tfrconfig.chloadlogs.caption
 msgctxt "tfrconfig.chloadlogs.caption"
 msgid "Load log when select a download."
@@ -783,6 +831,10 @@ msgstr "Stop queue:"
 msgctxt "tfrconfig.chuseauth.caption"
 msgid "Use authentication"
 msgstr "Use authentication"
+
+#: tfrconfig.chytuseexternaldown.caption
+msgid "Use external engine:"
+msgstr "Use external engine:"
 
 #: tfrconfig.destartqueue.cancelcaption
 msgctxt "tfrconfig.destartqueue.cancelcaption"
@@ -843,6 +895,10 @@ msgstr "Sounds"
 msgctxt "tfrconfig.gbuseragent.caption"
 msgid "User agent"
 msgstr "User agent"
+
+#: tfrconfig.gbytoptions.caption
+msgid "Options"
+msgstr "Options"
 
 #: tfrconfig.lblaria2additionalargs.caption
 msgctxt "tfrconfig.lblaria2additionalargs.caption"
@@ -1034,6 +1090,16 @@ msgctxt "tfrconfig.lblwgetpath.caption"
 msgid "Path of wget executable file:"
 msgstr "Path of wget executable file:"
 
+#: tfrconfig.lblyoutubedladditionalargs.caption
+msgctxt "tfrconfig.lblyoutubedladditionalargs.caption"
+msgid "Additional arguments:"
+msgstr "Additional arguments:"
+
+#: tfrconfig.lblyoutubedlpath.caption
+msgctxt "tfrconfig.lblyoutubedlpath.caption"
+msgid "Path of youtube-dl excecutable file:"
+msgstr "Path of youtube-dl excecutable file:"
+
 #: tfrconfig.rbcategorybytype.caption
 msgctxt "tfrconfig.rbcategorybytype.caption"
 msgid "Suggest by file type"
@@ -1159,6 +1225,10 @@ msgctxt "tfrconfig.tswget.caption"
 msgid "wget"
 msgstr "wget"
 
+#: tfrconfig.tsyoutubedl.caption
+msgid "youtube-dl"
+msgstr "youtube-dl"
+
 #: tfrconfirm.caption
 msgctxt "tfrconfirm.caption"
 msgid "Confirm"
@@ -1183,6 +1253,11 @@ msgstr "From: %s"
 msgctxt "tfrcopymove.lblto.caption"
 msgid "To: %s"
 msgstr "To: %s"
+
+#: tfrddbox.caption
+msgctxt "tfrddbox.caption"
+msgid "Drop box"
+msgstr "Drop box"
 
 #: tfreplace.caption
 msgctxt "tfreplace.caption"
@@ -1309,6 +1384,11 @@ msgctxt "tfrmain.micommandselectall.caption"
 msgid "Select all"
 msgstr "Select all"
 
+#: tfrmain.midropbox.caption
+msgctxt "tfrmain.midropbox.caption"
+msgid "Drop box"
+msgstr "Drop box"
+
 #: tfrmain.miexit.caption
 msgctxt "tfrmain.miexit.caption"
 msgid "Exit"
@@ -1401,6 +1481,16 @@ msgstr "-"
 
 #: tfrmain.miline25.caption
 msgctxt "tfrmain.miline25.caption"
+msgid "-"
+msgstr "-"
+
+#: tfrmain.miline26.caption
+msgctxt "tfrmain.miline26.caption"
+msgid "-"
+msgstr "-"
+
+#: tfrmain.miline27.caption
+msgctxt "tfrmain.miline27.caption"
 msgid "-"
 msgstr "-"
 
@@ -1569,6 +1659,11 @@ msgctxt "tfrmain.mimainconfig.caption"
 msgid "Configuration"
 msgstr "Configuration"
 
+#: tfrmain.mimainddbox.caption
+msgctxt "tfrmain.mimainddbox.caption"
+msgid "Drop box"
+msgstr "Drop box"
+
 #: tfrmain.mimaindeleteall.caption
 msgctxt "tfrmain.mimaindeleteall.caption"
 msgid "Delete all"
@@ -1623,6 +1718,11 @@ msgstr "Official web site"
 msgctxt "tfrmain.mimainimportdown.caption"
 msgid "Import list of downloads..."
 msgstr "Import list of downloads..."
+
+#: tfrmain.mimainintray.caption
+msgctxt "tfrmain.mimainintray.caption"
+msgid "Show program icon in systray"
+msgstr "Show program icon in systray"
 
 #: tfrmain.mimainrestartalllater.caption
 msgctxt "tfrmain.mimainrestartalllater.caption"
@@ -1683,6 +1783,11 @@ msgstr "Estimated"
 msgctxt "tfrmain.mimainshowgrid.caption"
 msgid "Show gridlines"
 msgstr "Show gridlines"
+
+#: tfrmain.mimainshowintray.caption
+msgctxt "tfrmain.mimainshowintray.caption"
+msgid "Show program icon in systray"
+msgstr "Show program icon in systray"
 
 #: tfrmain.mimainshowname.caption
 msgctxt "tfrmain.mimainshowname.caption"
@@ -1768,6 +1873,11 @@ msgstr "Show"
 msgctxt "tfrmain.mistopall.caption"
 msgid "Stop all"
 msgstr "Stop all"
+
+#: tfrmain.mitrayabout.caption
+msgctxt "tfrmain.mitrayabout.caption"
+msgid "About"
+msgstr "About"
 
 #: tfrmain.mitraydownstart.caption
 msgctxt "tfrmain.mitraydownstart.caption"
@@ -1944,6 +2054,18 @@ msgctxt "tfrnewdown.btncancel.caption"
 msgid "Cancel"
 msgstr "Cancel"
 
+#: tfrnewdown.btncategorygo.hint
+msgid "Configure the category file"
+msgstr "Configure the category file"
+
+#: tfrnewdown.btngodestination.hint
+msgid "Open the path folder"
+msgstr "Open the path folder"
+
+#: tfrnewdown.btnmore.hint
+msgid "Select the video format"
+msgstr "Select the video format"
+
 #: tfrnewdown.btnpaused.caption
 msgctxt "tfrnewdown.btnpaused.caption"
 msgid "Paused"
@@ -1959,30 +2081,44 @@ msgctxt "tfrnewdown.btnstart.caption"
 msgid "Start now"
 msgstr "Start now"
 
+#: tfrnewdown.btntoend.hint
+msgctxt "tfrnewdown.btntoend.hint"
+msgid "Position in queue"
+msgstr "Position in queue"
+
 #: tfrnewdown.btntoqueue.caption
 msgctxt "tfrnewdown.btntoqueue.caption"
 msgid "To the queue [F2]"
 msgstr "To the queue [F2]"
+
+#: tfrnewdown.btntoup.hint
+msgctxt "tfrnewdown.btntoup.hint"
+msgid "Position in queue"
+msgstr "Position in queue"
 
 #: tfrnewdown.caption
 msgctxt "tfrnewdown.caption"
 msgid "New download"
 msgstr "New download"
 
+#: tfrnewdown.dedestination.hint
+msgid "Select the path folder"
+msgstr "Select the path folder"
+
 #: tfrnewdown.lbldestination.caption
 msgctxt "tfrnewdown.lbldestination.caption"
-msgid "Destination: "
-msgstr "Destination: "
+msgid "Path:"
+msgstr "Path:"
 
 #: tfrnewdown.lblengine.caption
 msgctxt "tfrnewdown.lblengine.caption"
-msgid "Engine: "
-msgstr "Engine: "
+msgid "Engine:"
+msgstr "Engine:"
 
 #: tfrnewdown.lblfilename.caption
 msgctxt "tfrnewdown.lblfilename.caption"
-msgid "File name: "
-msgstr "File name: "
+msgid "Name:"
+msgstr "Name:"
 
 #: tfrnewdown.lblparameters.caption
 msgctxt "tfrnewdown.lblparameters.caption"
@@ -2001,8 +2137,8 @@ msgstr "Queue:"
 
 #: tfrnewdown.lblurl.caption
 msgctxt "tfrnewdown.lblurl.caption"
-msgid "URL: "
-msgstr "URL: "
+msgid "URL:"
+msgstr "URL:"
 
 #: tfrnewdown.lbluser.caption
 msgctxt "tfrnewdown.lbluser.caption"
@@ -2255,6 +2391,41 @@ msgstr ""
 #: tfrsitegrabber.tswelcome.caption
 msgid "tsWelcome"
 msgstr ""
+
+#: tfrvideoformat.btnreload.caption
+msgid "Reload"
+msgstr "Reload"
+
+#: tfrvideoformat.caption
+msgid "Video formats"
+msgstr "Video formats"
+
+#: tfrvideoformat.chdownsubtitle.caption
+msgid "Download all subtitles"
+msgstr "Download all subtitles"
+
+#: tfrvideoformat.lblselectformat.caption
+msgid "Select format:"
+msgstr "Select format:"
+
+#: tfrvideoformat.lblvideoname.caption
+msgctxt "tfrvideoformat.lblvideoname.caption"
+msgid "Name:"
+msgstr "Name:"
+
+#: tfrvideoformat.lvformats.columns[0].caption
+msgid "Format"
+msgstr "Format"
+
+#: tfrvideoformat.lvformats.columns[1].caption
+msgctxt "tfrvideoformat.lvformats.columns[1].caption"
+msgid "Description"
+msgstr "Description"
+
+#: tfrvideoformat.lvformats.columns[2].caption
+msgctxt "tfrvideoformat.lvformats.columns[2].caption"
+msgid "id"
+msgstr "id"
 
 #: tfsitegrabber.caption
 msgctxt "tfsitegrabber.caption"

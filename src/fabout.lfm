@@ -1,16 +1,16 @@
 object frabout: Tfrabout
-  Left = 196
-  Height = 389
-  Top = 94
-  Width = 570
+  Left = 105
+  Height = 320
+  Top = 124
+  Width = 640
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
   Caption = 'About'
-  ClientHeight = 389
-  ClientWidth = 570
+  ClientHeight = 320
+  ClientWidth = 640
   OnDeactivate = FormDeactivate
   Position = poScreenCenter
-  LCLVersion = '1.4.4.0'
+  LCLVersion = '1.6.0.2'
   object lblAboutName: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = imgLogo
@@ -35,9 +35,9 @@ object frabout: Tfrabout
     AnchorSideRight.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 266
+    Left = 301
     Height = 23
-    Top = 361
+    Top = 292
     Width = 39
     Anchors = [akLeft, akBottom]
     AutoSize = True
@@ -407,8 +407,8 @@ object frabout: Tfrabout
     Cursor = crHandPoint
     Left = 251
     Height = 1
-    Top = 344
-    Width = 319
+    Top = 275
+    Width = 389
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 20
@@ -429,7 +429,7 @@ object frabout: Tfrabout
     AnchorSideBottom.Control = btnOk
     Left = 200
     Height = 13
-    Top = 338
+    Top = 269
     Width = 46
     Alignment = taRightJustify
     Anchors = [akLeft, akBottom]
@@ -444,9 +444,9 @@ object frabout: Tfrabout
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = lblWebSite
     Left = 200
-    Height = 328
+    Height = 259
     Top = 5
-    Width = 365
+    Width = 435
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Top = 5
     BorderSpacing.Right = 5
