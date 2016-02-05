@@ -18,7 +18,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="4800"/>
+      <BuildNr Value="4830"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2016" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
     </VersionInfo>
     <BuildModes Count="14">
@@ -103,11 +103,6 @@
         </CompilerOptions>
       </Item3>
       <Item4 Name="Beta">
-        <MacroValues Count="3">
-          <Macro1 Name="LCLWidgetType" Value="qt"/>
-          <Macro2 Name="LCLWidgetType" Value="win32"/>
-          <Macro3 Name="LCLWidgetType" Value="gtk2"/>
-        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -137,7 +132,6 @@ end;"/>
             <Checks>
               <IOChecks Value="True"/>
             </Checks>
-            <TargetOS Value="linux"/>
             <Optimizations>
               <OptimizationLevel Value="2"/>
             </Optimizations>

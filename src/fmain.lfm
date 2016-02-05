@@ -1,18 +1,18 @@
 object frmain: Tfrmain
-  Left = 220
+  Left = 311
   Height = 480
-  Top = 159
+  Top = 121
   Width = 640
   ActiveControl = psVertical
   Caption = 'AWGG'
-  ClientHeight = 480
+  ClientHeight = 459
   ClientWidth = 640
   Menu = mnuMain
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
-  LCLVersion = '1.5'
+  LCLVersion = '1.6.0.2'
   object fseLimit: TFloatSpinEdit
     AnchorSideLeft.Control = cbLimit
     AnchorSideLeft.Side = asrBottom
@@ -24,7 +24,7 @@ object frmain: Tfrmain
     AnchorSideBottom.Side = asrBottom
     Left = 110
     Height = 27
-    Top = 451
+    Top = 430
     Width = 47
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 2
@@ -42,7 +42,7 @@ object frmain: Tfrmain
     AnchorSideRight.Control = fseLimit
     Left = 5
     Height = 23
-    Top = 453
+    Top = 432
     Width = 105
     BorderSpacing.Left = 5
     Caption = 'Limit (Kb/s):'
@@ -303,7 +303,7 @@ object frmain: Tfrmain
     AnchorSideBottom.Side = asrBottom
     Left = 584
     Height = 27
-    Top = 451
+    Top = 430
     Width = 46
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 10
@@ -320,7 +320,7 @@ object frmain: Tfrmain
     AnchorSideRight.Control = seMaxDownInProgress
     Left = 397
     Height = 15
-    Top = 457
+    Top = 436
     Width = 185
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
@@ -336,7 +336,7 @@ object frmain: Tfrmain
     AnchorSideBottom.Control = fseLimit
     Cursor = crVSplit
     Left = 0
-    Height = 425
+    Height = 404
     Top = 26
     Width = 640
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -543,6 +543,8 @@ object frmain: Tfrmain
             OnColumnClick = lvMainColumnClick
             OnContextPopup = lvMainContextPopup
             OnDblClick = lvMainDblClick
+            OnDragOver = lvFilterDragOver
+            OnEndDrag = lvFilterEndDrag
             OnKeyDown = lvMainKeyDown
             OnMouseMove = lvFilterMouseMove
             OnSelectItem = lvFilterSelectItem
@@ -676,6 +678,8 @@ object frmain: Tfrmain
             OnColumnClick = lvMainColumnClick
             OnContextPopup = lvMainContextPopup
             OnDblClick = lvMainDblClick
+            OnDragOver = lvMainDragOver
+            OnEndDrag = lvMainEndDrag
             OnKeyDown = lvMainKeyDown
             OnMouseMove = lvMainMouseMove
             OnSelectItem = lvMainSelectItem
@@ -703,11 +707,11 @@ object frmain: Tfrmain
     object psVerticalDownSide: TPairSplitterSide
       Cursor = crArrow
       Left = 0
-      Height = 150
+      Height = 129
       Top = 275
       Width = 640
       ClientWidth = 640
-      ClientHeight = 150
+      ClientHeight = 129
       inline SynEdit1: TSynEdit
         AnchorSideLeft.Control = psVerticalDownSide
         AnchorSideTop.Control = psVerticalDownSide
@@ -716,7 +720,7 @@ object frmain: Tfrmain
         AnchorSideBottom.Control = psVerticalDownSide
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 150
+        Height = 129
         Top = 0
         Width = 640
         Anchors = [akTop, akLeft, akRight, akBottom]

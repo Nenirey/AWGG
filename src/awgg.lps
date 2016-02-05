@@ -2,13 +2,7 @@
 <CONFIG>
   <ProjectSession>
     <Version Value="9"/>
-    <BuildModes Active="Beta">
-      <SessionMatrixOptions Count="3">
-        <Item1 ID="078351077056" Modes="Beta" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
-        <Item2 ID="274662982392" Modes="Beta" Type="IDEMacro" MacroName="LCLWidgetType" Value="win32"/>
-        <Item3 ID="463703275980" Modes="Beta" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
-      </SessionMatrixOptions>
-    </BuildModes>
+    <BuildModes Active="Beta"/>
     <Units Count="15">
       <Unit0>
         <Filename Value="awgg.lpr"/>
@@ -27,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="5978"/>
-        <CursorPos X="3" Y="5985"/>
+        <TopLine Value="5697"/>
+        <CursorPos X="39" Y="5716"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -206,7 +200,7 @@
         <WindowIndex Value="1"/>
         <TopLine Value="33"/>
         <CursorPos X="3" Y="49"/>
-        <UsageCount Value="185"/>
+        <UsageCount Value="191"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>

@@ -309,12 +309,18 @@ end;
     procedure FormCreate(Sender: TObject);
     procedure FormWindowStateChange(Sender: TObject);
     procedure hintTimerTimer(Sender: TObject);
+    procedure lvFilterDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure lvFilterEndDrag(Sender, Target: TObject; X, Y: Integer);
     procedure lvFilterMouseMove(Sender: TObject; Shift: TShiftState; X,
       Y: Integer);
     procedure lvMainColumnClick(Sender: TObject; Column: TListColumn);
     procedure lvMainContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
     procedure lvMainDblClick(Sender: TObject);
+    procedure lvMainDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
+    procedure lvMainEndDrag(Sender, Target: TObject; X, Y: Integer);
     procedure lvMainKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure lvMainMouseMove(Sender: TObject; Shift: TShiftState; X, Y: Integer
@@ -603,6 +609,7 @@ var
   firstnormalshow:boolean;
   dropboxonstart:boolean;
   showmainintray:boolean;
+  StartDragIndex:integer=-1;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
   function suggestdir(doc:string):string;
@@ -2069,7 +2076,7 @@ end;
 
 procedure movestepdown(steps:integer);
 begin
-  if (frmain.lvMain.SelCount>0) and (steps<frmain.lvMain.Items.Count) then
+  if (frmain.lvMain.SelCount>0) and (steps<=frmain.lvMain.Items.Count) then
   begin
     frmain.lvMain.MultiSelect:=false;
     frmain.lvMain.Items.Move(frmain.lvMain.ItemIndex,steps);
@@ -5645,6 +5652,48 @@ begin
 
 end;
 
+procedure Tfrmain.lvFilterDragOver(Sender, Source: TObject; X, Y: Integer;
+  State: TDragState; var Accept: Boolean);
+begin
+  if Assigned(frmain.lvFilter.GetItemAt(x,y)) then
+  begin
+    accept:=true;
+    StartDragIndex:=frmain.lvMain.Selected.Index;
+  end
+  else
+  begin
+    accept:=false;
+    StartDragIndex:=-1;
+  end;
+end;
+
+procedure Tfrmain.lvFilterEndDrag(Sender, Target: TObject; X, Y: Integer);
+var
+  i,indice,endindex:integer;
+  itemuid:string;
+begin
+  if Assigned(frmain.lvFilter.GetItemAt(x,y)) and (StartDragIndex<>-1)  then
+  begin
+    itemuid:=frmain.lvFilter.GetItemAt(x,y).SubItems[columnuid];
+    endindex:=frmain.lvFilter.GetItemAt(x,y).Index;
+  //////////////////////////////
+    for i:=0 to frmain.lvMain.Items.Count-1 do
+    begin
+      if frmain.lvMain.Items[i].SubItems[columnuid]=itemuid then
+      begin
+        indice:=i;
+        break;
+      end;
+    end;
+  /////////////////////////////
+    if endindex>StartDragIndex then
+      movestepdown(indice);
+    if endindex<StartDragIndex then
+      movestepup(StartDragIndex,indice);
+  end;
+  StartDragIndex:=-1;
+end;
+
 procedure Tfrmain.lvFilterMouseMove(Sender: TObject; Shift: TShiftState; X,
   Y: Integer);
 begin
@@ -5660,9 +5709,13 @@ begin
       frmain.lvFilter.ShowHint:=true;
     except on e:exception do
     end;
+    frmain.lvFilter.DragMode:=dmAutomatic;
   end
   else
+  begin
+    frmain.lvFilter.DragMode:=dmManual;
     frmain.lvFilter.ShowHint:=false;
+  end;
 end;
 
 procedure Tfrmain.lvMainColumnClick(Sender: TObject; Column: TListColumn);
@@ -5810,6 +5863,33 @@ begin
   end;
 end;
 
+procedure Tfrmain.lvMainDragOver(Sender, Source: TObject; X, Y: Integer;
+  State: TDragState; var Accept: Boolean);
+begin
+  if Assigned(frmain.lvMain.GetItemAt(x,y)) then
+  begin
+    accept:=true;
+    StartDragIndex:=frmain.lvMain.Selected.Index;
+  end
+  else
+  begin
+    accept:=false;
+    StartDragIndex:=-1;
+  end;
+end;
+
+procedure Tfrmain.lvMainEndDrag(Sender, Target: TObject; X, Y: Integer);
+begin
+  if Assigned(frmain.lvMain.GetItemAt(x,y)) and (StartDragIndex<>-1)  then
+  begin
+    if frmain.lvMain.GetItemAt(x,y).Index>StartDragIndex then
+      movestepdown(frmain.lvMain.GetItemAt(x,y).Index);
+    if frmain.lvMain.GetItemAt(x,y).Index<StartDragIndex then
+      movestepup(StartDragIndex,frmain.lvMain.GetItemAt(x,y).Index);
+  end;
+  StartDragIndex:=-1;
+end;
+
 procedure Tfrmain.lvMainKeyDown(Sender: TObject; var Key: Word;
   Shift: TShiftState);
 begin
@@ -5845,9 +5925,13 @@ begin
       frmain.lvMain.ShowHint:=true;
     except on e:exception do
     end;
+    frmain.lvMain.DragMode:=dmAutomatic;
   end
   else
+  begin
     frmain.lvMain.ShowHint:=false;
+    frmain.lvMain.DragMode:=dmManual;
+  end;
 end;
 
 procedure Tfrmain.lvMainSelectItem(Sender: TObject; Item: TListItem;
