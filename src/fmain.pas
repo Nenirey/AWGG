@@ -4189,6 +4189,7 @@ begin
     begin
       if Pos('[info] Available formats for',gout)>0 then
       begin
+        gout:=Copy(gout,Pos('[info] Available formats for',gout),Length(gout));
         slformats:=TStringList.Create;
         slformats.AddText(gout);
         frvideoformat.lblSelectFormat.Caption:=videoselectformat;
@@ -4288,7 +4289,10 @@ begin
       {$ENDIF}
           ReadCount := Min(2048, gthp.Output.NumBytesAvailable); //Solo leer hasta llenar el buffer
           gthp.Output.Read(CharBuffer, ReadCount);
-          gout:=Copy(CharBuffer, 0, ReadCount);
+          if worktype=0 then
+            gout+=Copy(CharBuffer, 0, ReadCount)
+          else
+            gout:=Copy(CharBuffer, 0, ReadCount);
           if (Pos('(OK):download',gout)>0) or (Pos('100%[',gout)>0) or (Pos('%AWGG100OK%',gout)>0) or (Pos('[100%]',gout)>0) or (Pos(' guardado [',gout)>0) or (Pos(' saved [',gout)>0) or (Pos('ERROR 400: Bad Request.',gout)>0) or (Pos('The file is already fully retrieved; nothing to do.',gout)>0) or (Pos('El fichero ya ha sido totalmente recuperado, no hay nada que hacer.',gout)>0) then
             completado:=true;
       {$IFDEF UNIX}
@@ -4414,7 +4418,7 @@ begin
   gparams.Add('--no-playlist');
   gparams.Add('-c');
   gparams.Add('--no-part');
-  gparams.Add('-v');
+  //gparams.Add('-v');
   //gparams.Add('--newline');
   gparams.Add('--no-check-certificate');
   case useproxy of

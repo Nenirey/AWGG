@@ -5,14 +5,14 @@ object frmain: Tfrmain
   Width = 640
   ActiveControl = psVertical
   Caption = 'AWGG'
-  ClientHeight = 459
+  ClientHeight = 480
   ClientWidth = 640
   Menu = mnuMain
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
-  LCLVersion = '1.6.0.2'
+  LCLVersion = '1.5'
   object fseLimit: TFloatSpinEdit
     AnchorSideLeft.Control = cbLimit
     AnchorSideLeft.Side = asrBottom
@@ -24,7 +24,7 @@ object frmain: Tfrmain
     AnchorSideBottom.Side = asrBottom
     Left = 110
     Height = 27
-    Top = 430
+    Top = 451
     Width = 47
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 2
@@ -42,7 +42,7 @@ object frmain: Tfrmain
     AnchorSideRight.Control = fseLimit
     Left = 5
     Height = 23
-    Top = 432
+    Top = 453
     Width = 105
     BorderSpacing.Left = 5
     Caption = 'Limit (Kb/s):'
@@ -303,7 +303,7 @@ object frmain: Tfrmain
     AnchorSideBottom.Side = asrBottom
     Left = 584
     Height = 27
-    Top = 430
+    Top = 451
     Width = 46
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 10
@@ -320,7 +320,7 @@ object frmain: Tfrmain
     AnchorSideRight.Control = seMaxDownInProgress
     Left = 397
     Height = 15
-    Top = 436
+    Top = 457
     Width = 185
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
@@ -336,7 +336,7 @@ object frmain: Tfrmain
     AnchorSideBottom.Control = fseLimit
     Cursor = crVSplit
     Left = 0
-    Height = 404
+    Height = 425
     Top = 26
     Width = 640
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -707,11 +707,11 @@ object frmain: Tfrmain
     object psVerticalDownSide: TPairSplitterSide
       Cursor = crArrow
       Left = 0
-      Height = 129
+      Height = 150
       Top = 275
       Width = 640
       ClientWidth = 640
-      ClientHeight = 129
+      ClientHeight = 150
       inline SynEdit1: TSynEdit
         AnchorSideLeft.Control = psVerticalDownSide
         AnchorSideTop.Control = psVerticalDownSide
@@ -720,7 +720,7 @@ object frmain: Tfrmain
         AnchorSideBottom.Control = psVerticalDownSide
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 129
+        Height = 150
         Top = 0
         Width = 640
         Anchors = [akTop, akLeft, akRight, akBottom]
