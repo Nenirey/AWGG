@@ -3669,7 +3669,7 @@ begin
     frmain.SynEdit1.InsertTextAtCaret(wout);
   end;
   /////////////////***WGET***/////////////////////
-  if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'wget') or (youtubedlthexternal='wget') or (youtubedlextdown='wget') then
+  if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'wget') or (youtubedlthexternal='wget') or ((youtubedlextdown='wget') and youtubedluseextdown and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl')) then
   begin
     if Pos(#10+'Longitud: ',wout)>0 then
     begin
@@ -3780,7 +3780,7 @@ begin
   ///////////////////***END***///////////////////
 
   ///////////////////***ARIA2***///////////////////
-  if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'aria2c') or (youtubedlthexternal='aria2c') or (youtubedlextdown='aria2c') then
+  if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'aria2c') or (youtubedlthexternal='aria2c') or ((youtubedlextdown='aria2c') and youtubedluseextdown and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl')) then
   begin
     if Pos('%) ',wout)>0 then
     begin
@@ -3847,7 +3847,7 @@ begin
   /////////////////////***END***//////////////////////
 
   ////////////////////***CURL***//////////////////////
-  if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'curl') or (youtubedlthexternal='curl') or (youtubedlextdown='curl') then
+  if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'curl') or (youtubedlthexternal='curl') or ((youtubedlextdown='curl') and youtubedluseextdown and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl')) then
   begin
     if (Pos(':',wout)>0) and (WordCount(wout,[' '])=13) then
     begin
@@ -3882,7 +3882,7 @@ begin
   ///////////////////***END***////////////////////////
 
   ///////////////////***AXEL***////////////////////////
-  if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'axel') or (youtubedlthexternal='axel') or (youtubedlextdown='axel') then
+  if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'axel') or (youtubedlthexternal='axel') or ((youtubedlextdown='axel') and youtubedluseextdown and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl')) then
   begin
     if Pos('File size: ',wout)>0 then
       tamano:=Copy(wout,Pos('File size: ',wout)+11,length(wout));
