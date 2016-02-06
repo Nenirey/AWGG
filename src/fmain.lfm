@@ -1,7 +1,7 @@
 object frmain: Tfrmain
-  Left = 311
+  Left = 206
   Height = 480
-  Top = 121
+  Top = 189
   Width = 640
   ActiveControl = psVertical
   Caption = 'AWGG'
@@ -397,6 +397,7 @@ object frmain: Tfrmain
             TabOrder = 0
             OnContextPopup = tvMainContextPopup
             OnDblClick = tvMainDblClick
+            OnDragOver = tvMainDragOver
             OnEdited = tvMainEdited
             OnEditing = tvMainEditing
             OnKeyDown = tvMainKeyDown

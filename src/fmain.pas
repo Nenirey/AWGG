@@ -454,6 +454,8 @@ end;
     procedure tvMainContextPopup(Sender: TObject; MousePos: TPoint;
       var Handled: Boolean);
     procedure tvMainDblClick(Sender: TObject);
+    procedure tvMainDragOver(Sender, Source: TObject; X, Y: Integer;
+      State: TDragState; var Accept: Boolean);
     procedure tvMainEdited(Sender: TObject; Node: TTreeNode; var S: string);
     procedure tvMainEditing(Sender: TObject; Node: TTreeNode;
       var AllowEdit: Boolean);
@@ -5695,6 +5697,19 @@ begin
     if endindex<StartDragIndex then
       movestepup(StartDragIndex,indice);
   end;
+  if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
+  begin
+    if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+    begin
+      itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
+      for i:=0 to frmain.lvMain.Items.Count-1 do
+      begin
+        if frmain.lvMain.Items[i].Selected then
+          frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
+      end;
+      frmain.tvMainSelectionChanged(nil);
+    end;
+  end;
   StartDragIndex:=-1;
 end;
 
@@ -5883,6 +5898,9 @@ begin
 end;
 
 procedure Tfrmain.lvMainEndDrag(Sender, Target: TObject; X, Y: Integer);
+var
+  i:integer;
+  itemuid:string;
 begin
   if Assigned(frmain.lvMain.GetItemAt(x,y)) and (StartDragIndex<>-1)  then
   begin
@@ -5890,6 +5908,19 @@ begin
       movestepdown(frmain.lvMain.GetItemAt(x,y).Index);
     if frmain.lvMain.GetItemAt(x,y).Index<StartDragIndex then
       movestepup(StartDragIndex,frmain.lvMain.GetItemAt(x,y).Index);
+  end;
+  if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
+  begin
+    if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+    begin
+      itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
+      for i:=0 to frmain.lvMain.Items.Count-1 do
+      begin
+        if frmain.lvMain.Items[i].Selected then
+          frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
+      end;
+      frmain.tvMainSelectionChanged(nil);
+    end;
   end;
   StartDragIndex:=-1;
 end;
@@ -7905,6 +7936,22 @@ begin
       end;
     end;
   end;
+end;
+
+procedure Tfrmain.tvMainDragOver(Sender, Source: TObject; X, Y: Integer;
+  State: TDragState; var Accept: Boolean);
+begin
+  if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
+  begin
+    if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+    begin
+      Accept:=true;
+    end
+    else
+      Accept:=false;
+  end
+  else
+    Accept:=false;
 end;
 
 procedure Tfrmain.tvMainEdited(Sender: TObject; Node: TTreeNode; var S: string
