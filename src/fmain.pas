@@ -354,8 +354,6 @@ end;
     procedure mimainShowParametersClick(Sender: TObject);
     procedure mimainShowGridClick(Sender: TObject);
     procedure milistOpenLogClick(Sender: TObject);
-    procedure milistStartDownClick(Sender: TObject);
-    procedure milistStopDownClick(Sender: TObject);
     procedure milistRestartNowClick(Sender: TObject);
     procedure miExitClick(Sender: TObject);
     procedure mimainRestartAllNowClick(Sender: TObject);
@@ -685,9 +683,9 @@ begin
     for wrn:=1 to WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']) do
       tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
   end;
+  tmps.Add('-S');//Mouestra la respuesta del servidor
   tmps.Add('-e');
   tmps.Add('recursive=off');//Descativar para la opcion -O
-  tmps.Add('-S');//Mouestra la respuesta del servidor
   if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
   begin
     tmps.Add('-O');
@@ -919,13 +917,15 @@ begin
       tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
   end;
   tmps.Add('-k');//Ignorar certificados
-  tmps.Add('-i');//Muestra la respuesta del servidor
   tmps.Add('-v');//Mas infomracion (optener el nombre de archivo)
   if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
   begin
+    tmps.Add('-i');//Mostrar respuesta del servidor
     tmps.Add('-o');
     tmps.Add(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columnname]));
-  end;
+  end
+  else
+    tmps.Add('-J');//La salida es el nombre real del fichero
   tmps.Add('-O');
   if curldefcontinue and (not restart) then
   begin
@@ -1279,21 +1279,6 @@ begin
        tempstr:=floattostr(SimpleRoundTo(size/1024/1024/1024,Digits))+'G';
      if(size>=(1024*1024*1024*1024)) then
        tempstr:=floattostr(SimpleRoundTo(size/1024/1024/1024/1024,Digits))+'T';
-     {tempstr:=StringReplace(tempstr,',','.',[rfReplaceAll]);
-     if Pos('.',tempstr)>=1 then
-     begin
-       tempstr:=StringReplace(tempstr,'K','.0K',[rfReplaceAll]);
-       tempstr:=StringReplace(tempstr,'M','.0M',[rfReplaceAll]);
-       tempstr:=StringReplace(tempstr,'G','.0G',[rfReplaceAll]);
-       tempstr:=StringReplace(tempstr,'T','.0T',[rfReplaceAll]);
-     end;
-     if Pos(',',tempstr)>=1 then
-     begin
-       tempstr:=StringReplace(tempstr,'K',',0K',[rfReplaceAll]);
-       tempstr:=StringReplace(tempstr,'M',',0M',[rfReplaceAll]);
-       tempstr:=StringReplace(tempstr,'G',',0G',[rfReplaceAll]);
-       tempstr:=StringReplace(tempstr,'T',',0T',[rfReplaceAll]);
-     end;}
     end;
   'aria2c','youtube-dl':
     begin
@@ -1518,7 +1503,10 @@ begin
     for i:=0 to frmain.lvMain.Items.Count-1 do
     begin
       if frmain.lvMain.Items[i].Selected and (frmain.milistSendToQueue.IndexOf(self)<>-1) then
+      begin
         frmain.lvMain.Items[i].SubItems[columnqueue]:=inttostr(frmain.milistSendToQueue.IndexOf(self));
+        frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(triesrotate);
+      end;
     end;
   end;
   frmain.tvMainSelectionChanged(nil);
@@ -1988,6 +1976,8 @@ end;
 
 procedure playsound(soundfile:string);
 begin
+  if Pos(pathdelim,soundfile)=0 then
+    soundfile:=ExtractFilePath(UTF8ToSys(Application.Params[0]))+pathdelim+soundfile;
   {$IFDEF WINDOWS}
     sndPlaySound(pchar(UTF8ToSys(soundfile)), snd_Async or snd_NoDefault);
   {$ELSE}
@@ -2241,6 +2231,7 @@ begin
     frconfig.cbDefEngine.ItemIndex:=0;
   if frconfig.cbytexternaldown.ItemIndex=-1 then
     frconfig.cbytexternaldown.ItemIndex:=0;
+  defaultengine:=frnewdown.cbEngine.Caption;
 end;
 
 procedure autostart();
@@ -2586,7 +2577,7 @@ begin
     curlargs:=iniconfigfile.ReadString('Config','curlargs',curlargs);
     axelargs:=iniconfigfile.ReadString('Config','axelargs',axelargs);
     youtubedlargs:=iniconfigfile.ReadString('Config','youtubedlargs',youtubedlargs);
-    youtubedlextdown:=iniconfigfile.ReadString('Config','youtubedlextdown','aria2c');
+    youtubedlextdown:=iniconfigfile.ReadString('Config','youtubedlextdown','wget');
     youtubedluseextdown:=iniconfigfile.ReadBool('Config','youtubedluseextdown',false);
     wgetdefcontinue:=iniconfigfile.ReadBool('Config','wgetdefcontinue',true);
     wgetdefnh:=iniconfigfile.ReadBool('Config','wgetdefnh',true);
@@ -2618,9 +2609,9 @@ begin
     deflanguage:=iniconfigfile.ReadString('Config','deflanguage','en');
     firststart:=iniconfigfile.ReadBool('Config','firststart',true);
     defaultengine:=iniconfigfile.ReadString('Config','defaultengine','wget');
-    playsounds:=iniconfigfile.ReadBool('Config','playsounds',playsounds);
-    downcompsound:=iniconfigfile.ReadString('Config','downcompsound',downcompsound);
-    downstopsound:=iniconfigfile.ReadString('Config','downstopsound',downstopsound);
+    playsounds:=iniconfigfile.ReadBool('Config','playsounds',true);
+    downcompsound:=iniconfigfile.ReadString('Config','downcompsound','complete.wav');
+    downstopsound:=iniconfigfile.ReadString('Config','downstopsound','stopped.wav');
     sheduledisablelimits:=iniconfigfile.ReadBool('Config','sheduledisablelimits',false);
     queuerotate:=iniconfigfile.ReadBool('Config','queuerotate',false);
     triesrotate:=iniconfigfile.ReadInteger('Config','triesrotate',5);
@@ -3276,7 +3267,7 @@ begin
           if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
           begin
             tmps.Add('--o');
-            tmps.Add(frmain.lvMain.Items[indice].SubItems[columnname]);
+            tmps.Add(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columnname]));
           end;
           tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);
         end;
@@ -3604,49 +3595,57 @@ begin
   frmain.tbStopScheduler.Enabled:=false;
 end;
 
-procedure restartdownload(indice:integer;ahora:boolean;update:boolean=true);
+procedure restartdownload(ahora:boolean;update:boolean=true);
+var
+  i:integer;
 begin
-  if frmain.lvMain.Items[indice].SubItems[columnstatus] <> '1' then
+  for i:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if frmain.lvMain.Items[indice].SubItems[columntype]='0' then
+    if frmain.lvMain.Items[i].Selected then
     begin
-      if FileExists(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname]));
+      if frmain.lvMain.Items[i].SubItems[columnstatus] <> '1' then
+      begin
+        if frmain.lvMain.Items[i].SubItems[columntype]='0' then
+        begin
+          if FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])) then
+            SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname]));
 
-      if (frmain.lvMain.Items[indice].SubItems[columnengine]='aria2c') and (FileExists(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.aria2')) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.aria2');
+          if (frmain.lvMain.Items[i].SubItems[columnengine]='aria2c') and (FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])+'.aria2')) then
+            SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])+'.aria2');
 
-      if (frmain.lvMain.Items[indice].SubItems[columnengine]='axel') and (FileExists(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.st')) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.st');
+          if (frmain.lvMain.Items[i].SubItems[columnengine]='axel') and (FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])+'.st')) then
+            SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])+'.st');
 
-      if (frmain.lvMain.Items[indice].SubItems[columnengine]='youtube-dl') and (FileExists(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.part')) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[indice].SubItems[columnname])+'.part');
+          if (frmain.lvMain.Items[i].SubItems[columnengine]='youtube-dl') and (FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])+'.part')) then
+            SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])+'.part');
 
-      if FileExists(UTF8ToSys(datapath+pathdelim+frmain.lvMain.Items[indice].SubItems[columnuid])+'.status') then
-        SysUtils.DeleteFile(UTF8ToSys(datapath+pathdelim+frmain.lvMain.Items[indice].SubItems[columnuid])+'.status');
+          if FileExists(UTF8ToSys(datapath+pathdelim+frmain.lvMain.Items[i].SubItems[columnuid])+'.status') then
+            SysUtils.DeleteFile(UTF8ToSys(datapath+pathdelim+frmain.lvMain.Items[i].SubItems[columnuid])+'.status');
 
-      frmain.lvMain.Items[indice].ImageIndex:=18;
-    end;
-    if frmain.lvMain.Items[indice].SubItems[columntype] = '1' then
-    begin
-      if FileExists(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Host+ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html')) then
-        SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Host+ParseURI(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html'));
-      frmain.lvMain.Items[indice].ImageIndex:=51;
-    end;
-    frmain.lvMain.Items[indice].Caption:=fstrings.statuspaused;
-    frmain.lvMain.Items[indice].SubItems[columnstatus]:='0';
-    frmain.lvMain.Items[indice].SubItems[columnpercent]:='-';
-    frmain.lvMain.Items[indice].SubItems[columnspeed]:='--';
-    frmain.lvMain.Items[indice].SubItems[columnestimate]:='--';
-    frmain.lvMain.Items[indice].SubItems[columncurrent]:='0';
-    if frmain.lvFilter.Visible and update then
-      frmain.tvMainSelectionChanged(nil);
-    if ahora then
-    begin
-      queuemanual[strtoint(frmain.lvMain.Items[indice].SubItems[columnqueue])]:=true;
-      downloadstart(indice,true);
+          frmain.lvMain.Items[i].ImageIndex:=18;
+        end;
+        if frmain.lvMain.Items[i].SubItems[columntype] = '1' then
+        begin
+          if FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.lvMain.Items[i].SubItems[columnurl]).Host+ParseURI(frmain.lvMain.Items[i].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html')) then
+            SysUtils.DeleteFile(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+StringReplace(ParseURI(frmain.lvMain.Items[i].SubItems[columnurl]).Host+ParseURI(frmain.lvMain.Items[i].SubItems[columnurl]).Path,'/',pathdelim,[rfReplaceAll])+pathdelim+'index.html'));
+          frmain.lvMain.Items[i].ImageIndex:=51;
+        end;
+        frmain.lvMain.Items[i].Caption:=fstrings.statuspaused;
+        frmain.lvMain.Items[i].SubItems[columnstatus]:='0';
+        frmain.lvMain.Items[i].SubItems[columnpercent]:='-';
+        frmain.lvMain.Items[i].SubItems[columnspeed]:='--';
+        frmain.lvMain.Items[i].SubItems[columnestimate]:='--';
+        frmain.lvMain.Items[i].SubItems[columncurrent]:='0';
+        if ahora then
+        begin
+          queuemanual[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])]:=true;
+          downloadstart(i,true);
+        end;
+      end;
     end;
   end;
+  if frmain.lvFilter.Visible and update then
+    frmain.tvMainSelectionChanged(nil);
 end;
 
 procedure DownThread.update;
@@ -3811,11 +3810,25 @@ begin
     end;
     if (Pos('[',wout)>0) and (Pos(']',wout)>0) then
     begin
-      if Pos(' SPD:',wout)>0 then
-        velocidad:=Copy(wout,Pos(' SPD:',wout)+5,length(wout))
+      velocidad:=Copy(wout,Pos('[',wout),Length(wout));
+      velocidad:=Copy(velocidad,0,Pos(']',velocidad));
+      if Pos(' SPD:',velocidad)>0 then
+        velocidad:=Copy(velocidad,Pos(' SPD:',velocidad)+5,length(velocidad))
       else
-        velocidad:=Copy(wout,Pos(' DL:',wout)+4,length(wout));
-      velocidad:=Copy(velocidad,0,Pos('B]',velocidad));
+      begin
+        if Pos(' DL:',velocidad)>0 then
+          velocidad:=Copy(velocidad,Pos(' DL:',velocidad)+4,length(velocidad))
+        else
+          velocidad:='';
+      end;
+      if Pos('Bs]',velocidad)>0 then
+        velocidad:=Copy(velocidad,0,Pos('Bs]',velocidad));
+      if Pos('B]',velocidad)>0 then
+        velocidad:=Copy(velocidad,0,Pos('B]',velocidad));
+      if Pos('Bs ETA:',velocidad)>0 then
+        velocidad:=Copy(velocidad,0,Pos('Bs ETA:',velocidad));
+      if Pos('B ETA:',velocidad)>0 then
+        velocidad:=Copy(velocidad,0,Pos('B ETA:',velocidad));
     end;
     if (porciento='') and (frmain.lvMain.Items[thid].SubItems[columnpercent]='-')   then
     begin
@@ -3876,7 +3889,7 @@ begin
           nombre:=Copy(nombre,LastDelimiter('/',nombre)+1,Length(nombre));
         if Pos('\',nombre)>0 then
           nombre:=Copy(nombre,LastDelimiter('\',nombre)+1,Length(nombre));
-        frmain.lvMain.Items[thid].SubItems[columnname]:=nombre;
+        frmain.lvMain.Items[thid].SubItems[columnname]:=SysToUTF8(nombre);
         logrename:=true;
       end;
     end;
@@ -3957,7 +3970,7 @@ begin
         end;
       Until FindNext(itemfile)<>0;
     end;
-    if (Pos('[download]  ',wout)>0) and (youtubedlthexternal='') and (Pos('in',wout)<1) then
+    if (Pos('[download]  ',wout)>0) and (youtubedluseextdown=false) and (youtubedlthexternal='') and (Pos('in',wout)<1) then
     begin
       porciento:=ExtractWord(WordCount(wout,[' '])-6,wout,[' ']);
       if Pos('.',porciento)>0 then
@@ -4113,24 +4126,19 @@ begin
     porciento:=StringReplace(porciento,'%','',[rfReplaceAll]);
   end
   else
-  begin
-    if descargado <> '' then
-      porciento:=descargado
-    else
-      porciento:='?';
-    porciento:=StringReplace(porciento,'KiB','K',[rfReplaceAll]);
-    porciento:=StringReplace(porciento,'MiB','M',[rfReplaceAll]);
-  end;
+    porciento:='?';
+
    porciento:=StringReplace(porciento,' ','',[rfReplaceAll]);
+   porciento:=StringReplace(porciento,LineEnding,'',[rfReplaceAll]);
+   porciento:=StringReplace(porciento,#10,'',[rfReplaceAll]);
+   porciento:=StringReplace(porciento,#13,'',[rfReplaceAll]);
 
   while(icono.Canvas.TextWidth(porciento)>(icono.Width-4)) or (icono.Canvas.TextHeight(porciento)>(icono.Height-2)) and (Length(porciento)<6) do
   begin
     icono.Canvas.Font.Size:=icono.Canvas.Font.Size-1;
     trayiconfontsize:=icono.Canvas.Font.Size;
-     //frmain.SynEdit1.InsertTextAtCaret('Font---');
   end;
 
-  //frmain.SynEdit1.InsertTextAtCaret(inttostr(icono.Canvas.TextWidth(porciento))+'---'+inttostr(icono.Width));
 
   th:=icono.Canvas.TextHeight(porciento);
   tw:=icono.Canvas.TextWidth(porciento);
@@ -4592,6 +4600,7 @@ var
   fname:string;
   defaultdir:string='';
 begin
+  enginereload();
   frmain.odlgImportdown.Execute;
   if {$IFDEF LCLQT}(frmain.odlgImportdown.UserChoice=1){$else}{$IFDEF LCLQT5}(frmain.odlgImportdown.UserChoice=1){$ELSE}frmain.odlgImportdown.FileName<>''{$endif}{$ENDIF} then
   begin
@@ -4802,6 +4811,7 @@ var
   begin
     if (wthp.Running=false)  and (manualshutdown=false) then
     begin
+      readoutput;
       if (tries>0) and (completado=false) and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl') and (youtubedluseextdown=false) and (youtubedlthexternal='')  then
       begin
         wthp.Execute;
@@ -5514,9 +5524,9 @@ begin
     System.DumpExceptionBackTrace(exceptstr);
     Writeln(exceptstr,'------------------------------------------');
     CloseFile(exceptstr);
-    {$IFDEF ALPHA}
+    {$IFDEF BETA}
     case MessageDlg(Application.Title,format(msgerrorinforme,[SysToUTF8(configpath+'awgg.err'),e.Message]), mtError, [mbOK,mbCancel,mbIgnore], 0) of
-     1:OpenURL('mailto:nenirey@gmail.com?subject=AWGG support error;body='+e.Message);//Ok
+     1:OpenURL('mailto:nenirey@gmail.com?subject=AWGG;body='+e.Message);//Ok
      2:Application.Terminate();//Cancel
      5:;//Ignore
     end;
@@ -5696,18 +5706,24 @@ begin
       movestepdown(indice);
     if endindex<StartDragIndex then
       movestepup(StartDragIndex,indice);
-  end;
-  if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
+  end
+  else
   begin
-    if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+    if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
     begin
-      itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
-      for i:=0 to frmain.lvMain.Items.Count-1 do
+      if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
       begin
-        if frmain.lvMain.Items[i].Selected then
-          frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
+        itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
+        for i:=0 to frmain.lvMain.Items.Count-1 do
+        begin
+          if frmain.lvMain.Items[i].Selected then
+          begin
+            frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
+            frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(triesrotate);
+          end;
+        end;
+        frmain.tvMainSelectionChanged(nil);
       end;
-      frmain.tvMainSelectionChanged(nil);
     end;
   end;
   StartDragIndex:=-1;
@@ -5908,18 +5924,24 @@ begin
       movestepdown(frmain.lvMain.GetItemAt(x,y).Index);
     if frmain.lvMain.GetItemAt(x,y).Index<StartDragIndex then
       movestepup(StartDragIndex,frmain.lvMain.GetItemAt(x,y).Index);
-  end;
-  if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
+  end
+  else
   begin
-    if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+    if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
     begin
-      itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
-      for i:=0 to frmain.lvMain.Items.Count-1 do
+      if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
       begin
-        if frmain.lvMain.Items[i].Selected then
-          frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
+        itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
+        for i:=0 to frmain.lvMain.Items.Count-1 do
+        begin
+          if frmain.lvMain.Items[i].Selected then
+          begin
+            frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
+            frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(triesrotate);
+          end;
+        end;
+        frmain.tvMainSelectionChanged(nil);
       end;
-      frmain.tvMainSelectionChanged(nil);
     end;
   end;
   StartDragIndex:=-1;
@@ -6003,11 +6025,11 @@ begin
     end;
 
     frmain.SynEdit1.Lines.Clear;
-    if FileExists(UTF8ToSys(logpath)+pathdelim+UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log') and (frmain.SynEdit1.Visible) and (loadhistorylog) then
+    if FileExists(UTF8ToSys(logpath+pathdelim+Item.SubItems[columnname])+'.log') and (frmain.SynEdit1.Visible) and (loadhistorylog) then
     begin
       try
         lastlines:=TStringList.Create;
-        lastlines.LoadFromFile(UTF8ToSys(logpath)+pathdelim+UTF8ToSys(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log');
+        lastlines.LoadFromFile(UTF8ToSys(logpath+pathdelim+Item.SubItems[columnname])+'.log');
         if (lastlines.Count>=20) and (loadhistorymode=2) then
         begin
           frmain.SynEdit1.Lines.Add(lastlines[lastlines.Count-20]);
@@ -6274,9 +6296,9 @@ begin
       frnewdown.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
       if firstnormalshow=false then
       begin
-        frnewdown.Show;
+        //frnewdown.Show;
+        //frnewdown.btnCancelClick(nil);
         frnewdown.Update;
-        frnewdown.Visible:=false;
         firstnormalshow:=true;
       end;
       frnewdown.ShowModal;
@@ -6561,32 +6583,15 @@ begin
 end;
 
 procedure Tfrmain.mimainStartAllClick(Sender: TObject);
-var
-  x:integer;
 begin
   frmain.mimainSelectAllClick(nil);
-  for x:=0 to frmain.lvMain.Items.Count-1 do
-  begin
-    if frmain.lvMain.Items[x].Selected then
-    begin
-      queuemanual[strtoint(frmain.lvMain.Items[x].SubItems[columnqueue])]:=true;
-      downloadstart(x,false);
-    end;
-  end;
+  frmain.tbStartDownClick(nil);
 end;
 
 procedure Tfrmain.mimainStopAllClick(Sender: TObject);
-var
-  x:integer;
 begin
   frmain.mimainSelectAllClick(nil);
-  for x:=0 to frmain.lvMain.Items.Count-1 do
-  begin
-    if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[x].SubItems[columnid])) and (frmain.lvMain.Items[x].SubItems[columnstatus]='1') and (frmain.lvMain.Items[x].Selected)then
-    begin
-      hilo[strtoint(frmain.lvMain.Items[x].SubItems[columnid])].shutdown();
-    end;
-  end;
+  frmain.tbStopAllClick(nil);
 end;
 
 procedure Tfrmain.mimainShowCurrentClick(Sender: TObject);
@@ -6624,24 +6629,6 @@ begin
   end;
 end;
 
-procedure Tfrmain.milistStartDownClick(Sender: TObject);
-begin
-  if frmain.lvMain.ItemIndex<>-1 then
-  begin
-    queuemanual[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])]:=true;
-    downloadstart(frmain.lvMain.ItemIndex,false);
-  end;
-end;
-
-procedure Tfrmain.milistStopDownClick(Sender: TObject);
-begin
-  if frmain.lvMain.ItemIndex<>-1 then
-  begin
-    if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])) then
-      hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])].shutdown();
-  end;
-end;
-
 procedure Tfrmain.milistRestartNowClick(Sender: TObject);
 begin
   frmain.tbRestartNowClick(nil);
@@ -6653,8 +6640,6 @@ begin
 end;
 
 procedure Tfrmain.mimainRestartAllNowClick(Sender: TObject);
-var
-  x:integer;
 begin
   frconfirm.Caption:=fstrings.dlgconfirm;
   frconfirm.dlgtext.Caption:=fstrings.dlgrestartalldownloads;
@@ -6662,16 +6647,7 @@ begin
   if dlgcuestion then
   begin
     frmain.mimainSelectAllClick(nil);
-    for x:=0 to frmain.lvMain.Items.Count-1 do
-    begin
-      if (frmain.lvMain.Items[x].Subitems[columnstatus]<>'1') and (frmain.lvMain.Items[x].Selected=true) then
-      begin
-        queuemanual[strtoint(frmain.lvMain.Items[x].SubItems[columnqueue])]:=true;
-        restartdownload(x,true,false);
-      end;
-    end;
-    if frmain.lvFilter.Visible then
-      frmain.tvMainSelectionChanged(nil);
+    restartdownload(true,true);
   end;
 end;
 
@@ -6820,8 +6796,6 @@ begin
 end;
 
 procedure Tfrmain.mimainRestartAllLaterClick(Sender: TObject);
-var
-  x:integer;
 begin
   frconfirm.Caption:=fstrings.dlgconfirm;
   frconfirm.dlgtext.Caption:=fstrings.dlgrestartalldownloadslatter;
@@ -6829,14 +6803,8 @@ begin
   if dlgcuestion then
   begin
     frmain.mimainSelectAllClick(nil);
-    for x:=0 to frmain.lvMain.Items.Count-1 do
-    begin
-      if (frmain.lvMain.Items[x].Subitems[columnstatus]<>'1') and frmain.lvMain.Items[x].Selected then
-        restartdownload(x,false,false);
-    end;
+    restartdownload(false,true);
   end;
-  if frmain.lvFilter.Visible then
-    frmain.tvMainSelectionChanged(nil);
 end;
 
 procedure Tfrmain.milistRestartLaterClick(Sender: TObject);
@@ -6844,11 +6812,14 @@ begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
     frconfirm.Caption:=fstrings.dlgconfirm;
-    frconfirm.dlgtext.Caption:=fstrings.dlgrestartselecteddownloadletter+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+    if frmain.lvMain.SelCount<2 then
+      frconfirm.dlgtext.Caption:=fstrings.dlgrestartselecteddownloadletter+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]
+    else
+      frconfirm.dlgtext.Caption:=fstrings.dlgrestartselecteddownloadletter+#10#13+#10#13+inttostr(frmain.lvMain.SelCount);
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
-      restartdownload(frmain.lvMain.ItemIndex,false);
+      restartdownload(false);
     end;
   end;
 end;
@@ -7511,7 +7482,12 @@ begin
   ///Select the best parameters
   suggestparameters();
   queueindexselect();
-  if frnewdown.Visible=false then
+  if frnewdown.Visible=true then
+  begin
+    frnewdown.Hide;
+    frnewdown.Visible:=false;
+  end
+  else
     frnewdown.ShowModal;
   frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Activar el clipboardmonitor.
   if agregar and (updateurl=false) then
@@ -7577,11 +7553,14 @@ begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
     frconfirm.Caption:=fstrings.dlgconfirm;
-    frconfirm.dlgtext.Caption:=fstrings.dlgrestartselecteddownload+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
+    if frmain.lvMain.SelCount<2 then
+      frconfirm.dlgtext.Caption:=fstrings.dlgrestartselecteddownload+#10#13+#10#13+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]
+    else
+      frconfirm.dlgtext.Caption:=fstrings.dlgrestartselecteddownload+#10#13+#10#13+inttostr(frmain.lvMain.SelCount);
     frconfirm.ShowModal;
     if dlgcuestion then
     begin
-      restartdownload(frmain.lvMain.ItemIndex,true);
+      restartdownload(true);
     end;
   end;
 end;
@@ -7727,31 +7706,67 @@ begin
 end;
 
 procedure Tfrmain.tbStartDownClick(Sender: TObject);
+var
+  i:integer;
 begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
-    queuemanual[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])]:=true;
-    downloadstart(frmain.lvMain.ItemIndex,false);
+    if frmain.lvMain.SelCount>1 then
+    begin
+      for i:=0 to frmain.lvMain.Items.Count-1 do
+      begin
+        if frmain.lvMain.Items[i].Selected then
+        begin
+          queuemanual[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])]:=true;
+          downloadstart(i,false);
+        end;
+      end;
+    end
+    else
+    begin
+      queuemanual[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])]:=true;
+      downloadstart(frmain.lvMain.ItemIndex,false);
+    end;
   end
   else
     ShowMessage(fstrings.msgmustselectdownload);
 end;
 
 procedure Tfrmain.tbStopDownClick(Sender: TObject);
+var
+  i:integer;
 begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
     try
-      if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])) then
+      if frmain.lvMain.SelCount>1 then
       begin
-        hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])].shutdown();
-        if qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled then
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntries]:='0';
-        frmain.tbStartDown.Enabled:=true;
-        frmain.tbStopDown.Enabled:=false;
-        frmain.tbRestartNow.Enabled:=true;
-        frmain.tbRestartLater.Enabled:=true;
+        for i:=0 to frmain.lvMain.Items.Count-1 do
+        begin
+          if frmain.lvMain.Items[i].Selected then
+          begin
+            if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[i].SubItems[columnid])) then
+            begin
+              hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].shutdown();
+              if qtimer[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])].Enabled then
+                frmain.lvMain.Items[i].SubItems[columntries]:='0';
+            end;
+          end;
+        end;
+      end
+      else
+      begin
+        if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])) then
+        begin
+          hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])].shutdown();
+          if qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled then
+            frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntries]:='0';
+        end;
       end;
+      frmain.tbStartDown.Enabled:=true;
+      frmain.tbStopDown.Enabled:=false;
+      frmain.tbRestartNow.Enabled:=true;
+      frmain.tbRestartLater.Enabled:=true;
     except on e:exception do
     end;
   end
@@ -7952,6 +7967,7 @@ begin
   end
   else
     Accept:=false;
+  StartDragIndex:=-1;
 end;
 
 procedure Tfrmain.tvMainEdited(Sender: TObject; Node: TTreeNode; var S: string

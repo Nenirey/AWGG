@@ -14,6 +14,8 @@ Changes in (0.5.0):
 -Add ability to select the major engine for specific sites.
 -Add new button in the download notification to start the download when this fail.
 -Add total progress in copy/move file operation dialog and increace performance.
+-Allow drag drop items in downloas list to change the priority in the queue.
+-Allow drop download item in the tree view panel to send to other queue.
 -Now the download list show tooltips when the mouse is over a download with additional information.
 -The program capture the file name from the engine (not in all cases with curl).
 -The main icon have a new look (made with LazPaint).

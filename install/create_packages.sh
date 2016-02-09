@@ -57,7 +57,7 @@ fi
 
 # Export from SVN
 rm -rf $BUILD_AWGG_TMP_DIR
-svn export ../ $BUILD_AWGG_TMP_DIR
+#svn export ../ $BUILD_AWGG_TMP_DIR
 
 # Update revision number
 linux/update-revision.sh ../ $BUILD_AWGG_TMP_DIR
@@ -72,7 +72,7 @@ fi
 
 # Set processor architecture
 if [ -z $CPU_TARGET ]; then
-   export CPU_TARGET=$(fpc -iTP)
+   export CPU_TARGET=$(fpc32 -iTP)
 fi
 
 # Debian package architecture

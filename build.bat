@@ -20,6 +20,8 @@ if not "%CPU_TARGET%" == "" (
 
 if "%1"=="beta" ( call :beta
 ) else (
+if "%1"=="release" ( call :release
+) else (
 if "%1"=="default" ( call :default
 ) else (
 if "%1"=="alpha" ( call :alpha
@@ -30,7 +32,7 @@ if "%1"=="" ( call :beta
 ) else (
   echo ERROR: Mode not defined: %1
   echo Available modes: alpha, beta, release
-)))))
+))))))
 
 pause
 GOTO:EOF
@@ -46,6 +48,25 @@ GOTO:EOF
   rem Build AWGG
   call :replace_old
   lazbuild src\awgg.lpi --bm=beta %AWGG_ARCH%
+
+  rem Build Dwarf LineInfo Extractor
+  lazbuild tools\extractdwrflnfo.lpi
+
+  rem Extract debug line info
+  tools\extractdwrflnfo awgg.dbg
+GOTO:EOF
+
+:release
+
+  rem Build versionitis
+  lazbuild src\versionitis.lpi
+
+  rem update version info
+  src\versionitis -verbose
+
+  rem Build AWGG
+  call :replace_old
+  lazbuild src\awgg.lpi --bm=release %AWGG_ARCH%
 
   rem Build Dwarf LineInfo Extractor
   lazbuild tools\extractdwrflnfo.lpi

@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=AWGG
-Comment=AWGG o Advanced WGET GUI es un frontend que meneja varios motores de descarga como wget, aria2c y curl haciendo mas facil su uso.
+Comment=AWGG o Advanced WGET GUI es un frontend que meneja varios motores de descarga como wget, aria2c, youtube-dl, curl y axel haciendo mas facil su uso.
 Exec=awgg
 Terminal=false
 Type=Application

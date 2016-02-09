@@ -25,7 +25,7 @@ object frddbox: Tfrddbox
   OnMouseWheel = FormMouseWheel
   OnPaint = FormPaint
   PopupMenu = frmain.pmTrayIcon
-  LCLVersion = '1.5'
+  LCLVersion = '1.6.0.2'
   object frddboximgLogo: TImage
     Left = 5
     Height = 83

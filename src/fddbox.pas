@@ -117,8 +117,8 @@ procedure Tfrddbox.FormActivate(Sender: TObject);
 begin
   {$IFDEF LCLQT5}
   {$ELSE}
-  if (frmain.Visible) and (not nodrag) then
-    frmain.SetFocus;
+  //if (frmain.Visible) and (not nodrag) then
+    //frmain.SetFocus;
   {$ENDIF}
 end;
 

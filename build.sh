@@ -59,6 +59,31 @@ build_beta()
   # Strip debug info
   strip awgg
 }
+build_release()
+{
+
+  # Build versionitis
+  $lazbuild src/versionitis.lpi
+
+  # Update version
+  src/versionitis -verbose
+
+  # Build AWGG
+  $lazbuild src/awgg.lpi --bm=release $AWGG_ARCH
+
+  # Build Dwarf LineInfo Extractor
+  $lazbuild tools/extractdwrflnfo.lpi
+
+  # Extract debug line info
+  chmod a+x tools/extractdwrflnfo
+  if [ -f awgg.dSYM/Contents/Resources/DWARF/awgg ]; then
+    mv -f awgg.dSYM/Contents/Resources/DWARF/awgg $(pwd)/awgg.dbg
+  fi
+  tools/extractdwrflnfo awgg.dbg
+
+  # Strip debug info
+  strip awgg
+}
 
 build_all()
 {
@@ -68,6 +93,7 @@ build_all()
 
 case $1 in
         beta)  build_beta;;
+        release) build_release;;
          all)  build_all;;
            *)  build_default;;
 esac

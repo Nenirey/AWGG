@@ -1,18 +1,18 @@
 object frmain: Tfrmain
-  Left = 206
+  Left = 230
   Height = 480
-  Top = 189
+  Top = 166
   Width = 640
   ActiveControl = psVertical
   Caption = 'AWGG'
-  ClientHeight = 459
+  ClientHeight = 460
   ClientWidth = 640
   Menu = mnuMain
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnWindowStateChange = FormWindowStateChange
   Position = poScreenCenter
-  LCLVersion = '1.6.0.2'
+  LCLVersion = '1.4.4.0'
   object fseLimit: TFloatSpinEdit
     AnchorSideLeft.Control = cbLimit
     AnchorSideLeft.Side = asrBottom
@@ -22,9 +22,9 @@ object frmain: Tfrmain
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 110
-    Height = 27
-    Top = 430
+    Left = 90
+    Height = 23
+    Top = 435
     Width = 47
     Anchors = [akLeft, akBottom]
     BorderSpacing.Bottom = 2
@@ -41,9 +41,9 @@ object frmain: Tfrmain
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = fseLimit
     Left = 5
-    Height = 23
-    Top = 432
-    Width = 105
+    Height = 19
+    Top = 437
+    Width = 85
     BorderSpacing.Left = 5
     Caption = 'Limit (Kb/s):'
     TabOrder = 1
@@ -302,8 +302,8 @@ object frmain: Tfrmain
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
     Left = 584
-    Height = 27
-    Top = 430
+    Height = 23
+    Top = 435
     Width = 46
     Anchors = [akTop, akRight, akBottom]
     BorderSpacing.Right = 10
@@ -318,10 +318,10 @@ object frmain: Tfrmain
     AnchorSideTop.Control = seMaxDownInProgress
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = seMaxDownInProgress
-    Left = 397
+    Left = 432
     Height = 15
-    Top = 436
-    Width = 185
+    Top = 439
+    Width = 150
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Max. downloads in progress:'
@@ -336,7 +336,7 @@ object frmain: Tfrmain
     AnchorSideBottom.Control = fseLimit
     Cursor = crVSplit
     Left = 0
-    Height = 404
+    Height = 409
     Top = 26
     Width = 640
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -708,11 +708,11 @@ object frmain: Tfrmain
     object psVerticalDownSide: TPairSplitterSide
       Cursor = crArrow
       Left = 0
-      Height = 129
+      Height = 134
       Top = 275
       Width = 640
       ClientWidth = 640
-      ClientHeight = 129
+      ClientHeight = 134
       inline SynEdit1: TSynEdit
         AnchorSideLeft.Control = psVerticalDownSide
         AnchorSideTop.Control = psVerticalDownSide
@@ -721,7 +721,7 @@ object frmain: Tfrmain
         AnchorSideBottom.Control = psVerticalDownSide
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 129
+        Height = 134
         Top = 0
         Width = 640
         Anchors = [akTop, akLeft, akRight, akBottom]
@@ -7617,7 +7617,7 @@ object frmain: Tfrmain
         0000000000000000000000000000000000000000000000000000
       }
       ImageIndex = 2
-      OnClick = milistStartDownClick
+      OnClick = tbStartDownClick
     end
     object milistStopDown: TMenuItem
       Caption = 'Stop'
@@ -7658,7 +7658,7 @@ object frmain: Tfrmain
         FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
       }
       ImageIndex = 3
-      OnClick = milistStopDownClick
+      OnClick = tbStopDownClick
     end
     object miline15: TMenuItem
       Caption = '-'
