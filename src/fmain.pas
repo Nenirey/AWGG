@@ -5711,18 +5711,21 @@ begin
   begin
     if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
     begin
-      if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+      if Assigned(frmain.tvMain.GetNodeAt(X,Y).Parent) then
       begin
-        itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
-        for i:=0 to frmain.lvMain.Items.Count-1 do
+        if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
         begin
-          if frmain.lvMain.Items[i].Selected then
+          itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
+          for i:=0 to frmain.lvMain.Items.Count-1 do
           begin
-            frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
-            frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(triesrotate);
+            if frmain.lvMain.Items[i].Selected then
+            begin
+              frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
+              frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(triesrotate);
+            end;
           end;
+          frmain.tvMainSelectionChanged(nil);
         end;
-        frmain.tvMainSelectionChanged(nil);
       end;
     end;
   end;
@@ -5929,18 +5932,21 @@ begin
   begin
     if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
     begin
-      if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+      if Assigned(frmain.tvMain.GetNodeAt(X,Y).Parent) then
       begin
-        itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
-        for i:=0 to frmain.lvMain.Items.Count-1 do
+        if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
         begin
-          if frmain.lvMain.Items[i].Selected then
+          itemuid:=inttostr(frmain.tvMain.GetNodeAt(X,Y).Index);
+          for i:=0 to frmain.lvMain.Items.Count-1 do
           begin
-            frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
-            frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(triesrotate);
-          end;
+            if frmain.lvMain.Items[i].Selected then
+            begin
+              frmain.lvMain.Items[i].SubItems[columnqueue]:=itemuid;
+              frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(triesrotate);
+            end;
         end;
         frmain.tvMainSelectionChanged(nil);
+        end;
       end;
     end;
   end;
@@ -7958,9 +7964,14 @@ procedure Tfrmain.tvMainDragOver(Sender, Source: TObject; X, Y: Integer;
 begin
   if Assigned(frmain.tvMain.GetNodeAt(X,Y)) then
   begin
-    if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+    if Assigned(frmain.tvMain.GetNodeAt(X,Y).Parent) then
     begin
-      Accept:=true;
+      if frmain.tvMain.GetNodeAt(X,Y).Parent.Index=1 then
+      begin
+        Accept:=true;
+      end
+      else
+        Accept:=false;
     end
     else
       Accept:=false;

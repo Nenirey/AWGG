@@ -2,20 +2,20 @@
 <CONFIG>
   <ProjectSession>
     <Version Value="9"/>
-    <BuildModes Active="Release">
+    <BuildModes Active="Debug">
       <SessionMatrixOptions Count="3">
         <Item1 ID="919334217561" Modes="Beta" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item2 ID="681207914604" Modes="Beta" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item3 ID="202610576785" Modes="Beta" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
       </SessionMatrixOptions>
     </BuildModes>
-    <Units Count="15">
+    <Units Count="16">
       <Unit0>
         <Filename Value="awgg.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="23"/>
+        <TopLine Value="22"/>
         <CursorPos X="21" Y="30"/>
         <UsageCount Value="237"/>
         <Loaded Value="True"/>
@@ -26,10 +26,9 @@
         <ComponentName Value="frmain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="2577"/>
-        <CursorPos X="81" Y="2580"/>
+        <TopLine Value="7961"/>
+        <CursorPos X="21" Y="7977"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -40,7 +39,7 @@
         <ComponentName Value="frnewdown"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <TopLine Value="364"/>
         <CursorPos X="11" Y="375"/>
@@ -54,7 +53,7 @@
         <ComponentName Value="frconfig"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <TopLine Value="545"/>
         <CursorPos X="6" Y="553"/>
@@ -68,7 +67,7 @@
         <ComponentName Value="frabout"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -81,7 +80,7 @@
         <ComponentName Value="frlang"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -94,7 +93,7 @@
         <ComponentName Value="frstrings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
         <TopLine Value="79"/>
         <CursorPos Y="90"/>
@@ -107,7 +106,7 @@
         <ComponentName Value="frconfirm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -120,7 +119,7 @@
         <ComponentName Value="frreplace"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <TopLine Value="68"/>
         <CursorPos X="3" Y="76"/>
@@ -134,7 +133,7 @@
         <ComponentName Value="frsitegrabber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <TopLine Value="141"/>
         <CursorPos X="44" Y="149"/>
@@ -148,7 +147,7 @@
         <ComponentName Value="fradd"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -161,7 +160,7 @@
         <ComponentName Value="frnotification"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <TopLine Value="104"/>
         <CursorPos X="167" Y="112"/>
@@ -175,7 +174,7 @@
         <ComponentName Value="frcopymove"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="15"/>
         <WindowIndex Value="1"/>
         <TopLine Value="44"/>
         <CursorPos X="16" Y="3"/>
@@ -189,7 +188,7 @@
         <ComponentName Value="frddbox"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <TopLine Value="110"/>
         <CursorPos X="7" Y="121"/>
@@ -203,7 +202,7 @@
         <ComponentName Value="frvideoformat"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <TopLine Value="33"/>
         <CursorPos X="3" Y="49"/>
@@ -211,7 +210,70 @@
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
+      <Unit15>
+        <Filename Value="un_lineinfo.pp"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="254"/>
+        <CursorPos Y="269"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit15>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="13" HistoryIndex="12">
+      <Position1>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="2580" Column="81" TopLine="2577"/>
+      </Position1>
+      <Position2>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5932" TopLine="5894"/>
+      </Position2>
+      <Position3>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5674" Column="3" TopLine="5671"/>
+      </Position3>
+      <Position4>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7962" Column="8" TopLine="7950"/>
+      </Position4>
+      <Position5>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7961" Column="59" TopLine="7950"/>
+      </Position5>
+      <Position6>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7966" Column="21" TopLine="7950"/>
+      </Position6>
+      <Position7>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5930" Column="52" TopLine="5920"/>
+      </Position7>
+      <Position8>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5712" Column="52" TopLine="5698"/>
+      </Position8>
+      <Position9>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5930" Column="7" TopLine="5916"/>
+      </Position9>
+      <Position10>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5947" Column="8" TopLine="5919"/>
+      </Position10>
+      <Position11>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5674" Column="3" TopLine="5670"/>
+      </Position11>
+      <Position12>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5713" Column="9" TopLine="5705"/>
+      </Position12>
+      <Position13>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7977" Column="21" TopLine="7961"/>
+      </Position13>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>
