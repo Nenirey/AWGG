@@ -1,0 +1,5 @@
+{"version":1,"strings":[
+{"hash":116717365,"name":"tfrlang.caption","sourcebytes":[83,101,108,101,99,116,32,108,97,110,103,117,97,103,101],"value":"Select language"},
+{"hash":82521866,"name":"tfrlang.lbllang.caption","sourcebytes":[76,97,110,103,117,97,103,101,58],"value":"Language:"},
+{"hash":1371,"name":"tfrlang.btnok.caption","sourcebytes":[79,107],"value":"Ok"}
+]}

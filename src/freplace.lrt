@@ -1,4 +1,3 @@
-TFRREPLACE.CAPTION=File exists
 TFRREPLACE.LBLFILEEXISTINFORMATION.CAPTION=The file that you attempt to download already exists, what do you want to do?
 TFRREPLACE.RBOVERWRITE.CAPTION=Overwrite the file.
 TFRREPLACE.RBAUTORENAME.CAPTION=Auto rename the file.

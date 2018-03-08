@@ -16,7 +16,7 @@ object frnotification: Tfrnotification
   OnMouseLeave = FormMouseLeave
   OnPaint = FormPaint
   ShowInTaskBar = stNever
-  LCLVersion = '1.5'
+  LCLVersion = '1.8.0.4'
   object btnGoPath: TSpeedButton
     AnchorSideLeft.Control = Owner
     AnchorSideBottom.Control = Owner
@@ -80,8 +80,8 @@ object frnotification: Tfrnotification
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = lblDescriptionError
     Left = 47
-    Height = 15
-    Top = 25
+    Height = 13
+    Top = 23
     Width = 308
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 10
@@ -157,8 +157,8 @@ object frnotification: Tfrnotification
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnGoPath
     Left = 47
-    Height = 36
-    Top = 45
+    Height = 40
+    Top = 41
     Width = 308
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 10
@@ -298,9 +298,9 @@ object frnotification: Tfrnotification
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = imgLogo
     Left = 47
-    Height = 15
+    Height = 13
     Top = 5
-    Width = 49
+    Width = 38
     BorderSpacing.Left = 10
     Caption = 'lblTitle'
     Font.Style = [fsBold]

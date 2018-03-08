@@ -10,7 +10,7 @@ object frabout: Tfrabout
   ClientWidth = 640
   OnDeactivate = FormDeactivate
   Position = poScreenCenter
-  LCLVersion = '1.6.0.2'
+  LCLVersion = '1.8.0.4'
   object lblAboutName: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = imgLogo

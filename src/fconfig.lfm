@@ -1,14 +1,14 @@
 object frconfig: Tfrconfig
-  Left = 352
+  Left = 392
   Height = 441
-  Top = 213
+  Top = 140
   Width = 628
   Caption = 'Configuration'
   ClientHeight = 441
   ClientWidth = 628
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.4.4.0'
+  LCLVersion = '1.8.0.4'
   object btnConfigAccept: TButton
     AnchorSideLeft.Control = pcConfig
     AnchorSideRight.Control = btnConfigCancel
@@ -468,8 +468,6 @@ object frconfig: Tfrconfig
         Top = 110
         Width = 133
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-        OKCaption = 'OK'
-        CancelCaption = 'Cancel'
         DateOrder = doNone
         ButtonWidth = 23
         BorderSpacing.Left = 2
@@ -489,8 +487,6 @@ object frconfig: Tfrconfig
         Top = 141
         Width = 133
         CalendarDisplaySettings = [dsShowHeadings, dsShowDayNames]
-        OKCaption = 'OK'
-        CancelCaption = 'Cancel'
         DateOrder = doNone
         ButtonWidth = 23
         Anchors = [akTop, akLeft, akRight]
@@ -1005,28 +1001,216 @@ object frconfig: Tfrconfig
     end
     object tsClipboardm: TTabSheet
       Caption = 'Clipboard monitor'
-      ClientHeight = 378
-      ClientWidth = 434
+      ClientHeight = 376
+      ClientWidth = 436
       object chClipboardMonitor: TCheckBox
         AnchorSideLeft.Control = tsClipboardm
         AnchorSideTop.Control = tsClipboardm
         AnchorSideRight.Control = tsClipboardm
         AnchorSideRight.Side = asrBottom
         Left = 15
-        Height = 20
+        Height = 19
         Top = 15
-        Width = 427
+        Width = 421
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         Caption = 'Detect downloads in the clipboard'
         TabOrder = 0
       end
+      object lbDomains: TListBox
+        AnchorSideLeft.Control = chIgnoreFilter
+        AnchorSideTop.Control = chIgnoreFilter
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = tsClipboardm
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = btnAddDomain
+        Left = 15
+        Height = 276
+        Top = 63
+        Width = 411
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Top = 5
+        BorderSpacing.Right = 10
+        BorderSpacing.Bottom = 5
+        ItemHeight = 0
+        TabOrder = 1
+      end
+      object chIgnoreFilter: TCheckBox
+        AnchorSideLeft.Control = chClipboardMonitor
+        AnchorSideTop.Control = chClipboardMonitor
+        AnchorSideTop.Side = asrBottom
+        Left = 15
+        Height = 19
+        Top = 39
+        Width = 106
+        BorderSpacing.Top = 5
+        Caption = 'Ignore domains:'
+        OnChange = chIgnoreFilterChange
+        TabOrder = 2
+      end
+      object btnAddDomain: TSpeedButton
+        AnchorSideLeft.Control = lbDomains
+        AnchorSideTop.Control = lbDomains
+        AnchorSideTop.Side = asrBottom
+        AnchorSideBottom.Control = tsClipboardm
+        AnchorSideBottom.Side = asrBottom
+        Left = 15
+        Height = 22
+        Hint = 'Add'
+        Top = 344
+        Width = 23
+        Anchors = [akLeft, akBottom]
+        BorderSpacing.Bottom = 10
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF0041924E233D8F497D3A8C44DB368940F332873CF32F84
+          37DB2C81337D287F3023FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF0049995853459653E6419950FF7DC28FFF96D0A6FF96CFA6FF78BE
+          89FF368D42FF2C8134E6297F3053FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00519F61534D9C5DF464B478FFA8DBB5FF87CC98FF66BC7DFF64BA7CFF86CB
+          98FFA5D9B4FF58AA6BFF2C8134F4297F3053FFFFFF00FFFFFF00FFFFFF0059A6
+          6B2256A366E56AB97DFFA8DBB2FF60BC77FF5CBA73FF59B870FF59B56FFF58B5
+          6FFF5BB774FFA5D9B3FF5AAA6CFF2C8234E5297F3022FFFFFF00FFFFFF005DA9
+          707E53AB68FFAADDB4FF64C179FF5FBE71FF60BC77FFFFFFFFFFFFFFFFFF59B8
+          70FF58B56EFF5CB774FFA6DAB4FF388F43FF2C82347EFFFFFF00FFFFFF0061AC
+          75DB8ACC98FF89D396FF6BC67AFF63C170FF55AB65FFFFFFFFFFFFFFFFFF59B8
+          70FF59B870FF5BB972FF85CC97FF7BBE8DFF308539DBFFFFFF00FFFFFF0065AF
+          7AF6A9DDB3FF7DCF8AFF75CC81FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFF59B870FF67BE7DFF9CD4ABFF34883DF6FFFFFF00FFFFFF0069B2
+          7EF6B6E2BEFF8BD597FF7AC986FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFF59B870FF69C17EFF9DD4AAFF388B42F6FFFFFF00FFFFFF006DB5
+          83DBACDDB6FFA6DFAFFF81CB8CFF7CC986FF6EBD79FFFFFFFFFFFFFFFFFF5BAC
+          6AFF60BC77FF5CBA73FF8BD199FF80C592FF3C8E47DBFFFFFF00FFFFFF0070B8
+          877E85C797FFD2EED7FF95D9A0FF8AD394FF7FC889FFFFFFFFFFFFFFFFFF79CD
+          85FF6BC37CFF6FC77EFFACDFB5FF459E57FF40914C7EFFFFFF00FFFFFF0073BA
+          8A2270B887E5AADAB7FFD8F1DCFF92D89DFF88CD93FF84CC8EFF8BD496FF8AD4
+          95FF83D28EFFAFE0B7FF6BB97DFF489856E544945122FFFFFF00FFFFFF00FFFF
+          FF0073BB8B5370B887F4AFDCBBFFDCF2E0FFB6E4BDFF9BDBA5FF96D9A0FFA5DF
+          AFFFC0E8C5FF79C28AFF509E5FF44C9B5B53FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF0073BB8B5371B887E694CEA4FFC3E6CBFFCFEBD4FFC9E9CEFFAFDD
+          B8FF6DB97FFF58A569E654A16553FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF0074BB8B2371B9887D6EB684DB6AB380F367B17CF363AE
+          77DB60AB737D5CA86E23FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+        }
+        OnClick = btnAddDomainClick
+        ShowHint = True
+        ParentShowHint = False
+      end
+      object btnDeleteDomain: TSpeedButton
+        AnchorSideLeft.Control = btnAddDomain
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = btnAddDomain
+        AnchorSideBottom.Control = btnAddDomain
+        AnchorSideBottom.Side = asrBottom
+        Left = 38
+        Height = 22
+        Hint = 'Delete'
+        Top = 344
+        Width = 23
+        Anchors = [akTop, akLeft, akBottom]
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF003F54C3233A50C27D3853BEDB3551BDF3304BBCF32E4E
+          B8DB2B4CB77D2748B523FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF004658C8534255C6E63C52CCFF757AE8FF8F92EEFF8F92EEFF7178
+          E4FF334DC1FF2B4AB7E6294BB553FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF004D5ACD534959CBF45C65E0FFA1A6F5FF7E86EFFF5B63E9FF595DE7FF7D84
+          EEFF9EA0F4FF515DD7FF2B4AB7F4294BB553FFFFFF00FFFFFF00FFFFFF00545F
+          D2225361CFE5616BE3FFA1ACF5FF545FECFF505CEAFF4D59E9FF4E59E6FF4C56
+          E6FF5056E6FF9EA2F4FF5460D6FF2A4AB8E5294BB522FFFFFF00FFFFFF005860
+          D47E4B56DBFFA2ABF6FF5664F0FF5266EEFF4D59E9FF4D59E9FF4D59E9FF4D59
+          E9FF4C58E6FF525AE6FF9FA3F5FF3450C4FF2A4AB87EFFFFFF00FFFFFF005C62
+          D7DB818CEEFF7E91F7FF5D73F3FF4D59E9FF4D59E9FF4D59E9FF4D59E9FF4D59
+          E9FF4D59E9FF4F5BE9FF7B83F0FF757BE2FF2E4BBADBFFFFFF00FFFFFF005F63
+          DAF6A1ABF7FF7086F8FF6882F6FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFF4D59E9FF5C66EAFF969CF1FF3250BCF6FFFFFF00FFFFFF006469
+          DBF6AFB9F9FF7F93FAFF7085F0FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFF4D59E9FF5E6AEEFF969DF1FF364FBEF6FFFFFF00FFFFFF00676A
+          DEDBA5AFF5FF9DABFAFF778CF0FF545FECFF545FECFF545FECFF545FECFF545F
+          ECFF545FECFF6377F2FF818EF4FF787FE9FF3A53C0DBFFFFFF00FFFFFF006A69
+          E07E7D83EAFFCDD4FCFF8B9DFAFF7E93F7FF758AEEFF6C84F6FF6C84F6FF6C84
+          F6FF6C84F6FF6379F3FFA4AFF8FF3E4FD0FF3E54C27EFFFFFF00FFFFFF006C6C
+          E1226A69E0E5A3A7F3FFD4DBFDFF879AFAFF7F91F0FF7A8EF1FF7F94F8FF7E92
+          F9FF768CF8FFA8B6F8FF636EE3FF4557C7E54156C522FFFFFF00FFFFFF00FFFF
+          FF006D6CE3536A69E0F4AAADF2FFD8DCFDFFAEBAFAFF91A3FAFF8B9DFAFF9CA9
+          FBFFBAC7FCFF707BE9FF4C5BCCF44858CA53FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF006D6CE3536A6ADFE68E93EDFFBEC3F8FFCCD3F9FFC4CBF9FFAAB4
+          F4FF6670E2FF535ED1E6505DCE53FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF006D6DE2236B6AE17D686ADDDB6364DCF36164DAF35D63
+          D9DB5B63D67D5862D423FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+        }
+        OnClick = btnDeleteDomainClick
+        ShowHint = True
+        ParentShowHint = False
+      end
+      object btnEditDomain: TSpeedButton
+        AnchorSideLeft.Control = btnDeleteDomain
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = btnAddDomain
+        AnchorSideTop.Side = asrCenter
+        AnchorSideBottom.Control = tsFolders
+        AnchorSideBottom.Side = asrBottom
+        Left = 61
+        Height = 22
+        Hint = 'Edit'
+        Top = 344
+        Width = 23
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000064000000640000000000000000000000FFFFFF000000
+          001D000000340000003600000036000000360000003600000036000000360000
+          0036000000360000003600000036000000330000001DFFFFFF00FFFFFF000000
+          0034F9F9F9F5FCFCFCFDFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+          FCFFFCFCFCFFFCFCFCFFFCFCFCFDF9F9F9F300000033FFFFFF00000000010000
+          0036FCFCFCFEFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+          FCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFD00000036FFFFFF00000000010000
+          0036FCFCFCFFFCFCFCFF18435AFF2B6189FF4C8ABEFF6FA8CBFFE0E9F1FFFBFB
+          FBFFFBFBFBFFFBFBFBFFFBFBFBFFFCFCFCFF0000003600000001000000010000
+          0036FCFCFCFFFCFCFCFF2E6785FF94C7F9FF91C9F9FF4185C9FF266BAEFFD4E2
+          EEFFFAFAFAFFFAFAFAFFFAFAFAFFFCFCFCFF0000003600000001000000010000
+          0036FCFCFCFFFCFCFCFF4389AAFFE0F2FFFF549AD8FF1A7ABEFF4998C5FF488E
+          C7FFD8E6F3FFF8F8F8FFF8F8F8FFFCFCFCFF0000003600000001000000010000
+          0036FCFCFCFFFCFCFCFFA5C3D7FF7AB6D5FF90B7D1FF55C9E4FF5BDFF5FF78D0
+          EDFF519DDDFFDFEBF5FFF8F8F8FFFCFCFCFF0000003600000001000000010000
+          0036FCFCFCFFFCFCFCFFFCFCFCFFB2D5E5FF76BAD7FFC2F6FDFF63DFF7FF5DE2
+          F8FF79D3F0FF4998DCFFDEE9F2FFFCFCFCFF0000003600000001000000010000
+          0036FCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFAFD4E5FF77CBE7FFC7F7FDFF5EDC
+          F5FF5AE1F7FF7BD4F1FF4B9ADDFFD4E5F5FF0000003600000001000000010000
+          0036FCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFBDE5F2FF79D3EEFFC7F7
+          FDFF5FDCF5FF5BE2F7FF7AD6F2FF51A2E2FF234A6B5C00000001000000010000
+          0036FCFCFCFFFBFBFBFFFCFCFCFFFCFCFCFFFBFBFBFFF8F8F8FFBAE3F0FF7DD4
+          EEFFC4F6FDFF6CDDF6FF6DCAEDFF63A3D7FF5C99CFF04F8EC427000000010000
+          0036FCFCFCFFF9F9F9FFF9F9F9FFF9F9F9FFF7F7F7FFF6F6F6FFF2F2F2FFA8D9
+          E8FF81D6EEFFB2E3F9FF8BC0E7FFAED3F6FFC4E0FCFF669FD3F7000000010000
+          0036FCFCFCFFF7F7F7FFF9F9F9FFF7F7F7FFF7F7F7FFF3F3F3FFF0F0F0FFEAEA
+          EAFFAFE4F3FF77BEE7FFB4D2F0FFE5F3FFFFACD2EFFF488CC7E8FFFFFF000000
+          0036FBFBFBFDF4F4F4FFF5F5F5FFF5F5F5FFF5F5F5FFF1F1F1FFEFEFEFFFE9E9
+          E9FFFCFCFCFFACD5E4FF58A5D8FF85B1DBFF469DD0FF2B95D15EFFFFFF000000
+          0033F8F8F8F0FBFBFBFDFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFCFCFFFCFC
+          FCFFF8F8F8FF949494910000002000000002FFFFFF00FFFFFF00FFFFFF000000
+          001C000000330000003600000036000000360000003600000036000000360000
+          0036000000360000002000000002FFFFFF00FFFFFF00FFFFFF00
+        }
+        OnClick = btnEditDomainClick
+        ShowHint = True
+        ParentShowHint = False
+      end
     end
     object tsFolders: TTabSheet
       Caption = 'Folders'
-      ClientHeight = 378
-      ClientWidth = 434
+      ClientHeight = 376
+      ClientWidth = 436
       object deDownFolder: TDirectoryEdit
         AnchorSideLeft.Control = lblDownFolder
         AnchorSideTop.Control = lblDownFolder
@@ -1036,7 +1220,7 @@ object frconfig: Tfrconfig
         Left = 30
         Height = 23
         Top = 35
-        Width = 381
+        Width = 376
         OnAcceptDirectory = deDownFolderAcceptDirectory
         ShowHidden = False
         ButtonWidth = 23
@@ -1052,7 +1236,7 @@ object frconfig: Tfrconfig
         Left = 30
         Height = 15
         Top = 15
-        Width = 154
+        Width = 131
         BorderSpacing.Left = 30
         BorderSpacing.Top = 15
         Caption = 'Default download folder:'
@@ -1065,9 +1249,9 @@ object frconfig: Tfrconfig
         AnchorSideRight.Control = deDownFolder
         AnchorSideRight.Side = asrBottom
         Left = 30
-        Height = 57
+        Height = 58
         Top = 68
-        Width = 381
+        Width = 376
         Anchors = [akTop, akLeft, akRight]
         AutoFill = True
         AutoSize = True
@@ -1080,22 +1264,22 @@ object frconfig: Tfrconfig
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 37
-        ClientWidth = 377
+        ClientHeight = 38
+        ClientWidth = 372
         TabOrder = 1
         object rbCategoryOneFolder: TRadioButton
           Left = 6
-          Height = 20
+          Height = 19
           Top = 0
-          Width = 365
+          Width = 360
           Caption = 'All files in single folder'
           TabOrder = 0
         end
         object rbCategoryByType: TRadioButton
           Left = 6
-          Height = 20
-          Top = 20
-          Width = 365
+          Height = 19
+          Top = 19
+          Width = 360
           Caption = 'Suggest by file type'
           Checked = True
           TabOrder = 1
@@ -1111,9 +1295,9 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = btnAddExtension
         Left = 294
-        Height = 150
+        Height = 146
         Top = 198
-        Width = 117
+        Width = 112
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 5
         ItemHeight = 0
@@ -1128,8 +1312,8 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrCenter
         Left = 30
         Height = 23
-        Top = 155
-        Width = 381
+        Top = 156
+        Width = 376
         ShowHidden = False
         ButtonWidth = 23
         NumGlyphs = 1
@@ -1147,7 +1331,7 @@ object frconfig: Tfrconfig
         Left = 30
         Height = 22
         Hint = 'Add'
-        Top = 348
+        Top = 344
         Width = 23
         Anchors = [akLeft, akBottom]
         BorderSpacing.Bottom = 10
@@ -1201,7 +1385,7 @@ object frconfig: Tfrconfig
         Left = 53
         Height = 22
         Hint = 'Delete'
-        Top = 348
+        Top = 344
         Width = 23
         Anchors = [akLeft, akBottom]
         BorderSpacing.Bottom = 10
@@ -1252,7 +1436,7 @@ object frconfig: Tfrconfig
         Left = 294
         Height = 22
         Hint = 'Add'
-        Top = 348
+        Top = 344
         Width = 23
         Anchors = [akLeft, akBottom]
         BorderSpacing.Bottom = 10
@@ -1304,7 +1488,7 @@ object frconfig: Tfrconfig
         Left = 317
         Height = 22
         Hint = 'Delete'
-        Top = 348
+        Top = 344
         Width = 23
         Anchors = [akLeft, akBottom]
         BorderSpacing.Bottom = 10
@@ -1354,8 +1538,8 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         Left = 30
         Height = 15
-        Top = 135
-        Width = 166
+        Top = 136
+        Width = 141
         BorderSpacing.Top = 10
         Caption = 'Category download folder:'
         ParentColor = False
@@ -1366,8 +1550,8 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         Left = 30
         Height = 15
-        Top = 183
-        Width = 61
+        Top = 184
+        Width = 51
         BorderSpacing.Top = 5
         Caption = 'Category:'
         ParentColor = False
@@ -1378,8 +1562,8 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         Left = 294
         Height = 15
-        Top = 183
-        Width = 73
+        Top = 184
+        Width = 58
         Caption = 'Extensions:'
         ParentColor = False
       end
@@ -1391,8 +1575,8 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = btnAddCategory
         Left = 30
-        Height = 150
-        Top = 198
+        Height = 145
+        Top = 199
         Width = 259
         Anchors = [akTop, akLeft, akBottom]
         ItemHeight = 0
@@ -1408,7 +1592,7 @@ object frconfig: Tfrconfig
         Left = 76
         Height = 22
         Hint = 'Edit'
-        Top = 348
+        Top = 344
         Width = 23
         Anchors = [akLeft, akBottom]
         BorderSpacing.Bottom = 10
@@ -2629,7 +2813,6 @@ object frconfig: Tfrconfig
     Width = 184
     Anchors = [akTop, akLeft, akBottom]
     BorderSpacing.Bottom = 5
-    DefaultItemHeight = 18
     HideSelection = False
     Images = frmain.ilSrc
     ReadOnly = True

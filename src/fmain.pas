@@ -3,7 +3,7 @@ unit fmain;
 {
   Main form of AWGG
 
-  Copyright (C) 2016 Reinier Romero Mir
+  Copyright (C) 2018 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -25,7 +25,7 @@ unit fmain;
 interface
 
 uses
-  Classes, SysUtils, FileUtil,
+  Classes, SysUtils, FileUtil, LazFileUtils, LazUTF8,
   synhighlighterunixshellscript, SynEdit, UniqueInstance, Forms, Controls,
   Graphics, Dialogs, StdCtrls, ExtCtrls, Menus, Spin, ComCtrls, DateUtils,
   Process, {$IFDEF UNIX}BaseUnix,{$ENDIF}
@@ -36,7 +36,6 @@ uses
 type
   DownThread = class(TThread)
 private
-  {OK TODO : Tray to use a simple string to replace the array of string; }
   wout:string;
   wpr:TStringList;
   wthp:TProcess;
@@ -50,8 +49,9 @@ private
   youtubedlthexternal:string;
   youtubeuri:string;
   procedure update;
-  procedure prepare();
-  procedure shutdown();
+  procedure changestatus;
+  procedure prepare;
+  procedure shutdown;
 protected
   procedure Execute; override;
 public
@@ -67,8 +67,12 @@ private
   completado:boolean;
   manualshutdown:boolean;
   gengine:string;
+  downloadid:string;
   ///////Type of get work
   ///////0=Get video formats for youtube-dl
+  ///////1=Get video name
+  ///////2=Update video names
+  ///////3=Check for software updates
   worktype:integer;
   procedure update;
   procedure prepare();
@@ -523,7 +527,7 @@ var
   notifipos:integer;
   ddowndir:string='';
   clipboardmonitor:boolean;
-  //columnstatus 1=in progress, 2=Stopped, 3=Complete, 4=Error
+  //columnstatus 0=Paused 1=In progress, 2=Stopped, 3=Complete, 4=Error
   columnname,columnurl,columnpercent,columnsize,columncurrent,columnspeed,columnestimate, columndate, columndestiny,columnengine,columnparameters,columnuser,columnpass,columnstatus,columnid, columntries, columnuid, columntype, columnqueue, columncookie, columnreferer, columnpost, columnheader, columnuseragent:integer;
   columncolaw,columnnamew,columnurlw,columnpercentw,columnsizew,columncurrentw,columnspeedw,columnestimatew,columndatew,columndestinyw,columnenginew,columnparametersw:integer;
   columncolav,columnnamev,columnurlv,columnpercentv,columnsizev,columncurrentv,columnspeedv,columnestimatev,columndatev,columndestinyv,columnenginev,columnparametersv:boolean;
@@ -610,6 +614,9 @@ var
   dropboxonstart:boolean;
   showmainintray:boolean;
   StartDragIndex:integer=-1;
+  frddboxLeft,frddboxTop,frddboxSize:integer;
+  domainfilters:array of string;
+  activedomainfilter:boolean;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
   function suggestdir(doc:string):string;
@@ -621,6 +628,7 @@ var
   procedure configdlg();
   procedure poweroff;
   procedure savemydownloads;
+  procedure saveconfig;
   procedure stopqueue(indice:integer);
   procedure setfirefoxintegration();
   procedure createnewnotifi(title:string;name:string;note:string;fpath:string;ok:boolean;uid:string;simulation:integer=-1);
@@ -726,7 +734,7 @@ begin
   if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
   begin
     tmps.Add('-P');//Destino de la descarga
-    tmps.Add('"'+ExtractShortPathName(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]))+'"');
+    tmps.Add(ExtractShortPathName(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny])));
   end;
   tmps.Add('-t');
   tmps.Add(inttostr(dtries));
@@ -844,7 +852,7 @@ begin
   end;
   end;
   tmps.Add('-d');
-  tmps.Add(ExtractShortPathName(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny])));
+  tmps.Add(ExtractShortPathName(ExpandFileName(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columndestiny]))));
   if frmain.cbLimit.Checked then
     tmps.Add('--max-download-limit='+floattostr(frmain.fseLimit.Value)+'K');
   tmps.Add('-m');
@@ -1419,7 +1427,7 @@ end;
 
 procedure defaultcategory();
 begin
-  SetLength(categoryextencions,6);
+  SetLength(categoryextencions,7);
   categoryextencions[0]:=TStringList.Create;
   categoryextencions[0].Add(ddowndir+pathdelim+'Compressed');
   categoryextencions[0].Add(categorycompressed);
@@ -1444,6 +1452,10 @@ begin
   categoryextencions[5].Add(ddowndir+pathdelim+'Music');
   categoryextencions[5].Add(categorymusic);
   categoryextencions[5].AddStrings(['MP3','OGG','WAV','WMA','AMR','MIDI']);
+  categoryextencions[6]:=TStringList.Create;
+  categoryextencions[6].Add(ddowndir+pathdelim+'Torrents');
+  categoryextencions[6].Add(categorytorrents);
+  categoryextencions[6].AddStrings(['TORRENT']);
 end;
 
 function finduid(uid:string):integer;
@@ -1480,7 +1492,7 @@ procedure queueindexselect();
 begin
   frnewdown.cbQueue.ItemIndex:=0;
   frsitegrabber.cbQueue.ItemIndex:=0;
-  if (frmain.tvMain.SelectionCount>0) then
+  if (frmain.tvMain.SelectionCount>0) and frmain.Active then
   begin
     if frmain.tvMain.Selected.Level>0 then
     begin
@@ -1940,6 +1952,11 @@ begin
     if frnewdown.cbEngine.Items.IndexOf('aria2c')<>-1 then
       frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf('aria2c');
     end;
+  end;
+  if Pos('magnet:',frnewdown.edtURL.Text)=1 then
+  begin
+    if frnewdown.cbEngine.Items.IndexOf('aria2c')<>-1 then
+      frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf('aria2c');
   end;
 end;
 
@@ -2483,6 +2500,18 @@ begin
     iniconfigfile.WriteBool('Config','portablemode',portablemode);
     iniconfigfile.WriteBool('Config','dropboxonstart',dropboxonstart);
     iniconfigfile.WriteBool('Config','showmainintray',showmainintray);
+    //Window position and size
+    if frmain.WindowState<>wsMaximized then
+    begin
+      iniconfigfile.WriteInteger('Config','mainwindowxpos',frmain.Left);
+      iniconfigfile.WriteInteger('Config','mainwindowypos',frmain.Top);
+      iniconfigfile.WriteInteger('Config','mainwindowwidth',frmain.Width);
+      iniconfigfile.WriteInteger('Config','mainwindowheight',frmain.Height);
+    end;
+    //Dropbox position and size
+    iniconfigfile.WriteInteger('Config','dropboxxpos',frddbox.Left);
+    iniconfigfile.WriteInteger('Config','dropboxypos',frddbox.Top);
+    iniconfigfile.WriteInteger('Config','dropboxsize',frddbox.Width);
     //categorias
     iniconfigfile.WriteInteger('Category','count',Length(categoryextencions));
     for i:=0 to Length(categoryextencions)-1 do
@@ -2497,6 +2526,14 @@ begin
       iniconfigfile.WriteString('Group'+inttostr(i),'Ext',extencions);
       extencions:='';
     end;
+    /////////////Domain clipbiard monitor filter
+    iniconfigfile.WriteBool('Config','activedomainfilter',activedomainfilter);
+    iniconfigfile.WriteInteger('Filters','count',Length(domainfilters));
+    for i:=0 to Length(domainfilters)-1 do
+    begin
+      iniconfigfile.WriteString('Domain'+inttostr(i),'Name',domainfilters[i]);
+    end;
+    //////////////////////////////
     iniconfigfile.UpdateFile;
     iniconfigfile.Free;
     autostart();
@@ -2633,6 +2670,17 @@ begin
     showmainintray:=iniconfigfile.ReadBool('Config','showmainintray',false);
     showdowntrayicon:=iniconfigfile.ReadBool('Config','showdowntrayicon',false);
     {$ENDIF}
+    if firststart then
+      frmain.Position:=poScreenCenter;
+    //Main window position and size
+    frmain.Top:=iniconfigfile.ReadInteger('Config','mainwindowypos',frmain.Top);
+    frmain.Left:=iniconfigfile.ReadInteger('Config','mainwindowxpos',frmain.Left);
+    frmain.Width:=iniconfigfile.ReadInteger('Config','mainwindowwidth',frmain.Width);
+    frmain.Height:=iniconfigfile.ReadInteger('Config','mainwindowheight',frmain.Height);
+    //Dropbox position and size
+    frddboxLeft:=iniconfigfile.ReadInteger('Config','dropboxxpos',Screen.WorkAreaWidth-40);
+    frddboxTop:=iniconfigfile.ReadInteger('Config','dropboxypos',Screen.WorkAreaHeight-40);
+    frddboxSize:=iniconfigfile.ReadInteger('Config','dropboxsize',40);
     //categorias
     if iniconfigfile.ValueExists('Category','count') then
     begin
@@ -2648,6 +2696,16 @@ begin
     else
     begin
       //defaultcategory();
+    end;
+    /////Filtros
+    activedomainfilter:=iniconfigfile.ReadBool('Config','activedomainfilter',false);
+    if iniconfigfile.ValueExists('Filters','count') then
+    begin
+      SetLength(domainfilters,iniconfigfile.ReadInteger('Filters','count',0));
+      for i:=0 to (iniconfigfile.ReadInteger('Filters','count',0)-1) do
+      begin
+        domainfilters[i]:=iniconfigfile.ReadString('Domain'+inttostr(i),'Name','');
+      end;
     end;
     iniconfigfile.Free;
     frmain.lvMain.Column[0].Width:=columncolaw;
@@ -2769,6 +2827,8 @@ begin
 end;
 
 procedure setconfig();
+var
+  i:integer;
 begin
   useproxy:=frconfig.cbProxy.ItemIndex;
   phttp:=frconfig.edtHTTPhost.Text;
@@ -2861,6 +2921,12 @@ begin
   qjueves[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[4];
   qviernes[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[5];
   qsabado[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[6];
+  activedomainfilter:=frconfig.chIgnoreFilter.Checked;
+  SetLength(domainfilters,frconfig.lbDomains.Items.Count);
+  for i:=0 to frconfig.lbDomains.Items.Count-1 do
+  begin
+    domainfilters[i]:=frconfig.lbDomains.Items[i];
+  end;
   if frconfig.lbCategory.ItemIndex<>-1 then
     categoryextencionstmp[frconfig.lbCategory.ItemIndex][0]:=frconfig.deCategoryDownFolder.Text;
   categoryextencions:=categoryextencionstmp;
@@ -3044,6 +3110,12 @@ begin
     frconfig.chgWeekDays.Checked[6]:=qsabado[frconfig.cbQueue.ItemIndex];
     frconfig.chDisableLimits.Checked:=queuelimits[frconfig.cbQueue.ItemIndex];
     frconfig.chShutdown.Checked:=queuepoweroff[frconfig.cbQueue.ItemIndex];
+    frconfig.chIgnoreFilter.Checked:=activedomainfilter;
+    frconfig.chIgnoreFilterChange(nil);
+    for i:=0 to Length(domainfilters)-1 do
+    begin
+      frconfig.lbDomains.Items.Add(domainfilters[i]);
+    end;
     case defaultdirmode of
       1:frconfig.rbCategoryOneFolder.Checked:=true;
       2:frconfig.rbCategoryOneFolder.Checked:=false;
@@ -3354,7 +3426,7 @@ begin
         tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);
       end;
     frmain.lvMain.Items[indice].SubItems[columnstatus]:='1';
-    frmain.lvMain.Items[indice].Caption:=fstrings.statusinprogres;
+    frmain.lvMain.Items[indice].Caption:=fstrings.statusstarting;
     if frmain.lvMain.Items[indice].SubItems[columntype] = '0' then
       frmain.lvMain.Items[indice].ImageIndex:=2;
     if frmain.lvMain.Items[indice].SubItems[columntype] = '1' then
@@ -3401,7 +3473,7 @@ begin
         if (frmain.lvMain.Items[indice].SubItems[columnuid]=frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columnuid]) then
         begin
           frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columnstatus]:='1';
-          frmain.lvFilter.Items[hilo[downid].thid2].Caption:=fstrings.statusinprogres;
+          frmain.lvFilter.Items[hilo[downid].thid2].Caption:=fstrings.statusstarting;
           if frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columntype] = '0' then
             frmain.lvFilter.Items[hilo[downid].thid2].ImageIndex:=2;
           if frmain.lvFilter.Items[hilo[downid].thid2].SubItems[columntype] = '1' then
@@ -3468,10 +3540,13 @@ begin
   end;
   for i:=0 to frmain.lvMain.Items.Count-1 do
   begin
-    if (frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) and (maxcdown<frmain.seMaxDownInProgress.Value) and ((frmain.lvMain.Items[i].SubItems[columnstatus]='') or (frmain.lvMain.Items[i].SubItems[columnstatus]='2') or (frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='4')) and (strtoint(frmain.lvMain.Items[i].SubItems[columntries])>0) then
+    if (frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) then
     begin
-      inc(maxcdown);
-      downloadstart(i,false);
+      if (maxcdown<frmain.seMaxDownInProgress.Value) and ((frmain.lvMain.Items[i].SubItems[columnstatus]='') or (frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='2') or (frmain.lvMain.Items[i].SubItems[columnstatus]='4')) and ((strtoint(frmain.lvMain.Items[i].SubItems[columntries])>0) or (frmain.lvMain.Items[i].SubItems[columnstatus]='0')) then
+      begin
+        inc(maxcdown);
+        downloadstart(i,false);
+      end;
     end;
   end;
 end;
@@ -3517,7 +3592,6 @@ var
   diasemana:integer;
   semana:array[1..7] of boolean;
 begin
-
   if self.stindex<=Length(queues)-1 then
   begin
     semana[1]:=qdomingo[self.stindex];
@@ -3532,10 +3606,11 @@ begin
     startdatetime:=StrToDateTime(datetostr(queuestartdates[self.stindex])+' '+timetostr(queuestarttimes[self.stindex]));
     stopdatetime:=StrToDateTime(datetostr(queuestopdates[self.stindex])+' '+timetostr(queuestoptimes[self.stindex]));
     diasemana:=DayOfWeek(fecha);
+    //All day
     if qallday[self.stindex] then
     begin
       checkstart:=(hora>=queuestarttimes[self.stindex]);
-      if queuestarttimes[self.stindex]>queuestoptimes[self.stindex] then
+      if queuestarttimes[self.stindex]>=queuestoptimes[self.stindex] then
       begin
         if qstop[self.stindex] then
           checkstop:=(hora<=IncDay(queuestoptimes[self.stindex]))
@@ -3636,6 +3711,7 @@ begin
         frmain.lvMain.Items[i].SubItems[columnspeed]:='--';
         frmain.lvMain.Items[i].SubItems[columnestimate]:='--';
         frmain.lvMain.Items[i].SubItems[columncurrent]:='0';
+        frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(dtries);
         if ahora then
         begin
           queuemanual[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])]:=true;
@@ -3650,18 +3726,18 @@ end;
 
 procedure DownThread.update;
 var
-  porciento, velocidad, tamano, tiempo, descargado, nombre:String;
+  porciento:string='';
+  velocidad:string='';
+  tamano:string='';
+  tiempo:string='';
+  descargado:string='';
+  nombre:string='';
   icono:Graphics.TBitmap;
   statusfile:TextFile;
-  th,tw:integer;
+  th,tw, sli:integer;
   itemfile:TSearchRec;
+  sltofindtext:TStringList;
 begin
-  porciento:='';
-  velocidad:='';
-  tamano:='';
-  tiempo:='';
-  descargado:='';
-  nombre:='';
   if (frmain.lvMain.ItemIndex>-1) and (frmain.micommandFollow.Checked) and (thid=frmain.lvMain.ItemIndex) then
   begin
     if Length(frmain.SynEdit1.Lines.Text)>0 then
@@ -3783,6 +3859,28 @@ begin
   ///////////////////***ARIA2***///////////////////
   if (frmain.lvMain.Items[thid].SubItems[columnengine] = 'aria2c') or (youtubedlthexternal='aria2c') or ((youtubedlextdown='aria2c') and youtubedluseextdown and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl')) then
   begin
+    /////When a metalink or torrent complete he continue as P2P server
+    if (frmain.lvMain.Items[thid].SubItems[columnstatus]<>'3') and (Pos('magnet:',frmain.lvMain.Items[thid].SubItems[columnurl])=1) then
+    begin
+      if Pos(' SEED(0.',wout)>0 then
+      begin
+        frmain.lvMain.Items[thid].SubItems[columnstatus]:='3';
+        frmain.lvMain.Items[thid].Caption:=fstrings.statuscomplete;
+        frmain.lvMain.Items[thid].SubItems[columnpercent]:='100%';
+        frmain.lvMain.Items[thid].SubItems[columnestimate]:='--';
+        frmain.lvMain.Items[thid].SubItems[columnspeed]:='--';
+        frmain.lvMain.Items[thid].StateIndex:=4;
+        if frmain.lvFilter.Visible then
+        begin
+          frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='3';
+          frmain.lvFilter.Items[thid2].Caption:=fstrings.statuscomplete;
+          frmain.lvFilter.Items[thid2].SubItems[columnpercent]:='100%';
+          frmain.lvFilter.Items[thid2].SubItems[columnestimate]:='--';
+          frmain.lvFilter.Items[thid2].SubItems[columnspeed]:='--';
+          frmain.lvFilter.Items[thid2].StateIndex:=4;
+        end;
+      end;
+    end;
     if Pos('%) ',wout)>0 then
     begin
       porciento:=Copy(wout,Pos('B(',wout)+2,length(wout));
@@ -3829,6 +3927,9 @@ begin
         velocidad:=Copy(velocidad,0,Pos('Bs ETA:',velocidad));
       if Pos('B ETA:',velocidad)>0 then
         velocidad:=Copy(velocidad,0,Pos('B ETA:',velocidad));
+      //Case metalink, torrent etc
+      if Pos('B UL:',velocidad)>0 then
+        velocidad:=Copy(velocidad,0,Pos('B UL:',velocidad));
     end;
     if (porciento='') and (frmain.lvMain.Items[thid].SubItems[columnpercent]='-')   then
     begin
@@ -3982,10 +4083,10 @@ begin
     /////Extract the file name from the output if filename is ''
     if (frmain.lvMain.Items[thid].SubItems[columnname]='') and (youtubedluseextdown=false) then
     begin
-      if (Pos('[download] Destination: ',wout)>0) and (Pos(LineEnding,wout)>0) then
+      if (Pos('[download] Destination: ',wout)>0) and (Pos(#10,wout)>0) then
       begin
         nombre:=Copy(wout,Pos('[download] Destination: ',wout)+24,Length(wout));
-        nombre:=Copy(nombre,0,Pos(LineEnding,nombre)-1);
+        nombre:=Copy(nombre,0,Pos(#10,nombre)-1);
         if Pos('/',nombre)>0 then
           nombre:=Copy(nombre,LastDelimiter('/',nombre)+1,Length(nombre));
         if Pos('\',nombre)>0 then
@@ -3998,7 +4099,18 @@ begin
     begin
       if ((Pos('http://',wout)>0) or (Pos('https://',wout)>0)) and (Pos('ERROR:',wout)<1) then
       begin
-        youtubeuri:=ExtractWord(WordCount(wout,[#10])-1,wout,[#10]);
+        sltofindtext:=TStringList.Create;
+        sltofindtext.AddText(wout);
+        for sli:=0 to sltofindtext.Count-1 do
+        begin
+          //ShowMessage(sltofindtext[sli]);
+          if ((Pos('http://',sltofindtext[sli])=1) or (Pos('https://',sltofindtext[sli])=1)) then
+          begin
+            youtubeuri:=sltofindtext[sli];
+            break;
+          end;
+        end;
+        {youtubeuri:=ExtractWord(WordCount(wout,[#10])-1,wout,[#10]);
         //The first URL is the video
         if Pos('http',ExtractWord(WordCount(wout,[#10])-2,wout,[#10]))>0 then
           youtubeuri:=ExtractWord(WordCount(wout,[#10])-2,wout,[#10]);
@@ -4008,7 +4120,7 @@ begin
         youtubeuri:=StringReplace(youtubeuri,#10,'',[rfReplaceAll]);
         youtubeuri:=StringReplace(youtubeuri,#13,'',[rfReplaceAll]);
         youtubeuri:=StringReplace(youtubeuri,#10#13,'',[rfReplaceAll]);
-        youtubeuri:=StringReplace(youtubeuri,#13#10,'',[rfReplaceAll]);
+        youtubeuri:=StringReplace(youtubeuri,#13#10,'',[rfReplaceAll]);}
 
         if (frmain.lvMain.Items[thid].SubItems[columnname]='') then
         begin
@@ -4153,6 +4265,16 @@ begin
   end;
 end;
 
+procedure DownThread.changestatus;
+begin
+  frmain.lvMain.Items[thid].Caption:=fstrings.statusinprogres;
+  if frmain.lvFilter.Visible then
+  begin
+    if (frmain.lvFilter.Items.Count>thid2) then
+      frmain.lvFilter.Items[thid2].Caption:=fstrings.statusinprogres;
+  end;
+end;
+
 Constructor GetThread.Create(CreateSuspended:boolean;gparams:TStringList);
 begin
   FreeOnTerminate:=True;
@@ -4185,14 +4307,23 @@ begin
       else
         frvideoformat.lblVideoName.Caption:=videonameloading;
     end;
-   end;
+    2:////Update video names
+    begin
+
+    end;
+    3:////Check for software updates
+    begin
+
+    end;
+  end;
 end;
 
 procedure GetThread.prepare;
 var
-  slformats:TStringList;
+  slformats,slvname:TStringList;
   i:integer;
   lvItem:TListItem;
+  tmpvname:string='';
 begin
   case worktype of
     0:////Get video formats for youtube-dl
@@ -4221,20 +4352,52 @@ begin
     end;
     1:////Get video name for youtube-dl
     begin
-      if Pos(':',gout)<1 then
+      if Pos('ERROR:',gout)<1 then
       begin
-        fvideoformat.vname:=SysToUTF8(StringReplace(gout,LineEnding,'',[rfReplaceAll]));
+        slvname:=TStringList.Create;
+        slvname.AddText(gout);
+        fvideoformat.vname:=SysToUTF8(StringReplace(slvname[slvname.Count-1],LineEnding,'',[rfReplaceAll]));
         frvideoformat.lblName.Caption:=fvideoformat.vname;
         frvideoformat.lblVideoName.Caption:=videoname;
+        slvname.Destroy;
       end
       else
         frvideoformat.lblVideoName.Caption:=errorloadingname;
       frvideoformat.btnReload.Enabled:=true;
     end;
-  else
-  begin
-
-  end;
+    2:////Update video names
+    begin
+      if Pos('ERROR:',gout)<1 then
+      begin
+        slvname:=TStringList.Create;
+        slvname.AddText(gout);
+        for i:=0 to frmain.lvMain.Items.Count-1 do
+        begin
+          if (frmain.lvMain.Items[i].SubItems[columnid]=downloadid) and (frmain.lvMain.Items[i].SubItems[columnname]='') then
+          begin
+            tmpvname:=SysToUTF8(StringReplace(slvname[slvname.Count-1],LineEnding,'',[rfReplaceAll]));
+            frmain.lvMain.Items[i].SubItems[columnname]:=tmpvname;
+          end;
+          if FileExists(UTF8ToSys(frmain.lvMain.Items[i].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[i].SubItems[columnname])) then
+            frmain.lvMain.Items[i].StateIndex:=4;
+        end;
+        if frmain.lvFilter.Visible then
+        begin
+          for i:=0 to frmain.lvFilter.Items.Count-1 do
+          begin
+             if (frmain.lvFilter.Items[i].SubItems[columnid]=downloadid) then
+             begin
+               frmain.lvFilter.Items[i].SubItems[columnname]:=tmpvname;
+               frmain.lvFilter.Items[i].StateIndex:=4;
+             end;
+          end;
+        end;
+        slvname.Destroy;
+        savemydownloads();
+      end;
+      //else
+        //ShowMessage('Error al optener el nombre de '+self.downloadid);
+    end;
   end;
 end;
 
@@ -4510,6 +4673,57 @@ begin
   customgetname.Start;
 end;
 
+procedure updatevideonames(di:string);
+var
+  gparams:TStringList;
+  i:integer;
+begin
+  for i:=0 to frmain.lvMain.Items.Count-1 do
+  begin
+    if (frMain.lvMain.Items[i].SubItems[columnname]='') and (frMain.lvMain.Items[i].SubItems[columnengine]='youtube-dl') and (frMain.lvMain.Items[i].SubItems[columnid]=di) then
+    begin
+      gparams:=TStringList.Create;
+      gparams.Add('--ignore-config');
+      gparams.Add('--no-playlist');
+      gparams.Add('-c');
+      gparams.Add('--no-part');
+      gparams.Add('--get-filename');
+      gparams.Add('--no-check-certificate');
+      case useproxy of
+        2:
+        begin
+          gparams.Add('--proxy');
+          if useaut then
+            gparams.Add('http://'+puser+':'+ppassword+'@'+phttp+':'+phttpport)
+          else
+            gparams.Add('http://'+phttp+':'+phttpport);
+        end;
+      end;
+
+      if (frMain.lvMain.Items[i].SubItems[columnuser]<>'') and (frMain.lvMain.Items[i].SubItems[columnpass]<>'') then
+      begin
+        gparams.Add('-u');
+        gparams.Add(frMain.lvMain.Items[i].SubItems[columnuser]);
+        gparams.Add('-p');
+        gparams.Add(frMain.lvMain.Items[i].SubItems[columnuser]);
+      end;
+
+      if (frMain.lvMain.Items[i].SubItems[columnuser]='') and (frMain.lvMain.Items[i].SubItems[columnpass]<>'') then
+      begin
+        gparams.Add('--video-password');
+        gparams.Add(frMain.lvMain.Items[i].SubItems[columnpass]);
+      end;
+      gparams.Add(frMain.lvMain.Items[i].SubItems[columnurl]);
+      customgetname:=GetThRead.Create(true,gparams);
+      customgetname.gengine:='youtube-dl';
+      customgetname.worktype:=2;
+      customgetname.downloadid:=frMain.lvMain.Items[i].SubItems[columnid];
+      customgetname.Start;
+      gparams.Destroy
+    end;
+  end;
+end;
+
 procedure savemydownloads();
 var
   wn:integer;
@@ -4745,24 +4959,14 @@ begin
 end;
 
 procedure DownThread.shutdown;
-//var
-  //milisegundos:integer;
 begin
   manualshutdown:=true;
-  {milisegundos:=1000;
-  while (wthp.Running) and (milisegundos>0) do
+  frmain.lvMain.Items[thid].Caption:=fstrings.statusstopping;
+  if frmain.lvFilter.Visible then
   begin
-    Dec(milisegundos);
-    Sleep(10);
-    Application.ProcessMessages;
+    if (frmain.lvFilter.Items.Count>thid2) then
+      frmain.lvFilter.Items[thid2].Caption:=fstrings.statusstopping;
   end;
-  ShowMessage('Whait for shutdown ok');
-  if (frmain.lvMain.Items[thid].SubItems[columnstatus] <> '2') then
-  begin
-    wthp.Terminate(0);
-    frmain.lvMain.Items[thid].SubItems[columnstatus]:='2';
-    prepare();
-  end;}
 end;
 
 procedure DownThread.Execute;
@@ -4867,6 +5071,7 @@ begin
         else
           ReWrite(logfile);
       end;
+      Synchronize(@changestatus);
     except on e:exception do
     end;
     while (TrayOrRunning or (wthp.Output.NumBytesAvailable > 0)) and (not manualshutdown) do
@@ -4941,7 +5146,8 @@ begin
       try
         if ProcessHandle<>0 then
         begin
-          TerminateProcess(ProcessHandle,0)
+          if TerminateProcess(ProcessHandle,0)=false then
+            wthp.Terminate(0);
         end;
       finally
         CloseHandle(ProcessHandle);
@@ -4997,7 +5203,7 @@ begin
   end;
   if (frmain.lvFilter.Visible) then
   begin
-    if (frmain.lvFilter.Items.Count>=thid2) then
+    if (frmain.lvFilter.Items.Count>=thid2) and (frmain.lvFilter.Items.Count>0) then
     begin
       if (frmain.lvMain.Items[thid].SubItems[columnuid]=frmain.lvFilter.Items[thid2].SubItems[columnuid]) then
       begin
@@ -5014,6 +5220,7 @@ begin
     frmain.lvMain.Items[thid].SubItems[columnstatus]:='3';
     frmain.lvMain.Items[thid].Caption:=fstrings.statuscomplete;
     frmain.lvMain.Items[thid].SubItems[columnpercent]:='100%';
+    frmain.lvMain.Items[thid].SubItems[columnestimate]:='--';
     ///Tama;o automatico
     if (Pos(',',frmain.lvMain.Items[thid].SubItems[columnsize])>0) then
       punto:=',';
@@ -5106,7 +5313,7 @@ begin
     end;
     frmain.lvMain.Items[thid].SubItems[columnspeed]:='--';
     if otherlistview then
-      frmain.lvMain.Items[thid].SubItems[columnspeed]:='--';
+      frmain.lvFilter.Items[thid].SubItems[columnspeed]:='--';
     if frmain.lvMain.ItemIndex=thid then
     begin
       frmain.tbStartDown.Enabled:=true;
@@ -5156,7 +5363,7 @@ begin
         end;
       end;
       try
-        if playsounds then
+        if playsounds and ((qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled=false) or (strtoint(frmain.lvMain.Items[thid].SubItems[columntries])<=1)) then
           playsound(downstopsound);
       except on e:exception do
       end;
@@ -5174,6 +5381,7 @@ begin
       //frmain.lvFilter.Columns[0].Width:=columncolaw;
     //end;
   {$ENDIF}
+  savemydownloads;
 end;
 
 constructor DownThread.Create(CreateSuspended:boolean;tmps:TStringlist);
@@ -5216,7 +5424,8 @@ begin
   begin
     try
       fitem:=TListItem.Create(frmain.lvMain.Items);
-      fitem.Caption:=inidownloadsfile.ReadString('Download'+inttostr(ns),'status','');
+      //The caption is determine by the status
+      //fitem.Caption:=inidownloadsfile.ReadString('Download'+inttostr(ns),'status','');
       fitem.ImageIndex:=inidownloadsfile.ReadInteger('Download'+inttostr(ns),'icon',-1);
       fitem.SubItems.Add('');
       fitem.SubItems[columnname]:=inidownloadsfile.ReadString('Download'+inttostr(ns),'columnname','');
@@ -5242,10 +5451,10 @@ begin
       fitem.SubItems.Add('');
       fitem.SubItems[columnparameters]:=inidownloadsfile.ReadString('Download'+inttostr(ns),'columnparameters','');
       fitem.SubItems.Add('0');
-      if inidownloadsfile.ReadString('Download'+inttostr(ns),'columnstatus','0')<>'1' then
+      {if inidownloadsfile.ReadString('Download'+inttostr(ns),'columnstatus','0')<>'1' then
         fitem.SubItems[columnstatus]:=inidownloadsfile.ReadString('Download'+inttostr(ns),'columnstatus','0')
       else
-        fitem.SubItems[columnstatus]:='2';
+        fitem.SubItems[columnstatus]:='2';}
       fitem.SubItems.Add(inttostr(ns));
       fitem.SubItems.Add('');
       fitem.SubItems[columnuser]:=inidownloadsfile.ReadString('Download'+inttostr(ns),'columnuser','');
@@ -5279,54 +5488,70 @@ begin
         fitem.SubItems[columnpercent]:=ExtractWord(3,ftext.Strings[0],['/']);
         fitem.SubItems[columnestimate]:=ExtractWord(4,ftext.Strings[0],['/']);
         statusstr:=ExtractWord(1,ftext.Strings[0],['/']);
-        Case statusstr of
-          '0':
-          begin
-            fitem.SubItems[columnstatus]:=statusstr;
-            if fitem.SubItems[columntype] = '0' then
-              fitem.ImageIndex:=18;
-            if fitem.SubItems[columntype] = '1' then
-              fitem.ImageIndex:=51;
-          end;
-          '1':
-          begin
-            fitem.SubItems[columnstatus]:='4';
-            if fitem.SubItems[columntype] = '0' then
-              fitem.ImageIndex:=9;
-            if fitem.SubItems[columntype] = '1' then
-              fitem.ImageIndex:=53;
-          end;
-          '2':
-          begin
-            fitem.SubItems[columnstatus]:=statusstr;
-            if fitem.SubItems[columntype] = '0' then
-              fitem.ImageIndex:=3;
-            if fitem.SubItems[columntype] = '1' then
-              fitem.ImageIndex:=53;
-          end;
-          '3':
-          begin
-            fitem.SubItems[columnstatus]:=statusstr;
-            if fitem.SubItems[columntype] = '0' then
-            begin
-              if FileExists(UTF8ToSys(fitem.SubItems[columndestiny]+pathdelim+fitem.SubItems[columnname])) then
-                fitem.ImageIndex:=4
-              else
-                fitem.ImageIndex:=61;
-            end;
-            if fitem.SubItems[columntype] = '1' then
-              fitem.ImageIndex:=54;
-          end;
-          '4':
-          begin
-            fitem.SubItems[columnstatus]:=statusstr;
-            if fitem.SubItems[columntype] = '0' then
-              fitem.ImageIndex:=9;
-            if fitem.SubItems[columntype] = '1' then
-              fitem.ImageIndex:=53;
-          end;
-        end;
         ftext.Destroy;
+      end
+      else
+        statusstr:=inidownloadsfile.ReadString('Download'+inttostr(ns),'columnstatus','0');
+      Case statusstr of
+        '0':
+        begin
+          fitem.Caption:=fstrings.statuspaused;
+          fitem.SubItems[columnstatus]:=statusstr;
+          if fitem.SubItems[columntype] = '0' then
+            fitem.ImageIndex:=18;
+          if fitem.SubItems[columntype] = '1' then
+            fitem.ImageIndex:=51;
+        end;
+        '1':
+        begin
+          fitem.Caption:=fstrings.statuserror;
+          fitem.SubItems[columnstatus]:='4';
+          if fitem.SubItems[columntype] = '0' then
+            fitem.ImageIndex:=9;
+          if fitem.SubItems[columntype] = '1' then
+            fitem.ImageIndex:=53;
+        end;
+        '2':
+        begin
+          fitem.Caption:=fstrings.statusstoped;
+          fitem.SubItems[columnstatus]:=statusstr;
+          if fitem.SubItems[columntype] = '0' then
+            fitem.ImageIndex:=3;
+          if fitem.SubItems[columntype] = '1' then
+            fitem.ImageIndex:=53;
+        end;
+        '3':
+        begin
+          fitem.Caption:=fstrings.statuscomplete;
+          fitem.SubItems[columnstatus]:=statusstr;
+          if fitem.SubItems[columntype] = '0' then
+          begin
+            if FileExists(UTF8ToSys(fitem.SubItems[columndestiny]+pathdelim+fitem.SubItems[columnname])) then
+              fitem.ImageIndex:=4
+            else
+              fitem.ImageIndex:=61;
+          end;
+          if fitem.SubItems[columntype] = '1' then
+            fitem.ImageIndex:=54;
+        end;
+        '4':
+        begin
+          fitem.Caption:=fstrings.statuserror;
+          fitem.SubItems[columnstatus]:=statusstr;
+          if fitem.SubItems[columntype] = '0' then
+            fitem.ImageIndex:=9;
+          if fitem.SubItems[columntype] = '1' then
+            fitem.ImageIndex:=53;
+        end;
+        else
+        begin
+          fitem.Caption:=fstrings.statuserror;
+          fitem.SubItems[columnstatus]:=statusstr;
+          if fitem.SubItems[columntype] = '0' then
+            fitem.ImageIndex:=9;
+          if fitem.SubItems[columntype] = '1' then
+            fitem.ImageIndex:=53;
+        end;
       end;
       frmain.lvMain.Items.AddItem(fitem);
     except on e:exception do
@@ -5422,6 +5647,17 @@ begin
     saveconfig();
     stopall(true);
     savemydownloads();
+    if Assigned(trayicons) then
+    begin
+      for n:=0 to Length(trayicons)-1 do
+      begin
+        if Assigned(trayicons[n]) then
+        begin
+          trayicons[n].Visible:=false;
+          trayicons[n].Destroy;
+        end;
+      end;
+    end;
     Application.Terminate;
   end;
 end;
@@ -5638,13 +5874,6 @@ begin
     updatelangstatus();
   frmain.FirstStartTimer.Enabled:=true;
   onestart:=false;
-  if autostartminimized then
-  begin
-    frmain.WindowState:=wsMinimized;
-    frmain.Hide;
-  end
-  else
-    frmain.WindowState:=lastmainwindowstate;
   frmain.lvFilter.Columns:=frmain.lvMain.Columns;
 end;
 
@@ -6166,10 +6395,10 @@ procedure Tfrmain.mimainddboxClick(Sender: TObject);
 begin
   if frddbox.Visible =false then
   begin
-    frddbox.Width:=40;
-    frddbox.Height:=40;
-    frddbox.Top:=Screen.WorkAreaHeight-frddbox.Height;
-    frddbox.Left:=Screen.WorkAreaWidth-frddbox.Width;
+    frddbox.Width:=frddboxSize;
+    frddbox.Height:=frddboxSize;
+    frddbox.Top:=frddboxTop;
+    frddbox.Left:=frddboxLeft;
     frddbox.Show;
     {$IFDEF LCLQT}
     frddbox.FormStyle:=fsSystemStayOnTop;
@@ -7173,6 +7402,7 @@ var
   cbn:integer;
   noesta:boolean;
   tmpclip:string='';
+  tmpclip2:string='';
 begin
   { TODO : Execute this work in a thread because this cause slow execution in some Linux distribution }
   noesta:=true;
@@ -7182,12 +7412,21 @@ begin
   begin
     sameclip:=ClipBoard.AsText;
     tmpclip:=Copy(sameclip,0,6);
-    if (tmpclip='http:/') or (tmpclip='https:') or (tmpclip='ftp://') then
+    tmpclip2:=Copy(sameclip,0,7);
+    if (tmpclip='http:/') or (tmpclip='https:') or (tmpclip='ftp://') or (tmpclip2='magnet:') then
     begin
       for cbn:=0 to frmain.lvMain.Items.Count-1 do
       begin
         if sameclip=frmain.lvMain.Items[cbn].SubItems[columnurl] then
           noesta:=false;
+      end;
+      if activedomainfilter then
+      begin
+        for cbn:=0 to Length(domainfilters)-1 do
+        begin
+          if ParseURI(sameclip).Host=domainfilters[cbn] then
+            noesta:=false;
+        end;
       end;
       if noesta then
       begin
@@ -7198,6 +7437,7 @@ begin
       end;
     end;
     tmpclip:='';
+    tmpclip2:='';
   end;
   end;
 end;
@@ -7214,6 +7454,7 @@ var
   header:string='';
   url:string='';
   useragent:string='';
+  magnetname:string='';
   silent:boolean=false;
 begin
   newdownqueues();
@@ -7278,7 +7519,7 @@ begin
         silent:=true;
       if (Application.Params[i]='-n') and (Application.ParamCount>i) then
       begin
-        if (Application.Params[i+1]<>'-c') then
+        if (Application.Params[i+1]<>'-c') and (Application.Params[i+1]<>'-s') and (Application.Params[i+1]<>'-r') and (Application.Params[i+1]<>'-p') and (Application.Params[i+1]<>'-h') and (Application.Params[i+1]<>'-u') then
           fname:=Application.Params[i+1];
       end;
       if (Application.Params[i]='-c') and (Application.ParamCount>i) then
@@ -7306,7 +7547,7 @@ begin
         if (Copy(Application.Params[i+1],0,1)<>'-') then
           useragent:=Application.Params[i+1];
       end;
-      if ((Pos('http://',Application.Params[i])=1) or (Pos('https://',Application.Params[i])=1) or (Pos('ftp://',Application.Params[i])=1)) and (url='') then
+      if ((Pos('http://',Application.Params[i])=1) or (Pos('https://',Application.Params[i])=1) or (Pos('ftp://',Application.Params[i])=1)) or (Pos('magnet:',Application.Params[i])=1) and (url='') and (Application.Params[i-1]<>'-r') then
       begin
         url:=Application.Params[i];
       end;
@@ -7315,7 +7556,15 @@ begin
     if fname<>'' then
       frnewdown.edtFileName.Text:=fname
     else
+    begin
       frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
+      if (Pos('magnet:',url)=1) and (Pos('&dn=',url)>0) then
+      begin
+        magnetname:=Copy(url,Pos('&dn=',url)+4,Length(url));
+        magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
+        frnewdown.edtFileName.Text:=magnetname;
+      end;
+    end;
     case defaultdirmode of
       1:frnewdown.deDestination.Text:=ddowndir;
       2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
@@ -7386,11 +7635,23 @@ begin
         queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
         downloadstart(tmpindex,false);
       end;
+      if iniciar=false then
+      begin
+        if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
+          updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
+      end;
     end;
   end;
   silent:=false;
   if dropboxonstart then
     frmain.mimainddboxClick(nil);
+  if autostartminimized then
+  begin
+    frmain.WindowState:=wsMinimized;
+    frmain.Hide;
+  end
+  else
+    frmain.WindowState:=lastmainwindowstate;
 end;
 
 procedure Tfrmain.tbStopQueueClick(Sender: TObject);
@@ -7462,18 +7723,25 @@ var
   downitem:TListItem;
   tmpindex:integer;
   tmpclip:string='';
+  magnetname:string='';
 begin
   if (frnewdown.edtURL.Text='http://') or (frnewdown.edtURL.Text='') or (Sender<>nil) then
   begin
-    if Length(ClipBoard.AsText)<=256 then
-      tmpclip:=ClipBoard.AsText;
-    if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) then
+    //if Length(ClipBoard.AsText)<=256 then
+    tmpclip:=ClipBoard.AsText;
+    if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) or (Pos('magnet:',tmpclip)=1) then
       frnewdown.edtURL.Text:=tmpclip
     else
       frnewdown.edtURL.Text:='http://';
     tmpclip:='';
   end;
   frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
+  if (Pos('magnet:',frnewdown.edtURL.Text)=1) and (Pos('&dn=',frnewdown.edtURL.Text)>0) then
+  begin
+    magnetname:=Copy(frnewdown.edtURL.Text,Pos('&dn=',frnewdown.edtURL.Text)+4,Length(frnewdown.edtURL.Text));
+    magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
+    frnewdown.edtFileName.Text:=magnetname;
+  end;
   case defaultdirmode of
     1:frnewdown.deDestination.Text:=ddowndir;
     2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
@@ -7544,6 +7812,11 @@ begin
     begin
       queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
       downloadstart(tmpindex,false);
+    end
+    else
+    begin
+      if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
+        updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
     end;
   end;
 end;
@@ -8231,6 +8504,7 @@ var
   post:string='';
   header:string='';
   useragent:string='';
+  magnetname:string='';
   silent:boolean=false;
 begin
   onestart:=false;
@@ -8242,7 +8516,7 @@ begin
         silent:=true;
       if (Parameters[i]='-n') and (ParamCount>i) then
       begin
-        if (Parameters[i+1]<>'-c') then
+        if (Parameters[i+1]<>'-c') and (Parameters[i+1]<>'-s') and (Parameters[i+1]<>'-r') and (Parameters[i+1]<>'-p') and (Parameters[i+1]<>'-h') and (Parameters[i+1]<>'-u') then
           fname:=SysToUTF8(Parameters[i+1]);
       end;
       if (Parameters[i]='-c') and (ParamCount>i) then
@@ -8270,7 +8544,7 @@ begin
         if (Copy(Parameters[i+1],0,1)<>'-') then
           useragent:=Parameters[i+1];
       end;
-      if ((Pos('http://',Parameters[i])=1) or (Pos('https://',Parameters[i])=1) or (Pos('ftp://',Parameters[i])=1)) and (url='') then
+      if ((Pos('http://',Parameters[i])=1) or (Pos('https://',Parameters[i])=1) or (Pos('ftp://',Parameters[i])=1) or (Pos('magnet:',Parameters[i])=1)) and (url='') and (Parameters[i-1]<>'-r') then
       begin
         url:=Parameters[i];
       end;
@@ -8279,7 +8553,16 @@ begin
     if fname<>'' then
       frnewdown.edtFileName.Text:=fname
     else
+    begin
       frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
+      if (Pos('magnet:',url)=1) and (Pos('&dn=',url)>0) then
+      begin
+        magnetname:=Copy(url,Pos('&dn=',url)+4,Length(url));
+        magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
+        frnewdown.edtFileName.Text:=magnetname;
+      end;
+    end;
+
     case defaultdirmode of
       1:frnewdown.deDestination.Text:=ddowndir;
       2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
@@ -8352,6 +8635,11 @@ begin
         downloadstart(tmpindex,false);
         if frmain.AutoSaveTimer.Enabled=false then
           frmain.AutoSaveTimer.Enabled:=true;
+      end;
+      if iniciar=false then
+      begin
+        if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
+          updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
       end;
     end;
   end

@@ -2,7 +2,7 @@ unit fstrings;
 {
   Resource strings form of AWGG
 
-  Copyright (C) 2016 Reinier Romero Mir
+  Copyright (C) 2017 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -34,6 +34,7 @@ categoryvideos='Videos';
 categorymusic='Music';
 categoryothers='Others';
 categoryfilter='Categories';
+categorytorrents='Torrents';
 abouttext='This program is free software under GNU GPL 2 license.'+
 lineending+lineending+'Created By Reinier Romero Mir'+
 lineending+'Email: nenirey@gmail.com'+
@@ -125,6 +126,8 @@ commonvideodescription='The best quality video in %s format (if exists)';
 commonaudiodescription='The best quality audio in %s format (if exists)';
 msgcopyoperationerror='Error to copy file, details:'+lineending+'%s';
 msgmoveoperationerror='Error to move file, details:'+lineending+'$s';
+statusstarting='Starting...';
+statusstopping='Stopping...';
 Implementation
 end.
 

@@ -1,0 +1,11 @@
+{"version":1,"strings":[
+{"hash":109316291,"name":"tfrreplace.caption","sourcebytes":[70,105,108,101,32,101,120,105,115,116,115],"value":"File exists"},
+{"hash":252123759,"name":"tfrreplace.lblfileexistinformation.caption","sourcebytes":[84,104,101,32,102,105,108,101,32,116,104,97,116,32,121,111,117,32,97,116,116,101,109,112,116,32,116,111,32,100,111,119,110,108,111,97,100,32,97,108,114,101,97,100,121,32,101,120,105,115,116,115,44,32,119,104,97,116,32,100,111,32,121,111,117,32,119,97,110,116,32,116,111,32,100,111,63],"value":"The file that you attempt to download already exists, what do you want to do?"},
+{"hash":17245822,"name":"tfrreplace.rboverwrite.caption","sourcebytes":[79,118,101,114,119,114,105,116,101,32,116,104,101,32,102,105,108,101,46],"value":"Overwrite the file."},
+{"hash":172776478,"name":"tfrreplace.rbautorename.caption","sourcebytes":[65,117,116,111,32,114,101,110,97,109,101,32,116,104,101,32,102,105,108,101,46],"value":"Auto rename the file."},
+{"hash":116365166,"name":"tfrreplace.rbmanualrename.caption","sourcebytes":[77,97,110,117,97,108,32,114,101,110,97,109,101,32,116,104,101,32,102,105,108,101,46],"value":"Manual rename the file."},
+{"hash":1371,"name":"tfrreplace.btnok.caption","sourcebytes":[79,107],"value":"Ok"},
+{"hash":124826538,"name":"tfrreplace.lblfilename.caption","sourcebytes":[70,105,108,101,32,110,97,109,101,58],"value":"File name:"},
+{"hash":77089212,"name":"tfrreplace.btncancel.caption","sourcebytes":[67,97,110,99,101,108],"value":"Cancel"},
+{"hash":182927758,"name":"tfrreplace.rbupdateurl.caption","sourcebytes":[85,112,100,97,116,101,32,85,82,76,32,102,111,114,32,116,104,105,115,32,102,105,108,101,46],"value":"Update URL for this file."}
+]}

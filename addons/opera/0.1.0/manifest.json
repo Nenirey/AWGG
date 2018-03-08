@@ -1,0 +1,35 @@
+{
+   "background": {
+      "persistent": false,
+      "scripts": [ "config.js", "termlib_parser.js", "common.js" ]
+   },
+   "browser_action": {
+      "default_icon": {
+         "16": "data/icons/disabled/16.png",
+         "32": "data/icons/disabled/32.png",
+         "64": "data/icons/disabled/64.png"
+      }
+   },
+   "description": "when activated, interrupts the built-in download manager to direct links to AWGG",
+   "developer": {
+      "name": "nenirey@gmail.com"
+   },
+   "homepage_url": "http://add0n.com/dowlnoad-with.html?from=wget",
+   "icons": {
+      "128": "data/icons/128.png",
+      "16": "data/icons/16.png",
+      "256": "data/icons/256.png",
+      "32": "data/icons/32.png",
+      "64": "data/icons/64.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAs9JGWdHgLf+rRB+oXWeNn9s4dN3expuBGEPIAZXiS4FlZvmBP9baovDI4155o6FKDcRZyYpyTseeCtKwxgJQo1h+P1XX2ERFtH4epmQWZJKbW9oFMuHb8dgnVJAQCgKSyPfaeiOgMNEoPpYb3qaeSjaU4I1ft4RdlkQv9RT7ak9tVSR2qWTAgBvrmHzSth/BHhyyM3KSx5UN4riQMhNvWYDRUOgohXzZPnGoBS/IsOxTL8xHmp840XC/aXBG5+ad/pWr1Vn8n+7PlymZ1a3B5r55XyD0hOcEj5xUndVSt2IM4OrWgiNnC2MzcObO/+5a4/m2yb09vOgkC31h0pPzrwIDAQAB",
+   "manifest_version": 2,
+   "name": "Download with AWGG",
+   "options_ui": {
+      "chrome_style": true,
+      "page": "data/options/index.html"
+   },
+   "permissions": [ "storage", "tabs", "nativeMessaging", "notifications", "downloads", "contextMenus", "cookies", "\u003Call_urls>" ],
+   "update_url": "https://extension-updates.opera.com/api/omaha/update/",
+   "version": "0.1.0"
+}

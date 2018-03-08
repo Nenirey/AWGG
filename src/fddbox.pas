@@ -3,7 +3,7 @@ unit fddbox;
 {
   Drag drop box form of AWGG
 
-  Copyright (C) 2016 Reinier Romero Mir
+  Copyright (C) 2017 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -104,7 +104,7 @@ procedure Tfrddbox.edtDropChange(Sender: TObject);
 begin
   {$IFDEF WINDOWS}
   {$ELSE}
-  if (Pos('http://',frddbox.edtDrop.Text)=1) or (Pos('https://',frddbox.edtDrop.Text)=1) or (Pos('ftp://',frddbox.edtDrop.Text)=1) then
+  if (Pos('http://',frddbox.edtDrop.Text)=1) or (Pos('https://',frddbox.edtDrop.Text)=1) or (Pos('ftp://',frddbox.edtDrop.Text)=1) or (Pos('magnet',frddbox.edtDrop.Text)=1) then
   begin
     frnewdown.edtURL.Text:=frddbox.edtDrop.Text;
     frmain.tbAddDownClick(nil);
@@ -174,6 +174,7 @@ procedure Tfrddbox.FormMouseUp(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
   startmdown:=false;
+  saveconfig;
   //nodrag:=false;
 end;
 
@@ -277,7 +278,7 @@ begin
       {Lock the global memory handle to get a pointer to the data}
       pData := GlobalLock(aStgMed.hGlobal);
       tmpclip:=pData;
-      if not (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) then
+      if not (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) or (Pos('magnet',tmpclip)=1) then
       begin
         dwEffect:=DROPEFFECT_COPY;
         OleCheck(dataObj.GetData(aFmtEtc, aStgMed));
@@ -287,7 +288,7 @@ begin
       frddbox.FormStyle:=fsNormal;
       /////////////////////////////****Capture download****/////////////////
       tmpclip:=pData;
-      if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) then
+      if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) or (Pos('magnet',tmpclip)=1) then
       begin
         frnewdown.edtURL.Text:=tmpclip;
         frmain.tbAddDownClick(nil);

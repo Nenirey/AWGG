@@ -24,6 +24,9 @@ uses
   {$IFDEF UNIX}
   cthreads, cmem,
   {$ENDIF}
+  {$IF DEFINED(WIN64) AND (FPC_FULLVERSION < 30000)}
+  uExceptionHandlerFix,
+  {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, datetimectrls, fmain, fnewdown, fconfig, fabout,
   flang, fstrings, freplace, fsitegrabber, fadd, fnotification, fcopymove,

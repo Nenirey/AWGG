@@ -11,7 +11,7 @@ object frcopymove: Tfrcopymove
   OnCloseQuery = FormCloseQuery
   Position = poDesktopCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.6.0.2'
+  LCLVersion = '1.8.0.4'
   object lblFrom: TLabel
     AnchorSideLeft.Control = pbCopyMove
     AnchorSideTop.Control = Owner

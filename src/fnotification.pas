@@ -2,7 +2,7 @@ unit fnotification;
 {
   Notification form of AWGG
 
-  Copyright (C) 2016 Reinier Romero Mir
+  Copyright (C) 2017 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -24,7 +24,7 @@ interface
 
 uses
   SysUtils, FileUtil, Forms, Graphics, Dialogs, Buttons,
-  StdCtrls, LCLIntF, ExtCtrls, Classes;
+  StdCtrls, LCLIntF, ExtCtrls, Classes, LazFileUtils, LazUTF8;
 
 type
 

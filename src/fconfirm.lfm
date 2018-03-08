@@ -12,7 +12,7 @@ object frconfirm: Tfrconfirm
   OnCreate = FormCreate
   OnKeyDown = FormKeyDown
   Position = poScreenCenter
-  LCLVersion = '1.6.0.2'
+  LCLVersion = '1.8.0.4'
   object dlgtext: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner

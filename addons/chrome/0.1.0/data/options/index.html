@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head><title>Options Page</title></head>
+<body>
+  <style type="text/css">
+  body {
+    font-family: "Helvetica Neue",Helvetica,sans-serif;
+    font-size: 13px;
+  }
+  p {
+    margin: 3px 0;
+  }
+  table {
+    width: 100%;
+  }
+  .note {
+    font-size: 80%;
+    font-color: #ccc;
+  }
+  </style>
+  <table>
+    <tr>
+      <td>Executable:</td>
+      <td>
+        <input type="text" id="executable" style="width: 100%; margin-top: 5px;">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="note">Path to the executable</td>
+    </tr>
+    <tr>
+      <td>Arguments:</td>
+      <td>
+        <input type="text" id="args" style="width: 100%; margin-top: 5px;">
+      </td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="note">Arguments to be passed to the executable</td>
+    </tr>
+    <tr cookies>
+      <td>Cookies</td>
+      <td><input type="checkbox" id="cookies"></td>
+    </tr>
+    <tr cookies>
+      <td></td>
+      <td class="note">Send the relevant cookies to the external application (if supported)</td>
+    </tr>
+  </table>
+
+  <div>
+    <button id="save">Save</button>
+    <span id="status"></span>
+  </div>
+
+  <script src="/config.js"></script>
+  <script src="index.js"></script>
+</body>
+</html>

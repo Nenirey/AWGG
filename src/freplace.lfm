@@ -1,17 +1,18 @@
 object frreplace: Tfrreplace
   Left = 350
-  Height = 236
+  Height = 263
   Top = 173
-  Width = 377
+  Width = 390
+  ActiveControl = btnOk
   AutoSize = True
   BorderIcons = []
   Caption = 'File exists'
-  ClientHeight = 236
-  ClientWidth = 377
+  ClientHeight = 263
+  ClientWidth = 390
   FormStyle = fsSystemStayOnTop
   OnCreate = FormCreate
   Position = poScreenCenter
-  LCLVersion = '1.4.4.0'
+  LCLVersion = '1.8.0.4'
   object lblFileExistInformation: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
@@ -20,7 +21,7 @@ object frreplace: Tfrreplace
     Left = 15
     Height = 26
     Top = 15
-    Width = 347
+    Width = 360
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 15
     BorderSpacing.Top = 15
@@ -34,7 +35,7 @@ object frreplace: Tfrreplace
     AnchorSideLeft.Side = asrCenter
     AnchorSideTop.Control = lblFileExistInformation
     AnchorSideTop.Side = asrBottom
-    Left = 135
+    Left = 142
     Height = 17
     Top = 46
     Width = 106
@@ -48,7 +49,7 @@ object frreplace: Tfrreplace
     AnchorSideLeft.Control = rbOverwrite
     AnchorSideTop.Control = rbOverwrite
     AnchorSideTop.Side = asrBottom
-    Left = 135
+    Left = 142
     Height = 17
     Top = 68
     Width = 120
@@ -64,7 +65,7 @@ object frreplace: Tfrreplace
     AnchorSideLeft.Control = rbOverwrite
     AnchorSideTop.Control = rbAutoRename
     AnchorSideTop.Side = asrBottom
-    Left = 135
+    Left = 142
     Height = 17
     Top = 90
     Width = 131
@@ -84,7 +85,7 @@ object frreplace: Tfrreplace
     Left = 64
     Height = 21
     Top = 134
-    Width = 298
+    Width = 311
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 5
     BorderSpacing.Right = 15
@@ -99,7 +100,7 @@ object frreplace: Tfrreplace
     AnchorSideRight.Control = btnCancel
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 260
+    Left = 273
     Height = 23
     Top = 170
     Width = 39
@@ -134,7 +135,7 @@ object frreplace: Tfrreplace
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 304
+    Left = 317
     Height = 23
     Top = 170
     Width = 58
@@ -152,7 +153,7 @@ object frreplace: Tfrreplace
     AnchorSideLeft.Control = rbManualRename
     AnchorSideTop.Control = rbManualRename
     AnchorSideTop.Side = asrBottom
-    Left = 135
+    Left = 142
     Height = 17
     Top = 112
     Width = 133

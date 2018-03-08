@@ -1,0 +1,10 @@
+{"version":1,"strings":[
+{"hash":26474883,"name":"tfrvideoformat.caption","sourcebytes":[86,105,100,101,111,32,102,111,114,109,97,116,115],"value":"Video formats"},
+{"hash":21273482,"name":"tfrvideoformat.lblselectformat.caption","sourcebytes":[83,101,108,101,99,116,32,102,111,114,109,97,116,58],"value":"Select format:"},
+{"hash":81171332,"name":"tfrvideoformat.lvformats.columns[0].caption","sourcebytes":[70,111,114,109,97,116],"value":"Format"},
+{"hash":156067838,"name":"tfrvideoformat.lvformats.columns[1].caption","sourcebytes":[68,101,115,99,114,105,112,116,105,111,110],"value":"Description"},
+{"hash":1780,"name":"tfrvideoformat.lvformats.columns[2].caption","sourcebytes":[105,100],"value":"id"},
+{"hash":93074804,"name":"tfrvideoformat.btnreload.caption","sourcebytes":[82,101,108,111,97,100],"value":"Reload"},
+{"hash":181348595,"name":"tfrvideoformat.chdownsubtitle.caption","sourcebytes":[68,111,119,110,108,111,97,100,32,97,108,108,32,115,117,98,116,105,116,108,101,115],"value":"Download all subtitles"},
+{"hash":5538698,"name":"tfrvideoformat.lblvideoname.caption","sourcebytes":[78,97,109,101,58],"value":"Name:"}
+]}

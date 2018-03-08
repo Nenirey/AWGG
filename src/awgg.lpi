@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="9"/>
+    <Version Value="10"/>
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
@@ -18,10 +18,11 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
-      <BuildNr Value="4945"/>
-      <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2016" OriginalFilename="awgg" ProductName="AWGG" ProductVersion=""/>
+      <RevisionNr Value="1"/>
+      <BuildNr Value="5131"/>
+      <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2016" OriginalFilename="awgg" ProductName="AWGG" ProductVersion="0.5.1.4969"/>
     </VersionInfo>
-    <BuildModes Count="14">
+    <BuildModes Count="13">
       <Item1 Name="Default" Default="True"/>
       <Item2 Name="Debug">
         <CompilerOptions>
@@ -103,11 +104,6 @@
         </CompilerOptions>
       </Item3>
       <Item4 Name="Beta">
-        <MacroValues Count="3">
-          <Macro1 Name="LCLWidgetType" Value="gtk2"/>
-          <Macro2 Name="LCLWidgetType" Value="gtk2"/>
-          <Macro3 Name="LCLWidgetType" Value="gtk2"/>
-        </MacroValues>
         <CompilerOptions>
           <Version Value="11"/>
           <Target>
@@ -137,7 +133,6 @@ end;"/>
             <Checks>
               <IOChecks Value="True"/>
             </Checks>
-            <TargetCPU Value="x86_64"/>
             <Optimizations>
               <OptimizationLevel Value="2"/>
             </Optimizations>
@@ -176,7 +171,6 @@ end;"/>
           </Target>
           <SearchPaths>
             <IncludeFiles Value="$(ProjOutDir)"/>
-            <Libraries Value="C:/codetyphon/binLibraries/x86_64-linux/;C:/codetyphon/binLibraries/x86_64-linux-qt4/"/>
             <UnitOutputDirectory Value="../units/$(TargetCPU)-$(TargetOS)-$(LCLWidgetType)"/>
           </SearchPaths>
           <Parsing>
@@ -191,7 +185,7 @@ end;"/>
               <IOChecks Value="True"/>
             </Checks>
             <Optimizations>
-              <OptimizationLevel Value="4"/>
+              <OptimizationLevel Value="3"/>
             </Optimizations>
             <SmallerCode Value="True"/>
           </CodeGeneration>
@@ -410,7 +404,7 @@ end;"/>
           </Other>
         </CompilerOptions>
       </Item10>
-      <Item11 Name="Alpha-QT5">
+      <Item11 Name="Beta-QT5">
         <MacroValues Count="1">
           <Macro8 Name="LCLWidgetType" Value="qt5"/>
         </MacroValues>
@@ -458,85 +452,7 @@ end;"/>
           </Other>
         </CompilerOptions>
       </Item11>
-      <Item12 Name="Betaqt4">
-        <MacroValues Count="1">
-          <Macro9 Name="LCLWidgetType" Value="qt"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <SmartLinkUnit Value="True"/>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CustomOptions Value="-dbeta"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item12>
-      <Item13 Name="betaqt5">
-        <MacroValues Count="1">
-          <Macro10 Name="LCLWidgetType" Value="qt5"/>
-        </MacroValues>
-        <CompilerOptions>
-          <Version Value="11"/>
-          <Target>
-            <Filename Value="../$(TargetOS)/awgg"/>
-          </Target>
-          <SearchPaths>
-            <IncludeFiles Value="$(ProjOutDir)"/>
-            <UnitOutputDirectory Value="lib/$(TargetCPU)-$(TargetOS)"/>
-          </SearchPaths>
-          <CodeGeneration>
-            <SmartLinkUnit Value="True"/>
-            <Optimizations>
-              <OptimizationLevel Value="3"/>
-            </Optimizations>
-            <SmallerCode Value="True"/>
-          </CodeGeneration>
-          <Linking>
-            <Debugging>
-              <GenerateDebugInfo Value="False"/>
-            </Debugging>
-            <LinkSmart Value="True"/>
-            <Options>
-              <Win32>
-                <GraphicApplication Value="True"/>
-              </Win32>
-            </Options>
-          </Linking>
-          <Other>
-            <CustomOptions Value="-dbeta"/>
-            <ExecuteBefore>
-              <Command Value="$(SrcOS)-versionitis -verbose"/>
-            </ExecuteBefore>
-          </Other>
-        </CompilerOptions>
-      </Item13>
-      <Item14 Name="alphacustomdraw">
+      <Item12 Name="alphacustomdraw">
         <MacroValues Count="1">
           <Macro11 Name="LCLWidgetType" Value="customdrawn"/>
         </MacroValues>
@@ -575,8 +491,60 @@ end;"/>
             </ExecuteBefore>
           </Other>
         </CompilerOptions>
-      </Item14>
-      <SharedMatrixOptions Count="12">
+      </Item12>
+      <Item13 Name="Release-QT5">
+        <MacroValues Count="1">
+          <Macro12 Name="LCLWidgetType" Value="qt5"/>
+        </MacroValues>
+        <CompilerOptions>
+          <Version Value="11"/>
+          <Target>
+            <Filename Value="../awgg"/>
+          </Target>
+          <SearchPaths>
+            <IncludeFiles Value="$(ProjOutDir)"/>
+            <UnitOutputDirectory Value="../units/$(TargetCPU)-$(TargetOS)-$(LCLWidgetType)"/>
+          </SearchPaths>
+          <Parsing>
+            <SyntaxOptions>
+              <IncludeAssertionCode Value="True"/>
+            </SyntaxOptions>
+          </Parsing>
+          <CodeGeneration>
+            <SmartLinkUnit Value="True"/>
+            <RelocatableUnit Value="True"/>
+            <Checks>
+              <IOChecks Value="True"/>
+            </Checks>
+            <TargetCPU Value="i386"/>
+            <Optimizations>
+              <OptimizationLevel Value="3"/>
+            </Optimizations>
+            <SmallerCode Value="True"/>
+          </CodeGeneration>
+          <Linking>
+            <Debugging>
+              <DebugInfoType Value="dsDwarf2Set"/>
+              <UseLineInfoUnit Value="False"/>
+              <UseExternalDbgSyms Value="True"/>
+            </Debugging>
+            <Options>
+              <PassLinkerOptions Value="True"/>
+              <Win32>
+                <GraphicApplication Value="True"/>
+              </Win32>
+            </Options>
+          </Linking>
+          <Other>
+            <CustomOptions Value="-drelease"/>
+            <ExecuteBefore>
+              <Command Value="$(SrcOS)-versionitis -verbose"/>
+              <CompileReasons Compile="False" Build="False" Run="False"/>
+            </ExecuteBefore>
+          </Other>
+        </CompilerOptions>
+      </Item13>
+      <SharedMatrixOptions Count="13">
         <Item1 ID="262970800232" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk2"/>
         <Item2 ID="292782621389" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
         <Item3 ID="321585814677" Type="IDEMacro" MacroName="LCLWidgetType" Value="carbon"/>
@@ -584,11 +552,12 @@ end;"/>
         <Item5 ID="952727043054" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk"/>
         <Item6 ID="325016516933" Modes="Alpha64-GTK3" Type="IDEMacro" MacroName="LCLWidgetType" Value="gtk3"/>
         <Item7 ID="659138796814" Modes="Alpha64-QT" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
-        <Item8 ID="380185753670" Modes="Alpha-QT5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
-        <Item9 ID="916445091724" Modes="Betaqt4" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
-        <Item10 ID="643534335870" Modes="betaqt5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
+        <Item8 ID="380185753670" Modes="Beta-QT5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
+        <Item9 ID="916445091724" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt"/>
+        <Item10 ID="643534335870" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
         <Item11 ID="412440179373" Modes="alphacustomdraw" Type="IDEMacro" MacroName="LCLWidgetType" Value="customdrawn"/>
-        <Item12 ID="315442815544" Modes="Default,Debug,Alpha,Beta,Release,Alpha64,Beta64,Release64,Alpha64-GTK3,Alpha64-QT,Alpha-QT5,Betaqt4,betaqt5,alphacustomdraw" Value="-dDisableUTF8RTL"/>
+        <Item12 ID="730387114962" Modes="Release-QT5" Type="IDEMacro" MacroName="LCLWidgetType" Value="qt5"/>
+        <Item13 ID="018964712839" Modes="Beta,Default,Debug,Alpha,Release,Alpha64,Beta64,Release64,Alpha64-GTK3,Alpha64-QT,Beta-QT5,alphacustomdraw,Release-QT5" Value="-dDisableUTF8RTL"/>
       </SharedMatrixOptions>
     </BuildModes>
     <PublishOptions>
@@ -597,14 +566,15 @@ end;"/>
     <RunParams>
       <local>
         <FormatVersion Value="1"/>
+        <CommandLineParams Value="http://www.google.com/video.avi"/>
       </local>
     </RunParams>
     <RequiredPackages Count="3">
       <Item1>
-        <PackageName Value="SynEdit"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item1>
       <Item2>
-        <PackageName Value="DateTimeCtrls"/>
+        <PackageName Value="SynEdit"/>
       </Item2>
       <Item3>
         <PackageName Value="LCL"/>

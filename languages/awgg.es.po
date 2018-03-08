@@ -117,25 +117,6 @@ msgid "[--no-check-certificate] No check SSL."
 msgstr "[--no-check-certificate] No comprobar SSL."
 
 #: fstrings.abouttext
-#, fuzzy
-#| msgid ""
-#| "This program is free software under GNU GPL 2 license.\n"
-#| "\n"
-#| "Created By Reinier Romero Mir\n"
-#| "Email: nenirey@gmail.com\n"
-#| "Copyright (c) 2014-2016\n"
-#| "\n"
-#| "The project uses the following third party resources:\n"
-#| "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
-#| "- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)\n"
-#| "- aria2 (http://aria2.sourceforge.net)\n"
-#| "- Wget (http://www.gnu.org/software/wget/)\n"
-#| "- cURL (http://curl.haxx.se)\n"
-#| "- Axel (http://axel.alioth.debian.org)\n"
-#| "- youtube-dl (http://yt-dl.org)\n"
-#| "- FlashGot (http://flashgot.net)\n"
-#| "\n"
-#| "French translation: Tony O Gallos @ CodeTyphon Community\n"
 msgctxt "fstrings.abouttext"
 msgid ""
 "This program is free software under GNU GPL 2 license.\n"
@@ -238,6 +219,10 @@ msgstr "Otros"
 msgctxt "fstrings.categoryprograms"
 msgid "Programs"
 msgstr "Programas"
+
+#: fstrings.categorytorrents
+msgid "Torrents"
+msgstr ""
 
 #: fstrings.categoryvideos
 msgctxt "fstrings.categoryvideos"
@@ -366,10 +351,6 @@ msgid "Downloads exist in progress, do you want to close anyway?"
 msgstr "Existen descargas en progreso, ¿desea cerrar de todas formas?"
 
 #: fstrings.msgcopyoperationerror
-#, fuzzy
-#| msgid ""
-#| "Error to copy file, details:\n"
-#| "%s\n"
 msgid ""
 "Error to copy file, details:\n"
 "%s\n"
@@ -393,13 +374,6 @@ msgid "Error saving the download list"
 msgstr "Error salvando lista de descargas"
 
 #: fstrings.msgerrorinforme
-#, fuzzy
-#| msgid ""
-#| "Oh!! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:\n"
-#| "%s\n"
-#| "Error description:\n"
-#| "%s\n"
-#| "Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue\n"
 msgid ""
 "Oh!! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:\n"
 "%s\n"
@@ -419,10 +393,6 @@ msgid "The file not exists."
 msgstr "El archivo no existe!!!."
 
 #: fstrings.msgmoveoperationerror
-#, fuzzy
-#| msgid ""
-#| "Error to move file, details:\n"
-#| "$s\n"
 msgid ""
 "Error to move file, details:\n"
 "$s\n"
@@ -545,10 +515,18 @@ msgctxt "fstrings.statuspaused"
 msgid "Paused"
 msgstr "Pausada"
 
+#: fstrings.statusstarting
+msgid "Starting..."
+msgstr "Iniciando..."
+
 #: fstrings.statusstoped
 msgctxt "fstrings.statusstoped"
 msgid "Stopped"
 msgstr "Detenida"
+
+#: fstrings.statusstopping
+msgid "Stopping..."
+msgstr "Deteniendo"
 
 #: fstrings.stopqueuesystray
 msgctxt "fstrings.stopqueuesystray"
@@ -706,6 +684,12 @@ msgctxt "tfrconfig.btnaddcategory.hint"
 msgid "Add"
 msgstr "Añadir"
 
+#: tfrconfig.btnadddomain.hint
+#, fuzzy
+msgctxt "tfrconfig.btnadddomain.hint"
+msgid "Add"
+msgstr "Añadir"
+
 #: tfrconfig.btnaddextension.hint
 msgctxt "tfrconfig.btnaddextension.hint"
 msgid "Add"
@@ -731,6 +715,12 @@ msgctxt "tfrconfig.btndeletecategory.hint"
 msgid "Delete"
 msgstr "Eliminar"
 
+#: tfrconfig.btndeletedomain.hint
+#, fuzzy
+msgctxt "tfrconfig.btndeletedomain.hint"
+msgid "Delete"
+msgstr "Eliminar"
+
 #: tfrconfig.btndeleteextension.hint
 msgctxt "tfrconfig.btndeleteextension.hint"
 msgid "Delete"
@@ -738,6 +728,12 @@ msgstr "Eliminar"
 
 #: tfrconfig.btneditcategory.hint
 msgctxt "tfrconfig.btneditcategory.hint"
+msgid "Edit"
+msgstr "Editar"
+
+#: tfrconfig.btneditdomain.hint
+#, fuzzy
+msgctxt "tfrconfig.btneditdomain.hint"
 msgid "Edit"
 msgstr "Editar"
 
@@ -821,6 +817,10 @@ msgctxt "tfrconfig.chgyoutubedldefarguments.caption"
 msgid "Default arguments"
 msgstr "Argumentos por defecto"
 
+#: tfrconfig.chignorefilter.caption
+msgid "Ignore domains:"
+msgstr ""
+
 #: tfrconfig.chloadlogs.caption
 msgctxt "tfrconfig.chloadlogs.caption"
 msgid "Load log when select a download."
@@ -870,25 +870,15 @@ msgstr "Usar autenticacion"
 msgid "Use external engine:"
 msgstr "Usar motor externo:"
 
-#: tfrconfig.destartqueue.cancelcaption
-msgctxt "tfrconfig.destartqueue.cancelcaption"
-msgid "Cancel"
-msgstr "Cancelar"
+#: tfrconfig.dtpstartqueue.textfornulldate
+msgctxt "tfrconfig.dtpstartqueue.textfornulldate"
+msgid "NULL"
+msgstr ""
 
-#: tfrconfig.destartqueue.okcaption
-msgctxt "tfrconfig.destartqueue.okcaption"
-msgid "OK"
-msgstr "Aceptar"
-
-#: tfrconfig.destopqueue.cancelcaption
-msgctxt "tfrconfig.destopqueue.cancelcaption"
-msgid "Cancel"
-msgstr "Cancelar"
-
-#: tfrconfig.destopqueue.okcaption
-msgctxt "tfrconfig.destopqueue.okcaption"
-msgid "OK"
-msgstr "Aceptar"
+#: tfrconfig.dtpstopqueue.textfornulldate
+msgctxt "tfrconfig.dtpstopqueue.textfornulldate"
+msgid "NULL"
+msgstr ""
 
 #: tfrconfig.edtnoproxyhosts.text
 msgctxt "tfrconfig.edtnoproxyhosts.text"
@@ -1314,6 +1304,7 @@ msgid "Language:"
 msgstr "Lenguaje:"
 
 #: tfrmain.caption
+#, fuzzy
 msgctxt "tfrmain.caption"
 msgid "AWGG"
 msgstr "AWGG"
@@ -1427,141 +1418,6 @@ msgstr "Caja de arrastre"
 msgctxt "tfrmain.miexit.caption"
 msgid "Exit"
 msgstr "Salir"
-
-#: tfrmain.miline1.caption
-msgctxt "tfrmain.miline1.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline10.caption
-msgctxt "tfrmain.miline10.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline11.caption
-msgctxt "tfrmain.miline11.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline12.caption
-msgctxt "tfrmain.miline12.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline13.caption
-msgctxt "tfrmain.miline13.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline14.caption
-msgctxt "tfrmain.miline14.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline15.caption
-msgctxt "tfrmain.miline15.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline16.caption
-msgctxt "tfrmain.miline16.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline17.caption
-msgctxt "tfrmain.miline17.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline18.caption
-msgctxt "tfrmain.miline18.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline19.caption
-msgctxt "tfrmain.miline19.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline2.caption
-msgctxt "tfrmain.miline2.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline20.caption
-msgctxt "tfrmain.miline20.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline21.caption
-msgctxt "tfrmain.miline21.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline22.caption
-msgctxt "tfrmain.miline22.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline23.caption
-msgctxt "tfrmain.miline23.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline24.caption
-msgctxt "tfrmain.miline24.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline25.caption
-msgctxt "tfrmain.miline25.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline26.caption
-msgctxt "tfrmain.miline26.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline27.caption
-msgctxt "tfrmain.miline27.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline3.caption
-msgctxt "tfrmain.miline3.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline4.caption
-msgctxt "tfrmain.miline4.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline5.caption
-msgctxt "tfrmain.miline5.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline6.caption
-msgctxt "tfrmain.miline6.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline7.caption
-msgctxt "tfrmain.miline7.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline8.caption
-msgctxt "tfrmain.miline8.caption"
-msgid "-"
-msgstr "-"
-
-#: tfrmain.miline9.caption
-msgctxt "tfrmain.miline9.caption"
-msgid "-"
-msgstr "-"
 
 #: tfrmain.milistclearlog.caption
 msgctxt "tfrmain.milistclearlog.caption"
@@ -2083,6 +1939,10 @@ msgctxt "tfrnewdown.btnaddqueue.hint"
 msgid "Add queue"
 msgstr "Añadir cola"
 
+#: tfrnewdown.btnaddtofilter.hint
+msgid "Add to domain filter"
+msgstr ""
+
 #: tfrnewdown.btncancel.caption
 msgctxt "tfrnewdown.btncancel.caption"
 msgid "Cancel"
@@ -2227,6 +2087,7 @@ msgid "Ok"
 msgstr "Aceptar"
 
 #: tfrreplace.caption
+#, fuzzy
 msgctxt "tfrreplace.caption"
 msgid "File exists"
 msgstr "El arhivo existe"

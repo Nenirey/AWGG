@@ -203,6 +203,10 @@ msgctxt "fstrings.categoryprograms"
 msgid "Programs"
 msgstr ""
 
+#: fstrings.categorytorrents
+msgid "Torrents"
+msgstr ""
+
 #: fstrings.categoryvideos
 msgctxt "fstrings.categoryvideos"
 msgid "Videos"
@@ -485,9 +489,17 @@ msgctxt "fstrings.statuspaused"
 msgid "Paused"
 msgstr ""
 
+#: fstrings.statusstarting
+msgid "Starting..."
+msgstr ""
+
 #: fstrings.statusstoped
 msgctxt "fstrings.statusstoped"
 msgid "Stopped"
+msgstr ""
+
+#: fstrings.statusstopping
+msgid "Stopping..."
 msgstr ""
 
 #: fstrings.stopqueuesystray
@@ -646,6 +658,11 @@ msgctxt "TFRCONFIG.BTNADDCATEGORY.HINT"
 msgid "Add"
 msgstr ""
 
+#: tfrconfig.btnadddomain.hint
+msgctxt "tfrconfig.btnadddomain.hint"
+msgid "Add"
+msgstr ""
+
 #: tfrconfig.btnaddextension.hint
 msgctxt "TFRCONFIG.BTNADDEXTENSION.HINT"
 msgid "Add"
@@ -671,6 +688,11 @@ msgctxt "TFRCONFIG.BTNDELETECATEGORY.HINT"
 msgid "Delete"
 msgstr ""
 
+#: tfrconfig.btndeletedomain.hint
+msgctxt "tfrconfig.btndeletedomain.hint"
+msgid "Delete"
+msgstr ""
+
 #: tfrconfig.btndeleteextension.hint
 msgctxt "TFRCONFIG.BTNDELETEEXTENSION.HINT"
 msgid "Delete"
@@ -678,6 +700,11 @@ msgstr ""
 
 #: tfrconfig.btneditcategory.hint
 msgctxt "TFRCONFIG.BTNEDITCATEGORY.HINT"
+msgid "Edit"
+msgstr ""
+
+#: tfrconfig.btneditdomain.hint
+msgctxt "tfrconfig.btneditdomain.hint"
 msgid "Edit"
 msgstr ""
 
@@ -761,6 +788,10 @@ msgctxt "TFRCONFIG.CHGYOUTUBEDLDEFARGUMENTS.CAPTION"
 msgid "Default arguments"
 msgstr ""
 
+#: tfrconfig.chignorefilter.caption
+msgid "Ignore domains:"
+msgstr ""
+
 #: tfrconfig.chloadlogs.caption
 msgctxt "TFRCONFIG.CHLOADLOGS.CAPTION"
 msgid "Load log when select a download."
@@ -810,24 +841,14 @@ msgstr ""
 msgid "Use external engine:"
 msgstr ""
 
-#: tfrconfig.destartqueue.cancelcaption
-msgctxt "TFRCONFIG.DESTARTQUEUE.CANCELCAPTION"
-msgid "Cancel"
+#: tfrconfig.dtpstartqueue.textfornulldate
+msgctxt "tfrconfig.dtpstartqueue.textfornulldate"
+msgid "NULL"
 msgstr ""
 
-#: tfrconfig.destartqueue.okcaption
-msgctxt "TFRCONFIG.DESTARTQUEUE.OKCAPTION"
-msgid "OK"
-msgstr ""
-
-#: tfrconfig.destopqueue.cancelcaption
-msgctxt "TFRCONFIG.DESTOPQUEUE.CANCELCAPTION"
-msgid "Cancel"
-msgstr ""
-
-#: tfrconfig.destopqueue.okcaption
-msgctxt "TFRCONFIG.DESTOPQUEUE.OKCAPTION"
-msgid "OK"
+#: tfrconfig.dtpstopqueue.textfornulldate
+msgctxt "tfrconfig.dtpstopqueue.textfornulldate"
+msgid "NULL"
 msgstr ""
 
 #: tfrconfig.edtnoproxyhosts.text
@@ -1254,7 +1275,7 @@ msgid "Language:"
 msgstr ""
 
 #: tfrmain.caption
-msgctxt "TFRMAIN.CAPTION"
+msgctxt "tfrmain.caption"
 msgid "AWGG"
 msgstr ""
 
@@ -1366,141 +1387,6 @@ msgstr ""
 #: tfrmain.miexit.caption
 msgctxt "TFRMAIN.MIEXIT.CAPTION"
 msgid "Exit"
-msgstr ""
-
-#: tfrmain.miline1.caption
-msgctxt "TFRMAIN.MILINE1.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline10.caption
-msgctxt "TFRMAIN.MILINE10.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline11.caption
-msgctxt "TFRMAIN.MILINE11.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline12.caption
-msgctxt "TFRMAIN.MILINE12.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline13.caption
-msgctxt "TFRMAIN.MILINE13.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline14.caption
-msgctxt "TFRMAIN.MILINE14.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline15.caption
-msgctxt "TFRMAIN.MILINE15.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline16.caption
-msgctxt "TFRMAIN.MILINE16.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline17.caption
-msgctxt "TFRMAIN.MILINE17.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline18.caption
-msgctxt "TFRMAIN.MILINE18.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline19.caption
-msgctxt "TFRMAIN.MILINE19.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline2.caption
-msgctxt "TFRMAIN.MILINE2.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline20.caption
-msgctxt "TFRMAIN.MILINE20.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline21.caption
-msgctxt "TFRMAIN.MILINE21.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline22.caption
-msgctxt "TFRMAIN.MILINE22.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline23.caption
-msgctxt "TFRMAIN.MILINE23.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline24.caption
-msgctxt "TFRMAIN.MILINE24.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline25.caption
-msgctxt "TFRMAIN.MILINE25.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline26.caption
-msgctxt "TFRMAIN.MILINE26.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline27.caption
-msgctxt "TFRMAIN.MILINE27.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline3.caption
-msgctxt "TFRMAIN.MILINE3.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline4.caption
-msgctxt "TFRMAIN.MILINE4.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline5.caption
-msgctxt "TFRMAIN.MILINE5.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline6.caption
-msgctxt "TFRMAIN.MILINE6.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline7.caption
-msgctxt "TFRMAIN.MILINE7.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline8.caption
-msgctxt "TFRMAIN.MILINE8.CAPTION"
-msgid "-"
-msgstr ""
-
-#: tfrmain.miline9.caption
-msgctxt "TFRMAIN.MILINE9.CAPTION"
-msgid "-"
 msgstr ""
 
 #: tfrmain.milistclearlog.caption
@@ -2023,6 +1909,10 @@ msgctxt "TFRNEWDOWN.BTNADDQUEUE.HINT"
 msgid "Add queue"
 msgstr ""
 
+#: tfrnewdown.btnaddtofilter.hint
+msgid "Add to domain filter"
+msgstr ""
+
 #: tfrnewdown.btncancel.caption
 msgctxt "TFRNEWDOWN.BTNCANCEL.CAPTION"
 msgid "Cancel"
@@ -2167,7 +2057,7 @@ msgid "Ok"
 msgstr ""
 
 #: tfrreplace.caption
-msgctxt "TFRREPLACE.CAPTION"
+msgctxt "tfrreplace.caption"
 msgid "File exists"
 msgstr ""
 

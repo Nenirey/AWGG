@@ -2,7 +2,7 @@ unit fnewdown;
 {
   New download form of AWGG
 
-  Copyright (C) 2016 Reinier Romero Mir
+  Copyright (C) 2017 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -24,7 +24,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Dialogs, StdCtrls,
-  EditBtn, Buttons, fstrings, freplace, fconfirm, fvideoformat, URIParser, LCLIntF, FileUtil;
+  EditBtn, Buttons, fstrings, freplace, fconfirm, fvideoformat, URIParser, LCLIntF, FileUtil, LazFileUtils, LazUTF8;
 
 type
 
@@ -59,6 +59,7 @@ type
     btnMore: TSpeedButton;
     btnToUp: TSpeedButton;
     btnToEnd: TSpeedButton;
+    btnAddToFilter: TSpeedButton;
     procedure btnMoreClick(Sender: TObject);
     procedure btnToEndClick(Sender: TObject);
     procedure btnToUpClick(Sender: TObject);
@@ -80,6 +81,7 @@ type
     procedure btnScheduleClick(Sender: TObject);
     procedure btnCategoryGoClick(Sender: TObject);
     procedure btnGoDestinationClick(Sender: TObject);
+    procedure btnAddToFilterClick(Sender: TObject);
   private
     { private declarations }
   public
@@ -234,9 +236,22 @@ begin
 end;
 
 procedure Tfrnewdown.edtURLChange(Sender: TObject);
+var
+  magnetname:string='';
 begin
+  //magnet:?xt=urn:btih:899023C7BD1177A9F2E214372EC5107DD7F7C9EB&dn=The.discovery.2017.1080p-dual-lat.mp4&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=http%3a%2f%2fipv4.tracker.harry.lu%3a80%2fannounce
   frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).document;
+  if (Pos('magnet:',frnewdown.edtURL.Text)=1) and (Pos('&dn=',frnewdown.edtURL.Text)>0) then
+  begin
+    magnetname:=Copy(frnewdown.edtURL.Text,Pos('&dn=',frnewdown.edtURL.Text)+4,Length(frnewdown.edtURL.Text));
+    magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
+    frnewdown.edtFileName.Text:=magnetname;
+  end;
   suggestparameters();
+  if ParseURI(frnewdown.edtURL.Text).Host<>'' then
+    frnewdown.btnAddToFilter.Enabled:=true
+  else
+    frnewdown.btnAddToFilter.Enabled:=false;
 end;
 
 procedure Tfrnewdown.edtFileNameChange(Sender: TObject);
@@ -327,6 +342,13 @@ procedure Tfrnewdown.btnGoDestinationClick(Sender: TObject);
 begin
   if not OpenURL(frnewdown.deDestination.Text) then
     OpenURL(ExtractShortPathName(UTF8ToSys(frnewdown.deDestination.Text)));
+end;
+
+procedure Tfrnewdown.btnAddToFilterClick(Sender: TObject);
+begin
+  SetLength(domainfilters,Length(domainfilters)+1);
+  domainfilters[Length(domainfilters)-1]:=ParseURI(frnewdown.edtURL.Text).Host;
+  activedomainfilter:=true;
 end;
 
 procedure Tfrnewdown.btnToQueueClick(Sender: TObject);

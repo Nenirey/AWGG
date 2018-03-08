@@ -3,14 +3,14 @@
 
 [Setup]
 AppName=AWGG
-AppVerName=AWGG 0.5.0 beta
+AppVerName=AWGG 0.5.1 beta
 AppPublisherURL=https://sites.google.com/site/awggproject
 AppSupportURL=https://sites.google.com/site/awggproject
 AppUpdatesURL=https://sites.google.com/site/awggproject
 DefaultDirName={pf}\AWGG
 DefaultGroupName=AWGG
 AllowNoIcons=yes
-LicenseFile=awgg\doc\Readme.txt
+LicenseFile=..\..\docs\Readme.txt
 OutputDir=release
 Compression=lzma
 SolidCompression=yes
@@ -18,7 +18,7 @@ SolidCompression=yes
 ; done in "64-bit mode" on x64, meaning it should use the native
 ; 64-bit Program Files directory and the 64-bit view of the registry.
 ; On all other architectures it will install in "32-bit mode".
-ArchitecturesInstallIn64BitMode=x64
+;ArchitecturesInstallIn64BitMode=x64
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
@@ -36,7 +36,6 @@ Name: "hebrew"; MessagesFile: "compiler:Languages\Hebrew.isl"
 Name: "hungarian"; MessagesFile: "compiler:Languages\Hungarian.isl"
 Name: "italian"; MessagesFile: "compiler:Languages\Italian.isl"
 Name: "japanese"; MessagesFile: "compiler:Languages\Japanese.isl"
-Name: "nepali"; MessagesFile: "compiler:Languages\Nepali.islu"
 Name: "norwegian"; MessagesFile: "compiler:Languages\Norwegian.isl"
 Name: "polish"; MessagesFile: "compiler:Languages\Polish.isl"
 Name: "portuguese"; MessagesFile: "compiler:Languages\Portuguese.isl"
@@ -52,11 +51,12 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
-Source: "awgg\awgg.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "awgg\awgg.zdli"; DestDir: "{app}"; Flags: ignoreversion
-Source: "awgg\languages\*"; DestDir: "{app}\language"; Flags: ignoreversion recursesubdirs createallsubdirs
+Source: "..\..\awgg.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\awgg.zdli"; DestDir: "{app}"; Flags: ignoreversion
+Source: "..\..\languages\*"; DestDir: "{app}\languages"; Flags: ignoreversion recursesubdirs createallsubdirs
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "awgg\*.dll"; DestDir: "{app}"; Flags: skipifsourcedoesntexist
+Source: "..\..\*.dll"; DestDir: "{app}"; Flags: skipifsourcedoesntexist
+Source: "..\..\*.exe"; DestDir: "{app}"; Flags: skipifsourcedoesntexist
 
 [Icons]
 Name: "{group}\AWGG"; Filename: "{app}\awgg.exe"

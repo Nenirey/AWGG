@@ -3,6 +3,14 @@ that uses the most popular downloads engines (text based) like wget, aria2, cURL
 AWGG is most that an frontend, is multiprocess, portable and simple, includes a programer,
 clipboard monitor, drop box and can be integrated to firefox with flashgot plugin.
 
+
+Changes in (0.5.1):
+
+-Add german language.
+-Fix the downloads not continue when you stop it in the queuee.
+-Fix youtube downloader changes.
+
+
 Changes in (0.5.0):
 
 -Add support for youtube-dl engine.

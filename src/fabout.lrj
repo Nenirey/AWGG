@@ -1,0 +1,6 @@
+{"version":1,"strings":[
+{"hash":4691652,"name":"tfrabout.caption","sourcebytes":[65,98,111,117,116],"value":"About"},
+{"hash":1371,"name":"tfrabout.btnok.caption","sourcebytes":[79,107],"value":"Ok"},
+{"hash":75126586,"name":"tfrabout.lblwebsite.caption","sourcebytes":[87,101,98,32,115,105,116,101,58],"value":"Web site:"},
+{"hash":289719,"name":"tfrabout.lblaboutversion.caption","sourcebytes":[65,87,71,71],"value":"AWGG"}
+]}
