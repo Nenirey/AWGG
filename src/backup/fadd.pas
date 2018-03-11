@@ -1,8 +1,8 @@
-unit fcopymove;
+unit fadd;
 {
-  Copy and move form of AWGG
+  Add-Edit-Delete category form of AWGG
 
-  Copyright (C) 2018 Reinier Romero Mir
+  Copyright (C) 2017 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -18,51 +18,68 @@ unit fcopymove;
   along with this library; if not, write to the Free Software Foundation,
   Inc., 59 Temple Place - Suite 330, Boston, MA 02111-1307, USA.
 }
+
 {$mode objfpc}{$H+}
 
 interface
 
 uses
   Forms, StdCtrls,
-  ComCtrls;
+  ButtonPanel;
 
 type
 
-  { Tfrcopymove }
+  { Tfradd }
 
-  Tfrcopymove = class(TForm)
-    btnCancel: TButton;
-    lblFrom: TLabel;
-    lblTo: TLabel;
-    pbCopyMove: TProgressBar;
-    pbTotal: TProgressBar;
-    procedure btnCancelClick(Sender: TObject);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
+  Tfradd = class(TForm)
+    bpAdd: TButtonPanel;
+    edtValue: TEdit;
+    lblValue: TLabel;
+    procedure bpAddClick(Sender: TObject);
+    procedure CancelButtonClick(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure FormShow(Sender: TObject);
+    procedure OKButtonClick(Sender: TObject);
   private
     { private declarations }
   public
     { public declarations }
-  id:integer;
   end;
 
 var
-  frcopymove: Tfrcopymove;
+  fradd: Tfradd;
+  ok:boolean;
 
 implementation
-uses fmain;
-{ Tfrcopymove }
-
-procedure Tfrcopymove.btnCancelClick(Sender: TObject);
-begin
-  copywork[self.id].stop;
-end;
-
-procedure Tfrcopymove.FormCloseQuery(Sender: TObject; var CanClose: boolean);
-begin
-  copywork[self.id].stop;
-end;
 
 {$R *.lfm}
+
+{ Tfradd }
+
+procedure Tfradd.bpAddClick(Sender: TObject);
+begin
+
+end;
+
+procedure Tfradd.CancelButtonClick(Sender: TObject);
+begin
+  ok:=false;
+end;
+
+procedure Tfradd.FormCreate(Sender: TObject);
+begin
+  ok:=false;
+end;
+
+procedure Tfradd.FormShow(Sender: TObject);
+begin
+  fradd.edtValue.SetFocus;
+end;
+
+procedure Tfradd.OKButtonClick(Sender: TObject);
+begin
+  ok:=true;
+end;
 
 end.
 

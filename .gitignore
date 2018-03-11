@@ -21,3 +21,9 @@ docs/_build/
 
 #KDE
 .directory
+
+#Residual pascal files
+*.o
+*.bak
+*.ppu
+*.old

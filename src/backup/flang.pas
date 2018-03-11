@@ -1,8 +1,8 @@
-unit fcopymove;
+unit flang;
 {
-  Copy and move form of AWGG
+  Language form of AWGG
 
-  Copyright (C) 2018 Reinier Romero Mir
+  Copyright (C) 2017 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -23,46 +23,36 @@ unit fcopymove;
 interface
 
 uses
-  Forms, StdCtrls,
-  ComCtrls;
+  Forms, StdCtrls, Classes, LCLTranslator;
 
 type
 
-  { Tfrcopymove }
+  { Tfrlang }
 
-  Tfrcopymove = class(TForm)
-    btnCancel: TButton;
-    lblFrom: TLabel;
-    lblTo: TLabel;
-    pbCopyMove: TProgressBar;
-    pbTotal: TProgressBar;
-    procedure btnCancelClick(Sender: TObject);
-    procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
+  Tfrlang = class(TForm)
+    btnOk: TButton;
+    cbLang: TComboBox;
+    lblLang: TLabel;
+    procedure btnOkClick(Sender: TObject);
   private
     { private declarations }
   public
     { public declarations }
-  id:integer;
   end;
 
 var
-  frcopymove: Tfrcopymove;
+  frlang: Tfrlang;
 
 implementation
-uses fmain;
-{ Tfrcopymove }
-
-procedure Tfrcopymove.btnCancelClick(Sender: TObject);
-begin
-  copywork[self.id].stop;
-end;
-
-procedure Tfrcopymove.FormCloseQuery(Sender: TObject; var CanClose: boolean);
-begin
-  copywork[self.id].stop;
-end;
 
 {$R *.lfm}
+
+{ Tfrlang }
+
+procedure Tfrlang.btnOkClick(Sender: TObject);
+begin
+  frlang.Close;
+end;
 
 end.
 

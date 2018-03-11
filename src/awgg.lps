@@ -19,9 +19,7 @@
         <ComponentName Value="frmain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="5351"/>
         <CursorPos X="176" Y="5366"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
@@ -35,8 +33,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="245"/>
-        <CursorPos X="51" Y="251"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -49,8 +46,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="344"/>
-        <CursorPos X="58" Y="353"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -87,10 +83,11 @@
         <ComponentName Value="frstrings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="25"/>
-        <CursorPos X="29" Y="37"/>
+        <TopLine Value="105"/>
+        <CursorPos X="36" Y="41"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -154,8 +151,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="112"/>
-        <CursorPos X="39" Y="14"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -181,8 +177,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="147"/>
-        <CursorPos X="54" Y="157"/>
+        <CursorPos X="21" Y="6"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -195,42 +190,12 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="40"/>
-        <CursorPos X="3" Y="53"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="7" HistoryIndex="6">
-      <Position1>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="6396" Column="33" TopLine="6391"/>
-      </Position1>
-      <Position2>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="525" Column="13" TopLine="511"/>
-      </Position2>
-      <Position3>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="2398" Column="61" TopLine="2375"/>
-      </Position3>
-      <Position4>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="2562" Column="60" TopLine="2538"/>
-      </Position4>
-      <Position5>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="2844" Column="36" TopLine="2820"/>
-      </Position5>
-      <Position6>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="2960" Column="53" TopLine="2936"/>
-      </Position6>
-      <Position7>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="5254" Column="19" TopLine="5249"/>
-      </Position7>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>

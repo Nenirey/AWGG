@@ -1,0 +1,50 @@
+object frconfirm: Tfrconfirm
+  Left = 293
+  Height = 166
+  Top = 184
+  Width = 413
+  BorderIcons = []
+  BorderStyle = bsDialog
+  Caption = 'Confirm'
+  ClientHeight = 166
+  ClientWidth = 413
+  FormStyle = fsSystemStayOnTop
+  OnCreate = FormCreate
+  OnKeyDown = FormKeyDown
+  Position = poScreenCenter
+  LCLVersion = '1.8.0.4'
+  object dlgtext: TLabel
+    AnchorSideLeft.Control = Owner
+    AnchorSideTop.Control = Owner
+    AnchorSideRight.Control = Owner
+    AnchorSideRight.Side = asrBottom
+    Left = 20
+    Height = 1
+    Top = 20
+    Width = 373
+    Anchors = [akTop, akLeft, akRight]
+    BorderSpacing.Left = 20
+    BorderSpacing.Top = 20
+    BorderSpacing.Right = 20
+    ParentColor = False
+    WordWrap = True
+  end
+  object bpConfirm: TButtonPanel
+    Left = 6
+    Height = 34
+    Top = 126
+    Width = 401
+    OKButton.Name = 'OKButton'
+    OKButton.DefaultCaption = True
+    OKButton.OnClick = OKButtonClick
+    HelpButton.Name = 'HelpButton'
+    HelpButton.DefaultCaption = True
+    CloseButton.Name = 'CloseButton'
+    CloseButton.DefaultCaption = True
+    CancelButton.Name = 'CancelButton'
+    CancelButton.DefaultCaption = True
+    CancelButton.OnClick = CancelButtonClick
+    TabOrder = 0
+    ShowButtons = [pbOK, pbCancel]
+  end
+end

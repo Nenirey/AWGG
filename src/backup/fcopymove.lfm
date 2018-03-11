@@ -18,7 +18,7 @@ object frcopymove: Tfrcopymove
     AnchorSideRight.Control = pbCopyMove
     AnchorSideRight.Side = asrBottom
     Left = 5
-    Height = 15
+    Height = 13
     Top = 10
     Width = 605
     Anchors = [akTop, akLeft, akRight]
@@ -33,8 +33,8 @@ object frcopymove: Tfrcopymove
     AnchorSideRight.Control = pbCopyMove
     AnchorSideRight.Side = asrBottom
     Left = 5
-    Height = 15
-    Top = 30
+    Height = 13
+    Top = 28
     Width = 605
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 5
@@ -49,7 +49,7 @@ object frcopymove: Tfrcopymove
     AnchorSideRight.Side = asrBottom
     Left = 5
     Height = 20
-    Top = 50
+    Top = 46
     Width = 605
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
@@ -66,10 +66,10 @@ object frcopymove: Tfrcopymove
     AnchorSideTop.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 276
-    Height = 25
-    Top = 100
-    Width = 62
+    Left = 278
+    Height = 23
+    Top = 96
+    Width = 58
     AutoSize = True
     BorderSpacing.Top = 5
     BorderSpacing.Bottom = 3
@@ -85,7 +85,7 @@ object frcopymove: Tfrcopymove
     AnchorSideRight.Side = asrBottom
     Left = 5
     Height = 20
-    Top = 75
+    Top = 71
     Width = 605
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5

@@ -15,10 +15,10 @@ object fradd: Tfradd
     AnchorSideTop.Control = edtValue
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = edtValue
-    Left = 46
-    Height = 13
+    Left = 45
+    Height = 15
     Top = 34
-    Width = 30
+    Width = 31
     Anchors = [akTop, akRight]
     Caption = 'Value:'
     ParentColor = False
@@ -30,7 +30,7 @@ object fradd: Tfradd
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     Left = 76
-    Height = 21
+    Height = 23
     Top = 30
     Width = 104
     Anchors = [akTop, akRight]

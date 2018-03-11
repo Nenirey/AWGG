@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="10"/>
+    <BuildModes Active="Beta"/>
+    <Units Count="15">
+      <Unit0>
+        <Filename Value="awgg.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="29"/>
+        <CursorPos Y="53"/>
+        <UsageCount Value="237"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="fmain.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frmain"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="176" Y="5366"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="fnewdown.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frnewdown"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="1"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="203"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="fconfig.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frconfig"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="10"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="fabout.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frabout"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="8"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="flang.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frlang"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="7"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="fstrings.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frstrings"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="4"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="201"/>
+        <Loaded Value="True"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="fconfirm.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frconfirm"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="12"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="freplace.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frreplace"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="11"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="fsitegrabber.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frsitegrabber"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="6"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit9>
+      <Unit10>
+        <Filename Value="fadd.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fradd"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="9"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit10>
+      <Unit11>
+        <Filename Value="fnotification.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frnotification"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="5"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit11>
+      <Unit12>
+        <Filename Value="fcopymove.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frcopymove"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
+        <EditorIndex Value="13"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit12>
+      <Unit13>
+        <Filename Value="fddbox.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frddbox"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="3"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="6"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit13>
+      <Unit14>
+        <Filename Value="fvideoformat.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="frvideoformat"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <EditorIndex Value="2"/>
+        <WindowIndex Value="1"/>
+        <CursorPos X="21" Y="5"/>
+        <UsageCount Value="200"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit14>
+    </Units>
+    <JumpHistory HistoryIndex="-1"/>
+  </ProjectSession>
+</CONFIG>
