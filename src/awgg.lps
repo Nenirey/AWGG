@@ -19,8 +19,10 @@
         <ComponentName Value="frmain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="176" Y="5366"/>
+        <TopLine Value="3528"/>
+        <CursorPos X="27" Y="3553"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,7 +38,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="fconfig.pas"/>
@@ -49,7 +50,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="fabout.pas"/>
@@ -62,7 +62,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="flang.pas"/>
@@ -75,7 +74,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="fstrings.pas"/>
@@ -83,11 +81,9 @@
         <ComponentName Value="frstrings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="105"/>
-        <CursorPos X="36" Y="41"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -102,7 +98,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit7>
       <Unit8>
         <Filename Value="freplace.pas"/>
@@ -115,7 +110,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit8>
       <Unit9>
         <Filename Value="fsitegrabber.pas"/>
@@ -128,7 +122,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit9>
       <Unit10>
         <Filename Value="fadd.pas"/>
@@ -154,7 +147,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="fcopymove.pas"/>
@@ -167,7 +159,6 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="fddbox.pas"/>
@@ -180,7 +171,6 @@
         <CursorPos X="21" Y="6"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="fvideoformat.pas"/>
@@ -193,9 +183,17 @@
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="2" HistoryIndex="1">
+      <Position1>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="10" Column="37"/>
+      </Position1>
+      <Position2>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="496" Column="16" TopLine="478"/>
+      </Position2>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>

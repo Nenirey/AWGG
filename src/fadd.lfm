@@ -9,7 +9,7 @@ object fradd: Tfradd
   OnCreate = FormCreate
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '1.8.2.0'
   object lblValue: TLabel
     AnchorSideLeft.Control = edtValue
     AnchorSideTop.Control = edtValue

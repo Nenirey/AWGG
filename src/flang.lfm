@@ -15,10 +15,10 @@ object frlang: Tfrlang
     AnchorSideTop.Control = cbLang
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = cbLang
-    Left = 42
-    Height = 15
-    Top = 55
-    Width = 55
+    Left = 46
+    Height = 13
+    Top = 56
+    Width = 51
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Language:'
@@ -30,10 +30,10 @@ object frlang: Tfrlang
     AnchorSideTop.Control = Owner
     AnchorSideTop.Side = asrCenter
     Left = 99
-    Height = 23
-    Top = 51
+    Height = 21
+    Top = 52
     Width = 100
-    ItemHeight = 15
+    ItemHeight = 13
     Style = csDropDownList
     TabOrder = 0
   end
@@ -42,10 +42,10 @@ object frlang: Tfrlang
     AnchorSideLeft.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 129
-    Height = 25
-    Top = 95
-    Width = 41
+    Left = 130
+    Height = 23
+    Top = 97
+    Width = 39
     Anchors = [akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Bottom = 5

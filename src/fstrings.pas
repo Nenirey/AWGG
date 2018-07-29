@@ -38,7 +38,7 @@ categorytorrents='Torrents';
 abouttext='This program is free software under GNU GPL 2 license.'+
 lineending+lineending+'Created By Reinier Romero Mir'+
 lineending+'Email: nenirey@gmail.com'+
-lineending+'Copyright (c) 2014-2018'+
+lineending+'Copyright (c) 2014-2016'+
 lineending+lineending+'The project uses the following third party resources:'+
 lineending+'- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/'+
 lineending+'- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)'+

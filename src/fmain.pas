@@ -3549,6 +3549,8 @@ begin
       end;
     end;
   end;
+  if maxcdown=0 then
+    self.Enabled:=false;
 end;
 
 procedure queuetimer.ontimestart(Sender:TObject);
@@ -7445,7 +7447,7 @@ end;
 procedure Tfrmain.FirstStartTimerTimer(Sender: TObject);
 var
   downitem:TListItem;
-  tmpindex,i:integer;
+  tmpindex,i,n:integer;
   itemfile:TSearchRec;
   fcookie:string='';
   fname:string='';
@@ -7519,8 +7521,14 @@ begin
         silent:=true;
       if (Application.Params[i]='-n') and (Application.ParamCount>i) then
       begin
-        if (Application.Params[i+1]<>'-c') and (Application.Params[i+1]<>'-s') and (Application.Params[i+1]<>'-r') and (Application.Params[i+1]<>'-p') and (Application.Params[i+1]<>'-h') and (Application.Params[i+1]<>'-u') then
-          fname:=Application.Params[i+1];
+        for n:=i to Application.ParamCount do
+        begin
+          if (Application.Params[n+1]<>'-c') and (Application.Params[n+1]<>'-s') and (Application.Params[n+1]<>'-r') and (Application.Params[n+1]<>'-p') and (Application.Params[n+1]<>'-h') and (Application.Params[n+1]<>'-u') then
+            fname:=fname+Application.Params[n+1]+' '
+          else
+          break;
+        end;
+        fname:=Copy(fname,0,Length(fname)-1);
       end;
       if (Application.Params[i]='-c') and (Application.ParamCount>i) then
       begin
@@ -8496,7 +8504,7 @@ procedure Tfrmain.UniqueInstance1OtherInstance(Sender: TObject;
   ParamCount: Integer; Parameters: array of String);
 var
   downitem:TListItem;
-  tmpindex,i:integer;
+  tmpindex,i,n:integer;
   url:string='';
   fcookie:string='';
   fname:string='';
@@ -8514,22 +8522,28 @@ begin
     begin
       if (Parameters[i]='-s') and (ParamCount>i) then
         silent:=true;
-      if (Parameters[i]='-n') and (ParamCount>i) then
+      if (Parameters[i]='-n') and (ParamCount>i+1) then
       begin
-        if (Parameters[i+1]<>'-c') and (Parameters[i+1]<>'-s') and (Parameters[i+1]<>'-r') and (Parameters[i+1]<>'-p') and (Parameters[i+1]<>'-h') and (Parameters[i+1]<>'-u') then
-          fname:=SysToUTF8(Parameters[i+1]);
+        for n:=i to ParamCount-1 do
+        begin
+          if (Parameters[n+1]<>'-c') and (Parameters[n+1]<>'-s') and (Parameters[n+1]<>'-r') and (Parameters[n+1]<>'-p') and (Parameters[n+1]<>'-h') and (Parameters[n+1]<>'-u') then
+            fname:=fname+SysToUTF8(Parameters[n+1])+' '
+          else
+          break;
+        end;
+        fname:=Copy(fname,0,length(fname)-1);
       end;
-      if (Parameters[i]='-c') and (ParamCount>i) then
+      if (Parameters[i]='-c') and (ParamCount>i+1) then
       begin
         if (Copy(Parameters[i+1],0,1)<>'-') then
           fcookie:=Parameters[i+1];
       end;
-      if (Parameters[i]='-r') and (ParamCount>i) then
+      if (Parameters[i]='-r') and (ParamCount>i+1) then
       begin
         if (Copy(Parameters[i+1],0,1)<>'-') then
           referer:=Parameters[i+1];
       end;
-      if (Parameters[i]='-p') and (ParamCount>i) then
+      if (Parameters[i]='-p') and (ParamCount>i+1) then
       begin
         if (Copy(Parameters[i+1],0,1)<>'-') then
           post:=Parameters[i+1];
@@ -8544,9 +8558,16 @@ begin
         if (Copy(Parameters[i+1],0,1)<>'-') then
           useragent:=Parameters[i+1];
       end;
-      if ((Pos('http://',Parameters[i])=1) or (Pos('https://',Parameters[i])=1) or (Pos('ftp://',Parameters[i])=1) or (Pos('magnet:',Parameters[i])=1)) and (url='') and (Parameters[i-1]<>'-r') then
+      if ((Pos('http://',Parameters[i])=1) or (Pos('https://',Parameters[i])=1) or (Pos('ftp://',Parameters[i])=1) or (Pos('magnet:',Parameters[i])=1)) and (url='') {and (Parameters[i-1]<>'-r')} then
       begin
-        url:=Parameters[i];
+        for n:=i to ParamCount-1 do
+        begin
+          if (Parameters[n+1]<>'-n') and (Parameters[n+1]<>'-c') and (Parameters[n+1]<>'-s') and (Parameters[n+1]<>'-r') and (Parameters[n+1]<>'-p') and (Parameters[n+1]<>'-h') and (Parameters[n+1]<>'-u') then
+            url:=url+Parameters[n]+'%20'
+          else
+          break;
+        end;
+        url:=Copy(url,0,Length(url)-3);
       end;
     end;
     frnewdown.edtURL.Text:=url;

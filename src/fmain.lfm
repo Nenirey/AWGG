@@ -1,7 +1,7 @@
 object frmain: Tfrmain
-  Left = 390
+  Left = 425
   Height = 460
-  Top = 168
+  Top = 161
   Width = 640
   ActiveControl = psVertical
   Caption = 'AWGG'
@@ -11,7 +11,7 @@ object frmain: Tfrmain
   OnCloseQuery = FormCloseQuery
   OnCreate = FormCreate
   OnWindowStateChange = FormWindowStateChange
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '1.8.2.0'
   object fseLimit: TFloatSpinEdit
     AnchorSideLeft.Control = cbLimit
     AnchorSideLeft.Side = asrBottom
