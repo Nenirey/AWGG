@@ -3549,7 +3549,8 @@ begin
       end;
     end;
   end;
-  if maxcdown=0 then
+  /////Stop de queue if not more to down and was start manual
+  if (maxcdown=0) and queuemanual[self.qtindex] then
     self.Enabled:=false;
 end;
 
@@ -5261,11 +5262,11 @@ begin
       //else
         //createnewnotifi(rsForm.popuptitlecomplete.Caption,frmain.lvMain.Items[thid].SubItems[columnurl],'',frmain.lvMain.Items[thid].SubItems[columndestiny],true);
       //////
-      try
-        if playsounds then
-          playsound(downcompsound);
-      except on e:exception do
-      end;
+    end;
+    try
+      if playsounds and (frmain.Focused=false) then
+        playsound(downcompsound);
+    except on e:exception do
     end;
     trayicons[thid].Animate:=false;
     trayicons[thid].Icon.Clear;
@@ -5323,24 +5324,22 @@ begin
       frmain.tbRestartNow.Enabled:=true;
       frmain.tbRestartLater.Enabled:=true;
     end;
-    if (shownotifi) and (manualshutdown=false) then
+    if manualshutdown=false then
     begin
       ///Show only if not left tries or queue is stopped
-      if (qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled=false) or (strtoint(frmain.lvMain.Items[thid].SubItems[columntries])<=1) then
+      if shownotifi and ((qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled=false) or (strtoint(frmain.lvMain.Items[thid].SubItems[columntries])<=1)) then
       begin
         outlines:=TStringList.Create;
         outlines.Add(datetostr(Date()));
         outlines.Add(timetostr(Time()));
         outlines.AddText(wout);
-        //////Many notifi forms
-        //if frmain.lvMain.Items[thid].SubItems[columnname]<>'' then
-             createnewnotifi(fstrings.popuptitlestoped,frmain.lvMain.Items[thid].SubItems[columnname],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.lvMain.Items[thid].SubItems[columndestiny],false,frmain.lvMain.Items[thid].SubItems[columnuid]);
-        //else
-        //createnewnotifi(fstrings.popuptitlestoped,frmain.lvMain.Items[thid].SubItems[columnurl],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.lvMain.Items[thid].SubItems[columndestiny],false);
+        createnewnotifi(fstrings.popuptitlestoped,frmain.lvMain.Items[thid].SubItems[columnname],outlines.Strings[outlines.Count-1]+outlines.Strings[outlines.Count-2],frmain.lvMain.Items[thid].SubItems[columndestiny],false,frmain.lvMain.Items[thid].SubItems[columnuid]);
         outlines.Destroy;
       end;
       if frmain.lvMain.Items[thid].SubItems[columntries]<>'' then
+      begin
         frmain.lvMain.Items[thid].SubItems[columntries]:=inttostr(strtoint(frmain.lvMain.Items[thid].SubItems[columntries])-1);
+      end;
       //////Mover la descarga si ocurrio un error
       if qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled and queuerotate then
       begin
@@ -7458,6 +7457,7 @@ var
   useragent:string='';
   magnetname:string='';
   silent:boolean=false;
+  //tmpstr:string='';
 begin
   newdownqueues();
   frmain.FirstStartTimer.Enabled:=false;
@@ -7555,11 +7555,13 @@ begin
         if (Copy(Application.Params[i+1],0,1)<>'-') then
           useragent:=Application.Params[i+1];
       end;
-      if ((Pos('http://',Application.Params[i])=1) or (Pos('https://',Application.Params[i])=1) or (Pos('ftp://',Application.Params[i])=1)) or (Pos('magnet:',Application.Params[i])=1) and (url='') and (Application.Params[i-1]<>'-r') then
+      if ((Pos('http://',Application.Params[i])=1) or (Pos('https://',Application.Params[i])=1) or (Pos('ftp://',Application.Params[i])=1) or (Pos('magnet:',Application.Params[i])=1)) and (url='') then
       begin
         url:=Application.Params[i];
       end;
+      //tmpstr:=tmpstr+' '+Application.Params[i];
     end;
+    //ShowMessage(tmpstr);
     frnewdown.edtURL.Text:=url;
     if fname<>'' then
       frnewdown.edtFileName.Text:=fname
@@ -8514,11 +8516,12 @@ var
   useragent:string='';
   magnetname:string='';
   silent:boolean=false;
+  //tmpstr:string='';
 begin
   onestart:=false;
   if ParamCount>0 then
   begin
-    for i:=0 to ParamCount-1 do
+    for i:=1 to ParamCount-1 do
     begin
       if (Parameters[i]='-s') and (ParamCount>i) then
         silent:=true;
@@ -8558,18 +8561,13 @@ begin
         if (Copy(Parameters[i+1],0,1)<>'-') then
           useragent:=Parameters[i+1];
       end;
-      if ((Pos('http://',Parameters[i])=1) or (Pos('https://',Parameters[i])=1) or (Pos('ftp://',Parameters[i])=1) or (Pos('magnet:',Parameters[i])=1)) and (url='') {and (Parameters[i-1]<>'-r')} then
+      if ((Pos('http://',Parameters[i])=1) or (Pos('https://',Parameters[i])=1) or (Pos('ftp://',Parameters[i])=1) or (Pos('magnet:',Parameters[i])=1)) and (url='') then
       begin
-        for n:=i to ParamCount-1 do
-        begin
-          if (Parameters[n+1]<>'-n') and (Parameters[n+1]<>'-c') and (Parameters[n+1]<>'-s') and (Parameters[n+1]<>'-r') and (Parameters[n+1]<>'-p') and (Parameters[n+1]<>'-h') and (Parameters[n+1]<>'-u') then
-            url:=url+Parameters[n]+'%20'
-          else
-          break;
-        end;
-        url:=Copy(url,0,Length(url)-3);
+        url:=Parameters[i];
       end;
+      //tmpstr:=tmpstr+' '+Parameters[i];
     end;
+    //ShowMessage(tmpstr);
     frnewdown.edtURL.Text:=url;
     if fname<>'' then
       frnewdown.edtFileName.Text:=fname

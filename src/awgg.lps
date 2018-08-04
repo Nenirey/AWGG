@@ -21,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="3528"/>
-        <CursorPos X="27" Y="3553"/>
+        <TopLine Value="8563"/>
+        <CursorPos X="7" Y="8570"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -185,15 +185,6 @@
         <Loaded Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="2" HistoryIndex="1">
-      <Position1>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="10" Column="37"/>
-      </Position1>
-      <Position2>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="496" Column="16" TopLine="478"/>
-      </Position2>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>
