@@ -617,6 +617,8 @@ var
   frddboxLeft,frddboxTop,frddboxSize:integer;
   domainfilters:array of string;
   activedomainfilter:boolean;
+  params:array of string;
+  paramscount:longint;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
   function suggestdir(doc:string):string;
@@ -639,6 +641,7 @@ var
   procedure getyoutubeformats(URL:String);
   procedure getyoutubename(URL:String);
   procedure reloaddowndirs();
+  procedure parseparameters;
 implementation
 {$R *.lfm}
 { Tfrmain }
@@ -1429,27 +1432,27 @@ procedure defaultcategory();
 begin
   SetLength(categoryextencions,7);
   categoryextencions[0]:=TStringList.Create;
-  categoryextencions[0].Add(ddowndir+pathdelim+'Compressed');
+  categoryextencions[0].Add(ddowndir+pathdelim+categorycompressed);
   categoryextencions[0].Add(categorycompressed);
   categoryextencions[0].AddStrings(['ZIP','RAR','7Z','7ZIP','CAB','GZ','TAR','XZ','BZ2','LZMA']);
   categoryextencions[1]:=TStringList.Create;
-  categoryextencions[1].Add(ddowndir+pathdelim+'Programs');
+  categoryextencions[1].Add(ddowndir+pathdelim+categoryprograms);
   categoryextencions[1].Add(categoryprograms);
   categoryextencions[1].AddStrings(['EXE','MSI','COM','BAT','PY','SH','HTA','JAR','APK','DMG']);
   categoryextencions[2]:=TStringList.Create;
-  categoryextencions[2].Add(ddowndir+pathdelim+'Images');
+  categoryextencions[2].Add(ddowndir+pathdelim+categoryimages);
   categoryextencions[2].Add(categoryimages);
   categoryextencions[2].AddStrings(['JPG','JPE','JPEG','PNG','GIF','BMP','ICO','CUR','ANI']);
   categoryextencions[3]:=TStringList.Create;
-  categoryextencions[3].Add(ddowndir+pathdelim+'Documents');
+  categoryextencions[3].Add(ddowndir+pathdelim+categorydocuments);
   categoryextencions[3].Add(categorydocuments);
   categoryextencions[3].AddStrings(['DOC','DOCX','XLS','XLSX','PPT','PPS','PPTX','PPSX','TXT','PDF','HTM','HTML','MHT','RTF','ODF','ODT','ODS','PHP']);
   categoryextencions[4]:=TStringList.Create;
-  categoryextencions[4].Add(ddowndir+pathdelim+'Videos');
+  categoryextencions[4].Add(ddowndir+pathdelim+categoryvideos);
   categoryextencions[4].Add(categoryvideos);
   categoryextencions[4].AddStrings(['MPG','MPE','MPEG','MP4','MOV','FLV','AVI','ASF','WMV','MKV','VOB','IFO','RMVB','DIVX','3GP','3GP2','SWF','MPV','M4V','WEBM','AMV']);
   categoryextencions[5]:=TStringList.Create;
-  categoryextencions[5].Add(ddowndir+pathdelim+'Music');
+  categoryextencions[5].Add(ddowndir+pathdelim+categorymusic);
   categoryextencions[5].Add(categorymusic);
   categoryextencions[5].AddStrings(['MP3','OGG','WAV','WMA','AMR','MIDI']);
   categoryextencions[6]:=TStringList.Create;
@@ -1490,10 +1493,10 @@ end;
 
 procedure queueindexselect();
 begin
-  frnewdown.cbQueue.ItemIndex:=0;
-  frsitegrabber.cbQueue.ItemIndex:=0;
   if (frmain.tvMain.SelectionCount>0) and frmain.Active then
   begin
+    frnewdown.cbQueue.ItemIndex:=0;
+    frsitegrabber.cbQueue.ItemIndex:=0;
     if frmain.tvMain.Selected.Level>0 then
     begin
       case frmain.tvMain.Selected.Parent.Index of
@@ -7445,19 +7448,8 @@ end;
 
 procedure Tfrmain.FirstStartTimerTimer(Sender: TObject);
 var
-  downitem:TListItem;
-  tmpindex,i,n:integer;
+  i:integer;
   itemfile:TSearchRec;
-  fcookie:string='';
-  fname:string='';
-  referer:string='';
-  post:string='';
-  header:string='';
-  url:string='';
-  useragent:string='';
-  magnetname:string='';
-  silent:boolean=false;
-  //tmpstr:string='';
 begin
   newdownqueues();
   frmain.FirstStartTimer.Enabled:=false;
@@ -7484,13 +7476,13 @@ begin
     updatelangstatus();
     if ddowndir='' then //Para version portable
     begin
-      ddowndir:=SysToUTF8(GetUserDir()+'Downloads');
+      ddowndir:=SysToUTF8(GetUserDir()+downloadpathname);
       ///More compatible for modern windows version
       {$IFDEF WINDOWS}
         //registro:=TRegistry.Create;
         //registro.RootKey:=HKEY_CURRENT_USER;
         //registro.OpenKey('Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\',false);
-        //ddowndir:=SysToUTF8(registro.ReadString('Personal')+PathDelim+'Downloads');
+        //ddowndir:=SysToUTF8(registro.ReadString('Personal')+PathDelim+downloadpathname);
         //registro.CloseKey;
         //registro.Free;
       {$ENDIF}
@@ -7509,150 +7501,17 @@ begin
       OpenURL('http://sites.google.com/site/awggproject');
     end;
   end;
-  dotherdowndir:=ddowndir+pathdelim+'Others';
+  dotherdowndir:=ddowndir+pathdelim+categoryothers;
   updatelangstatus();
   titlegen();
   firststart:=false;
-  if (Application.ParamCount>0) then
+  for i:=0 to Application.ParamCount-1 do
   begin
-    for i:=1 to Application.ParamCount do
-    begin
-      if Application.Params[i]='-s' then
-        silent:=true;
-      if (Application.Params[i]='-n') and (Application.ParamCount>i) then
-      begin
-        for n:=i to Application.ParamCount do
-        begin
-          if (Application.Params[n+1]<>'-c') and (Application.Params[n+1]<>'-s') and (Application.Params[n+1]<>'-r') and (Application.Params[n+1]<>'-p') and (Application.Params[n+1]<>'-h') and (Application.Params[n+1]<>'-u') then
-            fname:=fname+Application.Params[n+1]+' '
-          else
-          break;
-        end;
-        fname:=Copy(fname,0,Length(fname)-1);
-      end;
-      if (Application.Params[i]='-c') and (Application.ParamCount>i) then
-      begin
-        if (Copy(Application.Params[i+1],0,1)<>'-') then
-          fcookie:=Application.Params[i+1];
-      end;
-      if (Application.Params[i]='-r') and (Application.ParamCount>i) then
-      begin
-        if (Copy(Application.Params[i+1],0,1)<>'-') then
-          referer:=Application.Params[i+1];
-      end;
-      if (Application.Params[i]='-p') and (Application.ParamCount>i) then
-      begin
-        if (Copy(Application.Params[i+1],0,1)<>'-') then
-          post:=Application.Params[i+1];
-      end;
-      if (Application.Params[i]='-h') and (Application.ParamCount>i) then
-      begin
-        if (Copy(Application.Params[i+1],0,1)<>'-') then
-          header:=Application.Params[i+1];
-      end;
-      if (Application.Params[i]='-u') and (Application.ParamCount>i) then
-      begin
-        if (Copy(Application.Params[i+1],0,1)<>'-') then
-          useragent:=Application.Params[i+1];
-      end;
-      if ((Pos('http://',Application.Params[i])=1) or (Pos('https://',Application.Params[i])=1) or (Pos('ftp://',Application.Params[i])=1) or (Pos('magnet:',Application.Params[i])=1)) and (url='') then
-      begin
-        url:=Application.Params[i];
-      end;
-      //tmpstr:=tmpstr+' '+Application.Params[i];
-    end;
-    //ShowMessage(tmpstr);
-    frnewdown.edtURL.Text:=url;
-    if fname<>'' then
-      frnewdown.edtFileName.Text:=fname
-    else
-    begin
-      frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
-      if (Pos('magnet:',url)=1) and (Pos('&dn=',url)>0) then
-      begin
-        magnetname:=Copy(url,Pos('&dn=',url)+4,Length(url));
-        magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
-        frnewdown.edtFileName.Text:=magnetname;
-      end;
-    end;
-    case defaultdirmode of
-      1:frnewdown.deDestination.Text:=ddowndir;
-      2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
-    end;
-    frnewdown.edtParameters.Text:='';
-    frnewdown.edtUser.Text:='';
-    frnewdown.edtPassword.Text:='';
-    frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
-    frmain.ClipBoardTimer.Enabled:=false;//Desactivar temporalmente el clipboard monitor
-    enginereload();
-    suggestparameters();
-    if frnewdown.cbQueue.ItemIndex=-1 then
-      frnewdown.cbQueue.ItemIndex:=0;
-    //queueindexselect();
-    if (frnewdown.Visible=false) and (silent=false) then
-      frnewdown.ShowModal;
-    if silent then
-      silent:=checkandclose(true);
-    frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Avtivar el clipboardmonitor
-    if (agregar or silent) and (updateurl=false) then
-    begin
-      downitem:=TListItem.Create(frmain.lvMain.Items);
-      downitem.Caption:=fstrings.statuspaused;
-      downitem.ImageIndex:=18;
-      downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
-      downitem.SubItems.Add('');//Tama;o
-      downitem.SubItems.Add('');//Descargado
-      downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
-      downitem.SubItems.Add('');//Velocidad
-      downitem.SubItems.Add('');//Porciento
-      downitem.SubItems.Add('');//Estimado
-      downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
-      downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
-      downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
-      downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
-      downitem.SubItems.Add('0');//status
-      downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
-      downitem.SubItems.Add(frnewdown.edtUser.Text);//user
-      downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
-      downitem.SubItems.Add(inttostr(triesrotate));//tries
-      downitem.SubItems.Add(uidgen());//uid
-      if silent then
-        downitem.SubItems.Add('0')//silent defualt queue
-      else
-        downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
-      downitem.SubItems.Add('0');//type
-      downitem.SubItems.Add(fcookie);//cookie
-      downitem.SubItems.Add(referer);//referer
-      downitem.SubItems.Add(post);//post
-      downitem.SubItems.Add(header);//header
-      downitem.SubItems.Add(useragent);//useragent
-      frmain.lvMain.Items.AddItem(downitem);
-      tmpindex:=downitem.Index;
-      if frnewdown.btnToUp.Visible then
-      begin
-        movestepup(tmpindex,0);
-        tmpindex:=0;
-      end;
-      if cola then
-      begin
-        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
-        qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
-      end;
-      frmain.tvMainSelectionChanged(nil);
-      savemydownloads();
-      if iniciar or silent then
-      begin
-        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
-        downloadstart(tmpindex,false);
-      end;
-      if iniciar=false then
-      begin
-        if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
-          updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
-      end;
-    end;
+    SetLength(params,i+1);
+    params[i]:=Application.Params[i];
   end;
-  silent:=false;
+  ParamsCount:=Application.ParamCount;
+  parseparameters;
   if dropboxonstart then
     frmain.mimainddboxClick(nil);
   if autostartminimized then
@@ -8505,162 +8364,18 @@ end;
 procedure Tfrmain.UniqueInstance1OtherInstance(Sender: TObject;
   ParamCount: Integer; Parameters: array of String);
 var
-  downitem:TListItem;
-  tmpindex,i,n:integer;
-  url:string='';
-  fcookie:string='';
-  fname:string='';
-  referer:string='';
-  post:string='';
-  header:string='';
-  useragent:string='';
-  magnetname:string='';
-  silent:boolean=false;
-  //tmpstr:string='';
+  i:integer;
 begin
   onestart:=false;
   if ParamCount>0 then
   begin
-    for i:=1 to ParamCount-1 do
+    for i:=0 to ParamCount-1 do
     begin
-      if (Parameters[i]='-s') and (ParamCount>i) then
-        silent:=true;
-      if (Parameters[i]='-n') and (ParamCount>i+1) then
-      begin
-        for n:=i to ParamCount-1 do
-        begin
-          if (Parameters[n+1]<>'-c') and (Parameters[n+1]<>'-s') and (Parameters[n+1]<>'-r') and (Parameters[n+1]<>'-p') and (Parameters[n+1]<>'-h') and (Parameters[n+1]<>'-u') then
-            fname:=fname+SysToUTF8(Parameters[n+1])+' '
-          else
-          break;
-        end;
-        fname:=Copy(fname,0,length(fname)-1);
-      end;
-      if (Parameters[i]='-c') and (ParamCount>i+1) then
-      begin
-        if (Copy(Parameters[i+1],0,1)<>'-') then
-          fcookie:=Parameters[i+1];
-      end;
-      if (Parameters[i]='-r') and (ParamCount>i+1) then
-      begin
-        if (Copy(Parameters[i+1],0,1)<>'-') then
-          referer:=Parameters[i+1];
-      end;
-      if (Parameters[i]='-p') and (ParamCount>i+1) then
-      begin
-        if (Copy(Parameters[i+1],0,1)<>'-') then
-          post:=Parameters[i+1];
-      end;
-      if (Parameters[i]='-h') and (ParamCount>i+1) then
-      begin
-        if (Copy(Parameters[i+1],0,1)<>'-') then
-          header:=Parameters[i+1];
-      end;
-      if (Parameters[i]='-u') and (ParamCount>i+1) then
-      begin
-        if (Copy(Parameters[i+1],0,1)<>'-') then
-          useragent:=Parameters[i+1];
-      end;
-      if ((Pos('http://',Parameters[i])=1) or (Pos('https://',Parameters[i])=1) or (Pos('ftp://',Parameters[i])=1) or (Pos('magnet:',Parameters[i])=1)) and (url='') then
-      begin
-        url:=Parameters[i];
-      end;
-      //tmpstr:=tmpstr+' '+Parameters[i];
+      SetLength(params,i+1);
+      params[i]:=Parameters[i];
     end;
-    //ShowMessage(tmpstr);
-    frnewdown.edtURL.Text:=url;
-    if fname<>'' then
-      frnewdown.edtFileName.Text:=fname
-    else
-    begin
-      frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
-      if (Pos('magnet:',url)=1) and (Pos('&dn=',url)>0) then
-      begin
-        magnetname:=Copy(url,Pos('&dn=',url)+4,Length(url));
-        magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
-        frnewdown.edtFileName.Text:=magnetname;
-      end;
-    end;
-
-    case defaultdirmode of
-      1:frnewdown.deDestination.Text:=ddowndir;
-      2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
-    end;
-    frnewdown.edtParameters.Text:='';
-    frnewdown.edtUser.Text:='';
-    frnewdown.edtPassword.Text:='';
-    frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
-    frmain.ClipBoardTimer.Enabled:=false;//Desactivar temporalmente el clipboardmonitor
-    enginereload();
-    suggestparameters();
-    if frnewdown.cbQueue.ItemIndex=-1 then
-      frnewdown.cbQueue.ItemIndex:=0;
-    //queueindexselect();
-    if (frnewdown.Visible=false) and (silent=false) then
-      frnewdown.ShowModal;
-    if silent then
-      silent:=checkandclose(true);
-    frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Activar el clipboardmonitor
-    if (agregar or silent) and (updateurl=false) then
-    begin
-      downitem:=TListItem.Create(frmain.lvMain.Items);
-      downitem.Caption:=fstrings.statuspaused;
-      downitem.ImageIndex:=18;
-      downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
-      downitem.SubItems.Add('');//Tama;o
-      downitem.SubItems.Add('');//Descargado
-      downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
-      downitem.SubItems.Add('');//Velocidad
-      downitem.SubItems.Add('');//Porciento
-      downitem.SubItems.Add('');//Estimado
-      downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
-      downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
-      downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
-      downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
-      downitem.SubItems.Add('0');//status
-      downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
-      downitem.SubItems.Add(frnewdown.edtUser.Text);//user
-      downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
-      downitem.SubItems.Add(inttostr(triesrotate));//tries
-      downitem.SubItems.Add(uidgen());//uid
-      if silent then
-        downitem.SubItems.Add('0')
-      else
-        downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
-      downitem.SubItems.Add('0');//type
-      downitem.SubItems.Add(fcookie);//cookie
-      downitem.SubItems.Add(referer);//referer
-      downitem.SubItems.Add(post);//post
-      downitem.SubItems.Add(header);//header
-      downitem.SubItems.Add(useragent);//useragent
-      frmain.lvMain.Items.AddItem(downitem);
-      tmpindex:=downitem.Index;
-      if frnewdown.btnToUp.Visible then
-      begin
-        movestepup(tmpindex,0);
-        tmpindex:=0;
-      end;
-      if cola then
-      begin
-        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
-        qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
-      end;
-      frmain.tvMainSelectionChanged(nil);
-      if not silent then
-        savemydownloads();
-      if iniciar or silent then
-      begin
-        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
-        downloadstart(tmpindex,false);
-        if frmain.AutoSaveTimer.Enabled=false then
-          frmain.AutoSaveTimer.Enabled:=true;
-      end;
-      if iniciar=false then
-      begin
-        if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
-          updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
-      end;
-    end;
+    ParamsCount:=ParamCount;
+    parseparameters;
   end
   else
   begin
@@ -8789,6 +8504,184 @@ begin
       firefoxpref.Free;
     end;
   except on e:exception do
+  end;
+end;
+
+procedure parseparameters;
+var
+  downitem:TListItem;
+  tmpindex,i,n:integer;
+  fcookie:string='';
+  fname:string='';
+  referer:string='';
+  post:string='';
+  header:string='';
+  url:string='';
+  useragent:string='';
+  magnetname:string='';
+  silent:boolean=false;
+  //tmpstr:string='';
+begin
+  if (ParamsCount>0) then
+  begin
+    for i:=0 to ParamsCount-1 do
+    begin
+      if Params[i]='-s' then
+        silent:=true;
+      if (Params[i]='-n') and (ParamsCount>i) then
+      begin
+        for n:=i to ParamsCount do
+        begin
+          if (Params[n+1]<>'-c') and (Params[n+1]<>'-s') and (Params[n+1]<>'-r') and (Params[n+1]<>'-p') and (Params[n+1]<>'-h') and (Params[n+1]<>'-u') then
+            fname:=fname+SystoUTF8(Params[n+1])+' '
+          else
+          break;
+        end;
+        fname:=Copy(fname,0,Length(fname)-1);
+      end;
+      if (Params[i]='-c') and (ParamsCount>i) then
+      begin
+        if (Copy(Params[i+1],0,1)<>'-') then
+          fcookie:=Params[i+1];
+      end;
+      if (Params[i]='-r') and (ParamsCount>i) then
+      begin
+        for n:=i to ParamsCount-1 do
+        begin
+          if (Params[n+1]<>'-n') and (Params[n+1]<>'-c') and (Params[n+1]<>'-u') and (Params[n+1]<>'-s') then
+            referer:=referer+Params[n+1]+'%20'
+          else
+            break;
+          referer:=Copy(referer,0,length(referer)-3);
+        end;
+      end;
+      if (Params[i]='-p') and (ParamsCount>i) then
+      begin
+        if (Copy(Params[i+1],0,1)<>'-') then
+          post:=Params[i+1];
+      end;
+      if (Params[i]='-h') and (ParamsCount>i) then
+      begin
+        if (Copy(Params[i+1],0,1)<>'-') then
+          header:=Params[i+1];
+      end;
+      if (Params[i]='-u') and (ParamsCount>i) then
+      begin
+        for n:=i to ParamsCount-1 do
+        begin
+          if (Params[n+1]<>'-n') and (Params[n+1]<>'-c') and (Params[n+1]<>'-r') and (Params[n+1]<>'-s') then
+            useragent:=useragent+Params[n+1]+' '
+          else
+            break;
+          useragent:=Copy(useragent,0,length(useragent)-1);
+        end;
+      end;
+      if ((Pos('http://',Params[i])=1) or (Pos('https://',Params[i])=1) or (Pos('ftp://',Params[i])=1) or (Pos('magnet:',Params[i])=1)) and (url='') then
+      begin
+        for n:=i to ParamsCount-1 do
+        begin
+          //ShowMessage(Params[n]);
+          if (Params[n]<>'-n') and (Params[n]<>'-c') and (Params[n]<>'-r') and (Params[n]<>'-u') and (Params[n]<>'-s') then
+            url:=url+Params[n]+'%20'
+          else
+          begin
+            url:=Copy(url,0,length(url)-3);
+            break;
+          end;
+        end;
+      end;
+      //tmpstr:=tmpstr+' '+Params[i];
+    end;
+    //ShowMessage(tmpstr);
+    frnewdown.edtURL.Text:=url;
+    if fname<>'' then
+      frnewdown.edtFileName.Text:=fname
+    else
+    begin
+      frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
+      if (Pos('magnet:',url)=1) and (Pos('&dn=',url)>0) then
+      begin
+        magnetname:=Copy(url,Pos('&dn=',url)+4,Length(url));
+        magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
+        frnewdown.edtFileName.Text:=magnetname;
+      end;
+    end;
+    case defaultdirmode of
+      1:frnewdown.deDestination.Text:=ddowndir;
+      2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
+    end;
+    frnewdown.edtParameters.Text:='';
+    frnewdown.edtUser.Text:='';
+    frnewdown.edtPassword.Text:='';
+    frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
+    frmain.ClipBoardTimer.Enabled:=false;//Desactivar temporalmente el clipboard monitor
+    enginereload();
+    suggestparameters();
+    if frnewdown.cbQueue.ItemIndex=-1 then
+      frnewdown.cbQueue.ItemIndex:=0;
+    queueindexselect();
+    if (frnewdown.Visible=false) and (silent=false) then
+      frnewdown.ShowModal;
+    if silent then
+      silent:=checkandclose(true);
+    frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Avtivar el clipboardmonitor
+    if (agregar or silent) and (updateurl=false) then
+    begin
+      downitem:=TListItem.Create(frmain.lvMain.Items);
+      downitem.Caption:=fstrings.statuspaused;
+      downitem.ImageIndex:=18;
+      downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
+      downitem.SubItems.Add('');//Tama;o
+      downitem.SubItems.Add('');//Descargado
+      downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
+      downitem.SubItems.Add('');//Velocidad
+      downitem.SubItems.Add('');//Porciento
+      downitem.SubItems.Add('');//Estimado
+      downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
+      downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
+      downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
+      downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
+      downitem.SubItems.Add('0');//status
+      downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
+      downitem.SubItems.Add(frnewdown.edtUser.Text);//user
+      downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
+      downitem.SubItems.Add(inttostr(triesrotate));//tries
+      downitem.SubItems.Add(uidgen());//uid
+      if silent then
+        downitem.SubItems.Add('0')//silent defualt queue
+      else
+        downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
+      downitem.SubItems.Add('0');//type
+      downitem.SubItems.Add(fcookie);//cookie
+      downitem.SubItems.Add(referer);//referer
+      downitem.SubItems.Add(post);//post
+      downitem.SubItems.Add(header);//header
+      downitem.SubItems.Add(useragent);//useragent
+      frmain.lvMain.Items.AddItem(downitem);
+      tmpindex:=downitem.Index;
+      if frnewdown.btnToUp.Visible then
+      begin
+        movestepup(tmpindex,0);
+        tmpindex:=0;
+      end;
+      if cola then
+      begin
+        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+        qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
+      end;
+      frmain.tvMainSelectionChanged(nil);
+      savemydownloads();
+      if iniciar or silent then
+      begin
+        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+        downloadstart(tmpindex,false);
+      end;
+      if iniciar=false then
+      begin
+        if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
+          updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
+      end;
+    end;
   end;
 end;
 

@@ -26,6 +26,7 @@ resourcestring
 
 startqueuesystray='Start queue';
 stopqueuesystray='Stop queue';
+downloadpathname='Downloads';
 categorycompressed='Compressed';
 categoryprograms='Programs';
 categoryimages='Images';
@@ -128,6 +129,7 @@ msgcopyoperationerror='Error to copy file, details:'+lineending+'%s';
 msgmoveoperationerror='Error to move file, details:'+lineending+'$s';
 statusstarting='Starting...';
 statusstopping='Stopping...';
+
 Implementation
 end.
 

@@ -292,6 +292,11 @@ msgctxt "fstrings.dlgrestartselecteddownloadletter"
 msgid "Do you want to restart the selected download later?"
 msgstr "¿Desea reiniciar la descarga seleccionada mas tarde?"
 
+#: fstrings.downloadpathname
+msgctxt "fstrings.downloadpathname"
+msgid "Downloads"
+msgstr "Descargas"
+
 #: fstrings.errorloadingformat
 msgid "Error loading video formats, please press reload button"
 msgstr "Error cargando formatos de video, por favor presione Recargar"

@@ -9,7 +9,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="29"/>
+        <TopLine Value="34"/>
         <CursorPos Y="53"/>
         <UsageCount Value="237"/>
       </Unit0>
@@ -21,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="8563"/>
-        <CursorPos X="7" Y="8570"/>
+        <TopLine Value="7473"/>
+        <CursorPos X="33" Y="7460"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -83,7 +83,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="21" Y="5"/>
+        <TopLine Value="24"/>
+        <CursorPos Y="36"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
