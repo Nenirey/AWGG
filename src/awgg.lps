@@ -21,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="7473"/>
-        <CursorPos X="33" Y="7460"/>
+        <TopLine Value="1493"/>
+        <CursorPos X="4" Y="1502"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -186,6 +186,79 @@
         <Loaded Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="18" HistoryIndex="17">
+      <Position1>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="585" Column="27" TopLine="577"/>
+      </Position1>
+      <Position2>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="588" Column="21" TopLine="577"/>
+      </Position2>
+      <Position3>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1652" Column="31" TopLine="1651"/>
+      </Position3>
+      <Position4>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1696" Column="65" TopLine="1680"/>
+      </Position4>
+      <Position5>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1719" Column="55" TopLine="1703"/>
+      </Position5>
+      <Position6>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1742" Column="42" TopLine="1726"/>
+      </Position6>
+      <Position7>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="588" Column="21" TopLine="578"/>
+      </Position7>
+      <Position8>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1652" Column="31" TopLine="1665"/>
+      </Position8>
+      <Position9>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7627" Column="10" TopLine="7615"/>
+      </Position9>
+      <Position10>
+        <Filename Value="fmain.pas"/>
+        <Caret Column="21"/>
+      </Position10>
+      <Position11>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="639" Column="23" TopLine="622"/>
+      </Position11>
+      <Position12>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1494" Column="21" TopLine="1477"/>
+      </Position12>
+      <Position13>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7627" Column="13" TopLine="7611"/>
+      </Position13>
+      <Position14>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7760" Column="13" TopLine="7744"/>
+      </Position14>
+      <Position15>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7761" Column="11" TopLine="7744"/>
+      </Position15>
+      <Position16>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1497" Column="42" TopLine="1487"/>
+      </Position16>
+      <Position17>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7690" Column="45" TopLine="7676"/>
+      </Position17>
+      <Position18>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7761" Column="13" TopLine="7745"/>
+      </Position18>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>

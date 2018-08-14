@@ -619,6 +619,7 @@ var
   activedomainfilter:boolean;
   params:array of string;
   paramscount:longint;
+  queueindex:integer;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
   function suggestdir(doc:string):string;
@@ -1493,10 +1494,12 @@ end;
 
 procedure queueindexselect();
 begin
+  if frnewdown.cbQueue.Items.Count>=queueindex then
+    frnewdown.cbQueue.ItemIndex:=queueindex;
+  if frsitegrabber.cbQueue.Items.Count>=queueindex then
+    frsitegrabber.cbQueue.ItemIndex:=queueindex;
   if (frmain.tvMain.SelectionCount>0) and frmain.Active then
   begin
-    frnewdown.cbQueue.ItemIndex:=0;
-    frsitegrabber.cbQueue.ItemIndex:=0;
     if frmain.tvMain.Selected.Level>0 then
     begin
       case frmain.tvMain.Selected.Parent.Index of
@@ -7596,7 +7599,6 @@ var
 begin
   if (frnewdown.edtURL.Text='http://') or (frnewdown.edtURL.Text='') or (Sender<>nil) then
   begin
-    //if Length(ClipBoard.AsText)<=256 then
     tmpclip:=ClipBoard.AsText;
     if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) or (Pos('magnet:',tmpclip)=1) then
       frnewdown.edtURL.Text:=tmpclip
@@ -7687,6 +7689,7 @@ begin
       if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
         updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
     end;
+    queueindex:=frnewdown.cbQueue.ItemIndex;
   end;
 end;
 
