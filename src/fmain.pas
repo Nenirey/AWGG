@@ -7479,15 +7479,10 @@ begin
     updatelangstatus();
     if ddowndir='' then //Para version portable
     begin
-      ddowndir:=SysToUTF8(GetUserDir()+downloadpathname);
-      ///More compatible for modern windows version
       {$IFDEF WINDOWS}
-        //registro:=TRegistry.Create;
-        //registro.RootKey:=HKEY_CURRENT_USER;
-        //registro.OpenKey('Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders\',false);
-        //ddowndir:=SysToUTF8(registro.ReadString('Personal')+PathDelim+downloadpathname);
-        //registro.CloseKey;
-        //registro.Free;
+      ddowndir:=SysToUTF8(GetUserDir()+'Downloads');
+      {$ELSE}
+      ddowndir:=SysToUTF8(GetUserDir()+downloadpathname);
       {$ENDIF}
     end;
     logpath:=ddowndir+pathdelim+'logs';
@@ -7495,14 +7490,14 @@ begin
       CreateDir(ddowndir);
     defaultcategory();
     categoryreload();
-    frconfirm.dlgtext.Caption:=firefoxintegration;
-    frconfirm.ShowModal;
-    if dlgcuestion then
+    //frconfirm.dlgtext.Caption:=firefoxintegration;
+    //frconfirm.ShowModal;
+    {if dlgcuestion then
     begin
       ShowMessage(fstrings.firefoxhelpintegration);
       setfirefoxintegration();
       OpenURL('http://sites.google.com/site/awggproject');
-    end;
+    end;}
   end;
   dotherdowndir:=ddowndir+pathdelim+categoryothers;
   updatelangstatus();

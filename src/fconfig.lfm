@@ -55,12 +55,12 @@ object frconfig: Tfrconfig
     Height = 387
     Top = 24
     Width = 465
-    ActivePage = tsProxy
+    ActivePage = tsIntegration
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 0
+    TabIndex = 16
     TabOrder = 2
     OnChange = pcConfigChange
     Options = [nboKeyboardTabSwitch]
