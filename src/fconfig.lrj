@@ -112,6 +112,13 @@
 {"hash":182639412,"name":"tfrconfig.rbqueuermtoend.caption","sourcebytes":[84,111,32,116,104,101,32,101,110,100],"value":"To the end"},
 {"hash":155261358,"name":"tfrconfig.rbqueuermtwostop.caption","sourcebytes":[84,119,111,32,115,116,101,112,115,32,100,111,119,110],"value":"Two steps down"},
 {"hash":249100014,"name":"tfrconfig.tsintegration.caption","sourcebytes":[73,110,116,101,103,114,97,116,105,111,110],"value":"Integration"},
-{"hash":228021806,"name":"tfrconfig.btnfirefoxintegration.caption","sourcebytes":[69,110,97,98,108,101,32,102,105,114,101,102,111,120,32,105,110,116,101,103,114,97,116,105,111,110],"value":"Enable firefox integration"},
+{"hash":19980014,"name":"tfrconfig.btnchromeintegration.caption","sourcebytes":[69,110,97,98,108,101,32,67,104,114,111,109,101,32,105,110,116,101,103,114,97,116,105,111,110],"value":"Enable Chrome integration"},
+{"hash":242671950,"name":"tfrconfig.btnoperaintegration.caption","sourcebytes":[69,110,97,98,108,101,32,79,112,101,114,97,32,105,110,116,101,103,114,97,116,105,111,110],"value":"Enable Opera integration"},
+{"hash":228021774,"name":"tfrconfig.btnfirefoxintegration.caption","sourcebytes":[69,110,97,98,108,101,32,70,105,114,101,102,111,120,32,105,110,116,101,103,114,97,116,105,111,110],"value":"Enable Firefox integration"},
+{"hash":216758570,"name":"tfrconfig.lblprogrampath.caption","sourcebytes":[69,120,101,99,117,116,97,98,108,101,58],"value":"Executable:"},
+{"hash":205575050,"name":"tfrconfig.lblprogramarguments.caption","sourcebytes":[65,114,103,117,109,101,110,116,115,58],"value":"Arguments:"},
+{"hash":233589362,"name":"tfrconfig.edtprogramarguments.text","sourcebytes":[34,91,85,82,76,93,34,32,45,110,32,34,91,70,73,76,69,78,65,77,69,93,34,32,45,117,32,34,91,85,83,69,82,65,71,69,78,84,93,34,32,45,114,32,34,91,82,69,70,69,82,82,69,82,93,34,32,45,99,32,34,91,67,79,79,75,73,69,83,93,34],"value":"\"[URL]\" -n \"[FILENAME]\" -u \"[USERAGENT]\" -r \"[REFERRER]\" -c \"[COOKIES]\""},
+{"hash":127162148,"name":"tfrconfig.sbtncopypath.hint","sourcebytes":[67,111,112,121,32,116,111,32,99,108,105,112,98,111,97,114,100],"value":"Copy to clipboard"},
+{"hash":127162148,"name":"tfrconfig.sbtncopyarguments.hint","sourcebytes":[67,111,112,121,32,116,111,32,99,108,105,112,98,111,97,114,100],"value":"Copy to clipboard"},
 {"hash":4749113,"name":"tfrconfig.btnconfigapply.caption","sourcebytes":[65,112,112,108,121],"value":"Apply"}
 ]}

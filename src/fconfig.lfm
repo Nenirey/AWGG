@@ -1,22 +1,22 @@
 object frconfig: Tfrconfig
-  Left = 392
-  Height = 441
-  Top = 140
-  Width = 628
+  Left = 616
+  Height = 444
+  Top = 157
+  Width = 649
   Caption = 'Configuration'
-  ClientHeight = 441
-  ClientWidth = 628
+  ClientHeight = 444
+  ClientWidth = 649
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '1.8.4.0'
   object btnConfigAccept: TButton
     AnchorSideLeft.Control = pcConfig
     AnchorSideRight.Control = btnConfigCancel
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 423
+    Left = 444
     Height = 25
-    Top = 413
+    Top = 416
     Width = 63
     Anchors = [akRight, akBottom]
     AutoSize = True
@@ -31,9 +31,9 @@ object frconfig: Tfrconfig
     AnchorSideRight.Control = btnConfigApply
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 496
+    Left = 517
     Height = 25
-    Top = 413
+    Top = 416
     Width = 62
     Anchors = [akRight, akBottom]
     AutoSize = True
@@ -52,9 +52,9 @@ object frconfig: Tfrconfig
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnConfigAccept
     Left = 184
-    Height = 384
+    Height = 387
     Top = 24
-    Width = 444
+    Width = 465
     ActivePage = tsProxy
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -66,8 +66,8 @@ object frconfig: Tfrconfig
     Options = [nboKeyboardTabSwitch]
     object tsProxy: TTabSheet
       Caption = 'Proxy'
-      ClientHeight = 376
-      ClientWidth = 436
+      ClientHeight = 379
+      ClientWidth = 457
       object lblProxyPass: TLabel
         AnchorSideLeft.Control = chUseAuth
         AnchorSideTop.Control = edtProxyPass
@@ -174,7 +174,7 @@ object frconfig: Tfrconfig
         Left = 262
         Height = 23
         Top = 33
-        Width = 169
+        Width = 190
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 5
         MaxValue = 9999
@@ -191,7 +191,7 @@ object frconfig: Tfrconfig
         Left = 262
         Height = 23
         Top = 85
-        Width = 169
+        Width = 190
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -208,7 +208,7 @@ object frconfig: Tfrconfig
         Left = 262
         Height = 23
         Top = 118
-        Width = 169
+        Width = 190
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -275,7 +275,7 @@ object frconfig: Tfrconfig
         Left = 76
         Height = 23
         Top = 151
-        Width = 355
+        Width = 376
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -353,7 +353,7 @@ object frconfig: Tfrconfig
         Left = 41
         Height = 23
         Top = 5
-        Width = 390
+        Width = 411
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
         ItemHeight = 15
@@ -375,7 +375,7 @@ object frconfig: Tfrconfig
         Left = 76
         Height = 15
         Top = 174
-        Width = 355
+        Width = 376
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Exp: .mozilla.org, localhost, 192.168.0.1'
         ParentColor = False
@@ -2784,21 +2784,211 @@ object frconfig: Tfrconfig
     end
     object tsIntegration: TTabSheet
       Caption = 'Integration'
-      ClientHeight = 378
-      ClientWidth = 434
-      object btnFirefoxIntegration: TButton
+      ClientHeight = 379
+      ClientWidth = 457
+      OnShow = tsIntegrationShow
+      object btnChromeIntegration: TBitBtn
         AnchorSideLeft.Control = tsIntegration
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = tsIntegration
-        Left = 136
-        Height = 27
+        Left = 149
+        Height = 30
         Top = 20
-        Width = 171
-        AutoSize = True
+        Width = 158
         BorderSpacing.Top = 20
-        Caption = 'Enable firefox integration'
-        OnClick = btnFirefoxIntegrationClick
+        Caption = 'Enable Chrome integration'
+        OnClick = btnChromeIntegrationClick
         TabOrder = 0
+      end
+      object btnOperaIntegration: TBitBtn
+        AnchorSideLeft.Control = tsIntegration
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = btnFirefoxIntegration
+        AnchorSideTop.Side = asrBottom
+        Left = 149
+        Height = 30
+        Top = 120
+        Width = 158
+        BorderSpacing.Top = 20
+        Caption = 'Enable Opera integration'
+        OnClick = btnOperaIntegrationClick
+        TabOrder = 1
+      end
+      object btnFirefoxIntegration: TBitBtn
+        AnchorSideLeft.Control = tsIntegration
+        AnchorSideLeft.Side = asrCenter
+        AnchorSideTop.Control = btnChromeIntegration
+        AnchorSideTop.Side = asrBottom
+        Left = 149
+        Height = 30
+        Top = 70
+        Width = 158
+        BorderSpacing.Top = 20
+        Caption = 'Enable Firefox integration'
+        OnClick = btnFirefoxIntegrationClick
+        TabOrder = 2
+      end
+      object edtProgramPath: TEdit
+        AnchorSideLeft.Control = tsIntegration
+        AnchorSideTop.Control = lblProgramPath
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = sbtnCopyPath
+        Left = 5
+        Height = 23
+        Top = 185
+        Width = 424
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Left = 5
+        ReadOnly = True
+        TabOrder = 3
+      end
+      object lblProgramPath: TLabel
+        AnchorSideLeft.Control = tsIntegration
+        AnchorSideTop.Control = btnOperaIntegration
+        AnchorSideTop.Side = asrBottom
+        Left = 5
+        Height = 15
+        Top = 170
+        Width = 59
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 20
+        Caption = 'Executable:'
+        ParentColor = False
+      end
+      object lblProgramArguments: TLabel
+        AnchorSideLeft.Control = tsIntegration
+        AnchorSideTop.Control = edtProgramPath
+        AnchorSideTop.Side = asrBottom
+        Left = 5
+        Height = 15
+        Top = 218
+        Width = 62
+        BorderSpacing.Left = 5
+        BorderSpacing.Top = 10
+        Caption = 'Arguments:'
+        ParentColor = False
+      end
+      object edtProgramArguments: TEdit
+        AnchorSideLeft.Control = tsIntegration
+        AnchorSideTop.Control = lblProgramArguments
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = sbtnCopyArguments
+        Left = 5
+        Height = 23
+        Top = 233
+        Width = 424
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Left = 5
+        ReadOnly = True
+        TabOrder = 4
+        Text = '"[URL]" -n "[FILENAME]" -u "[USERAGENT]" -r "[REFERRER]" -c "[COOKIES]"'
+      end
+      object sbtnCopyPath: TSpeedButton
+        AnchorSideTop.Control = edtProgramPath
+        AnchorSideRight.Control = tsIntegration
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = edtProgramPath
+        AnchorSideBottom.Side = asrBottom
+        Left = 429
+        Height = 23
+        Hint = 'Copy to clipboard'
+        Top = 185
+        Width = 23
+        Anchors = [akTop, akRight, akBottom]
+        BorderSpacing.Right = 5
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00777D7985707573FB6D7270FF6C716FFF6B70
+          6DFF6A6F6CFF696D6BFF686C6AFF676B69FF676C6AFB6D716F85FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00767B78FBFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6B706DFBFFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00787D7BFFFFFFFFFFF1F3F2FFF4F5F4FFF6F7
+          F6FFF7F9F8FFF8F9F9FFF7F9F8FFF6F7F7FFFFFFFFFF6D7270FFFFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF007D8280FFFFFFFFFFF3F5F4FFADADADFFAFAF
+          AFFFB0B1B1FFFDFDFDFFFCFCFCFFF9FAF9FFFFFFFFFF727774FFFFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00818784FFFFFFFFFFF3F5F4FFF5F7F6FFF8F9
+          F9FFFAFBFBFFFCFCFCFFFBFBFBFFF8F9F9FFFFFFFFFF767B79FF777D79857075
+          73FB6D7270FF6C716FFF6B706DFF6A6F6CFF696D6BFF686C6AFF676B69FF686D
+          6BFF8C8E8DFFADAEADFFADADADFFF5F6F5FFFFFFFFFF7B807DFF767B78FBFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFF6D726FFFF1F3F2FFF1F3F2FFF0F2F1FFFFFFFFFF7F8482FF787D7BFFFFFF
+          FFFFF1F3F2FFF4F5F4FFF6F7F6FFF7F9F8FFF8F9F9FFF7F9F8FFF6F7F7FFFFFF
+          FFFF6D7270FFA6A8A6FFA6A8A6FFEBEEEDFFFFFFFFFF848987FF7D8280FFFFFF
+          FFFFF3F5F4FFADADADFFAFAFAFFFB0B1B1FFFDFDFDFFFCFCFCFFF9FAF9FFFFFF
+          FFFF727774FFE7EBE9FFE7EBE9FFE6EAE8FFFFFFFFFF888E8BFF818784FFFFFF
+          FFFFF3F5F4FFF5F7F6FFF8F9F9FFFAFBFBFFFCFCFCFFFBFBFBFFF8F9F9FFFFFF
+          FFFF767B79FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8D9391FB868B89FFFFFF
+          FFFFF0F3F1FFAAACABFFABADACFFADADADFFADAEADFFADADADFFF5F6F5FFFFFF
+          FFFF7B807DFF959B99FF949A98FF939996FF939895FB969B99858A908DFFFFFF
+          FFFFEDF0EEFFEEF1F0FFF0F2F1FFF1F3F2FFF1F3F2FFF1F3F2FFF0F2F1FFFFFF
+          FFFF7F8482FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF008F9492FFFFFF
+          FFFFE8ECEAFFA4A6A6FFA5A7A6FFA6A8A6FFA6A8A6FFA6A8A6FFEBEEEDFFFFFF
+          FFFF848987FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00939996FFFFFF
+          FFFFE4E8E6FFE5E9E7FFE6EAE8FFE6EBE9FFE7EBE9FFE7EBE9FFE6EAE8FFFFFF
+          FFFF888E8BFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00979D9BFBFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFF8D9391FBFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF009FA5A3859BA2
+          9EFB9AA09DFF999F9CFF989E9BFF969C9AFF959B99FF949A98FF939996FF9398
+          95FB969B9985FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+        }
+        OnClick = sbtnCopyPathClick
+        ShowHint = True
+        ParentShowHint = False
+      end
+      object sbtnCopyArguments: TSpeedButton
+        AnchorSideLeft.Control = sbtnCopyPath
+        AnchorSideTop.Control = edtProgramArguments
+        AnchorSideRight.Control = tsIntegration
+        AnchorSideRight.Side = asrBottom
+        AnchorSideBottom.Control = edtProgramArguments
+        AnchorSideBottom.Side = asrBottom
+        Left = 429
+        Height = 23
+        Hint = 'Copy to clipboard'
+        Top = 233
+        Width = 23
+        Anchors = [akTop, akLeft, akRight, akBottom]
+        BorderSpacing.Right = 5
+        Glyph.Data = {
+          36040000424D3604000000000000360000002800000010000000100000000100
+          2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00777D7985707573FB6D7270FF6C716FFF6B70
+          6DFF6A6F6CFF696D6BFF686C6AFF676B69FF676C6AFB6D716F85FFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00767B78FBFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF6B706DFBFFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00787D7BFFFFFFFFFFF1F3F2FFF4F5F4FFF6F7
+          F6FFF7F9F8FFF8F9F9FFF7F9F8FFF6F7F7FFFFFFFFFF6D7270FFFFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF007D8280FFFFFFFFFFF3F5F4FFADADADFFAFAF
+          AFFFB0B1B1FFFDFDFDFFFCFCFCFFF9FAF9FFFFFFFFFF727774FFFFFFFF00FFFF
+          FF00FFFFFF00FFFFFF00FFFFFF00818784FFFFFFFFFFF3F5F4FFF5F7F6FFF8F9
+          F9FFFAFBFBFFFCFCFCFFFBFBFBFFF8F9F9FFFFFFFFFF767B79FF777D79857075
+          73FB6D7270FF6C716FFF6B706DFF6A6F6CFF696D6BFF686C6AFF676B69FF686D
+          6BFF8C8E8DFFADAEADFFADADADFFF5F6F5FFFFFFFFFF7B807DFF767B78FBFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFF6D726FFFF1F3F2FFF1F3F2FFF0F2F1FFFFFFFFFF7F8482FF787D7BFFFFFF
+          FFFFF1F3F2FFF4F5F4FFF6F7F6FFF7F9F8FFF8F9F9FFF7F9F8FFF6F7F7FFFFFF
+          FFFF6D7270FFA6A8A6FFA6A8A6FFEBEEEDFFFFFFFFFF848987FF7D8280FFFFFF
+          FFFFF3F5F4FFADADADFFAFAFAFFFB0B1B1FFFDFDFDFFFCFCFCFFF9FAF9FFFFFF
+          FFFF727774FFE7EBE9FFE7EBE9FFE6EAE8FFFFFFFFFF888E8BFF818784FFFFFF
+          FFFFF3F5F4FFF5F7F6FFF8F9F9FFFAFBFBFFFCFCFCFFFBFBFBFFF8F9F9FFFFFF
+          FFFF767B79FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF8D9391FB868B89FFFFFF
+          FFFFF0F3F1FFAAACABFFABADACFFADADADFFADAEADFFADADADFFF5F6F5FFFFFF
+          FFFF7B807DFF959B99FF949A98FF939996FF939895FB969B99858A908DFFFFFF
+          FFFFEDF0EEFFEEF1F0FFF0F2F1FFF1F3F2FFF1F3F2FFF1F3F2FFF0F2F1FFFFFF
+          FFFF7F8482FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF008F9492FFFFFF
+          FFFFE8ECEAFFA4A6A6FFA5A7A6FFA6A8A6FFA6A8A6FFA6A8A6FFEBEEEDFFFFFF
+          FFFF848987FFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00939996FFFFFF
+          FFFFE4E8E6FFE5E9E7FFE6EAE8FFE6EBE9FFE7EBE9FFE7EBE9FFE6EAE8FFFFFF
+          FFFF888E8BFFFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00979D9BFBFFFF
+          FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF
+          FFFF8D9391FBFFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF009FA5A3859BA2
+          9EFB9AA09DFF999F9CFF989E9BFF969C9AFF959B99FF949A98FF939996FF9398
+          95FB969B9985FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+        }
+        OnClick = sbtnCopyArgumentsClick
+        ShowHint = True
+        ParentShowHint = False
       end
     end
   end
@@ -2808,7 +2998,7 @@ object frconfig: Tfrconfig
     AnchorSideRight.Control = pcConfig
     AnchorSideBottom.Control = btnConfigAccept
     Left = 0
-    Height = 408
+    Height = 411
     Top = 0
     Width = 184
     Anchors = [akTop, akLeft, akBottom]
@@ -2853,7 +3043,7 @@ object frconfig: Tfrconfig
     Left = 184
     Height = 24
     Top = 0
-    Width = 444
+    Width = 465
     Anchors = [akTop, akLeft, akRight]
     Color = clHighlight
     Font.Color = clHighlightText
@@ -2867,9 +3057,9 @@ object frconfig: Tfrconfig
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 568
+    Left = 589
     Height = 25
-    Top = 413
+    Top = 416
     Width = 57
     Anchors = [akRight, akBottom]
     AutoSize = True

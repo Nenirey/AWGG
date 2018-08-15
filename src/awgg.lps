@@ -9,7 +9,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="34"/>
+        <TopLine Value="29"/>
         <CursorPos Y="53"/>
         <UsageCount Value="237"/>
       </Unit0>
@@ -19,10 +19,9 @@
         <ComponentName Value="frmain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1493"/>
-        <CursorPos X="4" Y="1502"/>
+        <TopLine Value="16"/>
+        <CursorPos X="23" Y="6394"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -45,11 +44,14 @@
         <ComponentName Value="frconfig"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="21" Y="5"/>
+        <TopLine Value="722"/>
+        <CursorPos X="3" Y="740"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit3>
       <Unit4>
         <Filename Value="fabout.pas"/>
@@ -83,8 +85,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="24"/>
-        <CursorPos Y="36"/>
+        <TopLine Value="110"/>
+        <CursorPos Y="115"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -186,79 +188,115 @@
         <Loaded Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="18" HistoryIndex="17">
+    <JumpHistory Count="27" HistoryIndex="26">
       <Position1>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="585" Column="27" TopLine="577"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="5" Column="21"/>
       </Position1>
       <Position2>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="588" Column="21" TopLine="577"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="342" Column="3" TopLine="340"/>
       </Position2>
       <Position3>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1652" Column="31" TopLine="1651"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="343" Column="3" TopLine="341"/>
       </Position3>
       <Position4>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1696" Column="65" TopLine="1680"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="344" Column="3" TopLine="342"/>
       </Position4>
       <Position5>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1719" Column="55" TopLine="1703"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="346" TopLine="344"/>
       </Position5>
       <Position6>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1742" Column="42" TopLine="1726"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="714" Column="3" TopLine="698"/>
       </Position6>
       <Position7>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="588" Column="21" TopLine="578"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="355" Column="3" TopLine="353"/>
       </Position7>
       <Position8>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1652" Column="31" TopLine="1665"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="354" Column="3" TopLine="352"/>
       </Position8>
       <Position9>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="7627" Column="10" TopLine="7615"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="355" Column="3" TopLine="353"/>
       </Position9>
       <Position10>
-        <Filename Value="fmain.pas"/>
-        <Caret Column="21"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="356" Column="3" TopLine="354"/>
       </Position10>
       <Position11>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="639" Column="23" TopLine="622"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="357" Column="3" TopLine="355"/>
       </Position11>
       <Position12>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1494" Column="21" TopLine="1477"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="358" Column="3" TopLine="356"/>
       </Position12>
       <Position13>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="7627" Column="13" TopLine="7611"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="359" Column="3" TopLine="357"/>
       </Position13>
       <Position14>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="7760" Column="13" TopLine="7744"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="360" Column="3" TopLine="358"/>
       </Position14>
       <Position15>
         <Filename Value="fmain.pas"/>
-        <Caret Line="7761" Column="11" TopLine="7744"/>
+        <Caret Line="1502" Column="4" TopLine="1497"/>
       </Position15>
       <Position16>
         <Filename Value="fmain.pas"/>
-        <Caret Line="1497" Column="42" TopLine="1487"/>
+        <Caret Line="7503" Column="23" TopLine="7492"/>
       </Position16>
       <Position17>
         <Filename Value="fmain.pas"/>
-        <Caret Line="7690" Column="45" TopLine="7676"/>
+        <Caret Line="636" Column="25" TopLine="625"/>
       </Position17>
       <Position18>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="7761" Column="13" TopLine="7745"/>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="728" Column="3" TopLine="710"/>
       </Position18>
+      <Position19>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="8466" Column="9" TopLine="8456"/>
+      </Position19>
+      <Position20>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="685" Column="52" TopLine="683"/>
+      </Position20>
+      <Position21>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="686" Column="49" TopLine="684"/>
+      </Position21>
+      <Position22>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="681" Column="54" TopLine="679"/>
+      </Position22>
+      <Position23>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="28" Column="30" TopLine="15"/>
+      </Position23>
+      <Position24>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="740" Column="34" TopLine="722"/>
+      </Position24>
+      <Position25>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="743" Column="3" TopLine="722"/>
+      </Position25>
+      <Position26>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="355" Column="3" TopLine="350"/>
+      </Position26>
+      <Position27>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="363" Column="3" TopLine="352"/>
+      </Position27>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

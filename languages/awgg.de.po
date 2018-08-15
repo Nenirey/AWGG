@@ -710,6 +710,10 @@ msgctxt "tfrconfig.btnaddextension.hint"
 msgid "Add"
 msgstr "Füge hinzu"
 
+#: tfrconfig.btnchromeintegration.caption
+msgid "Enable Chrome integration"
+msgstr ""
+
 #: tfrconfig.btnconfigaccept.caption
 msgctxt "tfrconfig.btnconfigaccept.caption"
 msgid "Accept"
@@ -753,9 +757,15 @@ msgid "Edit"
 msgstr "Bearbeite"
 
 #: tfrconfig.btnfirefoxintegration.caption
+#, fuzzy
+#| msgid "Enable firefox integration"
 msgctxt "tfrconfig.btnfirefoxintegration.caption"
-msgid "Enable firefox integration"
+msgid "Enable Firefox integration"
 msgstr "In Firefox integrieren"
+
+#: tfrconfig.btnoperaintegration.caption
+msgid "Enable Opera integration"
+msgstr ""
 
 #: tfrconfig.btnpreviewnotification.caption
 msgctxt "tfrconfig.btnpreviewnotification.caption"
@@ -899,6 +909,10 @@ msgstr ""
 msgctxt "tfrconfig.edtnoproxyhosts.text"
 msgid "localhost"
 msgstr "localhost"
+
+#: tfrconfig.edtprogramarguments.text
+msgid "\"[URL]\" -n \"[FILENAME]\" -u \"[USERAGENT]\" -r \"[REFERRER]\" -c \"[COOKIES]\""
+msgstr ""
 
 #: tfrconfig.gbaria2multiconnections.caption
 msgctxt "tfrconfig.gbaria2multiconnections.caption"
@@ -1064,6 +1078,14 @@ msgctxt "tfrconfig.lblnoproxyhosts.caption"
 msgid "No proxy for:"
 msgstr "Kein Proxy für:"
 
+#: tfrconfig.lblprogramarguments.caption
+msgid "Arguments:"
+msgstr ""
+
+#: tfrconfig.lblprogrampath.caption
+msgid "Executable:"
+msgstr ""
+
 #: tfrconfig.lblproxypass.caption
 msgctxt "tfrconfig.lblproxypass.caption"
 msgid "Password:"
@@ -1185,6 +1207,16 @@ msgstr " Kategorie zuweisen"
 msgctxt "tfrconfig.rgposition.caption"
 msgid "Position on the screen"
 msgstr "Position am Bildschirm"
+
+#: tfrconfig.sbtncopyarguments.hint
+msgctxt "tfrconfig.sbtncopyarguments.hint"
+msgid "Copy to clipboard"
+msgstr ""
+
+#: tfrconfig.sbtncopypath.hint
+msgctxt "tfrconfig.sbtncopypath.hint"
+msgid "Copy to clipboard"
+msgstr ""
 
 #: tfrconfig.tsaria2.caption
 msgctxt "tfrconfig.tsaria2.caption"
