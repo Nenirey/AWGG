@@ -4824,6 +4824,7 @@ var
   defaultdir:string='';
 begin
   enginereload();
+  frmain.odlgImportdown.Filter:=filterforcenames+'|*.*|'+filternoforcenames+'|*';
   frmain.odlgImportdown.Execute;
   if {$IFDEF LCLQT}(frmain.odlgImportdown.UserChoice=1){$else}{$IFDEF LCLQT5}(frmain.odlgImportdown.UserChoice=1){$ELSE}frmain.odlgImportdown.FileName<>''{$endif}{$ENDIF} then
   begin
@@ -4840,10 +4841,15 @@ begin
         imitem:=TListItem.Create(frmain.lvMain.Items);
         imitem.Caption:=fstrings.statuspaused;
         imitem.ImageIndex:=18;
-        fname:=ParseURI(urls[nurl]).Document;
-        while destinyexists(defaultdir+pathdelim+fname) do
-          fname:='_'+fname;
-        imitem.SubItems.Add(fname);//Nombre de archivo
+        if frmain.odlgImportdown.FilterIndex=1 then
+        begin
+          fname:=ParseURI(urls[nurl]).Document;
+          while destinyexists(defaultdir+pathdelim+fname) do
+            fname:='_'+fname;
+          imitem.SubItems.Add(fname);//Nombre de archivo
+        end
+        else
+          imitem.SubItems.Add('');
         imitem.SubItems.Add('');//Tama;o
         imitem.SubItems.Add('');//Descargado
         imitem.SubItems.Add(urls[nurl]);//URL

@@ -1,121 +1,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-#: fmain.aria2defarg1
-msgctxt "fmain.aria2defarg1"
-msgid "[-c] Continue downloads"
-msgstr ""
-
-#: fmain.aria2defarg2
-msgctxt "fmain.aria2defarg2"
-msgid "[--file-allocation=none] No allocate space."
-msgstr ""
-
-#: fmain.categorycompressed
-msgctxt "fmain.categorycompressed"
-msgid "Compressed"
-msgstr ""
-
-#: fmain.categorydocuments
-msgctxt "fmain.categorydocuments"
-msgid "Documents"
-msgstr ""
-
-#: fmain.categoryfilter
-msgctxt "fmain.categoryfilter"
-msgid "Categories"
-msgstr ""
-
-#: fmain.categoryimages
-msgctxt "fmain.categoryimages"
-msgid "Images"
-msgstr ""
-
-#: fmain.categorymusic
-msgctxt "fmain.categorymusic"
-msgid "Music"
-msgstr ""
-
-#: fmain.categoryothers
-msgctxt "fmain.categoryothers"
-msgid "Others"
-msgstr ""
-
-#: fmain.categoryprograms
-msgctxt "fmain.categoryprograms"
-msgid "Programs"
-msgstr ""
-
-#: fmain.categoryvideos
-msgctxt "fmain.categoryvideos"
-msgid "Videos"
-msgstr ""
-
-#: fmain.curldefarg1
-msgctxt "fmain.curldefarg1"
-msgid "[-C -] Continue downloads."
-msgstr ""
-
-#: fmain.fileexistsreplacetext
-msgctxt "fmain.fileexistsreplacetext"
-msgid "The file \"%S\" already exists, do you want to replace it?"
-msgstr ""
-
-#: fmain.fileoperationcopy
-msgctxt "fmain.fileoperationcopy"
-msgid "Coping file(s)..."
-msgstr ""
-
-#: fmain.fileoperationmove
-msgctxt "fmain.fileoperationmove"
-msgid "Moving file(s)..."
-msgstr ""
-
-#: fmain.firefoxintegration
-msgctxt "fmain.firefoxintegration"
-msgid "Do you want to enable firefox integration?"
-msgstr ""
-
-#: fmain.startqueuesystray
-msgctxt "fmain.startqueuesystray"
-msgid "Start queue"
-msgstr ""
-
-#: fmain.stopqueuesystray
-msgctxt "fmain.stopqueuesystray"
-msgid "Stop queue"
-msgstr ""
-
-#: fmain.transdestinationlabel
-msgctxt "fmain.transdestinationlabel"
-msgid "To: %S"
-msgstr ""
-
-#: fmain.transfromlabel
-msgctxt "fmain.transfromlabel"
-msgid "From: %S"
-msgstr ""
-
-#: fmain.wgetdefarg1
-msgctxt "fmain.wgetdefarg1"
-msgid "[-c] Continue downloads."
-msgstr ""
-
-#: fmain.wgetdefarg2
-msgctxt "fmain.wgetdefarg2"
-msgid "[-nH] No create host dir."
-msgstr ""
-
-#: fmain.wgetdefarg3
-msgctxt "fmain.wgetdefarg3"
-msgid "[-nd] No create out dir."
-msgstr ""
-
-#: fmain.wgetdefarg4
-msgctxt "fmain.wgetdefarg4"
-msgid "[--no-check-certificate] No check SSL."
-msgstr ""
-
 #: fstrings.abouttext
 msgctxt "fstrings.abouttext"
 msgid ""
@@ -123,7 +8,7 @@ msgid ""
 "\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
-"Copyright (c) 2014-2016\n"
+"Copyright (c) 2014-2018\n"
 "\n"
 "The project uses the following third party resources:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -136,6 +21,7 @@ msgid ""
 "- FlashGot (http://flashgot.net)\n"
 "\n"
 "French translation: Tony O Gallos @ CodeTyphon Community\n"
+"German translation: Mag Fu (mag.fu@yandex.com)\n"
 msgstr ""
 
 #: fstrings.alldowntreename
@@ -306,6 +192,14 @@ msgstr ""
 #: fstrings.fileoperationmove
 msgctxt "fstrings.fileoperationmove"
 msgid "Moving file(s)..."
+msgstr ""
+
+#: fstrings.filterforcenames
+msgid "Force downloads names"
+msgstr ""
+
+#: fstrings.filternoforcenames
+msgid "No force downloads names"
 msgstr ""
 
 #: fstrings.filtresname
@@ -587,45 +481,6 @@ msgstr ""
 #: fstrings.wgetdefarg4
 msgctxt "fstrings.wgetdefarg4"
 msgid "[--no-check-certificate] No check SSL."
-msgstr ""
-
-#: tdlgform.caption
-msgctxt "tdlgform.caption"
-msgid "Confirm"
-msgstr ""
-
-#: tfabout.caption
-msgctxt "TFABOUT.CAPTION"
-msgid "About"
-msgstr ""
-
-#: tfcopymove.caption
-msgctxt "TFCOPYMOVE.CAPTION"
-msgid "Saving file..."
-msgstr ""
-
-#: tflang.caption
-msgctxt "TFLANG.CAPTION"
-msgid "Select language"
-msgstr ""
-
-#: tfmain.caption
-msgctxt "TFMAIN.CAPTION"
-msgid "AWGG"
-msgstr ""
-
-#: tfnewdown.caption
-msgctxt "TFNEWDOWN.CAPTION"
-msgid "New download"
-msgstr ""
-
-#: tfnotification.caption
-msgctxt "TFNOTIFICATION.CAPTION"
-msgid "Download Notifications"
-msgstr ""
-
-#: tform1.caption
-msgid "Form1"
 msgstr ""
 
 #: tfrabout.btnok.caption
@@ -1287,11 +1142,6 @@ msgstr ""
 #: tfrddbox.caption
 msgctxt "TFRDDBOX.CAPTION"
 msgid "Drop box"
-msgstr ""
-
-#: tfreplace.caption
-msgctxt "TFREPLACE.CAPTION"
-msgid "File exists"
 msgstr ""
 
 #: tfrlang.btnok.caption
@@ -2324,10 +2174,5 @@ msgstr ""
 #: tfrvideoformat.lvformats.columns[2].caption
 msgctxt "TFRVIDEOFORMAT.LVFORMATS.COLUMNS[2].CAPTION"
 msgid "id"
-msgstr ""
-
-#: tfsitegrabber.caption
-msgctxt "TFSITEGRABBER.CAPTION"
-msgid "New Site Grabber"
 msgstr ""
 

@@ -39,7 +39,7 @@ categorytorrents='Torrents';
 abouttext='This program is free software under GNU GPL 2 license.'+
 lineending+lineending+'Created By Reinier Romero Mir'+
 lineending+'Email: nenirey@gmail.com'+
-lineending+'Copyright (c) 2014-2016'+
+lineending+'Copyright (c) 2014-2018'+
 lineending+lineending+'The project uses the following third party resources:'+
 lineending+'- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/'+
 lineending+'- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)'+
@@ -49,7 +49,8 @@ lineending+'- cURL (http://curl.haxx.se)'+
 lineending+'- Axel (http://axel.alioth.debian.org)'+
 lineending+'- youtube-dl (http://yt-dl.org)'+
 lineending+'- FlashGot (http://flashgot.net)'+
-lineending+lineending+'French translation: Tony O Gallos @ CodeTyphon Community';
+lineending+lineending+'French translation: Tony O Gallos @ CodeTyphon Community'+
+lineending+'German translation: Mag Fu (mag.fu@yandex.com)';
 wgetdefarg1='[-c] Continue downloads.';
 wgetdefarg2='[-nH] No create host dir.';
 wgetdefarg3='[-nd] No create out dir.';
@@ -129,7 +130,8 @@ msgcopyoperationerror='Error to copy file, details:'+lineending+'%s';
 msgmoveoperationerror='Error to move file, details:'+lineending+'$s';
 statusstarting='Starting...';
 statusstopping='Stopping...';
-
+filterforcenames='Force downloads names';
+filternoforcenames='No force downloads names';
 Implementation
 end.
 

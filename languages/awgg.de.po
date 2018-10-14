@@ -12,128 +12,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
 "Language: de\n"
 
-#: fmain.aria2defarg1
-msgctxt "fmain.aria2defarg1"
-msgid "[-c] Continue downloads"
-msgstr "[-c] Download fortsetzen"
-
-#: fmain.aria2defarg2
-msgctxt "fmain.aria2defarg2"
-msgid "[--file-allocation=none] No allocate space."
-msgstr "[--file-allocation=none] Speicherort angeben."
-
-#: fmain.categorycompressed
-msgctxt "fmain.categorycompressed"
-msgid "Compressed"
-msgstr "Komprimiert"
-
-#: fmain.categorydocuments
-msgctxt "fmain.categorydocuments"
-msgid "Documents"
-msgstr "Dokumente"
-
-#: fmain.categoryfilter
-msgctxt "fmain.categoryfilter"
-msgid "Categories"
-msgstr "Kategorien"
-
-#: fmain.categoryimages
-msgctxt "fmain.categoryimages"
-msgid "Images"
-msgstr "Bilder"
-
-#: fmain.categorymusic
-msgctxt "fmain.categorymusic"
-msgid "Music"
-msgstr "Musik"
-
-#: fmain.categoryothers
-msgctxt "fmain.categoryothers"
-msgid "Others"
-msgstr "Anderes"
-
-#: fmain.categoryprograms
-msgctxt "fmain.categoryprograms"
-msgid "Programs"
-msgstr "Programme"
-
-#: fmain.categoryvideos
-msgctxt "fmain.categoryvideos"
-msgid "Videos"
-msgstr "Videos"
-
-#: fmain.curldefarg1
-msgctxt "fmain.curldefarg1"
-msgid "[-C -] Continue downloads."
-msgstr "[-C -] Download fortsetzen."
-
-#: fmain.fileexistsreplacetext
-msgctxt "fmain.fileexistsreplacetext"
-msgid "The file \"%S\" already exists, do you want to replace it?"
-msgstr "Die Datei \"%S\" existiert schon. Ersetzen?"
-
-#: fmain.fileoperationcopy
-msgctxt "fmain.fileoperationcopy"
-msgid "Coping file(s)..."
-msgstr "Datei(en) kopieren..."
-
-#: fmain.fileoperationmove
-msgctxt "fmain.fileoperationmove"
-msgid "Moving file(s)..."
-msgstr "Datei(en) verschieben..."
-
-#: fmain.firefoxintegration
-msgctxt "fmain.firefoxintegration"
-msgid "Do you want to enable firefox integration?"
-msgstr "In Firefox integrieren?"
-
-#: fmain.startqueuesystray
-msgctxt "fmain.startqueuesystray"
-msgid "Start queue"
-msgstr "Liste starten"
-
-#: fmain.stopqueuesystray
-msgctxt "fmain.stopqueuesystray"
-msgid "Stop queue"
-msgstr "Liste stoppen"
-
-#: fmain.transdestinationlabel
-msgctxt "fmain.transdestinationlabel"
-msgid "To: %S"
-msgstr "An: %S"
-
-#: fmain.transfromlabel
-msgctxt "fmain.transfromlabel"
-msgid "From: %S"
-msgstr "Von: %S"
-
-#: fmain.wgetdefarg1
-msgctxt "fmain.wgetdefarg1"
-msgid "[-c] Continue downloads."
-msgstr "[-c] Download fortsetzen."
-
-#: fmain.wgetdefarg2
-msgctxt "fmain.wgetdefarg2"
-msgid "[-nH] No create host dir."
-msgstr "[-nH] Quellordner festlegen!"
-
-#: fmain.wgetdefarg3
-msgctxt "fmain.wgetdefarg3"
-msgid "[-nd] No create out dir."
-msgstr "[-nd] Zielordner bestimmen!"
-
-#: fmain.wgetdefarg4
-msgctxt "fmain.wgetdefarg4"
-msgid "[--no-check-certificate] No check SSL."
-msgstr "[--no-check-certificate] kein SSL."
-
 #: fstrings.abouttext
 #, fuzzy
 #| msgid ""
 #| "Dieses Programm ist Freeware unter GNU GPL 2 Lizenz.\n"
 #| "   Created By Reinier Romero Mir\n"
 #| "   eMail: nenirey@gmail.com\n"
-#| "   Copyright (c) 2014-2016\n"
+#| "   Copyright (c) 2014-2018\n"
 #| "\n"
 #| "Folgende Programme und Dateien von Dritten sind Teil dieses Projekts:\n"
 #| "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -152,7 +37,7 @@ msgid ""
 "\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
-"Copyright (c) 2014-2016\n"
+"Copyright (c) 2014-2018\n"
 "\n"
 "The project uses the following third party resources:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -165,6 +50,7 @@ msgid ""
 "- FlashGot (http://flashgot.net)\n"
 "\n"
 "French translation: Tony O Gallos @ CodeTyphon Community\n"
+"German translation: Mag Fu (mag.fu@yandex.com)\n"
 msgstr "Übersetzung fw "
 
 #: fstrings.alldowntreename
@@ -337,6 +223,14 @@ msgctxt "fstrings.fileoperationmove"
 msgid "Moving file(s)..."
 msgstr "Datei(en) verschieben..."
 
+#: fstrings.filterforcenames
+msgid "Force downloads names"
+msgstr ""
+
+#: fstrings.filternoforcenames
+msgid "No force downloads names"
+msgstr ""
+
 #: fstrings.filtresname
 msgctxt "fstrings.filtresname"
 msgid "Filters"
@@ -391,6 +285,7 @@ msgid "Error saving the download list"
 msgstr "Fehler beim Speichern der Download-Liste"
 
 #: fstrings.msgerrorinforme
+#, fuzzy,badformat
 msgid ""
 "Oh!! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:\n"
 "%s\n"
@@ -405,6 +300,7 @@ msgid "The file not exists."
 msgstr "Diese Datei existiert nicht."
 
 #: fstrings.msgmoveoperationerror
+#, fuzzy,badformat
 msgid ""
 "Error to move file, details:\n"
 "$s\n"
@@ -624,45 +520,6 @@ msgstr "[-nd] Keinen Ausgangs-Ordner anlegen."
 msgctxt "fstrings.wgetdefarg4"
 msgid "[--no-check-certificate] No check SSL."
 msgstr "[--no-check-certificate] SSL nicht checken."
-
-#: tdlgform.caption
-msgctxt "tdlgform.caption"
-msgid "Confirm"
-msgstr "Bestätige"
-
-#: tfabout.caption
-msgctxt "tfabout.caption"
-msgid "About"
-msgstr "Über "
-
-#: tfcopymove.caption
-msgctxt "tfcopymove.caption"
-msgid "Saving file..."
-msgstr "Datei speichern..."
-
-#: tflang.caption
-msgctxt "tflang.caption"
-msgid "Select language"
-msgstr "Spache wählen"
-
-#: tfmain.caption
-msgctxt "tfmain.caption"
-msgid "AWGG"
-msgstr "AWGG"
-
-#: tfnewdown.caption
-msgctxt "tfnewdown.caption"
-msgid "New download"
-msgstr "Neuer Download"
-
-#: tfnotification.caption
-msgctxt "tfnotification.caption"
-msgid "Download Notifications"
-msgstr "Downloadmeldungen"
-
-#: tform1.caption
-msgid "Form1"
-msgstr ""
 
 #: tfrabout.btnok.caption
 msgctxt "tfrabout.btnok.caption"
@@ -1331,11 +1188,6 @@ msgstr "An: %s"
 msgctxt "tfrddbox.caption"
 msgid "Drop box"
 msgstr "Dropbox verwenden"
-
-#: tfreplace.caption
-msgctxt "tfreplace.caption"
-msgid "File exists"
-msgstr "Datei existiert"
 
 #: tfrlang.btnok.caption
 msgctxt "tfrlang.btnok.caption"
@@ -2381,9 +2233,4 @@ msgstr "Beschreibung"
 msgctxt "tfrvideoformat.lvformats.columns[2].caption"
 msgid "id"
 msgstr "ID"
-
-#: tfsitegrabber.caption
-msgctxt "tfsitegrabber.caption"
-msgid "New Site Grabber"
-msgstr "Neue WebSite"
 
