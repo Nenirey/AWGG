@@ -1864,6 +1864,10 @@ msgstr "Annuler"
 msgid "Configure the category file"
 msgstr ""
 
+#: tfrnewdown.btnforcenames.hint
+msgid "Force names"
+msgstr ""
+
 #: tfrnewdown.btngodestination.hint
 msgid "Open the path folder"
 msgstr ""

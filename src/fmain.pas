@@ -6519,6 +6519,7 @@ procedure Tfrmain.milistPropertiesClick(Sender: TObject);
 var
   tmpstr:string='';
   paramlist:string='';
+  i:integer;
 begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
@@ -6535,11 +6536,32 @@ begin
       frnewdown.edtUser.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
       frnewdown.edtPassword.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
       ///////CONFIRM DIALOG MODE///////////
-      frnewdown.Caption:=fstrings.titlepropertiesdown;
-      frnewdown.btnToQueue.Visible:=false;
-      frnewdown.btnPaused.Visible:=false;
-      frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
-      frnewdown.btnStart.GlyphShowMode:=gsmNever;
+      if frmain.lvMain.SelCount>1 then
+      begin
+        frnewdown.edtURL.Text:='';
+        frnewdown.edtURL.Enabled:=false;
+        frnewdown.edtFileName.Text:='';
+        frnewdown.edtFileName.Enabled:=false;
+        frnewdown.btnForceNames.Enabled:=false;
+        frnewdown.btnCategoryGo.Enabled:=false;
+        frnewdown.Caption:=fstrings.titlepropertiesdown+' ['+inttostr(frmain.lvMain.SelCount)+']';
+        frnewdown.btnToQueue.Visible:=false;
+        frnewdown.btnPaused.Visible:=false;
+        frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
+        frnewdown.btnStart.GlyphShowMode:=gsmNever;
+      end
+      else
+      begin
+        frnewdown.edtURL.Enabled:=true;
+        frnewdown.edtFileName.Enabled:=true;
+        frnewdown.btnForceNames.Enabled:=true;
+        frnewdown.btnCategoryGo.Enabled:=true;
+        frnewdown.Caption:=fstrings.titlepropertiesdown;
+        frnewdown.btnToQueue.Visible:=false;
+        frnewdown.btnPaused.Visible:=false;
+        frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
+        frnewdown.btnStart.GlyphShowMode:=gsmNever;
+      end;
       ////////////////////////////////////
       frnewdown.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
       if firstnormalshow=false then
@@ -6557,19 +6579,44 @@ begin
       frnewdown.btnStart.Caption:=fstrings.btnnewdownstartnow;
       frnewdown.btnStart.GlyphShowMode:=gsmApplication;
       frnewdown.UpdateRolesForForm;
+      frnewdown.edtURL.Enabled:=true;
+      frnewdown.edtFileName.Enabled:=true;
+      frnewdown.btnForceNames.Enabled:=true;
+      frnewdown.btnCategoryGo.Enabled:=true;
       ////////////////////////////////////
       frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
       if agregar then
       begin
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frnewdown.edtFileName.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frnewdown.edtURL.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frnewdown.deDestination.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]:=frnewdown.cbEngine.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frnewdown.edtUser.Text;
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frnewdown.edtPassword.Text;
-        if frnewdown.cbQueue.ItemIndex>=0 then
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+        if frmain.lvMain.SelCount>1 then
+        begin
+          for i:=0 to frmain.lvMain.Items.Count-1 do
+          begin
+            //// Change only the normal download type and with pause, complete status
+            if (frmain.lvMain.Items[i].SubItems[columntype] = '0') and ((frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='3')) and frmain.lvMain.Items[i].Selected then
+            begin
+              ShowMessage(frmain.lvMain.Items[i].SubItems[columnname]);
+              frmain.lvMain.Items[i].SubItems[columndestiny]:=frnewdown.deDestination.Text;
+              frmain.lvMain.Items[i].SubItems[columnengine]:=frnewdown.cbEngine.Text;
+              frmain.lvMain.Items[i].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+              frmain.lvMain.Items[i].SubItems[columnuser]:=frnewdown.edtUser.Text;
+              frmain.lvMain.Items[i].SubItems[columnpass]:=frnewdown.edtPassword.Text;
+              if frnewdown.cbQueue.ItemIndex>=0 then
+                frmain.lvMain.Items[i].SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+            end;
+          end;
+        end
+        else
+        begin
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frnewdown.edtFileName.Text;
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frnewdown.edtURL.Text;
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frnewdown.deDestination.Text;
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]:=frnewdown.cbEngine.Text;
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frnewdown.edtUser.Text;
+          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frnewdown.edtPassword.Text;
+          if frnewdown.cbQueue.ItemIndex>=0 then
+            frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+        end;
         frmain.tvMainSelectionChanged(nil);
         savemydownloads();
       end;
@@ -7607,13 +7654,18 @@ begin
       frnewdown.edtURL.Text:='http://';
     tmpclip:='';
   end;
-  frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
-  if (Pos('magnet:',frnewdown.edtURL.Text)=1) and (Pos('&dn=',frnewdown.edtURL.Text)>0) then
+  if frnewdown.btnForceNames.Flat=false then
   begin
-    magnetname:=Copy(frnewdown.edtURL.Text,Pos('&dn=',frnewdown.edtURL.Text)+4,Length(frnewdown.edtURL.Text));
-    magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
-    frnewdown.edtFileName.Text:=magnetname;
-  end;
+    frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
+    if (Pos('magnet:',frnewdown.edtURL.Text)=1) and (Pos('&dn=',frnewdown.edtURL.Text)>0) then
+    begin
+      magnetname:=Copy(frnewdown.edtURL.Text,Pos('&dn=',frnewdown.edtURL.Text)+4,Length(frnewdown.edtURL.Text));
+      magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
+      frnewdown.edtFileName.Text:=magnetname;
+    end;
+  end
+  else
+    frnewdown.edtFileName.Text:='';
   case defaultdirmode of
     1:frnewdown.deDestination.Text:=ddowndir;
     2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);

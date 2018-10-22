@@ -1853,6 +1853,10 @@ msgstr "Ablehnen"
 msgid "Configure the category file"
 msgstr "Wähle die Kategorie"
 
+#: tfrnewdown.btnforcenames.hint
+msgid "Force names"
+msgstr ""
+
 #: tfrnewdown.btngodestination.hint
 msgid "Open the path folder"
 msgstr "Öffne den Zielordner"

@@ -41,6 +41,7 @@ msgstr ""
 "\n"
 "French translation: Tony O Gallos @ CodeTyphon Community\n"
 "German translation: Mag Fu (mag.fu@yandex.com)\n"
+
 #: fstrings.alldowntreename
 msgctxt "fstrings.alldowntreename"
 msgid "All downloads"
@@ -1838,6 +1839,10 @@ msgstr "Cancel"
 #: tfrnewdown.btncategorygo.hint
 msgid "Configure the category file"
 msgstr "Configure the category file"
+
+#: tfrnewdown.btnforcenames.hint
+msgid "Force names"
+msgstr ""
 
 #: tfrnewdown.btngodestination.hint
 msgid "Open the path folder"
