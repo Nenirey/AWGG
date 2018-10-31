@@ -31,7 +31,19 @@ uses
   Process, {$IFDEF UNIX}BaseUnix,{$ENDIF}
   {$IFDEF WINDOWS}Registry, MMSystem, Windows,{$ENDIF}fddbox, Math, fnewdown, fconfig, fabout, fstrings, flang, freplace, fsitegrabber, fnotification, fcopymove, fconfirm, fvideoformat, Clipbrd,
   strutils, LCLIntf, types, versionitis, INIFiles, LCLVersion,
-  PairSplitter, {DefaultTranslator}LCLTranslator, URIParser;
+  PairSplitter, {DefaultTranslator}LCLTranslator, URIParser, fphttpclient;
+
+type
+  TDownThread=Class(TThread)
+  Private
+  DHTTPClient:TFPHTTPClient;
+  RS:TStringList;
+  procedure showrs;
+  protected
+    procedure Execute; override;
+  public
+    constructor Create;
+ end;
 
 type
   DownThread = class(TThread)
@@ -620,6 +632,9 @@ var
   params:array of string;
   paramscount:longint;
   queueindex:integer;
+  internetchecker:TDownThread;
+  internet:boolean;
+  queuemainstop:boolean=false;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
   function suggestdir(doc:string):string;
@@ -643,9 +658,96 @@ var
   procedure getyoutubename(URL:String);
   procedure reloaddowndirs();
   procedure parseparameters;
+  procedure runprocess(binary:string;params:array of string);
 implementation
 {$R *.lfm}
 { Tfrmain }
+
+constructor TDownThread.Create;
+begin
+  inherited Create(True);
+  FreeOnTerminate := True;
+  DHTTPClient := TFPHTTPClient.Create(nil);
+  RS:=TStringList.Create;
+  internet:=false;
+end;
+
+procedure TDownThread.showrs;
+begin
+ if internet then
+ begin
+   if Assigned(qtimer[0]) then
+   begin
+     if queuemainstop=false then
+     begin
+       queuemanual[0]:=true;
+       qtimer[0].Interval:=1000;
+       qtimer[0].Enabled:=true;;
+     end;
+   end;
+ end
+ else
+ begin
+
+ end;
+end;
+
+procedure TDownThread.Execute;
+begin
+  try
+    while true do
+    begin
+      RS.Clear;
+      try
+        internet:=false;
+        case useproxy of
+        0,1:begin
+            DHTTPClient.Proxy.Host:= '';
+            DHTTPClient.Proxy.UserName:= '';
+            DHTTPClient.Proxy.Password:= '';
+          end;
+        2:begin
+            DHTTPClient.Proxy.Host:= phttp;
+            DHTTPClient.Proxy.Port:= strtoint(phttpport);
+            if useaut then
+            begin
+              DHTTPClient.Proxy.UserName:= puser;
+              DHTTPClient.Proxy.Password:= ppassword;
+            end
+            else
+            begin
+              DHTTPClient.Proxy.UserName:= '';
+              DHTTPClient.Proxy.Password:= '';
+            end;
+          end;
+        end;
+        DHTTPClient.Head('http://checkip.dyndns.org/',RS);
+        if RS.Count>0 then
+          internet:=true
+        else
+          internet:=false;
+      Synchronize(@showrs);
+      sleep(1000);
+      except on e:exception do
+        begin
+          internet:=false;
+          Synchronize(@showrs);
+        end;
+      end;
+    end;
+  finally
+  end;
+end;
+
+procedure runprocess(binary:string;params:array of string);
+var
+  proc:TProcess;
+begin
+  proc:=TProcess.Create(nil);
+  proc.Executable:=binary;
+  proc.Parameters.AddStrings(params);
+  proc.Execute;
+end;
 
 procedure reloaddowndirs();
 var
@@ -1903,6 +2005,8 @@ var
   n:integer;
 begin
   qtimer[indice].Enabled:=false;
+  if indice=0 then
+    queuemainstop:=true;
   for n:=0 to frmain.lvMain.Items.Count-1 do
   begin
     if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[n].SubItems[columnid])) and (frmain.lvMain.Items[n].SubItems[columnqueue]=inttostr(indice)) and (frmain.lvMain.Items[n].SubItems[columnstatus]='1') then
@@ -3198,6 +3302,7 @@ var
   wrn:integer;
   thnum:integer;
   downid:integer;
+  foundindex:integer;
 begin
   if Not DirectoryExistsUTF8(frmain.lvMain.Items[indice].SubItems[columndestiny]) then
   begin
@@ -3320,7 +3425,13 @@ begin
 
           //Defaults parameters for compatibility
           tmps.Add('--ignore-config');
-          tmps.Add('--no-playlist');
+
+          //No playlist if not declare
+          if tmps.IndexOf('--yes-playlist')=-1 then
+            tmps.Add('--no-playlist');
+          //Always use the best format if no declare other
+          if tmps.IndexOf('-f')=-1 then
+            tmps.Add('-f best');
           tmps.Add('-c');
           tmps.Add('--no-part');
           //tmps.Add('-v');
@@ -3659,6 +3770,8 @@ begin
     begin
       if (queuemanual[self.stindex]=false) then
       begin
+        if self.stindex=0 then
+          queuemainstop:=true;
         stopqueue(self.stindex);
         if queuepoweroff[self.stindex] and (shutingdown=false) and (queuesheduledone[self.stindex]) then
           poweroff;
@@ -5888,6 +6001,8 @@ begin
   frmain.FirstStartTimer.Enabled:=true;
   onestart:=false;
   frmain.lvFilter.Columns:=frmain.lvMain.Columns;
+  internetchecker:=TDownThread.Create;
+  internetchecker.Start;
 end;
 
 procedure Tfrmain.FormWindowStateChange(Sender: TObject);
@@ -6594,7 +6709,6 @@ begin
             //// Change only the normal download type and with pause, complete status
             if (frmain.lvMain.Items[i].SubItems[columntype] = '0') and ((frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='3')) and frmain.lvMain.Items[i].Selected then
             begin
-              ShowMessage(frmain.lvMain.Items[i].SubItems[columnname]);
               frmain.lvMain.Items[i].SubItems[columndestiny]:=frnewdown.deDestination.Text;
               frmain.lvMain.Items[i].SubItems[columnengine]:=frnewdown.cbEngine.Text;
               frmain.lvMain.Items[i].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
@@ -8005,6 +8119,7 @@ begin
           queuemanual[frmain.tvMain.Selected.Index]:=true;
           qtimer[frmain.tvMain.Selected.Index].Interval:=1000;
           qtimer[frmain.tvMain.Selected.Index].Enabled:=true;
+          queuemainstop:=false;
         end;
       end;
     end
@@ -8015,6 +8130,7 @@ begin
         queuemanual[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])]:=true;
         qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Interval:=1000;
         qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled:=true;
+        queuemainstop:=false;
       end;
     end;
   end;

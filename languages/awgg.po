@@ -1316,7 +1316,7 @@ msgstr ""
 
 #: tfrmain.milistopenlog.caption
 msgctxt "TFRMAIN.MILISTOPENLOG.CAPTION"
-msgid "Open log file"
+msgid "Open history log file"
 msgstr ""
 
 #: tfrmain.milistopenurl.caption

@@ -546,7 +546,6 @@ msgid "Add"
 msgstr "Add"
 
 #: tfrconfig.btnadddomain.hint
-#, fuzzy
 msgctxt "tfrconfig.btnadddomain.hint"
 msgid "Add"
 msgstr "Add"
@@ -581,7 +580,6 @@ msgid "Delete"
 msgstr "Delete"
 
 #: tfrconfig.btndeletedomain.hint
-#, fuzzy
 msgctxt "tfrconfig.btndeletedomain.hint"
 msgid "Delete"
 msgstr "Delete"
@@ -597,21 +595,18 @@ msgid "Edit"
 msgstr "Edit"
 
 #: tfrconfig.btneditdomain.hint
-#, fuzzy
 msgctxt "tfrconfig.btneditdomain.hint"
 msgid "Edit"
 msgstr "Edit"
 
 #: tfrconfig.btnfirefoxintegration.caption
-#, fuzzy
-#| msgid "Enable firefox integration"
 msgctxt "tfrconfig.btnfirefoxintegration.caption"
 msgid "Enable Firefox integration"
 msgstr "Enable firefox integration"
 
 #: tfrconfig.btnoperaintegration.caption
 msgid "Enable Opera integration"
-msgstr ""
+msgstr "Enable Opera integration"
 
 #: tfrconfig.btnpreviewnotification.caption
 msgctxt "tfrconfig.btnpreviewnotification.caption"
@@ -1192,7 +1187,6 @@ msgid "Language:"
 msgstr "Language:"
 
 #: tfrmain.caption
-#, fuzzy
 msgctxt "tfrmain.caption"
 msgid "AWGG"
 msgstr "AWGG"
@@ -1349,8 +1343,8 @@ msgstr "Open file"
 
 #: tfrmain.milistopenlog.caption
 msgctxt "tfrmain.milistopenlog.caption"
-msgid "Open log file"
-msgstr "Open log file"
+msgid "Open history log file"
+msgstr "Open history log file"
 
 #: tfrmain.milistopenurl.caption
 msgctxt "tfrmain.milistopenurl.caption"
@@ -1979,7 +1973,6 @@ msgid "Ok"
 msgstr "Ok"
 
 #: tfrreplace.caption
-#, fuzzy
 msgctxt "tfrreplace.caption"
 msgid "File exists"
 msgstr "File exists"

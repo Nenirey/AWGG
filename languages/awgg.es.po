@@ -293,7 +293,6 @@ msgid "The file not exists."
 msgstr "El archivo no existe!!!."
 
 #: fstrings.msgmoveoperationerror
-#, fuzzy,badformat
 msgid ""
 "Error to move file, details:\n"
 "$s\n"
@@ -547,7 +546,6 @@ msgid "Add"
 msgstr "Añadir"
 
 #: tfrconfig.btnadddomain.hint
-#, fuzzy
 msgctxt "tfrconfig.btnadddomain.hint"
 msgid "Add"
 msgstr "Añadir"
@@ -559,7 +557,7 @@ msgstr "Añadir"
 
 #: tfrconfig.btnchromeintegration.caption
 msgid "Enable Chrome integration"
-msgstr ""
+msgstr "Activar integracion con Chrome"
 
 #: tfrconfig.btnconfigaccept.caption
 msgctxt "tfrconfig.btnconfigaccept.caption"
@@ -582,7 +580,6 @@ msgid "Delete"
 msgstr "Eliminar"
 
 #: tfrconfig.btndeletedomain.hint
-#, fuzzy
 msgctxt "tfrconfig.btndeletedomain.hint"
 msgid "Delete"
 msgstr "Eliminar"
@@ -598,21 +595,18 @@ msgid "Edit"
 msgstr "Editar"
 
 #: tfrconfig.btneditdomain.hint
-#, fuzzy
 msgctxt "tfrconfig.btneditdomain.hint"
 msgid "Edit"
 msgstr "Editar"
 
 #: tfrconfig.btnfirefoxintegration.caption
-#, fuzzy
-#| msgid "Enable firefox integration"
 msgctxt "tfrconfig.btnfirefoxintegration.caption"
 msgid "Enable Firefox integration"
-msgstr "Activar integracion con firefox"
+msgstr "Activar integracion con Firefox"
 
 #: tfrconfig.btnoperaintegration.caption
 msgid "Enable Opera integration"
-msgstr ""
+msgstr "Activar integracion con Opera"
 
 #: tfrconfig.btnpreviewnotification.caption
 msgctxt "tfrconfig.btnpreviewnotification.caption"
@@ -1193,7 +1187,6 @@ msgid "Language:"
 msgstr "Lenguaje:"
 
 #: tfrmain.caption
-#, fuzzy
 msgctxt "tfrmain.caption"
 msgid "AWGG"
 msgstr "AWGG"
@@ -1350,8 +1343,8 @@ msgstr "Abrir archivo"
 
 #: tfrmain.milistopenlog.caption
 msgctxt "tfrmain.milistopenlog.caption"
-msgid "Open log file"
-msgstr "Abrir archivo log"
+msgid "Open history log file"
+msgstr "Abrir historial log"
 
 #: tfrmain.milistopenurl.caption
 msgctxt "tfrmain.milistopenurl.caption"
@@ -1980,7 +1973,6 @@ msgid "Ok"
 msgstr "Aceptar"
 
 #: tfrreplace.caption
-#, fuzzy
 msgctxt "tfrreplace.caption"
 msgid "File exists"
 msgstr "El arhivo existe"

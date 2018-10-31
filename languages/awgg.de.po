@@ -1360,8 +1360,10 @@ msgid "Open file"
 msgstr "Öffne Datei"
 
 #: tfrmain.milistopenlog.caption
+#, fuzzy
+#| msgid "Open log file"
 msgctxt "tfrmain.milistopenlog.caption"
-msgid "Open log file"
+msgid "Open history log file"
 msgstr "Öffne Log-Datei"
 
 #: tfrmain.milistopenurl.caption
