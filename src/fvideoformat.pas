@@ -34,10 +34,12 @@ type
     bpSelectFormat: TButtonPanel;
     btnReload: TButton;
     chDownSubtitle: TCheckBox;
+    chDownPlayList: TCheckBox;
     lblName: TLabel;
     lblVideoName: TLabel;
     lblSelectFormat: TLabel;
     lvFormats: TListView;
+    procedure bpSelectFormatClick(Sender: TObject);
     procedure btnReloadClick(Sender: TObject);
     procedure OKButtonClick(Sender: TObject);
 
@@ -70,6 +72,11 @@ begin
   vname:='';
   getyoutubeformats(frnewdown.edtURL.Text);
   getyoutubename(frnewdown.edtURL.Text);
+end;
+
+procedure Tfrvideoformat.bpSelectFormatClick(Sender: TObject);
+begin
+
 end;
 
 end.

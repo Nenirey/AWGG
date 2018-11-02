@@ -60,6 +60,7 @@ private
   trayiconfontsize:integer;
   youtubedlthexternal:string;
   youtubeuri:string;
+  youtubeplaylist:boolean;
   procedure update;
   procedure changestatus;
   procedure prepare;
@@ -727,7 +728,7 @@ begin
         else
           internet:=false;
       Synchronize(@showrs);
-      sleep(1000);
+      sleep(10000);
       except on e:exception do
         begin
           internet:=false;
@@ -1557,7 +1558,7 @@ begin
   categoryextencions[5]:=TStringList.Create;
   categoryextencions[5].Add(ddowndir+pathdelim+categorymusic);
   categoryextencions[5].Add(categorymusic);
-  categoryextencions[5].AddStrings(['MP3','OGG','WAV','WMA','AMR','MIDI']);
+  categoryextencions[5].AddStrings(['MP3','OGG','WAV','WMA','AMR','MIDI','M4A']);
   categoryextencions[6]:=TStringList.Create;
   categoryextencions[6].Add(ddowndir+pathdelim+'Torrents');
   categoryextencions[6].Add(categorytorrents);
@@ -3358,17 +3359,18 @@ begin
             for wrn:=1 to WordCount(youtubedlargs,[' ']) do
               tmps.Add(ExtractWord(wrn,youtubedlargs,[' ']));
           end;
-          ////Use for external downloader
-          if youtubedluseextdown and (youtubedlextdown<>'') then
-          begin
-            tmps.Add('-g');
-            tmps.Add('--get-filename');
-          end;
           ////Parametros para cada descarga
           if WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' '])>0 then
           begin
             for wrn:=1 to WordCount(frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']) do
               tmps.Add(ExtractWord(wrn,frmain.lvMain.Items[indice].SubItems[columnparameters],[' ']));
+          end;
+
+          ////Use for external downloader if no playlist
+          if youtubedluseextdown and (tmps.IndexOf('--yes-playlist')=-1) and (youtubedlextdown<>'') then
+          begin
+            tmps.Add('-g');
+            tmps.Add('--get-filename');
           end;
 
           tmps.Add('--socket-timeout');
@@ -3428,7 +3430,10 @@ begin
 
           //No playlist if not declare
           if tmps.IndexOf('--yes-playlist')=-1 then
-            tmps.Add('--no-playlist');
+            tmps.Add('--no-playlist')
+          else
+            tmps.Add('-i');
+
           //Always use the best format if no declare other
           if tmps.IndexOf('-f')=-1 then
             tmps.Add('-f best');
@@ -3453,7 +3458,7 @@ begin
                 tmps.Add('http://'+phttp+':'+phttpport);
             end;
           end;
-          if frmain.lvMain.Items[indice].SubItems[columnname]<>'' then
+          if (frmain.lvMain.Items[indice].SubItems[columnname]<>'') and (tmps.IndexOf('--yes-playlist')=-1) then
           begin
             tmps.Add('--o');
             tmps.Add(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columnname]));
@@ -3859,6 +3864,8 @@ var
   th,tw, sli:integer;
   itemfile:TSearchRec;
   sltofindtext:TStringList;
+  tmppercent:integer;
+  tmpsize:extended;
 begin
   if (frmain.lvMain.ItemIndex>-1) and (frmain.micommandFollow.Checked) and (thid=frmain.lvMain.ItemIndex) then
   begin
@@ -4182,18 +4189,7 @@ begin
   ////////////////////***YOUTUBE-DL***///////////////////////////
   if frmain.lvMain.Items[thid].SubItems[columnengine] = 'youtube-dl' then
   begin
-    if (FindFirst(UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[thid].SubItems[columnname]),faAnyFile,itemfile)=0) and (youtubedlthexternal='') and (youtubedluseextdown=false) then
-    begin
-      Repeat
-        try
-          if frmain.lvMain.Items[thid].SubItems[columnname] <> '' then
-            descargado:=prettysize(itemfile.Size,'youtube-dl',-2,'.');
-        except
-        on E:Exception do
-        end;
-      Until FindNext(itemfile)<>0;
-    end;
-    if (Pos('[download]  ',wout)>0) and (youtubedluseextdown=false) and (youtubedlthexternal='') and (Pos('in',wout)<1) then
+    if ((Pos('[download]  ',wout)>0) and (Pos('in',wout)<1)) and (((youtubedluseextdown=false) and (youtubedlthexternal='')) or youtubeplaylist)  then
     begin
       porciento:=ExtractWord(WordCount(wout,[' '])-6,wout,[' ']);
       if Pos('.',porciento)>0 then
@@ -4202,8 +4198,50 @@ begin
       tiempo:=ExtractWord(WordCount(wout,[' ']),wout,[' ']);
       tamano:=ExtractWord(WordCount(wout,[' '])-4,wout,[' ']);
     end;
+
+    ///Determine the downloaded size base on the percent
+    if (youtubedlthexternal='') and ((youtubedluseextdown=false) or youtubeplaylist) then
+    begin
+      if frmain.lvMain.Items[thid].SubItems[columnsize]<>'' then
+      begin
+        try
+          tmppercent:=strtoint(StringReplace(frmain.lvMain.Items[thid].SubItems[columnpercent],'%','',[rfReplaceAll]));
+          if Pos('GiB',frmain.lvMain.Items[thid].SubItems[columnsize])>0 then
+          begin
+            tmpsize:=strtofloat(StringReplace(StringReplace(frmain.lvMain.Items[thid].SubItems[columnsize],'GiB','',[rfReplaceAll]),'.',',',[rfReplaceAll]));
+            descargado:=prettysize(Round(tmppercent*0.01*(tmpsize*1024*1024*1024)),'youtube-dl',-2,'.');
+          end;
+          if Pos('MiB',frmain.lvMain.Items[thid].SubItems[columnsize])>0 then
+          begin
+            tmpsize:=strtofloat(StringReplace(StringReplace(frmain.lvMain.Items[thid].SubItems[columnsize],'MiB','',[rfReplaceAll]),'.',',',[rfReplaceAll]));
+            descargado:=prettysize(Round(tmppercent*0.01*(tmpsize*1024*1024)),'youtube-dl',-2,'.');
+          end;
+          if Pos('KiB',frmain.lvMain.Items[thid].SubItems[columnsize])>0 then
+          begin
+            tmpsize:=strtofloat(StringReplace(StringReplace(frmain.lvMain.Items[thid].SubItems[columnsize],'KiB','',[rfReplaceAll]),'.',',',[rfReplaceAll]));
+            descargado:=prettysize(Round(tmppercent*0.01*(tmpsize*1024)),'youtube-dl',-2,'.');
+          end;
+        except on E:Exception do
+          //descargado:=e.message;
+        end;
+      end
+      else
+      begin
+        if FindFirst(UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[thid].SubItems[columnname]),faAnyFile,itemfile)=0 then
+        begin
+          Repeat
+            try
+              descargado:=prettysize(itemfile.Size,'youtube-dl',-2,'.');
+            except
+            on E:Exception do
+            end;
+          Until FindNext(itemfile)<>0;
+        end;
+      end;
+    end;
+
     /////Extract the file name from the output if filename is ''
-    if (frmain.lvMain.Items[thid].SubItems[columnname]='') and (youtubedluseextdown=false) then
+    if ((frmain.lvMain.Items[thid].SubItems[columnname]='') and (youtubedluseextdown=false)) or youtubeplaylist then
     begin
       if (Pos('[download] Destination: ',wout)>0) and (Pos(#10,wout)>0) then
       begin
@@ -4217,7 +4255,7 @@ begin
         logrename:=true;
       end;
     end;
-    if youtubedluseextdown and (youtubeuri='') then
+    if youtubedluseextdown and (youtubeplaylist=false) and (youtubeuri='') then
     begin
       if ((Pos('http://',wout)>0) or (Pos('https://',wout)>0)) and (Pos('ERROR:',wout)<1) then
       begin
@@ -5129,8 +5167,17 @@ var
     completado:=true;
     if (Pos('FINISHED --',wout)>0) or (Pos('Downloaded: ',wout)>0) and (frmain.lvMain.Items[thid].SubItems[columntype]='1') then
     completado:=true;
-    if ((Pos('[download] 100% of ',wout)>0) or (Pos('[download] '+frmain.lvMain.Items[thid].SubItems[columnname]+' has already been downloaded',wout)>0)) and (frmain.lvMain.Items[thid].SubItems[columntype]='0') then
-    completado:=true;
+    //youtube-dl not complete if all playlist was download
+    if youtubeplaylist=false then
+    begin
+      if ((Pos('[download] 100% of ',wout)>0) or (Pos('[download] '+frmain.lvMain.Items[thid].SubItems[columnname]+' has already been downloaded',wout)>0)) and (frmain.lvMain.Items[thid].SubItems[columntype]='0') then
+        completado:=true;
+    end
+    else
+    begin
+      if (Pos('[download] Finished downloading playlist:',wout)>0) then
+        completado:=true;
+    end;
     if (Pos('* Connection #0 to host localhost left intact',wout)>0) then
     completado:=true;
     //if Pos('http',wout)=1 then
@@ -5144,7 +5191,7 @@ var
     if (wthp.Running=false)  and (manualshutdown=false) then
     begin
       readoutput;
-      if (tries>0) and (completado=false) and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl') and (youtubedluseextdown=false) and (youtubedlthexternal='')  then
+      if (tries>0) and (completado=false) and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl') and ((youtubedluseextdown=false) or youtubeplaylist) and (youtubedlthexternal='')  then
       begin
         wthp.Execute;
         tries-=1;
@@ -5174,10 +5221,10 @@ begin
     end;
   end;
   wthp.Parameters.AddStrings(wpr);
+
   //wpr.LineBreak:=' ';
   //wout:='********'+wpr.Text+'********';
   //Synchronize(@update);
-  wpr.Free;
   //Can not @update before this because this cause write in datapath
   if Not DirectoryExists(datapath) then
     CreateDir(datapath);
@@ -5208,7 +5255,7 @@ begin
       sleep(1000);//Sin esto el consumo de CPU es muy alto
     end;
     //IF Youtube external use execute the external engine
-    if (youtubedluseextdown) and (youtubeuri<>'') and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl') then
+    if (youtubedluseextdown) and (youtubeplaylist=false) and (youtubeuri<>'') and (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl') then
     begin
       wthp.Parameters.Clear;
       tmps:=TStringList.Create;
@@ -5284,6 +5331,7 @@ begin
     wthp.Terminate(0);
     {$ENDIF}
   end;
+  wpr.Free;
   wthp.Destroy;
   hilo[thid].Terminate;
   if logrename or (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl') then
@@ -5528,6 +5576,10 @@ begin
   tries:=dtries;
   youtubedlthexternal:='';
   youtubeuri:='';
+  if wpr.IndexOf('--yes-playlist')=-1 then
+    youtubeplaylist:=false
+  else
+    youtubeplaylist:=true;
 end;
 
 

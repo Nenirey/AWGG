@@ -2212,6 +2212,10 @@ msgstr "Neu laden"
 msgid "Video formats"
 msgstr "Video-Formate"
 
+#: tfrvideoformat.chdownplaylist.caption
+msgid "Download all playlist"
+msgstr ""
+
 #: tfrvideoformat.chdownsubtitle.caption
 msgid "Download all subtitles"
 msgstr "Alle Untertitel laden"

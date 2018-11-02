@@ -6,5 +6,6 @@
 {"hash":1780,"name":"tfrvideoformat.lvformats.columns[2].caption","sourcebytes":[105,100],"value":"id"},
 {"hash":93074804,"name":"tfrvideoformat.btnreload.caption","sourcebytes":[82,101,108,111,97,100],"value":"Reload"},
 {"hash":181348595,"name":"tfrvideoformat.chdownsubtitle.caption","sourcebytes":[68,111,119,110,108,111,97,100,32,97,108,108,32,115,117,98,116,105,116,108,101,115],"value":"Download all subtitles"},
-{"hash":5538698,"name":"tfrvideoformat.lblvideoname.caption","sourcebytes":[78,97,109,101,58],"value":"Name:"}
+{"hash":5538698,"name":"tfrvideoformat.lblvideoname.caption","sourcebytes":[78,97,109,101,58],"value":"Name:"},
+{"hash":180349908,"name":"tfrvideoformat.chdownplaylist.caption","sourcebytes":[68,111,119,110,108,111,97,100,32,97,108,108,32,112,108,97,121,108,105,115,116],"value":"Download all playlist"}
 ]}

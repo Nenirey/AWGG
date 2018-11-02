@@ -2180,6 +2180,10 @@ msgstr "Reload"
 msgid "Video formats"
 msgstr "Video formats"
 
+#: tfrvideoformat.chdownplaylist.caption
+msgid "Download all playlist"
+msgstr "Download all playlist"
+
 #: tfrvideoformat.chdownsubtitle.caption
 msgid "Download all subtitles"
 msgstr "Download all subtitles"

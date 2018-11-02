@@ -2153,6 +2153,10 @@ msgstr ""
 msgid "Video formats"
 msgstr ""
 
+#: tfrvideoformat.chdownplaylist.caption
+msgid "Download all playlist"
+msgstr ""
+
 #: tfrvideoformat.chdownsubtitle.caption
 msgid "Download all subtitles"
 msgstr ""

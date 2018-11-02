@@ -1,13 +1,13 @@
 object frvideoformat: Tfrvideoformat
-  Left = 282
+  Left = 395
   Height = 480
-  Top = 136
+  Top = 152
   Width = 640
   Caption = 'Video formats'
   ClientHeight = 480
   ClientWidth = 640
   Position = poDesktopCenter
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '1.8.4.0'
   object bpSelectFormat: TButtonPanel
     Left = 6
     Height = 34
@@ -24,6 +24,7 @@ object frvideoformat: Tfrvideoformat
     CancelButton.DefaultCaption = True
     ButtonOrder = boCloseOKCancel
     TabOrder = 0
+    OnClick = bpSelectFormatClick
     ShowButtons = [pbOK, pbCancel]
   end
   object lblSelectFormat: TLabel
@@ -31,9 +32,9 @@ object frvideoformat: Tfrvideoformat
     AnchorSideTop.Control = lblVideoName
     AnchorSideTop.Side = asrBottom
     Left = 5
-    Height = 13
-    Top = 23
-    Width = 68
+    Height = 15
+    Top = 25
+    Width = 73
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     Caption = 'Select format:'
@@ -47,8 +48,8 @@ object frvideoformat: Tfrvideoformat
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = chDownSubtitle
     Left = 5
-    Height = 371
-    Top = 41
+    Height = 365
+    Top = 45
     Width = 630
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 5
@@ -85,7 +86,7 @@ object frvideoformat: Tfrvideoformat
     Left = 6
     Height = 26
     Top = 448
-    Width = 59
+    Width = 62
     Anchors = [akTop, akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Top = 8
@@ -97,9 +98,9 @@ object frvideoformat: Tfrvideoformat
     AnchorSideLeft.Control = lvFormats
     AnchorSideBottom.Control = bpSelectFormat
     Left = 5
-    Height = 17
-    Top = 417
-    Width = 121
+    Height = 19
+    Top = 415
+    Width = 136
     Anchors = [akLeft, akBottom]
     Caption = 'Download all subtitles'
     TabOrder = 3
@@ -108,9 +109,9 @@ object frvideoformat: Tfrvideoformat
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = Owner
     Left = 5
-    Height = 13
+    Height = 15
     Top = 5
-    Width = 31
+    Width = 35
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
     Caption = 'Name:'
@@ -121,11 +122,24 @@ object frvideoformat: Tfrvideoformat
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = lblVideoName
     AnchorSideTop.Side = asrCenter
-    Left = 41
+    Left = 45
     Height = 1
-    Top = 11
+    Top = 12
     Width = 1
     BorderSpacing.Left = 5
     ParentColor = False
+  end
+  object chDownPlayList: TCheckBox
+    AnchorSideLeft.Control = chDownSubtitle
+    AnchorSideLeft.Side = asrBottom
+    AnchorSideTop.Control = chDownSubtitle
+    AnchorSideTop.Side = asrCenter
+    Left = 151
+    Height = 19
+    Top = 415
+    Width = 129
+    BorderSpacing.Left = 10
+    Caption = 'Download all playlist'
+    TabOrder = 4
   end
 end

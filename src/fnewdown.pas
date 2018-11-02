@@ -226,6 +226,7 @@ begin
           end;
           categoryextencions[indice].add(ext);
           categoryreload();
+          frnewdown.cbDestination.ItemIndex:=frnewdown.cbDestination.Items.IndexOf(value);
         end;
       end;
     end;
@@ -386,6 +387,16 @@ var
   ext:string='';
   fid:string='';
 begin
+  if Pos('--all-subs',LowerCase(frnewdown.edtParameters.Text))>0 then
+    frvideoformat.chDownSubtitle.Checked:=true
+  else
+    frvideoformat.chDownSubtitle.Checked:=false;
+
+  if Pos('--yes-playlist',LowerCase(frnewdown.edtParameters.Text))>0 then
+    frvideoformat.chDownPlayList.Checked:=true
+  else
+    frvideoformat.chDownPlayList.Checked:=false;
+
   if frnewdown.edtFileName.Text='' then
   begin
     getyoutubename(frnewdown.edtURL.Text);
@@ -445,6 +456,22 @@ begin
   begin
     frnewdown.edtParameters.Text:=StringReplace(frnewdown.edtParameters.Text,' --all-subs','',[rfReplaceAll]);
     frnewdown.edtParameters.Text:=StringReplace(frnewdown.edtParameters.Text,'--all-subs','',[rfReplaceAll]);
+  end;
+
+  if frvideoformat.chDownPlayList.Checked then
+  begin
+    if frnewdown.edtParameters.Text='' then
+      frnewdown.edtParameters.Text:='--yes-playlist'
+    else
+    begin
+      if Pos('--yes-playlist',LowerCase(frnewdown.edtParameters.Text))=0 then
+        frnewdown.edtParameters.Text:=frnewdown.edtParameters.Text+' --yes-playlist';
+    end;
+  end
+  else
+  begin
+    frnewdown.edtParameters.Text:=StringReplace(frnewdown.edtParameters.Text,' --yes-playlist','',[rfReplaceAll]);
+    frnewdown.edtParameters.Text:=StringReplace(frnewdown.edtParameters.Text,'--yes-playlist','',[rfReplaceAll]);
   end;
   frnewdown.FormStyle:=fsSystemStayOnTop;
 end;
