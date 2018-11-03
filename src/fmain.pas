@@ -3379,11 +3379,12 @@ begin
           tmps.Add('-R');
           tmps.Add(inttostr(dtries));
 
-          if (frmain.lvMain.Items[indice].SubItems[columncookie]<>'') and FileExists(frmain.lvMain.Items[indice].SubItems[columncookie]) then
+          //No needed
+          {if (frmain.lvMain.Items[indice].SubItems[columncookie]<>'') and FileExists(frmain.lvMain.Items[indice].SubItems[columncookie]) then
           begin
             tmps.Add('--cookies');
             tmps.Add(frmain.lvMain.Items[indice].SubItems[columncookie]);
-          end;
+          end;}
 
           if frmain.lvMain.Items[indice].SubItems[columnuseragent]<>'' then
           begin
