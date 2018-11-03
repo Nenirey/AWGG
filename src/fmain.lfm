@@ -1,7 +1,7 @@
 object frmain: Tfrmain
-  Left = 359
+  Left = 335
   Height = 541
-  Top = 145
+  Top = 90
   Width = 690
   ActiveControl = psVertical
   Caption = 'AWGG'

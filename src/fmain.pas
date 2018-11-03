@@ -6698,6 +6698,11 @@ begin
       frnewdown.edtFileName.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
       frnewdown.deDestination.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
       enginereload();
+      frnewdown.cbQueue.Items.Clear;
+      for i:=0 to Length(queues)-1 do
+      begin
+       frnewdown.cbQueue.Items.Add(queuenames[i]);
+      end;
       frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]);
       frnewdown.edtParameters.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
       frmain.ClipBoardTimer.Enabled:=false;
@@ -6717,6 +6722,15 @@ begin
         frnewdown.btnPaused.Visible:=false;
         frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
         frnewdown.btnStart.GlyphShowMode:=gsmNever;
+        frnewdown.cbDestination.Text:=fstrings.nochangefield;
+        frnewdown.deDestination.Text:=fstrings.nochangefield;
+        frnewdown.cbEngine.Items.Add(fstrings.nochangefield);
+        frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(fstrings.nochangefield);
+        frnewdown.edtParameters.Text:=fstrings.nochangefield;
+        frnewdown.edtPassword.Text:=fstrings.nochangefield;
+        frnewdown.edtUser.Text:=fstrings.nochangefield;
+        frnewdown.cbQueue.Items.Add(fstrings.nochangefield);
+        frnewdown.cbQueue.ItemIndex:=frnewdown.cbQueue.Items.IndexOf(fstrings.nochangefield);
       end
       else
       begin
@@ -6729,9 +6743,9 @@ begin
         frnewdown.btnPaused.Visible:=false;
         frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
         frnewdown.btnStart.GlyphShowMode:=gsmNever;
+        frnewdown.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
       end;
       ////////////////////////////////////
-      frnewdown.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
       if firstnormalshow=false then
       begin
         //frnewdown.Show;
@@ -6762,12 +6776,17 @@ begin
             //// Change only the normal download type and with pause, complete status
             if (frmain.lvMain.Items[i].SubItems[columntype] = '0') and ((frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='3')) and frmain.lvMain.Items[i].Selected then
             begin
-              frmain.lvMain.Items[i].SubItems[columndestiny]:=frnewdown.deDestination.Text;
-              frmain.lvMain.Items[i].SubItems[columnengine]:=frnewdown.cbEngine.Text;
-              frmain.lvMain.Items[i].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
-              frmain.lvMain.Items[i].SubItems[columnuser]:=frnewdown.edtUser.Text;
-              frmain.lvMain.Items[i].SubItems[columnpass]:=frnewdown.edtPassword.Text;
-              if frnewdown.cbQueue.ItemIndex>=0 then
+              if frnewdown.deDestination.Text<>fstrings.nochangefield then
+                frmain.lvMain.Items[i].SubItems[columndestiny]:=frnewdown.deDestination.Text;
+              if frnewdown.cbEngine.Text<>fstrings.nochangefield then
+                frmain.lvMain.Items[i].SubItems[columnengine]:=frnewdown.cbEngine.Text;
+              if frnewdown.edtParameters.Text<>fstrings.nochangefield then
+                frmain.lvMain.Items[i].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+              if frnewdown.edtUser.Text<>fstrings.nochangefield then
+                frmain.lvMain.Items[i].SubItems[columnuser]:=frnewdown.edtUser.Text;
+              if frnewdown.edtPassword.Text<>fstrings.nochangefield then
+                frmain.lvMain.Items[i].SubItems[columnpass]:=frnewdown.edtPassword.Text;
+              if (frnewdown.cbQueue.ItemIndex>=0) and (frnewdown.cbQueue.Text<>fstrings.nochangefield) then
                 frmain.lvMain.Items[i].SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
             end;
           end;

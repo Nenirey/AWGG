@@ -132,6 +132,7 @@ statusstarting='Starting...';
 statusstopping='Stopping...';
 filterforcenames='Force downloads names';
 filternoforcenames='No force downloads names';
+nochangefield='[Keep]';
 Implementation
 end.
 

@@ -303,6 +303,10 @@ msgctxt "fstrings.newfiletyperememberpath"
 msgid "Do you want to remember the path for this file type?"
 msgstr ""
 
+#: fstrings.nochangefield
+msgid "[Keep]"
+msgstr ""
+
 #: fstrings.popuptitlecomplete
 msgctxt "fstrings.popuptitlecomplete"
 msgid "Download complete"

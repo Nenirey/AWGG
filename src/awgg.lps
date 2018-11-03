@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="3374"/>
-        <CursorPos X="22" Y="3382"/>
+        <TopLine Value="6695"/>
+        <CursorPos X="7" Y="6701"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,7 +36,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="437"/>
+        <TopLine Value="438"/>
         <CursorPos X="38" Y="453"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
@@ -88,8 +88,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="46"/>
-        <CursorPos X="18" Y="46"/>
+        <TopLine Value="110"/>
+        <CursorPos X="21" Y="135"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -197,6 +197,35 @@
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="7" HistoryIndex="4">
+      <Position1>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="3382" Column="22" TopLine="3377"/>
+      </Position1>
+      <Position2>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="6715" Column="46" TopLine="6702"/>
+      </Position2>
+      <Position3>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="6725" Column="55" TopLine="6702"/>
+      </Position3>
+      <Position4>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="6783" Column="108" TopLine="6762"/>
+      </Position4>
+      <Position5>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="6700" Column="22" TopLine="6708"/>
+      </Position5>
+      <Position6>
+        <Filename Value="fnewdown.pas"/>
+        <Caret Line="453" Column="38" TopLine="437"/>
+      </Position6>
+      <Position7>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7829" Column="3" TopLine="7861"/>
+      </Position7>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>
