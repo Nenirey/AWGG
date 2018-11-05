@@ -6688,6 +6688,22 @@ var
   tmpstr:string='';
   paramlist:string='';
   i:integer;
+  itm: TListItem;
+
+  deDestinationText:string='';
+  edtParametersText:string='';
+  edtPasswordText:string='';
+  edtUserText:string='';
+  cbEngineItemText:string='';
+  cbQueueItemText:string='';
+
+  deDestinationTextIsSame:integer=0; // 0 - init; 1 - same; 2 - different
+  edtParametersTextIsSame:integer=0;
+  edtPasswordTextIsSame:integer=0;
+  edtUserTextIsSame:integer=0;
+  cbEngineItemTextIsSame:integer=0;
+  cbQueueItemTextIsSame:integer=0;
+
 begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
@@ -6711,6 +6727,80 @@ begin
       ///////CONFIRM DIALOG MODE///////////
       if frmain.lvMain.SelCount>1 then
       begin
+        // collecting the selected items' information
+        for i:=0 to frmain.lvMain.Items.Count-1 do
+        begin
+          itm := frmain.lvMain.Items[i];
+          if itm.Selected and (itm.SubItems[columntype] = '0') and ((itm.SubItems[columnstatus]='0') or (itm.SubItems[columnstatus]='3')) then
+          begin
+            if deDestinationTextIsSame = 1 then
+            begin
+              if deDestinationText <> itm.SubItems[columndestiny] then
+                deDestinationTextIsSame := 2;
+            end
+            else if deDestinationTextIsSame = 0 then
+            begin
+              deDestinationText := itm.SubItems[columndestiny];
+              deDestinationTextIsSame := 1;
+            end;
+
+            if edtParametersTextIsSame = 1 then
+            begin
+              if edtParametersText <> itm.SubItems[columnparameters] then
+                edtParametersTextIsSame := 2;
+            end
+            else if edtParametersTextIsSame = 0 then
+            begin
+              edtParametersText := itm.SubItems[columnparameters];
+              edtParametersTextIsSame := 1;
+            end;
+
+            if edtPasswordTextIsSame = 1 then
+            begin
+              if edtPasswordText <> itm.SubItems[columnpass] then
+                edtPasswordTextIsSame := 2;
+            end
+            else if edtPasswordTextIsSame = 0 then
+            begin
+              edtPasswordText := itm.SubItems[columnpass];
+              edtPasswordTextIsSame := 1;
+            end;
+
+            if edtUserTextIsSame = 1 then
+            begin
+              if edtUserText <> itm.SubItems[columnuser] then
+                edtUserTextIsSame := 2;
+            end
+            else if edtUserTextIsSame = 0 then
+            begin
+              edtUserText := itm.SubItems[columnuser];
+              edtUserTextIsSame := 1;
+            end;
+
+            if cbEngineItemTextIsSame = 1 then
+            begin
+              if cbEngineItemText <> itm.SubItems[columnengine] then
+                cbEngineItemTextIsSame := 2;
+            end
+            else if cbEngineItemTextIsSame = 0 then
+            begin
+              cbEngineItemText := itm.SubItems[columnengine];
+              cbEngineItemTextIsSame := 1;
+            end;
+
+            if cbQueueItemTextIsSame = 1 then
+            begin
+              if cbQueueItemText <> itm.SubItems[columnqueue] then
+                cbQueueItemTextIsSame := 2;
+            end
+            else if cbQueueItemTextIsSame = 0 then
+            begin
+              cbQueueItemText := itm.SubItems[columnqueue];
+              cbQueueItemTextIsSame := 1;
+            end;
+          end;
+        end;
+
         frnewdown.edtURL.Text:='';
         frnewdown.edtURL.Enabled:=false;
         frnewdown.edtFileName.Text:='';
@@ -6723,14 +6813,42 @@ begin
         frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
         frnewdown.btnStart.GlyphShowMode:=gsmNever;
         frnewdown.cbDestination.Text:=fstrings.nochangefield;
-        frnewdown.deDestination.Text:=fstrings.nochangefield;
-        frnewdown.cbEngine.Items.Add(fstrings.nochangefield);
-        frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(fstrings.nochangefield);
-        frnewdown.edtParameters.Text:=fstrings.nochangefield;
-        frnewdown.edtPassword.Text:=fstrings.nochangefield;
-        frnewdown.edtUser.Text:=fstrings.nochangefield;
-        frnewdown.cbQueue.Items.Add(fstrings.nochangefield);
-        frnewdown.cbQueue.ItemIndex:=frnewdown.cbQueue.Items.IndexOf(fstrings.nochangefield);
+
+        if deDestinationTextIsSame = 1 then
+          frnewdown.deDestination.Text:=deDestinationText
+        else
+          frnewdown.deDestination.Text:=fstrings.nochangefield;
+
+        if cbEngineItemTextIsSame = 1 then
+          frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(cbEngineItemText)
+        else
+        begin
+          frnewdown.cbEngine.Items.Add(fstrings.nochangefield);
+          frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(fstrings.nochangefield);
+        end;
+
+        if edtParametersTextIsSame = 1 then
+          frnewdown.edtParameters.Text:=edtParametersText
+        else
+          frnewdown.edtParameters.Text:=fstrings.nochangefield;
+
+        if edtPasswordTextIsSame = 1 then
+          frnewdown.edtPassword.Text:=edtPasswordText
+        else
+          frnewdown.edtPassword.Text:=fstrings.nochangefield;
+
+        if edtUserTextIsSame = 1 then
+          frnewdown.edtUser.Text:=edtUserText
+        else
+          frnewdown.edtUser.Text:=fstrings.nochangefield;
+
+        if cbQueueItemTextIsSame = 1 then
+          frnewdown.cbQueue.ItemIndex:=frnewdown.cbQueue.Items.IndexOf(cbQueueItemText)
+        else
+        begin
+          frnewdown.cbQueue.Items.Add(fstrings.nochangefield);
+          frnewdown.cbQueue.ItemIndex:=frnewdown.cbQueue.Items.IndexOf(fstrings.nochangefield);
+        end;
       end
       else
       begin
@@ -6774,34 +6892,36 @@ begin
           for i:=0 to frmain.lvMain.Items.Count-1 do
           begin
             //// Change only the normal download type and with pause, complete status
-            if (frmain.lvMain.Items[i].SubItems[columntype] = '0') and ((frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='3')) and frmain.lvMain.Items[i].Selected then
+            itm := frmain.lvMain.Items[i];
+            if itm.Selected and (itm.SubItems[columntype] = '0') and ((itm.SubItems[columnstatus]='0') or (itm.SubItems[columnstatus]='3')) then
             begin
               if frnewdown.deDestination.Text<>fstrings.nochangefield then
-                frmain.lvMain.Items[i].SubItems[columndestiny]:=frnewdown.deDestination.Text;
+                itm.SubItems[columndestiny]:=frnewdown.deDestination.Text;
               if frnewdown.cbEngine.Text<>fstrings.nochangefield then
-                frmain.lvMain.Items[i].SubItems[columnengine]:=frnewdown.cbEngine.Text;
+                itm.SubItems[columnengine]:=frnewdown.cbEngine.Text;
               if frnewdown.edtParameters.Text<>fstrings.nochangefield then
-                frmain.lvMain.Items[i].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+                itm.SubItems[columnparameters]:=frnewdown.edtParameters.Text;
               if frnewdown.edtUser.Text<>fstrings.nochangefield then
-                frmain.lvMain.Items[i].SubItems[columnuser]:=frnewdown.edtUser.Text;
+                itm.SubItems[columnuser]:=frnewdown.edtUser.Text;
               if frnewdown.edtPassword.Text<>fstrings.nochangefield then
-                frmain.lvMain.Items[i].SubItems[columnpass]:=frnewdown.edtPassword.Text;
+                itm.SubItems[columnpass]:=frnewdown.edtPassword.Text;
               if (frnewdown.cbQueue.ItemIndex>=0) and (frnewdown.cbQueue.Text<>fstrings.nochangefield) then
-                frmain.lvMain.Items[i].SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+                itm.SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
             end;
           end;
         end
         else
         begin
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frnewdown.edtFileName.Text;
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frnewdown.edtURL.Text;
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frnewdown.deDestination.Text;
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]:=frnewdown.cbEngine.Text;
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=frnewdown.edtParameters.Text;
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frnewdown.edtUser.Text;
-          frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frnewdown.edtPassword.Text;
+          itm := frmain.lvMain.Items[frmain.lvMain.ItemIndex];
+          itm.SubItems[columnname]:=frnewdown.edtFileName.Text;
+          itm.SubItems[columnurl]:=frnewdown.edtURL.Text;
+          itm.SubItems[columndestiny]:=frnewdown.deDestination.Text;
+          itm.SubItems[columnengine]:=frnewdown.cbEngine.Text;
+          itm.SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+          itm.SubItems[columnuser]:=frnewdown.edtUser.Text;
+          itm.SubItems[columnpass]:=frnewdown.edtPassword.Text;
           if frnewdown.cbQueue.ItemIndex>=0 then
-            frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+            itm.SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
         end;
         frmain.tvMainSelectionChanged(nil);
         savemydownloads();
