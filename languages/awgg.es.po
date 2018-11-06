@@ -332,7 +332,7 @@ msgstr "Desea recordar la ruta para este tipo de archivo?"
 
 #: fstrings.nochangefield
 msgid "[Keep]"
-msgstr ""
+msgstr "[Mantener]"
 
 #: fstrings.popuptitlecomplete
 msgctxt "fstrings.popuptitlecomplete"
@@ -1840,7 +1840,7 @@ msgstr "Configurar la categoria de arhcivo"
 
 #: tfrnewdown.btnforcenames.hint
 msgid "Force names"
-msgstr ""
+msgstr "Forzar nombres"
 
 #: tfrnewdown.btngodestination.hint
 msgid "Open the path folder"

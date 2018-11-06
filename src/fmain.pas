@@ -6842,8 +6842,10 @@ begin
         else
           frnewdown.edtUser.Text:=fstrings.nochangefield;
 
+        ShowMessage(cbQueueItemText);
+
         if cbQueueItemTextIsSame = 1 then
-          frnewdown.cbQueue.ItemIndex:=frnewdown.cbQueue.Items.IndexOf(cbQueueItemText)
+          frnewdown.cbQueue.ItemIndex:=strtoint(cbQueueItemText)
         else
         begin
           frnewdown.cbQueue.Items.Add(fstrings.nochangefield);
@@ -7947,7 +7949,7 @@ end;
 procedure Tfrmain.tbAddDownClick(Sender: TObject);
 var
   downitem:TListItem;
-  tmpindex:integer;
+  tmpindex,i:integer;
   tmpclip:string='';
   magnetname:string='';
 begin
@@ -7983,6 +7985,12 @@ begin
   frmain.ClipBoardTimer.Enabled:=false;//Descativar temporalmete el clipboardmonitor
   //Recargar engines
   enginereload();
+  //Reload queues
+  frnewdown.cbQueue.Items.Clear;
+  for i:=0 to Length(queues)-1 do
+  begin
+    frnewdown.cbQueue.Items.Add(queuenames[i]);
+  end;
   ///Select the best parameters
   suggestparameters();
   queueindexselect();
