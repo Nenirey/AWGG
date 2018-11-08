@@ -6842,8 +6842,6 @@ begin
         else
           frnewdown.edtUser.Text:=fstrings.nochangefield;
 
-        ShowMessage(cbQueueItemText);
-
         if cbQueueItemTextIsSame = 1 then
           frnewdown.cbQueue.ItemIndex:=strtoint(cbQueueItemText)
         else

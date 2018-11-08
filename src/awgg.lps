@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="6695"/>
-        <CursorPos X="7" Y="6701"/>
+        <TopLine Value="6822"/>
+        <CursorPos Y="6844"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -197,35 +197,6 @@
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="7" HistoryIndex="4">
-      <Position1>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="3382" Column="22" TopLine="3377"/>
-      </Position1>
-      <Position2>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="6715" Column="46" TopLine="6702"/>
-      </Position2>
-      <Position3>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="6725" Column="55" TopLine="6702"/>
-      </Position3>
-      <Position4>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="6783" Column="108" TopLine="6762"/>
-      </Position4>
-      <Position5>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="6700" Column="22" TopLine="6708"/>
-      </Position5>
-      <Position6>
-        <Filename Value="fnewdown.pas"/>
-        <Caret Line="453" Column="38" TopLine="437"/>
-      </Position6>
-      <Position7>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="7829" Column="3" TopLine="7861"/>
-      </Position7>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>
