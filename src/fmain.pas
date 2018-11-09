@@ -6684,11 +6684,12 @@ begin
 end;
 
 procedure Tfrmain.milistPropertiesClick(Sender: TObject);
+type
+  TPropState = (PropInitValue, PropSameValue, PropDifferentValue);
 var
   tmpstr:string='';
   paramlist:string='';
   i:integer;
-  itm: TListItem;
 
   deDestinationText:string='';
   edtParametersText:string='';
@@ -6697,12 +6698,12 @@ var
   cbEngineItemText:string='';
   cbQueueItemText:string='';
 
-  deDestinationTextIsSame:integer=0; // 0 - init; 1 - same; 2 - different
-  edtParametersTextIsSame:integer=0;
-  edtPasswordTextIsSame:integer=0;
-  edtUserTextIsSame:integer=0;
-  cbEngineItemTextIsSame:integer=0;
-  cbQueueItemTextIsSame:integer=0;
+  deDestinationTextPropState:TPropState=PropInitValue;
+  edtParametersTextPropState:TPropState=PropInitValue;
+  edtPasswordTextPropState:TPropState=PropInitValue;
+  edtUserTextPropState:TPropState=PropInitValue;
+  cbEngineItemTextPropState:TPropState=PropInitValue;
+  cbQueueItemTextPropState:TPropState=PropInitValue;
 
 begin
   if frmain.lvMain.ItemIndex<>-1 then
@@ -6710,93 +6711,110 @@ begin
     if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntype] = '0' then
     begin
       //////THIS ORDER IS IMPORTANT/////////
-      frnewdown.edtURL.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
-      frnewdown.edtFileName.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
-      frnewdown.deDestination.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
-      enginereload();
-      frnewdown.cbQueue.Items.Clear;
-      for i:=0 to Length(queues)-1 do
+      with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
       begin
-       frnewdown.cbQueue.Items.Add(queuenames[i]);
+        frnewdown.edtURL.Text:=SubItems[columnurl];
+        frnewdown.edtFileName.Text:=SubItems[columnname];
+        frnewdown.deDestination.Text:=SubItems[columndestiny];
+        enginereload();
+        frnewdown.cbQueue.Items.Clear;
+        for i:=0 to Length(queues)-1 do
+        begin
+         frnewdown.cbQueue.Items.Add(queuenames[i]);
+        end;
+        frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(SubItems[columnengine]);
+        frnewdown.edtParameters.Text:=SubItems[columnparameters];
+        frmain.ClipBoardTimer.Enabled:=false;
+        frnewdown.edtUser.Text:=SubItems[columnuser];
+        frnewdown.edtPassword.Text:=SubItems[columnpass];
       end;
-      frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnengine]);
-      frnewdown.edtParameters.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-      frmain.ClipBoardTimer.Enabled:=false;
-      frnewdown.edtUser.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
-      frnewdown.edtPassword.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
       ///////CONFIRM DIALOG MODE///////////
       if frmain.lvMain.SelCount>1 then
       begin
         // collecting the selected items' information
         for i:=0 to frmain.lvMain.Items.Count-1 do
         begin
-          itm := frmain.lvMain.Items[i];
-          if itm.Selected and (itm.SubItems[columntype] = '0') and ((itm.SubItems[columnstatus]='0') or (itm.SubItems[columnstatus]='3')) then
+          with frmain.lvMain.Items[i] do
           begin
-            if deDestinationTextIsSame = 1 then
+            if Selected and (SubItems[columntype] = '0') and ((SubItems[columnstatus]='0') or (SubItems[columnstatus]='3')) then
             begin
-              if deDestinationText <> itm.SubItems[columndestiny] then
-                deDestinationTextIsSame := 2;
-            end
-            else if deDestinationTextIsSame = 0 then
-            begin
-              deDestinationText := itm.SubItems[columndestiny];
-              deDestinationTextIsSame := 1;
-            end;
+              if deDestinationTextPropState = PropSameValue then
+              begin
+                if deDestinationText <> SubItems[columndestiny] then
+                  deDestinationTextPropState := PropDifferentValue;
+              end
+              else if deDestinationTextPropState = PropInitValue then
+              begin
+                deDestinationText := SubItems[columndestiny];
+                deDestinationTextPropState := PropSameValue;
+              end;
 
-            if edtParametersTextIsSame = 1 then
-            begin
-              if edtParametersText <> itm.SubItems[columnparameters] then
-                edtParametersTextIsSame := 2;
-            end
-            else if edtParametersTextIsSame = 0 then
-            begin
-              edtParametersText := itm.SubItems[columnparameters];
-              edtParametersTextIsSame := 1;
-            end;
+              if edtParametersTextPropState = PropSameValue then
+              begin
+                if edtParametersText <> SubItems[columnparameters] then
+                  edtParametersTextPropState := PropDifferentValue;
+              end
+              else if edtParametersTextPropState = PropInitValue then
+              begin
+                edtParametersText := SubItems[columnparameters];
+                edtParametersTextPropState := PropSameValue;
+              end;
 
-            if edtPasswordTextIsSame = 1 then
-            begin
-              if edtPasswordText <> itm.SubItems[columnpass] then
-                edtPasswordTextIsSame := 2;
-            end
-            else if edtPasswordTextIsSame = 0 then
-            begin
-              edtPasswordText := itm.SubItems[columnpass];
-              edtPasswordTextIsSame := 1;
-            end;
+              if edtPasswordTextPropState = PropSameValue then
+              begin
+                if edtPasswordText <> SubItems[columnpass] then
+                  edtPasswordTextPropState := PropDifferentValue;
+              end
+              else if edtPasswordTextPropState = PropInitValue then
+              begin
+                edtPasswordText := SubItems[columnpass];
+                edtPasswordTextPropState := PropSameValue;
+              end;
 
-            if edtUserTextIsSame = 1 then
-            begin
-              if edtUserText <> itm.SubItems[columnuser] then
-                edtUserTextIsSame := 2;
-            end
-            else if edtUserTextIsSame = 0 then
-            begin
-              edtUserText := itm.SubItems[columnuser];
-              edtUserTextIsSame := 1;
-            end;
+              if edtUserTextPropState = PropSameValue then
+              begin
+                if edtUserText <> SubItems[columnuser] then
+                  edtUserTextPropState := PropDifferentValue;
+              end
+              else if edtUserTextPropState = PropInitValue then
+              begin
+                edtUserText := SubItems[columnuser];
+                edtUserTextPropState := PropSameValue;
+              end;
 
-            if cbEngineItemTextIsSame = 1 then
-            begin
-              if cbEngineItemText <> itm.SubItems[columnengine] then
-                cbEngineItemTextIsSame := 2;
-            end
-            else if cbEngineItemTextIsSame = 0 then
-            begin
-              cbEngineItemText := itm.SubItems[columnengine];
-              cbEngineItemTextIsSame := 1;
-            end;
+              if cbEngineItemTextPropState = PropSameValue then
+              begin
+                if cbEngineItemText <> SubItems[columnengine] then
+                  cbEngineItemTextPropState := PropDifferentValue;
+              end
+              else if cbEngineItemTextPropState = PropInitValue then
+              begin
+                cbEngineItemText := SubItems[columnengine];
+                cbEngineItemTextPropState := PropSameValue;
+              end;
 
-            if cbQueueItemTextIsSame = 1 then
-            begin
-              if cbQueueItemText <> itm.SubItems[columnqueue] then
-                cbQueueItemTextIsSame := 2;
-            end
-            else if cbQueueItemTextIsSame = 0 then
-            begin
-              cbQueueItemText := itm.SubItems[columnqueue];
-              cbQueueItemTextIsSame := 1;
+              if cbQueueItemTextPropState = PropSameValue then
+              begin
+                if cbQueueItemText <> SubItems[columnqueue] then
+                  cbQueueItemTextPropState := PropDifferentValue;
+              end
+              else if cbQueueItemTextPropState = PropInitValue then
+              begin
+                cbQueueItemText := SubItems[columnqueue];
+                cbQueueItemTextPropState := PropSameValue;
+              end;
+
+              if (deDestinationTextPropState = PropDifferentValue) and
+                 (edtParametersTextPropState = PropDifferentValue) and
+                 (edtPasswordTextPropState = PropDifferentValue) and
+                 (edtUserTextPropState = PropDifferentValue) and
+                 (cbEngineItemTextPropState = PropDifferentValue) and
+                 (cbQueueItemTextPropState = PropDifferentValue) then
+              begin
+                // all the properties have different values:
+                // no reason to continue the loop
+                break;
+              end;
             end;
           end;
         end;
@@ -6814,12 +6832,12 @@ begin
         frnewdown.btnStart.GlyphShowMode:=gsmNever;
         frnewdown.cbDestination.Text:=fstrings.nochangefield;
 
-        if deDestinationTextIsSame = 1 then
+        if deDestinationTextPropState = PropSameValue then
           frnewdown.deDestination.Text:=deDestinationText
         else
           frnewdown.deDestination.Text:=fstrings.nochangefield;
 
-        if cbEngineItemTextIsSame = 1 then
+        if cbEngineItemTextPropState = PropSameValue then
           frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(cbEngineItemText)
         else
         begin
@@ -6827,22 +6845,22 @@ begin
           frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(fstrings.nochangefield);
         end;
 
-        if edtParametersTextIsSame = 1 then
+        if edtParametersTextPropState = PropSameValue then
           frnewdown.edtParameters.Text:=edtParametersText
         else
           frnewdown.edtParameters.Text:=fstrings.nochangefield;
 
-        if edtPasswordTextIsSame = 1 then
+        if edtPasswordTextPropState = PropSameValue then
           frnewdown.edtPassword.Text:=edtPasswordText
         else
           frnewdown.edtPassword.Text:=fstrings.nochangefield;
 
-        if edtUserTextIsSame = 1 then
+        if edtUserTextPropState = PropSameValue then
           frnewdown.edtUser.Text:=edtUserText
         else
           frnewdown.edtUser.Text:=fstrings.nochangefield;
 
-        if cbQueueItemTextIsSame = 1 then
+        if cbQueueItemTextPropState = PropSameValue then
           frnewdown.cbQueue.ItemIndex:=strtoint(cbQueueItemText)
         else
         begin
@@ -6892,222 +6910,229 @@ begin
           for i:=0 to frmain.lvMain.Items.Count-1 do
           begin
             //// Change only the normal download type and with pause, complete status
-            itm := frmain.lvMain.Items[i];
-            if itm.Selected and (itm.SubItems[columntype] = '0') and ((itm.SubItems[columnstatus]='0') or (itm.SubItems[columnstatus]='3')) then
+            with frmain.lvMain.Items[i] do
             begin
-              if frnewdown.deDestination.Text<>fstrings.nochangefield then
-                itm.SubItems[columndestiny]:=frnewdown.deDestination.Text;
-              if frnewdown.cbEngine.Text<>fstrings.nochangefield then
-                itm.SubItems[columnengine]:=frnewdown.cbEngine.Text;
-              if frnewdown.edtParameters.Text<>fstrings.nochangefield then
-                itm.SubItems[columnparameters]:=frnewdown.edtParameters.Text;
-              if frnewdown.edtUser.Text<>fstrings.nochangefield then
-                itm.SubItems[columnuser]:=frnewdown.edtUser.Text;
-              if frnewdown.edtPassword.Text<>fstrings.nochangefield then
-                itm.SubItems[columnpass]:=frnewdown.edtPassword.Text;
-              if (frnewdown.cbQueue.ItemIndex>=0) and (frnewdown.cbQueue.Text<>fstrings.nochangefield) then
-                itm.SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+              if Selected and (SubItems[columntype] = '0') and ((SubItems[columnstatus]='0') or (SubItems[columnstatus]='3')) then
+              begin
+                if frnewdown.deDestination.Text<>fstrings.nochangefield then
+                  SubItems[columndestiny]:=frnewdown.deDestination.Text;
+                if frnewdown.cbEngine.Text<>fstrings.nochangefield then
+                  SubItems[columnengine]:=frnewdown.cbEngine.Text;
+                if frnewdown.edtParameters.Text<>fstrings.nochangefield then
+                  SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+                if frnewdown.edtUser.Text<>fstrings.nochangefield then
+                  SubItems[columnuser]:=frnewdown.edtUser.Text;
+                if frnewdown.edtPassword.Text<>fstrings.nochangefield then
+                  SubItems[columnpass]:=frnewdown.edtPassword.Text;
+                if (frnewdown.cbQueue.ItemIndex>=0) and (frnewdown.cbQueue.Text<>fstrings.nochangefield) then
+                  SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+              end;
             end;
           end;
         end
         else
         begin
-          itm := frmain.lvMain.Items[frmain.lvMain.ItemIndex];
-          itm.SubItems[columnname]:=frnewdown.edtFileName.Text;
-          itm.SubItems[columnurl]:=frnewdown.edtURL.Text;
-          itm.SubItems[columndestiny]:=frnewdown.deDestination.Text;
-          itm.SubItems[columnengine]:=frnewdown.cbEngine.Text;
-          itm.SubItems[columnparameters]:=frnewdown.edtParameters.Text;
-          itm.SubItems[columnuser]:=frnewdown.edtUser.Text;
-          itm.SubItems[columnpass]:=frnewdown.edtPassword.Text;
-          if frnewdown.cbQueue.ItemIndex>=0 then
-            itm.SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+          with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
+          begin
+            SubItems[columnname]:=frnewdown.edtFileName.Text;
+            SubItems[columnurl]:=frnewdown.edtURL.Text;
+            SubItems[columndestiny]:=frnewdown.deDestination.Text;
+            SubItems[columnengine]:=frnewdown.cbEngine.Text;
+            SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+            SubItems[columnuser]:=frnewdown.edtUser.Text;
+            SubItems[columnpass]:=frnewdown.edtPassword.Text;
+            if frnewdown.cbQueue.ItemIndex>=0 then
+              SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+            end;
         end;
         frmain.tvMainSelectionChanged(nil);
         savemydownloads();
       end;
       frnewdown.edtURL.Caption:='http://';
     end;
-    if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntype] = '1' then
+    with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
     begin
-      newgrabberqueues();
-      frsitegrabber.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
-      frsitegrabber.edtSiteName.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname];
-      frsitegrabber.edtURL.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl];
-      frsitegrabber.deDestination.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny];
-      frsitegrabber.edtUser.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser];
-      frsitegrabber.edtPassword.Text:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass];
-      frsitegrabber.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
-      if Pos('-k',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.chLinkToLocal.Checked:=true
-      else
-        frsitegrabber.chLinkToLocal.Checked:=false;
-      if Pos('--follow-ftp',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.chFollowFTPLink.Checked:=true
-      else
-        frsitegrabber.chFollowFTPLink.Checked:=false;
-      if Pos('-np',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.chNoParentLink.Checked:=true
-      else
-        frsitegrabber.chNoParentLink.Checked:=false;
-      if Pos('-p',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.chPageRequisites.Checked:=true
-      else
-        frsitegrabber.chPageRequisites.Checked:=false;
-      if Pos('-H',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.chSpanHosts.Checked:=true
-      else
-        frsitegrabber.chSpanHosts.Checked:=false;
-      if Pos('-L',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-        frsitegrabber.chFollowRelativeLink.Checked:=true
-      else
-        frsitegrabber.chFollowRelativeLink.Checked:=false;
-      if Pos('-l ',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
+      if SubItems[columntype] = '1' then
       begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('-l ',tmpstr)+3,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos(' ',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.seMaxLevel.Value:=strtoint(tmpstr);
-      end
-      else
-        frsitegrabber.seMaxLevel.Value:=5;
-      if Pos('-R "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('-R "',tmpstr)+4,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.mFileRejectFilter.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.mFileRejectFilter.Text:='';
-      if Pos('-A "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('-A "',tmpstr)+4,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.mFileAcceptFilter.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.mFileAcceptFilter.Text:='';
-      if Pos('-D "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('-D "',tmpstr)+4,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.mFollowDomainFilter.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.mFollowDomainFilter.Text:='';
-      if Pos('--exclude-domains "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('--exclude-domains "',tmpstr)+19,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.mDomainRejectFilter.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.mDomainRejectFilter.Text:='';
-      if Pos('-I "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('-I "',tmpstr)+4,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.mIncludeDirectory.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.mIncludeDirectory.Text:='';
-      if Pos('-X "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('-X "',tmpstr)+4,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.mExcludeDirectory.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.mExcludeDirectory.Text:='';
-      if Pos('--follow-tags="',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('--follow-tags="',tmpstr)+15,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.mFollowTags.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.mFollowTags.Text:='';
-      if Pos('--ignore-tags="',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('--ignore-tags="',tmpstr)+15,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.mIgnoreTags.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.mIgnoreTags.Text:='';
-      if Pos('-U "',frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters])>0 then
-      begin
-        tmpstr:=frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters];
-        tmpstr:=Copy(tmpstr,Pos('-U "',tmpstr)+4,Length(tmpstr));
-        tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
-        //ShowMessage(tmpstr);
-        frsitegrabber.edtUserAgent.Text:=tmpstr;
-      end
-      else
-        frsitegrabber.edtUserAgent.Text:='';
-      frsitegrabber.PageControl1.TabIndex:=0;
-      frmain.ClipBoardTimer.Enabled:=false;
-      frsitegrabber.ShowModal;
-      frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
-      if grbadd then
-      begin
-        paramlist:=paramlist+'-l '+inttostr(frsitegrabber.seMaxLevel.Value);
-        if frsitegrabber.chLinkToLocal.Checked then
-          paramlist:=paramlist+' -k';
-        if frsitegrabber.chFollowFTPLink.Checked then
-          paramlist:=paramlist+' --follow-ftp';
-        if frsitegrabber.chNoParentLink.Checked then
-          paramlist:=paramlist+' -np';
-        if frsitegrabber.chPageRequisites.Checked then
-          paramlist:=paramlist+' -p';
-        if frsitegrabber.chSpanHosts.Checked then
-          paramlist:=paramlist+' -H';
-        if frsitegrabber.chFollowRelativeLink.Checked then
-          paramlist:=paramlist+' -L';
-        if Length(frsitegrabber.mFileRejectFilter.Lines.Text)>0 then
-          paramlist:=paramlist+' -R "'+frsitegrabber.mFileRejectFilter.Lines.Text+'"';
-        if Length(frsitegrabber.mDomainRejectFilter.Lines.Text)>0 then
-          paramlist:=paramlist+' --exclude-domains "'+frsitegrabber.mDomainRejectFilter.Lines.Text+'"';
-        if Length(frsitegrabber.mFollowDomainFilter.Lines.Text)>0 then
-          paramlist:=paramlist+' -D "'+frsitegrabber.mFollowDomainFilter.Lines.Text+'"';
-        if Length(frsitegrabber.mIncludeDirectory.Lines.Text)>0 then
-          paramlist:=paramlist+' -I "'+frsitegrabber.mIncludeDirectory.Lines.Text+'"';
-        if Length(frsitegrabber.mExcludeDirectory.Lines.Text)>0 then
-          paramlist:=paramlist+' -X "'+frsitegrabber.mExcludeDirectory.Lines.Text+'"';
-        if Length(frsitegrabber.mFileAcceptFilter.Lines.Text)>0 then
-          paramlist:=paramlist+' -A "'+frsitegrabber.mFileAcceptFilter.Lines.Text+'"';
-        if Length(frsitegrabber.mFollowTags.Lines.Text)>0 then
-          paramlist:=paramlist+' --follow-tags="'+frsitegrabber.mFollowTags.Lines.Text+'"';
-        if Length(frsitegrabber.mIgnoreTags.Lines.Text)>0 then
-          paramlist:=paramlist+' --ignore-tags="'+frsitegrabber.mIgnoreTags.Lines.Text+'"';
-        if Length(frsitegrabber.edtUserAgent.Text)>0 then
-          paramlist:=paramlist+' -U "'+frsitegrabber.edtUserAgent.Text+'"';
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname]:=frsitegrabber.edtSiteName.Text;//Nombre del sitio
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnurl]:=frsitegrabber.edtURL.Text;//URL
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columndestiny]:=frsitegrabber.deDestination.Text;//Destino
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnparameters]:=paramlist;//Parametros
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuser]:=frsitegrabber.edtUser.Text;//user
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnpass]:=frsitegrabber.edtPassword.Text;//pass
-        frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]:=inttostr(frsitegrabber.cbQueue.ItemIndex);//queue
-        frmain.tvMainSelectionChanged(nil);
-        savemydownloads();
+        newgrabberqueues();
+        frsitegrabber.cbQueue.ItemIndex:=strtoint(SubItems[columnqueue]);
+        frsitegrabber.edtSiteName.Text:=SubItems[columnname];
+        frsitegrabber.edtURL.Text:=SubItems[columnurl];
+        frsitegrabber.deDestination.Text:=SubItems[columndestiny];
+        frsitegrabber.edtUser.Text:=SubItems[columnuser];
+        frsitegrabber.edtPassword.Text:=SubItems[columnpass];
+        frsitegrabber.cbQueue.ItemIndex:=strtoint(SubItems[columnqueue]);
+        if Pos('-k',SubItems[columnparameters])>0 then
+          frsitegrabber.chLinkToLocal.Checked:=true
+        else
+          frsitegrabber.chLinkToLocal.Checked:=false;
+        if Pos('--follow-ftp',SubItems[columnparameters])>0 then
+          frsitegrabber.chFollowFTPLink.Checked:=true
+        else
+          frsitegrabber.chFollowFTPLink.Checked:=false;
+        if Pos('-np',SubItems[columnparameters])>0 then
+          frsitegrabber.chNoParentLink.Checked:=true
+        else
+          frsitegrabber.chNoParentLink.Checked:=false;
+        if Pos('-p',SubItems[columnparameters])>0 then
+          frsitegrabber.chPageRequisites.Checked:=true
+        else
+          frsitegrabber.chPageRequisites.Checked:=false;
+        if Pos('-H',SubItems[columnparameters])>0 then
+          frsitegrabber.chSpanHosts.Checked:=true
+        else
+          frsitegrabber.chSpanHosts.Checked:=false;
+        if Pos('-L',SubItems[columnparameters])>0 then
+          frsitegrabber.chFollowRelativeLink.Checked:=true
+        else
+          frsitegrabber.chFollowRelativeLink.Checked:=false;
+        if Pos('-l ',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('-l ',tmpstr)+3,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos(' ',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.seMaxLevel.Value:=strtoint(tmpstr);
+        end
+        else
+          frsitegrabber.seMaxLevel.Value:=5;
+        if Pos('-R "',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('-R "',tmpstr)+4,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.mFileRejectFilter.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.mFileRejectFilter.Text:='';
+        if Pos('-A "',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('-A "',tmpstr)+4,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.mFileAcceptFilter.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.mFileAcceptFilter.Text:='';
+        if Pos('-D "',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('-D "',tmpstr)+4,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.mFollowDomainFilter.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.mFollowDomainFilter.Text:='';
+        if Pos('--exclude-domains "',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('--exclude-domains "',tmpstr)+19,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.mDomainRejectFilter.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.mDomainRejectFilter.Text:='';
+        if Pos('-I "',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('-I "',tmpstr)+4,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.mIncludeDirectory.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.mIncludeDirectory.Text:='';
+        if Pos('-X "',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('-X "',tmpstr)+4,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.mExcludeDirectory.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.mExcludeDirectory.Text:='';
+        if Pos('--follow-tags="',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('--follow-tags="',tmpstr)+15,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.mFollowTags.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.mFollowTags.Text:='';
+        if Pos('--ignore-tags="',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('--ignore-tags="',tmpstr)+15,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.mIgnoreTags.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.mIgnoreTags.Text:='';
+        if Pos('-U "',SubItems[columnparameters])>0 then
+        begin
+          tmpstr:=SubItems[columnparameters];
+          tmpstr:=Copy(tmpstr,Pos('-U "',tmpstr)+4,Length(tmpstr));
+          tmpstr:=Copy(tmpstr,0,Pos('"',tmpstr)-1);
+          //ShowMessage(tmpstr);
+          frsitegrabber.edtUserAgent.Text:=tmpstr;
+        end
+        else
+          frsitegrabber.edtUserAgent.Text:='';
+        frsitegrabber.PageControl1.TabIndex:=0;
+        frmain.ClipBoardTimer.Enabled:=false;
+        frsitegrabber.ShowModal;
+        frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
+        if grbadd then
+        begin
+          paramlist:=paramlist+'-l '+inttostr(frsitegrabber.seMaxLevel.Value);
+          if frsitegrabber.chLinkToLocal.Checked then
+            paramlist:=paramlist+' -k';
+          if frsitegrabber.chFollowFTPLink.Checked then
+            paramlist:=paramlist+' --follow-ftp';
+          if frsitegrabber.chNoParentLink.Checked then
+            paramlist:=paramlist+' -np';
+          if frsitegrabber.chPageRequisites.Checked then
+            paramlist:=paramlist+' -p';
+          if frsitegrabber.chSpanHosts.Checked then
+            paramlist:=paramlist+' -H';
+          if frsitegrabber.chFollowRelativeLink.Checked then
+            paramlist:=paramlist+' -L';
+          if Length(frsitegrabber.mFileRejectFilter.Lines.Text)>0 then
+            paramlist:=paramlist+' -R "'+frsitegrabber.mFileRejectFilter.Lines.Text+'"';
+          if Length(frsitegrabber.mDomainRejectFilter.Lines.Text)>0 then
+            paramlist:=paramlist+' --exclude-domains "'+frsitegrabber.mDomainRejectFilter.Lines.Text+'"';
+          if Length(frsitegrabber.mFollowDomainFilter.Lines.Text)>0 then
+            paramlist:=paramlist+' -D "'+frsitegrabber.mFollowDomainFilter.Lines.Text+'"';
+          if Length(frsitegrabber.mIncludeDirectory.Lines.Text)>0 then
+            paramlist:=paramlist+' -I "'+frsitegrabber.mIncludeDirectory.Lines.Text+'"';
+          if Length(frsitegrabber.mExcludeDirectory.Lines.Text)>0 then
+            paramlist:=paramlist+' -X "'+frsitegrabber.mExcludeDirectory.Lines.Text+'"';
+          if Length(frsitegrabber.mFileAcceptFilter.Lines.Text)>0 then
+            paramlist:=paramlist+' -A "'+frsitegrabber.mFileAcceptFilter.Lines.Text+'"';
+          if Length(frsitegrabber.mFollowTags.Lines.Text)>0 then
+            paramlist:=paramlist+' --follow-tags="'+frsitegrabber.mFollowTags.Lines.Text+'"';
+          if Length(frsitegrabber.mIgnoreTags.Lines.Text)>0 then
+            paramlist:=paramlist+' --ignore-tags="'+frsitegrabber.mIgnoreTags.Lines.Text+'"';
+          if Length(frsitegrabber.edtUserAgent.Text)>0 then
+            paramlist:=paramlist+' -U "'+frsitegrabber.edtUserAgent.Text+'"';
+          SubItems[columnname]:=frsitegrabber.edtSiteName.Text;//Nombre del sitio
+          SubItems[columnurl]:=frsitegrabber.edtURL.Text;//URL
+          SubItems[columndestiny]:=frsitegrabber.deDestination.Text;//Destino
+          SubItems[columnparameters]:=paramlist;//Parametros
+          SubItems[columnuser]:=frsitegrabber.edtUser.Text;//user
+          SubItems[columnpass]:=frsitegrabber.edtPassword.Text;//pass
+          SubItems[columnqueue]:=inttostr(frsitegrabber.cbQueue.ItemIndex);//queue
+          frmain.tvMainSelectionChanged(nil);
+          savemydownloads();
+        end;
       end;
     end;
   end;
