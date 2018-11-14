@@ -35,6 +35,7 @@ uses
 {$R *.res}
 
 begin
+  Application.Scaled:=True;
   Application.Title:='AWGG';
   RequireDerivedFormResource := True;
   Application.Initialize;

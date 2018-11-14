@@ -10,7 +10,7 @@
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="26"/>
-        <CursorPos Y="53"/>
+        <CursorPos Y="54"/>
         <UsageCount Value="237"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="6822"/>
-        <CursorPos Y="6844"/>
+        <TopLine Value="719"/>
+        <CursorPos X="31" Y="729"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -50,8 +50,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="746"/>
-        <CursorPos X="16" Y="770"/>
+        <TopLine Value="399"/>
+        <CursorPos X="18" Y="427"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>

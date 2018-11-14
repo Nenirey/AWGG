@@ -293,6 +293,7 @@ msgid "The file not exists."
 msgstr "El archivo no existe!!!."
 
 #: fstrings.msgmoveoperationerror
+#, fuzzy,badformat
 msgid ""
 "Error to move file, details:\n"
 "$s\n"
@@ -691,6 +692,10 @@ msgstr "Argumentos por defecto"
 msgid "Ignore domains:"
 msgstr ""
 
+#: tfrconfig.chinternetcheck.caption
+msgid "Start main queue if internet connection"
+msgstr ""
+
 #: tfrconfig.chloadlogs.caption
 msgctxt "tfrconfig.chloadlogs.caption"
 msgid "Load log when select a download."
@@ -908,6 +913,14 @@ msgctxt "tfrconfig.lblhttpport.caption"
 msgid "Port:"
 msgstr "Puerto:"
 
+#: tfrconfig.lblinternetinterval.caption
+msgid "Interval in seconds:"
+msgstr ""
+
+#: tfrconfig.lblinterneturl.caption
+msgid "Internet URL:"
+msgstr ""
+
 #: tfrconfig.lbllogspath.caption
 msgctxt "tfrconfig.lbllogspath.caption"
 msgid "Path of history logs:"
@@ -970,6 +983,10 @@ msgstr "Descarga completada:"
 msgctxt "tfrconfig.lblsounddownstoped.caption"
 msgid "Download stopped:"
 msgstr "Descarga detenida:"
+
+#: tfrconfig.lblsoundinternet.caption
+msgid "Internet connection:"
+msgstr ""
 
 #: tfrconfig.lblsslhost.caption
 msgctxt "tfrconfig.lblsslhost.caption"
@@ -1840,7 +1857,7 @@ msgstr "Configurar la categoria de arhcivo"
 
 #: tfrnewdown.btnforcenames.hint
 msgid "Force names"
-msgstr "Forzar nombres"
+msgstr ""
 
 #: tfrnewdown.btngodestination.hint
 msgid "Open the path folder"

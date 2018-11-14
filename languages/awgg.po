@@ -664,6 +664,10 @@ msgstr ""
 msgid "Ignore domains:"
 msgstr ""
 
+#: tfrconfig.chinternetcheck.caption
+msgid "Start main queue if internet connection"
+msgstr ""
+
 #: tfrconfig.chloadlogs.caption
 msgctxt "TFRCONFIG.CHLOADLOGS.CAPTION"
 msgid "Load log when select a download."
@@ -881,6 +885,14 @@ msgctxt "TFRCONFIG.LBLHTTPPORT.CAPTION"
 msgid "Port:"
 msgstr ""
 
+#: tfrconfig.lblinternetinterval.caption
+msgid "Interval in seconds:"
+msgstr ""
+
+#: tfrconfig.lblinterneturl.caption
+msgid "Internet URL:"
+msgstr ""
+
 #: tfrconfig.lbllogspath.caption
 msgctxt "TFRCONFIG.LBLLOGSPATH.CAPTION"
 msgid "Path of history logs:"
@@ -942,6 +954,10 @@ msgstr ""
 #: tfrconfig.lblsounddownstoped.caption
 msgctxt "TFRCONFIG.LBLSOUNDDOWNSTOPED.CAPTION"
 msgid "Download stopped:"
+msgstr ""
+
+#: tfrconfig.lblsoundinternet.caption
+msgid "Internet connection:"
 msgstr ""
 
 #: tfrconfig.lblsslhost.caption

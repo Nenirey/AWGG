@@ -38,7 +38,9 @@ type
   Private
   DHTTPClient:TFPHTTPClient;
   RS:TStringList;
+  ifstop,internetchange:boolean;
   procedure showrs;
+  procedure stop;
   protected
     procedure Execute; override;
   public
@@ -570,7 +572,7 @@ var
   firststart:boolean;
   defaultengine:string;
   playsounds:boolean;
-  downcompsound,downstopsound:string;
+  downcompsound,downstopsound,internetsound:string;
   sheduledisablelimits:boolean;
   queuerotate:boolean;
   triesrotate:integer;
@@ -635,6 +637,9 @@ var
   queueindex:integer;
   internetchecker:TDownThread;
   internet:boolean;
+  internetcheck:boolean;
+  interneturl:string;
+  internetinterval:integer;
   queuemainstop:boolean=false;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
@@ -670,7 +675,25 @@ begin
   FreeOnTerminate := True;
   DHTTPClient := TFPHTTPClient.Create(nil);
   RS:=TStringList.Create;
+  internetchange:=true;
   internet:=false;
+  ifstop:=true;
+  case useproxy of
+  0,1:begin
+        //DHTTPClient.Proxy.Host:= '';
+        //DHTTPClient.Proxy.UserName:= '';
+        //DHTTPClient.Proxy.Password:= '';
+      end;
+  2:begin
+      DHTTPClient.Proxy.Host:= phttp;
+      DHTTPClient.Proxy.Port:= strtoint(phttpport);
+      if useaut then
+      begin
+        DHTTPClient.Proxy.UserName:= puser;
+        DHTTPClient.Proxy.Password:= ppassword;
+      end;
+    end;
+  end;
 end;
 
 procedure TDownThread.showrs;
@@ -679,56 +702,53 @@ begin
  begin
    if Assigned(qtimer[0]) then
    begin
-     if queuemainstop=false then
+     if (queuemainstop=false) then
      begin
        queuemanual[0]:=true;
        qtimer[0].Interval:=1000;
        qtimer[0].Enabled:=true;;
      end;
+     if playsounds and internetchange then
+       playsound(internetsound);
+     internetchange:=false;
    end;
  end
  else
  begin
-
+   internetchange:=true;
  end;
 end;
 
-procedure TDownThread.Execute;
+procedure TDownThread.stop;
 begin
+  DHTTPClient.Terminate;
+  ifstop:=false;
+  DHTTPClient.Destroy;
+end;
+
+procedure TDownThread.Execute;
+var
+  firsttime:boolean;
+begin
+ firsttime:=true;
   try
-    while true do
+    while ifstop do
     begin
-      RS.Clear;
+      if firsttime=false then
+        sleep(internetInterval*1000);
       try
         internet:=false;
-        case useproxy of
-        0,1:begin
-            DHTTPClient.Proxy.Host:= '';
-            DHTTPClient.Proxy.UserName:= '';
-            DHTTPClient.Proxy.Password:= '';
-          end;
-        2:begin
-            DHTTPClient.Proxy.Host:= phttp;
-            DHTTPClient.Proxy.Port:= strtoint(phttpport);
-            if useaut then
-            begin
-              DHTTPClient.Proxy.UserName:= puser;
-              DHTTPClient.Proxy.Password:= ppassword;
-            end
-            else
-            begin
-              DHTTPClient.Proxy.UserName:= '';
-              DHTTPClient.Proxy.Password:= '';
-            end;
-          end;
-        end;
-        DHTTPClient.Head('http://checkip.dyndns.org/',RS);
+        firsttime:=false;
+        DHTTPClient.KeepConnection:=false;
+        DHTTPClient.HTTPMethod('HEAD',InternetURL,nil,[200]);
+        RS.Assign(DHTTPClient.ResponseHeaders);
+        DHTTPClient.Terminate;
         if RS.Count>0 then
           internet:=true
         else
           internet:=false;
-      Synchronize(@showrs);
-      sleep(10000);
+        RS.Clear;
+        Synchronize(@showrs);
       except on e:exception do
         begin
           internet:=false;
@@ -2596,6 +2616,7 @@ begin
     iniconfigfile.WriteBool('Config','playsounds',playsounds);
     iniconfigfile.WriteString('Config','downcompsound',downcompsound);
     iniconfigfile.WriteString('Config','downstopsound',downstopsound);
+    iniconfigfile.WriteString('Config','internetsound',internetsound);
     iniconfigfile.WriteBool('Config','sheduledisablelimits',sheduledisablelimits);
     iniconfigfile.WriteBool('Config','queuerotate',queuerotate);
     iniconfigfile.WriteInteger('Config','triesrotate',triesrotate);
@@ -2645,6 +2666,9 @@ begin
       iniconfigfile.WriteString('Domain'+inttostr(i),'Name',domainfilters[i]);
     end;
     //////////////////////////////
+    iniconfigfile.WriteBool('Config','internetcheck',internetCheck);
+    iniconfigfile.WriteString('Config','interneturl',internetURL);
+    iniconfigfile.WriteInteger('Config','internetinterval',internetInterval);
     iniconfigfile.UpdateFile;
     iniconfigfile.Free;
     autostart();
@@ -2760,6 +2784,7 @@ begin
     playsounds:=iniconfigfile.ReadBool('Config','playsounds',true);
     downcompsound:=iniconfigfile.ReadString('Config','downcompsound','complete.wav');
     downstopsound:=iniconfigfile.ReadString('Config','downstopsound','stopped.wav');
+    internetsound:=iniconfigfile.ReadString('Config','internetsound','internet.wav');
     sheduledisablelimits:=iniconfigfile.ReadBool('Config','sheduledisablelimits',false);
     queuerotate:=iniconfigfile.ReadBool('Config','queuerotate',false);
     triesrotate:=iniconfigfile.ReadInteger('Config','triesrotate',5);
@@ -2792,6 +2817,10 @@ begin
     frddboxLeft:=iniconfigfile.ReadInteger('Config','dropboxxpos',Screen.WorkAreaWidth-40);
     frddboxTop:=iniconfigfile.ReadInteger('Config','dropboxypos',Screen.WorkAreaHeight-40);
     frddboxSize:=iniconfigfile.ReadInteger('Config','dropboxsize',40);
+    //Internet check
+    internetCheck:=iniconfigfile.ReadBool('Config','internetcheck',true);
+    internetURL:=iniconfigfile.ReadString('Config','interneturl','http://checkip.dyndns.org/');
+    internetInterval:=iniconfigfile.ReadInteger('Config','internetinterval',10);
     //categorias
     if iniconfigfile.ValueExists('Category','count') then
     begin
@@ -2996,6 +3025,7 @@ begin
   queuerotate:=frconfig.chQueueRotate.Checked;
   downcompsound:=frconfig.fneSoundComplete.Text;
   downstopsound:=frconfig.fneSoundStopped.Text;
+  internetsound:=frconfig.fneSoundInternet.Text;
   triesrotate:=frconfig.seQueueTriesRotate.Value;
   if frconfig.rbQueueRMOneStep.Checked then
     rotatemode:=0;
@@ -3033,6 +3063,9 @@ begin
   qviernes[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[5];
   qsabado[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[6];
   activedomainfilter:=frconfig.chIgnoreFilter.Checked;
+  internetcheck:=frconfig.chInternetCheck.Checked;
+  internetURL:=frconfig.edtInternetURL.Text;
+  internetInterval:=frconfig.seInternetInterval.Value;
   SetLength(domainfilters,frconfig.lbDomains.Items.Count);
   for i:=0 to frconfig.lbDomains.Items.Count-1 do
   begin
@@ -3047,6 +3080,19 @@ begin
   saveconfig();
   stimer[frconfig.cbQueue.ItemIndex].Enabled:=qtimerenable[frconfig.cbQueue.ItemIndex];
   categoryreload();
+  if internetcheck then
+  begin
+    internetchecker:=TDownThread.Create;
+    internetchecker.Start;
+  end
+  else
+  begin
+    internet:=false;
+    if Assigned(internetchecker) then
+    begin
+      internetchecker.stop;
+    end;
+  end;
 end;
 
 procedure configdlg();
@@ -3170,6 +3216,7 @@ begin
     frconfig.chQueueRotate.Checked:=queuerotate;
     frconfig.fneSoundComplete.Text:=downcompsound;
     frconfig.fneSoundStopped.Text:=downstopsound;
+    frconfig.fneSoundInternet.Text:=internetsound;
     frconfig.seQueueTriesRotate.Value:=triesrotate;
     if rotatemode=0 then
       frconfig.rbQueueRMOneStep.Checked:=true;
@@ -3223,6 +3270,9 @@ begin
     frconfig.chShutdown.Checked:=queuepoweroff[frconfig.cbQueue.ItemIndex];
     frconfig.chIgnoreFilter.Checked:=activedomainfilter;
     frconfig.chIgnoreFilterChange(nil);
+    frconfig.chInternetCheck.Checked:=internetcheck;
+    frconfig.edtInternetURL.Text:=internetURL;
+    frconfig.seInternetInterval.Value:=internetInterval;
     for i:=0 to Length(domainfilters)-1 do
     begin
       frconfig.lbDomains.Items.Add(domainfilters[i]);
@@ -3660,18 +3710,35 @@ begin
   begin
     if (frmain.lvMain.Items[i].SubItems[columnstatus]='1') and (frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) then
       inc(maxcdown);
+    //if (maxcdown>=frmain.seMaxDownInProgress.Value) then
+      //break;
   end;
-  for i:=0 to frmain.lvMain.Items.Count-1 do
-  begin
-    if (frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) then
+  //if (maxcdown<frmain.seMaxDownInProgress.Value) then
+  //begin
+    for i:=0 to frmain.lvMain.Items.Count-1 do
     begin
-      if (maxcdown<frmain.seMaxDownInProgress.Value) and ((frmain.lvMain.Items[i].SubItems[columnstatus]='') or (frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='2') or (frmain.lvMain.Items[i].SubItems[columnstatus]='4')) and ((strtoint(frmain.lvMain.Items[i].SubItems[columntries])>0) or (frmain.lvMain.Items[i].SubItems[columnstatus]='0')) then
+      if (frmain.lvMain.Items[i].SubItems[columnqueue]=inttostr(self.qtindex)) then
       begin
-        inc(maxcdown);
-        downloadstart(i,false);
+        if (maxcdown<frmain.seMaxDownInProgress.Value) and ((frmain.lvMain.Items[i].SubItems[columnstatus]='') or (frmain.lvMain.Items[i].SubItems[columnstatus]='0') or (frmain.lvMain.Items[i].SubItems[columnstatus]='2') or (frmain.lvMain.Items[i].SubItems[columnstatus]='4')) and ((strtoint(frmain.lvMain.Items[i].SubItems[columntries])>0) or (frmain.lvMain.Items[i].SubItems[columnstatus]='0')) then
+        begin
+          if (self.qtindex<>0) then
+          begin
+            inc(maxcdown);
+            downloadstart(i,false);
+          end
+          else
+          begin
+            //This is for no start main queue downloads if no internet connection.
+            if ((internet and internetcheck) or (internetcheck=false)) and (queuemanual[self.qtindex]) then
+            begin
+              inc(maxcdown);
+              downloadstart(i,false);
+            end;
+          end;
+        end;
       end;
     end;
-  end;
+  //end;
   /////Stop de queue if not more to down and was start manual
   if (maxcdown=0) and queuemanual[self.qtindex] then
     self.Enabled:=false;
@@ -5490,7 +5557,7 @@ begin
     end;
     frmain.lvMain.Items[thid].SubItems[columnspeed]:='--';
     if otherlistview then
-      frmain.lvFilter.Items[thid].SubItems[columnspeed]:='--';
+      frmain.lvFilter.Items[thid2].SubItems[columnspeed]:='--';
     if frmain.lvMain.ItemIndex=thid then
     begin
       frmain.tbStartDown.Enabled:=true;
@@ -6054,8 +6121,11 @@ begin
   frmain.FirstStartTimer.Enabled:=true;
   onestart:=false;
   frmain.lvFilter.Columns:=frmain.lvMain.Columns;
-  internetchecker:=TDownThread.Create;
-  internetchecker.Start;
+  if internetcheck then
+  begin
+    internetchecker:=TDownThread.Create;
+    internetchecker.Start;
+  end;
 end;
 
 procedure Tfrmain.FormWindowStateChange(Sender: TObject);
