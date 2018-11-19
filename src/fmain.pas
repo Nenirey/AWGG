@@ -66,6 +66,7 @@ private
   procedure update;
   procedure changestatus;
   procedure prepare;
+  procedure prestop;
   procedure shutdown;
 protected
   procedure Execute; override;
@@ -5192,15 +5193,20 @@ begin
     ShowMessage(fstrings.msgmustselectdownload);
 end;
 
-procedure DownThread.shutdown;
+procedure DownThread.prestop;
 begin
-  manualshutdown:=true;
   frmain.lvMain.Items[thid].Caption:=fstrings.statusstopping;
   if frmain.lvFilter.Visible then
   begin
     if (frmain.lvFilter.Items.Count>thid2) then
       frmain.lvFilter.Items[thid2].Caption:=fstrings.statusstopping;
   end;
+end;
+
+procedure DownThread.shutdown;
+begin
+  manualshutdown:=true;
+  Synchronize(@prestop);
 end;
 
 procedure DownThread.Execute;
