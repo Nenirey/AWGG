@@ -1223,7 +1223,7 @@ var
   Buffer: array[0..$10000 -1] of byte;
   NumRead,i: Integer;
   FromSize:Int64;
-  TotalSize:Int64;
+  TotalSize:Int64=0;
   CurrentTotal:Int64;
 begin
   for i:=0 to source.Count-1 do
@@ -2022,6 +2022,17 @@ begin
   result:=Copy(url,LastDelimiter('/',url)+1,length(url));
 end;
 
+procedure downthread_shutdown(t:DownThread);
+begin
+  // This helper tries to protect the DownThread object from
+  // being used after it was terminated.
+  // This, however, does not guarantee 100% protection in case
+  // of multi-threading, when another thread may be destroying
+  // this object while it is being used here.
+  if Assigned(t) and (not t.Terminated) then
+    t.shutdown();
+end;
+
 procedure stopqueue(indice:integer);
 var
   n:integer;
@@ -2032,7 +2043,7 @@ begin
   for n:=0 to frmain.lvMain.Items.Count-1 do
   begin
     if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[n].SubItems[columnid])) and (frmain.lvMain.Items[n].SubItems[columnqueue]=inttostr(indice)) and (frmain.lvMain.Items[n].SubItems[columnstatus]='1') then
-      hilo[strtoint(frmain.lvMain.Items[n].SubItems[columnid])].shutdown();
+      downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[n].SubItems[columnid])]);
   end;
 end;
 
@@ -3334,7 +3345,7 @@ begin
       if force then
         hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].wthp.Terminate(0)
       else
-        hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].shutdown();
+        downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])]);
       end;
       sleep(1);
     except on e:exception do
@@ -7661,7 +7672,7 @@ end;
 procedure Tfrmain.mitraydownStopClick(Sender: TObject);
 begin
   if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnid])) and (frmain.lvMain.Items[numtraydown].SubItems[columnstatus]='1') then
-    hilo[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnid])].shutdown();
+    downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnid])]);
   if qtimer[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnqueue])].Enabled then
       frmain.lvMain.Items[numtraydown].SubItems[columntries]:='0';
 end;
@@ -8364,7 +8375,7 @@ begin
           begin
             if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[i].SubItems[columnid])) then
             begin
-              hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])].shutdown();
+              downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])]);
               if qtimer[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])].Enabled then
                 frmain.lvMain.Items[i].SubItems[columntries]:='0';
             end;
@@ -8375,7 +8386,7 @@ begin
       begin
         if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])) then
         begin
-          hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])].shutdown();
+          downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])]);
           if qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled then
             frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntries]:='0';
         end;
