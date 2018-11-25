@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="51"/>
-        <CursorPos X="21" Y="69"/>
+        <TopLine Value="5231"/>
+        <CursorPos X="80" Y="5251"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -154,7 +154,6 @@
         <CursorPos X="3" Y="174"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="fcopymove.pas"/>
@@ -180,7 +179,6 @@
         <CursorPos X="3" Y="176"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
-        <LoadedDesigner Value="True"/>
       </Unit13>
       <Unit14>
         <Filename Value="fvideoformat.pas"/>

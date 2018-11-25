@@ -5248,7 +5248,7 @@ var
         Write(logfile,AnsiReplaceStr(AnsiReplaceStr(wout,#13,#10),#10,LineEnding));
     except on e:exception do
     end;
-    if (Pos('(OK):download',wout)>0) or (Pos('100%[',wout)>0) or (Pos('%AWGG100OK%',wout)>0) or (Pos('[100%]',wout)>0) or (Pos(' guardado [',wout)>0) or (Pos(' saved [',wout)>0) or (Pos('ERROR 400: Bad Request.',wout)>0) or (Pos('The file is already fully retrieved; nothing to do.',wout)>0) or (Pos('El fichero ya ha sido totalmente recuperado, no hay nada que hacer.',wout)>0) and (frmain.lvMain.Items[thid].SubItems[columntype]='0') then
+    if (Pos('(OK):download',wout)>0) or (Pos('- Download has already completed:',wout)>0) or (Pos('100%[',wout)>0) or (Pos('%AWGG100OK%',wout)>0) or (Pos('[100%]',wout)>0) or (Pos(' guardado [',wout)>0) or (Pos(' saved [',wout)>0) or (Pos('ERROR 400: Bad Request.',wout)>0) or (Pos('The file is already fully retrieved; nothing to do.',wout)>0) or (Pos('El fichero ya ha sido totalmente recuperado, no hay nada que hacer.',wout)>0) and (frmain.lvMain.Items[thid].SubItems[columntype]='0') then
     completado:=true;
     if (Pos('FINISHED --',wout)>0) or (Pos('Downloaded: ',wout)>0) and (frmain.lvMain.Items[thid].SubItems[columntype]='1') then
     completado:=true;
