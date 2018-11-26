@@ -539,6 +539,7 @@ var
   useproxy:integer;
   useaut:boolean;
   shownotifi:boolean;
+  usesysnotifi:boolean;
   hiddenotifi:integer;
   notifipos:integer;
   ddowndir:string='';
@@ -1344,58 +1345,72 @@ var
   ABitmap:Graphics.TBitmap;
   posicion:integer;
 begin
-  notiforms:=Tfrnotification.Create(nil);
-  notiforms.notiuid:=uid;
-  ABitmap:=Graphics.TBitmap.Create;
-  ABitmap.Monochrome:=true;
-  ABitmap.Width:=notiforms.Width;
-  ABitmap.Height:=notiforms.Height;
-  ABitmap.Canvas.Brush.Color:=clBlack;
-  ABitmap.Canvas.FillRect(0, 0, notiforms.Width, notiforms.Height);
-  ABitmap.Canvas.Brush.Color:=clWhite;
-  ABitmap.Canvas.RoundRect(0, 0, notiforms.Width, notiforms.Height, 20, 20);
-  notiforms.btnGoPath.Enabled:=ok;
-  notiforms.btnOpenFile.Enabled:=ok;
-  notiforms.btnCopyTo.Enabled:=ok;
-  notiforms.btnMoveTo.Enabled:=ok;
-  if (uid='') then
-    notiforms.btnStartDown.Enabled:=false
+  if usesysnotifi then
+  begin
+    frmain.MainTrayIcon.BalloonHint:=title+#10#13+name+#10#13+note;
+    frmain.MainTrayIcon.BalloonTitle:='AWGG';
+    frmain.MainTrayIcon.BalloonTimeout:=hiddenotifi*1000;
+    if ok then
+      frmain.MainTrayIcon.BalloonFlags:=bfInfo
+    else
+      frmain.MainTrayIcon.BalloonFlags:=bfError;
+    frmain.MainTrayIcon.ShowBalloonHint;
+  end
   else
-    notiforms.btnStartDown.Enabled:=not ok;
-  notiforms.btnGoPath.OnClick:=notiforms.btnGoPath.OnClick;
-  notiforms.btnOpenFile.OnClick:=notiforms.btnOpenFile.OnClick;
-  notiforms.btnClose.OnClick:=notiforms.btnClose.OnClick;
-  notiforms.btnCopyTo.OnClick:=notiforms.btnCopyTo.OnClick;
-  notiforms.btnMoveTo.OnClick:=notiforms.btnMoveTo.OnClick;
-  notiforms.OnMouseEnter:=notiforms.OnMouseEnter;
-  notiforms.OnMouseLeave:=notiforms.OnMouseLeave;
-  notiforms.btnStartDown.OnClick:=notiforms.btnStartDown.OnClick;
-  notiforms.OnClick:=notiforms.OnClick;
-  notiforms.lblFileName.Caption:=name;
-  notiforms.lblDescriptionError.Caption:=note;
-  notiforms.lblTitle.Caption:=title;
-  notiforms.lblDescriptionError.Hint:=note;
-  notiforms.notipathfile:=fpath;
-  if simulation<>-1 then
-    posicion:=simulation
-  else
-    posicion:=notifipos;
-  case posicion of
-        0: begin notiforms.Left:=0;notiforms.Top:=0;end;
-        1: begin notiforms.Left:=Round(Screen.Width/4);notiforms.Top:=0;end;
-        2: begin notiforms.Left:=Screen.Width-notiforms.Width;notiforms.Top:=0;end;
-        3: begin notiforms.Left:=0;notiforms.Top:=Round(Screen.Height/3);end;
-        4: begin notiforms.Left:=Round(Screen.Width/4);notiforms.Top:=Round(Screen.Height/3);end;
-        5: begin notiforms.Left:=Screen.Width-notiforms.Width;notiforms.Top:=Round(Screen.Height/3);end;
-        6: begin notiforms.Left:=0;notiforms.Top:=Screen.Height-notiforms.Height;end;
-        7: begin notiforms.Left:=Round(Screen.Width/4);notiforms.Top:=Screen.Height-notiforms.Height;end;
-        8: begin notiforms.Left:=Screen.Width-notiforms.Width;notiforms.Top:=Screen.Height-notiforms.Height;end;
-      end;
-  notiforms.HideTimer.Interval:=hiddenotifi*1000;
-  notiforms.HideTimer.Enabled:=true;
-  notiforms.Show;
-  notiforms.SetShape(ABitmap);
-  ABitmap.Free;
+  begin
+    notiforms:=Tfrnotification.Create(nil);
+    notiforms.notiuid:=uid;
+    ABitmap:=Graphics.TBitmap.Create;
+    ABitmap.Monochrome:=true;
+    ABitmap.Width:=notiforms.Width;
+    ABitmap.Height:=notiforms.Height;
+    ABitmap.Canvas.Brush.Color:=clBlack;
+    ABitmap.Canvas.FillRect(0, 0, notiforms.Width, notiforms.Height);
+    ABitmap.Canvas.Brush.Color:=clWhite;
+    ABitmap.Canvas.RoundRect(0, 0, notiforms.Width, notiforms.Height, 20, 20);
+    notiforms.btnGoPath.Enabled:=ok;
+    notiforms.btnOpenFile.Enabled:=ok;
+    notiforms.btnCopyTo.Enabled:=ok;
+    notiforms.btnMoveTo.Enabled:=ok;
+    if (uid='') then
+      notiforms.btnStartDown.Enabled:=false
+    else
+      notiforms.btnStartDown.Enabled:=not ok;
+    notiforms.btnGoPath.OnClick:=notiforms.btnGoPath.OnClick;
+    notiforms.btnOpenFile.OnClick:=notiforms.btnOpenFile.OnClick;
+    notiforms.btnClose.OnClick:=notiforms.btnClose.OnClick;
+    notiforms.btnCopyTo.OnClick:=notiforms.btnCopyTo.OnClick;
+    notiforms.btnMoveTo.OnClick:=notiforms.btnMoveTo.OnClick;
+    notiforms.OnMouseEnter:=notiforms.OnMouseEnter;
+    notiforms.OnMouseLeave:=notiforms.OnMouseLeave;
+    notiforms.btnStartDown.OnClick:=notiforms.btnStartDown.OnClick;
+    notiforms.OnClick:=notiforms.OnClick;
+    notiforms.lblFileName.Caption:=name;
+    notiforms.lblDescriptionError.Caption:=note;
+    notiforms.lblTitle.Caption:=title;
+    notiforms.lblDescriptionError.Hint:=note;
+    notiforms.notipathfile:=fpath;
+    if simulation<>-1 then
+      posicion:=simulation
+    else
+      posicion:=notifipos;
+    case posicion of
+          0: begin notiforms.Left:=0;notiforms.Top:=0;end;
+          1: begin notiforms.Left:=Round(Screen.Width/4);notiforms.Top:=0;end;
+          2: begin notiforms.Left:=Screen.Width-notiforms.Width;notiforms.Top:=0;end;
+          3: begin notiforms.Left:=0;notiforms.Top:=Round(Screen.Height/3);end;
+          4: begin notiforms.Left:=Round(Screen.Width/4);notiforms.Top:=Round(Screen.Height/3);end;
+          5: begin notiforms.Left:=Screen.Width-notiforms.Width;notiforms.Top:=Round(Screen.Height/3);end;
+          6: begin notiforms.Left:=0;notiforms.Top:=Screen.Height-notiforms.Height;end;
+          7: begin notiforms.Left:=Round(Screen.Width/4);notiforms.Top:=Screen.Height-notiforms.Height;end;
+          8: begin notiforms.Left:=Screen.Width-notiforms.Width;notiforms.Top:=Screen.Height-notiforms.Height;end;
+        end;
+    notiforms.HideTimer.Interval:=hiddenotifi*1000;
+    notiforms.HideTimer.Enabled:=true;
+    notiforms.Show;
+    notiforms.SetShape(ABitmap);
+    ABitmap.Free;
+  end;
 end;
 
 function prettysize(size:float;format:string;const Digits: TRoundToRange = -1;coma:string=','):string;
@@ -2540,6 +2555,7 @@ begin
     iniconfigfile.WriteString('Config','ppassword',ppassword);
     iniconfigfile.WriteBool('Config','shownotifi',shownotifi);
     iniconfigfile.WriteInteger('Config','hiddenotifi',hiddenotifi);
+    iniconfigfile.WriteBool('Config','usesysnotifi',usesysnotifi);
     iniconfigfile.WriteBool('Config','clipboardmonitor',clipboardmonitor);
     iniconfigfile.WriteString('Config','ddowndir',ddowndir);
     if columncolaw>10 then
@@ -2708,6 +2724,7 @@ begin
     ppassword:=iniconfigfile.ReadString('Config','ppassword','');
     shownotifi:=iniconfigfile.ReadBool('Config','shownotifi',true);
     hiddenotifi:=iniconfigfile.ReadInteger('Config','hiddenotifi',5);
+    usesysnotifi:=iniconfigfile.ReadBool('Config','usesysnotifi',false);
     clipboardmonitor:=iniconfigfile.ReadBool('Config','clipboardmonitor',true);
     ddowndir:=iniconfigfile.ReadString('Config','ddowndir',ddowndir);
     dotherdowndir:=ddowndir+pathdelim+'Others';
@@ -3026,6 +3043,7 @@ begin
   logger:=frconfig.chSaveDownLogs.Checked;
   logpath:=frconfig.deLogsPath.Text;
   notifipos:=frconfig.rgPosition.ItemIndex;
+  usesysnotifi:=frconfig.chSysNotifications.Checked;
   dtimeout:=frconfig.seDownTimeOut.Value;
   dtries:=frconfig.seDownTries.Value;
   ddelay:=frconfig.seDownDelayTries.Value;
@@ -3127,6 +3145,7 @@ begin
     frconfig.chClipboardMonitor.Checked:=clipboardmonitor;
     frconfig.deDownFolder.Text:=ddowndir;
     frconfig.chShowNotifications.Checked:=shownotifi;
+    frconfig.chSysNotifications.Checked:=usesysnotifi;
     frconfig.seHideSeconds.Value:=hiddenotifi;
     frconfig.fneWgetpath.Text:=wgetrutebin;
     frconfig.fneAria2Path.Text:=aria2crutebin;

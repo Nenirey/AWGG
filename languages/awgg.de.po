@@ -751,6 +751,10 @@ msgctxt "tfrconfig.chstopqueue.caption"
 msgid "Stop queue:"
 msgstr "Download-Liste stoppen:"
 
+#: tfrconfig.chsysnotifications.caption
+msgid "Use system notifications"
+msgstr ""
+
 #: tfrconfig.chuseauth.caption
 msgctxt "tfrconfig.chuseauth.caption"
 msgid "Use authentication"
@@ -1874,6 +1878,10 @@ msgstr "Ablehnen"
 #: tfrnewdown.btncategorygo.hint
 msgid "Configure the category file"
 msgstr "Wähle die Kategorie"
+
+#: tfrnewdown.btndeletefilter.hint
+msgid "Delete from domain filter"
+msgstr ""
 
 #: tfrnewdown.btnforcenames.hint
 msgid "Force names"

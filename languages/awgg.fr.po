@@ -738,6 +738,10 @@ msgctxt "tfrconfig.chstopqueue.caption"
 msgid "Stop queue:"
 msgstr "Stopper la file d'attente:"
 
+#: tfrconfig.chsysnotifications.caption
+msgid "Use system notifications"
+msgstr ""
+
 #: tfrconfig.chuseauth.caption
 msgctxt "tfrconfig.chuseauth.caption"
 msgid "Use authentication"
@@ -1855,6 +1859,10 @@ msgstr "Annuler"
 
 #: tfrnewdown.btncategorygo.hint
 msgid "Configure the category file"
+msgstr ""
+
+#: tfrnewdown.btndeletefilter.hint
+msgid "Delete from domain filter"
 msgstr ""
 
 #: tfrnewdown.btnforcenames.hint

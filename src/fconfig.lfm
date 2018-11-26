@@ -1,7 +1,7 @@
 object frconfig: Tfrconfig
-  Left = 387
+  Left = 459
   Height = 444
-  Top = 195
+  Top = 232
   Width = 649
   Caption = 'Configuration'
   ClientHeight = 444
@@ -55,12 +55,12 @@ object frconfig: Tfrconfig
     Height = 387
     Top = 24
     Width = 465
-    ActivePage = tsAutomation
+    ActivePage = tsNotifications
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 11
+    TabIndex = 2
     TabOrder = 2
     OnChange = pcConfigChange
     Options = [nboKeyboardTabSwitch]
@@ -351,7 +351,7 @@ object frconfig: Tfrconfig
         AnchorSideRight.Control = seHTTPport
         AnchorSideRight.Side = asrBottom
         Left = 45
-        Height = 31
+        Height = 23
         Top = 5
         Width = 413
         Anchors = [akTop, akLeft, akRight]
@@ -688,9 +688,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Control = tsNotifications
         AnchorSideTop.Control = tsNotifications
         Left = 15
-        Height = 20
+        Height = 21
         Top = 15
-        Width = 137
+        Width = 135
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         Caption = 'Show notifications'
@@ -699,11 +699,11 @@ object frconfig: Tfrconfig
       object seHideSeconds: TSpinEdit
         AnchorSideLeft.Control = lblHideIn
         AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = chShowNotifications
+        AnchorSideTop.Control = chSysNotifications
         AnchorSideTop.Side = asrBottom
-        Left = 63
-        Height = 23
-        Top = 45
+        Left = 62
+        Height = 25
+        Top = 77
         Width = 50
         BorderSpacing.Top = 10
         MaxValue = 60
@@ -717,9 +717,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = seHideSeconds
         Left = 15
-        Height = 15
-        Top = 49
-        Width = 48
+        Height = 19
+        Top = 80
+        Width = 47
         Caption = 'Hide in:'
         ParentColor = False
       end
@@ -728,10 +728,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seHideSeconds
         AnchorSideTop.Side = asrCenter
-        Left = 113
-        Height = 15
-        Top = 49
-        Width = 57
+        Left = 112
+        Height = 19
+        Top = 80
+        Width = 53
         Caption = ' seconds'
         ParentColor = False
       end
@@ -744,9 +744,9 @@ object frconfig: Tfrconfig
         AnchorSideBottom.Control = tsNotifications
         AnchorSideBottom.Side = asrBottom
         Left = 40
-        Height = 262
-        Top = 78
-        Width = 362
+        Height = 233
+        Top = 112
+        Width = 383
         Anchors = [akTop, akLeft, akRight, akBottom]
         AutoFill = True
         BorderSpacing.Left = 40
@@ -761,8 +761,8 @@ object frconfig: Tfrconfig
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
-        ClientHeight = 242
-        ClientWidth = 360
+        ClientHeight = 213
+        ClientWidth = 381
         Columns = 3
         ItemIndex = 2
         Items.Strings = (
@@ -783,15 +783,28 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seHideSeconds
         AnchorSideTop.Side = asrCenter
-        Left = 180
-        Height = 27
-        Top = 43
-        Width = 60
+        Left = 175
+        Height = 25
+        Top = 77
+        Width = 56
         AutoSize = True
         BorderSpacing.Left = 10
         Caption = 'Preview'
         OnClick = btnPreviewNotificationClick
         TabOrder = 3
+      end
+      object chSysNotifications: TCheckBox
+        AnchorSideLeft.Control = chShowNotifications
+        AnchorSideTop.Control = chShowNotifications
+        AnchorSideTop.Side = asrBottom
+        Left = 25
+        Height = 21
+        Top = 46
+        Width = 173
+        BorderSpacing.Left = 10
+        BorderSpacing.Top = 10
+        Caption = 'Use system notifications'
+        TabOrder = 4
       end
     end
     object tsSounds: TTabSheet
@@ -2358,7 +2371,7 @@ object frconfig: Tfrconfig
         Left = 0
         Height = 200
         Top = 0
-        Width = 463
+        Width = 457
         Anchors = [akTop, akLeft, akRight]
         AutoFill = True
         Caption = 'Automation'
@@ -2371,7 +2384,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 180
-        ClientWidth = 461
+        ClientWidth = 455
         Items.Strings = (
           'Run with the system.'
           'Start in the systray.'
@@ -2386,9 +2399,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = chgAutomation
         AnchorSideTop.Side = asrBottom
         Left = 7
-        Height = 21
+        Height = 19
         Top = 205
-        Width = 266
+        Width = 227
         BorderSpacing.Left = 7
         BorderSpacing.Top = 5
         Caption = 'Start main queue if internet connection'
@@ -2401,9 +2414,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = chInternetCheck
         AnchorSideTop.Side = asrBottom
         Left = 7
-        Height = 19
-        Top = 241
-        Width = 85
+        Height = 15
+        Top = 239
+        Width = 68
         BorderSpacing.Top = 15
         Caption = 'Internet URL:'
         ParentColor = False
@@ -2415,10 +2428,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = tsAutomation
         AnchorSideRight.Side = asrBottom
-        Left = 92
-        Height = 25
-        Top = 238
-        Width = 366
+        Left = 75
+        Height = 23
+        Top = 235
+        Width = 377
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 5
         TabOrder = 2
@@ -2428,9 +2441,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = lblInternetURL
         AnchorSideTop.Side = asrBottom
         Left = 7
-        Height = 19
-        Top = 275
-        Width = 120
+        Height = 15
+        Top = 269
+        Width = 101
         BorderSpacing.Top = 15
         Caption = 'Interval in seconds:'
         ParentColor = False
@@ -2440,9 +2453,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = lblInternetInterval
         AnchorSideTop.Side = asrCenter
-        Left = 127
-        Height = 25
-        Top = 272
+        Left = 108
+        Height = 23
+        Top = 265
         Width = 68
         MaxValue = 360
         MinValue = 1
@@ -2719,7 +2732,7 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = gbEngine
           AnchorSideTop.Side = asrCenter
           Left = 170
-          Height = 35
+          Height = 23
           Top = 37
           Width = 100
           ItemHeight = 0

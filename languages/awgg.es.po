@@ -736,6 +736,10 @@ msgctxt "tfrconfig.chstopqueue.caption"
 msgid "Stop queue:"
 msgstr "Detener cola:"
 
+#: tfrconfig.chsysnotifications.caption
+msgid "Use system notifications"
+msgstr ""
+
 #: tfrconfig.chuseauth.caption
 msgctxt "tfrconfig.chuseauth.caption"
 msgid "Use authentication"
@@ -1844,7 +1848,7 @@ msgstr "Añadir cola"
 
 #: tfrnewdown.btnaddtofilter.hint
 msgid "Add to domain filter"
-msgstr ""
+msgstr "Añadir al filtro de dominio"
 
 #: tfrnewdown.btncancel.caption
 msgctxt "tfrnewdown.btncancel.caption"
@@ -1855,9 +1859,13 @@ msgstr "Cancelar"
 msgid "Configure the category file"
 msgstr "Configurar la categoria de arhcivo"
 
+#: tfrnewdown.btndeletefilter.hint
+msgid "Delete from domain filter"
+msgstr "Eliminar del filtro de dominio"
+
 #: tfrnewdown.btnforcenames.hint
 msgid "Force names"
-msgstr ""
+msgstr "Forzar nombres"
 
 #: tfrnewdown.btngodestination.hint
 msgid "Open the path folder"

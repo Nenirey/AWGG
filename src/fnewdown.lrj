@@ -20,6 +20,7 @@
 {"hash":189225812,"name":"tfrnewdown.btnmore.hint","sourcebytes":[83,101,108,101,99,116,32,116,104,101,32,118,105,100,101,111,32,102,111,114,109,97,116],"value":"Select the video format"},
 {"hash":181129653,"name":"tfrnewdown.btntoend.hint","sourcebytes":[80,111,115,105,116,105,111,110,32,105,110,32,113,117,101,117,101],"value":"Position in queue"},
 {"hash":181129653,"name":"tfrnewdown.btntoup.hint","sourcebytes":[80,111,115,105,116,105,111,110,32,105,110,32,113,117,101,117,101],"value":"Position in queue"},
-{"hash":126677458,"name":"tfrnewdown.btnaddtofilter.hint","sourcebytes":[65,100,100,32,116,111,32,100,111,109,97,105,110,32,102,105,108,116,101,114],"value":"Add to domain filter"},
-{"hash":121187155,"name":"tfrnewdown.btnforcenames.hint","sourcebytes":[70,111,114,99,101,32,110,97,109,101,115],"value":"Force names"}
+{"hash":121187155,"name":"tfrnewdown.btnforcenames.hint","sourcebytes":[70,111,114,99,101,32,110,97,109,101,115],"value":"Force names"},
+{"hash":26792338,"name":"tfrnewdown.btndeletefilter.hint","sourcebytes":[68,101,108,101,116,101,32,102,114,111,109,32,100,111,109,97,105,110,32,102,105,108,116,101,114],"value":"Delete from domain filter"},
+{"hash":126677458,"name":"tfrnewdown.btnaddtofilter.hint","sourcebytes":[65,100,100,32,116,111,32,100,111,109,97,105,110,32,102,105,108,116,101,114],"value":"Add to domain filter"}
 ]}

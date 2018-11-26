@@ -31,6 +31,7 @@ type
   { Tfrnewdown }
 
   Tfrnewdown = class(TForm)
+    btnDeleteFilter: TSpeedButton;
     btnStart: TBitBtn;
     btnToQueue: TButton;
     btnCancel: TButton;
@@ -61,6 +62,7 @@ type
     btnToEnd: TSpeedButton;
     btnAddToFilter: TSpeedButton;
     btnForceNames: TSpeedButton;
+    procedure btnDeleteFilterClick(Sender: TObject);
     procedure btnForceNamesClick(Sender: TObject);
     procedure btnMoreClick(Sender: TObject);
     procedure btnToEndClick(Sender: TObject);
@@ -241,6 +243,7 @@ end;
 procedure Tfrnewdown.edtURLChange(Sender: TObject);
 var
   magnetname:string='';
+  i:integer;
 begin
   //magnet:?xt=urn:btih:899023C7BD1177A9F2E214372EC5107DD7F7C9EB&dn=The.discovery.2017.1080p-dual-lat.mp4&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=http%3a%2f%2fipv4.tracker.harry.lu%3a80%2fannounce
   if frnewdown.btnForceNames.Flat=false then
@@ -255,9 +258,25 @@ begin
   end;
   suggestparameters();
   if ParseURI(frnewdown.edtURL.Text).Host<>'' then
-    frnewdown.btnAddToFilter.Enabled:=true
+  begin
+    frnewdown.btnAddToFilter.Visible:=true;
+    frnewdown.btnAddToFilter.Enabled:=true;
+    frnewdown.btnDeleteFilter.Visible:=false;
+    frnewdown.btnDeleteFilter.Enabled:=true;
+  end
   else
+  begin
     frnewdown.btnAddToFilter.Enabled:=false;
+    frnewdown.btnDeleteFilter.Enabled:=false;
+  end;
+  for i:=0 to Length(domainfilters)-1 do
+  begin
+    if LowerCase(domainfilters[i])=LowerCase(ParseURI(frnewdown.edtURL.Text).Host) then
+    begin
+      frnewdown.btnAddToFilter.Visible:=false;
+      frnewdown.btnDeleteFilter.Visible:=true;
+    end;
+  end;
 end;
 
 procedure Tfrnewdown.edtFileNameChange(Sender: TObject);
@@ -355,6 +374,8 @@ begin
   SetLength(domainfilters,Length(domainfilters)+1);
   domainfilters[Length(domainfilters)-1]:=ParseURI(frnewdown.edtURL.Text).Host;
   activedomainfilter:=true;
+  frnewdown.btnAddToFilter.Visible:=false;
+  frnewdown.btnDeleteFilter.Visible:=true;
 end;
 
 procedure Tfrnewdown.btnToQueueClick(Sender: TObject);
@@ -479,6 +500,27 @@ end;
 procedure Tfrnewdown.btnForceNamesClick(Sender: TObject);
 begin
   frnewdown.btnForceNames.Flat:=not frnewdown.btnForceNames.Flat;
+end;
+
+procedure Tfrnewdown.btnDeleteFilterClick(Sender: TObject);
+var
+  tmpfilters:array of string;
+  i,n:integer;
+begin
+  n:=0;
+  for i:=0 to Length(domainfilters)-1 do
+  begin
+    if domainfilters[i]<>ParseURI(frnewdown.edtURL.Text).Host then
+    begin
+      SetLength(tmpfilters,Length(tmpfilters)+1);
+      tmpfilters[n]:=domainfilters[n];
+      inc(n);
+    end;
+  end;
+  SetLength(domainfilters,Length(tmpfilters));
+  domainfilters:=tmpfilters;
+  frnewdown.btnAddToFilter.Visible:=true;
+  frnewdown.btnDeleteFilter.Visible:=false;
 end;
 
 procedure Tfrnewdown.btnToEndClick(Sender: TObject);

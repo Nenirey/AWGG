@@ -20,7 +20,7 @@
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="5"/>
       <RevisionNr Value="1"/>
-      <BuildNr Value="5525"/>
+      <BuildNr Value="5566"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2016" OriginalFilename="awgg" ProductName="AWGG" ProductVersion="0.5.1.4969"/>
     </VersionInfo>
     <BuildModes Count="13">
