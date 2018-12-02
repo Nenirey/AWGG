@@ -32,6 +32,7 @@ type
 
   Tfrnewdown = class(TForm)
     btnDeleteFilter: TSpeedButton;
+    btnNoForceNames: TSpeedButton;
     btnStart: TBitBtn;
     btnToQueue: TButton;
     btnCancel: TButton;
@@ -65,6 +66,7 @@ type
     procedure btnDeleteFilterClick(Sender: TObject);
     procedure btnForceNamesClick(Sender: TObject);
     procedure btnMoreClick(Sender: TObject);
+    procedure btnNoForceNamesClick(Sender: TObject);
     procedure btnToEndClick(Sender: TObject);
     procedure btnToUpClick(Sender: TObject);
     procedure btnStartClick(Sender: TObject);
@@ -246,7 +248,7 @@ var
   i:integer;
 begin
   //magnet:?xt=urn:btih:899023C7BD1177A9F2E214372EC5107DD7F7C9EB&dn=The.discovery.2017.1080p-dual-lat.mp4&tr=udp%3a%2f%2ftracker.leechers-paradise.org%3a6969%2fannounce&tr=udp%3a%2f%2ftracker.coppersurfer.tk%3a6969%2fannounce&tr=http%3a%2f%2fipv4.tracker.harry.lu%3a80%2fannounce
-  if frnewdown.btnForceNames.Flat=false then
+  if newdownloadforcenames then
   begin
     frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).document;
     if (Pos('magnet:',frnewdown.edtURL.Text)=1) and (Pos('&dn=',frnewdown.edtURL.Text)>0) then
@@ -324,6 +326,8 @@ begin
   firstnormalshow:=true;
   frnewdown.cbDestination.Text:=frnewdown.deDestination.Text;
   frnewdown.btnToUp.Visible:=false;
+  frnewdown.btnNoForceNames.Visible:=not newdownloadforcenames;
+  frnewdown.btnForceNames.Visible:=newdownloadforcenames;
 end;
 
 procedure Tfrnewdown.btnAddQueueClick(Sender: TObject);
@@ -497,9 +501,22 @@ begin
   frnewdown.FormStyle:=fsSystemStayOnTop;
 end;
 
+procedure Tfrnewdown.btnNoForceNamesClick(Sender: TObject);
+begin
+  frnewdown.btnForceNames.Visible:=true;
+  frnewdown.btnNoForceNames.Visible:=false;
+  frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).document;
+  newdownloadforcenames:=true;
+  saveconfig;
+end;
+
 procedure Tfrnewdown.btnForceNamesClick(Sender: TObject);
 begin
-  frnewdown.btnForceNames.Flat:=not frnewdown.btnForceNames.Flat;
+  frnewdown.btnForceNames.Visible:=false;
+  frnewdown.btnNoForceNames.Visible:=true;
+  frnewdown.edtFileName.Text:='';
+  newdownloadforcenames:=false;
+  saveconfig;
 end;
 
 procedure Tfrnewdown.btnDeleteFilterClick(Sender: TObject);

@@ -1884,7 +1884,8 @@ msgid "Delete from domain filter"
 msgstr ""
 
 #: tfrnewdown.btnforcenames.hint
-msgid "Force names"
+msgctxt "tfrnewdown.btnforcenames.hint"
+msgid "No force names"
 msgstr ""
 
 #: tfrnewdown.btngodestination.hint
@@ -1894,6 +1895,11 @@ msgstr "Öffne den Zielordner"
 #: tfrnewdown.btnmore.hint
 msgid "Select the video format"
 msgstr "Wähle das Video-Format"
+
+#: tfrnewdown.btnnoforcenames.hint
+msgctxt "tfrnewdown.btnnoforcenames.hint"
+msgid "Force names"
+msgstr ""
 
 #: tfrnewdown.btnpaused.caption
 msgctxt "tfrnewdown.btnpaused.caption"

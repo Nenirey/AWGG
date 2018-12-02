@@ -643,6 +643,7 @@ var
   interneturl:string;
   internetinterval:integer;
   queuemainstop:boolean=false;
+  newdownloadforcenames:boolean;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
   function suggestdir(doc:string):string;
@@ -2697,6 +2698,7 @@ begin
     iniconfigfile.WriteBool('Config','internetcheck',internetCheck);
     iniconfigfile.WriteString('Config','interneturl',internetURL);
     iniconfigfile.WriteInteger('Config','internetinterval',internetInterval);
+    iniconfigfile.WriteBool('Config','newdownloadforcenames',newdownloadforcenames);
     iniconfigfile.UpdateFile;
     iniconfigfile.Free;
     autostart();
@@ -2850,6 +2852,7 @@ begin
     internetCheck:=iniconfigfile.ReadBool('Config','internetcheck',true);
     internetURL:=iniconfigfile.ReadString('Config','interneturl','http://checkip.dyndns.org/');
     internetInterval:=iniconfigfile.ReadInteger('Config','internetinterval',10);
+    newdownloadforcenames:=iniconfigfile.ReadBool('Config','newdownloadforcenames',true);
     //categorias
     if iniconfigfile.ValueExists('Category','count') then
     begin

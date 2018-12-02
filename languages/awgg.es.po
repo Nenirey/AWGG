@@ -1864,8 +1864,9 @@ msgid "Delete from domain filter"
 msgstr "Eliminar del filtro de dominio"
 
 #: tfrnewdown.btnforcenames.hint
-msgid "Force names"
-msgstr "Forzar nombres"
+msgctxt "tfrnewdown.btnforcenames.hint"
+msgid "No force names"
+msgstr "No forzar nombres"
 
 #: tfrnewdown.btngodestination.hint
 msgid "Open the path folder"
@@ -1874,6 +1875,11 @@ msgstr "Abrir la carpeta"
 #: tfrnewdown.btnmore.hint
 msgid "Select the video format"
 msgstr "Seleccionar el formato de video"
+
+#: tfrnewdown.btnnoforcenames.hint
+msgctxt "tfrnewdown.btnnoforcenames.hint"
+msgid "Force names"
+msgstr "Forzar nombres"
 
 #: tfrnewdown.btnpaused.caption
 msgctxt "tfrnewdown.btnpaused.caption"

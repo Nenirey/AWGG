@@ -20,8 +20,8 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1340"/>
-        <CursorPos X="50" Y="1350"/>
+        <TopLine Value="632"/>
+        <CursorPos X="30" Y="646"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -35,8 +35,8 @@
         <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="256"/>
-        <CursorPos X="8" Y="268"/>
+        <TopLine Value="501"/>
+        <CursorPos X="9" Y="508"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -194,6 +194,63 @@
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="14" HistoryIndex="13">
+      <Position1>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="8" Column="39"/>
+      </Position1>
+      <Position2>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="2338" Column="27" TopLine="2323"/>
+      </Position2>
+      <Position3>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="2339" Column="27" TopLine="2323"/>
+      </Position3>
+      <Position4>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="3041" Column="46" TopLine="3019"/>
+      </Position4>
+      <Position5>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="3042" Column="45" TopLine="3020"/>
+      </Position5>
+      <Position6>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="3172" Column="27" TopLine="3150"/>
+      </Position6>
+      <Position7>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="3173" Column="27" TopLine="3151"/>
+      </Position7>
+      <Position8>
+        <Filename Value="fnewdown.pas"/>
+        <Caret Line="268" Column="8" TopLine="256"/>
+      </Position8>
+      <Position9>
+        <Filename Value="fnewdown.pas"/>
+        <Caret Line="502" Column="3" TopLine="496"/>
+      </Position9>
+      <Position10>
+        <Filename Value="fnewdown.pas"/>
+        <Caret Line="509" TopLine="498"/>
+      </Position10>
+      <Position11>
+        <Filename Value="fnewdown.pas"/>
+        <Caret Line="506" Column="3" TopLine="196"/>
+      </Position11>
+      <Position12>
+        <Filename Value="fnewdown.pas"/>
+        <Caret Line="261" Column="12" TopLine="241"/>
+      </Position12>
+      <Position13>
+        <Filename Value="fnewdown.pas"/>
+        <Caret Line="251" Column="27" TopLine="241"/>
+      </Position13>
+      <Position14>
+        <Filename Value="fnewdown.pas"/>
+        <Caret Line="253" Column="74" TopLine="241"/>
+      </Position14>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>
