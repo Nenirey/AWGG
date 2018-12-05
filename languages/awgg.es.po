@@ -1847,7 +1847,9 @@ msgid "Add queue"
 msgstr "Añadir cola"
 
 #: tfrnewdown.btnaddtofilter.hint
-msgid "Add to domain filter"
+#, fuzzy
+#| msgid "Add to domain filter"
+msgid "Not detect this domain with clipboard monitor"
 msgstr "Añadir al filtro de dominio"
 
 #: tfrnewdown.btncancel.caption
@@ -1860,7 +1862,9 @@ msgid "Configure the category file"
 msgstr "Configurar la categoria de arhcivo"
 
 #: tfrnewdown.btndeletefilter.hint
-msgid "Delete from domain filter"
+#, fuzzy
+#| msgid "Delete from domain filter"
+msgid "Detect this domain with clipboard monitor"
 msgstr "Eliminar del filtro de dominio"
 
 #: tfrnewdown.btnforcenames.hint

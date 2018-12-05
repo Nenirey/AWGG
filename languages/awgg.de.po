@@ -1867,7 +1867,7 @@ msgid "Add queue"
 msgstr "Neue Liste"
 
 #: tfrnewdown.btnaddtofilter.hint
-msgid "Add to domain filter"
+msgid "Not detect this domain with clipboard monitor"
 msgstr ""
 
 #: tfrnewdown.btncancel.caption
@@ -1880,7 +1880,7 @@ msgid "Configure the category file"
 msgstr "Wähle die Kategorie"
 
 #: tfrnewdown.btndeletefilter.hint
-msgid "Delete from domain filter"
+msgid "Detect this domain with clipboard monitor"
 msgstr ""
 
 #: tfrnewdown.btnforcenames.hint

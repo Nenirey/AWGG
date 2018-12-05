@@ -3,7 +3,7 @@
   <ProjectSession>
     <Version Value="10"/>
     <BuildModes Active="Beta"/>
-    <Units Count="15">
+    <Units Count="16">
       <Unit0>
         <Filename Value="awgg.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -19,9 +19,10 @@
         <ComponentName Value="frmain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="632"/>
-        <CursorPos X="30" Y="646"/>
+        <TopLine Value="671"/>
+        <CursorPos X="34" Y="682"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -32,7 +33,6 @@
         <ComponentName Value="frnewdown"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="501"/>
@@ -193,64 +193,109 @@
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
+      <Unit15>
+        <Filename Value="../../../../../lazarus/lcl/forms.pp"/>
+        <UnitName Value="Forms"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="835"/>
+        <CursorPos X="19" Y="847"/>
+        <UsageCount Value="10"/>
+      </Unit15>
     </Units>
-    <JumpHistory Count="14" HistoryIndex="13">
+    <JumpHistory Count="23" HistoryIndex="22">
       <Position1>
         <Filename Value="fmain.pas"/>
-        <Caret Line="8" Column="39"/>
+        <Caret Line="6" Column="38"/>
       </Position1>
       <Position2>
         <Filename Value="fmain.pas"/>
-        <Caret Line="2338" Column="27" TopLine="2323"/>
+        <Caret Line="658" Column="23" TopLine="635"/>
       </Position2>
       <Position3>
         <Filename Value="fmain.pas"/>
-        <Caret Line="2339" Column="27" TopLine="2323"/>
+        <Caret Line="2617" Column="65" TopLine="2601"/>
       </Position3>
       <Position4>
         <Filename Value="fmain.pas"/>
-        <Caret Line="3041" Column="46" TopLine="3019"/>
+        <Caret Line="11" Column="58"/>
       </Position4>
       <Position5>
         <Filename Value="fmain.pas"/>
-        <Caret Line="3042" Column="45" TopLine="3020"/>
+        <Caret Line="657" Column="23" TopLine="634"/>
       </Position5>
       <Position6>
         <Filename Value="fmain.pas"/>
-        <Caret Line="3172" Column="27" TopLine="3150"/>
+        <Caret Line="1729" Column="13" TopLine="1706"/>
       </Position6>
       <Position7>
         <Filename Value="fmain.pas"/>
-        <Caret Line="3173" Column="27" TopLine="3151"/>
+        <Caret Line="4716" Column="19" TopLine="4694"/>
       </Position7>
       <Position8>
-        <Filename Value="fnewdown.pas"/>
-        <Caret Line="268" Column="8" TopLine="256"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="11" Column="35"/>
       </Position8>
       <Position9>
-        <Filename Value="fnewdown.pas"/>
-        <Caret Line="502" Column="3" TopLine="496"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="658" Column="23" TopLine="635"/>
       </Position9>
       <Position10>
-        <Filename Value="fnewdown.pas"/>
-        <Caret Line="509" TopLine="498"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="2524" Column="21" TopLine="2516"/>
       </Position10>
       <Position11>
-        <Filename Value="fnewdown.pas"/>
-        <Caret Line="506" Column="3" TopLine="196"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="3171" Column="13" TopLine="3149"/>
       </Position11>
       <Position12>
-        <Filename Value="fnewdown.pas"/>
-        <Caret Line="261" Column="12" TopLine="241"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5990" Column="13" TopLine="5968"/>
       </Position12>
       <Position13>
-        <Filename Value="fnewdown.pas"/>
-        <Caret Line="251" Column="27" TopLine="241"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="2613" Column="67" TopLine="2601"/>
       </Position13>
       <Position14>
-        <Filename Value="fnewdown.pas"/>
-        <Caret Line="253" Column="74" TopLine="241"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="9" Column="31"/>
       </Position14>
+      <Position15>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="657" Column="23" TopLine="634"/>
+      </Position15>
+      <Position16>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1729" Column="13" TopLine="1706"/>
+      </Position16>
+      <Position17>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="4716" Column="19" TopLine="4694"/>
+      </Position17>
+      <Position18>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5081" Column="20" TopLine="5067"/>
+      </Position18>
+      <Position19>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="504" Column="18" TopLine="490"/>
+      </Position19>
+      <Position20>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="8413" Column="7" TopLine="8411"/>
+      </Position20>
+      <Position21>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="8414" Column="6" TopLine="8411"/>
+      </Position21>
+      <Position22>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="5274" Column="33" TopLine="5260"/>
+      </Position22>
+      <Position23>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="691" Column="5" TopLine="670"/>
+      </Position23>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>

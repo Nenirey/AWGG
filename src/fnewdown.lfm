@@ -1,7 +1,7 @@
 object frnewdown: Tfrnewdown
-  Left = 508
+  Left = 389
   Height = 178
-  Top = 283
+  Top = 297
   Width = 545
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]
@@ -793,7 +793,7 @@ object frnewdown: Tfrnewdown
     AnchorSideBottom.Side = asrBottom
     Left = 519
     Height = 24
-    Hint = 'Delete from domain filter'
+    Hint = 'Detect this domain with clipboard monitor'
     Top = 2
     Width = 23
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -890,7 +890,7 @@ object frnewdown: Tfrnewdown
     AnchorSideBottom.Side = asrBottom
     Left = 519
     Height = 24
-    Hint = 'Add to domain filter'
+    Hint = 'Not detect this domain with clipboard monitor'
     Top = 2
     Width = 23
     Anchors = [akTop, akLeft, akRight, akBottom]

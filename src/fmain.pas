@@ -31,7 +31,7 @@ uses
   Process, {$IFDEF UNIX}BaseUnix,{$ENDIF}
   {$IFDEF WINDOWS}Registry, MMSystem, Windows,{$ENDIF}fddbox, Math, fnewdown, fconfig, fabout, fstrings, flang, freplace, fsitegrabber, fnotification, fcopymove, fconfirm, fvideoformat, Clipbrd,
   strutils, LCLIntf, types, versionitis, INIFiles, LCLVersion,
-  PairSplitter, {DefaultTranslator}LCLTranslator, URIParser, fphttpclient;
+  PairSplitter, {DefaultTranslator}LCLTranslator, URIParser, fphttpclient, Base64;
 
 type
   TDownThread=Class(TThread)
@@ -668,9 +668,87 @@ var
   procedure reloaddowndirs();
   procedure parseparameters;
   procedure runprocess(binary:string;params:array of string);
+  function EncodeBase64(Data: AnsiString): AnsiString;
+  function DecodeBase64(Data: AnsiString): AnsiString;
 implementation
 {$R *.lfm}
 { Tfrmain }
+
+procedure hiddetrayicon(downtag:integer);
+var
+  n:integer;
+begin
+  if Assigned(trayicons) then
+  begin
+    for n:=0 to Length(trayicons)-1 do
+    begin
+       if Assigned(trayicons[n]) then
+       begin
+         if trayicons[n].downindex=downtag then
+         begin
+           trayicons[n].Icon.Clear;
+           trayicons[n].Visible:=false;
+         end;
+       end;
+    end;
+  end;
+end;
+
+function EncodeBase64(Data: AnsiString): AnsiString;
+var
+  StringStream1,
+  StringStream2: TStringStream;
+begin
+  Result:= EmptyStr;
+  if Data = EmptyStr then Exit;
+  StringStream1:= TStringStream.Create(Data);
+  try
+    StringStream1.Position:= 0;
+    StringStream2:= TStringStream.Create(EmptyStr);
+    try
+      with TBase64EncodingStream.Create(StringStream2) do
+        try
+          CopyFrom(StringStream1, StringStream1.Size);
+        finally
+          Free;
+        end;
+      Result:= StringStream2.DataString;
+    finally
+      StringStream2.Free;
+    end;
+ finally
+   StringStream1.Free;
+ end;
+end;
+
+function DecodeBase64(Data: AnsiString): AnsiString;
+var
+  StringStream1,
+  StringStream2: TStringStream;
+  Base64DecodingStream: TBase64DecodingStream;
+begin
+  Result:= EmptyStr;
+  if Data = EmptyStr then Exit;
+  StringStream1:= TStringStream.Create(Data);
+  try
+    StringStream1.Position:= 0;
+    StringStream2:= TStringStream.Create(EmptyStr);
+    try
+      Base64DecodingStream:= TBase64DecodingStream.Create(StringStream1);
+      with StringStream2 do
+        try
+          CopyFrom(Base64DecodingStream, Base64DecodingStream.Size);
+        finally
+          Base64DecodingStream.Free;
+        end;
+      Result:= StringStream2.DataString;
+    finally
+      StringStream2.Free;
+    end;
+ finally
+   StringStream1.Free;
+ end;
+end;
 
 constructor TDownThread.Create;
 begin
@@ -2552,8 +2630,8 @@ begin
     iniconfigfile.WriteString('Config','pftpport',pftpport);
     iniconfigfile.WriteString('Config','nphost',nphost);
     iniconfigfile.WriteBool('Config','useaut',useaut);
-    iniconfigfile.WriteString('Config','puser',puser);
-    iniconfigfile.WriteString('Config','ppassword',ppassword);
+    iniconfigfile.WriteString('Config','puser',EncodeBase64(puser));
+    iniconfigfile.WriteString('Config','ppassword',EncodeBase64(ppassword));
     iniconfigfile.WriteBool('Config','shownotifi',shownotifi);
     iniconfigfile.WriteInteger('Config','hiddenotifi',hiddenotifi);
     iniconfigfile.WriteBool('Config','usesysnotifi',usesysnotifi);
@@ -2722,8 +2800,8 @@ begin
     pftpport:=iniconfigfile.ReadString('Config','pftpport','3128');
     nphost:=iniconfigfile.ReadString('Config','nphost','');
     useaut:=iniconfigfile.ReadBool('Config','useaut',false);
-    puser:=iniconfigfile.ReadString('Config','puser','');
-    ppassword:=iniconfigfile.ReadString('Config','ppassword','');
+    puser:=DecodeBase64(iniconfigfile.ReadString('Config','puser',''));
+    ppassword:=DecodeBase64(iniconfigfile.ReadString('Config','ppassword',''));
     shownotifi:=iniconfigfile.ReadBool('Config','shownotifi',true);
     hiddenotifi:=iniconfigfile.ReadInteger('Config','hiddenotifi',5);
     usesysnotifi:=iniconfigfile.ReadBool('Config','usesysnotifi',false);
@@ -5024,8 +5102,8 @@ begin
       inidownloadsfile.WriteString('Download'+inttostr(wn),'columndestiny',frmain.lvMain.Items[wn].SubItems[columndestiny]);
       inidownloadsfile.WriteString('Download'+inttostr(wn),'columnengine',frmain.lvMain.Items[wn].SubItems[columnengine]);
       inidownloadsfile.WriteString('Download'+inttostr(wn),'columnparameters',frmain.lvMain.Items[wn].SubItems[columnparameters]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuser',frmain.lvMain.Items[wn].SubItems[columnuser]);
-      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnpass',frmain.lvMain.Items[wn].SubItems[columnpass]);
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuser',EncodeBase64(frmain.lvMain.Items[wn].SubItems[columnuser]));
+      inidownloadsfile.WriteString('Download'+inttostr(wn),'columnpass',EncodeBase64(frmain.lvMain.Items[wn].SubItems[columnpass]));
       inidownloadsfile.WriteString('Download'+inttostr(wn),'columnuid',frmain.lvMain.Items[wn].SubItems[columnuid]);
       inidownloadsfile.WriteString('Download'+inttostr(wn),'columnqueue',frmain.lvMain.Items[wn].SubItems[columnqueue]);
       inidownloadsfile.WriteString('Download'+inttostr(wn),'columntype',frmain.lvMain.Items[wn].SubItems[columntype]);
@@ -5213,6 +5291,7 @@ begin
             frmain.SynEdit1.Lines.Clear;
           //refreshicons();
           frmain.lvMain.Items.Delete(i);
+          hiddetrayicon(i);
         end;
       end;
       rebuildids();
@@ -5742,9 +5821,9 @@ begin
         fitem.SubItems[columnstatus]:='2';}
       fitem.SubItems.Add(inttostr(ns));
       fitem.SubItems.Add('');
-      fitem.SubItems[columnuser]:=inidownloadsfile.ReadString('Download'+inttostr(ns),'columnuser','');
+      fitem.SubItems[columnuser]:=DecodeBase64(inidownloadsfile.ReadString('Download'+inttostr(ns),'columnuser',''));
       fitem.SubItems.Add('');
-      fitem.SubItems[columnpass]:=inidownloadsfile.ReadString('Download'+inttostr(ns),'columnpass','');
+      fitem.SubItems[columnpass]:=DecodeBase64(inidownloadsfile.ReadString('Download'+inttostr(ns),'columnpass',''));
       fitem.SubItems.Add('0');
       //tries
       fitem.SubItems.Add('');
@@ -8890,11 +8969,15 @@ end;
 
 procedure downtrayicon.showinmain(Sender:TObject);
 begin
+  frmain.WindowState:=lastmainwindowstate;
   frmain.Show;
-  frmain.tvMain.Items[0].Selected:=true;
-  frmain.lvMain.MultiSelect:=false;
-  frmain.lvMain.Items[self.downindex].Selected:=true;
-  frmain.lvMain.MultiSelect:=true;
+  if frmain.tvMain.Items.Count-1>=self.downindex then
+  begin
+    frmain.tvMain.Items[0].Selected:=true;
+    frmain.lvMain.MultiSelect:=false;
+    frmain.lvMain.Items[self.downindex].Selected:=true;
+    frmain.lvMain.MultiSelect:=true;
+  end;
 end;
 
 procedure downtrayicon.contextmenu(Sender:TObject;Boton:TMouseButton;SShift:TShiftState;x:LongInt;y:LongInt);
