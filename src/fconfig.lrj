@@ -40,6 +40,7 @@
 {"hash":95569914,"name":"tfrconfig.lblsounddowncomplete.caption","sourcebytes":[68,111,119,110,108,111,97,100,32,99,111,109,112,108,101,116,101,58],"value":"Download complete:"},
 {"hash":175858314,"name":"tfrconfig.lblsounddownstoped.caption","sourcebytes":[68,111,119,110,108,111,97,100,32,115,116,111,112,112,101,100,58],"value":"Download stopped:"},
 {"hash":141309082,"name":"tfrconfig.lblsoundinternet.caption","sourcebytes":[73,110,116,101,114,110,101,116,32,99,111,110,110,101,99,116,105,111,110,58],"value":"Internet connection:"},
+{"hash":137957018,"name":"tfrconfig.lblsoundnointernet.caption","sourcebytes":[78,111,32,105,110,116,101,114,110,101,116,32,99,111,110,110,101,99,116,105,111,110,58],"value":"No internet connection:"},
 {"hash":190299506,"name":"tfrconfig.tsclipboardm.caption","sourcebytes":[67,108,105,112,98,111,97,114,100,32,109,111,110,105,116,111,114],"value":"Clipboard monitor"},
 {"hash":229100004,"name":"tfrconfig.chclipboardmonitor.caption","sourcebytes":[68,101,116,101,99,116,32,100,111,119,110,108,111,97,100,115,32,105,110,32,116,104,101,32,99,108,105,112,98,111,97,114,100],"value":"Detect downloads in the clipboard"},
 {"hash":23059514,"name":"tfrconfig.chignorefilter.caption","sourcebytes":[73,103,110,111,114,101,32,100,111,109,97,105,110,115,58],"value":"Ignore domains:"},

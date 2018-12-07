@@ -1,23 +1,23 @@
 object frconfig: Tfrconfig
-  Left = 459
+  Left = 407
   Height = 444
-  Top = 232
+  Top = 244
   Width = 649
   Caption = 'Configuration'
   ClientHeight = 444
   ClientWidth = 649
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '1.8.4.0'
   object btnConfigAccept: TButton
     AnchorSideLeft.Control = pcConfig
     AnchorSideRight.Control = btnConfigCancel
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 491
+    Left = 444
     Height = 25
     Top = 416
-    Width = 48
+    Width = 63
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Left = 3
@@ -31,10 +31,10 @@ object frconfig: Tfrconfig
     AnchorSideRight.Control = btnConfigApply
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 549
+    Left = 517
     Height = 25
     Top = 416
-    Width = 46
+    Width = 62
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 10
@@ -55,12 +55,12 @@ object frconfig: Tfrconfig
     Height = 387
     Top = 24
     Width = 465
-    ActivePage = tsNotifications
+    ActivePage = tsSounds
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 2
+    TabIndex = 3
     TabOrder = 2
     OnChange = pcConfigChange
     Options = [nboKeyboardTabSwitch]
@@ -356,7 +356,7 @@ object frconfig: Tfrconfig
         Width = 413
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
-        ItemHeight = 0
+        ItemHeight = 15
         Items.Strings = (
           'No proxy'
           'System proxy'
@@ -440,7 +440,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
         ClientHeight = 159
-        ClientWidth = 440
+        ClientWidth = 438
         Columns = 3
         Items.Strings = (
           'Sunday'
@@ -560,7 +560,7 @@ object frconfig: Tfrconfig
         Top = 10
         Width = 100
         BorderSpacing.Top = 10
-        ItemHeight = 0
+        ItemHeight = 15
         OnChange = cbQueueChange
         Style = csDropDownList
         TabOrder = 7
@@ -682,15 +682,15 @@ object frconfig: Tfrconfig
     end
     object tsNotifications: TTabSheet
       Caption = 'Notifications'
-      ClientHeight = 385
-      ClientWidth = 463
+      ClientHeight = 379
+      ClientWidth = 457
       object chShowNotifications: TCheckBox
         AnchorSideLeft.Control = tsNotifications
         AnchorSideTop.Control = tsNotifications
         Left = 15
-        Height = 21
+        Height = 19
         Top = 15
-        Width = 135
+        Width = 118
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         Caption = 'Show notifications'
@@ -701,9 +701,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = chSysNotifications
         AnchorSideTop.Side = asrBottom
-        Left = 62
-        Height = 25
-        Top = 77
+        Left = 56
+        Height = 23
+        Top = 73
         Width = 50
         BorderSpacing.Top = 10
         MaxValue = 60
@@ -717,9 +717,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = seHideSeconds
         Left = 15
-        Height = 19
-        Top = 80
-        Width = 47
+        Height = 15
+        Top = 77
+        Width = 41
         Caption = 'Hide in:'
         ParentColor = False
       end
@@ -728,10 +728,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seHideSeconds
         AnchorSideTop.Side = asrCenter
-        Left = 112
-        Height = 19
-        Top = 80
-        Width = 53
+        Left = 106
+        Height = 15
+        Top = 77
+        Width = 46
         Caption = ' seconds'
         ParentColor = False
       end
@@ -745,8 +745,8 @@ object frconfig: Tfrconfig
         AnchorSideBottom.Side = asrBottom
         Left = 40
         Height = 233
-        Top = 112
-        Width = 383
+        Top = 106
+        Width = 377
         Anchors = [akTop, akLeft, akRight, akBottom]
         AutoFill = True
         BorderSpacing.Left = 40
@@ -762,7 +762,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
         ClientHeight = 213
-        ClientWidth = 381
+        ClientWidth = 373
         Columns = 3
         ItemIndex = 2
         Items.Strings = (
@@ -783,10 +783,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seHideSeconds
         AnchorSideTop.Side = asrCenter
-        Left = 175
+        Left = 162
         Height = 25
-        Top = 77
-        Width = 56
+        Top = 72
+        Width = 67
         AutoSize = True
         BorderSpacing.Left = 10
         Caption = 'Preview'
@@ -798,9 +798,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = chShowNotifications
         AnchorSideTop.Side = asrBottom
         Left = 25
-        Height = 21
-        Top = 46
-        Width = 173
+        Height = 19
+        Top = 44
+        Width = 148
         BorderSpacing.Left = 10
         BorderSpacing.Top = 10
         Caption = 'Use system notifications'
@@ -810,8 +810,8 @@ object frconfig: Tfrconfig
     object tsSounds: TTabSheet
       AnchorSideRight.Side = asrBottom
       Caption = 'Sounds'
-      ClientHeight = 385
-      ClientWidth = 463
+      ClientHeight = 379
+      ClientWidth = 457
       object gbSounds: TGroupBox
         AnchorSideLeft.Control = tsSounds
         AnchorSideTop.Control = tsSounds
@@ -820,25 +820,25 @@ object frconfig: Tfrconfig
         AnchorSideBottom.Control = tsSounds
         AnchorSideBottom.Side = asrBottom
         Left = 15
-        Height = 355
+        Height = 349
         Top = 15
-        Width = 433
+        Width = 427
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         BorderSpacing.Right = 15
         BorderSpacing.Bottom = 15
         Caption = 'Sounds'
-        ClientHeight = 335
-        ClientWidth = 431
+        ClientHeight = 329
+        ClientWidth = 423
         TabOrder = 0
         object chPlaySounds: TCheckBox
           AnchorSideLeft.Control = gbSounds
           AnchorSideTop.Control = gbSounds
           Left = 10
-          Height = 21
+          Height = 19
           Top = 10
-          Width = 96
+          Width = 83
           BorderSpacing.Left = 10
           BorderSpacing.Top = 10
           Caption = 'Play sounds'
@@ -849,9 +849,9 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = chPlaySounds
           AnchorSideTop.Side = asrBottom
           Left = 25
-          Height = 19
-          Top = 41
-          Width = 127
+          Height = 15
+          Top = 39
+          Width = 110
           BorderSpacing.Top = 10
           Caption = 'Download complete:'
           ParentColor = False
@@ -861,9 +861,9 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = fneSoundComplete
           AnchorSideTop.Side = asrBottom
           Left = 25
-          Height = 19
-          Top = 100
-          Width = 120
+          Height = 15
+          Top = 92
+          Width = 103
           BorderSpacing.Top = 10
           Caption = 'Download stopped:'
           ParentColor = False
@@ -875,9 +875,9 @@ object frconfig: Tfrconfig
           AnchorSideRight.Control = gbSounds
           AnchorSideRight.Side = asrCenter
           Left = 25
-          Height = 25
-          Top = 65
-          Width = 379
+          Height = 23
+          Top = 59
+          Width = 372
           Filter = 'Waves Files|*.wav'
           FilterIndex = 0
           HideDirectories = False
@@ -896,9 +896,9 @@ object frconfig: Tfrconfig
           AnchorSideRight.Control = gbSounds
           AnchorSideRight.Side = asrCenter
           Left = 25
-          Height = 25
-          Top = 124
-          Width = 379
+          Height = 23
+          Top = 112
+          Width = 372
           Filter = 'Wave Files|*.wav'
           FilterIndex = 0
           HideDirectories = False
@@ -918,7 +918,7 @@ object frconfig: Tfrconfig
           AnchorSideRight.Side = asrBottom
           Left = 3
           Height = 20
-          Top = 67
+          Top = 60
           Width = 20
           AutoSize = True
           BorderSpacing.Left = 3
@@ -968,7 +968,7 @@ object frconfig: Tfrconfig
           AnchorSideRight.Side = asrBottom
           Left = 3
           Height = 20
-          Top = 126
+          Top = 113
           Width = 20
           AutoSize = True
           BorderSpacing.Left = 3
@@ -1015,9 +1015,9 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = fneSoundStopped
           AnchorSideTop.Side = asrBottom
           Left = 25
-          Height = 19
-          Top = 159
-          Width = 128
+          Height = 15
+          Top = 145
+          Width = 107
           BorderSpacing.Top = 10
           Caption = 'Internet connection:'
           ParentColor = False
@@ -1030,7 +1030,7 @@ object frconfig: Tfrconfig
           AnchorSideRight.Side = asrBottom
           Left = 3
           Height = 20
-          Top = 185
+          Top = 166
           Width = 20
           AutoSize = True
           BorderSpacing.Left = 3
@@ -1079,9 +1079,9 @@ object frconfig: Tfrconfig
           AnchorSideRight.Control = gbSounds
           AnchorSideRight.Side = asrCenter
           Left = 25
-          Height = 25
-          Top = 183
-          Width = 379
+          Height = 23
+          Top = 165
+          Width = 372
           Filter = 'Wave Files|*.wav'
           FilterIndex = 0
           HideDirectories = False
@@ -1092,6 +1092,89 @@ object frconfig: Tfrconfig
           BorderSpacing.Top = 5
           MaxLength = 0
           TabOrder = 3
+        end
+        object btnPlayNoInternet: TSpeedButton
+          AnchorSideLeft.Control = gbSounds
+          AnchorSideTop.Control = fneSoundNoInternet
+          AnchorSideTop.Side = asrCenter
+          AnchorSideRight.Control = fneSoundComplete
+          AnchorSideRight.Side = asrBottom
+          Left = 3
+          Height = 20
+          Top = 219
+          Width = 20
+          AutoSize = True
+          BorderSpacing.Left = 3
+          Glyph.Data = {
+            36040000424D3604000000000000360000002800000010000000100000000100
+            2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF006165655B616565E6FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF006165650360636485606364F6606464FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF002B15E168260FE11AFFFFFF006C70713A686A
+            6B3A6468683A6266663A606565DC696D6DFF727777FF606464FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF003824E1813D32EDFF2C17E1CBFFFFFF00717474FF6F73
+            73FF6B6F6FFF696D6DFF696C6CFF505151FF5F6161FF616565FFFFFFFF00FFFF
+            FF00FFFFFF004635E16A3F2DE12C3D2EE6FF3F35EDFF2D18E16B787B7BFF999A
+            9AFF777878FF6E6F6FFF505151FF3F3F3FFF5D5F5FFF636767FFFFFFFF00FFFF
+            FF005547E169554DEDFF4736E178402FE16E453BEDFF3420E1D8818383FF999B
+            9BFF656565FF5F5F5FFF535353FF494949FF676969FF666969FFFFFFFF005A50
+            E9ED5D51E1435A50E9FF4F40E1FFFFFFFF004230E1FF3B29E1FF858787FFA5A6
+            A6FF878787FF858585FF7D7D7DFF727272FF848585FF696D6DFFFFFFFF005A50
+            E9DC655AE1436159E9FF574AE1FFFFFFFF004A3AE1FF4332E1FF888B8BFFC2C3
+            C3FFBCBCBCFFBABABAFF9E9E9EFF838383FF919191FF6E7172FFFFFFFF00FFFF
+            FF006E64E1646B65ECFF6054E178594CE16E5A53EDFF4B3BE1D88B8D8DFF9192
+            92FF8F9191FF8F9090FFA1A3A3FFA9A9A9FFA1A2A2FF757778FFFFFFFF00FFFF
+            FF00FFFFFF006F66E165685EE12C635AE6FF615BEDFF5345E16B8D8E8E3A8C8E
+            8E3A8C8E8E3A8B8C8C3A888A8ADB9B9D9DFFADAFAFFF7C7F7FFFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF007067E17B6D69ECFF6357E1CBFFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF008A8B8B03888A8A83858787F6818383FFFFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF007269E1646B61E11AFFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00888A8A59838585E5FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+            FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+          }
+          OnClick = btnPlayNoInternetClick
+        end
+        object lblSoundNoInternet: TLabel
+          AnchorSideLeft.Control = fneSoundNoInternet
+          AnchorSideTop.Control = fneSoundInternet
+          AnchorSideTop.Side = asrBottom
+          Left = 25
+          Height = 15
+          Top = 198
+          Width = 126
+          BorderSpacing.Top = 10
+          Caption = 'No internet connection:'
+          ParentColor = False
+        end
+        object fneSoundNoInternet: TFileNameEdit
+          AnchorSideLeft.Control = gbSounds
+          AnchorSideTop.Control = lblSoundNoInternet
+          AnchorSideTop.Side = asrBottom
+          AnchorSideRight.Control = gbSounds
+          AnchorSideRight.Side = asrCenter
+          Left = 25
+          Height = 23
+          Top = 218
+          Width = 372
+          Filter = 'Wave Files|*.wav'
+          FilterIndex = 0
+          HideDirectories = False
+          ButtonWidth = 23
+          NumGlyphs = 1
+          Anchors = [akTop, akLeft, akRight]
+          BorderSpacing.Left = 25
+          BorderSpacing.Top = 5
+          MaxLength = 0
+          TabOrder = 4
         end
       end
     end
@@ -1132,7 +1215,6 @@ object frconfig: Tfrconfig
         ItemHeight = 0
         ScrollWidth = 409
         TabOrder = 1
-        TopIndex = -1
       end
       object chIgnoreFilter: TCheckBox
         AnchorSideLeft.Control = chClipboardMonitor
@@ -1363,7 +1445,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 38
-        ClientWidth = 374
+        ClientWidth = 372
         TabOrder = 1
         object rbCategoryOneFolder: TRadioButton
           Left = 6
@@ -1401,7 +1483,6 @@ object frconfig: Tfrconfig
         ItemHeight = 0
         ScrollWidth = 110
         TabOrder = 2
-        TopIndex = -1
       end
       object deCategoryDownFolder: TDirectoryEdit
         AnchorSideLeft.Control = lblCategoryDownFolder
@@ -1682,7 +1763,6 @@ object frconfig: Tfrconfig
         OnSelectionChange = lbCategorySelectionChange
         ScrollWidth = 257
         TabOrder = 4
-        TopIndex = -1
       end
       object btnEditCategory: TSpeedButton
         AnchorSideLeft.Control = btnDeleteCategory
@@ -1827,7 +1907,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 217
-        ClientWidth = 399
+        ClientWidth = 397
         Items.Strings = (
           '[-c] Continue downloads.'
           '[-nH] No create host dir.'
@@ -1931,7 +2011,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 76
-        ClientWidth = 379
+        ClientWidth = 377
         Items.Strings = (
           '[-c] Continue downloads'
           '[--file-allocation=none] No allocate space.'
@@ -1956,7 +2036,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Top = 10
         Caption = 'Multiple connections'
         ClientHeight = 118
-        ClientWidth = 379
+        ClientWidth = 377
         TabOrder = 3
         object lblAria2Connections: TLabel
           AnchorSideLeft.Control = gbAria2MultiConnections
@@ -2120,7 +2200,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 224
-        ClientWidth = 379
+        ClientWidth = 377
         Items.Strings = (
           '[-C -] Continue downloads.'
         )
@@ -2326,7 +2406,7 @@ object frconfig: Tfrconfig
         Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Options'
         ClientHeight = 103
-        ClientWidth = 367
+        ClientWidth = 365
         TabOrder = 3
         object chytUseExternalDown: TCheckBox
           AnchorSideLeft.Control = gbytoptions
@@ -2351,7 +2431,7 @@ object frconfig: Tfrconfig
           Height = 23
           Top = 42
           Width = 100
-          ItemHeight = 0
+          ItemHeight = 15
           Style = csDropDownList
           TabOrder = 1
         end
@@ -2384,7 +2464,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 180
-        ClientWidth = 455
+        ClientWidth = 453
         Items.Strings = (
           'Run with the system.'
           'Start in the systray.'
@@ -2539,7 +2619,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Top = 5
         Caption = 'Load mode'
         ClientHeight = 72
-        ClientWidth = 399
+        ClientWidth = 397
         TabOrder = 3
         object rbLogsLoadAll: TRadioButton
           AnchorSideLeft.Control = gbLogsLoadMode
@@ -2594,7 +2674,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Right = 10
         Caption = 'Connection'
         ClientHeight = 133
-        ClientWidth = 441
+        ClientWidth = 439
         TabOrder = 0
         object lblDownTimeOut: TLabel
           AnchorSideLeft.Control = seHTTPport
@@ -2724,7 +2804,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Bottom = 15
         Caption = 'Engine'
         ClientHeight = 109
-        ClientWidth = 441
+        ClientWidth = 439
         TabOrder = 1
         object cbDefEngine: TComboBox
           AnchorSideLeft.Control = gbEngine
@@ -2735,7 +2815,7 @@ object frconfig: Tfrconfig
           Height = 23
           Top = 37
           Width = 100
-          ItemHeight = 0
+          ItemHeight = 15
           Style = csDropDownList
           TabOrder = 0
         end
@@ -2766,7 +2846,7 @@ object frconfig: Tfrconfig
         Anchors = [akTop, akLeft, akRight]
         Caption = 'User agent'
         ClientHeight = 53
-        ClientWidth = 441
+        ClientWidth = 439
         TabOrder = 2
         object edtDownAgent: TEdit
           AnchorSideLeft.Control = gbUserAgent
@@ -2806,7 +2886,7 @@ object frconfig: Tfrconfig
         Height = 23
         Top = 176
         Width = 100
-        ItemHeight = 0
+        ItemHeight = 15
         Style = csDropDownList
         TabOrder = 0
       end
@@ -2914,7 +2994,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Right = 20
         Caption = 'Rotate mode'
         ClientHeight = 121
-        ClientWidth = 400
+        ClientWidth = 398
         TabOrder = 3
         object rbQueueRMOneStep: TRadioButton
           AnchorSideLeft.Control = gbQueueRotateMode
@@ -3234,10 +3314,10 @@ object frconfig: Tfrconfig
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 605
+    Left = 589
     Height = 25
     Top = 416
-    Width = 41
+    Width = 57
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 3
@@ -3247,7 +3327,7 @@ object frconfig: Tfrconfig
     TabOrder = 5
   end
   object browseropendlg: TOpenDialog
-    Left = 552
-    Top = 80
+    left = 552
+    top = 80
   end
 end

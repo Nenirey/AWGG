@@ -372,6 +372,10 @@ msgctxt "fstrings.startqueuesystray"
 msgid "Start queue"
 msgstr ""
 
+#: fstrings.statuscanceled
+msgid "Canceled"
+msgstr ""
+
 #: fstrings.statuscomplete
 msgctxt "fstrings.statuscomplete"
 msgid "Complete"
@@ -964,6 +968,10 @@ msgstr ""
 msgid "Internet connection:"
 msgstr ""
 
+#: tfrconfig.lblsoundnointernet.caption
+msgid "No internet connection:"
+msgstr ""
+
 #: tfrconfig.lblsslhost.caption
 msgctxt "TFRCONFIG.LBLSSLHOST.CAPTION"
 msgid "SSL:"
@@ -1296,6 +1304,11 @@ msgstr ""
 #: tfrmain.miexit.caption
 msgctxt "TFRMAIN.MIEXIT.CAPTION"
 msgid "Exit"
+msgstr ""
+
+#: tfrmain.milistcanceldown.caption
+msgctxt "tfrmain.milistcanceldown.caption"
+msgid "Cancel"
 msgstr ""
 
 #: tfrmain.milistclearlog.caption
@@ -1648,6 +1661,11 @@ msgctxt "TFRMAIN.MITRAYABOUT.CAPTION"
 msgid "About"
 msgstr ""
 
+#: tfrmain.mitraydowncancel.caption
+msgctxt "tfrmain.mitraydowncancel.caption"
+msgid "Cancel"
+msgstr ""
+
 #: tfrmain.mitraydownstart.caption
 msgctxt "TFRMAIN.MITRAYDOWNSTART.CAPTION"
 msgid "Start"
@@ -1706,6 +1724,14 @@ msgstr ""
 #: tfrmain.tbaddgrabber.hint
 msgctxt "TFRMAIN.TBADDGRABBER.HINT"
 msgid "New site grabber"
+msgstr ""
+
+#: tfrmain.tbcanceldown.caption
+msgid "tbCancelDown"
+msgstr ""
+
+#: tfrmain.tbcanceldown.hint
+msgid "Cancel download"
 msgstr ""
 
 #: tfrmain.tbclipboard.hint

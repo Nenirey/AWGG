@@ -76,6 +76,7 @@ dlgconfirm='Confirm';
 statuscomplete='Complete';
 popuptitlecomplete='Download complete';
 statusstoped='Stopped';
+statuscanceled='Canceled';
 popuptitlestoped= 'Download stopped:';
 msgcloseinprogressdownload= 'Downloads exist in progress, do you want to close anyway?';
 titlepropertiesdown= 'Download properties';

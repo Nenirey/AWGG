@@ -402,6 +402,10 @@ msgctxt "fstrings.startqueuesystray"
 msgid "Start queue"
 msgstr "Démarrer la file d'attente"
 
+#: fstrings.statuscanceled
+msgid "Canceled"
+msgstr ""
+
 #: fstrings.statuscomplete
 msgctxt "fstrings.statuscomplete"
 msgid "Complete"
@@ -994,6 +998,10 @@ msgstr "Téléchargement stoppé:"
 msgid "Internet connection:"
 msgstr ""
 
+#: tfrconfig.lblsoundnointernet.caption
+msgid "No internet connection:"
+msgstr ""
+
 #: tfrconfig.lblsslhost.caption
 msgctxt "tfrconfig.lblsslhost.caption"
 msgid "SSL:"
@@ -1327,6 +1335,12 @@ msgstr ""
 msgctxt "tfrmain.miexit.caption"
 msgid "Exit"
 msgstr "Quitter"
+
+#: tfrmain.milistcanceldown.caption
+#, fuzzy
+msgctxt "tfrmain.milistcanceldown.caption"
+msgid "Cancel"
+msgstr "Annuler"
 
 #: tfrmain.milistclearlog.caption
 msgctxt "tfrmain.milistclearlog.caption"
@@ -1678,6 +1692,12 @@ msgctxt "tfrmain.mitrayabout.caption"
 msgid "About"
 msgstr "A propos"
 
+#: tfrmain.mitraydowncancel.caption
+#, fuzzy
+msgctxt "tfrmain.mitraydowncancel.caption"
+msgid "Cancel"
+msgstr "Annuler"
+
 #: tfrmain.mitraydownstart.caption
 msgctxt "tfrmain.mitraydownstart.caption"
 msgid "Start"
@@ -1737,6 +1757,14 @@ msgstr "Nouveau téléchargement"
 msgctxt "tfrmain.tbaddgrabber.hint"
 msgid "New site grabber"
 msgstr "Nouvel aspirateur de site"
+
+#: tfrmain.tbcanceldown.caption
+msgid "tbCancelDown"
+msgstr ""
+
+#: tfrmain.tbcanceldown.hint
+msgid "Cancel download"
+msgstr ""
 
 #: tfrmain.tbclipboard.hint
 msgctxt "tfrmain.tbclipboard.hint"

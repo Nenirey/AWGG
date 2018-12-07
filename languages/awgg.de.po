@@ -409,6 +409,10 @@ msgctxt "fstrings.startqueuesystray"
 msgid "Start queue"
 msgstr "Die Liste starten"
 
+#: fstrings.statuscanceled
+msgid "Canceled"
+msgstr ""
+
 #: fstrings.statuscomplete
 msgctxt "fstrings.statuscomplete"
 msgid "Complete"
@@ -1007,6 +1011,10 @@ msgstr "Download gestoppt:"
 msgid "Internet connection:"
 msgstr ""
 
+#: tfrconfig.lblsoundnointernet.caption
+msgid "No internet connection:"
+msgstr ""
+
 #: tfrconfig.lblsslhost.caption
 msgctxt "tfrconfig.lblsslhost.caption"
 msgid "SSL:"
@@ -1342,6 +1350,12 @@ msgstr "Dropbox verwenden"
 msgctxt "tfrmain.miexit.caption"
 msgid "Exit"
 msgstr "Ende"
+
+#: tfrmain.milistcanceldown.caption
+#, fuzzy
+msgctxt "tfrmain.milistcanceldown.caption"
+msgid "Cancel"
+msgstr "Ablehnen"
 
 #: tfrmain.milistclearlog.caption
 msgctxt "tfrmain.milistclearlog.caption"
@@ -1696,6 +1710,12 @@ msgctxt "tfrmain.mitrayabout.caption"
 msgid "About"
 msgstr "Über"
 
+#: tfrmain.mitraydowncancel.caption
+#, fuzzy
+msgctxt "tfrmain.mitraydowncancel.caption"
+msgid "Cancel"
+msgstr "Nein"
+
 #: tfrmain.mitraydownstart.caption
 msgctxt "tfrmain.mitraydownstart.caption"
 msgid "Start"
@@ -1755,6 +1775,14 @@ msgstr "Neuer Download"
 msgctxt "tfrmain.tbaddgrabber.hint"
 msgid "New site grabber"
 msgstr "WebSite speichern"
+
+#: tfrmain.tbcanceldown.caption
+msgid "tbCancelDown"
+msgstr ""
+
+#: tfrmain.tbcanceldown.hint
+msgid "Cancel download"
+msgstr ""
 
 #: tfrmain.tbclipboard.hint
 msgctxt "tfrmain.tbclipboard.hint"

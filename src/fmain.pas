@@ -154,6 +154,8 @@ end;
     lblMaxDownInProgress: TLabel;
     lvMain: TListView;
     lvFilter: TListView;
+    mitraydownCancel: TMenuItem;
+    milistCancelDown: TMenuItem;
     miMainInTray: TMenuItem;
     mimainShowInTray: TMenuItem;
     miline27: TMenuItem;
@@ -322,6 +324,7 @@ end;
     tbScheduler: TToolButton;
     tbStartQueue: TToolButton;
     MainTrayIcon: TTrayIcon;
+    tbCancelDown: TToolButton;
     tvMain: TTreeView;
     UniqueInstance1: TUniqueInstance;
     procedure ApplicationProperties1Exception(Sender: TObject; E: Exception);
@@ -350,6 +353,7 @@ end;
     procedure lvFilterSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure miDropboxClick(Sender: TObject);
+    procedure milistCancelDownClick(Sender: TObject);
     procedure milistMoveFilesClick(Sender: TObject);
     procedure micommandClearClick(Sender: TObject);
     procedure micommandCopyClick(Sender: TObject);
@@ -407,6 +411,7 @@ end;
     procedure milistClearLogClick(Sender: TObject);
     procedure miAddDownClick(Sender: TObject);
     procedure MenuItem60Click(Sender: TObject);
+    procedure mitraydownCancelClick(Sender: TObject);
     procedure mitraydownStartClick(Sender: TObject);
     procedure mimainExitClick(Sender: TObject);
     procedure mitraydownStopClick(Sender: TObject);
@@ -442,6 +447,7 @@ end;
     procedure ClipboardTimerStopTimer(Sender: TObject);
     procedure ClipboardTimerTimer(Sender: TObject);
     procedure FirstStartTimerTimer(Sender: TObject);
+    procedure tbCancelDownClick(Sender: TObject);
     procedure tbStopQueueClick(Sender: TObject);
     procedure tbStopAllClick(Sender: TObject);
     procedure ToolButton14Click(Sender: TObject);
@@ -525,6 +531,8 @@ end;
   stindex:integer;
   end;
 
+const
+  awgg_path='%AWGG_PATH%'+pathdelim;
 
 var
   frmain: Tfrmain;
@@ -544,7 +552,7 @@ var
   notifipos:integer;
   ddowndir:string='';
   clipboardmonitor:boolean;
-  //columnstatus 0=Paused 1=In progress, 2=Stopped, 3=Complete, 4=Error
+  //columnstatus 0=Paused 1=In progress, 2=Stopped, 3=Complete, 4=Error, 5=Manual stopped
   columnname,columnurl,columnpercent,columnsize,columncurrent,columnspeed,columnestimate, columndate, columndestiny,columnengine,columnparameters,columnuser,columnpass,columnstatus,columnid, columntries, columnuid, columntype, columnqueue, columncookie, columnreferer, columnpost, columnheader, columnuseragent:integer;
   columncolaw,columnnamew,columnurlw,columnpercentw,columnsizew,columncurrentw,columnspeedw,columnestimatew,columndatew,columndestinyw,columnenginew,columnparametersw:integer;
   columncolav,columnnamev,columnurlv,columnpercentv,columnsizev,columncurrentv,columnspeedv,columnestimatev,columndatev,columndestinyv,columnenginev,columnparametersv:boolean;
@@ -574,7 +582,7 @@ var
   firststart:boolean;
   defaultengine:string;
   playsounds:boolean;
-  downcompsound,downstopsound,internetsound:string;
+  downcompsound,downstopsound,internetsound,nointernetsound:string;
   sheduledisablelimits:boolean;
   queuerotate:boolean;
   triesrotate:integer;
@@ -644,6 +652,7 @@ var
   internetinterval:integer;
   queuemainstop:boolean=false;
   newdownloadforcenames:boolean;
+  currentdir:string;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
   function suggestdir(doc:string):string;
@@ -796,6 +805,8 @@ begin
  end
  else
  begin
+   if playsounds and internetchange then
+     playsound(nointernetsound);
    internetchange:=true;
  end;
 end;
@@ -2369,6 +2380,7 @@ begin
       '2':frmain.lvMain.Items[x].Caption:=fstrings.statusstoped;
       '3':frmain.lvMain.Items[x].Caption:=fstrings.statuscomplete;
       '4':frmain.lvMain.Items[x].Caption:=fstrings.statuserror;
+      '5':frmain.lvMain.Items[x].Caption:=fstrings.statuscanceled;
     end;
   end;
   for x:=0 to frmain.lvFilter.Columns.Count-1 do
@@ -2677,11 +2689,11 @@ begin
     iniconfigfile.WriteString('Config','speedlimit',speedlimit);
     iniconfigfile.WriteInteger('Config','maxgdown',maxgdown);
     iniconfigfile.WriteBool('Config','showstdout',showstdout);
-    iniconfigfile.WriteString('Config','wgetrutebin',wgetrutebin);
-    iniconfigfile.WriteString('Config','aria2crutebin',aria2crutebin);
-    iniconfigfile.WriteString('Config','curlrutebin',curlrutebin);
-    iniconfigfile.WriteString('Config','axelrutebin',axelrutebin);
-    iniconfigfile.WriteString('Config','youtubedlrutebin',youtubedlrutebin);
+    iniconfigfile.WriteString('Config','wgetrutebin',StringReplace(wgetrutebin,currentdir,awgg_path,[rfReplaceAll]));
+    iniconfigfile.WriteString('Config','aria2crutebin',StringReplace(aria2crutebin,currentdir,awgg_path,[rfReplaceAll]));
+    iniconfigfile.WriteString('Config','curlrutebin',StringReplace(curlrutebin,currentdir,awgg_path,[rfReplaceAll]));
+    iniconfigfile.WriteString('Config','axelrutebin',StringReplace(axelrutebin,currentdir,awgg_path,[rfReplaceAll]));
+    iniconfigfile.WriteString('Config','youtubedlrutebin',StringReplace(youtubedlrutebin,currentdir,awgg_path,[rfReplaceAll]));
     iniconfigfile.WriteString('Config','wgetargs',wgetargs);
     iniconfigfile.WriteString('Config','aria2cargs',aria2cargs);
     iniconfigfile.WriteString('Config','curlargs',curlargs);
@@ -2721,9 +2733,10 @@ begin
     iniconfigfile.WriteBool('Config','firststart',firststart);
     iniconfigfile.WriteString('Config','defaultengine',defaultengine);
     iniconfigfile.WriteBool('Config','playsounds',playsounds);
-    iniconfigfile.WriteString('Config','downcompsound',downcompsound);
-    iniconfigfile.WriteString('Config','downstopsound',downstopsound);
-    iniconfigfile.WriteString('Config','internetsound',internetsound);
+    iniconfigfile.WriteString('Config','downcompsound',StringReplace(downcompsound,currentdir,awgg_path,[rfReplaceAll]));
+    iniconfigfile.WriteString('Config','downstopsound',StringReplace(downstopsound,currentdir,awgg_path,[rfReplaceAll]));
+    iniconfigfile.WriteString('Config','internetsound',StringReplace(internetsound,currentdir,awgg_path,[rfReplaceAll]));
+    iniconfigfile.WriteString('Config','nointernetsound',StringReplace(nointernetsound,currentdir,awgg_path,[rfReplaceAll]));
     iniconfigfile.WriteBool('Config','sheduledisablelimits',sheduledisablelimits);
     iniconfigfile.WriteBool('Config','queuerotate',queuerotate);
     iniconfigfile.WriteInteger('Config','triesrotate',triesrotate);
@@ -2807,7 +2820,7 @@ begin
     usesysnotifi:=iniconfigfile.ReadBool('Config','usesysnotifi',false);
     clipboardmonitor:=iniconfigfile.ReadBool('Config','clipboardmonitor',true);
     ddowndir:=iniconfigfile.ReadString('Config','ddowndir',ddowndir);
-    dotherdowndir:=ddowndir+pathdelim+'Others';
+    dotherdowndir:=ddowndir+pathdelim+categoryothers;
     columncolaw:=iniconfigfile.ReadInteger('Config','columncolaw',90);
     if columncolaw<10 then columncolaw:=90;
       columnnamew:=iniconfigfile.ReadInteger('Config','columnnamew',110);
@@ -2848,11 +2861,11 @@ begin
     speedlimit:=iniconfigfile.ReadString('Config','speedlimit','3');
     maxgdown:=iniconfigfile.Readinteger('Config','maxgdown',maxgdown);
     showstdout:=iniconfigfile.ReadBool('Config','showstdout',false);
-    wgetrutebin:=iniconfigfile.ReadString('Config','wgetrutebin',wgetrutebin);
-    aria2crutebin:=iniconfigfile.ReadString('Config','aria2crutebin',aria2crutebin);
-    curlrutebin:=iniconfigfile.ReadString('Config','curlrutebin',curlrutebin);
-    axelrutebin:=iniconfigfile.ReadString('Config','axelrutebin',axelrutebin);
-    youtubedlrutebin:=iniconfigfile.ReadString('Config','youtubedlrutebin',youtubedlrutebin);
+    wgetrutebin:=StringReplace(iniconfigfile.ReadString('Config','wgetrutebin',wgetrutebin),awgg_path,currentdir,[rfReplaceAll]);
+    aria2crutebin:=StringReplace(iniconfigfile.ReadString('Config','aria2crutebin',aria2crutebin),awgg_path,currentdir,[rfReplaceAll]);
+    curlrutebin:=StringReplace(iniconfigfile.ReadString('Config','curlrutebin',curlrutebin),awgg_path,currentdir,[rfReplaceAll]);
+    axelrutebin:=StringReplace(iniconfigfile.ReadString('Config','axelrutebin',axelrutebin),awgg_path,currentdir,[rfReplaceAll]);
+    youtubedlrutebin:=StringReplace(iniconfigfile.ReadString('Config','youtubedlrutebin',youtubedlrutebin),awgg_path,currentdir,[rfReplaceAll]);
     wgetargs:=iniconfigfile.ReadString('Config','wgetargs',wgetargs);
     aria2cargs:=iniconfigfile.ReadString('Config','aria2cargs',aria2cargs);
     curlargs:=iniconfigfile.ReadString('Config','curlargs',curlargs);
@@ -2891,9 +2904,10 @@ begin
     firststart:=iniconfigfile.ReadBool('Config','firststart',true);
     defaultengine:=iniconfigfile.ReadString('Config','defaultengine','wget');
     playsounds:=iniconfigfile.ReadBool('Config','playsounds',true);
-    downcompsound:=iniconfigfile.ReadString('Config','downcompsound','complete.wav');
-    downstopsound:=iniconfigfile.ReadString('Config','downstopsound','stopped.wav');
-    internetsound:=iniconfigfile.ReadString('Config','internetsound','internet.wav');
+    downcompsound:=StringReplace(iniconfigfile.ReadString('Config','downcompsound',currentdir+'complete.wav'),awgg_path,currentdir,[rfReplaceAll]);
+    downstopsound:=StringReplace(iniconfigfile.ReadString('Config','downstopsound',currentdir+'stopped.wav'),awgg_path,currentdir,[rfReplaceAll]);
+    internetsound:=StringReplace(iniconfigfile.ReadString('Config','internetsound',currentdir+'internet.wav'),awgg_path,currentdir,[rfReplaceAll]);
+    nointernetsound:=StringReplace(iniconfigfile.ReadString('Config','nointernetsound',currentdir+'nointernet.wav'),awgg_path,currentdir,[rfReplaceAll]);
     sheduledisablelimits:=iniconfigfile.ReadBool('Config','sheduledisablelimits',false);
     queuerotate:=iniconfigfile.ReadBool('Config','queuerotate',false);
     triesrotate:=iniconfigfile.ReadInteger('Config','triesrotate',5);
@@ -3096,12 +3110,12 @@ begin
   clipboardmonitor:=frconfig.chClipboardMonitor.Checked;
   frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
   ddowndir:=frconfig.deDownFolder.Text;
-  dotherdowndir:=ddowndir+pathdelim+'Others';
-  wgetrutebin:=frconfig.fneWgetpath.Text;
-  aria2crutebin:=frconfig.fneAria2Path.Text;
-  curlrutebin:=frconfig.fneCurlPath.Text;
-  axelrutebin:=frconfig.fneAxelPath.Text;
-  youtubedlrutebin:=frconfig.fneYoutubedlPath.Text;
+  dotherdowndir:=ddowndir+pathdelim+categoryothers;
+  wgetrutebin:=StringReplace(frconfig.fneWgetpath.Text,awgg_path,currentdir,[rfReplaceAll]);
+  aria2crutebin:=StringReplace(frconfig.fneAria2Path.Text,awgg_path,currentdir,[rfReplaceAll]);
+  curlrutebin:=StringReplace(frconfig.fneCurlPath.Text,awgg_path,currentdir,[rfReplaceAll]);
+  axelrutebin:=StringReplace(frconfig.fneAxelPath.Text,awgg_path,currentdir,[rfReplaceAll]);
+  youtubedlrutebin:=StringReplace(frconfig.fneYoutubedlPath.Text,awgg_path,currentdir,[rfReplaceAll]);
   wgetargs:=frconfig.edtWgetAdditionalArgs.Text;
   aria2cargs:=frconfig.edtAria2AdditionalArgs.Text;
   curlargs:=frconfig.edtCurlAdditionalArgs.Text;
@@ -3134,9 +3148,10 @@ begin
   queuelimits[frconfig.cbQueue.ItemIndex]:=frconfig.chDisableLimits.Checked;
   queuepoweroff[frconfig.cbQueue.ItemIndex]:=frconfig.chShutdown.Checked;
   queuerotate:=frconfig.chQueueRotate.Checked;
-  downcompsound:=frconfig.fneSoundComplete.Text;
-  downstopsound:=frconfig.fneSoundStopped.Text;
-  internetsound:=frconfig.fneSoundInternet.Text;
+  downcompsound:=StringReplace(frconfig.fneSoundComplete.Text,awgg_path,currentdir,[rfReplaceAll]);
+  downstopsound:=StringReplace(frconfig.fneSoundStopped.Text,awgg_path,currentdir,[rfReplaceAll]);
+  internetsound:=StringReplace(frconfig.fneSoundInternet.Text,awgg_path,currentdir,[rfReplaceAll]);
+  nointernetsound:=StringReplace(frconfig.fneSoundNoInternet.Text,awgg_path,currentdir,[rfReplaceAll]);
   triesrotate:=frconfig.seQueueTriesRotate.Value;
   if frconfig.rbQueueRMOneStep.Checked then
     rotatemode:=0;
@@ -3228,11 +3243,11 @@ begin
     frconfig.chShowNotifications.Checked:=shownotifi;
     frconfig.chSysNotifications.Checked:=usesysnotifi;
     frconfig.seHideSeconds.Value:=hiddenotifi;
-    frconfig.fneWgetpath.Text:=wgetrutebin;
-    frconfig.fneAria2Path.Text:=aria2crutebin;
-    frconfig.fneCurlPath.Text:=curlrutebin;
-    frconfig.fneAxelPath.Text:=axelrutebin;
-    frconfig.fneYoutubedlPath.Text:=youtubedlrutebin;
+    frconfig.fneWgetpath.Text:=StringReplace(wgetrutebin,currentdir,awgg_path,[rfReplaceAll]);
+    frconfig.fneAria2Path.Text:=StringReplace(aria2crutebin,currentdir,awgg_path,[rfReplaceAll]);
+    frconfig.fneCurlPath.Text:=StringReplace(curlrutebin,currentdir,awgg_path,[rfReplaceAll]);
+    frconfig.fneAxelPath.Text:=StringReplace(axelrutebin,currentdir,awgg_path,[rfReplaceAll]);
+    frconfig.fneYoutubedlPath.Text:=StringReplace(youtubedlrutebin,currentdir,awgg_path,[rfReplaceAll]);
     frconfig.edtWgetAdditionalArgs.Text:=wgetargs;
     frconfig.edtAria2AdditionalArgs.Text:=aria2cargs;
     frconfig.edtCurlAdditionalArgs.Text:=curlargs;
@@ -3326,9 +3341,10 @@ begin
       frconfig.cbytexternaldown.ItemIndex:=0;
     frconfig.chPlaySounds.Checked:=playsounds;
     frconfig.chQueueRotate.Checked:=queuerotate;
-    frconfig.fneSoundComplete.Text:=downcompsound;
-    frconfig.fneSoundStopped.Text:=downstopsound;
-    frconfig.fneSoundInternet.Text:=internetsound;
+    frconfig.fneSoundComplete.Text:=StringReplace(downcompsound,currentdir,awgg_path,[rfReplaceAll]);
+    frconfig.fneSoundStopped.Text:=StringReplace(downstopsound,currentdir,awgg_path,[rfReplaceAll]);
+    frconfig.fneSoundInternet.Text:=StringReplace(internetsound,currentdir,awgg_path,[rfReplaceAll]);
+    frconfig.fneSoundNoInternet.Text:=StringReplace(nointernetsound,currentdir,awgg_path,[rfReplaceAll]);
     frconfig.seQueueTriesRotate.Value:=triesrotate;
     if rotatemode=0 then
       frconfig.rbQueueRMOneStep.Checked:=true;
@@ -5089,7 +5105,7 @@ begin
       begin
         inidownloadsfile.WriteString('Download'+inttostr(wn),'columnstatus','2');
         inidownloadsfile.WriteInteger('Download'+inttostr(wn),'icon',3);
-        inidownloadsfile.WriteString('Download'+inttostr(wn),'status','Detenido');
+        inidownloadsfile.WriteString('Download'+inttostr(wn),'status',fstrings.statusstoped);
       end;
       inidownloadsfile.WriteString('Download'+inttostr(wn),'columnname',frmain.lvMain.Items[wn].SubItems[columnname]);
       inidownloadsfile.WriteString('Download'+inttostr(wn),'columnsize',frmain.lvMain.Items[wn].SubItems[columnsize]);
@@ -5635,16 +5651,35 @@ begin
   begin
     if manualshutdown then
     begin
-      frmain.lvMain.Items[thid].SubItems[columnstatus]:='2';
-      frmain.lvMain.Items[thid].Caption:=fstrings.statusstoped;
-      if frmain.lvMain.Items[thid].SubItems[columntype] = '0' then
+      if frmain.lvMain.Items[thid].SubItems[columnstatus]<>'5' then
+        frmain.lvMain.Items[thid].SubItems[columnstatus]:='4'
+      else
+        frmain.lvMain.Items[thid].SubItems[columnstatus]:='5';
+
+      if frmain.lvMain.Items[thid].SubItems[columnstatus]='4' then
+        frmain.lvMain.Items[thid].Caption:=fstrings.statusstoped
+      else
+        frmain.lvMain.Items[thid].Caption:=fstrings.statuscanceled;
+
+      if (frmain.lvMain.Items[thid].SubItems[columntype] = '0') and (frmain.lvMain.Items[thid].SubItems[columnstatus]='4') then
         frmain.lvMain.Items[thid].ImageIndex:=3;
+      if (frmain.lvMain.Items[thid].SubItems[columntype] = '0') and (frmain.lvMain.Items[thid].SubItems[columnstatus]='5') then
+        frmain.lvMain.Items[thid].ImageIndex:=63;
+
       if frmain.lvMain.Items[thid].SubItems[columntype] = '1' then
         frmain.lvMain.Items[thid].ImageIndex:=53;
       if otherlistview then
       begin
-        frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='2';
-        frmain.lvFilter.Items[thid2].Caption:=fstrings.statusstoped;
+        if frmain.lvMain.Items[thid].SubItems[columnstatus]<>'5' then
+          frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='4'
+        else
+          frmain.lvFilter.Items[thid2].SubItems[columnstatus]:='5;';
+
+        if frmain.lvMain.Items[thid].SubItems[columnstatus]='4' then
+          frmain.lvFilter.Items[thid2].Caption:=fstrings.statusstoped
+        else
+          frmain.lvFilter.Items[thid2].Caption:=fstrings.statuscanceled;
+
         if frmain.lvMain.Items[thid2].SubItems[columntype] = '0' then
           frmain.lvFilter.Items[thid2].ImageIndex:=3;
         if frmain.lvFilter.Items[thid2].SubItems[columntype] = '1' then
@@ -5904,6 +5939,15 @@ begin
           fitem.SubItems[columnstatus]:=statusstr;
           if fitem.SubItems[columntype] = '0' then
             fitem.ImageIndex:=9;
+          if fitem.SubItems[columntype] = '1' then
+            fitem.ImageIndex:=53;
+        end;
+        '5':
+        begin
+          fitem.Caption:=fstrings.statuscanceled;
+          fitem.SubItems[columnstatus]:=statusstr;
+          if fitem.SubItems[columntype] = '0' then
+            fitem.ImageIndex:=63;
           if fitem.SubItems[columntype] = '1' then
             fitem.ImageIndex:=53;
         end;
@@ -6177,57 +6221,45 @@ begin
   aria2cdefcontinue:=true;
   aria2cdefallocate:=true;
   curldefcontinue:=true;
-  if FileExists(ExtractFilePath(Application.Params[0])+'awgg.ini') then
-    configpath:=ExtractFilePath(Application.Params[0])
+  currentdir:=SysToUTF8(ExtractFilePath(Application.Params[0]));
+  if FileExists(currentdir+'awgg.ini') then //For portable version
+    configpath:=currentdir
   else
     configpath:=GetAppConfigDir(false);
   datapath:=configpath+PathDelim+'Data';
   {$IFDEF UNIX}
-    if FileExists(ExtractFilePath(Application.Params[0])+'wget') then
-      wgetrutebin:=ExtractFilePath(Application.Params[0])+'wget';
+    if FileExists(currentdir+'wget') then
+      wgetrutebin:=awgg_path+'wget';
     if FileExists('/usr/bin/wget') then
       wgetrutebin:='/usr/bin/wget';
-    if FileExists(ExtractFilePath(Application.Params[0])+'aria2c') then
-      aria2crutebin:=ExtractFilePath(Application.Params[0])+'aria2c';
+    if FileExists(currentdir+'aria2c') then
+      aria2crutebin:=awgg_path+'aria2c';
     if FileExists('/usr/bin/aria2c') then
       aria2crutebin:='/usr/bin/aria2c';
-    if FileExists(ExtractFilePath(Application.Params[0])+'curl') then
-      curlrutebin:=ExtractFilePath(Application.Params[0])+'curl';
+    if FileExists(currentdir+'curl') then
+      curlrutebin:=awgg_path+'curl';
     if FileExists('/usr/bin/curl') then
       curlrutebin:='/usr/bin/curl';
-    if FileExists(ExtractFilePath(Application.Params[0])+'axel') then
-      axelrutebin:=ExtractFilePath(Application.Params[0])+'axel';
+    if FileExists(currentdir+'axel') then
+      axelrutebin:=awgg_path+'axel';
     if FileExists('/usr/bin/axel') then
       axelrutebin:='/usr/bin/axel';
-    if FileExists(ExtractFilePath(Application.Params[0])+'youtube-dl') then
-      youtubedlrutebin:=ExtractFilePath(Application.Params[0])+'youtube-dl';
+    if FileExists(currentdir+'youtube-dl') then
+      youtubedlrutebin:=awgg_path+'youtube-dl';
     if FileExists('/usr/bin/youtube-dl') then
       youtubedlrutebin:='/usr/bin/youtube-dl';
   {$ENDIF}
   {$IFDEF WINDOWS}
-    {$IF FPC_FULLVERSION<=20604}
-    if FileExists(ExtractFilePath(Application.Params[0])+'wget.exe') then
-      wgetrutebin:=ExtractFilePath(Application.Params[0])+'wget.exe';
-    if FileExists(ExtractFilePath(Application.Params[0])+'aria2c.exe') then
-      aria2crutebin:=ExtractFilePath(Application.Params[0])+'aria2c.exe';
-    if FileExists(ExtractFilePath(Application.Params[0])+'curl.exe') then
-      curlrutebin:=ExtractFilePath(Application.Params[0])+'curl.exe';
-    if FileExists(ExtractFilePath(Application.Params[0])+'axel.exe') then
-      axelrutebin:=ExtractFilePath(Application.Params[0])+'axel.exe';
-    if FileExists(ExtractFilePath(Application.Params[0])+'youtube-dl.exe') then
-      youtubedlrutebin:=ExtractFilePath(Application.Params[0])+'youtube-dl.exe';
-    {$ELSE}
-    if FileExists(ExtractFilePath(Application.Params[0])+'wget.exe') then
-      wgetrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'wget.exe');
-    if FileExists(ExtractFilePath(Application.Params[0])+'aria2c.exe') then
-      aria2crutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'aria2c.exe');
-    if FileExists(ExtractFilePath(Application.Params[0])+'curl.exe') then
-      curlrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'curl.exe');
-    if FileExists(ExtractFilePath(Application.Params[0])+'axel.exe') then
-      axelrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'axel.exe');
-    if FileExists(ExtractFilePath(Application.Params[0])+'youtube-dl.exe') then
-      youtubedlrutebin:=SysToUTF8(ExtractFilePath(Application.Params[0])+'youtube-dl.exe');
-    {$ENDIF}
+    if FileExists(currentdir+'wget.exe') then
+      wgetrutebin:=awgg_path+'wget.exe';
+    if FileExists(currentdir+'aria2c.exe') then
+      aria2crutebin:=awgg_path+'aria2c.exe';
+    if FileExists(currentdir+'curl.exe') then
+      curlrutebin:=awgg_path+'curl.exe';
+    if FileExists(currentdir+'axel.exe') then
+      axelrutebin:=awgg_path+'axel.exe';
+    if FileExists(currentdir+'youtube-dl.exe') then
+      youtubedlrutebin:=awgg_path+'youtube-dl.exe';
   {$ENDIF}
   loadmydownloads();
   loadconfig();
@@ -6437,7 +6469,7 @@ begin
         frmain.milistCopyFiles.Enabled:=false;
         frmain.milistMoveFiles.Enabled:=false;
       end;
-      '2','4':
+      '2','4','5':
       begin
         frmain.milistStartDown.Enabled:=true;
         frmain.milistStopDown.Enabled:=false;
@@ -6721,6 +6753,11 @@ end;
 procedure Tfrmain.miDropboxClick(Sender: TObject);
 begin
   frmain.mimainddboxClick(nil);
+end;
+
+procedure Tfrmain.milistCancelDownClick(Sender: TObject);
+begin
+  frmain.tbStopDownClick(tbCancelDown);
 end;
 
 procedure Tfrmain.milistMoveFilesClick(Sender: TObject);
@@ -7757,6 +7794,15 @@ begin
   startsheduletimer();
 end;
 
+procedure Tfrmain.mitraydownCancelClick(Sender: TObject);
+begin
+  if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnid])) and (frmain.lvMain.Items[numtraydown].SubItems[columnstatus]='1') then
+    downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnid])]);
+  frmain.lvMain.Items[numtraydown].SubItems[columnstatus]:='5';
+  if qtimer[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnqueue])].Enabled then
+      frmain.lvMain.Items[numtraydown].SubItems[columntries]:='0';
+end;
+
 procedure Tfrmain.mitraydownStartClick(Sender: TObject);
 begin
   if frmain.lvMain.Items[numtraydown].SubItems[columnstatus]<>'1' then
@@ -8049,13 +8095,9 @@ begin
     end;
     SetDefaultLang(deflanguage);
     updatelangstatus();
-    if ddowndir='' then //Para version portable
+    if FileExists(currentdir+'awgg.ini') then //For portable version
     begin
-      {$IFDEF WINDOWS}
-      ddowndir:=SysToUTF8(GetUserDir()+'Downloads');
-      {$ELSE}
-      ddowndir:=SysToUTF8(GetUserDir()+downloadpathname);
-      {$ENDIF}
+      ddowndir:=downloadpathname;
     end;
     logpath:=ddowndir+pathdelim+'logs';
     if not DirectoryExists(ddowndir) then
@@ -8091,6 +8133,11 @@ begin
   end
   else
     frmain.WindowState:=lastmainwindowstate;
+end;
+
+procedure Tfrmain.tbCancelDownClick(Sender: TObject);
+begin
+  frmain.tbStopDownClick(tbCancelDown);
 end;
 
 procedure Tfrmain.tbStopQueueClick(Sender: TObject);
@@ -8477,6 +8524,8 @@ begin
             if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[i].SubItems[columnid])) then
             begin
               downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])]);
+              if Sender=tbCancelDown then
+                frmain.lvMain.Items[i].SubItems[columnstatus]:='5';
               if qtimer[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])].Enabled then
                 frmain.lvMain.Items[i].SubItems[columntries]:='0';
             end;
@@ -8488,6 +8537,8 @@ begin
         if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])) then
         begin
           downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])]);
+          if Sender=tbCancelDown then
+            frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]:='5';
           if qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled then
             frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntries]:='0';
         end;
