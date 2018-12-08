@@ -347,6 +347,10 @@ msgctxt "fstrings.popuptitlestoped"
 msgid "Download stopped:"
 msgstr "Téléchargement stoppé:"
 
+#: fstrings.portablemode
+msgid "Portable"
+msgstr ""
+
 #: fstrings.proxymanual
 msgctxt "fstrings.proxymanual"
 msgid "Manual"
@@ -1347,6 +1351,11 @@ msgctxt "tfrmain.milistclearlog.caption"
 msgid "Clean history log file"
 msgstr "Effacer le fichier d'historique"
 
+#: tfrmain.milistcontinuelaterdown.caption
+msgctxt "tfrmain.milistcontinuelaterdown.caption"
+msgid "Continue later"
+msgstr ""
+
 #: tfrmain.milistcopyfiles.caption
 msgctxt "tfrmain.milistcopyfiles.caption"
 msgid "Copy file(s) to..."
@@ -1698,6 +1707,11 @@ msgctxt "tfrmain.mitraydowncancel.caption"
 msgid "Cancel"
 msgstr "Annuler"
 
+#: tfrmain.mitraydowncontinuelater.caption
+msgctxt "tfrmain.mitraydowncontinuelater.caption"
+msgid "Continue later"
+msgstr ""
+
 #: tfrmain.mitraydownstart.caption
 msgctxt "tfrmain.mitraydownstart.caption"
 msgid "Start"
@@ -1775,6 +1789,15 @@ msgstr "Activer/Désactiver la surveillance du presse-papier"
 msgctxt "tfrmain.tbconfig.hint"
 msgid "Configuration"
 msgstr "Configuration"
+
+#: tfrmain.tbcontinuelater.caption
+msgid "tbContinueLater"
+msgstr ""
+
+#: tfrmain.tbcontinuelater.hint
+msgctxt "tfrmain.tbcontinuelater.hint"
+msgid "Continue later"
+msgstr ""
 
 #: tfrmain.tbdeldowndisk.hint
 msgctxt "tfrmain.tbdeldowndisk.hint"

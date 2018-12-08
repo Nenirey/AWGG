@@ -293,7 +293,6 @@ msgid "The file not exists."
 msgstr "El archivo no existe!!!."
 
 #: fstrings.msgmoveoperationerror
-#, fuzzy,badformat
 msgid ""
 "Error to move file, details:\n"
 "$s\n"
@@ -344,6 +343,10 @@ msgstr "Descarga completada"
 msgctxt "fstrings.popuptitlestoped"
 msgid "Download stopped:"
 msgstr "Descarga detenida:"
+
+#: fstrings.portablemode
+msgid "Portable"
+msgstr ""
 
 #: fstrings.proxymanual
 msgctxt "fstrings.proxymanual"
@@ -1335,7 +1338,6 @@ msgid "Exit"
 msgstr "Salir"
 
 #: tfrmain.milistcanceldown.caption
-#, fuzzy
 msgctxt "tfrmain.milistcanceldown.caption"
 msgid "Cancel"
 msgstr "Cancelar"
@@ -1344,6 +1346,11 @@ msgstr "Cancelar"
 msgctxt "tfrmain.milistclearlog.caption"
 msgid "Clean history log file"
 msgstr "Limpiar historial log"
+
+#: tfrmain.milistcontinuelaterdown.caption
+msgctxt "tfrmain.milistcontinuelaterdown.caption"
+msgid "Continue later"
+msgstr "Continuar mas tarde"
 
 #: tfrmain.milistcopyfiles.caption
 msgctxt "tfrmain.milistcopyfiles.caption"
@@ -1691,10 +1698,14 @@ msgid "About"
 msgstr "Acerca de"
 
 #: tfrmain.mitraydowncancel.caption
-#, fuzzy
 msgctxt "tfrmain.mitraydowncancel.caption"
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: tfrmain.mitraydowncontinuelater.caption
+msgctxt "tfrmain.mitraydowncontinuelater.caption"
+msgid "Continue later"
+msgstr "Continuar mas tarde"
 
 #: tfrmain.mitraydownstart.caption
 msgctxt "tfrmain.mitraydownstart.caption"
@@ -1762,7 +1773,7 @@ msgstr ""
 
 #: tfrmain.tbcanceldown.hint
 msgid "Cancel download"
-msgstr ""
+msgstr "Cancelar descarga"
 
 #: tfrmain.tbclipboard.hint
 msgctxt "tfrmain.tbclipboard.hint"
@@ -1773,6 +1784,15 @@ msgstr "Habilitar/Desabilitar monitor del portapapeles"
 msgctxt "tfrmain.tbconfig.hint"
 msgid "Configuration"
 msgstr "Configuracion"
+
+#: tfrmain.tbcontinuelater.caption
+msgid "tbContinueLater"
+msgstr ""
+
+#: tfrmain.tbcontinuelater.hint
+msgctxt "tfrmain.tbcontinuelater.hint"
+msgid "Continue later"
+msgstr "Continuar mas tarde"
 
 #: tfrmain.tbdeldowndisk.hint
 msgctxt "tfrmain.tbdeldowndisk.hint"
@@ -1875,10 +1895,8 @@ msgid "Add queue"
 msgstr "Añadir cola"
 
 #: tfrnewdown.btnaddtofilter.hint
-#, fuzzy
-#| msgid "Add to domain filter"
 msgid "Not detect this domain with clipboard monitor"
-msgstr "Añadir al filtro de dominio"
+msgstr "No detectar este dominio con el monitor del portapapeles"
 
 #: tfrnewdown.btncancel.caption
 msgctxt "tfrnewdown.btncancel.caption"
@@ -1890,10 +1908,8 @@ msgid "Configure the category file"
 msgstr "Configurar la categoria de arhcivo"
 
 #: tfrnewdown.btndeletefilter.hint
-#, fuzzy
-#| msgid "Delete from domain filter"
 msgid "Detect this domain with clipboard monitor"
-msgstr "Eliminar del filtro de dominio"
+msgstr "Detectar este dominio con el monitor del portapapeles"
 
 #: tfrnewdown.btnforcenames.hint
 msgctxt "tfrnewdown.btnforcenames.hint"

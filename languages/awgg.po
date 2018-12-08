@@ -317,6 +317,10 @@ msgctxt "fstrings.popuptitlestoped"
 msgid "Download stopped:"
 msgstr ""
 
+#: fstrings.portablemode
+msgid "Portable"
+msgstr ""
+
 #: fstrings.proxymanual
 msgctxt "fstrings.proxymanual"
 msgid "Manual"
@@ -1316,6 +1320,11 @@ msgctxt "TFRMAIN.MILISTCLEARLOG.CAPTION"
 msgid "Clean history log file"
 msgstr ""
 
+#: tfrmain.milistcontinuelaterdown.caption
+msgctxt "tfrmain.milistcontinuelaterdown.caption"
+msgid "Continue later"
+msgstr ""
+
 #: tfrmain.milistcopyfiles.caption
 msgctxt "TFRMAIN.MILISTCOPYFILES.CAPTION"
 msgid "Copy file(s) to..."
@@ -1666,6 +1675,11 @@ msgctxt "tfrmain.mitraydowncancel.caption"
 msgid "Cancel"
 msgstr ""
 
+#: tfrmain.mitraydowncontinuelater.caption
+msgctxt "tfrmain.mitraydowncontinuelater.caption"
+msgid "Continue later"
+msgstr ""
+
 #: tfrmain.mitraydownstart.caption
 msgctxt "TFRMAIN.MITRAYDOWNSTART.CAPTION"
 msgid "Start"
@@ -1742,6 +1756,15 @@ msgstr ""
 #: tfrmain.tbconfig.hint
 msgctxt "TFRMAIN.TBCONFIG.HINT"
 msgid "Configuration"
+msgstr ""
+
+#: tfrmain.tbcontinuelater.caption
+msgid "tbContinueLater"
+msgstr ""
+
+#: tfrmain.tbcontinuelater.hint
+msgctxt "tfrmain.tbcontinuelater.hint"
+msgid "Continue later"
 msgstr ""
 
 #: tfrmain.tbdeldowndisk.hint

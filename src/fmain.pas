@@ -38,7 +38,7 @@ type
   Private
   DHTTPClient:TFPHTTPClient;
   RS:TStringList;
-  ifstop,internetchange:boolean;
+  ifstop,internetchange,nointernetchange:boolean;
   procedure showrs;
   procedure stop;
   protected
@@ -154,6 +154,8 @@ end;
     lblMaxDownInProgress: TLabel;
     lvMain: TListView;
     lvFilter: TListView;
+    mitraydownContinueLater: TMenuItem;
+    milistContinueLaterDown: TMenuItem;
     mitraydownCancel: TMenuItem;
     milistCancelDown: TMenuItem;
     miMainInTray: TMenuItem;
@@ -325,6 +327,7 @@ end;
     tbStartQueue: TToolButton;
     MainTrayIcon: TTrayIcon;
     tbCancelDown: TToolButton;
+    tbContinueLater: TToolButton;
     tvMain: TTreeView;
     UniqueInstance1: TUniqueInstance;
     procedure ApplicationProperties1Exception(Sender: TObject; E: Exception);
@@ -354,6 +357,7 @@ end;
       Selected: Boolean);
     procedure miDropboxClick(Sender: TObject);
     procedure milistCancelDownClick(Sender: TObject);
+    procedure milistContinueLaterDownClick(Sender: TObject);
     procedure milistMoveFilesClick(Sender: TObject);
     procedure micommandClearClick(Sender: TObject);
     procedure micommandCopyClick(Sender: TObject);
@@ -412,6 +416,7 @@ end;
     procedure miAddDownClick(Sender: TObject);
     procedure MenuItem60Click(Sender: TObject);
     procedure mitraydownCancelClick(Sender: TObject);
+    procedure mitraydownContinueLaterClick(Sender: TObject);
     procedure mitraydownStartClick(Sender: TObject);
     procedure mimainExitClick(Sender: TObject);
     procedure mitraydownStopClick(Sender: TObject);
@@ -448,6 +453,7 @@ end;
     procedure ClipboardTimerTimer(Sender: TObject);
     procedure FirstStartTimerTimer(Sender: TObject);
     procedure tbCancelDownClick(Sender: TObject);
+    procedure tbContinueLaterClick(Sender: TObject);
     procedure tbStopQueueClick(Sender: TObject);
     procedure tbStopAllClick(Sender: TObject);
     procedure ToolButton14Click(Sender: TObject);
@@ -766,6 +772,7 @@ begin
   DHTTPClient := TFPHTTPClient.Create(nil);
   RS:=TStringList.Create;
   internetchange:=true;
+  nointernetchange:=true;
   internet:=false;
   ifstop:=true;
   case useproxy of
@@ -801,12 +808,14 @@ begin
      if playsounds and internetchange then
        playsound(internetsound);
      internetchange:=false;
+     nointernetchange:=true;
    end;
  end
  else
  begin
-   if playsounds and internetchange then
+   if playsounds and nointernetchange then
      playsound(nointernetsound);
+   nointernetchange:=false;
    internetchange:=true;
  end;
 end;
@@ -2097,6 +2106,8 @@ begin
   {$IFDEF release64}
     frmain.Caption:='AWGG '+Copy(version,0,LastDelimiter('.',version)-1);
   {$ENDIF}
+  if FileExists(currentdir+'awgg.ini') then
+    frmain.Caption:=frmain.Caption+' '+fstrings.portablemode;
 end;
 function uidexists(uid:string):boolean;
 var
@@ -6760,6 +6771,11 @@ begin
   frmain.tbStopDownClick(tbCancelDown);
 end;
 
+procedure Tfrmain.milistContinueLaterDownClick(Sender: TObject);
+begin
+  frmain.tbContinueLaterClick(nil);
+end;
+
 procedure Tfrmain.milistMoveFilesClick(Sender: TObject);
 var
   i:integer;
@@ -7803,6 +7819,24 @@ begin
       frmain.lvMain.Items[numtraydown].SubItems[columntries]:='0';
 end;
 
+procedure Tfrmain.mitraydownContinueLaterClick(Sender: TObject);
+begin
+  if frmain.lvMain.Items[numtraydown].SubItems[columnstatus] <> '1' then
+  begin
+    if frmain.lvMain.Items[numtraydown].SubItems[columntype]='0' then
+    begin
+      frmain.lvMain.Items[numtraydown].ImageIndex:=18;
+    end;
+    if frmain.lvMain.Items[numtraydown].SubItems[columntype] = '1' then
+    begin
+      frmain.lvMain.Items[numtraydown].ImageIndex:=51;
+    end;
+    frmain.lvMain.Items[numtraydown].Caption:=fstrings.statuspaused;
+    frmain.lvMain.Items[numtraydown].SubItems[columnstatus]:='0';
+    frmain.lvMain.Items[numtraydown].SubItems[columntries]:=inttostr(dtries);
+  end;
+end;
+
 procedure Tfrmain.mitraydownStartClick(Sender: TObject);
 begin
   if frmain.lvMain.Items[numtraydown].SubItems[columnstatus]<>'1' then
@@ -8138,6 +8172,34 @@ end;
 procedure Tfrmain.tbCancelDownClick(Sender: TObject);
 begin
   frmain.tbStopDownClick(tbCancelDown);
+end;
+
+procedure Tfrmain.tbContinueLaterClick(Sender: TObject);
+var
+  i:integer;
+begin
+  for i:=0 to frmain.lvMain.Items.Count-1 do
+  begin
+    if frmain.lvMain.Items[i].Selected then
+    begin
+      if frmain.lvMain.Items[i].SubItems[columnstatus] <> '1' then
+      begin
+        if frmain.lvMain.Items[i].SubItems[columntype]='0' then
+        begin
+          frmain.lvMain.Items[i].ImageIndex:=18;
+        end;
+        if frmain.lvMain.Items[i].SubItems[columntype] = '1' then
+        begin
+          frmain.lvMain.Items[i].ImageIndex:=51;
+        end;
+        frmain.lvMain.Items[i].Caption:=fstrings.statuspaused;
+        frmain.lvMain.Items[i].SubItems[columnstatus]:='0';
+        frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(dtries);
+      end;
+    end;
+  end;
+  if frmain.lvFilter.Visible then
+    frmain.tvMainSelectionChanged(nil);
 end;
 
 procedure Tfrmain.tbStopQueueClick(Sender: TObject);

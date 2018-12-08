@@ -344,6 +344,10 @@ msgctxt "fstrings.popuptitlestoped"
 msgid "Download stopped:"
 msgstr "Download stopped:"
 
+#: fstrings.portablemode
+msgid "Portable"
+msgstr ""
+
 #: fstrings.proxymanual
 msgctxt "fstrings.proxymanual"
 msgid "Manual"
@@ -1334,7 +1338,6 @@ msgid "Exit"
 msgstr "Exit"
 
 #: tfrmain.milistcanceldown.caption
-#, fuzzy
 msgctxt "tfrmain.milistcanceldown.caption"
 msgid "Cancel"
 msgstr "Cancel"
@@ -1343,6 +1346,11 @@ msgstr "Cancel"
 msgctxt "tfrmain.milistclearlog.caption"
 msgid "Clean history log file"
 msgstr "Clean history log file"
+
+#: tfrmain.milistcontinuelaterdown.caption
+msgctxt "tfrmain.milistcontinuelaterdown.caption"
+msgid "Continue later"
+msgstr "Continue later"
 
 #: tfrmain.milistcopyfiles.caption
 msgctxt "tfrmain.milistcopyfiles.caption"
@@ -1690,10 +1698,14 @@ msgid "About"
 msgstr "About"
 
 #: tfrmain.mitraydowncancel.caption
-#, fuzzy
 msgctxt "tfrmain.mitraydowncancel.caption"
 msgid "Cancel"
 msgstr "Cancel"
+
+#: tfrmain.mitraydowncontinuelater.caption
+msgctxt "tfrmain.mitraydowncontinuelater.caption"
+msgid "Continue later"
+msgstr "Continue later"
 
 #: tfrmain.mitraydownstart.caption
 msgctxt "tfrmain.mitraydownstart.caption"
@@ -1761,7 +1773,7 @@ msgstr ""
 
 #: tfrmain.tbcanceldown.hint
 msgid "Cancel download"
-msgstr ""
+msgstr "Cancel download"
 
 #: tfrmain.tbclipboard.hint
 msgctxt "tfrmain.tbclipboard.hint"
@@ -1772,6 +1784,15 @@ msgstr "Enable/Disable clipboard monitor"
 msgctxt "tfrmain.tbconfig.hint"
 msgid "Configuration"
 msgstr "Configuration"
+
+#: tfrmain.tbcontinuelater.caption
+msgid "tbContinueLater"
+msgstr ""
+
+#: tfrmain.tbcontinuelater.hint
+msgctxt "tfrmain.tbcontinuelater.hint"
+msgid "Continue later"
+msgstr "Continue later"
 
 #: tfrmain.tbdeldowndisk.hint
 msgctxt "tfrmain.tbdeldowndisk.hint"
@@ -1874,10 +1895,8 @@ msgid "Add queue"
 msgstr "Add queue"
 
 #: tfrnewdown.btnaddtofilter.hint
-#, fuzzy
-#| msgid "Add to domain filter"
 msgid "Not detect this domain with clipboard monitor"
-msgstr "Add to domain filter"
+msgstr "Not detect this domain with clipboard monitor"
 
 #: tfrnewdown.btncancel.caption
 msgctxt "tfrnewdown.btncancel.caption"
@@ -1889,10 +1908,8 @@ msgid "Configure the category file"
 msgstr "Configure the category file"
 
 #: tfrnewdown.btndeletefilter.hint
-#, fuzzy
-#| msgid "Delete from domain filter"
 msgid "Detect this domain with clipboard monitor"
-msgstr "Delete from domain filter"
+msgstr "Detect this domain with clipboard monitor"
 
 #: tfrnewdown.btnforcenames.hint
 msgctxt "tfrnewdown.btnforcenames.hint"
