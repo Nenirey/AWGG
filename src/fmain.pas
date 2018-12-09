@@ -1529,7 +1529,8 @@ begin
     notiforms.HideTimer.Enabled:=true;
     notiforms.Show;
     notiforms.SetShape(ABitmap);
-    ABitmap.Free;
+    FreeAndNil(ABitmap);
+    frmain.tbrMain.Refresh;
   end;
 end;
 
@@ -8609,51 +8610,27 @@ begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
     try
-      if frmain.lvMain.SelCount>1 then
+      for i:=0 to frmain.lvMain.Items.Count-1 do
       begin
-        for i:=0 to frmain.lvMain.Items.Count-1 do
+        if frmain.lvMain.Items[i].Selected then
         begin
-          if frmain.lvMain.Items[i].Selected then
+          if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[i].SubItems[columnid])) and (frmain.lvMain.Items[i].SubItems[columnstatus]='1') then
           begin
-            if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[i].SubItems[columnid])) then
-            begin
-              downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])]);
-              if Sender=tbCancelDown then
-                frmain.lvMain.Items[i].SubItems[columnstatus]:='5';
-              if qtimer[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])].Enabled then
-                frmain.lvMain.Items[i].SubItems[columntries]:='0';
-            end;
-            if frmain.lvMain.Items[i].SubItems[columnstatus]<>'1' then
-            begin
-              if Sender=tbCancelDown then
-              begin
-                frmain.lvMain.Items[i].ImageIndex:=63;
-                frmain.lvMain.Items[i].SubItems[columnstatus]:='5';
-                frmain.lvMain.Items[i].Caption:=fstrings.statuscanceled;
-                writestatus(i);
-              end;
-            end;
+            downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[i].SubItems[columnid])]);
+            if Sender=tbCancelDown then
+              frmain.lvMain.Items[i].SubItems[columnstatus]:='5';
+            if qtimer[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])].Enabled then
+              frmain.lvMain.Items[i].SubItems[columntries]:='0';
           end;
-        end;
-      end
-      else
-      begin
-        if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])) then
-        begin
-          downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnid])]);
-          if Sender=tbCancelDown then
-            frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]:='5';
-          if qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled then
-            frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntries]:='0';
-        end;
-        if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]<>'1' then
-        begin
-          if Sender=tbCancelDown then
+          if frmain.lvMain.Items[i].SubItems[columnstatus]<>'1' then
           begin
-            frmain.lvMain.Items[frmain.lvMain.ItemIndex].ImageIndex:=63;
-            frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]:='5';
-            frmain.lvMain.Items[frmain.lvMain.ItemIndex].Caption:=fstrings.statuscanceled;
-            writestatus(frmain.lvMain.ItemIndex);
+            if Sender=tbCancelDown then
+            begin
+              frmain.lvMain.Items[i].ImageIndex:=63;
+              frmain.lvMain.Items[i].SubItems[columnstatus]:='5';
+              frmain.lvMain.Items[i].Caption:=fstrings.statuscanceled;
+              writestatus(i);
+            end;
           end;
         end;
       end;

@@ -9,7 +9,7 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="28"/>
+        <TopLine Value="27"/>
         <CursorPos Y="54"/>
         <UsageCount Value="237"/>
       </Unit0>
@@ -19,9 +19,10 @@
         <ComponentName Value="frmain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="7845"/>
-        <CursorPos X="7" Y="7855"/>
+        <TopLine Value="1521"/>
+        <CursorPos X="27" Y="1533"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -46,11 +47,10 @@
         <ComponentName Value="frconfig"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="435"/>
-        <CursorPos X="3" Y="437"/>
+        <TopLine Value="440"/>
+        <CursorPos X="13" Y="447"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -149,10 +149,11 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="152"/>
+        <TopLine Value="151"/>
         <CursorPos X="3" Y="174"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit11>
       <Unit12>
         <Filename Value="fcopymove.pas"/>
@@ -194,6 +195,31 @@
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory HistoryIndex="-1"/>
+    <JumpHistory Count="6" HistoryIndex="5">
+      <Position1>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="447" Column="14" TopLine="435"/>
+      </Position1>
+      <Position2>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="676" Column="21" TopLine="662"/>
+      </Position2>
+      <Position3>
+        <Filename Value="fnotification.pas"/>
+        <Caret Line="174" Column="5" TopLine="151"/>
+      </Position3>
+      <Position4>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1489" Column="5" TopLine="1482"/>
+      </Position4>
+      <Position5>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="447" Column="13" TopLine="440"/>
+      </Position5>
+      <Position6>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="676" Column="19" TopLine="662"/>
+      </Position6>
+    </JumpHistory>
   </ProjectSession>
 </CONFIG>
