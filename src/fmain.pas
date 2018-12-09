@@ -689,6 +689,21 @@ implementation
 {$R *.lfm}
 { Tfrmain }
 
+procedure writestatus(downid:integer);
+var
+  statusfile:TextFile;
+begin
+ try
+   AssignFile(statusfile,datapath+PathDelim+frmain.lvMain.Items[downid].SubItems[columnuid]+'.status');
+   if fileExists(configpath+PathDelim+frmain.lvMain.Items[downid].SubItems[columnuid]+'.status')=false then
+     ReWrite(statusfile);
+   Write(statusfile,frmain.lvMain.Items[downid].SubItems[columnstatus]+'/'+frmain.lvMain.Items[downid].SubItems[columncurrent]+'/'+frmain.lvMain.Items[downid].SubItems[columnpercent]+'/'+frmain.lvMain.Items[downid].SubItems[columnestimate]);
+   CloseFile(statusfile);
+ except on e:exception do
+   CloseFile(statusfile);
+ end;
+end;
+
 procedure hiddetrayicon(downtag:integer);
 var
   n:integer;
@@ -805,16 +820,22 @@ begin
        qtimer[0].Interval:=1000;
        qtimer[0].Enabled:=true;;
      end;
-     if playsounds and internetchange then
-       playsound(internetsound);
+     try
+       if playsounds and internetchange then
+         playsound(internetsound);
+     except on e:exception do
+     end;
      internetchange:=false;
      nointernetchange:=true;
    end;
  end
  else
  begin
-   if playsounds and nointernetchange then
-     playsound(nointernetsound);
+   try
+     if playsounds and nointernetchange then
+       playsound(nointernetsound);
+   except on e:exception do
+   end;
    nointernetchange:=false;
    internetchange:=true;
  end;
@@ -857,7 +878,7 @@ begin
         end;
       end;
     end;
-  finally
+  except on e:exception do
   end;
 end;
 
@@ -7813,8 +7834,17 @@ end;
 procedure Tfrmain.mitraydownCancelClick(Sender: TObject);
 begin
   if (Assigned(hilo)) and (Length(hilo)>=strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnid])) and (frmain.lvMain.Items[numtraydown].SubItems[columnstatus]='1') then
+  begin
     downthread_shutdown(hilo[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnid])]);
-  frmain.lvMain.Items[numtraydown].SubItems[columnstatus]:='5';
+    frmain.lvMain.Items[numtraydown].SubItems[columnstatus]:='5';
+  end;
+  if (frmain.lvMain.Items[numtraydown].SubItems[columnstatus]<>'1') then
+  begin
+    frmain.lvMain.Items[numtraydown].ImageIndex:=63;
+    frmain.lvMain.Items[numtraydown].SubItems[columnstatus]:='5';
+    frmain.lvMain.Items[numtraydown].Caption:=fstrings.statuscanceled;
+    writestatus(numtraydown);
+  end;
   if qtimer[strtoint(frmain.lvMain.Items[numtraydown].SubItems[columnqueue])].Enabled then
       frmain.lvMain.Items[numtraydown].SubItems[columntries]:='0';
 end;
@@ -7834,6 +7864,7 @@ begin
     frmain.lvMain.Items[numtraydown].Caption:=fstrings.statuspaused;
     frmain.lvMain.Items[numtraydown].SubItems[columnstatus]:='0';
     frmain.lvMain.Items[numtraydown].SubItems[columntries]:=inttostr(dtries);
+    writestatus(numtraydown);
   end;
 end;
 
@@ -8195,6 +8226,7 @@ begin
         frmain.lvMain.Items[i].Caption:=fstrings.statuspaused;
         frmain.lvMain.Items[i].SubItems[columnstatus]:='0';
         frmain.lvMain.Items[i].SubItems[columntries]:=inttostr(dtries);
+        writestatus(i);
       end;
     end;
   end;
@@ -8591,6 +8623,16 @@ begin
               if qtimer[strtoint(frmain.lvMain.Items[i].SubItems[columnqueue])].Enabled then
                 frmain.lvMain.Items[i].SubItems[columntries]:='0';
             end;
+            if frmain.lvMain.Items[i].SubItems[columnstatus]<>'1' then
+            begin
+              if Sender=tbCancelDown then
+              begin
+                frmain.lvMain.Items[i].ImageIndex:=63;
+                frmain.lvMain.Items[i].SubItems[columnstatus]:='5';
+                frmain.lvMain.Items[i].Caption:=fstrings.statuscanceled;
+                writestatus(i);
+              end;
+            end;
           end;
         end;
       end
@@ -8603,6 +8645,16 @@ begin
             frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]:='5';
           if qtimer[strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue])].Enabled then
             frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntries]:='0';
+        end;
+        if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]<>'1' then
+        begin
+          if Sender=tbCancelDown then
+          begin
+            frmain.lvMain.Items[frmain.lvMain.ItemIndex].ImageIndex:=63;
+            frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]:='5';
+            frmain.lvMain.Items[frmain.lvMain.ItemIndex].Caption:=fstrings.statuscanceled;
+            writestatus(frmain.lvMain.ItemIndex);
+          end;
         end;
       end;
       frmain.tbStartDown.Enabled:=true;
