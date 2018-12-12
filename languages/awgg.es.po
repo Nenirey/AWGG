@@ -292,6 +292,11 @@ msgctxt "fstrings.msgfilenoexist"
 msgid "The file not exists."
 msgstr "El archivo no existe!!!."
 
+#: fstrings.msginternetconnection
+msgctxt "fstrings.msginternetconnection"
+msgid "Internet connection"
+msgstr "Conexion a internet"
+
 #: fstrings.msgmoveoperationerror
 msgid ""
 "Error to move file, details:\n"
@@ -324,6 +329,11 @@ msgstr "La carpeta no existe: "
 msgctxt "fstrings.msgnoexisthistorylog"
 msgid "The history log for the download does not exist!"
 msgstr "No existe un historial log de la descarga!!!."
+
+#: fstrings.msgnointernetconnection
+msgctxt "fstrings.msgnointernetconnection"
+msgid "No internet connection"
+msgstr "Sin conexion a internet"
 
 #: fstrings.newfiletyperememberpath
 msgctxt "fstrings.newfiletyperememberpath"
@@ -701,12 +711,31 @@ msgstr ""
 
 #: tfrconfig.chinternetcheck.caption
 msgid "Start main queue if internet connection"
-msgstr ""
+msgstr "Iniciar cola principal con conexion a internet"
 
 #: tfrconfig.chloadlogs.caption
 msgctxt "tfrconfig.chloadlogs.caption"
 msgid "Load log when select a download."
 msgstr "Cargar log al seleccionar una descarga."
+
+#: tfrconfig.chnotifiondownloadcomplete.caption
+msgctxt "tfrconfig.chnotifiondownloadcomplete.caption"
+msgid "Download complete"
+msgstr "Descarga completada"
+
+#: tfrconfig.chnotifiondownloaderror.caption
+msgid "Download error"
+msgstr "Descarga fallida"
+
+#: tfrconfig.chnotifioninternet.caption
+msgctxt "tfrconfig.chnotifioninternet.caption"
+msgid "Internet connection"
+msgstr "Conexion a internet"
+
+#: tfrconfig.chnotifionnointernet.caption
+msgctxt "tfrconfig.chnotifionnointernet.caption"
+msgid "No internet connection"
+msgstr "Sin conexion a internet"
 
 #: tfrconfig.chplaysounds.caption
 msgctxt "tfrconfig.chplaysounds.caption"
@@ -738,6 +767,26 @@ msgctxt "tfrconfig.chshutdown.caption"
 msgid "Shutdown after end"
 msgstr "Apagar al terminar"
 
+#: tfrconfig.chsounddowncomplete.caption
+msgctxt "tfrconfig.chsounddowncomplete.caption"
+msgid "Download complete:"
+msgstr "Descarga completada:"
+
+#: tfrconfig.chsounddownerror.caption
+msgctxt "tfrconfig.chsounddownerror.caption"
+msgid "Download error:"
+msgstr "Descarga fallida:"
+
+#: tfrconfig.chsoundinternet.caption
+msgctxt "tfrconfig.chsoundinternet.caption"
+msgid "Internet connection:"
+msgstr "Conexion a internet"
+
+#: tfrconfig.chsoundnointernet.caption
+msgctxt "tfrconfig.chsoundnointernet.caption"
+msgid "No internet connection:"
+msgstr "Sin conexion a internet"
+
 #: tfrconfig.chstopqueue.caption
 msgctxt "tfrconfig.chstopqueue.caption"
 msgid "Stop queue:"
@@ -745,7 +794,7 @@ msgstr "Detener cola:"
 
 #: tfrconfig.chsysnotifications.caption
 msgid "Use system notifications"
-msgstr ""
+msgstr "Usar notificaciones del sistema"
 
 #: tfrconfig.chuseauth.caption
 msgctxt "tfrconfig.chuseauth.caption"
@@ -799,6 +848,10 @@ msgstr "Cargar"
 msgctxt "tfrconfig.gbqueuerotatemode.caption"
 msgid "Rotate mode"
 msgstr "Modo de rotacion"
+
+#: tfrconfig.gbshownotificationfor.caption
+msgid "Show notifications for"
+msgstr "Mostrar notificaciones para"
 
 #: tfrconfig.gbsounds.caption
 msgctxt "tfrconfig.gbsounds.caption"
@@ -984,24 +1037,6 @@ msgstr "Cantidad de rotaciones o intentos:"
 msgctxt "tfrconfig.lblseconds.caption"
 msgid " seconds"
 msgstr " segundos"
-
-#: tfrconfig.lblsounddowncomplete.caption
-msgctxt "tfrconfig.lblsounddowncomplete.caption"
-msgid "Download complete:"
-msgstr "Descarga completada:"
-
-#: tfrconfig.lblsounddownstoped.caption
-msgctxt "tfrconfig.lblsounddownstoped.caption"
-msgid "Download stopped:"
-msgstr "Descarga detenida:"
-
-#: tfrconfig.lblsoundinternet.caption
-msgid "Internet connection:"
-msgstr ""
-
-#: tfrconfig.lblsoundnointernet.caption
-msgid "No internet connection:"
-msgstr ""
 
 #: tfrconfig.lblsslhost.caption
 msgctxt "tfrconfig.lblsslhost.caption"

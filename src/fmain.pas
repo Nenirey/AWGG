@@ -34,7 +34,7 @@ uses
   PairSplitter, {DefaultTranslator}LCLTranslator, URIParser, fphttpclient, Base64;
 
 type
-  TDownThread=Class(TThread)
+  TConnectionThread=Class(TThread)
   Private
   DHTTPClient:TFPHTTPClient;
   RS:TStringList;
@@ -99,18 +99,8 @@ public
   Constructor Create(CreateSuspended:boolean;gparams:TStringList);
 end;
 
-{type
-  ClipBoardThread=Class(TThread)
-private
-  uri:string;
-  procedure update;
-  procedure prepare();
-protected
-  procedure Execute; override;
-public
-  Constructor Create(CreateSuspended:boolean);
-end;}
-
+{$IFDEF MSWINDOWS}
+{$ELSE}
 type
   soundthread=class(TThread)
 private
@@ -121,6 +111,7 @@ protected
 public
   Constructor Create(CreateSuspended:boolean);
 end;
+{$ENDIF}
 
 type
   copythread=class(TThread)
@@ -548,17 +539,16 @@ var
   customgetformats:GetThread;
   customgetname:GetThread;
   copywork:array of copythread;
-  //clipboardmth:ClipBoardThread;
   phttp,phttpport,phttps,phttpsport,pftp,pftpport,nphost,puser,ppassword,cntlmhost,cntlmport:string;
   useproxy:integer;
   useaut:boolean;
-  shownotifi:boolean;
+  shownotifi,shownotificomplete,shownotifierror,shownotifiinternet,shownotifinointernet:boolean;
   usesysnotifi:boolean;
   hiddenotifi:integer;
   notifipos:integer;
   ddowndir:string='';
   clipboardmonitor:boolean;
-  //columnstatus 0=Paused 1=In progress, 2=Stopped, 3=Complete, 4=Error, 5=Manual stopped
+  //columnstatus 0=Paused 1=In progress, 2=Stopped, 3=Complete, 4=Error, 5=Canceled
   columnname,columnurl,columnpercent,columnsize,columncurrent,columnspeed,columnestimate, columndate, columndestiny,columnengine,columnparameters,columnuser,columnpass,columnstatus,columnid, columntries, columnuid, columntype, columnqueue, columncookie, columnreferer, columnpost, columnheader, columnuseragent:integer;
   columncolaw,columnnamew,columnurlw,columnpercentw,columnsizew,columncurrentw,columnspeedw,columnestimatew,columndatew,columndestinyw,columnenginew,columnparametersw:integer;
   columncolav,columnnamev,columnurlv,columnpercentv,columnsizev,columncurrentv,columnspeedv,columnestimatev,columndatev,columndestinyv,columnenginev,columnparametersv:boolean;
@@ -583,11 +573,14 @@ var
   splitpos,splithpos:integer;
   lastmainwindowstate:TWindowstate;
   firsttime:boolean;
+  {$IFDEF MSWINDOWS}
+  {$ELSE}
   hilosnd:soundthread;
+  {$ENDIF}
   deflanguage:string;
   firststart:boolean;
   defaultengine:string;
-  playsounds:boolean;
+  playsounds,playsoundcomplete,playsounderror,playsoundinternet,playsoundnointernet:boolean;
   downcompsound,downstopsound,internetsound,nointernetsound:string;
   sheduledisablelimits:boolean;
   queuerotate:boolean;
@@ -651,7 +644,7 @@ var
   params:array of string;
   paramscount:longint;
   queueindex:integer;
-  internetchecker:TDownThread;
+  internetchecker:TConnectionThread;
   internet:boolean;
   internetcheck:boolean;
   interneturl:string;
@@ -780,7 +773,7 @@ begin
  end;
 end;
 
-constructor TDownThread.Create;
+constructor TConnectionThread.Create;
 begin
   inherited Create(True);
   FreeOnTerminate := True;
@@ -808,47 +801,48 @@ begin
   end;
 end;
 
-procedure TDownThread.showrs;
+procedure TConnectionThread.showrs;
 begin
- if internet then
- begin
-   if Assigned(qtimer[0]) then
-   begin
-     if (queuemainstop=false) then
-     begin
-       queuemanual[0]:=true;
-       qtimer[0].Interval:=1000;
-       qtimer[0].Enabled:=true;;
-     end;
-     try
-       if playsounds and internetchange then
-         playsound(internetsound);
-     except on e:exception do
-     end;
-     internetchange:=false;
-     nointernetchange:=true;
-   end;
- end
- else
- begin
-   try
-     if playsounds and nointernetchange then
-       playsound(nointernetsound);
-   except on e:exception do
-   end;
-   nointernetchange:=false;
-   internetchange:=true;
- end;
+  try
+    if internet then
+    begin
+      if Assigned(qtimer[0]) then
+      begin
+        if (queuemainstop=false) then
+        begin
+          queuemanual[0]:=true;
+          qtimer[0].Interval:=1000;
+          qtimer[0].Enabled:=true;;
+        end;
+        if shownotifi and shownotifiinternet and internetchange then
+          createnewnotifi('AWGG',msginternetconnection,'','',true,'');
+        if playsounds and playsoundinternet and internetchange then
+          playsound(internetsound);
+        internetchange:=false;
+        nointernetchange:=true;
+      end;
+    end
+    else
+    begin
+      if shownotifi and shownotifinointernet and nointernetchange then
+          createnewnotifi('AWGG',msgnointernetconnection,'','',false,'');
+      if playsounds and playsoundnointernet and nointernetchange then
+        playsound(nointernetsound);
+      nointernetchange:=false;
+      internetchange:=true;
+    end;
+  except on e:exception do
+  end;
 end;
 
-procedure TDownThread.stop;
+procedure TConnectionThread.stop;
 begin
   DHTTPClient.Terminate;
   ifstop:=false;
   DHTTPClient.Destroy;
 end;
 
-procedure TDownThread.Execute;
+procedure TConnectionThread.Execute;
 var
   firsttime:boolean;
 begin
@@ -2241,6 +2235,8 @@ begin
   end;
 end;
 
+{$IFDEF MSWINDOWS}
+{$ELSE}
 constructor soundthread.Create(CreateSuspended:boolean);
 begin
   inherited Create(CreateSuspended);
@@ -2263,7 +2259,7 @@ begin
     engine:='/usr/bin/mplayer2';
   if FileExists(engine) then
   begin
-    player.Options:=[poUsePipes,poStderrToOutPut,poNoConsole];
+    player.Options:=[{poUsePipes,poStderrToOutPut,}poNoConsole];
     player.Executable:=engine;
     player.Parameters.Add(sndfile);
     player.Execute;
@@ -2271,6 +2267,7 @@ begin
   while player.Running do;
     hilosnd.Terminate;
 end;
+{$ENDIF}
 
 procedure playsound(soundfile:string);
 begin
@@ -2678,6 +2675,10 @@ begin
     iniconfigfile.WriteString('Config','puser',EncodeBase64(puser));
     iniconfigfile.WriteString('Config','ppassword',EncodeBase64(ppassword));
     iniconfigfile.WriteBool('Config','shownotifi',shownotifi);
+    iniconfigfile.WriteBool('Config','shownotificomplete',shownotificomplete);
+    iniconfigfile.WriteBool('Config','shownotifierror',shownotifierror);
+    iniconfigfile.WriteBool('Config','shownotifiinternet',shownotifiinternet);
+    iniconfigfile.WriteBool('Config','shownotifinointernet',shownotifinointernet);
     iniconfigfile.WriteInteger('Config','hiddenotifi',hiddenotifi);
     iniconfigfile.WriteBool('Config','usesysnotifi',usesysnotifi);
     iniconfigfile.WriteBool('Config','clipboardmonitor',clipboardmonitor);
@@ -2766,6 +2767,10 @@ begin
     iniconfigfile.WriteBool('Config','firststart',firststart);
     iniconfigfile.WriteString('Config','defaultengine',defaultengine);
     iniconfigfile.WriteBool('Config','playsounds',playsounds);
+    iniconfigfile.WriteBool('Config','playsoundcomplete',playsoundcomplete);
+    iniconfigfile.WriteBool('Config','playsounderror',playsounderror);
+    iniconfigfile.WriteBool('Config','playsoundinternet',playsoundinternet);
+    iniconfigfile.WriteBool('Config','playsoundnointernet',playsoundnointernet);
     iniconfigfile.WriteString('Config','downcompsound',StringReplace(downcompsound,currentdir,awgg_path,[rfReplaceAll]));
     iniconfigfile.WriteString('Config','downstopsound',StringReplace(downstopsound,currentdir,awgg_path,[rfReplaceAll]));
     iniconfigfile.WriteString('Config','internetsound',StringReplace(internetsound,currentdir,awgg_path,[rfReplaceAll]));
@@ -2849,6 +2854,10 @@ begin
     puser:=DecodeBase64(iniconfigfile.ReadString('Config','puser',''));
     ppassword:=DecodeBase64(iniconfigfile.ReadString('Config','ppassword',''));
     shownotifi:=iniconfigfile.ReadBool('Config','shownotifi',true);
+    shownotificomplete:=iniconfigfile.ReadBool('Config','shownotificomplete',true);
+    shownotifierror:=iniconfigfile.ReadBool('Config','shownotifierror',true);
+    shownotifiinternet:=iniconfigfile.ReadBool('Config','shownotifiinternet',true);
+    shownotifinointernet:=iniconfigfile.ReadBool('Config','shownotifinointernet',true);
     hiddenotifi:=iniconfigfile.ReadInteger('Config','hiddenotifi',5);
     usesysnotifi:=iniconfigfile.ReadBool('Config','usesysnotifi',false);
     clipboardmonitor:=iniconfigfile.ReadBool('Config','clipboardmonitor',true);
@@ -2937,6 +2946,10 @@ begin
     firststart:=iniconfigfile.ReadBool('Config','firststart',true);
     defaultengine:=iniconfigfile.ReadString('Config','defaultengine','wget');
     playsounds:=iniconfigfile.ReadBool('Config','playsounds',true);
+    playsoundcomplete:=iniconfigfile.ReadBool('Config','playsoundcomplete',true);
+    playsounderror:=iniconfigfile.ReadBool('Config','playsounderror',true);
+    playsoundinternet:=iniconfigfile.ReadBool('Config','playsoundinternet',true);
+    playsoundnointernet:=iniconfigfile.ReadBool('Config','playsoundnointernet',true);
     downcompsound:=StringReplace(iniconfigfile.ReadString('Config','downcompsound',currentdir+'complete.wav'),awgg_path,currentdir,[rfReplaceAll]);
     downstopsound:=StringReplace(iniconfigfile.ReadString('Config','downstopsound',currentdir+'stopped.wav'),awgg_path,currentdir,[rfReplaceAll]);
     internetsound:=StringReplace(iniconfigfile.ReadString('Config','internetsound',currentdir+'internet.wav'),awgg_path,currentdir,[rfReplaceAll]);
@@ -3139,6 +3152,10 @@ begin
   puser:=frconfig.edtProxyUser.Text;
   ppassword:=frconfig.edtProxyPass.Text;
   shownotifi:=frconfig.chShowNotifications.Checked;
+  shownotificomplete:=frconfig.chNotifiOnDownloadComplete.Checked;
+  shownotifierror:=frconfig.chNotifiOnDownloaderror.Checked;
+  shownotifiinternet:=frconfig.chNotifiOnInternet.Checked;
+  shownotifinointernet:=frconfig.chNotifiOnNoInternet.Checked;
   hiddenotifi:=frconfig.seHideSeconds.Value;
   clipboardmonitor:=frconfig.chClipboardMonitor.Checked;
   frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
@@ -3178,6 +3195,10 @@ begin
   deflanguage:=frconfig.cbDefLanguage.Text;
   defaultengine:=frconfig.cbDefEngine.Text;
   playsounds:=frconfig.chPlaySounds.Checked;
+  playsoundcomplete:=frconfig.chSoundDownComplete.Checked;
+  playsounderror:=frconfig.chSoundDownError.Checked;
+  playsoundInternet:=frconfig.chSoundInternet.Checked;
+  playsoundNoInternet:=frconfig.chSoundNoInternet.Checked;
   queuelimits[frconfig.cbQueue.ItemIndex]:=frconfig.chDisableLimits.Checked;
   queuepoweroff[frconfig.cbQueue.ItemIndex]:=frconfig.chShutdown.Checked;
   queuerotate:=frconfig.chQueueRotate.Checked;
@@ -3241,7 +3262,7 @@ begin
   categoryreload();
   if internetcheck then
   begin
-    internetchecker:=TDownThread.Create;
+    internetchecker:=TConnectionThread.Create;
     internetchecker.Start;
   end
   else
@@ -3274,6 +3295,10 @@ begin
     frconfig.chClipboardMonitor.Checked:=clipboardmonitor;
     frconfig.deDownFolder.Text:=ddowndir;
     frconfig.chShowNotifications.Checked:=shownotifi;
+    frconfig.chNotifiOnDownloadComplete.Checked:=shownotificomplete;
+    frconfig.chNotifiOnDownloadError.Checked:=shownotifierror;
+    frconfig.chNotifiOnInternet.Checked:=shownotifiinternet;
+    frconfig.chNotifiOnNointernet.Checked:=shownotifinointernet;
     frconfig.chSysNotifications.Checked:=usesysnotifi;
     frconfig.seHideSeconds.Value:=hiddenotifi;
     frconfig.fneWgetpath.Text:=StringReplace(wgetrutebin,currentdir,awgg_path,[rfReplaceAll]);
@@ -3373,6 +3398,10 @@ begin
     if frconfig.cbytexternaldown.ItemIndex=-1 then
       frconfig.cbytexternaldown.ItemIndex:=0;
     frconfig.chPlaySounds.Checked:=playsounds;
+    frconfig.chSoundDownComplete.Checked:=playsoundcomplete;
+    frconfig.chSoundDownError.Checked:=playsounderror;
+    frconfig.chSoundInternet.Checked:=playsoundinternet;
+    frconfig.chSoundNoInternet.Checked:=playsoundnointernet;
     frconfig.chQueueRotate.Checked:=queuerotate;
     frconfig.fneSoundComplete.Text:=StringReplace(downcompsound,currentdir,awgg_path,[rfReplaceAll]);
     frconfig.fneSoundStopped.Text:=StringReplace(downstopsound,currentdir,awgg_path,[rfReplaceAll]);
@@ -5662,7 +5691,7 @@ begin
       if frmain.lvFilter.Items[thid2].SubItems[columntype] = '1' then
         frmain.lvFilter.Items[thid2].ImageIndex:=54;
     end;
-    if (shownotifi) and (frmain.Focused=false) then
+    if (shownotifi) and shownotificomplete and (frmain.Focused=false) then
     begin
       //////Many notifi forms
       //if frmain.lvMain.Items[thid].SubItems[columnname]<>'' then
@@ -5672,7 +5701,7 @@ begin
       //////
     end;
     try
-      if playsounds and (frmain.Focused=false) then
+      if playsounds and playsoundcomplete and (frmain.Focused=false) then
         playsound(downcompsound);
     except on e:exception do
     end;
@@ -5754,7 +5783,7 @@ begin
     if manualshutdown=false then
     begin
       ///Show only if not left tries or queue is stopped
-      if shownotifi and ((qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled=false) or (strtoint(frmain.lvMain.Items[thid].SubItems[columntries])<=1)) then
+      if shownotifi and shownotifierror and ((qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled=false) or (strtoint(frmain.lvMain.Items[thid].SubItems[columntries])<=1)) then
       begin
         outlines:=TStringList.Create;
         outlines.Add(datetostr(Date()));
@@ -5767,7 +5796,7 @@ begin
       begin
         frmain.lvMain.Items[thid].SubItems[columntries]:=inttostr(strtoint(frmain.lvMain.Items[thid].SubItems[columntries])-1);
       end;
-      //////Mover la descarga si ocurrio un error
+      //////Move the download if an error occur
       if qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled and queuerotate then
       begin
         if thid<frmain.lvMain.Items.Count-1 then
@@ -5791,7 +5820,7 @@ begin
         end;
       end;
       try
-        if playsounds and ((qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled=false) or (strtoint(frmain.lvMain.Items[thid].SubItems[columntries])<=1)) then
+        if playsounds and playsounderror and ((qtimer[strtoint(frmain.lvMain.Items[thid].SubItems[columnqueue])].Enabled=false) or (strtoint(frmain.lvMain.Items[thid].SubItems[columntries])<=1)) then
           playsound(downstopsound);
       except on e:exception do
       end;
@@ -6304,11 +6333,6 @@ begin
   frmain.FirstStartTimer.Enabled:=true;
   onestart:=false;
   frmain.lvFilter.Columns:=frmain.lvMain.Columns;
-  if internetcheck then
-  begin
-    internetchecker:=TDownThread.Create;
-    internetchecker.Start;
-  end;
 end;
 
 procedure Tfrmain.FormWindowStateChange(Sender: TObject);
@@ -8170,14 +8194,6 @@ begin
       CreateDir(ddowndir);
     defaultcategory();
     categoryreload();
-    //frconfirm.dlgtext.Caption:=firefoxintegration;
-    //frconfirm.ShowModal;
-    {if dlgcuestion then
-    begin
-      ShowMessage(fstrings.firefoxhelpintegration);
-      setfirefoxintegration();
-      OpenURL('http://sites.google.com/site/awggproject');
-    end;}
   end;
   dotherdowndir:=ddowndir+pathdelim+categoryothers;
   updatelangstatus();
@@ -8199,6 +8215,11 @@ begin
   end
   else
     frmain.WindowState:=lastmainwindowstate;
+  if internetcheck then
+  begin
+    internetchecker:=TConnectionThread.Create;
+    internetchecker.Start;
+  end;
 end;
 
 procedure Tfrmain.tbCancelDownClick(Sender: TObject);
@@ -8347,70 +8368,71 @@ begin
   ///Select the best parameters
   suggestparameters();
   queueindexselect();
-  if frnewdown.Visible=true then
+  if frnewdown.Visible=false then
   begin
-    frnewdown.Hide;
-    frnewdown.Visible:=false;
+    //frnewdown.Hide;
+    //frnewdown.Visible:=false;
+    frnewdown.ShowModal;
+    frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Activar el clipboardmonitor.
+    if agregar and (updateurl=false) then
+    begin
+      downitem:=TListItem.Create(frmain.lvMain.Items);
+      downitem.Caption:=fstrings.statuspaused;
+      downitem.ImageIndex:=18;
+      downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
+      downitem.SubItems.Add('');//Tama;o
+      downitem.SubItems.Add('');//Descargado
+      downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
+      downitem.SubItems.Add('');//Velocidad
+      downitem.SubItems.Add('');//Porciento
+      downitem.SubItems.Add('');//Estimado
+      downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
+      downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
+      downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
+      downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
+      downitem.SubItems.Add('0');//status
+      downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
+      downitem.SubItems.Add(frnewdown.edtUser.Text);//user
+      downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
+      downitem.SubItems.Add(inttostr(triesrotate));//tries
+      downitem.SubItems.Add(uidgen());//uid
+      downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
+      downitem.SubItems.Add('0');//type
+      downitem.SubItems.Add('');//cookie
+      downitem.SubItems.Add('');//referer
+      downitem.SubItems.Add('');//post
+      downitem.SubItems.Add('');//header
+      downitem.SubItems.Add('');//useragent
+      frmain.lvMain.Items.AddItem(downitem);
+      frnewdown.edtURL.Text:='http://';
+      tmpindex:=downitem.Index;
+      if frnewdown.btnToUp.Visible then
+      begin
+        movestepup(tmpindex,0);
+        tmpindex:=0;
+      end;
+      if cola then
+      begin
+        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+        qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
+      end;
+      frmain.tvMainSelectionChanged(nil);
+      savemydownloads();
+      if iniciar then
+      begin
+        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+        downloadstart(tmpindex,false);
+      end
+      else
+      begin
+        if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
+          updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
+      end;
+      queueindex:=frnewdown.cbQueue.ItemIndex;
+    end;
   end
   else
-    frnewdown.ShowModal;
-  frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Activar el clipboardmonitor.
-  if agregar and (updateurl=false) then
-  begin
-    downitem:=TListItem.Create(frmain.lvMain.Items);
-    downitem.Caption:=fstrings.statuspaused;
-    downitem.ImageIndex:=18;
-    downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
-    downitem.SubItems.Add('');//Tama;o
-    downitem.SubItems.Add('');//Descargado
-    downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
-    downitem.SubItems.Add('');//Velocidad
-    downitem.SubItems.Add('');//Porciento
-    downitem.SubItems.Add('');//Estimado
-    downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
-    downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
-    downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
-    downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
-    downitem.SubItems.Add('0');//status
-    downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
-    downitem.SubItems.Add(frnewdown.edtUser.Text);//user
-    downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
-    downitem.SubItems.Add(inttostr(triesrotate));//tries
-    downitem.SubItems.Add(uidgen());//uid
-    downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
-    downitem.SubItems.Add('0');//type
-    downitem.SubItems.Add('');//cookie
-    downitem.SubItems.Add('');//referer
-    downitem.SubItems.Add('');//post
-    downitem.SubItems.Add('');//header
-    downitem.SubItems.Add('');//useragent
-    frmain.lvMain.Items.AddItem(downitem);
-    frnewdown.edtURL.Text:='http://';
-    tmpindex:=downitem.Index;
-    if frnewdown.btnToUp.Visible then
-    begin
-      movestepup(tmpindex,0);
-      tmpindex:=0;
-    end;
-    if cola then
-    begin
-      queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
-      qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
-    end;
-    frmain.tvMainSelectionChanged(nil);
-    savemydownloads();
-    if iniciar then
-    begin
-      queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
-      downloadstart(tmpindex,false);
-    end
-    else
-    begin
-      if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
-        updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
-    end;
-    queueindex:=frnewdown.cbQueue.ItemIndex;
-  end;
+    frnewdown.Show;
 end;
 
 procedure Tfrmain.tbSteepDownClick(Sender: TObject);

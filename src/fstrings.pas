@@ -135,6 +135,8 @@ filterforcenames='Force downloads names';
 filternoforcenames='No force downloads names';
 nochangefield='[Keep]';
 portablemode='Portable';
+msginternetconnection='Internet connection';
+msgnointernetconnection='No internet connection';
 Implementation
 end.
 

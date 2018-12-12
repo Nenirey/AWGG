@@ -7,11 +7,12 @@
       <Unit0>
         <Filename Value="awgg.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="-1"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
         <TopLine Value="27"/>
         <CursorPos Y="54"/>
         <UsageCount Value="237"/>
+        <Loaded Value="True"/>
       </Unit0>
       <Unit1>
         <Filename Value="fmain.pas"/>
@@ -21,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1521"/>
-        <CursorPos X="27" Y="1533"/>
+        <TopLine Value="814"/>
+        <CursorPos X="39" Y="828"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -33,7 +34,7 @@
         <ComponentName Value="frnewdown"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="1"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
         <TopLine Value="501"/>
         <CursorPos X="9" Y="508"/>
@@ -47,10 +48,10 @@
         <ComponentName Value="frconfig"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="440"/>
-        <CursorPos X="13" Y="447"/>
+        <TopLine Value="468"/>
+        <CursorPos X="41" Y="475"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -61,7 +62,7 @@
         <ComponentName Value="frabout"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -73,7 +74,7 @@
         <ComponentName Value="frlang"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -85,10 +86,10 @@
         <ComponentName Value="frstrings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
         <TopLine Value="112"/>
-        <CursorPos X="23" Y="137"/>
+        <CursorPos X="48" Y="139"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -98,7 +99,7 @@
         <ComponentName Value="frconfirm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -110,7 +111,7 @@
         <ComponentName Value="frreplace"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -122,7 +123,7 @@
         <ComponentName Value="frsitegrabber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
         <TopLine Value="88"/>
         <CursorPos X="3" Y="103"/>
@@ -135,7 +136,7 @@
         <ComponentName Value="fradd"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -147,7 +148,7 @@
         <ComponentName Value="frnotification"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
         <TopLine Value="151"/>
         <CursorPos X="3" Y="174"/>
@@ -161,7 +162,7 @@
         <ComponentName Value="frcopymove"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -173,7 +174,7 @@
         <ComponentName Value="frddbox"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
         <TopLine Value="171"/>
         <CursorPos X="3" Y="176"/>
@@ -186,7 +187,7 @@
         <ComponentName Value="frvideoformat"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="2"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
         <TopLine Value="55"/>
         <CursorPos X="3" Y="79"/>
@@ -195,31 +196,6 @@
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="6" HistoryIndex="5">
-      <Position1>
-        <Filename Value="fconfig.pas"/>
-        <Caret Line="447" Column="14" TopLine="435"/>
-      </Position1>
-      <Position2>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="676" Column="21" TopLine="662"/>
-      </Position2>
-      <Position3>
-        <Filename Value="fnotification.pas"/>
-        <Caret Line="174" Column="5" TopLine="151"/>
-      </Position3>
-      <Position4>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1489" Column="5" TopLine="1482"/>
-      </Position4>
-      <Position5>
-        <Filename Value="fconfig.pas"/>
-        <Caret Line="447" Column="13" TopLine="440"/>
-      </Position5>
-      <Position6>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="676" Column="19" TopLine="662"/>
-      </Position6>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>

@@ -267,6 +267,11 @@ msgctxt "fstrings.msgfilenoexist"
 msgid "The file not exists."
 msgstr ""
 
+#: fstrings.msginternetconnection
+msgctxt "fstrings.msginternetconnection"
+msgid "Internet connection"
+msgstr ""
+
 #: fstrings.msgmoveoperationerror
 msgid ""
 "Error to move file, details:\n"
@@ -296,6 +301,11 @@ msgstr ""
 #: fstrings.msgnoexisthistorylog
 msgctxt "fstrings.msgnoexisthistorylog"
 msgid "The history log for the download does not exist!"
+msgstr ""
+
+#: fstrings.msgnointernetconnection
+msgctxt "fstrings.msgnointernetconnection"
+msgid "No internet connection"
 msgstr ""
 
 #: fstrings.newfiletyperememberpath
@@ -681,6 +691,25 @@ msgctxt "TFRCONFIG.CHLOADLOGS.CAPTION"
 msgid "Load log when select a download."
 msgstr ""
 
+#: tfrconfig.chnotifiondownloadcomplete.caption
+msgctxt "tfrconfig.chnotifiondownloadcomplete.caption"
+msgid "Download complete"
+msgstr ""
+
+#: tfrconfig.chnotifiondownloaderror.caption
+msgid "Download error"
+msgstr ""
+
+#: tfrconfig.chnotifioninternet.caption
+msgctxt "tfrconfig.chnotifioninternet.caption"
+msgid "Internet connection"
+msgstr ""
+
+#: tfrconfig.chnotifionnointernet.caption
+msgctxt "tfrconfig.chnotifionnointernet.caption"
+msgid "No internet connection"
+msgstr ""
+
 #: tfrconfig.chplaysounds.caption
 msgctxt "TFRCONFIG.CHPLAYSOUNDS.CAPTION"
 msgid "Play sounds"
@@ -709,6 +738,26 @@ msgstr ""
 #: tfrconfig.chshutdown.caption
 msgctxt "TFRCONFIG.CHSHUTDOWN.CAPTION"
 msgid "Shutdown after end"
+msgstr ""
+
+#: tfrconfig.chsounddowncomplete.caption
+msgctxt "tfrconfig.chsounddowncomplete.caption"
+msgid "Download complete:"
+msgstr ""
+
+#: tfrconfig.chsounddownerror.caption
+msgctxt "tfrconfig.chsounddownerror.caption"
+msgid "Download error:"
+msgstr ""
+
+#: tfrconfig.chsoundinternet.caption
+msgctxt "tfrconfig.chsoundinternet.caption"
+msgid "Internet connection:"
+msgstr ""
+
+#: tfrconfig.chsoundnointernet.caption
+msgctxt "tfrconfig.chsoundnointernet.caption"
+msgid "No internet connection:"
 msgstr ""
 
 #: tfrconfig.chstopqueue.caption
@@ -771,6 +820,10 @@ msgstr ""
 #: tfrconfig.gbqueuerotatemode.caption
 msgctxt "TFRCONFIG.GBQUEUEROTATEMODE.CAPTION"
 msgid "Rotate mode"
+msgstr ""
+
+#: tfrconfig.gbshownotificationfor.caption
+msgid "Show notifications for"
 msgstr ""
 
 #: tfrconfig.gbsounds.caption
@@ -956,24 +1009,6 @@ msgstr ""
 #: tfrconfig.lblseconds.caption
 msgctxt "TFRCONFIG.LBLSECONDS.CAPTION"
 msgid " seconds"
-msgstr ""
-
-#: tfrconfig.lblsounddowncomplete.caption
-msgctxt "TFRCONFIG.LBLSOUNDDOWNCOMPLETE.CAPTION"
-msgid "Download complete:"
-msgstr ""
-
-#: tfrconfig.lblsounddownstoped.caption
-msgctxt "TFRCONFIG.LBLSOUNDDOWNSTOPED.CAPTION"
-msgid "Download stopped:"
-msgstr ""
-
-#: tfrconfig.lblsoundinternet.caption
-msgid "Internet connection:"
-msgstr ""
-
-#: tfrconfig.lblsoundnointernet.caption
-msgid "No internet connection:"
 msgstr ""
 
 #: tfrconfig.lblsslhost.caption

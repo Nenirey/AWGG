@@ -1,7 +1,7 @@
 object frconfig: Tfrconfig
-  Left = 407
+  Left = 347
   Height = 444
-  Top = 244
+  Top = 145
   Width = 649
   Caption = 'Configuration'
   ClientHeight = 444
@@ -55,28 +55,28 @@ object frconfig: Tfrconfig
     Height = 387
     Top = 24
     Width = 465
-    ActivePage = tsSounds
+    ActivePage = tsProxy
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 3
+    TabIndex = 0
     TabOrder = 2
     OnChange = pcConfigChange
     Options = [nboKeyboardTabSwitch]
     object tsProxy: TTabSheet
       Caption = 'Proxy'
-      ClientHeight = 385
-      ClientWidth = 463
+      ClientHeight = 379
+      ClientWidth = 457
       object lblProxyPass: TLabel
         AnchorSideLeft.Control = chUseAuth
         AnchorSideTop.Control = edtProxyPass
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = edtProxyPass
-        Left = 27
-        Height = 19
-        Top = 280
-        Width = 63
+        Left = 23
+        Height = 15
+        Top = 255
+        Width = 53
         Anchors = [akTop, akRight]
         Caption = 'Password:'
         ParentColor = False
@@ -87,10 +87,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = lblSSLhost
         AnchorSideRight.Side = asrBottom
-        Left = 9
-        Height = 19
-        Top = 44
-        Width = 36
+        Left = 8
+        Height = 15
+        Top = 37
+        Width = 33
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 6
         Caption = 'HTTP:'
@@ -100,9 +100,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtSSLhost
         AnchorSideTop.Side = asrCenter
         Left = 20
-        Height = 19
-        Top = 100
-        Width = 25
+        Height = 15
+        Top = 89
+        Width = 21
         BorderSpacing.Left = 5
         Caption = 'SSL:'
         ParentColor = False
@@ -113,10 +113,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = lblSSLhost
         AnchorSideRight.Side = asrBottom
-        Left = 19
-        Height = 19
-        Top = 135
-        Width = 26
+        Left = 18
+        Height = 15
+        Top = 122
+        Width = 23
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 5
         Caption = 'FTP:'
@@ -127,9 +127,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = cbProxy
         AnchorSideTop.Side = asrBottom
-        Left = 45
-        Height = 25
-        Top = 41
+        Left = 41
+        Height = 23
+        Top = 33
         Width = 191
         BorderSpacing.Top = 5
         OnChange = chSameProxyChange
@@ -142,9 +142,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = edtHTTPhost
         AnchorSideRight.Side = asrBottom
-        Left = 45
-        Height = 25
-        Top = 97
+        Left = 41
+        Height = 23
+        Top = 85
         Width = 191
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
@@ -157,9 +157,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = edtHTTPhost
         AnchorSideRight.Side = asrBottom
-        Left = 45
-        Height = 25
-        Top = 132
+        Left = 41
+        Height = 23
+        Top = 118
         Width = 191
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
@@ -171,10 +171,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtHTTPhost
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 272
-        Height = 25
-        Top = 41
-        Width = 186
+        Left = 262
+        Height = 23
+        Top = 33
+        Width = 190
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 5
         MaxValue = 9999
@@ -188,10 +188,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 272
-        Height = 25
-        Top = 97
-        Width = 186
+        Left = 262
+        Height = 23
+        Top = 85
+        Width = 190
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -205,10 +205,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 272
-        Height = 25
-        Top = 132
-        Width = 186
+        Left = 262
+        Height = 23
+        Top = 118
+        Width = 190
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -220,10 +220,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seHTTPport
         AnchorSideTop.Side = asrCenter
-        Left = 241
-        Height = 19
-        Top = 44
-        Width = 31
+        Left = 237
+        Height = 15
+        Top = 37
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -233,10 +233,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seSSLport
         AnchorSideTop.Side = asrCenter
-        Left = 241
-        Height = 19
-        Top = 100
-        Width = 31
+        Left = 237
+        Height = 15
+        Top = 89
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -246,10 +246,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seFTPport
         AnchorSideTop.Side = asrCenter
-        Left = 241
-        Height = 19
-        Top = 135
-        Width = 31
+        Left = 237
+        Height = 15
+        Top = 122
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -258,9 +258,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtNoProxyHosts
         AnchorSideTop.Side = asrCenter
         Left = 7
-        Height = 19
-        Top = 170
-        Width = 83
+        Height = 15
+        Top = 155
+        Width = 69
         BorderSpacing.Left = 5
         Caption = 'No proxy for:'
         ParentColor = False
@@ -272,10 +272,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 90
-        Height = 25
-        Top = 167
-        Width = 368
+        Left = 76
+        Height = 23
+        Top = 151
+        Width = 376
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -286,9 +286,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Control = edtNoProxyHosts
         AnchorSideTop.Control = chUseAuth
         AnchorSideTop.Side = asrBottom
-        Left = 90
-        Height = 25
-        Top = 247
+        Left = 76
+        Height = 23
+        Top = 223
         Width = 144
         BorderSpacing.Top = 5
         TabOrder = 7
@@ -298,10 +298,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtProxyUser
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = edtProxyUser
-        Left = 56
-        Height = 19
-        Top = 250
-        Width = 34
+        Left = 50
+        Height = 15
+        Top = 227
+        Width = 26
         Anchors = [akTop, akRight]
         Caption = 'User:'
         ParentColor = False
@@ -310,9 +310,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Control = edtProxyUser
         AnchorSideTop.Control = edtProxyUser
         AnchorSideTop.Side = asrBottom
-        Left = 90
-        Height = 25
-        Top = 277
+        Left = 76
+        Height = 23
+        Top = 251
         Width = 144
         BorderSpacing.Top = 5
         EchoMode = emPassword
@@ -323,9 +323,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = lblNoProxyHelp
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 21
-        Top = 221
-        Width = 140
+        Height = 19
+        Top = 199
+        Width = 119
         BorderSpacing.Top = 10
         Caption = 'Use authentication'
         Color = clDefault
@@ -337,9 +337,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtHTTPhost
         AnchorSideTop.Side = asrBottom
         Left = 82
-        Height = 21
-        Top = 71
-        Width = 189
+        Height = 19
+        Top = 61
+        Width = 158
         BorderSpacing.Top = 5
         Caption = 'Use the same proxy for all.'
         OnChange = chSameProxyChange
@@ -350,10 +350,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = tsProxy
         AnchorSideRight.Control = seHTTPport
         AnchorSideRight.Side = asrBottom
-        Left = 45
+        Left = 41
         Height = 23
         Top = 5
-        Width = 413
+        Width = 411
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
         ItemHeight = 15
@@ -372,10 +372,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = edtNoProxyHosts
         AnchorSideRight.Side = asrBottom
-        Left = 90
-        Height = 19
-        Top = 192
-        Width = 368
+        Left = 76
+        Height = 15
+        Top = 174
+        Width = 376
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Exp: .mozilla.org, localhost, 192.168.0.1'
         ParentColor = False
@@ -694,6 +694,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         Caption = 'Show notifications'
+        OnChange = chShowNotificationsChange
         TabOrder = 0
       end
       object seHideSeconds: TSpinEdit
@@ -743,16 +744,16 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = tsNotifications
         AnchorSideBottom.Side = asrBottom
-        Left = 40
-        Height = 233
-        Top = 106
-        Width = 377
-        Anchors = [akTop, akLeft, akRight, akBottom]
+        Left = 25
+        Height = 168
+        Top = 107
+        Width = 407
+        Anchors = [akTop, akLeft, akRight]
         AutoFill = True
-        BorderSpacing.Left = 40
+        BorderSpacing.Left = 24
         BorderSpacing.Top = 10
-        BorderSpacing.Right = 40
-        BorderSpacing.Bottom = 40
+        BorderSpacing.Right = 24
+        BorderSpacing.Around = 1
         Caption = 'Position on the screen'
         ChildSizing.LeftRightSpacing = 6
         ChildSizing.EnlargeHorizontal = crsHomogenousSpaceResize
@@ -761,8 +762,8 @@ object frconfig: Tfrconfig
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
-        ClientHeight = 213
-        ClientWidth = 373
+        ClientHeight = 148
+        ClientWidth = 403
         Columns = 3
         ItemIndex = 2
         Items.Strings = (
@@ -804,7 +805,68 @@ object frconfig: Tfrconfig
         BorderSpacing.Left = 10
         BorderSpacing.Top = 10
         Caption = 'Use system notifications'
+        OnChange = chSysNotificationsChange
         TabOrder = 4
+      end
+      object gbShowNotificationFor: TGroupBox
+        AnchorSideLeft.Control = rgPosition
+        AnchorSideTop.Control = rgPosition
+        AnchorSideTop.Side = asrBottom
+        AnchorSideRight.Control = rgPosition
+        AnchorSideRight.Side = asrBottom
+        Left = 25
+        Height = 96
+        Top = 276
+        Width = 407
+        Anchors = [akTop, akLeft, akRight]
+        Caption = 'Show notifications for'
+        ClientHeight = 76
+        ClientWidth = 403
+        TabOrder = 5
+        object chNotifiOnDownloadComplete: TCheckBox
+          AnchorSideLeft.Control = gbShowNotificationFor
+          AnchorSideTop.Control = gbShowNotificationFor
+          Left = 10
+          Height = 19
+          Top = 0
+          Width = 127
+          BorderSpacing.Left = 10
+          Caption = 'Download complete'
+          TabOrder = 0
+        end
+        object chNotifiOnNoInternet: TCheckBox
+          AnchorSideLeft.Control = chNotifiOnInternet
+          AnchorSideTop.Control = chNotifiOnInternet
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 19
+          Top = 57
+          Width = 143
+          Caption = 'No internet connection'
+          TabOrder = 1
+        end
+        object chNotifiOnDownloadError: TCheckBox
+          AnchorSideLeft.Control = chNotifiOnDownloadComplete
+          AnchorSideTop.Control = chNotifiOnDownloadComplete
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 19
+          Top = 19
+          Width = 102
+          Caption = 'Download error'
+          TabOrder = 2
+        end
+        object chNotifiOnInternet: TCheckBox
+          AnchorSideLeft.Control = chNotifiOnDownloadError
+          AnchorSideTop.Control = chNotifiOnDownloadError
+          AnchorSideTop.Side = asrBottom
+          Left = 10
+          Height = 19
+          Top = 38
+          Width = 124
+          Caption = 'Internet connection'
+          TabOrder = 3
+        end
       end
     end
     object tsSounds: TTabSheet
@@ -844,39 +906,15 @@ object frconfig: Tfrconfig
           Caption = 'Play sounds'
           TabOrder = 0
         end
-        object lblSoundDownComplete: TLabel
-          AnchorSideLeft.Control = fneSoundComplete
-          AnchorSideTop.Control = chPlaySounds
-          AnchorSideTop.Side = asrBottom
-          Left = 25
-          Height = 15
-          Top = 39
-          Width = 110
-          BorderSpacing.Top = 10
-          Caption = 'Download complete:'
-          ParentColor = False
-        end
-        object lblSoundDownStoped: TLabel
-          AnchorSideLeft.Control = fneSoundStopped
-          AnchorSideTop.Control = fneSoundComplete
-          AnchorSideTop.Side = asrBottom
-          Left = 25
-          Height = 15
-          Top = 92
-          Width = 103
-          BorderSpacing.Top = 10
-          Caption = 'Download stopped:'
-          ParentColor = False
-        end
         object fneSoundComplete: TFileNameEdit
           AnchorSideLeft.Control = gbSounds
-          AnchorSideTop.Control = lblSoundDownComplete
+          AnchorSideTop.Control = chSoundDownComplete
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = gbSounds
           AnchorSideRight.Side = asrCenter
           Left = 25
           Height = 23
-          Top = 59
+          Top = 63
           Width = 372
           Filter = 'Waves Files|*.wav'
           FilterIndex = 0
@@ -891,13 +929,13 @@ object frconfig: Tfrconfig
         end
         object fneSoundStopped: TFileNameEdit
           AnchorSideLeft.Control = gbSounds
-          AnchorSideTop.Control = lblSoundDownStoped
+          AnchorSideTop.Control = chSoundDownError
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = gbSounds
           AnchorSideRight.Side = asrCenter
           Left = 25
           Height = 23
-          Top = 112
+          Top = 120
           Width = 372
           Filter = 'Wave Files|*.wav'
           FilterIndex = 0
@@ -918,7 +956,7 @@ object frconfig: Tfrconfig
           AnchorSideRight.Side = asrBottom
           Left = 3
           Height = 20
-          Top = 60
+          Top = 64
           Width = 20
           AutoSize = True
           BorderSpacing.Left = 3
@@ -968,7 +1006,7 @@ object frconfig: Tfrconfig
           AnchorSideRight.Side = asrBottom
           Left = 3
           Height = 20
-          Top = 113
+          Top = 121
           Width = 20
           AutoSize = True
           BorderSpacing.Left = 3
@@ -1010,18 +1048,6 @@ object frconfig: Tfrconfig
           }
           OnClick = btnPlayStoppedClick
         end
-        object lblSoundInternet: TLabel
-          AnchorSideLeft.Control = fneSoundInternet
-          AnchorSideTop.Control = fneSoundStopped
-          AnchorSideTop.Side = asrBottom
-          Left = 25
-          Height = 15
-          Top = 145
-          Width = 107
-          BorderSpacing.Top = 10
-          Caption = 'Internet connection:'
-          ParentColor = False
-        end
         object btnPlayInternet: TSpeedButton
           AnchorSideLeft.Control = gbSounds
           AnchorSideTop.Control = fneSoundInternet
@@ -1030,7 +1056,7 @@ object frconfig: Tfrconfig
           AnchorSideRight.Side = asrBottom
           Left = 3
           Height = 20
-          Top = 166
+          Top = 178
           Width = 20
           AutoSize = True
           BorderSpacing.Left = 3
@@ -1074,13 +1100,13 @@ object frconfig: Tfrconfig
         end
         object fneSoundInternet: TFileNameEdit
           AnchorSideLeft.Control = gbSounds
-          AnchorSideTop.Control = lblSoundInternet
+          AnchorSideTop.Control = chSoundInternet
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = gbSounds
           AnchorSideRight.Side = asrCenter
           Left = 25
           Height = 23
-          Top = 165
+          Top = 177
           Width = 372
           Filter = 'Wave Files|*.wav'
           FilterIndex = 0
@@ -1101,7 +1127,7 @@ object frconfig: Tfrconfig
           AnchorSideRight.Side = asrBottom
           Left = 3
           Height = 20
-          Top = 219
+          Top = 235
           Width = 20
           AutoSize = True
           BorderSpacing.Left = 3
@@ -1143,27 +1169,15 @@ object frconfig: Tfrconfig
           }
           OnClick = btnPlayNoInternetClick
         end
-        object lblSoundNoInternet: TLabel
-          AnchorSideLeft.Control = fneSoundNoInternet
-          AnchorSideTop.Control = fneSoundInternet
-          AnchorSideTop.Side = asrBottom
-          Left = 25
-          Height = 15
-          Top = 198
-          Width = 126
-          BorderSpacing.Top = 10
-          Caption = 'No internet connection:'
-          ParentColor = False
-        end
         object fneSoundNoInternet: TFileNameEdit
           AnchorSideLeft.Control = gbSounds
-          AnchorSideTop.Control = lblSoundNoInternet
+          AnchorSideTop.Control = chSoundNoInternet
           AnchorSideTop.Side = asrBottom
           AnchorSideRight.Control = gbSounds
           AnchorSideRight.Side = asrCenter
           Left = 25
           Height = 23
-          Top = 218
+          Top = 234
           Width = 372
           Filter = 'Wave Files|*.wav'
           FilterIndex = 0
@@ -1175,6 +1189,62 @@ object frconfig: Tfrconfig
           BorderSpacing.Top = 5
           MaxLength = 0
           TabOrder = 4
+        end
+        object chSoundDownComplete: TCheckBox
+          AnchorSideLeft.Control = fneSoundComplete
+          AnchorSideTop.Control = chPlaySounds
+          AnchorSideTop.Side = asrBottom
+          Left = 25
+          Height = 19
+          Top = 39
+          Width = 130
+          BorderSpacing.Top = 10
+          Caption = 'Download complete:'
+          Color = clDefault
+          ParentColor = False
+          TabOrder = 5
+        end
+        object chSoundDownError: TCheckBox
+          AnchorSideLeft.Control = fneSoundStopped
+          AnchorSideTop.Control = fneSoundComplete
+          AnchorSideTop.Side = asrBottom
+          Left = 25
+          Height = 19
+          Top = 96
+          Width = 105
+          BorderSpacing.Top = 10
+          Caption = 'Download error:'
+          Color = clDefault
+          ParentColor = False
+          TabOrder = 6
+        end
+        object chSoundInternet: TCheckBox
+          AnchorSideLeft.Control = fneSoundInternet
+          AnchorSideTop.Control = fneSoundStopped
+          AnchorSideTop.Side = asrBottom
+          Left = 25
+          Height = 19
+          Top = 153
+          Width = 127
+          BorderSpacing.Top = 10
+          Caption = 'Internet connection:'
+          Color = clDefault
+          ParentColor = False
+          TabOrder = 7
+        end
+        object chSoundNoInternet: TCheckBox
+          AnchorSideLeft.Control = fneSoundNoInternet
+          AnchorSideTop.Control = fneSoundInternet
+          AnchorSideTop.Side = asrBottom
+          Left = 25
+          Height = 19
+          Top = 210
+          Width = 146
+          BorderSpacing.Top = 10
+          Caption = 'No internet connection:'
+          Color = clDefault
+          ParentColor = False
+          TabOrder = 8
         end
       end
     end
@@ -3272,8 +3342,8 @@ object frconfig: Tfrconfig
       0000000500000050726F78790600000006000000FFFFFFFFFFFFFFFF00000000
       0000000000090000005363686564756C65721000000010000000FFFFFFFFFFFF
       FFFF0000000000000000000D0000004E6F74696669636174696F6E7320000000
-      20000000FFFFFFFFFFFFFFFF00000000000000000006000000536F756E647319
-      00000019000000FFFFFFFFFFFFFFFF00000000000000000011000000436C6970
+      20000000FFFFFFFFFFFFFFFF00000000000000000006000000536F756E647339
+      00000039000000FFFFFFFFFFFFFFFF00000000000000000011000000436C6970
       626F617264206D6F6E69746F721700000017000000FFFFFFFFFFFFFFFF000000
       00000000000007000000466F6C646572731B0000001B000000FFFFFFFFFFFFFF
       FF00000000000000000004000000776765741B0000001B000000FFFFFFFFFFFF
@@ -3327,7 +3397,7 @@ object frconfig: Tfrconfig
     TabOrder = 5
   end
   object browseropendlg: TOpenDialog
-    left = 552
-    top = 80
+    left = 72
+    top = 320
   end
 end

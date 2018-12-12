@@ -1,7 +1,7 @@
 object frmain: Tfrmain
-  Left = 361
+  Left = 408
   Height = 541
-  Top = 143
+  Top = 112
   Width = 690
   ActiveControl = psVertical
   Caption = 'AWGG'
@@ -730,6 +730,7 @@ object frmain: Tfrmain
         Top = 0
         Width = 690
         Anchors = [akTop, akLeft, akRight, akBottom]
+        Color = clWindow
         Font.Height = -13
         Font.Name = 'Courier New'
         Font.Pitch = fpFixed
