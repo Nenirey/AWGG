@@ -3463,6 +3463,7 @@ begin
     frconfig.chInternetCheck.Checked:=internetcheck;
     frconfig.edtInternetURL.Text:=internetURL;
     frconfig.seInternetInterval.Value:=internetInterval;
+    frconfig.lbDomains.Clear;
     for i:=0 to Length(domainfilters)-1 do
     begin
       frconfig.lbDomains.Items.Add(domainfilters[i]);

@@ -1,7 +1,51 @@
 AWGG is a cross platform and multilanguage download manager
 that uses the most popular downloads engines (text based) like wget, aria2, cURL, axel and youtube-dl,
-AWGG is most that an frontend, is multiprocess, portable and simple, includes a programer,
+AWGG is most that an frontend, is multiprocess, portable and simple, includes a scheduler,
 clipboard monitor, drop box and can be integrated to firefox with flashgot plugin.
+
+Changes in (0.6.0 BETA):
+
+-Add support for Opera, Chrome and Firefox browser integration with the (Download with Wget) plugin.
+-Add support for magnet links.
+-Add ability to download youtube playlists.
+-Add ability to detect internet connection (native).
+-Add option to change the URL for internet detect and the interval to check.
+-Add option to no force names in the New download window.
+-Add german translation.
+-Add option in import downloads dialog to no force download names (in filter option).
+-Add option to start main queue with internet connection.
+-Add Cancel, Reanude later buttons, menus and cancel status.
+-Add notifications and sounds for internet connection status.
+-Add relative paths for the engines and sounds.
+-Add Portable word to the main windows title if portable mode is active.
+-Add option to use native system notifications.
+-Add domain filter to clipboard monitor.
+-Add button in New download window to add domain to the filter clipboard monitor.
+-Add support for Opera, Chrome and Firefox browser integration with the (Download with Wget) plugin.
+-Add the Torrent category.
+-Add ability to change multiple downloads properties.
+-Add intermediate download status like starting and stopping.
+-Add individuals options to active diferents notifications and sounds.
+-Now AWGG automatic update the video name after add youtube downloads.
+-Now the queues starting manualy stop automatic if not exit active downloads
+-Now the main queue not continue with out internet connection if internet monitor is active.
+-Now the download error notification only show with the last attempt.
+-Now the user and password information are encode.
+-Now AWGG select the best format video by defualt in youtube-dl engine.
+-Now AWGG remeber the main window position and size.
+-Now AWGG remenber the dropbox position and size.
+-Fix aria2 engine output changes.
+-Fix bug for multiple downloads stops.
+-Fix bug for multiple click on Add new download button.
+-Fix scheduler issue.
+-Fix download error with torrent if download is seeding.
+-Fix correct show speed and current download for torrent seeding.
+-Fix youtube changes output.
+-Fix youtube formats error.
+-Fix download tray icons issue.
+-Fix error that cause crach when stop some downloads.
+-Fix correct estimate information times for downloads.
+-Fix not detect some long URLs from clipboard.
 
 Changes in (0.5.0):
 

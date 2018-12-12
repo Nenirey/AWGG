@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="814"/>
-        <CursorPos X="39" Y="828"/>
+        <TopLine Value="3457"/>
+        <CursorPos X="29" Y="3466"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -50,8 +50,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="468"/>
-        <CursorPos X="41" Y="475"/>
+        <TopLine Value="339"/>
+        <CursorPos X="16" Y="350"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
