@@ -815,7 +815,7 @@ begin
           qtimer[0].Enabled:=true;;
         end;
         if shownotifi and shownotifiinternet and internetchange then
-          createnewnotifi('AWGG',msginternetconnection,'','',true,'');
+          createnewnotifi('AWGG','',msginternetconnection,'',true,'');
         if playsounds and playsoundinternet and internetchange then
           playsound(internetsound);
         internetchange:=false;
@@ -825,7 +825,7 @@ begin
     else
     begin
       if shownotifi and shownotifinointernet and nointernetchange then
-          createnewnotifi('AWGG',msgnointernetconnection,'','',false,'');
+          createnewnotifi('AWGG','',msgnointernetconnection,'',false,'');
       if playsounds and playsoundnointernet and nointernetchange then
         playsound(nointernetsound);
       nointernetchange:=false;
@@ -1482,10 +1482,30 @@ begin
     ABitmap.Canvas.FillRect(0, 0, notiforms.Width, notiforms.Height);
     ABitmap.Canvas.Brush.Color:=clWhite;
     ABitmap.Canvas.RoundRect(0, 0, notiforms.Width, notiforms.Height, 20, 20);
-    notiforms.btnGoPath.Enabled:=ok;
-    notiforms.btnOpenFile.Enabled:=ok;
-    notiforms.btnCopyTo.Enabled:=ok;
-    notiforms.btnMoveTo.Enabled:=ok;
+    if fpath<>'' then
+    begin
+      notiforms.btnStartDown.Visible:=true;
+      notiforms.btnGoPath.Visible:=true;
+      notiforms.btnOpenFile.Visible:=true;
+      notiforms.btnCopyTo.Visible:=true;
+      notiforms.btnMoveTo.Visible:=true;
+      notiforms.btnGoPath.Enabled:=ok;
+      notiforms.btnOpenFile.Enabled:=ok;
+      notiforms.btnCopyTo.Enabled:=ok;
+      notiforms.btnMoveTo.Enabled:=ok;
+    end
+    else
+    begin
+      notiforms.btnStartDown.Visible:=false;
+      notiforms.btnGoPath.Visible:=false;
+      notiforms.btnOpenFile.Visible:=false;
+      notiforms.btnCopyTo.Visible:=false;
+      notiforms.btnMoveTo.Visible:=false;
+      notiforms.btnGoPath.Enabled:=ok;
+      notiforms.btnOpenFile.Enabled:=ok;
+      notiforms.btnCopyTo.Enabled:=ok;
+      notiforms.btnMoveTo.Enabled:=ok;
+    end;
     if (uid='') then
       notiforms.btnStartDown.Enabled:=false
     else
@@ -2856,8 +2876,8 @@ begin
     shownotifi:=iniconfigfile.ReadBool('Config','shownotifi',true);
     shownotificomplete:=iniconfigfile.ReadBool('Config','shownotificomplete',true);
     shownotifierror:=iniconfigfile.ReadBool('Config','shownotifierror',true);
-    shownotifiinternet:=iniconfigfile.ReadBool('Config','shownotifiinternet',true);
-    shownotifinointernet:=iniconfigfile.ReadBool('Config','shownotifinointernet',true);
+    shownotifiinternet:=iniconfigfile.ReadBool('Config','shownotifiinternet',false);
+    shownotifinointernet:=iniconfigfile.ReadBool('Config','shownotifinointernet',false);
     hiddenotifi:=iniconfigfile.ReadInteger('Config','hiddenotifi',5);
     usesysnotifi:=iniconfigfile.ReadBool('Config','usesysnotifi',false);
     clipboardmonitor:=iniconfigfile.ReadBool('Config','clipboardmonitor',true);
@@ -5501,10 +5521,11 @@ begin
       begin
         if Not DirectoryExists(logpath) then
           CreateDir(UTF8ToSys(logpath));
-        if frmain.lvMain.Items[thid].SubItems[columnname]<>'' then
-          strlogfile:=UTF8ToSys(logpath)+PathDelim+UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columnname])+'.log'
-        else
-          strlogfile:=UTF8ToSys(logpath)+PathDelim+UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columnuid])+'.log';
+        //If better if the log have a safe name
+        //if frmain.lvMain.Items[thid].SubItems[columnname]<>'' then
+          //strlogfile:=UTF8ToSys(logpath)+PathDelim+UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columnname])+'.log'
+        //else
+        strlogfile:=UTF8ToSys(logpath)+PathDelim+UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columnuid])+'.log';
         AssignFile(logfile,strlogfile);
         if fileExists(strlogfile) then
           Append(logfile)
@@ -5598,17 +5619,18 @@ begin
   end;
   wpr.Free;
   wthp.Destroy;
-  hilo[thid].Terminate;
   if logrename or (frmain.lvMain.Items[thid].SubItems[columnengine]='youtube-dl') then
   begin
     if FileExists(UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columndestiny])+pathdelim+frmain.lvMain.Items[thid].SubItems[columnname]) then
       RenameFile(UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columndestiny])+pathdelim+frmain.lvMain.Items[thid].SubItems[columnname],UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columndestiny]+pathdelim+frmain.lvMain.Items[thid].SubItems[columnname]));
   end;
-  if logrename and logger then
+  //Is better if the log have a safe name
+  {if logrename and logger then
   begin
     if FileUtil.CopyFile(strlogfile,UTF8ToSys(logpath)+PathDelim+UTF8ToSys(frmain.lvMain.Items[thid].SubItems[columnname]+'.log')) then
       SysUtils.DeleteFile(strlogfile);
-  end;
+  end;}
+  hilo[thid].Terminate;
 end;
 
 procedure DownThread.prepare();
@@ -6996,248 +7018,233 @@ var
 begin
   if frmain.lvMain.ItemIndex<>-1 then
   begin
-    if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columntype] = '0' then
+    //////THIS ORDER IS IMPORTANT/////////
+    with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
     begin
-      //////THIS ORDER IS IMPORTANT/////////
-      with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
+      frnewdown.edtURL.Text:=SubItems[columnurl];
+      frnewdown.edtFileName.Text:=SubItems[columnname];
+      frnewdown.deDestination.Text:=SubItems[columndestiny];
+      enginereload();
+      frnewdown.cbQueue.Items.Clear;
+      for i:=0 to Length(queues)-1 do
       begin
-        frnewdown.edtURL.Text:=SubItems[columnurl];
-        frnewdown.edtFileName.Text:=SubItems[columnname];
-        frnewdown.deDestination.Text:=SubItems[columndestiny];
-        enginereload();
-        frnewdown.cbQueue.Items.Clear;
-        for i:=0 to Length(queues)-1 do
-        begin
-         frnewdown.cbQueue.Items.Add(queuenames[i]);
-        end;
-        frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(SubItems[columnengine]);
-        frnewdown.edtParameters.Text:=SubItems[columnparameters];
-        frmain.ClipBoardTimer.Enabled:=false;
-        frnewdown.edtUser.Text:=SubItems[columnuser];
-        frnewdown.edtPassword.Text:=SubItems[columnpass];
+       frnewdown.cbQueue.Items.Add(queuenames[i]);
       end;
-      ///////CONFIRM DIALOG MODE///////////
-      if frmain.lvMain.SelCount>1 then
+      frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(SubItems[columnengine]);
+      frnewdown.edtParameters.Text:=SubItems[columnparameters];
+      frmain.ClipBoardTimer.Enabled:=false;
+      frnewdown.edtUser.Text:=SubItems[columnuser];
+      frnewdown.edtPassword.Text:=SubItems[columnpass];
+    end;
+    ///////CONFIRM DIALOG MODE///////////
+    if frmain.lvMain.SelCount>1 then
+    begin
+      // collecting the selected items' information
+      for i:=0 to frmain.lvMain.Items.Count-1 do
       begin
-        // collecting the selected items' information
-        for i:=0 to frmain.lvMain.Items.Count-1 do
+        with frmain.lvMain.Items[i] do
         begin
-          with frmain.lvMain.Items[i] do
+          if Selected and (SubItems[columntype] = '0') and ((SubItems[columnstatus]='0') or (SubItems[columnstatus]='3')) then
           begin
-            if Selected and (SubItems[columntype] = '0') and ((SubItems[columnstatus]='0') or (SubItems[columnstatus]='3')) then
+            if deDestinationTextPropState = PropSameValue then
             begin
-              if deDestinationTextPropState = PropSameValue then
-              begin
-                if deDestinationText <> SubItems[columndestiny] then
-                  deDestinationTextPropState := PropDifferentValue;
-              end
-              else if deDestinationTextPropState = PropInitValue then
-              begin
-                deDestinationText := SubItems[columndestiny];
-                deDestinationTextPropState := PropSameValue;
-              end;
-
-              if edtParametersTextPropState = PropSameValue then
-              begin
-                if edtParametersText <> SubItems[columnparameters] then
-                  edtParametersTextPropState := PropDifferentValue;
-              end
-              else if edtParametersTextPropState = PropInitValue then
-              begin
-                edtParametersText := SubItems[columnparameters];
-                edtParametersTextPropState := PropSameValue;
-              end;
-
-              if edtPasswordTextPropState = PropSameValue then
-              begin
-                if edtPasswordText <> SubItems[columnpass] then
-                  edtPasswordTextPropState := PropDifferentValue;
-              end
-              else if edtPasswordTextPropState = PropInitValue then
-              begin
-                edtPasswordText := SubItems[columnpass];
-                edtPasswordTextPropState := PropSameValue;
-              end;
-
-              if edtUserTextPropState = PropSameValue then
-              begin
-                if edtUserText <> SubItems[columnuser] then
-                  edtUserTextPropState := PropDifferentValue;
-              end
-              else if edtUserTextPropState = PropInitValue then
-              begin
-                edtUserText := SubItems[columnuser];
-                edtUserTextPropState := PropSameValue;
-              end;
-
-              if cbEngineItemTextPropState = PropSameValue then
-              begin
-                if cbEngineItemText <> SubItems[columnengine] then
-                  cbEngineItemTextPropState := PropDifferentValue;
-              end
-              else if cbEngineItemTextPropState = PropInitValue then
-              begin
-                cbEngineItemText := SubItems[columnengine];
-                cbEngineItemTextPropState := PropSameValue;
-              end;
-
-              if cbQueueItemTextPropState = PropSameValue then
-              begin
-                if cbQueueItemText <> SubItems[columnqueue] then
-                  cbQueueItemTextPropState := PropDifferentValue;
-              end
-              else if cbQueueItemTextPropState = PropInitValue then
-              begin
-                cbQueueItemText := SubItems[columnqueue];
-                cbQueueItemTextPropState := PropSameValue;
-              end;
-
-              if (deDestinationTextPropState = PropDifferentValue) and
-                 (edtParametersTextPropState = PropDifferentValue) and
-                 (edtPasswordTextPropState = PropDifferentValue) and
-                 (edtUserTextPropState = PropDifferentValue) and
-                 (cbEngineItemTextPropState = PropDifferentValue) and
-                 (cbQueueItemTextPropState = PropDifferentValue) then
-              begin
-                // all the properties have different values:
-                // no reason to continue the loop
-                break;
-              end;
+              if deDestinationText <> SubItems[columndestiny] then
+                deDestinationTextPropState := PropDifferentValue;
+            end
+            else if deDestinationTextPropState = PropInitValue then
+            begin
+              deDestinationText := SubItems[columndestiny];
+              deDestinationTextPropState := PropSameValue;
+            end;
+                         if edtParametersTextPropState = PropSameValue then
+            begin
+              if edtParametersText <> SubItems[columnparameters] then
+                edtParametersTextPropState := PropDifferentValue;
+            end
+            else if edtParametersTextPropState = PropInitValue then
+            begin
+              edtParametersText := SubItems[columnparameters];
+              edtParametersTextPropState := PropSameValue;
+            end;
+                         if edtPasswordTextPropState = PropSameValue then
+            begin
+              if edtPasswordText <> SubItems[columnpass] then
+                edtPasswordTextPropState := PropDifferentValue;
+            end
+            else if edtPasswordTextPropState = PropInitValue then
+            begin
+              edtPasswordText := SubItems[columnpass];
+              edtPasswordTextPropState := PropSameValue;
+            end;
+                         if edtUserTextPropState = PropSameValue then
+            begin
+              if edtUserText <> SubItems[columnuser] then
+                edtUserTextPropState := PropDifferentValue;
+            end
+            else if edtUserTextPropState = PropInitValue then
+            begin
+              edtUserText := SubItems[columnuser];
+              edtUserTextPropState := PropSameValue;
+            end;
+                         if cbEngineItemTextPropState = PropSameValue then
+            begin
+              if cbEngineItemText <> SubItems[columnengine] then
+                cbEngineItemTextPropState := PropDifferentValue;
+            end
+            else if cbEngineItemTextPropState = PropInitValue then
+            begin
+              cbEngineItemText := SubItems[columnengine];
+              cbEngineItemTextPropState := PropSameValue;
+            end;
+                         if cbQueueItemTextPropState = PropSameValue then
+            begin
+              if cbQueueItemText <> SubItems[columnqueue] then
+                cbQueueItemTextPropState := PropDifferentValue;
+            end
+            else if cbQueueItemTextPropState = PropInitValue then
+            begin
+              cbQueueItemText := SubItems[columnqueue];
+              cbQueueItemTextPropState := PropSameValue;
+            end;
+                         if (deDestinationTextPropState = PropDifferentValue) and
+               (edtParametersTextPropState = PropDifferentValue) and
+               (edtPasswordTextPropState = PropDifferentValue) and
+               (edtUserTextPropState = PropDifferentValue) and
+               (cbEngineItemTextPropState = PropDifferentValue) and
+               (cbQueueItemTextPropState = PropDifferentValue) then
+            begin
+              // all the properties have different values:
+              // no reason to continue the loop
+              break;
             end;
           end;
         end;
+      end;
+      frnewdown.edtURL.Text:='';
+      frnewdown.edtURL.Enabled:=false;
+      frnewdown.edtFileName.Text:='';
+      frnewdown.edtFileName.Enabled:=false;
+      frnewdown.btnForceNames.Enabled:=false;
+      frnewdown.btnCategoryGo.Enabled:=false;
+      frnewdown.Caption:=fstrings.titlepropertiesdown+' ['+inttostr(frmain.lvMain.SelCount)+']';
+      frnewdown.btnToQueue.Visible:=false;
+      frnewdown.btnPaused.Visible:=false;
+      frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
+      frnewdown.btnStart.GlyphShowMode:=gsmNever;
+      frnewdown.cbDestination.Text:=fstrings.nochangefield;
 
-        frnewdown.edtURL.Text:='';
-        frnewdown.edtURL.Enabled:=false;
-        frnewdown.edtFileName.Text:='';
-        frnewdown.edtFileName.Enabled:=false;
-        frnewdown.btnForceNames.Enabled:=false;
-        frnewdown.btnCategoryGo.Enabled:=false;
-        frnewdown.Caption:=fstrings.titlepropertiesdown+' ['+inttostr(frmain.lvMain.SelCount)+']';
-        frnewdown.btnToQueue.Visible:=false;
-        frnewdown.btnPaused.Visible:=false;
-        frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
-        frnewdown.btnStart.GlyphShowMode:=gsmNever;
-        frnewdown.cbDestination.Text:=fstrings.nochangefield;
-
-        if deDestinationTextPropState = PropSameValue then
-          frnewdown.deDestination.Text:=deDestinationText
-        else
-          frnewdown.deDestination.Text:=fstrings.nochangefield;
-
-        if cbEngineItemTextPropState = PropSameValue then
-          frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(cbEngineItemText)
-        else
-        begin
-          frnewdown.cbEngine.Items.Add(fstrings.nochangefield);
-          frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(fstrings.nochangefield);
-        end;
-
-        if edtParametersTextPropState = PropSameValue then
-          frnewdown.edtParameters.Text:=edtParametersText
-        else
-          frnewdown.edtParameters.Text:=fstrings.nochangefield;
-
-        if edtPasswordTextPropState = PropSameValue then
-          frnewdown.edtPassword.Text:=edtPasswordText
-        else
-          frnewdown.edtPassword.Text:=fstrings.nochangefield;
-
-        if edtUserTextPropState = PropSameValue then
-          frnewdown.edtUser.Text:=edtUserText
-        else
-          frnewdown.edtUser.Text:=fstrings.nochangefield;
-
-        if cbQueueItemTextPropState = PropSameValue then
-          frnewdown.cbQueue.ItemIndex:=strtoint(cbQueueItemText)
-        else
-        begin
-          frnewdown.cbQueue.Items.Add(fstrings.nochangefield);
-          frnewdown.cbQueue.ItemIndex:=frnewdown.cbQueue.Items.IndexOf(fstrings.nochangefield);
-        end;
-      end
+      if deDestinationTextPropState = PropSameValue then
+        frnewdown.deDestination.Text:=deDestinationText
+      else
+        frnewdown.deDestination.Text:=fstrings.nochangefield;
+      if cbEngineItemTextPropState = PropSameValue then
+        frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(cbEngineItemText)
       else
       begin
-        frnewdown.edtURL.Enabled:=true;
-        frnewdown.edtFileName.Enabled:=true;
-        frnewdown.btnForceNames.Enabled:=true;
-        frnewdown.btnCategoryGo.Enabled:=true;
-        frnewdown.Caption:=fstrings.titlepropertiesdown;
-        frnewdown.btnToQueue.Visible:=false;
-        frnewdown.btnPaused.Visible:=false;
-        frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
-        frnewdown.btnStart.GlyphShowMode:=gsmNever;
-        frnewdown.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
+        frnewdown.cbEngine.Items.Add(fstrings.nochangefield);
+        frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(fstrings.nochangefield);
       end;
-      ////////////////////////////////////
-      if firstnormalshow=false then
+      if edtParametersTextPropState = PropSameValue then
+        frnewdown.edtParameters.Text:=edtParametersText
+      else
+        frnewdown.edtParameters.Text:=fstrings.nochangefield;
+      if edtPasswordTextPropState = PropSameValue then
+        frnewdown.edtPassword.Text:=edtPasswordText
+      else
+        frnewdown.edtPassword.Text:=fstrings.nochangefield;
+      if edtUserTextPropState = PropSameValue then
+        frnewdown.edtUser.Text:=edtUserText
+      else
+        frnewdown.edtUser.Text:=fstrings.nochangefield;
+      if cbQueueItemTextPropState = PropSameValue then
+        frnewdown.cbQueue.ItemIndex:=strtoint(cbQueueItemText)
+      else
       begin
-        //frnewdown.Show;
-        //frnewdown.btnCancelClick(nil);
-        frnewdown.Update;
-        firstnormalshow:=true;
+        frnewdown.cbQueue.Items.Add(fstrings.nochangefield);
+        frnewdown.cbQueue.ItemIndex:=frnewdown.cbQueue.Items.IndexOf(fstrings.nochangefield);
       end;
-      frnewdown.ShowModal;
-      ///////NEW DOWNLOAD DIALOG MODE///////////
-      frnewdown.Caption:=fstrings.titlenewdown;
-      frnewdown.btnToQueue.Visible:=true;
-      frnewdown.btnPaused.Visible:=true;
-      frnewdown.btnStart.Caption:=fstrings.btnnewdownstartnow;
-      frnewdown.btnStart.GlyphShowMode:=gsmApplication;
-      frnewdown.UpdateRolesForForm;
+    end
+    else
+    begin
       frnewdown.edtURL.Enabled:=true;
       frnewdown.edtFileName.Enabled:=true;
       frnewdown.btnForceNames.Enabled:=true;
       frnewdown.btnCategoryGo.Enabled:=true;
-      ////////////////////////////////////
-      frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
-      if agregar then
+      frnewdown.Caption:=fstrings.titlepropertiesdown;
+      frnewdown.btnToQueue.Visible:=false;
+      frnewdown.btnPaused.Visible:=false;
+      frnewdown.btnStart.Caption:=fstrings.btnpropertiesok;
+      frnewdown.btnStart.GlyphShowMode:=gsmNever;
+      frnewdown.cbQueue.ItemIndex:=strtoint(frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnqueue]);
+    end;
+    ////////////////////////////////////
+    if firstnormalshow=false then
+    begin
+      //frnewdown.Show;
+      //frnewdown.btnCancelClick(nil);
+      frnewdown.Update;
+      firstnormalshow:=true;
+    end;
+    frnewdown.ShowModal;
+    ///////NEW DOWNLOAD DIALOG MODE///////////
+    frnewdown.Caption:=fstrings.titlenewdown;
+    frnewdown.btnToQueue.Visible:=true;
+    frnewdown.btnPaused.Visible:=true;
+    frnewdown.btnStart.Caption:=fstrings.btnnewdownstartnow;
+    frnewdown.btnStart.GlyphShowMode:=gsmApplication;
+    frnewdown.UpdateRolesForForm;
+    frnewdown.edtURL.Enabled:=true;
+    frnewdown.edtFileName.Enabled:=true;
+    frnewdown.btnForceNames.Enabled:=true;
+    frnewdown.btnCategoryGo.Enabled:=true;
+    ////////////////////////////////////
+    frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
+    if agregar then
+    begin
+      if frmain.lvMain.SelCount>1 then
       begin
-        if frmain.lvMain.SelCount>1 then
+        for i:=0 to frmain.lvMain.Items.Count-1 do
         begin
-          for i:=0 to frmain.lvMain.Items.Count-1 do
+          //// Change only the normal download type and with pause, complete status
+          with frmain.lvMain.Items[i] do
           begin
-            //// Change only the normal download type and with pause, complete status
-            with frmain.lvMain.Items[i] do
+            if Selected and (SubItems[columntype] = '0') and ((SubItems[columnstatus]='0') or (SubItems[columnstatus]='3')) then
             begin
-              if Selected and (SubItems[columntype] = '0') and ((SubItems[columnstatus]='0') or (SubItems[columnstatus]='3')) then
-              begin
-                if frnewdown.deDestination.Text<>fstrings.nochangefield then
-                  SubItems[columndestiny]:=frnewdown.deDestination.Text;
-                if frnewdown.cbEngine.Text<>fstrings.nochangefield then
-                  SubItems[columnengine]:=frnewdown.cbEngine.Text;
-                if frnewdown.edtParameters.Text<>fstrings.nochangefield then
-                  SubItems[columnparameters]:=frnewdown.edtParameters.Text;
-                if frnewdown.edtUser.Text<>fstrings.nochangefield then
-                  SubItems[columnuser]:=frnewdown.edtUser.Text;
-                if frnewdown.edtPassword.Text<>fstrings.nochangefield then
-                  SubItems[columnpass]:=frnewdown.edtPassword.Text;
-                if (frnewdown.cbQueue.ItemIndex>=0) and (frnewdown.cbQueue.Text<>fstrings.nochangefield) then
-                  SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
-              end;
+              if frnewdown.deDestination.Text<>fstrings.nochangefield then
+                SubItems[columndestiny]:=frnewdown.deDestination.Text;
+              if frnewdown.cbEngine.Text<>fstrings.nochangefield then
+                SubItems[columnengine]:=frnewdown.cbEngine.Text;
+              if frnewdown.edtParameters.Text<>fstrings.nochangefield then
+                SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+              if frnewdown.edtUser.Text<>fstrings.nochangefield then
+                SubItems[columnuser]:=frnewdown.edtUser.Text;
+              if frnewdown.edtPassword.Text<>fstrings.nochangefield then
+                SubItems[columnpass]:=frnewdown.edtPassword.Text;
+              if (frnewdown.cbQueue.ItemIndex>=0) and (frnewdown.cbQueue.Text<>fstrings.nochangefield) then
+                SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
             end;
           end;
-        end
-        else
-        begin
-          with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
-          begin
-            SubItems[columnname]:=frnewdown.edtFileName.Text;
-            SubItems[columnurl]:=frnewdown.edtURL.Text;
-            SubItems[columndestiny]:=frnewdown.deDestination.Text;
-            SubItems[columnengine]:=frnewdown.cbEngine.Text;
-            SubItems[columnparameters]:=frnewdown.edtParameters.Text;
-            SubItems[columnuser]:=frnewdown.edtUser.Text;
-            SubItems[columnpass]:=frnewdown.edtPassword.Text;
-            if frnewdown.cbQueue.ItemIndex>=0 then
-              SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
-            end;
         end;
-        frmain.tvMainSelectionChanged(nil);
-        savemydownloads();
+      end
+      else
+      begin
+        with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
+        begin
+          SubItems[columnname]:=frnewdown.edtFileName.Text;
+          SubItems[columnurl]:=frnewdown.edtURL.Text;
+          SubItems[columndestiny]:=frnewdown.deDestination.Text;
+          SubItems[columnengine]:=frnewdown.cbEngine.Text;
+          SubItems[columnparameters]:=frnewdown.edtParameters.Text;
+          SubItems[columnuser]:=frnewdown.edtUser.Text;
+          SubItems[columnpass]:=frnewdown.edtPassword.Text;
+          if frnewdown.cbQueue.ItemIndex>=0 then
+            SubItems[columnqueue]:=inttostr(frnewdown.cbQueue.ItemIndex);
+          end;
       end;
-      frnewdown.edtURL.Caption:='http://';
+      frmain.tvMainSelectionChanged(nil);
+      savemydownloads();
     end;
+    frnewdown.edtURL.Caption:='http://';
     with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
     begin
       if SubItems[columntype] = '1' then
@@ -7841,7 +7848,10 @@ begin
     if dlgcuestion then
     begin
       if FileExists(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log') then
-        SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log');
+        SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnname])+'.log')
+      else
+        if FileExists(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuid])+'.log') then
+          SysUtils.DeleteFile(ExtractShortPathName(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnuid])+'.log'));
     end;
     frmain.SynEdit1.Lines.Clear;
   end;

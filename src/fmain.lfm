@@ -7065,17 +7065,17 @@ object frmain: Tfrmain
         Checked = True
         OnClick = mimainShowGridClick
       end
+      object mimainShowTree: TMenuItem
+        Caption = 'Show tree view panel'
+        Checked = True
+        OnClick = mimainShowTreeClick
+      end
       object miline9: TMenuItem
         Caption = '-'
       end
       object mimainShowTrayDowns: TMenuItem
         Caption = 'Show downloads icons in systray'
         OnClick = mimainShowTrayDownsClick
-      end
-      object mimainShowTree: TMenuItem
-        Caption = 'Show tree view panel'
-        Checked = True
-        OnClick = mimainShowTreeClick
       end
       object mimainShowInTray: TMenuItem
         Caption = 'Show program icon in systray'

@@ -1,8 +1,3 @@
-AWGG is a cross platform and multilanguage download manager
-that uses the most popular downloads engines (text based) like wget, aria2, cURL, axel and youtube-dl,
-AWGG is most that an frontend, is multiprocess, portable and simple, includes a scheduler,
-clipboard monitor, drop box and can be integrated to firefox with flashgot plugin.
-
 Changes in (0.6.0 BETA):
 
 -Add support for Opera, Chrome and Firefox browser integration with the (Download with Wget) plugin.
