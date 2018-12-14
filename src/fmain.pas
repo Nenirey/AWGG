@@ -2445,7 +2445,8 @@ begin
   frmain.tvMain.Items[frmain.tvMain.Items[1].Count+4].Text:=fstrings.statusinprogres;
   frmain.tvMain.Items[frmain.tvMain.Items[1].Count+5].Text:=fstrings.statusstoped;
   frmain.tvMain.Items[frmain.tvMain.Items[1].Count+6].Text:=fstrings.statuserror;
-  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+7].Text:=fstrings.statuspaused;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+7].Text:=fstrings.statuscanceled;
+  frmain.tvMain.Items[frmain.tvMain.Items[1].Count+8].Text:=fstrings.statuspaused;
   frmain.tvMain.Items.TopLvlItems[3].Text:=categoryfilter;
   frmain.tvMain.Items.TopLvlItems[3][frmain.tvMain.Items.TopLvlItems[3].SubTreeCount-2].Text:=categoryothers;
   if Assigned(frconfig) then
@@ -8667,6 +8668,8 @@ begin
           end;
         end;
       end;
+      if frmain.lvFilter.Visible and (Sender=tbCancelDown) then
+        frmain.tvMainSelectionChanged(nil);
       frmain.tbStartDown.Enabled:=true;
       frmain.tbStopDown.Enabled:=false;
       frmain.tbRestartNow.Enabled:=true;
@@ -9042,7 +9045,8 @@ begin
             1:sts:='1';
             2:sts:='2';
             3:sts:='4';
-            4:sts:='0';
+            4:sts:='5';
+            5:sts:='0';
           end;
           for i:=0 to frmain.lvMain.Items.Count-1 do
           begin

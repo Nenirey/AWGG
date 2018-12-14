@@ -1,6 +1,6 @@
 unit versionitis;
 interface
-var version:string='0.6.0.5713';
+var version:string='0.6.0.5716';
 var fpcversion:string={$I %FPCVERSION%};
 var targetcpu:string={$I %FPCTARGETCPU%};
 var targetos:string={$I %FPCTARGETOS%};
