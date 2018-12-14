@@ -1,7 +1,7 @@
 object frddbox: Tfrddbox
-  Left = 622
+  Left = 692
   Height = 93
-  Top = 245
+  Top = 287
   Width = 123
   AlphaBlend = True
   AlphaBlendValue = 175
@@ -25,7 +25,7 @@ object frddbox: Tfrddbox
   OnMouseWheel = FormMouseWheel
   OnPaint = FormPaint
   PopupMenu = frmain.pmTrayIcon
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '1.8.4.0'
   object frddboximgLogo: TImage
     Left = 5
     Height = 83

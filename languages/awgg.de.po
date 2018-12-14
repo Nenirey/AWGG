@@ -2098,11 +2098,6 @@ msgctxt "tfrnotification.btnopenfile.hint"
 msgid "Open file"
 msgstr "Öffne Datei"
 
-#: tfrnotification.caption
-msgctxt "tfrnotification.caption"
-msgid "Download Notifications"
-msgstr "Download-Meldungen"
-
 #: tfrnotification.lbldescriptionerror.caption
 msgid "lblDescriptionError"
 msgstr ""

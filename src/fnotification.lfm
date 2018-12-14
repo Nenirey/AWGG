@@ -5,8 +5,8 @@ object frnotification: Tfrnotification
   Width = 365
   AlphaBlend = True
   AlphaBlendValue = 200
+  BorderIcons = []
   BorderStyle = bsNone
-  Caption = 'Download Notifications'
   ClientHeight = 113
   ClientWidth = 365
   Color = clBtnHighlight
@@ -16,8 +16,7 @@ object frnotification: Tfrnotification
   OnMouseEnter = FormMouseEnter
   OnMouseLeave = FormMouseLeave
   OnPaint = FormPaint
-  ShowInTaskBar = stNever
-  LCLVersion = '2.1.0.0'
+  LCLVersion = '1.8.4.0'
   object btnGoPath: TSpeedButton
     AnchorSideLeft.Control = Owner
     AnchorSideBottom.Control = Owner
@@ -82,8 +81,8 @@ object frnotification: Tfrnotification
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = lblDescriptionError
     Left = 47
-    Height = 19
-    Top = 29
+    Height = 15
+    Top = 25
     Width = 308
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 10
@@ -160,8 +159,8 @@ object frnotification: Tfrnotification
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnGoPath
     Left = 47
-    Height = 28
-    Top = 53
+    Height = 36
+    Top = 45
     Width = 308
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Left = 10
@@ -301,9 +300,9 @@ object frnotification: Tfrnotification
     AnchorSideLeft.Side = asrBottom
     AnchorSideTop.Control = imgLogo
     Left = 47
-    Height = 19
+    Height = 15
     Top = 5
-    Width = 46
+    Width = 38
     BorderSpacing.Left = 10
     Caption = 'lblTitle'
     Font.Style = [fsBold]
@@ -529,10 +528,10 @@ object frnotification: Tfrnotification
   end
   object HideTimer: TTimer
     OnTimer = HideTimerTimer
-    Left = 238
-    Top = 1
+    left = 238
+    top = 1
   end
   object sdlgDirectory: TSelectDirectoryDialog
-    Left = 160
+    left = 160
   end
 end

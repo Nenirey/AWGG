@@ -856,6 +856,7 @@ begin
         internet:=false;
         firsttime:=false;
         DHTTPClient.KeepConnection:=false;
+        DHTTPClient.IOTimeout:=1000 mod internetInterval;
         DHTTPClient.HTTPMethod('HEAD',InternetURL,nil,[200]);
         RS.Assign(DHTTPClient.ResponseHeaders);
         DHTTPClient.Terminate;
