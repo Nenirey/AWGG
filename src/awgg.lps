@@ -7,10 +7,10 @@
       <Unit0>
         <Filename Value="awgg.lpr"/>
         <IsPartOfProject Value="True"/>
-        <EditorIndex Value="3"/>
+        <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="27"/>
-        <CursorPos Y="54"/>
+        <TopLine Value="29"/>
+        <CursorPos X="11" Y="35"/>
         <UsageCount Value="237"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1458"/>
-        <CursorPos X="29" Y="1468"/>
+        <TopLine Value="2965"/>
+        <CursorPos X="85" Y="2982"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -34,10 +34,9 @@
         <ComponentName Value="frnewdown"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="4"/>
+        <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="501"/>
-        <CursorPos X="9" Y="508"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -48,10 +47,9 @@
         <ComponentName Value="frconfig"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="13"/>
+        <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="339"/>
-        <CursorPos X="16" Y="350"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -62,7 +60,7 @@
         <ComponentName Value="frabout"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="11"/>
+        <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -74,7 +72,7 @@
         <ComponentName Value="frlang"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="10"/>
+        <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -86,10 +84,9 @@
         <ComponentName Value="frstrings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="7"/>
+        <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="112"/>
-        <CursorPos X="48" Y="139"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -99,7 +96,7 @@
         <ComponentName Value="frconfirm"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="15"/>
+        <EditorIndex Value="13"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -111,7 +108,7 @@
         <ComponentName Value="frreplace"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="14"/>
+        <EditorIndex Value="12"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -123,10 +120,9 @@
         <ComponentName Value="frsitegrabber"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="9"/>
+        <EditorIndex Value="7"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="88"/>
-        <CursorPos X="3" Y="103"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
       </Unit9>
@@ -136,7 +132,7 @@
         <ComponentName Value="fradd"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="12"/>
+        <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
@@ -148,10 +144,9 @@
         <ComponentName Value="frnotification"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="8"/>
+        <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="151"/>
-        <CursorPos X="24" Y="161"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -162,11 +157,12 @@
         <ComponentName Value="frcopymove"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="16"/>
+        <EditorIndex Value="14"/>
         <WindowIndex Value="1"/>
         <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit12>
       <Unit13>
         <Filename Value="fddbox.pas"/>
@@ -174,10 +170,9 @@
         <ComponentName Value="frddbox"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="6"/>
+        <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="171"/>
-        <CursorPos X="3" Y="176"/>
+        <CursorPos X="21" Y="6"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -188,10 +183,9 @@
         <ComponentName Value="frvideoformat"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <EditorIndex Value="5"/>
+        <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="55"/>
-        <CursorPos X="3" Y="79"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>

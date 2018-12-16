@@ -2,7 +2,7 @@ unit fabout;
 {
   About form of AWGG
 
-  Copyright (C) 2018 Reinier Romero Mir
+  Copyright (C) 2019 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it

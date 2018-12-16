@@ -298,6 +298,7 @@ msgid "Internet connection"
 msgstr "Conexion a internet"
 
 #: fstrings.msgmoveoperationerror
+#, fuzzy,badformat
 msgid ""
 "Error to move file, details:\n"
 "$s\n"
@@ -2062,6 +2063,10 @@ msgstr "Mover archivo a..."
 msgctxt "tfrnotification.btnopenfile.hint"
 msgid "Open file"
 msgstr "Abrir archivo"
+
+#: tfrnotification.caption
+msgid "Download notification"
+msgstr ""
 
 #: tfrnotification.lbldescriptionerror.caption
 msgid "lblDescriptionError"

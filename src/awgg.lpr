@@ -22,7 +22,7 @@ program awgg;
 
 uses
   {$IFDEF UNIX}
-  cthreads, {cmem,}
+  cthreads, cmem,
   {$ENDIF}
   {$IF DEFINED(WIN64) AND (FPC_FULLVERSION < 30000)}
   uExceptionHandlerFix,

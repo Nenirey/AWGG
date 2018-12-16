@@ -7,6 +7,7 @@ object frnotification: Tfrnotification
   AlphaBlendValue = 200
   BorderIcons = []
   BorderStyle = bsNone
+  Caption = 'Download notification'
   ClientHeight = 113
   ClientWidth = 365
   Color = clBtnHighlight
@@ -90,7 +91,7 @@ object frnotification: Tfrnotification
     Caption = 'lblFileName'
     ParentColor = False
     WordWrap = True
-    OnClick = lblFileNameClick
+    OnClick = FormClick
     OnMouseEnter = FormMouseEnter
     OnMouseLeave = FormMouseLeave
   end
@@ -172,6 +173,7 @@ object frnotification: Tfrnotification
     ParentShowHint = False
     ShowHint = True
     WordWrap = True
+    OnClick = FormClick
     OnMouseEnter = FormMouseEnter
     OnMouseLeave = FormMouseLeave
   end
@@ -185,6 +187,7 @@ object frnotification: Tfrnotification
     AutoSize = True
     BorderSpacing.Left = 5
     BorderSpacing.Top = 5
+    OnClick = FormClick
     OnMouseEnter = FormMouseEnter
     Picture.Data = {
       1754506F727461626C654E6574776F726B47726170686963110D000089504E47
@@ -308,6 +311,7 @@ object frnotification: Tfrnotification
     Font.Style = [fsBold]
     ParentColor = False
     ParentFont = False
+    OnClick = FormClick
     OnMouseEnter = FormMouseEnter
     OnMouseLeave = FormMouseLeave
   end

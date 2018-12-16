@@ -2,7 +2,7 @@ unit fnotification;
 {
   Notification form of AWGG
 
-  Copyright (C) 2018 Reinier Romero Mir
+  Copyright (C) 2019 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -49,7 +49,6 @@ type
     procedure FormMouseEnter(Sender: TObject);
     procedure FormMouseLeave(Sender: TObject);
     procedure FormPaint(Sender: TObject);
-    procedure lblFileNameClick(Sender: TObject);
     procedure btnGoPathClick(Sender: TObject);
     procedure btnOpenFileClick(Sender: TObject);
     procedure btnCloseClick(Sender: TObject);
@@ -126,15 +125,24 @@ begin
   Self.Close;
 end;
 
-procedure Tfrnotification.lblFileNameClick(Sender: TObject);
-begin
-
-end;
-
 procedure Tfrnotification.FormClick(Sender: TObject);
+var
+  i:integer;
 begin
-  //Self.Close;
-  //Self.Free;
+  if Self.lblFilename.Caption<>'' then
+  begin
+    for i:=0 to frmain.lvMain.Items.Count-1 do
+    begin
+      if frmain.lvMain.Items[i].SubItems[columnuid]=notiuid then
+      begin
+        frmain.lvMain.ItemIndex:=i;
+        break;
+      end;
+    end;
+  end;
+  frmain.WindowState:=lastmainwindowstate;
+  frmain.Show;
+  Self.Close;
 end;
 
 procedure Tfrnotification.btnStartDownClick(Sender: TObject);

@@ -3,7 +3,7 @@ unit fmain;
 {
   Main form of AWGG
 
-  Copyright (C) 2018 Reinier Romero Mir
+  Copyright (C) 2019 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -142,6 +142,7 @@ end;
     cbLimit: TCheckBox;
     fseLimit: TFloatSpinEdit;
     ilSrc: TImageList;
+    ilTrayIcon: TImageList;
     lblMaxDownInProgress: TLabel;
     lvMain: TListView;
     lvFilter: TListView;
@@ -818,6 +819,8 @@ begin
           createnewnotifi('AWGG','',msginternetconnection,'',true,'');
         if playsounds and playsoundinternet and internetchange then
           playsound(internetsound);
+        frmain.MainTrayIcon.Animate:=false;
+        frmain.MainTrayIcon.Icon:=Application.Icon;
         internetchange:=false;
         nointernetchange:=true;
       end;
@@ -828,6 +831,8 @@ begin
           createnewnotifi('AWGG','',msgnointernetconnection,'',false,'');
       if playsounds and playsoundnointernet and nointernetchange then
         playsound(nointernetsound);
+      frmain.MainTrayIcon.Icons:=frmain.ilTrayIcon;
+      frmain.MainTrayIcon.Animate:=true;
       nointernetchange:=false;
       internetchange:=true;
     end;
@@ -856,7 +861,7 @@ begin
         internet:=false;
         firsttime:=false;
         DHTTPClient.KeepConnection:=false;
-        DHTTPClient.IOTimeout:=1000 mod internetInterval;
+        DHTTPClient.IOTimeout:=5000;
         DHTTPClient.HTTPMethod('HEAD',InternetURL,nil,[200]);
         RS.Assign(DHTTPClient.ResponseHeaders);
         DHTTPClient.Terminate;
@@ -1542,6 +1547,9 @@ begin
         end;
     notiforms.HideTimer.Interval:=hiddenotifi*1000;
     notiforms.HideTimer.Enabled:=true;
+    {$IFDEF LCLGTK2}
+      notiforms.ShowInTaskBar:=stNever;
+    {$ENDIF}
     notiforms.Show;
     notiforms.SetShape(ABitmap);
     FreeAndNil(ABitmap);
@@ -2970,8 +2978,8 @@ begin
     playsounds:=iniconfigfile.ReadBool('Config','playsounds',true);
     playsoundcomplete:=iniconfigfile.ReadBool('Config','playsoundcomplete',true);
     playsounderror:=iniconfigfile.ReadBool('Config','playsounderror',true);
-    playsoundinternet:=iniconfigfile.ReadBool('Config','playsoundinternet',true);
-    playsoundnointernet:=iniconfigfile.ReadBool('Config','playsoundnointernet',true);
+    playsoundinternet:=iniconfigfile.ReadBool('Config','playsoundinternet',false);
+    playsoundnointernet:=iniconfigfile.ReadBool('Config','playsoundnointernet',false);
     downcompsound:=StringReplace(iniconfigfile.ReadString('Config','downcompsound',currentdir+'complete.wav'),awgg_path,currentdir,[rfReplaceAll]);
     downstopsound:=StringReplace(iniconfigfile.ReadString('Config','downstopsound',currentdir+'stopped.wav'),awgg_path,currentdir,[rfReplaceAll]);
     internetsound:=StringReplace(iniconfigfile.ReadString('Config','internetsound',currentdir+'internet.wav'),awgg_path,currentdir,[rfReplaceAll]);
@@ -3010,7 +3018,7 @@ begin
     frddboxSize:=iniconfigfile.ReadInteger('Config','dropboxsize',40);
     //Internet check
     internetCheck:=iniconfigfile.ReadBool('Config','internetcheck',true);
-    internetURL:=iniconfigfile.ReadString('Config','interneturl','http://checkip.dyndns.org/');
+    internetURL:=iniconfigfile.ReadString('Config','interneturl','http://www.google.com/');
     internetInterval:=iniconfigfile.ReadInteger('Config','internetinterval',10);
     newdownloadforcenames:=iniconfigfile.ReadBool('Config','newdownloadforcenames',true);
     //categorias
@@ -3294,6 +3302,8 @@ begin
     begin
       internetchecker.stop;
     end;
+    frmain.MainTrayIcon.Animate:=false;
+    frmain.MainTrayIcon.Icon:=Application.Icon;
   end;
 end;
 
