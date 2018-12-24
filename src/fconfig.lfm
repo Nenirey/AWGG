@@ -1,10 +1,10 @@
 object frconfig: Tfrconfig
-  Left = 347
-  Height = 444
-  Top = 145
+  Left = 402
+  Height = 440
+  Top = 200
   Width = 649
   Caption = 'Configuration'
-  ClientHeight = 444
+  ClientHeight = 440
   ClientWidth = 649
   OnShow = FormShow
   Position = poScreenCenter
@@ -16,7 +16,7 @@ object frconfig: Tfrconfig
     AnchorSideBottom.Side = asrBottom
     Left = 444
     Height = 25
-    Top = 416
+    Top = 412
     Width = 63
     Anchors = [akRight, akBottom]
     AutoSize = True
@@ -33,7 +33,7 @@ object frconfig: Tfrconfig
     AnchorSideBottom.Side = asrBottom
     Left = 517
     Height = 25
-    Top = 416
+    Top = 412
     Width = 62
     Anchors = [akRight, akBottom]
     AutoSize = True
@@ -51,23 +51,23 @@ object frconfig: Tfrconfig
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnConfigAccept
-    Left = 184
-    Height = 387
+    Left = 200
+    Height = 383
     Top = 24
-    Width = 465
-    ActivePage = tsProxy
+    Width = 449
+    ActivePage = tsUpdates
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 0
+    TabIndex = 18
     TabOrder = 2
     OnChange = pcConfigChange
     Options = [nboKeyboardTabSwitch]
     object tsProxy: TTabSheet
       Caption = 'Proxy'
-      ClientHeight = 379
-      ClientWidth = 457
+      ClientHeight = 375
+      ClientWidth = 441
       object lblProxyPass: TLabel
         AnchorSideLeft.Control = chUseAuth
         AnchorSideTop.Control = edtProxyPass
@@ -174,7 +174,7 @@ object frconfig: Tfrconfig
         Left = 262
         Height = 23
         Top = 33
-        Width = 190
+        Width = 174
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 5
         MaxValue = 9999
@@ -191,7 +191,7 @@ object frconfig: Tfrconfig
         Left = 262
         Height = 23
         Top = 85
-        Width = 190
+        Width = 174
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -208,7 +208,7 @@ object frconfig: Tfrconfig
         Left = 262
         Height = 23
         Top = 118
-        Width = 190
+        Width = 174
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -275,7 +275,7 @@ object frconfig: Tfrconfig
         Left = 76
         Height = 23
         Top = 151
-        Width = 376
+        Width = 360
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -353,7 +353,7 @@ object frconfig: Tfrconfig
         Left = 41
         Height = 23
         Top = 5
-        Width = 411
+        Width = 395
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
         ItemHeight = 15
@@ -375,7 +375,7 @@ object frconfig: Tfrconfig
         Left = 76
         Height = 15
         Top = 174
-        Width = 376
+        Width = 360
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Exp: .mozilla.org, localhost, 192.168.0.1'
         ParentColor = False
@@ -385,7 +385,7 @@ object frconfig: Tfrconfig
       AnchorSideRight.Side = asrBottom
       Caption = 'Scheduler'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object chDaily: TCheckBox
         AnchorSideLeft.Control = tsScheduler
         AnchorSideTop.Control = chEnableScheduler
@@ -682,8 +682,8 @@ object frconfig: Tfrconfig
     end
     object tsNotifications: TTabSheet
       Caption = 'Notifications'
-      ClientHeight = 379
-      ClientWidth = 457
+      ClientHeight = 385
+      ClientWidth = 447
       object chShowNotifications: TCheckBox
         AnchorSideLeft.Control = tsNotifications
         AnchorSideTop.Control = tsNotifications
@@ -872,8 +872,8 @@ object frconfig: Tfrconfig
     object tsSounds: TTabSheet
       AnchorSideRight.Side = asrBottom
       Caption = 'Sounds'
-      ClientHeight = 379
-      ClientWidth = 457
+      ClientHeight = 385
+      ClientWidth = 447
       object gbSounds: TGroupBox
         AnchorSideLeft.Control = tsSounds
         AnchorSideTop.Control = tsSounds
@@ -1251,7 +1251,7 @@ object frconfig: Tfrconfig
     object tsClipboardm: TTabSheet
       Caption = 'Clipboard monitor'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object chClipboardMonitor: TCheckBox
         AnchorSideLeft.Control = tsClipboardm
         AnchorSideTop.Control = tsClipboardm
@@ -1457,10 +1457,82 @@ object frconfig: Tfrconfig
         ParentShowHint = False
       end
     end
+    object tsInternetMonitor: TTabSheet
+      Caption = 'Internet monitor'
+      ClientHeight = 375
+      ClientWidth = 441
+      object chInternetCheck: TCheckBox
+        AnchorSideLeft.Control = chgAutomation
+        AnchorSideTop.Control = tsInternetMonitor
+        Left = 7
+        Height = 19
+        Top = 5
+        Width = 227
+        BorderSpacing.Left = 7
+        BorderSpacing.Top = 5
+        Caption = 'Start main queue if internet connection'
+        Checked = True
+        State = cbChecked
+        TabOrder = 0
+      end
+      object lblInternetURL: TLabel
+        AnchorSideLeft.Control = chInternetCheck
+        AnchorSideTop.Control = chInternetCheck
+        AnchorSideTop.Side = asrBottom
+        Left = 7
+        Height = 15
+        Top = 39
+        Width = 68
+        BorderSpacing.Top = 15
+        Caption = 'Internet URL:'
+        ParentColor = False
+      end
+      object edtInternetURL: TEdit
+        AnchorSideLeft.Control = lblInternetURL
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = lblInternetURL
+        AnchorSideTop.Side = asrCenter
+        AnchorSideRight.Control = tsAutomation
+        AnchorSideRight.Side = asrBottom
+        Left = 75
+        Height = 23
+        Top = 35
+        Width = 361
+        Anchors = [akTop, akLeft, akRight]
+        BorderSpacing.Right = 5
+        TabOrder = 1
+      end
+      object lblInternetInterval: TLabel
+        AnchorSideLeft.Control = lblInternetURL
+        AnchorSideTop.Control = lblInternetURL
+        AnchorSideTop.Side = asrBottom
+        Left = 7
+        Height = 15
+        Top = 69
+        Width = 101
+        BorderSpacing.Top = 15
+        Caption = 'Interval in seconds:'
+        ParentColor = False
+      end
+      object seInternetInterval: TSpinEdit
+        AnchorSideLeft.Control = lblInternetInterval
+        AnchorSideLeft.Side = asrBottom
+        AnchorSideTop.Control = lblInternetInterval
+        AnchorSideTop.Side = asrCenter
+        Left = 108
+        Height = 23
+        Top = 65
+        Width = 68
+        MaxValue = 360
+        MinValue = 1
+        TabOrder = 2
+        Value = 10
+      end
+    end
     object tsFolders: TTabSheet
       Caption = 'Folders'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object deDownFolder: TDirectoryEdit
         AnchorSideLeft.Control = lblDownFolder
         AnchorSideTop.Control = lblDownFolder
@@ -1890,7 +1962,7 @@ object frconfig: Tfrconfig
     object tsWget: TTabSheet
       Caption = 'wget'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object fneWgetpath: TFileNameEdit
         AnchorSideLeft.Control = lblWgetPath
         AnchorSideTop.Control = lblWgetPath
@@ -1993,7 +2065,7 @@ object frconfig: Tfrconfig
     object tsAria2: TTabSheet
       Caption = 'aria2c'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object lblAria2Path: TLabel
         AnchorSideLeft.Control = tsAria2
         AnchorSideTop.Control = tsAria2
@@ -2183,7 +2255,7 @@ object frconfig: Tfrconfig
     object tsCurl: TTabSheet
       Caption = 'curl'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object lblCurlPath: TLabel
         AnchorSideLeft.Control = tsCurl
         AnchorSideTop.Control = tsCurl
@@ -2283,7 +2355,7 @@ object frconfig: Tfrconfig
     object tsAxel: TTabSheet
       Caption = 'axel'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object lblAxelPath: TLabel
         AnchorSideLeft.Control = tsAxel
         AnchorSideTop.Control = tsAxel
@@ -2375,7 +2447,7 @@ object frconfig: Tfrconfig
     object tsYoutubedl: TTabSheet
       Caption = 'youtube-dl'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object lblYoutubedlPath: TLabel
         AnchorSideLeft.Control = tsAxel
         AnchorSideTop.Control = tsAxel
@@ -2509,8 +2581,8 @@ object frconfig: Tfrconfig
     end
     object tsAutomation: TTabSheet
       Caption = 'Automation'
-      ClientHeight = 385
-      ClientWidth = 463
+      ClientHeight = 375
+      ClientWidth = 441
       object chgAutomation: TCheckGroup
         AnchorSideLeft.Control = tsAutomation
         AnchorSideTop.Control = tsAutomation
@@ -2519,10 +2591,10 @@ object frconfig: Tfrconfig
         AnchorSideBottom.Control = tsAutomation
         AnchorSideBottom.Side = asrBottom
         Left = 0
-        Height = 200
+        Height = 375
         Top = 0
-        Width = 457
-        Anchors = [akTop, akLeft, akRight]
+        Width = 441
+        Anchors = [akTop, akLeft, akRight, akBottom]
         AutoFill = True
         Caption = 'Automation'
         ChildSizing.LeftRightSpacing = 6
@@ -2533,8 +2605,8 @@ object frconfig: Tfrconfig
         ChildSizing.ShrinkVertical = crsScaleChilds
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
-        ClientHeight = 180
-        ClientWidth = 453
+        ClientHeight = 355
+        ClientWidth = 437
         Items.Strings = (
           'Run with the system.'
           'Start in the systray.'
@@ -2544,79 +2616,11 @@ object frconfig: Tfrconfig
           020000000202
         }
       end
-      object chInternetCheck: TCheckBox
-        AnchorSideLeft.Control = chgAutomation
-        AnchorSideTop.Control = chgAutomation
-        AnchorSideTop.Side = asrBottom
-        Left = 7
-        Height = 19
-        Top = 205
-        Width = 227
-        BorderSpacing.Left = 7
-        BorderSpacing.Top = 5
-        Caption = 'Start main queue if internet connection'
-        Checked = True
-        State = cbChecked
-        TabOrder = 1
-      end
-      object lblInternetURL: TLabel
-        AnchorSideLeft.Control = chInternetCheck
-        AnchorSideTop.Control = chInternetCheck
-        AnchorSideTop.Side = asrBottom
-        Left = 7
-        Height = 15
-        Top = 239
-        Width = 68
-        BorderSpacing.Top = 15
-        Caption = 'Internet URL:'
-        ParentColor = False
-      end
-      object edtInternetURL: TEdit
-        AnchorSideLeft.Control = lblInternetURL
-        AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = lblInternetURL
-        AnchorSideTop.Side = asrCenter
-        AnchorSideRight.Control = tsAutomation
-        AnchorSideRight.Side = asrBottom
-        Left = 75
-        Height = 23
-        Top = 235
-        Width = 377
-        Anchors = [akTop, akLeft, akRight]
-        BorderSpacing.Right = 5
-        TabOrder = 2
-      end
-      object lblInternetInterval: TLabel
-        AnchorSideLeft.Control = lblInternetURL
-        AnchorSideTop.Control = lblInternetURL
-        AnchorSideTop.Side = asrBottom
-        Left = 7
-        Height = 15
-        Top = 269
-        Width = 101
-        BorderSpacing.Top = 15
-        Caption = 'Interval in seconds:'
-        ParentColor = False
-      end
-      object seInternetInterval: TSpinEdit
-        AnchorSideLeft.Control = lblInternetInterval
-        AnchorSideLeft.Side = asrBottom
-        AnchorSideTop.Control = lblInternetInterval
-        AnchorSideTop.Side = asrCenter
-        Left = 108
-        Height = 23
-        Top = 265
-        Width = 68
-        MaxValue = 360
-        MinValue = 1
-        TabOrder = 3
-        Value = 10
-      end
     end
     object tsLogs: TTabSheet
       Caption = 'Logs'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object chSaveDownLogs: TCheckBox
         AnchorSideLeft.Control = tsLogs
         AnchorSideTop.Control = tsLogs
@@ -2726,7 +2730,7 @@ object frconfig: Tfrconfig
     object tsDownOptions: TTabSheet
       Caption = 'Download options'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object gbDownConnection: TGroupBox
         AnchorSideLeft.Control = tsDownOptions
         AnchorSideTop.Control = tsDownOptions
@@ -2946,7 +2950,7 @@ object frconfig: Tfrconfig
     object tsLang: TTabSheet
       Caption = 'Language'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object cbDefLanguage: TComboBox
         AnchorSideLeft.Control = tsLang
         AnchorSideLeft.Side = asrCenter
@@ -2977,7 +2981,7 @@ object frconfig: Tfrconfig
     object tsQueue: TTabSheet
       Caption = 'Queue'
       ClientHeight = 385
-      ClientWidth = 463
+      ClientWidth = 447
       object chQueueRotate: TCheckBox
         AnchorSideLeft.Control = lblQueueTriesRotate
         AnchorSideTop.Control = seQueueTriesRotate
@@ -3108,17 +3112,17 @@ object frconfig: Tfrconfig
     end
     object tsIntegration: TTabSheet
       Caption = 'Integration'
-      ClientHeight = 385
-      ClientWidth = 463
+      ClientHeight = 375
+      ClientWidth = 441
       OnShow = tsIntegrationShow
       object btnChromeIntegration: TBitBtn
         AnchorSideLeft.Control = tsIntegration
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = tsIntegration
-        Left = 145
+        Left = 136
         Height = 25
         Top = 20
-        Width = 172
+        Width = 168
         AutoSize = True
         BorderSpacing.Top = 20
         Caption = 'Enable Chrome integration'
@@ -3130,10 +3134,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = btnFirefoxIntegration
         AnchorSideTop.Side = asrBottom
-        Left = 151
+        Left = 142
         Height = 25
         Top = 110
-        Width = 161
+        Width = 157
         AutoSize = True
         BorderSpacing.Top = 20
         Caption = 'Enable Opera integration'
@@ -3145,10 +3149,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = btnChromeIntegration
         AnchorSideTop.Side = asrBottom
-        Left = 148
+        Left = 140
         Height = 25
         Top = 65
-        Width = 166
+        Width = 160
         AutoSize = True
         BorderSpacing.Top = 20
         Caption = 'Enable Firefox integration'
@@ -3161,9 +3165,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = sbtnCopyPath
         Left = 5
-        Height = 25
-        Top = 174
-        Width = 430
+        Height = 23
+        Top = 170
+        Width = 408
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 5
         ReadOnly = True
@@ -3174,9 +3178,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = btnOperaIntegration
         AnchorSideTop.Side = asrBottom
         Left = 5
-        Height = 19
+        Height = 15
         Top = 155
-        Width = 71
+        Width = 59
         BorderSpacing.Left = 5
         BorderSpacing.Top = 20
         Caption = 'Executable:'
@@ -3187,9 +3191,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtProgramPath
         AnchorSideTop.Side = asrBottom
         Left = 5
-        Height = 19
-        Top = 209
-        Width = 74
+        Height = 15
+        Top = 203
+        Width = 62
         BorderSpacing.Left = 5
         BorderSpacing.Top = 10
         Caption = 'Arguments:'
@@ -3201,9 +3205,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = sbtnCopyArguments
         Left = 5
-        Height = 25
-        Top = 228
-        Width = 430
+        Height = 23
+        Top = 218
+        Width = 408
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 5
         ReadOnly = True
@@ -3216,10 +3220,10 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = edtProgramPath
         AnchorSideBottom.Side = asrBottom
-        Left = 435
-        Height = 25
+        Left = 413
+        Height = 23
         Hint = 'Copy to clipboard'
-        Top = 174
+        Top = 170
         Width = 23
         Anchors = [akTop, akRight, akBottom]
         BorderSpacing.Right = 5
@@ -3270,10 +3274,10 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = edtProgramArguments
         AnchorSideBottom.Side = asrBottom
-        Left = 435
-        Height = 25
+        Left = 413
+        Height = 23
         Hint = 'Copy to clipboard'
-        Top = 228
+        Top = 218
         Width = 23
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Right = 5
@@ -3318,6 +3322,9 @@ object frconfig: Tfrconfig
         ParentShowHint = False
       end
     end
+    object tsUpdates: TTabSheet
+      Caption = 'Updates'
+    end
   end
   object tvConfig: TTreeView
     AnchorSideLeft.Control = Owner
@@ -3325,9 +3332,9 @@ object frconfig: Tfrconfig
     AnchorSideRight.Control = pcConfig
     AnchorSideBottom.Control = btnConfigAccept
     Left = 0
-    Height = 411
+    Height = 407
     Top = 0
-    Width = 184
+    Width = 200
     Anchors = [akTop, akLeft, akBottom]
     BorderSpacing.Bottom = 5
     HideSelection = False
@@ -3338,27 +3345,29 @@ object frconfig: Tfrconfig
     OnSelectionChanged = tvConfigSelectionChanged
     Options = [tvoAutoItemHeight, tvoKeepCollapsedNodes, tvoReadOnly, tvoShowButtons, tvoShowLines, tvoShowRoot, tvoToolTips, tvoThemedDraw]
     Items.Data = {
-      F9FFFFFF0200110000000500000005000000FFFFFFFFFFFFFFFF000000000000
+      F9FFFFFF0200130000000500000005000000FFFFFFFFFFFFFFFF000000000000
       0000000500000050726F78790600000006000000FFFFFFFFFFFFFFFF00000000
       0000000000090000005363686564756C65721000000010000000FFFFFFFFFFFF
       FFFF0000000000000000000D0000004E6F74696669636174696F6E7320000000
       20000000FFFFFFFFFFFFFFFF00000000000000000006000000536F756E647339
       00000039000000FFFFFFFFFFFFFFFF00000000000000000011000000436C6970
-      626F617264206D6F6E69746F721700000017000000FFFFFFFFFFFFFFFF000000
-      00000000000007000000466F6C646572731B0000001B000000FFFFFFFFFFFFFF
-      FF00000000000000000004000000776765741B0000001B000000FFFFFFFFFFFF
-      FFFF000000000000000000060000006172696132631B0000001B000000FFFFFF
-      FFFFFFFFFF000000000000000000040000006375726C1B0000001B000000FFFF
-      FFFFFFFFFFFF000000000000000000040000006178656C1B0000001B000000FF
-      FFFFFFFFFFFFFF0000000000000000000A000000796F75747562652D646C1800
-      000018000000FFFFFFFFFFFFFFFF0000000000000000000A0000004175746F6D
-      6174696F6E1A0000001A000000FFFFFFFFFFFFFFFF0000000000000000000400
-      00004C6F67731300000013000000FFFFFFFFFFFFFFFF00000000000000000010
-      000000446F776E6C6F6164206F7074696F6E731F0000001F000000FFFFFFFFFF
-      FFFFFF000000000000000000080000004C616E67756167652800000028000000
-      FFFFFFFFFFFFFFFF000000000000000000050000005175657565360000003600
-      0000FFFFFFFFFFFFFFFF0000000000000000000B000000496E74656772617469
-      6F6E
+      626F617264206D6F6E69746F724100000041000000FFFFFFFFFFFFFFFF000000
+      00000000000010000000496E7465726E6574206D6F6E69746F72170000001700
+      0000FFFFFFFFFFFFFFFF00000000000000000007000000466F6C646572731B00
+      00001B000000FFFFFFFFFFFFFFFF00000000000000000004000000776765741B
+      0000001B000000FFFFFFFFFFFFFFFF0000000000000000000600000061726961
+      32631B0000001B000000FFFFFFFFFFFFFFFF0000000000000000000400000063
+      75726C1B0000001B000000FFFFFFFFFFFFFFFF00000000000000000004000000
+      6178656C1B0000001B000000FFFFFFFFFFFFFFFF0000000000000000000A0000
+      00796F75747562652D646C1800000018000000FFFFFFFFFFFFFFFF0000000000
+      000000000A0000004175746F6D6174696F6E1A0000001A000000FFFFFFFFFFFF
+      FFFF000000000000000000040000004C6F67731300000013000000FFFFFFFFFF
+      FFFFFF00000000000000000010000000446F776E6C6F6164206F7074696F6E73
+      1F0000001F000000FFFFFFFFFFFFFFFF000000000000000000080000004C616E
+      67756167652800000028000000FFFFFFFFFFFFFFFF0000000000000000000500
+      000051756575653600000036000000FFFFFFFFFFFFFFFF000000000000000000
+      0B000000496E746567726174696F6E4200000042000000FFFFFFFFFFFFFFFF00
+      00000000000000000700000055706461746573
     }
   end
   object pConfigInfo: TPanel
@@ -3367,10 +3376,10 @@ object frconfig: Tfrconfig
     AnchorSideTop.Control = Owner
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
-    Left = 184
+    Left = 200
     Height = 24
     Top = 0
-    Width = 465
+    Width = 449
     Anchors = [akTop, akLeft, akRight]
     Color = clHighlight
     Font.Color = clHighlightText
@@ -3386,7 +3395,7 @@ object frconfig: Tfrconfig
     AnchorSideBottom.Side = asrBottom
     Left = 589
     Height = 25
-    Top = 416
+    Top = 412
     Width = 57
     Anchors = [akRight, akBottom]
     AutoSize = True

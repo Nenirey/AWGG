@@ -1141,6 +1141,10 @@ msgctxt "TFRCONFIG.TSINTEGRATION.CAPTION"
 msgid "Integration"
 msgstr ""
 
+#: tfrconfig.tsinternetmonitor.caption
+msgid "Internet monitor"
+msgstr ""
+
 #: tfrconfig.tslang.caption
 msgctxt "TFRCONFIG.TSLANG.CAPTION"
 msgid "Language"
@@ -1174,6 +1178,10 @@ msgstr ""
 #: tfrconfig.tssounds.caption
 msgctxt "TFRCONFIG.TSSOUNDS.CAPTION"
 msgid "Sounds"
+msgstr ""
+
+#: tfrconfig.tsupdates.caption
+msgid "Updates"
 msgstr ""
 
 #: tfrconfig.tswget.caption

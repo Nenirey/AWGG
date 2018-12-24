@@ -52,6 +52,10 @@
 {"hash":18340,"name":"tfrconfig.btnadddomain.hint","sourcebytes":[65,100,100],"value":"Add"},
 {"hash":78392485,"name":"tfrconfig.btndeletedomain.hint","sourcebytes":[68,101,108,101,116,101],"value":"Delete"},
 {"hash":310020,"name":"tfrconfig.btneditdomain.hint","sourcebytes":[69,100,105,116],"value":"Edit"},
+{"hash":14076546,"name":"tfrconfig.tsinternetmonitor.caption","sourcebytes":[73,110,116,101,114,110,101,116,32,109,111,110,105,116,111,114],"value":"Internet monitor"},
+{"hash":90298846,"name":"tfrconfig.chinternetcheck.caption","sourcebytes":[83,116,97,114,116,32,109,97,105,110,32,113,117,101,117,101,32,105,102,32,105,110,116,101,114,110,101,116,32,99,111,110,110,101,99,116,105,111,110],"value":"Start main queue if internet connection"},
+{"hash":205484010,"name":"tfrconfig.lblinterneturl.caption","sourcebytes":[73,110,116,101,114,110,101,116,32,85,82,76,58],"value":"Internet URL:"},
+{"hash":6477194,"name":"tfrconfig.lblinternetinterval.caption","sourcebytes":[73,110,116,101,114,118,97,108,32,105,110,32,115,101,99,111,110,100,115,58],"value":"Interval in seconds:"},
 {"hash":224570579,"name":"tfrconfig.tsfolders.caption","sourcebytes":[70,111,108,100,101,114,115],"value":"Folders"},
 {"hash":163226650,"name":"tfrconfig.lbldownfolder.caption","sourcebytes":[68,101,102,97,117,108,116,32,100,111,119,110,108,111,97,100,32,102,111,108,100,101,114,58],"value":"Default download folder:"},
 {"hash":199371173,"name":"tfrconfig.rgcategorize.caption","sourcebytes":[67,97,116,101,103,111,114,105,122,101],"value":"Categorize"},
@@ -93,9 +97,6 @@
 {"hash":240078986,"name":"tfrconfig.chytuseexternaldown.caption","sourcebytes":[85,115,101,32,101,120,116,101,114,110,97,108,32,101,110,103,105,110,101,58],"value":"Use external engine:"},
 {"hash":104604910,"name":"tfrconfig.tsautomation.caption","sourcebytes":[65,117,116,111,109,97,116,105,111,110],"value":"Automation"},
 {"hash":104604910,"name":"tfrconfig.chgautomation.caption","sourcebytes":[65,117,116,111,109,97,116,105,111,110],"value":"Automation"},
-{"hash":90298846,"name":"tfrconfig.chinternetcheck.caption","sourcebytes":[83,116,97,114,116,32,109,97,105,110,32,113,117,101,117,101,32,105,102,32,105,110,116,101,114,110,101,116,32,99,111,110,110,101,99,116,105,111,110],"value":"Start main queue if internet connection"},
-{"hash":205484010,"name":"tfrconfig.lblinterneturl.caption","sourcebytes":[73,110,116,101,114,110,101,116,32,85,82,76,58],"value":"Internet URL:"},
-{"hash":6477194,"name":"tfrconfig.lblinternetinterval.caption","sourcebytes":[73,110,116,101,114,118,97,108,32,105,110,32,115,101,99,111,110,100,115,58],"value":"Interval in seconds:"},
 {"hash":341475,"name":"tfrconfig.tslogs.caption","sourcebytes":[76,111,103,115],"value":"Logs"},
 {"hash":23779390,"name":"tfrconfig.chsavedownlogs.caption","sourcebytes":[83,97,118,101,32,100,111,119,110,108,111,97,100,32,108,111,103,32,104,105,115,116,111,114,121,46],"value":"Save download log history."},
 {"hash":249619994,"name":"tfrconfig.lbllogspath.caption","sourcebytes":[80,97,116,104,32,111,102,32,104,105,115,116,111,114,121,32,108,111,103,115,58],"value":"Path of history logs:"},
@@ -131,5 +132,6 @@
 {"hash":233589362,"name":"tfrconfig.edtprogramarguments.text","sourcebytes":[34,91,85,82,76,93,34,32,45,110,32,34,91,70,73,76,69,78,65,77,69,93,34,32,45,117,32,34,91,85,83,69,82,65,71,69,78,84,93,34,32,45,114,32,34,91,82,69,70,69,82,82,69,82,93,34,32,45,99,32,34,91,67,79,79,75,73,69,83,93,34],"value":"\"[URL]\" -n \"[FILENAME]\" -u \"[USERAGENT]\" -r \"[REFERRER]\" -c \"[COOKIES]\""},
 {"hash":127162148,"name":"tfrconfig.sbtncopypath.hint","sourcebytes":[67,111,112,121,32,116,111,32,99,108,105,112,98,111,97,114,100],"value":"Copy to clipboard"},
 {"hash":127162148,"name":"tfrconfig.sbtncopyarguments.hint","sourcebytes":[67,111,112,121,32,116,111,32,99,108,105,112,98,111,97,114,100],"value":"Copy to clipboard"},
+{"hash":208308883,"name":"tfrconfig.tsupdates.caption","sourcebytes":[85,112,100,97,116,101,115],"value":"Updates"},
 {"hash":4749113,"name":"tfrconfig.btnconfigapply.caption","sourcebytes":[65,112,112,108,121],"value":"Apply"}
 ]}

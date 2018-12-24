@@ -31,13 +31,12 @@ uses
   Process, {$IFDEF UNIX}BaseUnix,{$ENDIF}
   {$IFDEF WINDOWS}Registry, MMSystem, Windows,{$ENDIF}fddbox, Math, fnewdown, fconfig, fabout, fstrings, flang, freplace, fsitegrabber, fnotification, fcopymove, fconfirm, fvideoformat, Clipbrd,
   strutils, LCLIntf, types, versionitis, INIFiles, LCLVersion,
-  PairSplitter, {DefaultTranslator}LCLTranslator, URIParser, fphttpclient, Base64;
+  PairSplitter, LCLTranslator, URIParser, fphttpclient, Base64;
 
 type
   TConnectionThread=Class(TThread)
   Private
   DHTTPClient:TFPHTTPClient;
-  RS:TStringList;
   ifstop,internetchange,nointernetchange:boolean;
   procedure showrs;
   procedure stop;
@@ -779,7 +778,6 @@ begin
   inherited Create(True);
   FreeOnTerminate := True;
   DHTTPClient := TFPHTTPClient.Create(nil);
-  RS:=TStringList.Create;
   internetchange:=true;
   nointernetchange:=true;
   internet:=false;
@@ -816,7 +814,7 @@ begin
           qtimer[0].Enabled:=true;;
         end;
         if shownotifi and shownotifiinternet and internetchange then
-          createnewnotifi('AWGG','',msginternetconnection,'',true,'');
+          createnewnotifi('AWGG','',msginternetconnection+lineending+DHTTPClient.ResponseHeaders.Values['Server'],'',true,'');
         if playsounds and playsoundinternet and internetchange then
           playsound(internetsound);
         frmain.MainTrayIcon.Animate:=false;
@@ -828,7 +826,7 @@ begin
     else
     begin
       if shownotifi and shownotifinointernet and nointernetchange then
-          createnewnotifi('AWGG','',msgnointernetconnection,'',false,'');
+          createnewnotifi('AWGG','',msgnointernetconnection+lineending+DHTTPClient.ResponseHeaders.Values['Server'],'',false,'');
       if playsounds and playsoundnointernet and nointernetchange then
         playsound(nointernetsound);
       frmain.MainTrayIcon.Icons:=frmain.ilTrayIcon;
@@ -863,14 +861,13 @@ begin
         DHTTPClient.KeepConnection:=false;
         DHTTPClient.IOTimeout:=5000;
         DHTTPClient.HTTPMethod('HEAD',InternetURL,nil,[200]);
-        RS.Assign(DHTTPClient.ResponseHeaders);
-        DHTTPClient.Terminate;
-        if RS.Count>0 then
+        DHTTPClient.AllowRedirect:=true;
+        if (DHTTPClient.ResponseHeaders.Count>0) and (DHTTPClient.ResponseHeaders.Values['Server']<>' NetEngine Server 1.0') then
           internet:=true
         else
           internet:=false;
-        RS.Clear;
         Synchronize(@showrs);
+        DHTTPClient.Terminate;
       except on e:exception do
         begin
           internet:=false;
@@ -2465,18 +2462,20 @@ begin
     frconfig.tvConfig.Items[2].Text:=frconfig.tsNotifications.Caption;
     frconfig.tvConfig.Items[3].Text:=frconfig.tsSounds.Caption;
     frconfig.tvConfig.Items[4].Text:=frconfig.tsClipboardm.Caption;
-    frconfig.tvConfig.Items[5].Text:=frconfig.tsFolders.Caption;
-    frconfig.tvConfig.Items[6].Text:=frconfig.tsWget.Caption;
-    frconfig.tvConfig.Items[7].Text:=frconfig.tsAria2.Caption;
-    frconfig.tvConfig.Items[8].Text:=frconfig.tsCurl.Caption;
-    frconfig.tvConfig.Items[9].Text:=frconfig.tsAxel.Caption;
-    frconfig.tvConfig.Items[10].Text:=frconfig.tsYoutubedl.Caption;
-    frconfig.tvConfig.Items[11].Text:=frconfig.tsAutomation.Caption;
-    frconfig.tvConfig.Items[12].Text:=frconfig.tsLogs.Caption;
-    frconfig.tvConfig.Items[13].Text:=frconfig.tsDownOptions.Caption;
-    frconfig.tvConfig.Items[14].Text:=frconfig.tsLang.Caption;
-    frconfig.tvConfig.Items[15].Text:=frconfig.tsQueue.Caption;
-    frconfig.tvConfig.Items[16].Text:=frconfig.tsIntegration.Caption;
+    frconfig.tvConfig.Items[5].Text:=frconfig.tsInternetMonitor.Caption;
+    frconfig.tvConfig.Items[6].Text:=frconfig.tsFolders.Caption;
+    frconfig.tvConfig.Items[7].Text:=frconfig.tsWget.Caption;
+    frconfig.tvConfig.Items[8].Text:=frconfig.tsAria2.Caption;
+    frconfig.tvConfig.Items[9].Text:=frconfig.tsCurl.Caption;
+    frconfig.tvConfig.Items[10].Text:=frconfig.tsAxel.Caption;
+    frconfig.tvConfig.Items[11].Text:=frconfig.tsYoutubedl.Caption;
+    frconfig.tvConfig.Items[12].Text:=frconfig.tsAutomation.Caption;
+    frconfig.tvConfig.Items[13].Text:=frconfig.tsLogs.Caption;
+    frconfig.tvConfig.Items[14].Text:=frconfig.tsDownOptions.Caption;
+    frconfig.tvConfig.Items[15].Text:=frconfig.tsLang.Caption;
+    frconfig.tvConfig.Items[16].Text:=frconfig.tsQueue.Caption;
+    frconfig.tvConfig.Items[17].Text:=frconfig.tsIntegration.Caption;
+    frconfig.tvConfig.Items[18].Text:=frconfig.tsUpdates.Caption;
 
     frconfig.pConfigInfo.Caption:=frconfig.pcConfig.Pages[frconfig.pcConfig.TabIndex].Caption;
     frconfig.chgWeekDays.Items[0]:=fstrings.sunday;
@@ -6724,6 +6723,7 @@ procedure Tfrmain.lvMainSelectItem(Sender: TObject; Item: TListItem;
 var
   lastlines:TStringList;
   percent:string;
+  flog:string;
 begin
   if (frmain.lvMain.ItemIndex<>-1) then
   begin
@@ -6753,11 +6753,16 @@ begin
     end;
 
     frmain.SynEdit1.Lines.Clear;
-    if FileExists(UTF8ToSys(logpath+pathdelim+Item.SubItems[columnname])+'.log') and (frmain.SynEdit1.Visible) and (loadhistorylog) then
+    if FileExists(UTF8ToSys(logpath+pathdelim+Item.SubItems[columnname])+'.log') then
+      flog:=UTF8ToSys(logpath+pathdelim+Item.SubItems[columnname])+'.log'
+    else
+      if FileExists(UTF8ToSys(logpath+pathdelim+Item.SubItems[columnuid])+'.log') then
+        flog:=UTF8ToSys(logpath+pathdelim+Item.SubItems[columnuid])+'.log';
+    if FileExists(UTF8ToSys(flog)) and (frmain.SynEdit1.Visible) and (loadhistorylog) then
     begin
       try
         lastlines:=TStringList.Create;
-        lastlines.LoadFromFile(UTF8ToSys(logpath+pathdelim+Item.SubItems[columnname])+'.log');
+        lastlines.LoadFromFile(UTF8ToSys(flog));
         if (lastlines.Count>=20) and (loadhistorymode=2) then
         begin
           frmain.SynEdit1.Lines.Add(lastlines[lastlines.Count-20]);

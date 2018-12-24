@@ -10,15 +10,15 @@ object frlang: Tfrlang
   ClientWidth = 298
   FormStyle = fsSystemStayOnTop
   Position = poScreenCenter
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '2.1.0.0'
   object lblLang: TLabel
     AnchorSideTop.Control = cbLang
     AnchorSideTop.Side = asrCenter
     AnchorSideRight.Control = cbLang
-    Left = 46
-    Height = 13
-    Top = 56
-    Width = 51
+    Left = 32
+    Height = 19
+    Top = 53
+    Width = 65
     Anchors = [akTop, akRight]
     BorderSpacing.Right = 2
     Caption = 'Language:'
@@ -30,10 +30,10 @@ object frlang: Tfrlang
     AnchorSideTop.Control = Owner
     AnchorSideTop.Side = asrCenter
     Left = 99
-    Height = 21
-    Top = 52
+    Height = 35
+    Top = 45
     Width = 100
-    ItemHeight = 13
+    ItemHeight = 0
     Style = csDropDownList
     TabOrder = 0
   end
@@ -42,10 +42,10 @@ object frlang: Tfrlang
     AnchorSideLeft.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 130
-    Height = 23
-    Top = 97
-    Width = 39
+    Left = 138
+    Height = 25
+    Top = 95
+    Width = 23
     Anchors = [akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Bottom = 5
