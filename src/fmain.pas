@@ -7247,9 +7247,15 @@ begin
       begin
         with frmain.lvMain.Items[frmain.lvMain.ItemIndex] do
         begin
-          SubItems[columnname]:=frnewdown.edtFileName.Text;
-          SubItems[columnurl]:=frnewdown.edtURL.Text;
-          SubItems[columndestiny]:=frnewdown.deDestination.Text;
+          // Note:
+          // Attempts to set an empty file-name/download-URL/destination-dir
+          // for already completed downloads are ignored.
+          if (SubItems[columnstatus] <> '3') or (frnewdown.edtFileName.Text <> '') then
+            SubItems[columnname]:=frnewdown.edtFileName.Text;
+          if (SubItems[columnstatus] <> '3') or (frnewdown.edtURL.Text <> '') then
+            SubItems[columnurl]:=frnewdown.edtURL.Text;
+          if (SubItems[columnstatus] <> '3') or (frnewdown.deDestination.Text <> '') then
+            SubItems[columndestiny]:=frnewdown.deDestination.Text;
           SubItems[columnengine]:=frnewdown.cbEngine.Text;
           SubItems[columnparameters]:=frnewdown.edtParameters.Text;
           SubItems[columnuser]:=frnewdown.edtUser.Text;
