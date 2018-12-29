@@ -7250,11 +7250,13 @@ begin
           // Note:
           // Attempts to set an empty file-name/download-URL/destination-dir
           // for already completed downloads are ignored.
-          if (SubItems[columnstatus] <> '3') or (frnewdown.edtFileName.Text <> '') then
+          if (SubItems[columnstatus] <> '3') or (frnewdown.edtFileName.Text <> '') or
+             (not FileExists(UTF8ToSys(SubItems[columndestiny] + pathdelim + SubItems[columnname]))) then
             SubItems[columnname]:=frnewdown.edtFileName.Text;
           if (SubItems[columnstatus] <> '3') or (frnewdown.edtURL.Text <> '') then
             SubItems[columnurl]:=frnewdown.edtURL.Text;
-          if (SubItems[columnstatus] <> '3') or (frnewdown.deDestination.Text <> '') then
+          if (SubItems[columnstatus] <> '3') or (frnewdown.deDestination.Text <> '') or
+             (not DirectoryExists(UTF8ToSys(SubItems[columndestiny]))) then
             SubItems[columndestiny]:=frnewdown.deDestination.Text;
           SubItems[columnengine]:=frnewdown.cbEngine.Text;
           SubItems[columnparameters]:=frnewdown.edtParameters.Text;
