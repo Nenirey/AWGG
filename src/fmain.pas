@@ -8215,15 +8215,29 @@ begin
     end;
     if frlang.cbLang.Items.Count>0 then
     begin
+      frmain.ClipBoardTimer.Enabled:=false;
       frlang.cbLang.ItemIndex:=0;
       frlang.ShowModal;
       deflanguage:=frlang.cbLang.Text;
+      frmain.ClipBoardTimer.Enabled:=clipboardmonitor;
     end;
     SetDefaultLang(deflanguage);
     updatelangstatus();
     if FileExists(currentdir+'awgg.ini') then //For portable version
     begin
       ddowndir:=downloadpathname;
+    end
+    else
+    begin
+      //On windows vista and letter is the same path for all lang
+      {$IFDEF WINDOWS}
+      if DirectoryExistsUTF8(GetUserDir+'Downloads') then
+        ddowndir:=GetUserDir+'Downloads'
+      else
+        ddowndir:=GetUserDir+downloadpathname;//if not exists create one with the translate name
+      {$ELSE}
+      ddowndir:=GetUserDir+downloadpathname;
+      {$ENDIF}
     end;
     logpath:=ddowndir+pathdelim+'logs';
     if not DirectoryExists(ddowndir) then
