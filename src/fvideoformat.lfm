@@ -24,7 +24,6 @@ object frvideoformat: Tfrvideoformat
     CancelButton.DefaultCaption = True
     ButtonOrder = boCloseOKCancel
     TabOrder = 0
-    OnClick = bpSelectFormatClick
     ShowButtons = [pbOK, pbCancel]
   end
   object lblSelectFormat: TLabel

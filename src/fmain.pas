@@ -31,7 +31,49 @@ uses
   Process, {$IFDEF UNIX}BaseUnix,{$ENDIF}
   {$IFDEF WINDOWS}Registry, MMSystem, Windows,{$ENDIF}fddbox, Math, fnewdown, fconfig, fabout, fstrings, flang, freplace, fsitegrabber, fnotification, fcopymove, fconfirm, fvideoformat, Clipbrd,
   strutils, LCLIntf, types, versionitis, INIFiles, LCLVersion,
-  PairSplitter, LCLTranslator, URIParser, fphttpclient, Base64;
+  PairSplitter, LCLTranslator, URIParser, fphttpclient, Base64, MD5;
+
+type
+  TOnWriteStream = procedure(Sender: TObject; APos: Int64) of object;
+
+type
+    TDownloadStream = class(TStream)
+  private
+    FOnWriteStream: TOnWriteStream;
+    FStream: TStream;
+  public
+    constructor Create(AStream: TStream);
+    destructor Destroy; override;
+    function Read(var Buffer; Count: LongInt): LongInt; override;
+    function Write(const Buffer; Count: LongInt): LongInt; override;
+    function Seek(Offset: LongInt; Origin: Word): LongInt; override;
+    procedure DoProgress;
+  published
+    property OnWriteStream: TOnWriteStream read FOnWriteStream write FOnWriteStream;
+  end;
+
+type
+  TUpdateThread=Class(TThread)
+  Private
+  DHTTPClient:TFPHTTPClient;
+  RS:TStringList;
+  internet:boolean;
+  URL,DPath:string;
+  descargado,descargando:boolean;
+  tmpsize:int64;
+  FS:TDownloadStream;
+  updatecurrentpos:int64;
+  updatefsize:int64;
+  updatefname:string;
+  procedure DoOnWriteStream(Sender: TObject; APos: Int64);
+  procedure showrs;
+  procedure stop;
+  protected
+    procedure Execute; override;
+  public
+    constructor Create;
+ end;
+
 
 type
   TConnectionThread=Class(TThread)
@@ -319,6 +361,7 @@ end;
     MainTrayIcon: TTrayIcon;
     tbCancelDown: TToolButton;
     tbContinueLater: TToolButton;
+    UpdateInfoTimer: TTimer;
     tvMain: TTreeView;
     UniqueInstance1: TUniqueInstance;
     procedure ApplicationProperties1Exception(Sender: TObject; E: Exception);
@@ -485,6 +528,9 @@ end;
     procedure tvMainSelectionChanged(Sender: TObject);
     procedure UniqueInstance1OtherInstance(Sender: TObject;
       ParamCount: Integer; Parameters: array of String);
+    procedure UpdateInfoTimerStartTimer(Sender: TObject);
+    procedure UpdateInfoTimerStopTimer(Sender: TObject);
+    procedure UpdateInfoTimerTimer(Sender: TObject);
   private
     { private declarations }
   public
@@ -652,6 +698,10 @@ var
   queuemainstop:boolean=false;
   newdownloadforcenames:boolean;
   currentdir:string;
+  autoupdate,autoupdatearia2,autoupdateaxel,autoupdatecurl,autoupdateyoutubedl,autoupdatewget:boolean;
+  Updater,UpdaterMain,UpdaterAria2,UpdaterAxel,UpdaterCurl,UpdaterYoutubedl,UpdaterWget:TUpdateThread;
+  updateinprogress:boolean;
+  aria2md5,axelmd5,curlmd5,youtubedlmd5,wgetmd5,mainmd5:string;
   function urlexists(url:string):boolean;
   function destinyexists(destiny:string;newurl:string=''):boolean;
   function suggestdir(doc:string):string;
@@ -678,9 +728,324 @@ var
   procedure runprocess(binary:string;params:array of string);
   function EncodeBase64(Data: AnsiString): AnsiString;
   function DecodeBase64(Data: AnsiString): AnsiString;
+  procedure checkforupdates;
 implementation
 {$R *.lfm}
 { Tfrmain }
+
+procedure checkforupdates;
+begin
+  frconfig.btnUpdateCheckNow.Enabled:=false;
+  Updater:=TUpdateThread.Create;
+  {$IFDEF cpui386}
+    {$IFDEF MSWINDOWS}
+      Updater.URL:='https://github.com/Nenirey/AWGG-UPDATES/Windows/32bits/update.ini';
+    {$ENDIF}
+    {$IFDEF UNIX}
+       Updater.URL:='https://github.com/Nenirey/AWGG-UPDATES/Linux/32bits/update.ini';
+    {$ENDIF}
+  {$ENDIF}
+  {$IFDEF cpux86_64}
+    {$IFDEF MSWINDOWS}
+      Updater.URL:='https://github.com/Nenirey/AWGG-UPDATES/Windows/64bits/update.ini';
+    {$ENDIF}
+    {$IFDEF UNIX}
+      Updater.URL:='https://github.com/Nenirey/AWGG-UPDATES/Linux/64bits/update.ini';
+    {$ENDIF}
+  {$ENDIF}
+  Updater.DPath:=configpath;
+  Updater.Start;
+  frmain.UpdateInfoTimer.Enabled:=true;
+end;
+
+/////////////////////////******Internal updater implementation**************//////////////////////
+constructor TDownloadStream.Create(AStream: TStream);
+begin
+  inherited Create;
+  FStream := AStream;
+  FStream.Position := 0;
+end;
+
+destructor TDownloadStream.Destroy;
+begin
+  FStream.Free;
+  inherited Destroy;
+end;
+
+function TDownloadStream.Read(var Buffer; Count: LongInt): LongInt;
+begin
+  Result := FStream.Read(Buffer, Count);
+end;
+
+function TDownloadStream.Write(const Buffer; Count: LongInt): LongInt;
+begin
+  Result := FStream.Write(Buffer, Count);
+  DoProgress;
+end;
+
+function TDownloadStream.Seek(Offset: LongInt; Origin: Word): LongInt;
+begin
+  Result := FStream.Seek(Offset, Origin);
+end;
+
+procedure TDownloadStream.DoProgress;
+begin
+  if Assigned(FOnWriteStream) then
+    FOnWriteStream(Self, Self.Position);
+end;
+
+constructor TUpdateThread.Create;
+begin
+  inherited Create(True);
+  FreeOnTerminate := True;
+  DHTTPClient := TFPHTTPClient.Create(nil);
+  RS:=TStringList.Create;
+  internet:=false;
+  descargado:=false;
+  case useproxy of
+  0,1:begin
+        //DHTTPClient.Proxy.Host:= '';
+        //DHTTPClient.Proxy.UserName:= '';
+        //DHTTPClient.Proxy.Password:= '';
+      end;
+  2:begin
+      DHTTPClient.Proxy.Host:= phttp;
+      DHTTPClient.Proxy.Port:= strtoint(phttpport);
+      if useaut then
+      begin
+        DHTTPClient.Proxy.UserName:= puser;
+        DHTTPClient.Proxy.Password:= ppassword;
+      end;
+    end;
+  end;
+end;
+
+procedure TUpdateThread.stop;
+begin
+  if Assigned(DHTTPClient) then
+  begin
+    DHTTPClient.Terminate;
+    while DHTTPClient.Terminated=false do
+    begin
+      sleep(10);
+    end;
+  end;
+end;
+
+procedure TUpdateThread.DoOnWriteStream(Sender:TObject;APos:Int64);
+begin
+  updatecurrentpos:=APos;
+  if updateFSize=0 then
+  begin
+    if DHTTPClient.ResponseHeaders.Values['Content-Length']<>'' then
+        updateFSize:=strtoint(DHTTPClient.ResponseHeaders.Values['Content-Length'])+tmpsize;
+  end;
+  if updatefname='' then
+  begin
+    if (DHTTPClient.ResponseHeaders.Values['Content-Disposition']<>'') and (Pos('filename=',DHTTPClient.ResponseHeaders.Values['Content-Disposition'])>0) then
+      updatefname:=Copy(DHTTPClient.ResponseHeaders.Values['Content-Disposition'],Pos('filename=',DHTTPClient.ResponseHeaders.Values['Content-Disposition'])+9,Length(DHTTPClient.ResponseHeaders.Values['Content-Disposition']))
+    else
+      updatefname:='unamefile';
+    updatefname:=StringReplace(updatefname,'"','',[rfReplaceAll]);
+    updatefname:=StringReplace(updatefname,';','',[rfReplaceAll]);
+  end;
+  if updatecurrentpos=updateFSize then
+    descargado:=true;
+end;
+
+procedure TUpdateThread.showrs;
+var
+  newsini:TINIFile;
+  aria2new,axelnew,curlnew,youtubedlnew,wgetnew:string;
+begin
+  frmain.UpdateInfoTimer.Enabled:=false;
+  frconfig.btnUpdateCheckNow.Enabled:=true;
+  if descargado then
+  begin
+    try
+      if FileExistsUTF8(dpath+updatefname) then
+        DeleteFileUTF8(dpath+updatefname);
+      RenameFileUTF8(dpath+'file.part',dpath+updatefname);
+    except on e:exception do
+    end;
+    case LowerCase(updatefname) of
+      'update.ini':
+      begin
+        newsini:=TINIFile.Create(dpath+updatefname);
+        aria2new:=newsini.ReadString('Update','aria2new','');
+        aria2md5:=newsini.ReadString('Update','aria2md5','');
+        axelnew:=newsini.ReadString('Update','axelnew','');
+        axelmd5:=newsini.ReadString('Update','axelmd5','');
+        curlnew:=newsini.ReadString('Update','curlnew','');
+        curlmd5:=newsini.ReadString('Update','curlmd5','');
+        youtubedlnew:=newsini.ReadString('Update','youtubedlnew','');
+        youtubedlmd5:=newsini.ReadString('Update','youtubedlmd5','');
+        wgetnew:=newsini.ReadString('Update','wgetnew','');
+        wgetmd5:=newsini.ReadString('Update','wgetmd5','');
+
+        {TODO set execute permission for unix}
+
+        if (aria2new<>'') and (aria2md5<>'') and (aria2md5<>MD5Print(MD5File(aria2crutebin))) and autoupdatearia2 then
+        begin
+          frconfig.btnUpdateCheckNow.Enabled:=false;
+          frmain.UpdateInfoTimer.Enabled:=true;
+          UpdaterAria2:=TUpdateThread.Create;
+          UpdaterAria2.URL:=aria2new;
+          UpdaterAria2.DPath:=configpath+'Engines'+pathdelim;
+          UpdaterAria2.Start;
+        end;
+
+        if (axelnew<>'') and (axelmd5<>'') and (axelmd5<>MD5Print(MD5File(axelrutebin))) and autoupdateaxel then
+        begin
+          frconfig.btnUpdateCheckNow.Enabled:=false;
+          frmain.UpdateInfoTimer.Enabled:=true;
+          UpdaterAxel:=TUpdateThread.Create;
+          UpdaterAxel.URL:=axelnew;
+          UpdaterAxel.DPath:=configpath+'Engines'+pathdelim;
+          UpdaterAxel.Start;
+        end;
+
+        if (curlnew<>'') and (curlmd5<>'') and (curlmd5<>MD5Print(MD5File(curlrutebin))) and autoupdatecurl then
+        begin
+          frconfig.btnUpdateCheckNow.Enabled:=false;
+          frmain.UpdateInfoTimer.Enabled:=true;
+          UpdaterCurl:=TUpdateThread.Create;
+          UpdaterCurl.URL:=curlnew;
+          UpdaterCurl.DPath:=configpath+'Engines'+pathdelim;
+          UpdaterCurl.Start;
+        end;
+
+        if (youtubedlnew<>'') and (youtubedlmd5<>'') and (youtubedlmd5<>MD5Print(MD5File(youtubedlrutebin))) and autoupdateyoutubedl then
+        begin
+          frconfig.btnUpdateCheckNow.Enabled:=false;
+          frmain.UpdateInfoTimer.Enabled:=true;
+          UpdaterYoutubedl:=TUpdateThread.Create;
+          UpdaterYoutubedl.URL:=youtubedlnew;
+          UpdaterYoutubedl.DPath:=configpath+'Engines'+pathdelim;
+          UpdaterYoutubedl.Start;
+        end;
+
+        if (wgetnew<>'') and (wgetmd5<>'') and (wgetmd5<>MD5Print(MD5File(wgetrutebin))) and autoupdatewget then
+        begin
+          frconfig.btnUpdateCheckNow.Enabled:=false;
+          frmain.UpdateInfoTimer.Enabled:=true;
+          UpdaterWget:=TUpdateThread.Create;
+          UpdaterWget.URL:=wgetnew;
+          UpdaterWget.DPath:=configpath+'Engines'+pathdelim;
+          UpdaterWget.Start;
+        end;
+
+      end;
+
+      'aria2c','aria2c.exe':
+      begin
+        if MD5Print(MD5File(dpath+updatefname))=aria2md5 then
+        begin
+          //ShowMessage('aria2 updated ok');
+          aria2crutebin:=dpath+updatefname;
+        end;
+        //else
+          //ShowMessage('Download fail the md5 most by "'+aria2md5+'" and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
+      end;
+
+      'axel','axel.exe':
+      begin
+        if MD5Print(MD5File(dpath+updatefname))=axelmd5 then
+        begin
+          //ShowMessage('axel updated ok');
+          axelrutebin:=dpath+updatefname;
+        end;
+        //else
+          //ShowMessage('Download fail the md5 most by "'+axelmd5+' and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
+      end;
+      'curl','curl.exe':
+      begin
+        if MD5Print(MD5File(dpath+updatefname))=curlmd5 then
+        begin
+          //ShowMessage('curl updated ok');
+          curlrutebin:=dpath+updatefname;
+        end;
+        //else
+          //ShowMessage('Download fail the md5 most by "'+curlmd5+' and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
+      end;
+      'youtube-dl','youtube-dl.exe':
+      begin
+        if MD5Print(MD5File(dpath+updatefname))=youtubedlmd5 then
+        begin
+          //ShowMessage('youtube-dl updated ok');
+          youtubedlrutebin:=dpath+updatefname;
+        end;
+        //else
+          //ShowMessage('Download fail the md5 most by "'+youtubedlmd5+' and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
+      end;
+      'wget','wget.exe':
+      begin
+        if MD5Print(MD5File(dpath+updatefname))=wgetmd5 then
+        begin
+          //ShowMessage('wget updated ok');
+          wgetrutebin:=dpath+updatefname;
+        end;
+        //else
+          //ShowMessage('Download fail the md5 most by "'+wgetmd5+' and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
+      end;
+    end;
+  end
+  else
+  begin
+    //ShowMessage('Error update');
+    updateinprogress:=false;
+  end;
+  //frmain.UpdateInfoTimer.Enabled:=false;
+end;
+
+procedure TUpdateThread.Execute;
+begin
+  descargado:=false;
+  descargando:=false;
+  try
+    while(updateinprogress)do
+      sleep(1000);
+    updateinprogress:=true;
+    DHTTPClient.AllowRedirect:=true;
+    DHTTPClient.IOTimeout:=5000;
+    DHTTPClient.AddHeader('Connection','Keep-Alive');
+    if DirectoryExistsUTF8(dpath)=false then
+      CreateDirUTF8(dpath);
+    if FileExistsUTF8(dpath+'file.part') then
+    begin
+      tmpsize:=LazFileUtils.FileSizeUtf8(dpath+'file.part');
+      DHTTPClient.AddHeader('Range','bytes='+floattostr(tmpsize)+'-');
+      FS := TDownloadStream.Create(TFileStream.Create(dpath+'file.part', fmOpenReadWrite));
+    end
+    else
+    begin
+      tmpsize:=0;
+      FS := TDownloadStream.Create(TFileStream.Create(dpath+'file.part', fmCreate));
+    end;
+    updatecurrentpos:=tmpsize;
+    FS.FOnWriteStream := @DoOnWriteStream;
+    FS.Position:=tmpsize;
+    descargando:=true;
+    DHTTPClient.HTTPMethod('GET', URL, FS, []);
+    //After this point not execution no continue before complete the method
+    FS.Free;
+    RS.AddStrings(DHTTPClient.ResponseHeaders);
+    updateinprogress:=false;
+    descargando:=false;
+    Synchronize(@showrs);
+    self.Terminate;
+    except on e:exception do
+    begin
+      descargado:=false;
+      descargando:=false;
+      Synchronize(@showrs);
+      FS.Free;
+      self.Terminate;
+    end;
+  end;
+end;
+
+////////////////////////************************E N D*************************//////////////////////
 
 procedure writestatus(downid:integer);
 var
@@ -861,7 +1226,7 @@ begin
         DHTTPClient.KeepConnection:=false;
         DHTTPClient.IOTimeout:=5000;
         DHTTPClient.HTTPMethod('HEAD',InternetURL,nil,[200]);
-        DHTTPClient.AllowRedirect:=true;
+        //DHTTPClient.AllowRedirect:=true;
         if (DHTTPClient.ResponseHeaders.Count>0) and (DHTTPClient.ResponseHeaders.Values['Server']<>' NetEngine Server 1.0') then
           internet:=true
         else
@@ -2857,6 +3222,13 @@ begin
     iniconfigfile.WriteString('Config','interneturl',internetURL);
     iniconfigfile.WriteInteger('Config','internetinterval',internetInterval);
     iniconfigfile.WriteBool('Config','newdownloadforcenames',newdownloadforcenames);
+    /////////////////////////Updates///////////////////////////
+    iniconfigfile.WriteBool('Config','autoupdate',autoupdate);
+    iniconfigfile.WriteBool('Config','autoupdatearia2',autoupdatearia2);
+    iniconfigfile.WriteBool('Config','autoupdateaxel',autoupdateaxel);
+    iniconfigfile.WriteBool('Config','autoupdatecurl',autoupdatecurl);
+    iniconfigfile.WriteBool('Config','autoupdateyoutubedl',autoupdateyoutubedl);
+    iniconfigfile.WriteBool('Config','autoupdatewget',autoupdatewget);
     iniconfigfile.UpdateFile;
     iniconfigfile.Free;
     autostart();
@@ -3046,6 +3418,13 @@ begin
         domainfilters[i]:=iniconfigfile.ReadString('Domain'+inttostr(i),'Name','');
       end;
     end;
+    ////////////Updates
+    autoupdate:=iniconfigfile.ReadBool('Config','autoupdate',true);
+    autoupdatearia2:=iniconfigfile.ReadBool('Config','autoupdatearia2',true);
+    autoupdateaxel:=iniconfigfile.ReadBool('Config','autoupdateaxel',true);
+    autoupdatecurl:=iniconfigfile.ReadBool('Config','autoupdatecurl',true);
+    autoupdateyoutubedl:=iniconfigfile.ReadBool('Config','autoupdateyoutubedl',true);
+    autoupdatewget:=iniconfigfile.ReadBool('Config','autoupdatewget',true);
     iniconfigfile.Free;
     frmain.lvMain.Column[0].Width:=columncolaw;
     frmain.lvMain.Column[columnname+1].Width:=columnnamew;
@@ -3275,6 +3654,12 @@ begin
   internetcheck:=frconfig.chInternetCheck.Checked;
   internetURL:=frconfig.edtInternetURL.Text;
   internetInterval:=frconfig.seInternetInterval.Value;
+  autoupdate:=frconfig.chAutoCheckUpdate.Checked;
+  autoupdatearia2:=frconfig.chUpdateAria2.Checked;
+  autoupdateaxel:=frconfig.chUpdateAxel.Checked;
+  autoupdatecurl:=frconfig.chUpdateCurl.Checked;
+  autoupdateyoutubedl:=frconfig.chUpdateYoutubedl.Checked;
+  autoupdatewget:=frconfig.chUpdateWget.Checked;
   SetLength(domainfilters,frconfig.lbDomains.Items.Count);
   for i:=0 to frconfig.lbDomains.Items.Count-1 do
   begin
@@ -3503,6 +3888,12 @@ begin
       1:frconfig.rbCategoryOneFolder.Checked:=true;
       2:frconfig.rbCategoryOneFolder.Checked:=false;
     end;
+    frconfig.chAutoCheckUpdate.Checked:=autoupdate;
+    frconfig.chUpdateAria2.Checked:=autoupdatearia2;
+    frconfig.chUpdateAxel.Checked:=autoupdateaxel;
+    frconfig.chUpdateCurl.Checked:=autoupdatecurl;
+    frconfig.chUpdateYoutubedl.Checked:=autoupdateyoutubedl;
+    frconfig.chUpdateWget.Checked:=autoupdatewget;
     categoryextencionstmp:=categoryextencions;
   except on e:exception do
     ShowMessage(e.Message);
@@ -4669,8 +5060,16 @@ begin
   if trayicons[thid].Visible then
   begin
   icono:=Graphics.TBitmap.Create();
-  icono.Width:=frmain.MainTrayIcon.Icon.Width;
-  icono.Height:=frmain.MainTrayIcon.Icon.Height;
+  if internet then
+  begin
+    icono.Width:=frmain.MainTrayIcon.Icon.Width;
+    icono.Height:=frmain.MainTrayIcon.Icon.Height;
+  end
+  else
+  begin
+    icono.Width:=32;
+    icono.Height:=32;
+  end;
   icono.Canvas.Brush.Color:=clWhite;
   icono.Canvas.Pen.Color:=clBlack;
   if frmain.lvMain.Items[thid].SubItems[columnstatus]='1' then
@@ -4708,8 +5107,10 @@ begin
   icono.Canvas.TextOut(Round((icono.Width-tw)/2),Round((icono.Height-th)/2),porciento);
   trayicons[thid].Icon.Canvas.Brush.Color:=clWhite;
   trayicons[thid].Icon.Assign(icono);
-  trayicons[thid].Animate:=true;///////////Esto es necesario para Qt si no el icono no se actualiza
-  trayicons[thid].AnimateInterval:=0;//////y un intervalo que no parpadee
+  {$IFDEF LCLQT OR LCLQT5}
+  trayicons[thid].Animate:=true;///////////In QT the icon not update without this
+  trayicons[thid].AnimateInterval:=0;//////and the interval must by the minimun for not blink
+  {$ENDIF}
   trayicons[thid].Hint:=frmain.lvMain.Items[thid].SubItems[columnname]+' '+velocidad;
   icono.Destroy;
   end;
@@ -8155,7 +8556,6 @@ var
   tmpclip:string='';
   tmpclip2:string='';
 begin
-  { TODO : Execute this work in a thread because this cause slow execution in some Linux distribution }
   noesta:=true;
   if ClipBoard.HasFormat(CF_TEXT) then
   begin
@@ -8270,6 +8670,8 @@ begin
     internetchecker:=TConnectionThread.Create;
     internetchecker.Start;
   end;
+  if autoupdate then
+    checkforupdates;
 end;
 
 procedure Tfrmain.tbCancelDownClick(Sender: TObject);
@@ -8386,7 +8788,7 @@ begin
       frnewdown.edtURL.Text:='http://';
     tmpclip:='';
   end;
-  if frnewdown.btnForceNames.Flat=false then
+  if newdownloadforcenames then
   begin
     frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
     if (Pos('magnet:',frnewdown.edtURL.Text)=1) and (Pos('&dn=',frnewdown.edtURL.Text)>0) then
@@ -9182,6 +9584,82 @@ begin
     frmain.MainTrayIconDblClick(nil);
     //frmain.Show;
    end;
+end;
+
+procedure Tfrmain.UpdateInfoTimerStartTimer(Sender: TObject);
+begin
+  //updatefname:='';
+  //updatefsize:=0;
+  //updatecurrentpos:=0;
+end;
+
+procedure Tfrmain.UpdateInfoTimerStopTimer(Sender: TObject);
+begin
+  frconfig.btnUpdateCheckNow.Enabled:=true;
+end;
+
+procedure Tfrmain.UpdateInfoTimerTimer(Sender: TObject);
+begin
+  if Assigned(UpdaterAria2) then
+  begin
+    with UpdaterAria2 do
+    begin
+      if (updatecurrentpos<>0) and descargando then
+      begin
+        if updatefsize>0 then
+          frconfig.pbUpdate.Position:=Round((updatecurrentpos/updatefsize)*100);
+        frconfig.lblUpdateInfo.Caption:=updatefname;
+      end;
+    end;
+  end;
+  if Assigned(UpdaterAxel) then
+  begin
+    with UpdaterAxel do
+    begin
+      if (updatecurrentpos<>0) and descargando then
+      begin
+        if updatefsize>0 then
+          frconfig.pbUpdate.Position:=Round((updatecurrentpos/updatefsize)*100);
+        frconfig.lblUpdateInfo.Caption:=updatefname;
+      end;
+    end;
+  end;
+  if Assigned(UpdaterCurl) then
+  begin
+    with UpdaterCurl do
+    begin
+      if (updatecurrentpos<>0) and descargando then
+      begin
+        if updatefsize>0 then
+          frconfig.pbUpdate.Position:=Round((updatecurrentpos/updatefsize)*100);
+        frconfig.lblUpdateInfo.Caption:=updatefname;
+      end;
+    end;
+  end;
+  if Assigned(UpdaterYoutubedl) then
+  begin
+    with UpdaterYoutubedl do
+    begin
+      if (updatecurrentpos<>0) and descargando then
+      begin
+        if updatefsize>0 then
+          frconfig.pbUpdate.Position:=Round((updatecurrentpos/updatefsize)*100);
+        frconfig.lblUpdateInfo.Caption:=updatefname;
+      end;
+    end;
+  end;
+  if Assigned(UpdaterWget) then
+  begin
+    with UpdaterWget do
+    begin
+      if (updatecurrentpos<>0) and descargando then
+      begin
+        if updatefsize>0 then
+          frconfig.pbUpdate.Position:=Round((updatecurrentpos/updatefsize)*100);
+        frconfig.lblUpdateInfo.Caption:=updatefname;
+      end;
+    end;
+  end;
 end;
 
 procedure downtrayicon.showinmain(Sender:TObject);

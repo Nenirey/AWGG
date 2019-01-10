@@ -133,5 +133,12 @@
 {"hash":127162148,"name":"tfrconfig.sbtncopypath.hint","sourcebytes":[67,111,112,121,32,116,111,32,99,108,105,112,98,111,97,114,100],"value":"Copy to clipboard"},
 {"hash":127162148,"name":"tfrconfig.sbtncopyarguments.hint","sourcebytes":[67,111,112,121,32,116,111,32,99,108,105,112,98,111,97,114,100],"value":"Copy to clipboard"},
 {"hash":208308883,"name":"tfrconfig.tsupdates.caption","sourcebytes":[85,112,100,97,116,101,115],"value":"Updates"},
+{"hash":252561171,"name":"tfrconfig.chautocheckupdate.caption","sourcebytes":[65,117,116,111,109,97,116,105,99,32,99,104,101,99,107,32,102,111,114,32,117,112,100,97,116,101,115],"value":"Automatic check for updates"},
+{"hash":194854535,"name":"tfrconfig.btnupdatechecknow.caption","sourcebytes":[67,104,101,99,107,32,110,111,119],"value":"Check now"},
+{"hash":170637124,"name":"tfrconfig.chupdatewget.caption","sourcebytes":[85,112,100,97,116,101,32,119,103,101,116],"value":"Update wget"},
+{"hash":44967906,"name":"tfrconfig.chupdatearia2.caption","sourcebytes":[85,112,100,97,116,101,32,97,114,105,97,50],"value":"Update aria2"},
+{"hash":170583100,"name":"tfrconfig.chupdateaxel.caption","sourcebytes":[85,112,100,97,116,101,32,97,120,101,108],"value":"Update axel"},
+{"hash":26472428,"name":"tfrconfig.chupdateyoutubedl.caption","sourcebytes":[85,112,100,97,116,101,32,121,111,117,116,117,98,101,45,100,108],"value":"Update youtube-dl"},
+{"hash":170575372,"name":"tfrconfig.chupdatecurl.caption","sourcebytes":[85,112,100,97,116,101,32,99,117,114,108],"value":"Update curl"},
 {"hash":4749113,"name":"tfrconfig.btnconfigapply.caption","sourcebytes":[65,112,112,108,121],"value":"Apply"}
 ]}

@@ -1,7 +1,7 @@
 object frmain: Tfrmain
-  Left = 388
+  Left = 322
   Height = 541
-  Top = 132
+  Top = 143
   Width = 690
   ActiveControl = psVertical
   Caption = 'AWGG'
@@ -11274,5 +11274,13 @@ object frmain: Tfrmain
       0000000000000000000000000000000000000000000000000000000000000000
       0000000000000000000000000000
     }
+  end
+  object UpdateInfoTimer: TTimer
+    Enabled = False
+    OnTimer = UpdateInfoTimerTimer
+    OnStartTimer = UpdateInfoTimerStartTimer
+    OnStopTimer = UpdateInfoTimerStopTimer
+    left = 56
+    top = 312
   end
 end

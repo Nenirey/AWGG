@@ -1,7 +1,7 @@
 object frnewdown: Tfrnewdown
-  Left = 389
+  Left = 406
   Height = 178
-  Top = 297
+  Top = 292
   Width = 545
   AutoSize = True
   BorderIcons = [biSystemMenu, biMinimize]

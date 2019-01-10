@@ -9,8 +9,8 @@
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="29"/>
-        <CursorPos X="11" Y="35"/>
+        <TopLine Value="27"/>
+        <CursorPos Y="54"/>
         <UsageCount Value="237"/>
       </Unit0>
       <Unit1>
@@ -21,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="2454"/>
-        <CursorPos X="40" Y="2465"/>
+        <TopLine Value="735"/>
+        <CursorPos X="51" Y="743"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -35,9 +35,11 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="21" Y="5"/>
+        <TopLine Value="256"/>
+        <CursorPos X="6" Y="252"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="fconfig.pas"/>
@@ -47,8 +49,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="801"/>
-        <CursorPos X="47" Y="802"/>
+        <TopLine Value="472"/>
+        <CursorPos X="31" Y="474"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -183,9 +185,11 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="21" Y="5"/>
+        <TopLine Value="28"/>
+        <CursorPos X="26" Y="41"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
     <JumpHistory HistoryIndex="-1"/>

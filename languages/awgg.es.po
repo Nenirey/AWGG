@@ -636,6 +636,10 @@ msgctxt "tfrconfig.btnpreviewnotification.caption"
 msgid "Preview"
 msgstr "Vista previa"
 
+#: tfrconfig.btnupdatechecknow.caption
+msgid "Check now"
+msgstr ""
+
 #: tfrconfig.caption
 msgctxt "tfrconfig.caption"
 msgid "Configuration"
@@ -645,6 +649,10 @@ msgstr "Configuracion"
 msgctxt "tfrconfig.charia2usemulticonnections.caption"
 msgid "Use multiple connections."
 msgstr "Usar multiples conexiones."
+
+#: tfrconfig.chautocheckupdate.caption
+msgid "Automatic check for updates"
+msgstr ""
 
 #: tfrconfig.chclipboardmonitor.caption
 msgctxt "tfrconfig.chclipboardmonitor.caption"
@@ -796,6 +804,26 @@ msgstr "Detener cola:"
 #: tfrconfig.chsysnotifications.caption
 msgid "Use system notifications"
 msgstr "Usar notificaciones del sistema"
+
+#: tfrconfig.chupdatearia2.caption
+msgid "Update aria2"
+msgstr ""
+
+#: tfrconfig.chupdateaxel.caption
+msgid "Update axel"
+msgstr ""
+
+#: tfrconfig.chupdatecurl.caption
+msgid "Update curl"
+msgstr ""
+
+#: tfrconfig.chupdatewget.caption
+msgid "Update wget"
+msgstr ""
+
+#: tfrconfig.chupdateyoutubedl.caption
+msgid "Update youtube-dl"
+msgstr ""
 
 #: tfrconfig.chuseauth.caption
 msgctxt "tfrconfig.chuseauth.caption"
