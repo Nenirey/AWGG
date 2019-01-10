@@ -739,20 +739,21 @@ begin
   Updater:=TUpdateThread.Create;
   {$IFDEF cpui386}
     {$IFDEF MSWINDOWS}
-      Updater.URL:='https://github.com/Nenirey/AWGG-UPDATES/Windows/32bits/update.ini';
+      Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/Windows/32bits/update.ini';
     {$ENDIF}
     {$IFDEF UNIX}
-       Updater.URL:='https://github.com/Nenirey/AWGG-UPDATES/Linux/32bits/update.ini';
+       Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/Linux/32bits/update.ini';
     {$ENDIF}
   {$ENDIF}
   {$IFDEF cpux86_64}
     {$IFDEF MSWINDOWS}
-      Updater.URL:='https://github.com/Nenirey/AWGG-UPDATES/Windows/64bits/update.ini';
+      Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/Windows/64bits/update.ini';
     {$ENDIF}
     {$IFDEF UNIX}
-      Updater.URL:='https://github.com/Nenirey/AWGG-UPDATES/Linux/64bits/update.ini';
+      Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/Linux/64bits/update.ini';
     {$ENDIF}
   {$ENDIF}
+  Updater.updatefname:='update.ini';
   Updater.DPath:=configpath;
   Updater.Start;
   frmain.UpdateInfoTimer.Enabled:=true;
@@ -891,6 +892,7 @@ begin
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterAria2:=TUpdateThread.Create;
           UpdaterAria2.URL:=aria2new;
+          UpdaterAria2.updatefname:='aria2c'{$IFDEF MSWINDOWS}+'.exe'{$ENDIF};
           UpdaterAria2.DPath:=configpath+'Engines'+pathdelim;
           UpdaterAria2.Start;
         end;
@@ -901,6 +903,7 @@ begin
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterAxel:=TUpdateThread.Create;
           UpdaterAxel.URL:=axelnew;
+          UpdaterAxel.updatefname:='axel'{$IFDEF MSWINDOWS}+'.exe'{$ENDIF};
           UpdaterAxel.DPath:=configpath+'Engines'+pathdelim;
           UpdaterAxel.Start;
         end;
@@ -911,6 +914,7 @@ begin
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterCurl:=TUpdateThread.Create;
           UpdaterCurl.URL:=curlnew;
+          UpdaterCurl.updatefname:='curl'{$IFDEF MSWINDOWS}+'.exe'{$ENDIF};
           UpdaterCurl.DPath:=configpath+'Engines'+pathdelim;
           UpdaterCurl.Start;
         end;
@@ -921,6 +925,7 @@ begin
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterYoutubedl:=TUpdateThread.Create;
           UpdaterYoutubedl.URL:=youtubedlnew;
+          UpdaterYoutubedl.updatefname:='youtube-dl'{$IFDEF MSWINDOWS}+'.exe'{$ENDIF};
           UpdaterYoutubedl.DPath:=configpath+'Engines'+pathdelim;
           UpdaterYoutubedl.Start;
         end;
@@ -931,6 +936,7 @@ begin
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterWget:=TUpdateThread.Create;
           UpdaterWget.URL:=wgetnew;
+          UpdaterWget.updatefname:='wget'{$IFDEF MSWINDOWS}+'.exe'{$ENDIF};
           UpdaterWget.DPath:=configpath+'Engines'+pathdelim;
           UpdaterWget.Start;
         end;
@@ -993,6 +999,8 @@ begin
   else
   begin
     //ShowMessage('Error update');
+    frconfig.lblUpdateInfo.Caption:='Error';
+    frconfig.pbUpdate.Position:=0;
     updateinprogress:=false;
   end;
   //frmain.UpdateInfoTimer.Enabled:=false;
