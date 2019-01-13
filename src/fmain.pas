@@ -3724,20 +3724,23 @@ begin
   saveconfig();
   stimer[frconfig.cbQueue.ItemIndex].Enabled:=qtimerenable[frconfig.cbQueue.ItemIndex];
   categoryreload();
-  if internetcheck then
-  begin
-    internetchecker:=TConnectionThread.Create;
-    internetchecker.Start;
-  end
-  else
-  begin
-    internet:=false;
-    if Assigned(internetchecker) then
+  try
+    if internetcheck then
     begin
-      internetchecker.stop;
+      internetchecker:=TConnectionThread.Create;
+      internetchecker.Start;
+    end
+    else
+    begin
+      internet:=false;
+      if Assigned(internetchecker) then
+      begin
+        internetchecker.stop;
+      end;
+      frmain.MainTrayIcon.Animate:=false;
+      frmain.MainTrayIcon.Icon:=Application.Icon;
     end;
-    frmain.MainTrayIcon.Animate:=false;
-    frmain.MainTrayIcon.Icon:=Application.Icon;
+  except on e:exception do
   end;
 end;
 
