@@ -39,7 +39,7 @@ categorytorrents='Torrents';
 abouttext='This program is free software under GNU GPL 2 license.'+
 lineending+lineending+'Created By Reinier Romero Mir'+
 lineending+'Email: nenirey@gmail.com'+
-lineending+'Copyright (c) 2014-2018'+
+lineending+'Copyright (c) 2014-2019'+
 lineending+lineending+'The project uses the following third party resources:'+
 lineending+'- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/'+
 lineending+'- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)'+
@@ -48,7 +48,7 @@ lineending+'- Wget (http://www.gnu.org/software/wget/)'+
 lineending+'- cURL (http://curl.haxx.se)'+
 lineending+'- Axel (http://axel.alioth.debian.org)'+
 lineending+'- youtube-dl (http://yt-dl.org)'+
-lineending+'- FlashGot (http://flashgot.net)'+
+lineending+'- Download with Wget (http://add0n.com/download-with.html?from=wget)'+
 lineending+lineending+'French translation: Tony O Gallos @ CodeTyphon Community'+
 lineending+'German translation: Mag Fu (mag.fu@yandex.com)';
 wgetdefarg1='[-c] Continue downloads.';

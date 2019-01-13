@@ -8,7 +8,7 @@ msgid ""
 "\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
-"Copyright (c) 2014-2018\n"
+"Copyright (c) 2014-2019\n"
 "\n"
 "The project uses the following third party resources:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -18,16 +18,16 @@ msgid ""
 "- cURL (http://curl.haxx.se)\n"
 "- Axel (http://axel.alioth.debian.org)\n"
 "- youtube-dl (http://yt-dl.org)\n"
-"- FlashGot (http://flashgot.net)\n"
+"- Download with Wget (http://add0n.com/download-with.html?from=wget)\n"
 "\n"
 "French translation: Tony O Gallos @ CodeTyphon Community\n"
 "German translation: Mag Fu (mag.fu@yandex.com)\n"
 msgstr ""
-"Este programa es de codigo abierto bajo la licencia GNU GPL 2.\n"
+"Este programa es de codigo abierto bajo la licencia GNU GPL 2\n"
 "\n"
 "Creado por Reinier Romero Mir\n"
 "Correo: nenirey@gmail.com\n"
-"Copyright (c) 2014-2018\n"
+"Copyright (c) 2014-2019\n"
 "\n"
 "El proyecto hace uso de los siguientes recursos de terceros:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -37,7 +37,7 @@ msgstr ""
 "- cURL (http://curl.haxx.se)\n"
 "- Axel (http://axel.alioth.debian.org)\n"
 "- youtube-dl (http://yt-dl.org)\n"
-"- FlashGot (http://flashgot.net)\n"
+"- Download with Wget (http://add0n.com/download-with.html?from=wget)\n"
 "\n"
 "Traduccion al frances: Tony O Gallos @ CodeTyphon Community\n"
 "Traduccion al aleman: Mag Fu (mag.fu@yandex.com)\n"
@@ -638,7 +638,7 @@ msgstr "Vista previa"
 
 #: tfrconfig.btnupdatechecknow.caption
 msgid "Check now"
-msgstr ""
+msgstr "Buscar ahora"
 
 #: tfrconfig.caption
 msgctxt "tfrconfig.caption"
@@ -652,7 +652,7 @@ msgstr "Usar multiples conexiones."
 
 #: tfrconfig.chautocheckupdate.caption
 msgid "Automatic check for updates"
-msgstr ""
+msgstr "Buscar actualizaciones"
 
 #: tfrconfig.chclipboardmonitor.caption
 msgctxt "tfrconfig.chclipboardmonitor.caption"
@@ -807,23 +807,23 @@ msgstr "Usar notificaciones del sistema"
 
 #: tfrconfig.chupdatearia2.caption
 msgid "Update aria2"
-msgstr ""
+msgstr "Actualizar aria2"
 
 #: tfrconfig.chupdateaxel.caption
 msgid "Update axel"
-msgstr ""
+msgstr "Actualizar axel"
 
 #: tfrconfig.chupdatecurl.caption
 msgid "Update curl"
-msgstr ""
+msgstr "Actualizar curl"
 
 #: tfrconfig.chupdatewget.caption
 msgid "Update wget"
-msgstr ""
+msgstr "Actualizar wget"
 
 #: tfrconfig.chupdateyoutubedl.caption
 msgid "Update youtube-dl"
-msgstr ""
+msgstr "Actualizar youtube-dl"
 
 #: tfrconfig.chuseauth.caption
 msgctxt "tfrconfig.chuseauth.caption"

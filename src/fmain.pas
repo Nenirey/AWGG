@@ -1263,6 +1263,7 @@ end;
 procedure TConnectionThread.Execute;
 var
   firsttime:boolean;
+  ctryn:integer;
 begin
  firsttime:=true;
   try
@@ -1273,10 +1274,17 @@ begin
       try
         internet:=false;
         firsttime:=false;
+        ctryn:=5;
         DHTTPClient.KeepConnection:=false;
         DHTTPClient.IOTimeout:=5000;
         DHTTPClient.HTTPMethod('HEAD',InternetURL,nil,[200]);
-        //DHTTPClient.AllowRedirect:=true;
+        //One connection can lost but 5 not
+        while (DHTTPClient.ResponseHeaders.Count=0) and (ctryn>0) do
+        begin
+          dec(ctryn);
+          DHTTPClient.HTTPMethod('HEAD',InternetURL,nil,[200]);
+          Sleep(500);
+        end;
         if (DHTTPClient.ResponseHeaders.Count>0) and (DHTTPClient.ResponseHeaders.Values['Server']<>' NetEngine Server 1.0') then
           internet:=true
         else
