@@ -65,6 +65,7 @@ type
   updatecurrentpos:int64;
   updatefsize:int64;
   updatefname:string;
+  updatemsgerror:string;
   procedure DoOnWriteStream(Sender: TObject; APos: Int64);
   procedure showrs;
   procedure stop;
@@ -733,6 +734,30 @@ implementation
 {$R *.lfm}
 { Tfrmain }
 
+//********************************************************
+function CopyFileAttributes(const sourcefile,destinationfile:string):boolean;
+var
+  fileinfo:{$ifdef unix}
+             stat;
+           {$endif}
+           {$ifdef windows}
+             longint;
+           {$endif}
+begin
+  if (fileexists(sourcefile) and fileexists(destinationfile)) then
+  begin
+    {$ifdef unix}
+    exit((fpstat(sourcefile,fileinfo)=0)and(fpchmod(destinationfile,fileinfo.st_mode)=0));
+    {$endif}
+    {$ifdef windows}
+    fileinfo:=filegetattr(sourcefile);
+    {$ENDIF}
+  end;
+  result:=false;
+end;
+
+//********************************************************
+
 procedure checkforupdates;
 begin
   frconfig.btnUpdateCheckNow.Enabled:=false;
@@ -756,6 +781,7 @@ begin
   Updater.updatefname:='update.ini';
   Updater.DPath:=configpath;
   Updater.Start;
+  frconfig.lblUpdateInfo.Caption:='Checking...';
   frmain.UpdateInfoTimer.Enabled:=true;
 end;
 
@@ -865,7 +891,9 @@ begin
   begin
     try
       if FileExistsUTF8(dpath+updatefname) then
+      begin
         DeleteFileUTF8(dpath+updatefname);
+      end;
       RenameFileUTF8(dpath+'file.part',dpath+updatefname);
     except on e:exception do
     end;
@@ -940,66 +968,79 @@ begin
           UpdaterWget.DPath:=configpath+'Engines'+pathdelim;
           UpdaterWget.Start;
         end;
-
       end;
 
       'aria2c','aria2c.exe':
       begin
         if MD5Print(MD5File(dpath+updatefname))=aria2md5 then
         begin
-          //ShowMessage('aria2 updated ok');
+          {$IFDEF UNIX}
+          CopyFileAttributes(Application.Params[0],dpath+updatefname);
+          {$ENDIF}
           aria2crutebin:=dpath+updatefname;
+          frconfig.fneAria2Path.Text:=dpath+updatefname;
+          saveconfig;
         end;
-        //else
-          //ShowMessage('Download fail the md5 most by "'+aria2md5+'" and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
       end;
 
       'axel','axel.exe':
       begin
         if MD5Print(MD5File(dpath+updatefname))=axelmd5 then
         begin
-          //ShowMessage('axel updated ok');
+          {$IFDEF UNIX}
+          CopyFileAttributes(Application.Params[0],dpath+updatefname);
+          {$ENDIF}
           axelrutebin:=dpath+updatefname;
+          frconfig.fneAxelPath.Text:=dpath+updatefname;
+          saveconfig;
         end;
-        //else
-          //ShowMessage('Download fail the md5 most by "'+axelmd5+' and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
       end;
       'curl','curl.exe':
       begin
         if MD5Print(MD5File(dpath+updatefname))=curlmd5 then
         begin
-          //ShowMessage('curl updated ok');
+          {$IFDEF UNIX}
+          CopyFileAttributes(Application.Params[0],dpath+updatefname);
+          {$ENDIF}
           curlrutebin:=dpath+updatefname;
+          frconfig.fneCurlPath.Text:=dpath+updatefname;
+          saveconfig;
         end;
-        //else
-          //ShowMessage('Download fail the md5 most by "'+curlmd5+' and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
       end;
       'youtube-dl','youtube-dl.exe':
       begin
         if MD5Print(MD5File(dpath+updatefname))=youtubedlmd5 then
         begin
-          //ShowMessage('youtube-dl updated ok');
+          {$IFDEF UNIX}
+          CopyFileAttributes(Application.Params[0],dpath+updatefname);
+          {$ENDIF}
           youtubedlrutebin:=dpath+updatefname;
+          frconfig.fneYoutubedlPath.Text:=dpath+updatefname;
+          saveconfig;
         end;
-        //else
-          //ShowMessage('Download fail the md5 most by "'+youtubedlmd5+' and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
       end;
       'wget','wget.exe':
       begin
         if MD5Print(MD5File(dpath+updatefname))=wgetmd5 then
         begin
-          //ShowMessage('wget updated ok');
+          {$IFDEF UNIX}
+          CopyFileAttributes(Application.Params[0],dpath+updatefname);
+          {$ENDIF}
           wgetrutebin:=dpath+updatefname;
+          frconfig.fneWgetPath.Text:=dpath+updatefname;
+          saveconfig;
         end;
-        //else
-          //ShowMessage('Download fail the md5 most by "'+wgetmd5+' and is "'+MD5Print(MD5File(dpath+updatefname))+'"');
       end;
+    end;
+    if updateinprogress=false then
+    begin
+      frconfig.lblUpdateInfo.Caption:='Up to date!';
+      frconfig.pbUpdate.Position:=0;
     end;
   end
   else
   begin
-    //ShowMessage('Error update');
-    frconfig.lblUpdateInfo.Caption:='Error';
+    frconfig.lblUpdateInfo.Caption:=updatemsgerror;
     frconfig.pbUpdate.Position:=0;
     updateinprogress:=false;
   end;
@@ -1044,6 +1085,7 @@ begin
     self.Terminate;
     except on e:exception do
     begin
+      updatemsgerror:=e.Message;
       descargado:=false;
       descargando:=false;
       Synchronize(@showrs);
