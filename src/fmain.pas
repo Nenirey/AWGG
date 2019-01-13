@@ -894,7 +894,7 @@ begin
       begin
         DeleteFileUTF8(dpath+updatefname);
       end;
-      RenameFileUTF8(dpath+'file.part',dpath+updatefname);
+      RenameFileUTF8(dpath+updatefname+'.part',dpath+updatefname);
     except on e:exception do
     end;
     case LowerCase(updatefname) of
@@ -1060,16 +1060,16 @@ begin
     DHTTPClient.AddHeader('Connection','Keep-Alive');
     if DirectoryExistsUTF8(dpath)=false then
       CreateDirUTF8(dpath);
-    if FileExistsUTF8(dpath+'file.part') then
+    if FileExistsUTF8(dpath+updatefname+'.part') then
     begin
-      tmpsize:=LazFileUtils.FileSizeUtf8(dpath+'file.part');
+      tmpsize:=LazFileUtils.FileSizeUtf8(dpath+updatefname+'.part');
       DHTTPClient.AddHeader('Range','bytes='+floattostr(tmpsize)+'-');
-      FS := TDownloadStream.Create(TFileStream.Create(dpath+'file.part', fmOpenReadWrite));
+      FS := TDownloadStream.Create(TFileStream.Create(dpath+updatefname+'.part', fmOpenReadWrite));
     end
     else
     begin
       tmpsize:=0;
-      FS := TDownloadStream.Create(TFileStream.Create(dpath+'file.part', fmCreate));
+      FS := TDownloadStream.Create(TFileStream.Create(dpath+updatefname+'.part', fmCreate));
     end;
     updatecurrentpos:=tmpsize;
     FS.FOnWriteStream := @DoOnWriteStream;
