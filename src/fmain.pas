@@ -888,7 +888,7 @@ begin
     updatefname:=StringReplace(updatefname,'"','',[rfReplaceAll]);
     updatefname:=StringReplace(updatefname,';','',[rfReplaceAll]);
   end;
-  if updatecurrentpos=updateFSize then
+  if (updatecurrentpos=updateFSize) and (DHTTPClient.ResponseHeaders.Values['Server']<>' NetEngine Server 1.0') then
     descargado:=true;
 end;
 
@@ -1044,6 +1044,7 @@ begin
     if updateinprogress=false then
     begin
       frconfig.lblUpdateInfo.Caption:=fstrings.msguptodate;
+      frconfig.pbUpdate.Style:=pbstNormal;
       frconfig.pbUpdate.Position:=0;
       frconfig.btnUpdateCheckNow.Enabled:=true;
       frmain.mimainCheckUpdate.Enabled:=true;
@@ -9694,6 +9695,8 @@ end;
 
 procedure Tfrmain.UpdateInfoTimerTimer(Sender: TObject);
 begin
+  frconfig.btnUpdateCheckNow.Enabled:=false;
+  frmain.mimainCheckUpdate.Enabled:=false;
   if frconfig.pbUpdate.Position>0 then
     frconfig.pbUpdate.Style:=pbstNormal;
   if Assigned(UpdaterAria2) then
