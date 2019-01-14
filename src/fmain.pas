@@ -188,6 +188,8 @@ end;
     lblMaxDownInProgress: TLabel;
     lvMain: TListView;
     lvFilter: TListView;
+    mimainCheckUpdate: TMenuItem;
+    mimainDonate: TMenuItem;
     mitraydownContinueLater: TMenuItem;
     milistContinueLaterDown: TMenuItem;
     mitraydownCancel: TMenuItem;
@@ -397,7 +399,9 @@ end;
     procedure micommandClearClick(Sender: TObject);
     procedure micommandCopyClick(Sender: TObject);
     procedure micommandSelectAllClick(Sender: TObject);
+    procedure mimainCheckUpdateClick(Sender: TObject);
     procedure mimainddboxClick(Sender: TObject);
+    procedure mimainDonateClick(Sender: TObject);
     procedure mimainShowInTrayClick(Sender: TObject);
     procedure mimainShowTreeClick(Sender: TObject);
     procedure mimainAboutClick(Sender: TObject);
@@ -761,12 +765,16 @@ end;
 procedure checkforupdates;
 begin
   frconfig.btnUpdateCheckNow.Enabled:=false;
+  frmain.mimainCheckUpdate.Enabled:=false;
   Updater:=TUpdateThread.Create;
   {$IFDEF cpui386}
     {$IFDEF MSWINDOWS}
       Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/Windows/32bits/update.ini';
     {$ENDIF}
-    {$IFDEF UNIX}
+    {$IF DEFINED(FREEBSD)}
+       Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/FreeBSD/32bits/update.ini';
+    {$ENDIF}
+    {$IFDEF LINUX}
        Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/Linux/32bits/update.ini';
     {$ENDIF}
   {$ENDIF}
@@ -774,14 +782,18 @@ begin
     {$IFDEF MSWINDOWS}
       Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/Windows/64bits/update.ini';
     {$ENDIF}
-    {$IFDEF UNIX}
+    {$IF DEFINED(FREEBSD)}
+      Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/FreeBSD/64bits/update.ini';
+    {$ENDIF}
+    {$IFDEF LINUX}
       Updater.URL:='https://raw.githubusercontent.com/Nenirey/AWGG-UPDATES/master/Linux/64bits/update.ini';
     {$ENDIF}
   {$ENDIF}
   Updater.updatefname:='update.ini';
   Updater.DPath:=configpath;
   Updater.Start;
-  frconfig.lblUpdateInfo.Caption:='Checking...';
+  frconfig.lblUpdateInfo.Caption:=fstrings.msgupdatechecking;
+  frconfig.pbUpdate.Style:=pbstMarquee;
   frmain.UpdateInfoTimer.Enabled:=true;
 end;
 
@@ -887,6 +899,7 @@ var
 begin
   frmain.UpdateInfoTimer.Enabled:=false;
   frconfig.btnUpdateCheckNow.Enabled:=true;
+  frmain.mimainCheckUpdate.Enabled:=true;
   if descargado then
   begin
     try
@@ -912,11 +925,11 @@ begin
         wgetnew:=newsini.ReadString('Update','wgetnew','');
         wgetmd5:=newsini.ReadString('Update','wgetmd5','');
 
-        {TODO set execute permission for unix}
+        frconfig.btnUpdateCheckNow.Enabled:=false;
+        frmain.mimainCheckUpdate.Enabled:=false;
 
         if (aria2new<>'') and (aria2md5<>'') and (aria2md5<>MD5Print(MD5File(aria2crutebin))) and autoupdatearia2 then
         begin
-          frconfig.btnUpdateCheckNow.Enabled:=false;
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterAria2:=TUpdateThread.Create;
           UpdaterAria2.URL:=aria2new;
@@ -927,7 +940,6 @@ begin
 
         if (axelnew<>'') and (axelmd5<>'') and (axelmd5<>MD5Print(MD5File(axelrutebin))) and autoupdateaxel then
         begin
-          frconfig.btnUpdateCheckNow.Enabled:=false;
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterAxel:=TUpdateThread.Create;
           UpdaterAxel.URL:=axelnew;
@@ -938,7 +950,6 @@ begin
 
         if (curlnew<>'') and (curlmd5<>'') and (curlmd5<>MD5Print(MD5File(curlrutebin))) and autoupdatecurl then
         begin
-          frconfig.btnUpdateCheckNow.Enabled:=false;
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterCurl:=TUpdateThread.Create;
           UpdaterCurl.URL:=curlnew;
@@ -949,7 +960,6 @@ begin
 
         if (youtubedlnew<>'') and (youtubedlmd5<>'') and (youtubedlmd5<>MD5Print(MD5File(youtubedlrutebin))) and autoupdateyoutubedl then
         begin
-          frconfig.btnUpdateCheckNow.Enabled:=false;
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterYoutubedl:=TUpdateThread.Create;
           UpdaterYoutubedl.URL:=youtubedlnew;
@@ -960,7 +970,6 @@ begin
 
         if (wgetnew<>'') and (wgetmd5<>'') and (wgetmd5<>MD5Print(MD5File(wgetrutebin))) and autoupdatewget then
         begin
-          frconfig.btnUpdateCheckNow.Enabled:=false;
           frmain.UpdateInfoTimer.Enabled:=true;
           UpdaterWget:=TUpdateThread.Create;
           UpdaterWget.URL:=wgetnew;
@@ -1034,17 +1043,24 @@ begin
     end;
     if updateinprogress=false then
     begin
-      frconfig.lblUpdateInfo.Caption:='Up to date!';
+      frconfig.lblUpdateInfo.Caption:=fstrings.msguptodate;
       frconfig.pbUpdate.Position:=0;
+      frconfig.btnUpdateCheckNow.Enabled:=true;
+      frmain.mimainCheckUpdate.Enabled:=true;
+    end
+    else
+    begin
+      frconfig.btnUpdateCheckNow.Enabled:=false;
+      frmain.mimainCheckUpdate.Enabled:=false;
     end;
   end
   else
   begin
     frconfig.lblUpdateInfo.Caption:=updatemsgerror;
+    frconfig.pbUpdate.Style:=pbstNormal;
     frconfig.pbUpdate.Position:=0;
     updateinprogress:=false;
   end;
-  //frmain.UpdateInfoTimer.Enabled:=false;
 end;
 
 procedure TUpdateThread.Execute;
@@ -1887,8 +1903,11 @@ var
 begin
   if usesysnotifi then
   begin
-    frmain.MainTrayIcon.BalloonHint:=title+#10#13+name+#10#13+note;
+    frmain.MainTrayIcon.BalloonHint:=title+lineending+name+lineending+note;
+    {$IFDEF MSWINDOWS}
+    {$ELSE}
     frmain.MainTrayIcon.BalloonTitle:='AWGG';
+    {$ENDIF}
     frmain.MainTrayIcon.BalloonTimeout:=hiddenotifi*1000;
     if ok then
       frmain.MainTrayIcon.BalloonFlags:=bfInfo
@@ -7361,6 +7380,15 @@ begin
   frmain.SynEdit1.SelectAll;
 end;
 
+procedure Tfrmain.mimainCheckUpdateClick(Sender: TObject);
+begin
+  frconfig.pcConfig.ActivePageIndex:=18;
+  frconfig.tvConfig.Items[frconfig.pcConfig.ActivePageIndex].Selected:=true;
+  configdlg();
+  frconfig.Show;
+  frconfig.btnUpdateCheckNowClick(nil);
+end;
+
 procedure Tfrmain.mimainddboxClick(Sender: TObject);
 begin
   if frddbox.Visible =false then
@@ -7396,6 +7424,11 @@ begin
   end;
   frmain.mimainddbox.Checked:=frddbox.Visible;
   frmain.midropbox.Checked:=frddbox.Visible;
+end;
+
+procedure Tfrmain.mimainDonateClick(Sender: TObject);
+begin
+  OpenURL('https://sites.google.com/site/awggproject/home/dona');
 end;
 
 procedure Tfrmain.mimainShowInTrayClick(Sender: TObject);
@@ -9656,11 +9689,13 @@ end;
 
 procedure Tfrmain.UpdateInfoTimerStopTimer(Sender: TObject);
 begin
-  frconfig.btnUpdateCheckNow.Enabled:=true;
+  //frconfig.btnUpdateCheckNow.Enabled:=true;
 end;
 
 procedure Tfrmain.UpdateInfoTimerTimer(Sender: TObject);
 begin
+  if frconfig.pbUpdate.Position>0 then
+    frconfig.pbUpdate.Style:=pbstNormal;
   if Assigned(UpdaterAria2) then
   begin
     with UpdaterAria2 do

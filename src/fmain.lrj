@@ -92,6 +92,8 @@
 {"hash":116154878,"name":"tfrmain.mimainconfig.caption","sourcebytes":[67,111,110,102,105,103,117,114,97,116,105,111,110],"value":"Configuration"},
 {"hash":247200594,"name":"tfrmain.mimainscheduler.caption","sourcebytes":[83,99,104,101,100,117,108,101,114],"value":"Scheduler"},
 {"hash":322608,"name":"tfrmain.mimainhelp.caption","sourcebytes":[72,101,108,112],"value":"Help"},
+{"hash":5395918,"name":"tfrmain.mimaincheckupdate.caption","sourcebytes":[67,104,101,99,107,32,102,111,114,32,117,112,100,97,116,101,115,46,46,46],"value":"Check for updates..."},
+{"hash":79055013,"name":"tfrmain.mimaindonate.caption","sourcebytes":[68,111,110,97,116,101],"value":"Donate"},
 {"hash":48614277,"name":"tfrmain.mimainhomepage.caption","sourcebytes":[79,102,102,105,99,105,97,108,32,119,101,98,32,115,105,116,101],"value":"Official web site"},
 {"hash":4691652,"name":"tfrmain.mimainabout.caption","sourcebytes":[65,98,111,117,116],"value":"About"},
 {"hash":5941396,"name":"tfrmain.miliststartdown.caption","sourcebytes":[83,116,97,114,116],"value":"Start"},

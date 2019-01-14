@@ -19,9 +19,10 @@
         <ComponentName Value="frmain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
+        <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1268"/>
-        <CursorPos X="20" Y="1286"/>
+        <TopLine Value="765"/>
+        <CursorPos X="13" Y="773"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -48,8 +49,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="10"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="827"/>
-        <CursorPos X="15" Y="840"/>
+        <TopLine Value="472"/>
+        <CursorPos X="12" Y="474"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -62,9 +63,11 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="8"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="21" Y="5"/>
+        <TopLine Value="54"/>
+        <CursorPos X="31" Y="73"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
       </Unit4>
       <Unit5>
         <Filename Value="flang.pas"/>
@@ -85,11 +88,9 @@
         <ComponentName Value="frstrings"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
-        <IsVisibleTab Value="True"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="110"/>
-        <CursorPos X="80" Y="51"/>
+        <CursorPos X="14" Y="119"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -192,19 +193,6 @@
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="3" HistoryIndex="2">
-      <Position1>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="87" Column="19" TopLine="67"/>
-      </Position1>
-      <Position2>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1281" Column="44" TopLine="1263"/>
-      </Position2>
-      <Position3>
-        <Filename Value="fmain.pas"/>
-        <Caret Line="1282" Column="63" TopLine="1266"/>
-      </Position3>
-    </JumpHistory>
+    <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>
 </CONFIG>

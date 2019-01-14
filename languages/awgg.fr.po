@@ -358,6 +358,14 @@ msgctxt "fstrings.msgnointernetconnection"
 msgid "No internet connection"
 msgstr ""
 
+#: fstrings.msgupdatechecking
+msgid "Checking..."
+msgstr ""
+
+#: fstrings.msguptodate
+msgid "Up to date!"
+msgstr ""
+
 #: fstrings.newfiletyperememberpath
 msgctxt "fstrings.newfiletyperememberpath"
 msgid "Do you want to remember the path for this file type?"
@@ -1564,6 +1572,10 @@ msgctxt "tfrmain.mimainaddgrabber.caption"
 msgid "New site grabber..."
 msgstr "Nouvel aspirateur de site..."
 
+#: tfrmain.mimaincheckupdate.caption
+msgid "Check for updates..."
+msgstr ""
+
 #: tfrmain.mimaincolumns.caption
 msgctxt "tfrmain.mimaincolumns.caption"
 msgid "Columns"
@@ -1598,6 +1610,10 @@ msgstr "Supprimer du disque"
 msgctxt "tfrmain.mimaindeletedowndisk.hint"
 msgid "Delete from disk"
 msgstr "Supprimer du disque"
+
+#: tfrmain.mimaindonate.caption
+msgid "Donate"
+msgstr ""
 
 #: tfrmain.mimaindownloads.caption
 msgctxt "tfrmain.mimaindownloads.caption"

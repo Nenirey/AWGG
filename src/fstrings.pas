@@ -137,6 +137,8 @@ nochangefield='[Keep]';
 portablemode='Portable';
 msginternetconnection='Internet connection';
 msgnointernetconnection='No internet connection';
+msgupdatechecking='Checking...';
+msguptodate='Up to date!';
 
 Implementation
 end.
