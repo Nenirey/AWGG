@@ -149,7 +149,12 @@ begin
     result:=true;
   end
   else
+  begin
     result:=false;
+    agregar:=false;
+    cola:=false;
+    iniciar:=false;
+  end;
 end;
 
 procedure Tfrnewdown.btnCancelClick(Sender: TObject);

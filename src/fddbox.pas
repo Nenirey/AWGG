@@ -107,7 +107,7 @@ begin
   if (Pos('http://',frddbox.edtDrop.Text)=1) or (Pos('https://',frddbox.edtDrop.Text)=1) or (Pos('ftp://',frddbox.edtDrop.Text)=1) or (Pos('magnet',frddbox.edtDrop.Text)=1) then
   begin
     frnewdown.edtURL.Text:=frddbox.edtDrop.Text;
-    frmain.tbAddDownClick(nil);
+    frmain.tbAddDownClick(nil,not silentdropbox);
   end;
    frddbox.edtDrop.Text:='';
   {$ENDIF}
@@ -291,7 +291,7 @@ begin
       if (Pos('http://',tmpclip)=1) or (Pos('https://',tmpclip)=1) or (Pos('ftp://',tmpclip)=1) or (Pos('magnet',tmpclip)=1) then
       begin
         frnewdown.edtURL.Text:=tmpclip;
-        frmain.tbAddDownClick(nil);
+        frmain.tbAddDownClick(nil,not silentdropbox);
       end;
       ////////////////////////////*****end capture*****/////////////////////
       frddbox.FormStyle:=fsSystemStayOnTop;

@@ -50,7 +50,8 @@ lineending+'- Axel (http://axel.alioth.debian.org)'+
 lineending+'- youtube-dl (http://yt-dl.org)'+
 lineending+'- Download with Wget (http://add0n.com/download-with.html?from=wget)'+
 lineending+lineending+'French translation: Tony O Gallos @ CodeTyphon Community'+
-lineending+'German translation: Mag Fu (mag.fu@yandex.com)';
+lineending+'German translation: Mag Fu (mag.fu@yandex.com)'+
+lineending+'Tukish translation: BigLorD @ Github.com';
 wgetdefarg1='[-c] Continue downloads.';
 wgetdefarg2='[-nH] No create host dir.';
 wgetdefarg3='[-nd] No create out dir.';
@@ -107,6 +108,7 @@ startinthesystray= 'Start in the systray.';
 statuserror= 'Error';
 queuemainname= 'Main';
 dlgdeletequeue= 'Do you want to delete the selected queue?';
+msgclearcomplete= 'Do you want to clear all completed downloads?';
 queuestreename= 'Queues';
 filtresname= 'Filters';
 alldowntreename='All downloads';

@@ -140,5 +140,7 @@
 {"hash":170583100,"name":"tfrconfig.chupdateaxel.caption","sourcebytes":[85,112,100,97,116,101,32,97,120,101,108],"value":"Update axel"},
 {"hash":26472428,"name":"tfrconfig.chupdateyoutubedl.caption","sourcebytes":[85,112,100,97,116,101,32,121,111,117,116,117,98,101,45,100,108],"value":"Update youtube-dl"},
 {"hash":170575372,"name":"tfrconfig.chupdatecurl.caption","sourcebytes":[85,112,100,97,116,101,32,99,117,114,108],"value":"Update curl"},
+{"hash":194393112,"name":"tfrconfig.tsdropbox.caption","sourcebytes":[116,115,68,114,111,112,66,111,120],"value":"tsDropBox"},
+{"hash":87902053,"name":"tfrconfig.chsilentdropmode.caption","sourcebytes":[83,105,108,101,110,116,32,109,111,100,101],"value":"Silent mode"},
 {"hash":4749113,"name":"tfrconfig.btnconfigapply.caption","sourcebytes":[65,112,112,108,121],"value":"Apply"}
 ]}

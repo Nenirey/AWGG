@@ -188,6 +188,12 @@ end;
     lblMaxDownInProgress: TLabel;
     lvMain: TListView;
     lvFilter: TListView;
+    miliMoveBottom: TMenuItem;
+    miliMoveTop: TMenuItem;
+    miliMoveDown: TMenuItem;
+    miliMoveUp: TMenuItem;
+    miliPosition: TMenuItem;
+    milistClearComplete: TMenuItem;
     mimainCheckUpdate: TMenuItem;
     mimainDonate: TMenuItem;
     mitraydownContinueLater: TMenuItem;
@@ -251,11 +257,7 @@ end;
     milistOpenURL: TMenuItem;
     mimainRestartAllLater: TMenuItem;
     milistRestartLater: TMenuItem;
-    milistSteepUp: TMenuItem;
     mimainFile: TMenuItem;
-    milistSteepDown: TMenuItem;
-    milistToUp: TMenuItem;
-    milistToDown: TMenuItem;
     micommandFollow: TMenuItem;
     mimainImportDown: TMenuItem;
     mimainExportDown: TMenuItem;
@@ -293,14 +295,12 @@ end;
     mitreeDeleteQueue: TMenuItem;
     mitreeRenameQueue: TMenuItem;
     milistSendToQueue: TMenuItem;
-    miline17: TMenuItem;
     mimainAddGrabber: TMenuItem;
     miAddGrabber: TMenuItem;
     mimainHelp: TMenuItem;
     miline14: TMenuItem;
     mimainHomePage: TMenuItem;
     milistShowTrayIcon: TMenuItem;
-    miline18: TMenuItem;
     miline24: TMenuItem;
     mitreeStartQueue: TMenuItem;
     mitreeStopQueue: TMenuItem;
@@ -393,6 +393,10 @@ end;
     procedure lvFilterSelectItem(Sender: TObject; Item: TListItem;
       Selected: Boolean);
     procedure miDropboxClick(Sender: TObject);
+    procedure miliMoveBottomClick(Sender: TObject);
+    procedure miliMoveDownClick(Sender: TObject);
+    procedure miliMoveTopClick(Sender: TObject);
+    procedure miliMoveUpClick(Sender: TObject);
     procedure milistCancelDownClick(Sender: TObject);
     procedure milistContinueLaterDownClick(Sender: TObject);
     procedure milistMoveFilesClick(Sender: TObject);
@@ -500,7 +504,7 @@ end;
     procedure tbStopSchedulerClick(Sender: TObject);
     procedure tbExitClick(Sender: TObject);
     procedure tbSteepUpClick(Sender: TObject);
-    procedure tbAddDownClick(Sender: TObject);
+    procedure tbAddDownClick(Sender: TObject;showdlg:boolean=true);
     procedure tbSteepDownClick(Sender: TObject);
     procedure tbRestartNowClick(Sender: TObject);
     procedure tbToUpClick(Sender: TObject);
@@ -686,7 +690,7 @@ var
   portablemode:boolean;
   notiforms:Tfrnotification;
   firstnormalshow:boolean;
-  dropboxonstart:boolean;
+  dropboxonstart,silentdropbox:boolean;
   showmainintray:boolean;
   StartDragIndex:integer=-1;
   frddboxLeft,frddboxTop,frddboxSize:integer;
@@ -3261,6 +3265,7 @@ begin
     iniconfigfile.WriteString('Config','globaluseragent',globaluseragent);
     iniconfigfile.WriteBool('Config','portablemode',portablemode);
     iniconfigfile.WriteBool('Config','dropboxonstart',dropboxonstart);
+    iniconfigfile.WriteBool('Config','silentdropbox',silentdropbox);
     iniconfigfile.WriteBool('Config','showmainintray',showmainintray);
     //Window position and size
     if frmain.WindowState<>wsMaximized then
@@ -3447,6 +3452,7 @@ begin
     globaluseragent:=iniconfigfile.ReadString('Config','globaluseragent','Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.1 (KHTML, like Gecko) Chrome/21.0.1145.0 Safari/537.1');
     portablemode:=iniconfigfile.ReadBool('Config','portablemode',false);
     dropboxonstart:=iniconfigfile.ReadBool('Config','dropboxonstart',true);
+    silentdropbox:=iniconfigfile.ReadBool('Config','silentdropbox',false);
     {$IFDEF WINDOWS}
     showmainintray:=iniconfigfile.ReadBool('Config','showmainintray',true);
     showdowntrayicon:=iniconfigfile.ReadBool('Config','showdowntrayicon',true);
@@ -3738,6 +3744,7 @@ begin
   autoupdatecurl:=frconfig.chUpdateCurl.Checked;
   autoupdateyoutubedl:=frconfig.chUpdateYoutubedl.Checked;
   autoupdatewget:=frconfig.chUpdateWget.Checked;
+  silentdropbox:=frconfig.chSilentDropMode.Checked;
   SetLength(domainfilters,frconfig.lbDomains.Items.Count);
   for i:=0 to frconfig.lbDomains.Items.Count-1 do
   begin
@@ -3975,6 +3982,7 @@ begin
     frconfig.chUpdateCurl.Checked:=autoupdatecurl;
     frconfig.chUpdateYoutubedl.Checked:=autoupdateyoutubedl;
     frconfig.chUpdateWget.Checked:=autoupdatewget;
+    frconfig.chSilentDropMode.Checked:=silentdropbox;
     categoryextencionstmp:=categoryextencions;
   except on e:exception do
     ShowMessage(e.Message);
@@ -5897,6 +5905,39 @@ begin
     ShowMessage(fstrings.msgmustselectdownload);
 end;
 
+procedure clearcompletedownloads;
+var
+  i:integer;
+begin
+  SetLength(trayicons,frmain.lvMain.Items.Count);
+  frconfirm.Caption:=fstrings.dlgconfirm;
+  frconfirm.dlgtext.Caption:=msgclearcomplete;
+  frconfirm.ShowModal;
+  if dlgcuestion then
+  begin
+    for i:=frmain.lvMain.Items.Count-1 downto 0 do
+    begin
+      if (frmain.lvMain.Items[i].SubItems[columnstatus]='3') then
+      begin
+        //Borrar tambien el historial de la descarga antes de borrar.
+        if FileExists(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[i].SubItems[columnuid])+'.log') then
+          SysUtils.DeleteFile(UTF8ToSys(logpath+pathdelim+frmain.lvMain.Items[i].SubItems[columnuid])+'.log');
+        if FileExists(datapath+pathdelim+frmain.lvMain.Items[i].SubItems[columnuid]+'.status') then
+            SysUtils.DeleteFile(datapath+pathdelim+frmain.lvMain.Items[i].SubItems[columnuid]+'.status');
+        if frmain.lvMain.ItemIndex=i then
+          frmain.SynEdit1.Lines.Clear;
+        frmain.lvMain.Items.Delete(i);
+        hiddetrayicon(i);
+      end;
+    end;
+    rebuildids();
+    savemydownloads();
+    frmain.pbMain.Position:=0;
+    if frmain.lvFilter.Visible then
+      frmain.tvMainSelectionChanged(nil);
+  end;
+end;
+
 procedure DownThread.prestop;
 begin
   frmain.lvMain.Items[thid].Caption:=fstrings.statusstopping;
@@ -6141,6 +6182,19 @@ begin
         259:completado:=false;
         //0:completado:=true; //Al detener el wget produce el codigo cero tambien
       end;
+      ////In some cases with cautive portal and rediection wget report "The file is already fully retrieved; nothing to do." but is not true
+      ///Adjust size
+      {if (Pos(',',frmain.lvMain.Items[thid].SubItems[columnsize])>0) then
+        punto:=',';
+      if (Pos('.',frmain.lvMain.Items[thid].SubItems[columnsize])>0) then
+        punto:='.';
+      if punto<>'' then
+        tmpsize:=prettysize(strtoint(frmain.lvMain.Items[thid].SubItems[columncurrent]),'wget',-1,punto)
+      else
+        tmpsize:=prettysize(strtoint(frmain.lvMain.Items[thid].SubItems[columncurrent]),'wget',0,punto);
+      frmain.lvMain.Items[thid].SubItems[columncurrent]:=tmpsize;
+      if frmain.lvMain.Items[thid].SubItems[columnsize]<>frmain.lvMain.Items[thid].SubItems[columncurrent] then
+        completado:=false;}
     end;
     'aria2c':
     begin
@@ -7334,6 +7388,27 @@ begin
   frmain.mimainddboxClick(nil);
 end;
 
+procedure Tfrmain.miliMoveBottomClick(Sender: TObject);
+begin
+  movestepdown(frmain.lvMain.Items.Count-1);
+end;
+
+procedure Tfrmain.miliMoveDownClick(Sender: TObject);
+begin
+  if frmain.lvMain.ItemIndex<>-1 then
+    moveonestepdown(frmain.lvMain.ItemIndex);
+end;
+
+procedure Tfrmain.miliMoveTopClick(Sender: TObject);
+begin
+  movestepup(frmain.lvMain.ItemIndex,0);
+end;
+
+procedure Tfrmain.miliMoveUpClick(Sender: TObject);
+begin
+  moveonestepup();
+end;
+
 procedure Tfrmain.milistCancelDownClick(Sender: TObject);
 begin
   frmain.tbStopDownClick(tbCancelDown);
@@ -8095,9 +8170,7 @@ end;
 
 procedure Tfrmain.mimainDeleteAllClick(Sender: TObject);
 begin
-  frmain.mimainSelectAllClick(nil);
-  deleteitems(false);
-  savemydownloads();
+  clearcompletedownloads;
 end;
 
 procedure Tfrmain.mimainShowCommandClick(Sender: TObject);
@@ -8867,13 +8940,15 @@ begin
   moveonestepup();
 end;
 
-procedure Tfrmain.tbAddDownClick(Sender: TObject);
+procedure Tfrmain.tbAddDownClick(Sender: TObject;showdlg:boolean=true);
 var
   downitem:TListItem;
   tmpindex,i:integer;
   tmpclip:string='';
   magnetname:string='';
 begin
+  if Sender<>nil then
+    showdlg:=true;
   if (frnewdown.edtURL.Text='http://') or (frnewdown.edtURL.Text='') or (Sender<>nil) then
   begin
     tmpclip:=ClipBoard.AsText;
@@ -8915,13 +8990,16 @@ begin
   ///Select the best parameters
   suggestparameters();
   queueindexselect();
-  if frnewdown.Visible=false then
+  if (frnewdown.Visible=false) or (showdlg=false) then
   begin
     //frnewdown.Hide;
     //frnewdown.Visible:=false;
-    frnewdown.ShowModal;
+    if showdlg then
+      frnewdown.ShowModal
+    else
+      frnewdown.btnStartClick(nil);
     frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Activar el clipboardmonitor.
-    if agregar and (updateurl=false) then
+    if (agregar {or (showdlg=false)}) and (updateurl=false) then
     begin
       downitem:=TListItem.Create(frmain.lvMain.Items);
       downitem.Caption:=fstrings.statuspaused;
@@ -8965,7 +9043,7 @@ begin
       end;
       frmain.tvMainSelectionChanged(nil);
       savemydownloads();
-      if iniciar then
+      if iniciar {or (showdlg=false)} then
       begin
         queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
         downloadstart(tmpindex,false);
@@ -8985,7 +9063,7 @@ end;
 procedure Tfrmain.tbSteepDownClick(Sender: TObject);
 begin
   if frmain.lvMain.ItemIndex<>-1 then
-  moveonestepdown(frmain.lvMain.ItemIndex);
+    moveonestepdown(frmain.lvMain.ItemIndex);
 end;
 
 procedure Tfrmain.tbRestartNowClick(Sender: TObject);

@@ -22,6 +22,7 @@ msgid ""
 "\n"
 "French translation: Tony O Gallos @ CodeTyphon Community\n"
 "German translation: Mag Fu (mag.fu@yandex.com)\n"
+"Tukish translation: BigLorD @ Github.com\n"
 msgstr ""
 
 #: fstrings.alldowntreename
@@ -225,6 +226,10 @@ msgstr ""
 #: fstrings.monday
 msgctxt "fstrings.monday"
 msgid "Monday"
+msgstr ""
+
+#: fstrings.msgclearcomplete
+msgid "Do you want to clear all completed downloads?"
 msgstr ""
 
 #: fstrings.msgcloseinprogressdownload
@@ -756,6 +761,10 @@ msgctxt "TFRCONFIG.CHSHUTDOWN.CAPTION"
 msgid "Shutdown after end"
 msgstr ""
 
+#: tfrconfig.chsilentdropmode.caption
+msgid "Silent mode"
+msgstr ""
+
 #: tfrconfig.chsounddowncomplete.caption
 msgctxt "tfrconfig.chsounddowncomplete.caption"
 msgid "Download complete:"
@@ -1167,6 +1176,10 @@ msgctxt "TFRCONFIG.TSDOWNOPTIONS.CAPTION"
 msgid "Download options"
 msgstr ""
 
+#: tfrconfig.tsdropbox.caption
+msgid "tsDropBox"
+msgstr ""
+
 #: tfrconfig.tsfolders.caption
 msgctxt "TFRCONFIG.TSFOLDERS.CAPTION"
 msgid "Folders"
@@ -1389,9 +1402,33 @@ msgctxt "TFRMAIN.MIEXIT.CAPTION"
 msgid "Exit"
 msgstr ""
 
+#: tfrmain.milimovebottom.caption
+msgid "Move to bottom"
+msgstr ""
+
+#: tfrmain.milimovedown.caption
+msgid "Move down"
+msgstr ""
+
+#: tfrmain.milimovetop.caption
+msgid "Move to top"
+msgstr ""
+
+#: tfrmain.milimoveup.caption
+msgid "Move up"
+msgstr ""
+
+#: tfrmain.miliposition.caption
+msgid "Position"
+msgstr ""
+
 #: tfrmain.milistcanceldown.caption
 msgctxt "tfrmain.milistcanceldown.caption"
 msgid "Cancel"
+msgstr ""
+
+#: tfrmain.milistclearcomplete.caption
+msgid "Clear all complete"
 msgstr ""
 
 #: tfrmain.milistclearlog.caption
@@ -1479,29 +1516,9 @@ msgctxt "TFRMAIN.MILISTSTARTDOWN.CAPTION"
 msgid "Start"
 msgstr ""
 
-#: tfrmain.miliststeepdown.caption
-msgctxt "TFRMAIN.MILISTSTEEPDOWN.CAPTION"
-msgid "Move one step down"
-msgstr ""
-
-#: tfrmain.miliststeepup.caption
-msgctxt "TFRMAIN.MILISTSTEEPUP.CAPTION"
-msgid "Move one step up"
-msgstr ""
-
 #: tfrmain.miliststopdown.caption
 msgctxt "TFRMAIN.MILISTSTOPDOWN.CAPTION"
 msgid "Stop"
-msgstr ""
-
-#: tfrmain.milisttodown.caption
-msgctxt "TFRMAIN.MILISTTODOWN.CAPTION"
-msgid "Move to the end"
-msgstr ""
-
-#: tfrmain.milisttoup.caption
-msgctxt "TFRMAIN.MILISTTOUP.CAPTION"
-msgid "Move to the start"
 msgstr ""
 
 #: tfrmain.mimainabout.caption
