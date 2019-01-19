@@ -2,13 +2,33 @@ msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: fstrings.abouttext
+#, fuzzy
+#| msgid ""
+#| "Bu program GNU GPL 2 lisansı altında ücretsiz bir yazılımdır.\n"
+#| "\n"
+#| "Reinier Romero Mir tarafından oluşturuldu\n"
+#| "Email: nenirey@gmail.com\n"
+#| "Telif Hakkı (c) 2014-2019\n"
+#| "\n"
+#| "Proje aşağıdaki üçüncü taraf kaynaklarını kullanıyor:\n"
+#| "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
+#| "- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)\n"
+#| "- aria2 (http://aria2.sourceforge.net)\n"
+#| "- Wget (http://www.gnu.org/software/wget/)\n"
+#| "- cURL (http://curl.haxx.se)\n"
+#| "- Axel (http://axel.alioth.debian.org)\n"
+#| "- youtube-dl (http://yt-dl.org)\n"
+#| "- Download with Wget (http://add0n.com/download-with.html?from=wget)\n"
+#| "\n"
+#| "French Ceviri: Tony O Gallos @ CodeTyphon Community\n"
+#| "German Ceviri: Mag Fu (mag.fu@yandex.com)\n"
 msgctxt "fstrings.abouttext"
 msgid ""
-"Bu program GNU GPL 2 lisansı altında ücretsiz bir yazılımdır. \ n"
+"Bu program GNU GPL 2 lisansı altında ücretsiz bir yazılımdır.\n"
 "\n"
-"Created By Reinier Romero Mir\n"
+"Reinier Romero Mir tarafından oluşturuldu\n"
 "Email: nenirey@gmail.com\n"
-"Telif Hakkı (c) 2014-2018\n"
+"Telif Hakkı (c) 2014-2019\n"
 "\n"
 "Proje aşağıdaki üçüncü taraf kaynaklarını kullanıyor:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -18,18 +38,19 @@ msgid ""
 "- cURL (http://curl.haxx.se)\n"
 "- Axel (http://axel.alioth.debian.org)\n"
 "- youtube-dl (http://yt-dl.org)\n"
-"- FlashGot (http://flashgot.net)\n"
+"- Download with Wget (http://add0n.com/download-with.html?from=wget)\n"
 "\n"
-"Fransızca çeviri: Tony O Gallos @ CodeTyphon Community\n"
-"Almanca çeviri: Mag Fu (mag.fu@yandex.com)\n"
+"French Ceviri: Tony O Gallos @ CodeTyphon Community\n"
+"German Ceviri: Mag Fu (mag.fu@yandex.com)\n"
+"Tukish Ceviri: BigLorD @ Github.com\n"
 msgstr ""
 "Bu program GNU GPL 2 lisansı altında ücretsiz bir yazılımdır.\n"
 "\n"
-"Created By Reinier Romero Mir\n"
+"Reinier Romero Mir tarafından oluşturuldu\n"
 "Email: nenirey@gmail.com\n"
-"Telif Hakkı (c) 2014-2018\n"
+"Telif Hakkı (c) 2014-2019\n"
 "\n"
-"The project uses the following third party resources:\n"
+"Proje aşağıdaki üçüncü taraf kaynaklarını kullanıyor:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
 "- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)\n"
 "- aria2 (http://aria2.sourceforge.net)\n"
@@ -37,10 +58,10 @@ msgstr ""
 "- cURL (http://curl.haxx.se)\n"
 "- Axel (http://axel.alioth.debian.org)\n"
 "- youtube-dl (http://yt-dl.org)\n"
-"- FlashGot (http://flashgot.net)\n"
+"- Download with Wget (http://add0n.com/download-with.html?from=wget)\n"
 "\n"
-"French translation: Tony O Gallos @ CodeTyphon Community\n"
-"German translation: Mag Fu (mag.fu@yandex.com)\n"
+"French Ceviri: Tony O Gallos @ CodeTyphon Community\n"
+"German Ceviri: Mag Fu (mag.fu@yandex.com)\n"
 
 #: fstrings.alldowntreename
 msgctxt "fstrings.alldowntreename"
@@ -228,7 +249,7 @@ msgstr "Filters"
 #: fstrings.firefoxhelpintegration
 msgctxt "fstrings.firefoxhelpintegration"
 msgid "Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser."
-msgstr "Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser."
+msgstr "Lütfen Tamam düğmesini tıklatmadan önce Mozilla Firefox'u kapatın ve ardından aynı tarayıcıda FlashGot eklentilerini ekleyin.."
 
 #: fstrings.firefoxintegration
 msgctxt "fstrings.firefoxintegration"
@@ -244,6 +265,10 @@ msgstr "Cuma"
 msgctxt "fstrings.monday"
 msgid "Monday"
 msgstr "Pazartesi"
+
+#: fstrings.msgclearcomplete		
+msgid "Do you want to clear all completed downloads?"		
+msgstr "Tamamlanan tüm indirmeleri silmek istiyor musunuz?"
 
 #: fstrings.msgcloseinprogressdownload
 msgctxt "fstrings.msgcloseinprogressdownload"
@@ -335,6 +360,14 @@ msgctxt "fstrings.msgnointernetconnection"
 msgid "No internet connection"
 msgstr "İnternet Bağlantısı Yok"
 
+#: fstrings.msgupdatechecking		
+msgid "Checking..."		
+msgstr "Kontrol Ediliyor..."		
+			
+#: fstrings.msguptodate		
+msgid "Up to date!"		
+msgstr "Güncel!"
+
 #: fstrings.newfiletyperememberpath
 msgctxt "fstrings.newfiletyperememberpath"
 msgid "Do you want to remember the path for this file type?"
@@ -366,7 +399,7 @@ msgstr "Manual"
 #: fstrings.proxynot
 msgctxt "fstrings.proxynot"
 msgid "No proxy"
-msgstr "No proxy"
+msgstr "Proxy Yok"
 
 #: fstrings.proxysystem
 msgctxt "fstrings.proxysystem"
@@ -411,11 +444,11 @@ msgstr "Systray'de başla."
 #: fstrings.startqueuesystray
 msgctxt "fstrings.startqueuesystray"
 msgid "Start queue"
-msgstr "Start queue"
+msgstr "Kuyruğu Başlat"
 
 #: fstrings.statuscanceled
 msgid "Canceled"
-msgstr "Canceled"
+msgstr "İptal Edilmiş"
 
 #: fstrings.statuscomplete
 msgctxt "fstrings.statuscomplete"
@@ -439,12 +472,12 @@ msgstr "Durduruldu"
 
 #: fstrings.statusstarting
 msgid "Starting..."
-msgstr "Starting..."
+msgstr "Baslatiliyor..."
 
 #: fstrings.statusstoped
 msgctxt "fstrings.statusstoped"
 msgid "Stopped"
-msgstr "Stopped"
+msgstr "Durdurulmuş"
 
 #: fstrings.statusstopping
 msgid "Stopping..."
@@ -453,7 +486,7 @@ msgstr "Stopping..."
 #: fstrings.stopqueuesystray
 msgctxt "fstrings.stopqueuesystray"
 msgid "Stop queue"
-msgstr "Stop queue"
+msgstr "Kuyrugu Durdur"
 
 #: fstrings.sunday
 msgctxt "fstrings.sunday"
@@ -635,6 +668,10 @@ msgctxt "tfrconfig.btnpreviewnotification.caption"
 msgid "Preview"
 msgstr "Önizleme"
 
+#: tfrconfig.btnupdatechecknow.caption		
+msgid "Check now"		
+msgstr "Simdi Kontrol Et"
+
 #: tfrconfig.caption
 msgctxt "tfrconfig.caption"
 msgid "Configuration"
@@ -644,6 +681,10 @@ msgstr "Yapilandirma"
 msgctxt "tfrconfig.charia2usemulticonnections.caption"
 msgid "Use multiple connections."
 msgstr "Birden çok bağlantı kullan."
+
+#: tfrconfig.chautocheckupdate.caption		
+msgid "Automatic check for updates"		
+msgstr "Güncellemeler için otomatik kontrol"
 
 #: tfrconfig.chclipboardmonitor.caption
 msgctxt "tfrconfig.chclipboardmonitor.caption"
@@ -707,7 +748,7 @@ msgstr "Default arguments"
 
 #: tfrconfig.chignorefilter.caption
 msgid "Ignore domains:"
-msgstr ""
+msgstr "Yasaklı Siteler"
 
 #: tfrconfig.chinternetcheck.caption
 msgid "Start main queue if internet connection"
@@ -765,7 +806,11 @@ msgstr "Bildirimleri göster"
 #: tfrconfig.chshutdown.caption
 msgctxt "tfrconfig.chshutdown.caption"
 msgid "Shutdown after end"
-msgstr "Shutdown after end"
+msgstr "İndirme Bittikten sonra Kapat"
+
+#: tfrconfig.chsilentdropmode.caption		
+msgid "Silent mode"		
+msgstr "Sessiz mod"
 
 #: tfrconfig.chsounddowncomplete.caption
 msgctxt "tfrconfig.chsounddowncomplete.caption"
@@ -795,6 +840,26 @@ msgstr "Stop queue:"
 #: tfrconfig.chsysnotifications.caption
 msgid "Use system notifications"
 msgstr "Sistem Bildirimlerini Kullan"
+
+#: tfrconfig.chupdatearia2.caption		
+msgid "Update aria2"		
+msgstr "Güncelle aria2"		
+		
+#: tfrconfig.chupdateaxel.caption		
+msgid "Update axel"		
+msgstr "Güncelle axel"		
+			
+#: tfrconfig.chupdatecurl.caption		
+msgid "Update curl"		
+msgstr "Güncelle curl"		
+			
+#: tfrconfig.chupdatewget.caption		
+msgid "Update wget"		
+msgstr "Güncelle wget"		
+			
+#: tfrconfig.chupdateyoutubedl.caption		
+msgid "Update youtube-dl"		
+msgstr "Güncelle youtube-dl"
 
 #: tfrconfig.chuseauth.caption
 msgctxt "tfrconfig.chuseauth.caption"
@@ -965,7 +1030,7 @@ msgstr "Port:"
 #: tfrconfig.lblhidein.caption
 msgctxt "tfrconfig.lblhidein.caption"
 msgid "Hide in:"
-msgstr "Hide in:"
+msgstr "Gizle:"
 
 #: tfrconfig.lblhttphost.caption
 msgctxt "tfrconfig.lblhttphost.caption"
@@ -1076,12 +1141,12 @@ msgstr "Path of youtube-dl excecutable file:"
 #: tfrconfig.rbcategorybytype.caption
 msgctxt "tfrconfig.rbcategorybytype.caption"
 msgid "Suggest by file type"
-msgstr "Suggest by file type"
+msgstr "Dosya türüne göre öner"
 
 #: tfrconfig.rbcategoryonefolder.caption
 msgctxt "tfrconfig.rbcategoryonefolder.caption"
 msgid "All files in single folder"
-msgstr "All files in single folder"
+msgstr "Tüm dosyalar tek bir klasörde"
 
 #: tfrconfig.rblogsloadall.caption
 msgctxt "tfrconfig.rblogsloadall.caption"
@@ -1121,12 +1186,12 @@ msgstr "Position on the screen"
 #: tfrconfig.sbtncopyarguments.hint
 msgctxt "tfrconfig.sbtncopyarguments.hint"
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Panoya kopyala"
 
 #: tfrconfig.sbtncopypath.hint
 msgctxt "tfrconfig.sbtncopypath.hint"
 msgid "Copy to clipboard"
-msgstr ""
+msgstr "Panoya kopyala"
 
 #: tfrconfig.tsaria2.caption
 msgctxt "tfrconfig.tsaria2.caption"
@@ -1158,6 +1223,10 @@ msgctxt "tfrconfig.tsdownoptions.caption"
 msgid "Download options"
 msgstr "İndirme Seçenekleri"
 
+#: tfrconfig.tsdropbox.caption		
+msgid "tsDropBox"		
+msgstr ""
+
 #: tfrconfig.tsfolders.caption
 msgctxt "tfrconfig.tsfolders.caption"
 msgid "Folders"
@@ -1167,6 +1236,10 @@ msgstr "Klasörler"
 msgctxt "tfrconfig.tsintegration.caption"
 msgid "Integration"
 msgstr "Browser Entegrasyon"
+
+#: tfrconfig.tsinternetmonitor.caption		
+msgid "Internet monitor"		
+msgstr "Internet monitor"
 
 #: tfrconfig.tslang.caption
 msgctxt "tfrconfig.tslang.caption"
@@ -1202,6 +1275,10 @@ msgstr "Zamanlayıcı"
 msgctxt "tfrconfig.tssounds.caption"
 msgid "Sounds"
 msgstr "Sesler"
+
+#: tfrconfig.tsupdates.caption		
+msgid "Updates"		
+msgstr "Güncellemeler"
 
 #: tfrconfig.tswget.caption
 msgctxt "tfrconfig.tswget.caption"
@@ -1371,11 +1448,35 @@ msgstr "Drop box"
 msgctxt "tfrmain.miexit.caption"
 msgid "Exit"
 msgstr "Cıkış"
-
+			
+#: tfrmain.milimovebottom.caption		
+msgid "Move to bottom"		
+msgstr "Aşağıya Taşı"		
+		
+#: tfrmain.milimovedown.caption		
+msgid "Move down"		
+msgstr "Aşağı indir"		
+		
+#: tfrmain.milimovetop.caption		
+msgid "Move to top"		
+msgstr "Move to to"		
+		
+#: tfrmain.milimoveup.caption		
+msgid "Move up"		
+msgstr "Move up"		
+		
+#: tfrmain.miliposition.caption		
+msgid "Position"		
+msgstr "Position"		
+	
 #: tfrmain.milistcanceldown.caption
 msgctxt "tfrmain.milistcanceldown.caption"
 msgid "Cancel"
 msgstr "Vazgeç"
+			
+#: tfrmain.milistclearcomplete.caption		
+msgid "Clear all complete"		
+msgstr "Clear all complete"		
 
 #: tfrmain.milistclearlog.caption
 msgctxt "tfrmain.milistclearlog.caption"
@@ -1462,30 +1563,10 @@ msgctxt "tfrmain.miliststartdown.caption"
 msgid "Start"
 msgstr "Başlat"
 
-#: tfrmain.miliststeepdown.caption
-msgctxt "tfrmain.miliststeepdown.caption"
-msgid "Move one step down"
-msgstr "Bir adım aşağı git"
-
-#: tfrmain.miliststeepup.caption
-msgctxt "tfrmain.miliststeepup.caption"
-msgid "Move one step up"
-msgstr "Bir adım yukarı git"
-
 #: tfrmain.miliststopdown.caption
 msgctxt "tfrmain.miliststopdown.caption"
 msgid "Stop"
 msgstr "Dur"
-
-#: tfrmain.milisttodown.caption
-msgctxt "tfrmain.milisttodown.caption"
-msgid "Move to the end"
-msgstr "Sona Git"
-
-#: tfrmain.milisttoup.caption
-msgctxt "tfrmain.milisttoup.caption"
-msgid "Move to the start"
-msgstr "Başa git"
 
 #: tfrmain.mimainabout.caption
 msgctxt "tfrmain.mimainabout.caption"
@@ -1501,6 +1582,10 @@ msgstr "Yeni indirme..."
 msgctxt "tfrmain.mimainaddgrabber.caption"
 msgid "New site grabber..."
 msgstr "Site Grabber..."
+		
+#: tfrmain.mimaincheckupdate.caption		
+msgid "Check for updates..."		
+msgstr "Güncellemeleri kontrol et..."		
 
 #: tfrmain.mimaincolumns.caption
 msgctxt "tfrmain.mimaincolumns.caption"
@@ -1536,6 +1621,10 @@ msgstr "Diskten sil"
 msgctxt "tfrmain.mimaindeletedowndisk.hint"
 msgid "Delete from disk"
 msgstr "Diskten sil"
+		
+#: tfrmain.mimaindonate.caption		
+msgid "Donate"		
+msgstr "Bagış Yap"		
 
 #: tfrmain.mimaindownloads.caption
 msgctxt "tfrmain.mimaindownloads.caption"
@@ -2063,10 +2152,9 @@ msgctxt "tfrnotification.btnopenfile.hint"
 msgid "Open file"
 msgstr "Open file"
 
-#: tfrnotification.caption
-msgctxt "tfrnotification.caption"
-msgid "Download Notifications"
-msgstr "Download Notifications"
+#: tfrnotification.caption	
+msgid "Download notification"
+msgstr ""
 
 #: tfrnotification.lbldescriptionerror.caption
 msgid "lblDescriptionError"
