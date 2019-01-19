@@ -5999,8 +5999,9 @@ var
     end;
     if (Pos('* Connection #0 to host localhost left intact',wout)>0) then
     completado:=true;
-    //if Pos('http',wout)=1 then
-      //youtubeuri:=Copy(wout,0,Pos(LineEnding,wout)-1);
+    ///This is for the internet login of ETECSA
+    if (Pos('Server: NetEngine Server 1.0',wout)>0) and (Pos('Content-Type: text/html',wout)>0) then
+      completado:=false;
   end;
 
   function TrayOrRunning:boolean;

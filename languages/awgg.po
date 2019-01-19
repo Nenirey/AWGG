@@ -208,11 +208,6 @@ msgctxt "fstrings.filtresname"
 msgid "Filters"
 msgstr ""
 
-#: fstrings.firefoxhelpintegration
-msgctxt "fstrings.firefoxhelpintegration"
-msgid "Please close Mozilla Firefox before make click in Ok button and then accept the FlashGot addons instalation in the same browser."
-msgstr ""
-
 #: fstrings.firefoxintegration
 msgctxt "fstrings.firefoxintegration"
 msgid "Do you want to enable firefox integration?"
@@ -226,6 +221,10 @@ msgstr ""
 #: fstrings.monday
 msgctxt "fstrings.monday"
 msgid "Monday"
+msgstr ""
+
+#: fstrings.msgchromeexecutable
+msgid "Please select the Chrome or (Chromium-Based) browser executable file"
 msgstr ""
 
 #: fstrings.msgclearcomplete
@@ -272,6 +271,10 @@ msgctxt "fstrings.msgfilenoexist"
 msgid "The file not exists."
 msgstr ""
 
+#: fstrings.msgfirefoxexecutable
+msgid "Please select the Firefox or (Firefox-Based) browser executable file"
+msgstr ""
+
 #: fstrings.msginternetconnection
 msgctxt "fstrings.msginternetconnection"
 msgid "Internet connection"
@@ -311,6 +314,10 @@ msgstr ""
 #: fstrings.msgnointernetconnection
 msgctxt "fstrings.msgnointernetconnection"
 msgid "No internet connection"
+msgstr ""
+
+#: fstrings.msgoperaexecutable
+msgid "Please select the Opera launcher executable file"
 msgstr ""
 
 #: fstrings.msgupdatechecking

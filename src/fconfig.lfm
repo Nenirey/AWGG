@@ -8,16 +8,16 @@ object frconfig: Tfrconfig
   ClientWidth = 697
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.0.0.3'
+  LCLVersion = '1.8.4.0'
   object btnConfigAccept: TButton
     AnchorSideLeft.Control = pcConfig
     AnchorSideRight.Control = btnConfigCancel
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 539
+    Left = 492
     Height = 25
     Top = 484
-    Width = 48
+    Width = 63
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Left = 3
@@ -31,10 +31,10 @@ object frconfig: Tfrconfig
     AnchorSideRight.Control = btnConfigApply
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 597
+    Left = 565
     Height = 25
     Top = 484
-    Width = 46
+    Width = 62
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 10
@@ -55,28 +55,28 @@ object frconfig: Tfrconfig
     Height = 455
     Top = 24
     Width = 473
-    ActivePage = tsProxy
+    ActivePage = tsIntegration
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 0
+    TabIndex = 17
     TabOrder = 2
     OnChange = pcConfigChange
     Options = [nboKeyboardTabSwitch]
     object tsProxy: TTabSheet
       Caption = 'Proxy'
-      ClientHeight = 453
-      ClientWidth = 471
+      ClientHeight = 447
+      ClientWidth = 465
       object lblProxyPass: TLabel
         AnchorSideLeft.Control = chUseAuth
         AnchorSideTop.Control = edtProxyPass
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = edtProxyPass
-        Left = 27
-        Height = 19
-        Top = 280
-        Width = 63
+        Left = 23
+        Height = 15
+        Top = 255
+        Width = 53
         Anchors = [akTop, akRight]
         Caption = 'Password:'
         ParentColor = False
@@ -87,10 +87,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = lblSSLhost
         AnchorSideRight.Side = asrBottom
-        Left = 9
-        Height = 19
-        Top = 44
-        Width = 36
+        Left = 8
+        Height = 15
+        Top = 37
+        Width = 33
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 6
         Caption = 'HTTP:'
@@ -100,9 +100,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtSSLhost
         AnchorSideTop.Side = asrCenter
         Left = 20
-        Height = 19
-        Top = 100
-        Width = 25
+        Height = 15
+        Top = 89
+        Width = 21
         BorderSpacing.Left = 5
         Caption = 'SSL:'
         ParentColor = False
@@ -113,10 +113,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = lblSSLhost
         AnchorSideRight.Side = asrBottom
-        Left = 19
-        Height = 19
-        Top = 135
-        Width = 26
+        Left = 18
+        Height = 15
+        Top = 122
+        Width = 23
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 5
         Caption = 'FTP:'
@@ -127,9 +127,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = cbProxy
         AnchorSideTop.Side = asrBottom
-        Left = 45
-        Height = 25
-        Top = 41
+        Left = 41
+        Height = 23
+        Top = 33
         Width = 191
         BorderSpacing.Top = 5
         OnChange = chSameProxyChange
@@ -142,9 +142,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = edtHTTPhost
         AnchorSideRight.Side = asrBottom
-        Left = 45
-        Height = 25
-        Top = 97
+        Left = 41
+        Height = 23
+        Top = 85
         Width = 191
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
@@ -157,9 +157,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = edtHTTPhost
         AnchorSideRight.Side = asrBottom
-        Left = 45
-        Height = 25
-        Top = 132
+        Left = 41
+        Height = 23
+        Top = 118
         Width = 191
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
@@ -171,10 +171,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtHTTPhost
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 272
-        Height = 25
-        Top = 41
-        Width = 194
+        Left = 262
+        Height = 23
+        Top = 33
+        Width = 198
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Right = 5
         MaxValue = 9999
@@ -188,10 +188,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 272
-        Height = 25
-        Top = 97
-        Width = 194
+        Left = 262
+        Height = 23
+        Top = 85
+        Width = 198
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -205,10 +205,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 272
-        Height = 25
-        Top = 132
-        Width = 194
+        Left = 262
+        Height = 23
+        Top = 118
+        Width = 198
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -220,10 +220,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seHTTPport
         AnchorSideTop.Side = asrCenter
-        Left = 241
-        Height = 19
-        Top = 44
-        Width = 31
+        Left = 237
+        Height = 15
+        Top = 37
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -233,10 +233,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seSSLport
         AnchorSideTop.Side = asrCenter
-        Left = 241
-        Height = 19
-        Top = 100
-        Width = 31
+        Left = 237
+        Height = 15
+        Top = 89
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -246,10 +246,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seFTPport
         AnchorSideTop.Side = asrCenter
-        Left = 241
-        Height = 19
-        Top = 135
-        Width = 31
+        Left = 237
+        Height = 15
+        Top = 122
+        Width = 25
         BorderSpacing.Left = 5
         Caption = 'Port:'
         ParentColor = False
@@ -258,9 +258,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtNoProxyHosts
         AnchorSideTop.Side = asrCenter
         Left = 7
-        Height = 19
-        Top = 170
-        Width = 83
+        Height = 15
+        Top = 155
+        Width = 69
         BorderSpacing.Left = 5
         Caption = 'No proxy for:'
         ParentColor = False
@@ -272,10 +272,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 90
-        Height = 25
-        Top = 167
-        Width = 376
+        Left = 76
+        Height = 23
+        Top = 151
+        Width = 384
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -286,9 +286,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Control = edtNoProxyHosts
         AnchorSideTop.Control = chUseAuth
         AnchorSideTop.Side = asrBottom
-        Left = 90
-        Height = 25
-        Top = 247
+        Left = 76
+        Height = 23
+        Top = 223
         Width = 144
         BorderSpacing.Top = 5
         TabOrder = 7
@@ -298,10 +298,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtProxyUser
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = edtProxyUser
-        Left = 56
-        Height = 19
-        Top = 250
-        Width = 34
+        Left = 50
+        Height = 15
+        Top = 227
+        Width = 26
         Anchors = [akTop, akRight]
         Caption = 'User:'
         ParentColor = False
@@ -310,9 +310,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Control = edtProxyUser
         AnchorSideTop.Control = edtProxyUser
         AnchorSideTop.Side = asrBottom
-        Left = 90
-        Height = 25
-        Top = 277
+        Left = 76
+        Height = 23
+        Top = 251
         Width = 144
         BorderSpacing.Top = 5
         EchoMode = emPassword
@@ -323,9 +323,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = lblNoProxyHelp
         AnchorSideTop.Side = asrBottom
         Left = 15
-        Height = 21
-        Top = 221
-        Width = 140
+        Height = 19
+        Top = 199
+        Width = 119
         BorderSpacing.Top = 10
         Caption = 'Use authentication'
         Color = clDefault
@@ -337,9 +337,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtHTTPhost
         AnchorSideTop.Side = asrBottom
         Left = 82
-        Height = 21
-        Top = 71
-        Width = 189
+        Height = 19
+        Top = 61
+        Width = 158
         BorderSpacing.Top = 5
         Caption = 'Use the same proxy for all.'
         OnChange = chSameProxyChange
@@ -350,13 +350,13 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = tsProxy
         AnchorSideRight.Control = seHTTPport
         AnchorSideRight.Side = asrBottom
-        Left = 45
-        Height = 31
+        Left = 41
+        Height = 23
         Top = 5
-        Width = 421
+        Width = 419
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 5
-        ItemHeight = 0
+        ItemHeight = 15
         Items.Strings = (
           'No proxy'
           'System proxy'
@@ -372,10 +372,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = edtNoProxyHosts
         AnchorSideRight.Side = asrBottom
-        Left = 90
-        Height = 19
-        Top = 192
-        Width = 376
+        Left = 76
+        Height = 15
+        Top = 174
+        Width = 384
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Exp: .mozilla.org, localhost, 192.168.0.1'
         ParentColor = False
@@ -440,7 +440,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
         ClientHeight = 159
-        ClientWidth = 440
+        ClientWidth = 438
         Columns = 3
         Items.Strings = (
           'Sunday'
@@ -560,7 +560,7 @@ object frconfig: Tfrconfig
         Top = 10
         Width = 100
         BorderSpacing.Top = 10
-        ItemHeight = 0
+        ItemHeight = 15
         OnChange = cbQueueChange
         Style = csDropDownList
         TabOrder = 7
@@ -763,7 +763,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
         ClientHeight = 171
-        ClientWidth = 396
+        ClientWidth = 394
         Columns = 3
         ItemIndex = 2
         Items.Strings = (
@@ -823,7 +823,7 @@ object frconfig: Tfrconfig
         Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Show notifications for'
         ClientHeight = 111
-        ClientWidth = 396
+        ClientWidth = 394
         TabOrder = 5
         object chNotifiOnDownloadComplete: TCheckBox
           AnchorSideLeft.Control = gbShowNotificationFor
@@ -894,7 +894,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Bottom = 15
         Caption = 'Sounds'
         ClientHeight = 329
-        ClientWidth = 425
+        ClientWidth = 423
         TabOrder = 0
         object chPlaySounds: TCheckBox
           AnchorSideLeft.Control = gbSounds
@@ -1287,7 +1287,6 @@ object frconfig: Tfrconfig
         ItemHeight = 0
         ScrollWidth = 409
         TabOrder = 1
-        TopIndex = -1
       end
       object chIgnoreFilter: TCheckBox
         AnchorSideLeft.Control = chClipboardMonitor
@@ -1590,7 +1589,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 38
-        ClientWidth = 374
+        ClientWidth = 372
         TabOrder = 1
         object rbCategoryOneFolder: TRadioButton
           Left = 6
@@ -1628,7 +1627,6 @@ object frconfig: Tfrconfig
         ItemHeight = 0
         ScrollWidth = 110
         TabOrder = 2
-        TopIndex = -1
       end
       object deCategoryDownFolder: TDirectoryEdit
         AnchorSideLeft.Control = lblCategoryDownFolder
@@ -1909,7 +1907,6 @@ object frconfig: Tfrconfig
         OnSelectionChange = lbCategorySelectionChange
         ScrollWidth = 257
         TabOrder = 4
-        TopIndex = -1
       end
       object btnEditCategory: TSpeedButton
         AnchorSideLeft.Control = btnDeleteCategory
@@ -2054,7 +2051,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 217
-        ClientWidth = 399
+        ClientWidth = 397
         Items.Strings = (
           '[-c] Continue downloads.'
           '[-nH] No create host dir.'
@@ -2158,7 +2155,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 76
-        ClientWidth = 379
+        ClientWidth = 377
         Items.Strings = (
           '[-c] Continue downloads'
           '[--file-allocation=none] No allocate space.'
@@ -2183,7 +2180,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Top = 10
         Caption = 'Multiple connections'
         ClientHeight = 118
-        ClientWidth = 379
+        ClientWidth = 377
         TabOrder = 3
         object lblAria2Connections: TLabel
           AnchorSideLeft.Control = gbAria2MultiConnections
@@ -2347,7 +2344,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 224
-        ClientWidth = 379
+        ClientWidth = 377
         Items.Strings = (
           '[-C -] Continue downloads.'
         )
@@ -2554,7 +2551,7 @@ object frconfig: Tfrconfig
         Anchors = [akLeft, akRight, akBottom]
         Caption = 'Options'
         ClientHeight = 78
-        ClientWidth = 362
+        ClientWidth = 360
         TabOrder = 3
         object chytUseExternalDown: TCheckBox
           AnchorSideLeft.Control = gbytoptions
@@ -2579,7 +2576,7 @@ object frconfig: Tfrconfig
           Height = 23
           Top = 28
           Width = 100
-          ItemHeight = 0
+          ItemHeight = 15
           Style = csDropDownList
           TabOrder = 1
         end
@@ -2612,7 +2609,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 1
         ClientHeight = 355
-        ClientWidth = 439
+        ClientWidth = 437
         Items.Strings = (
           'Run with the system.'
           'Start in the systray.'
@@ -2699,7 +2696,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Top = 5
         Caption = 'Load mode'
         ClientHeight = 72
-        ClientWidth = 399
+        ClientWidth = 397
         TabOrder = 3
         object rbLogsLoadAll: TRadioButton
           AnchorSideLeft.Control = gbLogsLoadMode
@@ -2754,7 +2751,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Right = 10
         Caption = 'Connection'
         ClientHeight = 133
-        ClientWidth = 441
+        ClientWidth = 439
         TabOrder = 0
         object lblDownTimeOut: TLabel
           AnchorSideLeft.Control = seHTTPport
@@ -2884,7 +2881,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Bottom = 15
         Caption = 'Engine'
         ClientHeight = 109
-        ClientWidth = 441
+        ClientWidth = 439
         TabOrder = 1
         object cbDefEngine: TComboBox
           AnchorSideLeft.Control = gbEngine
@@ -2895,7 +2892,7 @@ object frconfig: Tfrconfig
           Height = 23
           Top = 37
           Width = 100
-          ItemHeight = 0
+          ItemHeight = 15
           Style = csDropDownList
           TabOrder = 0
         end
@@ -2926,7 +2923,7 @@ object frconfig: Tfrconfig
         Anchors = [akTop, akLeft, akRight]
         Caption = 'User agent'
         ClientHeight = 53
-        ClientWidth = 441
+        ClientWidth = 439
         TabOrder = 2
         object edtDownAgent: TEdit
           AnchorSideLeft.Control = gbUserAgent
@@ -2966,7 +2963,7 @@ object frconfig: Tfrconfig
         Height = 23
         Top = 176
         Width = 100
-        ItemHeight = 0
+        ItemHeight = 15
         Style = csDropDownList
         TabOrder = 0
       end
@@ -3074,7 +3071,7 @@ object frconfig: Tfrconfig
         BorderSpacing.Right = 20
         Caption = 'Rotate mode'
         ClientHeight = 121
-        ClientWidth = 400
+        ClientWidth = 398
         TabOrder = 3
         object rbQueueRMOneStep: TRadioButton
           AnchorSideLeft.Control = gbQueueRotateMode
@@ -3118,14 +3115,14 @@ object frconfig: Tfrconfig
     end
     object tsIntegration: TTabSheet
       Caption = 'Integration'
-      ClientHeight = 453
-      ClientWidth = 471
+      ClientHeight = 447
+      ClientWidth = 465
       OnShow = tsIntegrationShow
       object btnChromeIntegration: TBitBtn
         AnchorSideLeft.Control = tsIntegration
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = tsIntegration
-        Left = 136
+        Left = 148
         Height = 25
         Top = 20
         Width = 168
@@ -3140,7 +3137,7 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = btnFirefoxIntegration
         AnchorSideTop.Side = asrBottom
-        Left = 142
+        Left = 154
         Height = 25
         Top = 110
         Width = 157
@@ -3155,7 +3152,7 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrCenter
         AnchorSideTop.Control = btnChromeIntegration
         AnchorSideTop.Side = asrBottom
-        Left = 140
+        Left = 152
         Height = 25
         Top = 65
         Width = 160
@@ -3173,7 +3170,7 @@ object frconfig: Tfrconfig
         Left = 5
         Height = 23
         Top = 170
-        Width = 408
+        Width = 432
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 5
         ReadOnly = True
@@ -3213,7 +3210,7 @@ object frconfig: Tfrconfig
         Left = 5
         Height = 23
         Top = 218
-        Width = 408
+        Width = 432
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Left = 5
         ReadOnly = True
@@ -3226,7 +3223,7 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = edtProgramPath
         AnchorSideBottom.Side = asrBottom
-        Left = 413
+        Left = 437
         Height = 23
         Hint = 'Copy to clipboard'
         Top = 170
@@ -3280,7 +3277,7 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = edtProgramArguments
         AnchorSideBottom.Side = asrBottom
-        Left = 413
+        Left = 437
         Height = 23
         Hint = 'Copy to clipboard'
         Top = 218
@@ -3535,10 +3532,10 @@ object frconfig: Tfrconfig
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 653
+    Left = 637
     Height = 25
     Top = 484
-    Width = 41
+    Width = 57
     Anchors = [akRight, akBottom]
     AutoSize = True
     BorderSpacing.Right = 3
