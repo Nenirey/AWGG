@@ -113,12 +113,12 @@ begin
   begin
     frreplace.rbAutoRename.Checked:=true;
     found:=destinyexists(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text);
-    while ((FileExists(UTF8ToSys(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text))) or ((found) and (frreplace.rbOverwrite.Checked=false))) and (frreplace.rbUpdateURL.Checked=false) do
+    while ((FileExists(UTF8ToSys(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text))) and ((found) and (frreplace.rbOverwrite.Checked=false))) and (frreplace.rbUpdateURL.Checked=false) do
     begin
       found:=destinyexists(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text);
       frreplace.rbUpdateURL.Enabled:=found;
       frreplace.rbOverwrite.Enabled:=FileExists(UTF8ToSys(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text));
-      if (FileExists(UTF8ToSys(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text))) or ((found) and (frreplace.rbOverwrite.Checked=false)) then
+      if (FileExists(UTF8ToSys(frnewdown.deDestination.Text+pathdelim+frnewdown.edtFileName.Text))) and ((found) and (frreplace.rbOverwrite.Checked=false)) then
       begin
         frreplace.rbAutoRename.Checked:=true;
         frreplace.edtFileName.Text:='_'+frnewdown.edtFileName.Text;

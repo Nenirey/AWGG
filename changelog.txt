@@ -1,3 +1,11 @@
+Changes in (0.6.0.5953 BETA):
+
+-Update language files.
+-Fix wget delay on start.
+-Fix Internet monitor issue.
+-Fix wrong complete download with wget.
+
+
 Changes in (0.6.0.5925 BETA):
 
 -Add Clear all completed context menu item.

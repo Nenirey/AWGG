@@ -1319,6 +1319,7 @@ begin
         end;
       end;
     end;
+    self.Terminate;
   except on e:exception do
   end;
 end;
@@ -1430,7 +1431,8 @@ begin
   tmps.Add(inttostr(dtries));
   tmps.Add('-T');
   tmps.Add(inttostr(dtimeout));
-  tmps.Add('-w');
+  //Use this because -w wait to at the beginning and --waitretry only on retry
+  tmps.Add('--waitretry');
   tmps.Add(inttostr(ddelay));
   if (frmain.lvMain.Items[indice].SubItems[columnuser]<>'') and (frmain.lvMain.Items[indice].SubItems[columnpass]<>'') then
   begin
@@ -3631,6 +3633,7 @@ end;
 procedure setconfig();
 var
   i:integer;
+  imonitorchanges:boolean=false;
 begin
   useproxy:=frconfig.cbProxy.ItemIndex;
   phttp:=frconfig.edtHTTPhost.Text;
@@ -3735,6 +3738,8 @@ begin
   qviernes[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[5];
   qsabado[frconfig.cbQueue.ItemIndex]:=frconfig.chgWeekDays.Checked[6];
   activedomainfilter:=frconfig.chIgnoreFilter.Checked;
+  if (internetcheck<>frconfig.chInternetCheck.Checked) then
+    imonitorchanges:=true;
   internetcheck:=frconfig.chInternetCheck.Checked;
   internetURL:=frconfig.edtInternetURL.Text;
   internetInterval:=frconfig.seInternetInterval.Value;
@@ -3760,20 +3765,21 @@ begin
   stimer[frconfig.cbQueue.ItemIndex].Enabled:=qtimerenable[frconfig.cbQueue.ItemIndex];
   categoryreload();
   try
-    if internetcheck then
+    if imonitorchanges then
     begin
-      internetchecker:=TConnectionThread.Create;
-      internetchecker.Start;
-    end
-    else
-    begin
-      internet:=false;
-      if Assigned(internetchecker) then
+      if internetcheck then
       begin
-        internetchecker.stop;
+        internetchecker:=TConnectionThread.Create;
+        internetchecker.Start;
+      end
+      else
+      begin
+        internet:=false;
+        if Assigned(internetchecker) then
+          internetchecker.stop;
+        frmain.MainTrayIcon.Animate:=false;
+        frmain.MainTrayIcon.Icon:=Application.Icon;
       end;
-      frmain.MainTrayIcon.Animate:=false;
-      frmain.MainTrayIcon.Icon:=Application.Icon;
     end;
   except on e:exception do
   end;
