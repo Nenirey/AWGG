@@ -7268,7 +7268,7 @@ var
   percent:string;
   flog:string;
 begin
-  if (frmain.lvMain.ItemIndex<>-1) then
+  if (frmain.lvMain.ItemIndex<>-1) and (frmain.lvMain.SelCount=1) then
   begin
     if frmain.lvMain.Items[frmain.lvMain.ItemIndex].SubItems[columnstatus]='1' then
     begin
@@ -9983,6 +9983,7 @@ var
   post:string='';
   header:string='';
   url:string='';
+  urls:TStringList;
   useragent:string='';
   magnetname:string='';
   silent:boolean=false;
@@ -9990,6 +9991,7 @@ var
 begin
   if (ParamsCount>0) then
   begin
+    urls:=TStringList.Create;
     for i:=0 to ParamsCount-1 do
     begin
       if Params[i]='-s' then
@@ -10059,94 +10061,109 @@ begin
       //tmpstr:=tmpstr+' '+Params[i];
     end;
     //ShowMessage(tmpstr);
-    frnewdown.edtURL.Text:=url;
-    if fname<>'' then
-      frnewdown.edtFileName.Text:=fname
-    else
-    begin
-      frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
-      if (Pos('magnet:',url)=1) and (Pos('&dn=',url)>0) then
-      begin
-        magnetname:=Copy(url,Pos('&dn=',url)+4,Length(url));
-        magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
-        frnewdown.edtFileName.Text:=magnetname;
-      end;
-    end;
-    case defaultdirmode of
-      1:frnewdown.deDestination.Text:=ddowndir;
-      2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
-    end;
-    frnewdown.edtParameters.Text:='';
-    frnewdown.edtUser.Text:='';
-    frnewdown.edtPassword.Text:='';
-    frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
+
+    //Batch implementation
+    url:=StringReplace(url,'%20http://',lineending+'http://',[rfReplaceAll]);
+    url:=StringReplace(url,'%20https://',lineending+'https://',[rfReplaceAll]);
+    url:=StringReplace(url,'%20ftp://',lineending+'ftp://',[rfReplaceAll]);
+    url:=StringReplace(url,'%20magnet:',lineending+'magnet:',[rfReplaceAll]);
+    urls.AddText(url);
+    //ShowMessage(inttostr(urls.Count));
     frmain.ClipBoardTimer.Enabled:=false;//Desactivar temporalmente el clipboard monitor
-    enginereload();
-    suggestparameters();
-    if frnewdown.cbQueue.ItemIndex=-1 then
-      frnewdown.cbQueue.ItemIndex:=0;
-    queueindexselect();
-    if (frnewdown.Visible=false) and (silent=false) then
-      frnewdown.ShowModal;
-    if silent then
-      silent:=checkandclose(true);
-    frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Avtivar el clipboardmonitor
-    if (agregar or silent) and (updateurl=false) then
+    for n:=0 to urls.Count-1 do
     begin
-      downitem:=TListItem.Create(frmain.lvMain.Items);
-      downitem.Caption:=fstrings.statuspaused;
-      downitem.ImageIndex:=18;
-      downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
-      downitem.SubItems.Add('');//Tama;o
-      downitem.SubItems.Add('');//Descargado
-      downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
-      downitem.SubItems.Add('');//Velocidad
-      downitem.SubItems.Add('');//Porciento
-      downitem.SubItems.Add('');//Estimado
-      downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
-      downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
-      downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
-      downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
-      downitem.SubItems.Add('0');//status
-      downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
-      downitem.SubItems.Add(frnewdown.edtUser.Text);//user
-      downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
-      downitem.SubItems.Add(inttostr(triesrotate));//tries
-      downitem.SubItems.Add(uidgen());//uid
-      if silent then
-        downitem.SubItems.Add('0')//silent defualt queue
+      frnewdown.edtURL.Text:=urls[n];
+      if fname<>'' then
+        frnewdown.edtFileName.Text:=fname
       else
-        downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
-      downitem.SubItems.Add('0');//type
-      downitem.SubItems.Add(fcookie);//cookie
-      downitem.SubItems.Add(referer);//referer
-      downitem.SubItems.Add(post);//post
-      downitem.SubItems.Add(header);//header
-      downitem.SubItems.Add(useragent);//useragent
-      frmain.lvMain.Items.AddItem(downitem);
-      tmpindex:=downitem.Index;
-      if frnewdown.btnToUp.Visible then
       begin
-        movestepup(tmpindex,0);
-        tmpindex:=0;
+        frnewdown.edtFileName.Text:=ParseURI(frnewdown.edtURL.Text).Document;
+        if (Pos('magnet:',urls[n])=1) and (Pos('&dn=',urls[n])>0) then
+        begin
+          magnetname:=Copy(urls[n],Pos('&dn=',urls[n])+4,Length(urls[n]));
+          magnetname:=Copy(magnetname,0,Pos('&',magnetname)-1);
+          frnewdown.edtFileName.Text:=magnetname;
+        end;
       end;
-      if cola then
+      case defaultdirmode of
+        1:frnewdown.deDestination.Text:=ddowndir;
+        2:frnewdown.deDestination.Text:=suggestdir(frnewdown.edtFileName.Text);
+      end;
+      frnewdown.edtParameters.Text:='';
+      frnewdown.edtUser.Text:='';
+      frnewdown.edtPassword.Text:='';
+      frnewdown.cbEngine.ItemIndex:=frnewdown.cbEngine.Items.IndexOf(defaultengine);
+      enginereload();
+      suggestparameters();
+      if frnewdown.cbQueue.ItemIndex=-1 then
+        frnewdown.cbQueue.ItemIndex:=0;
+      queueindexselect();
+      agregar:=false;
+      iniciar:=false;
+      if (frnewdown.Visible=false) and (silent=false) and (urls.Count=1) then
+        frnewdown.ShowModal;
+      if (urls.Count>1) then
+        checkandclose(true);
+      if silent then
+        silent:=checkandclose(true);
+      if (agregar or silent or (urls.Count>1)) and (updateurl=false) then
       begin
-        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
-        qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
+        downitem:=TListItem.Create(frmain.lvMain.Items);
+        downitem.Caption:=fstrings.statuspaused;
+        downitem.ImageIndex:=18;
+        downitem.SubItems.Add(frnewdown.edtFileName.Text);//Nombre de archivo
+        downitem.SubItems.Add('');//Tama;o
+        downitem.SubItems.Add('');//Descargado
+        downitem.SubItems.Add(frnewdown.edtURL.Text);//URL
+        downitem.SubItems.Add('');//Velocidad
+        downitem.SubItems.Add('');//Porciento
+        downitem.SubItems.Add('');//Estimado
+        downitem.SubItems.Add(datetostr(Date())+' '+timetostr(Time()));//Fecha
+        downitem.SubItems.Add(frnewdown.deDestination.Text);//Destino
+        downitem.SubItems.Add(frnewdown.cbEngine.Text);//Motor
+        downitem.SubItems.Add(frnewdown.edtParameters.Text);//Parametros
+        downitem.SubItems.Add('0');//status
+        downitem.SubItems.Add(inttostr(frmain.lvMain.Items.Count));//id
+        downitem.SubItems.Add(frnewdown.edtUser.Text);//user
+        downitem.SubItems.Add(frnewdown.edtPassword.Text);//pass
+        downitem.SubItems.Add(inttostr(triesrotate));//tries
+        downitem.SubItems.Add(uidgen());//uid
+        if silent then
+          downitem.SubItems.Add('0')//silent defualt queue
+        else
+          downitem.SubItems.Add(inttostr(frnewdown.cbQueue.ItemIndex));//queue
+        downitem.SubItems.Add('0');//type
+        downitem.SubItems.Add(fcookie);//cookie
+        downitem.SubItems.Add(referer);//referer
+        downitem.SubItems.Add(post);//post
+        downitem.SubItems.Add(header);//header
+        downitem.SubItems.Add(useragent);//useragent
+        frmain.lvMain.Items.AddItem(downitem);
+        tmpindex:=downitem.Index;
+        if frnewdown.btnToUp.Visible then
+        begin
+          movestepup(tmpindex,0);
+          tmpindex:=0;
+        end;
+        if cola or (urls.Count>1) then
+        begin
+          queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+          qtimer[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])].Enabled:=true;
+        end;
+        if iniciar or silent then
+        begin
+          queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
+          downloadstart(tmpindex,false);
+        end;
+        if iniciar=false then
+        begin
+          if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
+            updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
+        end;
       end;
+      frmain.ClipBoardTimer.Enabled:=clipboardmonitor;//Avtivar el clipboardmonitor
       frmain.tvMainSelectionChanged(nil);
       savemydownloads();
-      if iniciar or silent then
-      begin
-        queuemanual[strtoint(frmain.lvMain.Items[tmpindex].SubItems[columnqueue])]:=true;
-        downloadstart(tmpindex,false);
-      end;
-      if iniciar=false then
-      begin
-        if frmain.lvMain.Items[tmpindex].SubItems[columnengine]='youtube-dl' then
-          updatevideonames(frmain.lvMain.Items[tmpindex].SubItems[columnid]);
-      end;
     end;
   end;
 end;

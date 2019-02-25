@@ -28,7 +28,7 @@ uses
   uExceptionHandlerFix,
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
-  Forms, datetimectrls, fmain, fnewdown, fconfig, fabout,
+  Forms, {$IFDEF TYPHON}lz_datetimectrls{$else}datetimectrls{$ENDIF}, fmain, fnewdown, fconfig, fabout,
   flang, fstrings, freplace, fsitegrabber, fadd, fnotification, fcopymove,
   fconfirm, un_lineinfo, fddbox, fvideoformat;
 

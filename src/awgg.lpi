@@ -19,7 +19,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="6"/>
-      <BuildNr Value="5954"/>
+      <BuildNr Value="6012"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2019" OriginalFilename="awgg" ProductName="AWGG" ProductVersion="0.5.1.5685"/>
     </VersionInfo>
     <BuildModes Count="13">
@@ -568,19 +568,16 @@ end;"/>
         <CommandLineParams Value="http://www.google.com/video.avi"/>
       </local>
     </RunParams>
-    <RequiredPackages Count="4">
+    <RequiredPackages Count="3">
       <Item1>
-        <PackageName Value="uniqueinstance_package"/>
+        <PackageName Value="DateTimeCtrls"/>
       </Item1>
       <Item2>
-        <PackageName Value="DateTimeCtrls"/>
+        <PackageName Value="SynEdit"/>
       </Item2>
       <Item3>
-        <PackageName Value="SynEdit"/>
-      </Item3>
-      <Item4>
         <PackageName Value="LCL"/>
-      </Item4>
+      </Item3>
     </RequiredPackages>
     <Units Count="15">
       <Unit0>
