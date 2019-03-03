@@ -1,7 +1,7 @@
 object frconfig: Tfrconfig
-  Left = 730
+  Left = 452
   Height = 512
-  Top = 278
+  Top = 230
   Width = 697
   Caption = 'Configuration'
   ClientHeight = 512
@@ -55,12 +55,12 @@ object frconfig: Tfrconfig
     Height = 455
     Top = 24
     Width = 473
-    ActivePage = tsProxy
+    ActivePage = tsNotifications
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 0
+    TabIndex = 2
     TabOrder = 2
     OnChange = pcConfigChange
     Options = [nboKeyboardTabSwitch]
@@ -682,15 +682,15 @@ object frconfig: Tfrconfig
     end
     object tsNotifications: TTabSheet
       Caption = 'Notifications'
-      ClientHeight = 453
-      ClientWidth = 471
+      ClientHeight = 447
+      ClientWidth = 465
       object chShowNotifications: TCheckBox
         AnchorSideLeft.Control = tsNotifications
         AnchorSideTop.Control = tsNotifications
         Left = 15
-        Height = 21
+        Height = 19
         Top = 15
-        Width = 135
+        Width = 118
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         Caption = 'Show notifications'
@@ -702,9 +702,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = chSysNotifications
         AnchorSideTop.Side = asrBottom
-        Left = 62
-        Height = 25
-        Top = 77
+        Left = 56
+        Height = 23
+        Top = 73
         Width = 50
         BorderSpacing.Top = 10
         MaxValue = 60
@@ -718,9 +718,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = seHideSeconds
         Left = 15
-        Height = 19
-        Top = 80
-        Width = 47
+        Height = 15
+        Top = 77
+        Width = 41
         Caption = 'Hide in:'
         ParentColor = False
       end
@@ -729,10 +729,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seHideSeconds
         AnchorSideTop.Side = asrCenter
-        Left = 112
-        Height = 19
-        Top = 80
-        Width = 53
+        Left = 106
+        Height = 15
+        Top = 77
+        Width = 46
         Caption = ' seconds'
         ParentColor = False
       end
@@ -746,8 +746,8 @@ object frconfig: Tfrconfig
         AnchorSideBottom.Side = asrBottom
         Left = 25
         Height = 191
-        Top = 113
-        Width = 398
+        Top = 107
+        Width = 415
         Anchors = [akTop, akLeft, akRight]
         AutoFill = True
         BorderSpacing.Left = 24
@@ -763,7 +763,7 @@ object frconfig: Tfrconfig
         ChildSizing.Layout = cclLeftToRightThenTopToBottom
         ChildSizing.ControlsPerLine = 3
         ClientHeight = 171
-        ClientWidth = 394
+        ClientWidth = 411
         Columns = 3
         ItemIndex = 2
         Items.Strings = (
@@ -784,10 +784,10 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = seHideSeconds
         AnchorSideTop.Side = asrCenter
-        Left = 175
+        Left = 162
         Height = 25
-        Top = 77
-        Width = 56
+        Top = 72
+        Width = 67
         AutoSize = True
         BorderSpacing.Left = 10
         Caption = 'Preview'
@@ -799,9 +799,9 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = chShowNotifications
         AnchorSideTop.Side = asrBottom
         Left = 25
-        Height = 21
-        Top = 46
-        Width = 173
+        Height = 19
+        Top = 44
+        Width = 148
         BorderSpacing.Left = 10
         BorderSpacing.Top = 10
         Caption = 'Use system notifications'
@@ -817,21 +817,21 @@ object frconfig: Tfrconfig
         AnchorSideBottom.Control = tsNotifications
         AnchorSideBottom.Side = asrBottom
         Left = 25
-        Height = 131
-        Top = 305
-        Width = 398
+        Height = 148
+        Top = 299
+        Width = 415
         Anchors = [akTop, akLeft, akRight, akBottom]
         Caption = 'Show notifications for'
-        ClientHeight = 111
-        ClientWidth = 394
+        ClientHeight = 128
+        ClientWidth = 411
         TabOrder = 5
         object chNotifiOnDownloadComplete: TCheckBox
           AnchorSideLeft.Control = gbShowNotificationFor
           AnchorSideTop.Control = gbShowNotificationFor
           Left = 10
-          Height = 21
+          Height = 19
           Top = 0
-          Width = 147
+          Width = 127
           BorderSpacing.Left = 10
           Caption = 'Download complete'
           TabOrder = 0
@@ -841,9 +841,9 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = chNotifiOnInternet
           AnchorSideTop.Side = asrBottom
           Left = 10
-          Height = 21
-          Top = 63
-          Width = 167
+          Height = 19
+          Top = 57
+          Width = 143
           Caption = 'No internet connection'
           TabOrder = 1
         end
@@ -852,9 +852,9 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = chNotifiOnDownloadComplete
           AnchorSideTop.Side = asrBottom
           Left = 10
-          Height = 21
-          Top = 21
-          Width = 123
+          Height = 19
+          Top = 19
+          Width = 102
           Caption = 'Download error'
           TabOrder = 2
         end
@@ -863,9 +863,9 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = chNotifiOnDownloadError
           AnchorSideTop.Side = asrBottom
           Left = 10
-          Height = 21
-          Top = 42
-          Width = 148
+          Height = 19
+          Top = 38
+          Width = 124
           Caption = 'Internet connection'
           TabOrder = 3
         end

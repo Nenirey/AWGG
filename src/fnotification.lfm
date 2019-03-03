@@ -1,7 +1,7 @@
 object frnotification: Tfrnotification
-  Left = 834
+  Left = 978
   Height = 113
-  Top = 360
+  Top = 194
   Width = 365
   AlphaBlend = True
   AlphaBlendValue = 200

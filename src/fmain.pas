@@ -1924,7 +1924,7 @@ begin
   end
   else
   begin
-    notiforms:=Tfrnotification.Create(nil);
+    notiforms:=Tfrnotification.Create(frmain);
     notiforms.notiuid:=uid;
     ABitmap:=Graphics.TBitmap.Create;
     ABitmap.Monochrome:=true;
@@ -1994,6 +1994,9 @@ begin
     notiforms.HideTimer.Interval:=hiddenotifi*1000;
     notiforms.HideTimer.Enabled:=true;
     {$IFDEF LCLGTK2}
+      notiforms.ShowInTaskBar:=stNever;
+    {$ENDIF}
+    {$IFDEF LCLQT5}
       notiforms.ShowInTaskBar:=stNever;
     {$ENDIF}
     notiforms.Show;
@@ -7582,7 +7585,7 @@ begin
     cpu:='x86_64';
   {$ENDIF}
   frabout.lblAboutName.Caption:='AWGG';
-  frabout.lblAboutVersion.Caption:='(Advanced WGET GUI)'+#10#13+'Version: '+versionitis.version+#10#13+'Compiled using:'+#10#13+'Lazarus: '+lcl_version+#10#13+'FPC: '+versionitis.fpcversion+#10#13+'Platform: '+cpu+'-'+versionitis.targetos+'-'+widgetset;
+  frabout.lblAboutVersion.Caption:='(Advanced WGET GUI)'+#10#13+'Version: '+versionitis.version+#10#13+'Compiled using:'+#10#13+{$IFDEF TYPHON}'CodeTyphon: '{$ELSE}'Lazarus: '{$ENDIF}+lcl_version+#10#13+'FPC: '+versionitis.fpcversion+#10#13+'Platform: '+cpu+'-'+versionitis.targetos+'-'+widgetset;
   frabout.mAboutText.Text:=abouttext;
   frabout.lblWebLink.Caption:='http://sites.google.com/site/awggproject';
   frabout.Show;
