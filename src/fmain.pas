@@ -7024,49 +7024,60 @@ begin
 end;
 
 procedure Tfrmain.lvMainColumnClick(Sender: TObject; Column: TListColumn);
-//var
-//  n:integer;
+var
+  n:integer;
 begin
-  //Commentado temporalmente porque afecta el orden de todas las colas
-  //for n:=0 to frmain.lvMain.Columns.Count-1 do
-  //begin
-  //  frmain.lvMain.Columns[n].Caption:=AnsiReplaceStr(frmain.lvMain.Columns[n].Caption,'  ٧','');
-  //  frmain.lvMain.Columns[n].Caption:=AnsiReplaceStr(frmain.lvMain.Columns[n].Caption,'  ٨','');
-  //  if (frmain.lvFilter.Visible) then
-  //  begin
-  //    frmain.lvFilter.Columns[n].Caption:=AnsiReplaceStr(frmain.lvFilter.Columns[n].Caption,'  ٧','');
-  //    frmain.lvFilter.Columns[n].Caption:=AnsiReplaceStr(frmain.lvFilter.Columns[n].Caption,'  ٨','');
-  //  end;
-  //end;
-  //if frmain.lvMain.SortDirection=sdAscending then
-  //begin
-  //  frmain.lvMain.SortDirection:=sdDescending;
-  //  {$IFDEF LCLQT}
-  //  {$ELSE}
-  //    Column.Caption:=Column.Caption+'  ٧';
-  //  {$ENDIF}
-  //end
-  //else
-  //begin
-  //  frmain.lvMain.SortDirection:=sdAscending;
-  //  {$IFDEF LCLQT}
-  //  {$ELSE}
-  //    Column.Caption:=Column.Caption+'  ٨';
-  //  {$ENDIF}
-  //end;
-  //frmain.lvMain.SortColumn:=column.Index;
-  //frmain.lvMain.SortType:=stText;
-  //if (frmain.lvFilter.Visible) then
-  //begin
-  //  frmain.lvFilter.SortColumn:=Column.Index;
-  //  frmain.lvFilter.SortType:=stText;
-  //  frmain.tvMainSelectionChanged(nil);
-  //end;
-  //rebuildids();
-  //if frmain.lvMain.Visible then
-    //columncolaw:=frmain.lvMain.Columns[0].Width
-  //else
-    //columncolaw:=frmain.lvFilter.Columns[0].Width;
+  for n:=0 to frmain.lvMain.Columns.Count-1 do
+  begin
+    //frmain.lvMain.Columns[n].Caption:=AnsiReplaceStr(frmain.lvMain.Columns[n].Caption,'  ٧','');
+    //frmain.lvMain.Columns[n].Caption:=AnsiReplaceStr(frmain.lvMain.Columns[n].Caption,'  ٨','');
+    //if Column.Index<>n then
+      frmain.lvMain.Column[n].ImageIndex:=-1;
+    if (frmain.lvFilter.Visible) then
+    begin
+      //frmain.lvFilter.Columns[n].Caption:=AnsiReplaceStr(frmain.lvFilter.Columns[n].Caption,'  ٧','');
+      //frmain.lvFilter.Columns[n].Caption:=AnsiReplaceStr(frmain.lvFilter.Columns[n].Caption,'  ٨','');
+      //if Column.Index<>n then
+        frmain.lvFilter.Column[n].ImageIndex:=-1;
+    end;
+  end;
+  if frmain.lvMain.SortDirection=sdAscending then
+  begin
+    frmain.lvMain.SortDirection:=sdDescending;
+    {$IFDEF LCLQT}
+    {$ELSE}
+      {$IFDEF LCLQT5}
+      {$ELSE}
+      //Column.Caption:=Column.Caption+'  ٧';
+      Column.ImageIndex:=68;
+      {$ENDIF}
+    {$ENDIF}
+  end
+  else
+  begin
+    frmain.lvMain.SortDirection:=sdAscending;
+    {$IFDEF LCLQT}
+    {$ELSE}
+      {$IFDEF LCLQT5}
+      {$ELSE}
+      //Column.Caption:=Column.Caption+'  ٨';
+      Column.ImageIndex:=69;
+      {$ENDIF}
+    {$ENDIF}
+  end;
+  frmain.lvMain.SortColumn:=column.Index;
+  frmain.lvMain.SortType:=stText;
+  if (frmain.lvFilter.Visible) then
+  begin
+    frmain.lvFilter.SortColumn:=Column.Index;
+    frmain.lvFilter.SortType:=stText;
+    frmain.tvMainSelectionChanged(nil);
+  end;
+  rebuildids();
+  if frmain.lvMain.Visible then
+    columncolaw:=frmain.lvMain.Columns[0].Width
+  else
+    columncolaw:=frmain.lvFilter.Columns[0].Width;
 end;
 
 

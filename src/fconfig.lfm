@@ -1,7 +1,7 @@
 object frconfig: Tfrconfig
-  Left = 452
+  Left = 355
   Height = 512
-  Top = 230
+  Top = 148
   Width = 697
   Caption = 'Configuration'
   ClientHeight = 512
@@ -55,12 +55,12 @@ object frconfig: Tfrconfig
     Height = 455
     Top = 24
     Width = 473
-    ActivePage = tsNotifications
+    ActivePage = tsProxy
     Align = alCustom
     Anchors = [akTop, akLeft, akRight, akBottom]
     BorderSpacing.Bottom = 5
     ShowTabs = False
-    TabIndex = 2
+    TabIndex = 0
     TabOrder = 2
     OnChange = pcConfigChange
     Options = [nboKeyboardTabSwitch]
@@ -325,7 +325,7 @@ object frconfig: Tfrconfig
         Left = 15
         Height = 19
         Top = 199
-        Width = 119
+        Width = 121
         BorderSpacing.Top = 10
         Caption = 'Use authentication'
         Color = clDefault
@@ -339,7 +339,7 @@ object frconfig: Tfrconfig
         Left = 82
         Height = 19
         Top = 61
-        Width = 158
+        Width = 160
         BorderSpacing.Top = 5
         Caption = 'Use the same proxy for all.'
         OnChange = chSameProxyChange
@@ -690,7 +690,7 @@ object frconfig: Tfrconfig
         Left = 15
         Height = 19
         Top = 15
-        Width = 118
+        Width = 120
         BorderSpacing.Left = 15
         BorderSpacing.Top = 15
         Caption = 'Show notifications'
@@ -801,7 +801,7 @@ object frconfig: Tfrconfig
         Left = 25
         Height = 19
         Top = 44
-        Width = 148
+        Width = 150
         BorderSpacing.Left = 10
         BorderSpacing.Top = 10
         Caption = 'Use system notifications'
@@ -831,7 +831,7 @@ object frconfig: Tfrconfig
           Left = 10
           Height = 19
           Top = 0
-          Width = 127
+          Width = 129
           BorderSpacing.Left = 10
           Caption = 'Download complete'
           TabOrder = 0
@@ -843,7 +843,7 @@ object frconfig: Tfrconfig
           Left = 10
           Height = 19
           Top = 57
-          Width = 143
+          Width = 145
           Caption = 'No internet connection'
           TabOrder = 1
         end
@@ -854,7 +854,7 @@ object frconfig: Tfrconfig
           Left = 10
           Height = 19
           Top = 19
-          Width = 102
+          Width = 104
           Caption = 'Download error'
           TabOrder = 2
         end
@@ -865,7 +865,7 @@ object frconfig: Tfrconfig
           Left = 10
           Height = 19
           Top = 38
-          Width = 124
+          Width = 126
           Caption = 'Internet connection'
           TabOrder = 3
         end
@@ -2982,16 +2982,16 @@ object frconfig: Tfrconfig
     end
     object tsQueue: TTabSheet
       Caption = 'Queue'
-      ClientHeight = 453
-      ClientWidth = 471
+      ClientHeight = 447
+      ClientWidth = 465
       object chQueueRotate: TCheckBox
         AnchorSideLeft.Control = lblQueueTriesRotate
         AnchorSideTop.Control = seQueueTriesRotate
         AnchorSideTop.Side = asrBottom
         Left = 20
-        Height = 20
+        Height = 19
         Top = 59
-        Width = 167
+        Width = 146
         BorderSpacing.Top = 20
         Caption = 'Rotate downloads if fail'
         OnChange = chQueueRotateChange
@@ -3003,7 +3003,7 @@ object frconfig: Tfrconfig
         Left = 20
         Height = 15
         Top = 20
-        Width = 132
+        Width = 108
         BorderSpacing.Left = 20
         BorderSpacing.Top = 20
         Caption = 'Tries or rotate times:'
@@ -3014,7 +3014,7 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = lblQueueTriesRotate
         AnchorSideTop.Side = asrCenter
-        Left = 154
+        Left = 130
         Height = 23
         Top = 16
         Width = 50
@@ -3028,9 +3028,9 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Side = asrBottom
         AnchorSideTop.Control = lblQueueDelaySec
         AnchorSideTop.Side = asrCenter
-        Left = 224
+        Left = 187
         Height = 23
-        Top = 241
+        Top = 308
         Width = 50
         BorderSpacing.Left = 2
         MaxValue = 60
@@ -3046,8 +3046,8 @@ object frconfig: Tfrconfig
         AnchorSideBottom.Side = asrBottom
         Left = 20
         Height = 15
-        Top = 245
-        Width = 202
+        Top = 312
+        Width = 165
         Anchors = [akLeft, akBottom]
         BorderSpacing.Top = 20
         BorderSpacing.Bottom = 120
@@ -3062,23 +3062,23 @@ object frconfig: Tfrconfig
         AnchorSideRight.Side = asrBottom
         AnchorSideBottom.Control = lblQueueDelaySec
         Left = 20
-        Height = 141
-        Top = 84
-        Width = 402
+        Height = 209
+        Top = 83
+        Width = 425
         Anchors = [akTop, akLeft, akRight, akBottom]
         BorderSpacing.Top = 5
         BorderSpacing.Right = 20
         Caption = 'Rotate mode'
-        ClientHeight = 121
-        ClientWidth = 398
+        ClientHeight = 189
+        ClientWidth = 421
         TabOrder = 3
         object rbQueueRMOneStep: TRadioButton
           AnchorSideLeft.Control = gbQueueRotateMode
           AnchorSideTop.Control = gbQueueRotateMode
           Left = 10
-          Height = 20
+          Height = 19
           Top = 10
-          Width = 117
+          Width = 102
           BorderSpacing.Left = 10
           BorderSpacing.Top = 10
           Caption = 'One step down'
@@ -3091,9 +3091,9 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = rbQueueRMTwoStop
           AnchorSideTop.Side = asrBottom
           Left = 10
-          Height = 20
-          Top = 70
-          Width = 88
+          Height = 19
+          Top = 68
+          Width = 79
           BorderSpacing.Top = 10
           Caption = 'To the end'
           TabOrder = 1
@@ -3103,9 +3103,9 @@ object frconfig: Tfrconfig
           AnchorSideTop.Control = rbQueueRMOneStep
           AnchorSideTop.Side = asrBottom
           Left = 10
-          Height = 20
-          Top = 40
-          Width = 120
+          Height = 19
+          Top = 39
+          Width = 108
           BorderSpacing.Top = 10
           Caption = 'Two steps down'
           TabOrder = 2

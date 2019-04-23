@@ -51,7 +51,8 @@ lineending+'- youtube-dl (http://yt-dl.org)'+
 lineending+'- Download with Wget (http://add0n.com/download-with.html?from=wget)'+
 lineending+lineending+'French translation: Tony O Gallos @ CodeTyphon Community'+
 lineending+'German translation: Mag Fu (mag.fu@yandex.com)'+
-lineending+'Tukish translation: BigLorD @ Github.com';
+lineending+'Tukish translation: BigLorD @ Github.com'+
+lineending+'Portuguese translation: havokdan@yahoo.com.br';
 wgetdefarg1='[-c] Continue downloads.';
 wgetdefarg2='[-nH] No create host dir.';
 wgetdefarg3='[-nd] No create out dir.';

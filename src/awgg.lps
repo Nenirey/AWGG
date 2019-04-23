@@ -22,8 +22,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="1982"/>
-        <CursorPos X="19" Y="1999"/>
+        <TopLine Value="7057"/>
+        <CursorPos X="9" Y="7040"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -91,8 +91,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="105"/>
-        <CursorPos X="53" Y="121"/>
+        <TopLine Value="46"/>
+        <CursorPos X="58" Y="55"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -198,7 +198,7 @@
         <LoadedDesigner Value="True"/>
       </Unit14>
     </Units>
-    <JumpHistory Count="3" HistoryIndex="2">
+    <JumpHistory Count="5" HistoryIndex="4">
       <Position1>
         <Filename Value="fconfig.pas"/>
         <Caret Line="488" Column="11" TopLine="486"/>
@@ -211,6 +211,14 @@
         <Filename Value="fmain.pas"/>
         <Caret Line="728" Column="20" TopLine="710"/>
       </Position3>
+      <Position4>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1999" Column="19" TopLine="1982"/>
+      </Position4>
+      <Position5>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7028" Column="11" TopLine="7017"/>
+      </Position5>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
