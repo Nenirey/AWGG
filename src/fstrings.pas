@@ -2,7 +2,7 @@ unit fstrings;
 {
   Resource strings form of AWGG
 
-  Copyright (C) 2019 Reinier Romero Mir
+  Copyright (C) 2020 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -39,7 +39,7 @@ categorytorrents='Torrents';
 abouttext='This program is free software under GNU GPL 2 license.'+
 lineending+lineending+'Created By Reinier Romero Mir'+
 lineending+'Email: nenirey@gmail.com'+
-lineending+'Copyright (c) 2014-2019'+
+lineending+'Copyright (c) 2014-2020'+
 lineending+lineending+'The project uses the following third party resources:'+
 lineending+'- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/'+
 lineending+'- Tango Icon Library (http://tango.freedesktop.org/Tango_Icon_Library)'+
@@ -52,7 +52,8 @@ lineending+'- Download with Wget (http://add0n.com/download-with.html?from=wget)
 lineending+lineending+'French translation: Tony O Gallos @ CodeTyphon Community'+
 lineending+'German translation: Mag Fu (mag.fu@yandex.com)'+
 lineending+'Tukish translation: BigLorD @ Github.com'+
-lineending+'Portuguese translation: havokdan@yahoo.com.br';
+lineending+'Portuguese translation: havokdan@yahoo.com.br'+
+lineending+'Chinese, Italian, Russian translation: Ronaldo Rodrigues Oliveira (morcberry@gmail.com)';
 wgetdefarg1='[-c] Continue downloads.';
 wgetdefarg2='[-nH] No create host dir.';
 wgetdefarg3='[-nd] No create out dir.';

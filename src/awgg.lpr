@@ -2,7 +2,7 @@ program awgg;
 {
   AWGG
 
-  Copyright (C) 2016 Reinier Romero Mir
+  Copyright (C) 2020 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it

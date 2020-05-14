@@ -16,7 +16,7 @@ object frnewdown: Tfrnewdown
   OnShow = FormShow
   Position = poScreenCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.4.0'
   object edtURL: TEdit
     AnchorSideLeft.Control = lblURL
     AnchorSideLeft.Side = asrBottom
@@ -55,7 +55,7 @@ object frnewdown: Tfrnewdown
     Left = 194
     Height = 26
     Top = 133
-    Width = 119
+    Width = 118
     Anchors = [akTop, akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Left = 1
@@ -235,7 +235,7 @@ object frnewdown: Tfrnewdown
     Left = 5
     Height = 15
     Top = 111
-    Width = 84
+    Width = 81
     BorderSpacing.Left = 5
     Caption = 'HTTP/FTP User:'
     ParentColor = False
@@ -247,10 +247,10 @@ object frnewdown: Tfrnewdown
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = edtParameters
     AnchorSideBottom.Control = btnCancel
-    Left = 89
+    Left = 86
     Height = 23
     Top = 107
-    Width = 140
+    Width = 143
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     OnKeyDown = FormKeyDown
@@ -264,7 +264,7 @@ object frnewdown: Tfrnewdown
     Left = 239
     Height = 15
     Top = 111
-    Width = 111
+    Width = 108
     BorderSpacing.Left = 10
     Caption = 'HTTP/FTP Password:'
     ParentColor = False
@@ -277,10 +277,10 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Control = Owner
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnCancel
-    Left = 350
+    Left = 347
     Height = 23
     Top = 107
-    Width = 192
+    Width = 195
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Top = 3
     BorderSpacing.Right = 3
@@ -441,10 +441,10 @@ object frnewdown: Tfrnewdown
     AnchorSideRight.Control = btnPaused
     AnchorSideBottom.Control = cbQueue
     AnchorSideBottom.Side = asrBottom
-    Left = 314
+    Left = 313
     Height = 26
     Top = 133
-    Width = 101
+    Width = 102
     Anchors = [akTop, akLeft, akRight]
     AutoSize = True
     BorderSpacing.Left = 1

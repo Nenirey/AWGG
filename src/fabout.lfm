@@ -10,7 +10,7 @@ object frabout: Tfrabout
   ClientWidth = 640
   OnDeactivate = FormDeactivate
   Position = poScreenCenter
-  LCLVersion = '1.8.0.4'
+  LCLVersion = '2.0.4.0'
   object lblAboutName: TLabel
     AnchorSideLeft.Control = Owner
     AnchorSideTop.Control = imgLogo
@@ -35,10 +35,10 @@ object frabout: Tfrabout
     AnchorSideRight.Side = asrCenter
     AnchorSideBottom.Control = Owner
     AnchorSideBottom.Side = asrBottom
-    Left = 301
-    Height = 23
-    Top = 292
-    Width = 39
+    Left = 300
+    Height = 25
+    Top = 290
+    Width = 41
     Anchors = [akLeft, akBottom]
     AutoSize = True
     BorderSpacing.Bottom = 5
@@ -405,10 +405,10 @@ object frabout: Tfrabout
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = btnOk
     Cursor = crHandPoint
-    Left = 251
+    Left = 253
     Height = 1
-    Top = 275
-    Width = 389
+    Top = 272
+    Width = 387
     Anchors = [akTop, akLeft, akRight]
     BorderSpacing.Left = 5
     BorderSpacing.Top = 20
@@ -428,9 +428,9 @@ object frabout: Tfrabout
     AnchorSideRight.Control = btnOk
     AnchorSideBottom.Control = btnOk
     Left = 200
-    Height = 13
-    Top = 269
-    Width = 46
+    Height = 15
+    Top = 265
+    Width = 48
     Alignment = taRightJustify
     Anchors = [akLeft, akBottom]
     BorderSpacing.Top = 5
@@ -444,7 +444,7 @@ object frabout: Tfrabout
     AnchorSideRight.Side = asrBottom
     AnchorSideBottom.Control = lblWebSite
     Left = 200
-    Height = 259
+    Height = 255
     Top = 5
     Width = 435
     Anchors = [akTop, akLeft, akRight, akBottom]
@@ -460,7 +460,7 @@ object frabout: Tfrabout
     AnchorSideTop.Side = asrBottom
     AnchorSideRight.Control = mAboutText
     Left = 0
-    Height = 13
+    Height = 15
     Top = 110
     Width = 200
     Alignment = taCenter

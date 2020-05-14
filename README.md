@@ -22,7 +22,7 @@ Features:
 - Status filter download.
 - Category downloads as Videos, Music, Image, Program, Compressed and others.
 
-Copyright (C) 2014-2019 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
+Copyright (C) 2014-2020 **Reinier Romero Mir** [(nenirey@gmail.com)][7]
 
 [Official web site][8]
 

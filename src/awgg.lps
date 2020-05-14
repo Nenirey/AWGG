@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectSession>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <BuildModes Active="Beta"/>
-    <Units Count="15">
+    <Units Count="16">
       <Unit0>
         <Filename Value="awgg.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="1"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="17"/>
-        <CursorPos X="26" Y="31"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="237"/>
         <Loaded Value="True"/>
       </Unit0>
@@ -22,8 +21,8 @@
         <ResourceBaseClass Value="Form"/>
         <IsVisibleTab Value="True"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="7057"/>
-        <CursorPos X="9" Y="7040"/>
+        <TopLine Value="1054"/>
+        <CursorPos X="6" Y="1078"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -36,8 +35,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="2"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="90"/>
-        <CursorPos X="12" Y="101"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="203"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -50,8 +48,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="11"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="473"/>
-        <CursorPos X="12" Y="480"/>
+        <TopLine Value="484"/>
+        <CursorPos X="9" Y="488"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -64,8 +62,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="9"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="54"/>
-        <CursorPos X="31" Y="73"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -91,8 +88,8 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="5"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="46"/>
-        <CursorPos X="58" Y="55"/>
+        <TopLine Value="47"/>
+        <CursorPos X="31" Y="56"/>
         <UsageCount Value="201"/>
         <Loaded Value="True"/>
       </Unit6>
@@ -152,7 +149,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="6"/>
         <WindowIndex Value="1"/>
-        <CursorPos X="19" Y="15"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -177,8 +174,7 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="4"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="96"/>
-        <CursorPos X="50" Y="110"/>
+        <CursorPos X="21" Y="6"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
@@ -191,34 +187,97 @@
         <ResourceBaseClass Value="Form"/>
         <EditorIndex Value="3"/>
         <WindowIndex Value="1"/>
-        <TopLine Value="28"/>
-        <CursorPos X="26" Y="41"/>
+        <CursorPos X="21" Y="5"/>
         <UsageCount Value="200"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit14>
+      <Unit15>
+        <Filename Value="../../../../../lazarus/fpc/3.0.4/source/rtl/objpas/classes/classesh.inc"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="1"/>
+        <TopLine Value="1691"/>
+        <CursorPos X="15" Y="1702"/>
+        <UsageCount Value="10"/>
+      </Unit15>
     </Units>
-    <JumpHistory Count="5" HistoryIndex="4">
+    <JumpHistory Count="18" HistoryIndex="15">
       <Position1>
-        <Filename Value="fconfig.pas"/>
-        <Caret Line="488" Column="11" TopLine="486"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="6" Column="29"/>
       </Position1>
       <Position2>
-        <Filename Value="fconfig.pas"/>
-        <Caret Line="480" Column="12" TopLine="473"/>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="2917" Column="64" TopLine="2897"/>
       </Position2>
       <Position3>
         <Filename Value="fmain.pas"/>
-        <Caret Line="728" Column="20" TopLine="710"/>
+        <Caret Line="2906" Column="38" TopLine="2897"/>
       </Position3>
       <Position4>
         <Filename Value="fmain.pas"/>
-        <Caret Line="1999" Column="19" TopLine="1982"/>
+        <Caret Line="84" Column="15" TopLine="73"/>
       </Position4>
       <Position5>
         <Filename Value="fmain.pas"/>
-        <Caret Line="7028" Column="11" TopLine="7017"/>
+        <Caret Line="1310" Column="7" TopLine="1294"/>
       </Position5>
+      <Position6>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7486" Column="26" TopLine="7479"/>
+      </Position6>
+      <Position7>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="406" Column="21" TopLine="394"/>
+      </Position7>
+      <Position8>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="7486" Column="22" TopLine="7479"/>
+      </Position8>
+      <Position9>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="249" Column="24" TopLine="237"/>
+      </Position9>
+      <Position10>
+        <Filename Value="fconfig.pas"/>
+        <Caret Line="488" Column="9" TopLine="485"/>
+      </Position10>
+      <Position11>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="740" Column="19" TopLine="727"/>
+      </Position11>
+      <Position12>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="818" Column="7" TopLine="767"/>
+      </Position12>
+      <Position13>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="73" Column="18" TopLine="51"/>
+      </Position13>
+      <Position14>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="75" Column="19" TopLine="51"/>
+      </Position14>
+      <Position15>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="73" Column="17" TopLine="51"/>
+      </Position15>
+      <Position16>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1070" Column="15" TopLine="1055"/>
+      </Position16>
+      <Position17>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="87" Column="18" TopLine="76"/>
+      </Position17>
+      <Position18>
+        <Filename Value="fmain.pas"/>
+        <Caret Line="1276" Column="7" TopLine="1268"/>
+      </Position18>
     </JumpHistory>
+    <RunParams>
+      <FormatVersion Value="2"/>
+      <Modes Count="0" ActiveMode="default"/>
+    </RunParams>
   </ProjectSession>
 </CONFIG>

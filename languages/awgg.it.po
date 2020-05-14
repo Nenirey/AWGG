@@ -1,4 +1,4 @@
-msgid ""
+﻿msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
 #: fstrings.abouttext
@@ -30,27 +30,27 @@ msgstr ""
 #: fstrings.alldowntreename
 msgctxt "fstrings.alldowntreename"
 msgid "All downloads"
-msgstr "Tüm indirmeler"
+msgstr "Tutti i download"
 
 #: fstrings.aria2defarg1
 msgctxt "fstrings.aria2defarg1"
 msgid "[-c] Continue downloads"
-msgstr "[-c] İndirmeye devam et"
+msgstr "[- c] Continua download"
 
 #: fstrings.aria2defarg2
 msgctxt "fstrings.aria2defarg2"
 msgid "[--file-allocation=none] No allocate space."
-msgstr "[--file-allocation=none] No allocate space."
+msgstr "[--File-allocation=none] nessun allocazione di spazio."
 
 #: fstrings.automaticstartscheduler
 msgctxt "fstrings.automaticstartscheduler"
 msgid "Automatic start the scheduler."
-msgstr "Zamanlayıcıyı otomatik başlat."
+msgstr "Avvio automatico dello scheduler."
 
 #: fstrings.btnnewdownstartnow
 msgctxt "fstrings.btnnewdownstartnow"
 msgid "Start now"
-msgstr "Şimdi başla"
+msgstr "Inizia Ora"
 
 #: fstrings.btnpropertiesok
 msgctxt "fstrings.btnpropertiesok"
@@ -60,37 +60,37 @@ msgstr "Ok"
 #: fstrings.categorycompressed
 msgctxt "fstrings.categorycompressed"
 msgid "Compressed"
-msgstr "Sıkıstırılmıs"
+msgstr "Compresso"
 
 #: fstrings.categorydocuments
 msgctxt "fstrings.categorydocuments"
 msgid "Documents"
-msgstr "Dokumanlar"
+msgstr "Documentos"
 
 #: fstrings.categoryfilter
 msgctxt "fstrings.categoryfilter"
 msgid "Categories"
-msgstr "Kategoriler"
+msgstr "Categorias"
 
 #: fstrings.categoryimages
 msgctxt "fstrings.categoryimages"
 msgid "Images"
-msgstr "Resimler"
+msgstr "Immagines"
 
 #: fstrings.categorymusic
 msgctxt "fstrings.categorymusic"
 msgid "Music"
-msgstr "Muzik"
+msgstr "Musicale"
 
 #: fstrings.categoryothers
 msgctxt "fstrings.categoryothers"
 msgid "Others"
-msgstr "Diger"
+msgstr "Altri"
 
 #: fstrings.categoryprograms
 msgctxt "fstrings.categoryprograms"
 msgid "Programs"
-msgstr "Programlar"
+msgstr "Programmas"
 
 #: fstrings.categorytorrents
 msgid "Torrents"
@@ -99,168 +99,179 @@ msgstr "Torrents"
 #: fstrings.categoryvideos
 msgctxt "fstrings.categoryvideos"
 msgid "Videos"
-msgstr "Videolar"
+msgstr "Videos"
 
 #: fstrings.commonaudiodescription
+#, fuzzy,badformat
 msgid "The best quality audio in %s format (if exists)"
-msgstr "The best quality audio in %s format (if exists)"
+msgstr "L'audio di qualità migliore nel formato % s (se esiste)"
 
 #: fstrings.commonvideodescription
+#, fuzzy,badformat
 msgid "The best quality video in %s format (if exists)"
-msgstr "The best quality video in %s format (if exists)"
+msgstr "La migliore qualità video in formato % s (se esiste)"
 
 #: fstrings.curldefarg1
 msgctxt "fstrings.curldefarg1"
 msgid "[-C -] Continue downloads."
-msgstr "[-C -] İndirmeye devam et."
+msgstr "[- C -] Continua download."
 
 #: fstrings.dlgclearhistorylogfile
+#, fuzzy
+#| msgid "Do you want to clear the history log archivio?"
 msgctxt "fstrings.dlgclearhistorylogfile"
 msgid "Do you want to clear the history log file?"
-msgstr "Geçmiş günlük dosyasını silmek istiyor musunuz?"
+msgstr "Vuoi cancellare il archivio di registro della cronologia?"
 
 #: fstrings.dlgconfirm
 msgctxt "fstrings.dlgconfirm"
 msgid "Confirm"
-msgstr "Onayla"
+msgstr "Confermare"
 
 #: fstrings.dlgdeletealldownloads
 msgctxt "fstrings.dlgdeletealldownloads"
 msgid "Do you want to delete all downloads?"
-msgstr "Tüm indirilenleri silmek istiyor musunuz?"
+msgstr "Vuoi eliminare tutti i download ?"
 
 #: fstrings.dlgdeletedown
 msgctxt "fstrings.dlgdeletedown"
 msgid "Do you want to delete the selected download(s)?"
-msgstr "Do you want to delete the selected download(s)?"
+msgstr "Eliminare i download selezionati ?"
 
 #: fstrings.dlgdeletedownandfile
 msgctxt "fstrings.dlgdeletedownandfile"
 msgid "Do you want to delete the selected download(s) and file(s) in disk?"
-msgstr "Seçilen indirmeleri) ve dosyaları) diskte silmek istiyor musunuz?"
+msgstr "Eliminare i download e i archivio selezionati nel disco?"
 
 #: fstrings.dlgdeletequeue
 msgctxt "fstrings.dlgdeletequeue"
 msgid "Do you want to delete the selected queue?"
-msgstr "Seçilen kuyruğu silmek istiyor musunuz?"
+msgstr "Eliminare la coda selezionata?"
 
 #: fstrings.dlgrestartalldownloads
 msgctxt "fstrings.dlgrestartalldownloads"
 msgid "Do you want to restart all downloads?"
-msgstr "Tüm indirmeleri yeniden başlatmak ister misiniz?"
+msgstr "Vuoi riavviare tutti i download?"
 
 #: fstrings.dlgrestartalldownloadslatter
 msgctxt "fstrings.dlgrestartalldownloadslatter"
 msgid "Do you want to restart all downloads later?"
-msgstr "Do you want to restart all downloads later?"
+msgstr "Vuoi riavviare tutti i download più tardi?"
 
 #: fstrings.dlgrestartselecteddownload
 msgctxt "fstrings.dlgrestartselecteddownload"
 msgid "Do you want to restart the selected download?"
-msgstr "Do you want to restart the selected download?"
+msgstr "Vuoi riavviare il download selezionato?"
 
 #: fstrings.dlgrestartselecteddownloadletter
 msgctxt "fstrings.dlgrestartselecteddownloadletter"
 msgid "Do you want to restart the selected download later?"
-msgstr "Do you want to restart the selected download leter?"
+msgstr "Vuoi riavviare il download selezionato in seguito?"
 
 #: fstrings.downloadpathname
 msgctxt "fstrings.downloadpathname"
 msgid "Downloads"
-msgstr "İndirmeler"
+msgstr "Scaricare"
 
 #: fstrings.errorloadingformat
 msgid "Error loading video formats, please press reload button"
-msgstr "Error loading video formats, please press reload button"
+msgstr "Errore di caricamento formati video, si prega di premere il pulsante reload"
 
 #: fstrings.errorloadingname
 msgid "Error loading video name, please press reload button"
-msgstr "Error loading video name, please press reload button"
+msgstr "Errore di caricamento video nome, si prega di premere il pulsante reload"
 
 #: fstrings.fileexistsreplace
 msgctxt "fstrings.fileexistsreplace"
 msgid "The file exist, do you want replace it?"
-msgstr "The file exist, do you want replace it?"
+msgstr "Il archivio esiste, vuoi sostituirlo?"
 
 #: fstrings.fileexistsreplacetext
 msgctxt "fstrings.fileexistsreplacetext"
 msgid "The file \"%S\" already exists, do you want to replace it?"
-msgstr "The file \"%S\" already exists, do you want to replace it?"
+msgstr "Il file \" %s\" esiste già, vuoi sostituirlo?"
 
 #: fstrings.fileoperationcopy
 msgctxt "fstrings.fileoperationcopy"
 msgid "Coping file(s)..."
-msgstr "Coping file(s)..."
+msgstr "Copia di archivio..."
 
 #: fstrings.fileoperationmove
 msgctxt "fstrings.fileoperationmove"
 msgid "Moving file(s)..."
-msgstr "Moving file(s)..."
+msgstr "Archivio in movimento(S)..."
 
 #: fstrings.filterforcenames
 msgid "Force downloads names"
-msgstr ""
+msgstr "Forza download nomi"
 
 #: fstrings.filternoforcenames
 msgid "No force downloads names"
-msgstr ""
+msgstr "Nessuna forza download nomi"
 
 #: fstrings.filtresname
 msgctxt "fstrings.filtresname"
 msgid "Filters"
-msgstr "Filters"
+msgstr "Filtro"
 
 #: fstrings.firefoxintegration
 msgctxt "fstrings.firefoxintegration"
 msgid "Do you want to enable firefox integration?"
-msgstr "Firefox entegrasyonunu etkinleştirmek ister misiniz?"
+msgstr "Vuoi abilitare l'integrazione con firefox?"
 
 #: fstrings.friday
 msgctxt "fstrings.friday"
 msgid "Friday"
-msgstr "Cuma"
+msgstr "Venerdi"
 
 #: fstrings.monday
 msgctxt "fstrings.monday"
 msgid "Monday"
-msgstr "Pazartesi"
+msgstr "Lunedi"
 
 #: fstrings.msgchromeexecutable
 msgid "Please select the Chrome or (Chromium-Based) browser executable file"
-msgstr ""
+msgstr "Selezionare il archivio eseguibile del browser Chrome o (basato su Chromium)"
 
 #: fstrings.msgclearcomplete
 msgid "Do you want to clear all completed downloads?"
-msgstr ""
+msgstr "Vuoi cancellare tutti i download completati?"
 
 #: fstrings.msgcloseinprogressdownload
 msgctxt "fstrings.msgcloseinprogressdownload"
 msgid "Downloads exist in progress, do you want to close anyway?"
-msgstr "İndirme işlemi devam ediyor, yine de kapatmak istiyor musunuz?"
+msgstr "I download esistono in corso, vuoi comunque chiudere?"
 
 #: fstrings.msgcopyoperationerror
 #, fuzzy,badformat
 msgid ""
 "Error to copy file, details:\n"
 "%s\n"
-msgstr "\""
+msgstr "Errore nel copiare file, Dettagli:  n"
 
 #: fstrings.msgerrorconfigload
 msgctxt "fstrings.msgerrorconfigload"
 msgid "Error loading config file: "
-msgstr "Config dosyası yüklenirken hata oluştu: "
+msgstr "Errore nel caricare il archivio di configurazione: "
 
 #: fstrings.msgerrorconfigsave
 msgctxt "fstrings.msgerrorconfigsave"
 msgid "Error saving config file: "
-msgstr "Error saving config file: "
+msgstr "Errore nel salvare il archivio di configurazione: "
 
 #: fstrings.msgerrordownlistsave
 msgctxt "fstrings.msgerrordownlistsave"
 msgid "Error saving the download list"
-msgstr "Error saving the download list"
+msgstr "Errore nel salvare l'elenco di download"
 
 #: fstrings.msgerrorinforme
+#, fuzzy
+#| msgid ""
+#| "Oh no !! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:\n"
+#| "%s\n"
+#| "Error description:\n"
+#| "%s\n"
+#| "Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue\n"
 msgid ""
 "Oh!! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:\n"
 "%s\n"
@@ -268,983 +279,996 @@ msgid ""
 "%s\n"
 "Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue\n"
 msgstr ""
+"Oh no !! questo è raro, si è verificato un errore, si prega di segnalare questo per e-mail nenirey@gmail.com con il file allega:  n%s\n"
+"Descrizione Errore:  n%s\n"
+"Premere [Ok] per segnalare, [Annulla] per chiudere il programma e [ignora] per continuare\n"
 
 #: fstrings.msgfilenoexist
 msgctxt "fstrings.msgfilenoexist"
 msgid "The file not exists."
-msgstr "Dosya mevcut değil."
+msgstr "Il archivio non esiste."
 
 #: fstrings.msgfirefoxexecutable
 msgid "Please select the Firefox or (Firefox-Based) browser executable file"
-msgstr ""
+msgstr "Si prega di selezionare il archivio eseguibile del browser Firefox o (basato su Firefox)"
 
 #: fstrings.msginternetconnection
 msgctxt "fstrings.msginternetconnection"
 msgid "Internet connection"
-msgstr "İnternet Bağlı"
+msgstr "Connessione Internet"
 
 #: fstrings.msgmoveoperationerror
 msgid ""
 "Error to move file, details:\n"
 "$s\n"
-msgstr ""
+msgstr "Errore nel spostare archivio, Dettagli:  n$s"
 
 #: fstrings.msgmustselectdownload
 msgctxt "fstrings.msgmustselectdownload"
 msgid "You must select a download."
-msgstr "Bir indirme seçmelisiniz."
+msgstr "È necessario selezionare un download."
 
 #: fstrings.msgmustselectdownloadengine
 msgctxt "fstrings.msgmustselectdownloadengine"
 msgid "You must select a download engine!!'"
-msgstr "Bir indirme motoru seçmelisiniz!!"
+msgstr "È necessario selezionare un motore di download!!\""
 
 #: fstrings.msgmustselectweekday
 msgctxt "fstrings.msgmustselectweekday"
 msgid "You must select one week day!!"
-msgstr "Bir hafta günü seçmelisiniz!!"
+msgstr "È necessario selezionare un giorno della settimana!!"
 
 #: fstrings.msgnoexistfolder
 msgctxt "fstrings.msgnoexistfolder"
 msgid "The folder not exists: "
-msgstr "Klasör mevcut değil: "
+msgstr "La cartella non esiste: "
 
 #: fstrings.msgnoexisthistorylog
 msgctxt "fstrings.msgnoexisthistorylog"
 msgid "The history log for the download does not exist!"
-msgstr "The history log for the download does not exist!"
+msgstr "Il registro Cronologia per il download non esiste!"
 
 #: fstrings.msgnointernetconnection
 msgctxt "fstrings.msgnointernetconnection"
 msgid "No internet connection"
-msgstr "İnternet Bağlantısı Yok"
+msgstr "Nessuna connessione internet"
 
 #: fstrings.msgoperaexecutable
 msgid "Please select the Opera launcher executable file"
-msgstr ""
+msgstr "Si prega di selezionare il archivio eseguibile Opera launcher"
 
 #: fstrings.msgupdatechecking
 msgid "Checking..."
-msgstr ""
+msgstr "Verificare..."
 
 #: fstrings.msguptodate
 msgid "Up to date!"
-msgstr ""
+msgstr "Aggiornato!"
 
 #: fstrings.newfiletyperememberpath
 msgctxt "fstrings.newfiletyperememberpath"
 msgid "Do you want to remember the path for this file type?"
-msgstr "Bu dosya türünün yolunu hatırlamak istiyor musunuz??"
+msgstr "Vuoi ricordare il percorso per questo tipo di archivio?"
 
 #: fstrings.nochangefield
 msgid "[Keep]"
-msgstr "[Keep]"
+msgstr "[Mantenere]"
 
 #: fstrings.popuptitlecomplete
 msgctxt "fstrings.popuptitlecomplete"
 msgid "Download complete"
-msgstr "İndirme tamamlandı"
+msgstr "Scarica completa"
 
 #: fstrings.popuptitlestoped
 msgctxt "fstrings.popuptitlestoped"
 msgid "Download stopped:"
-msgstr "İndirme Durdu:"
+msgstr "Download interrotto:"
 
 #: fstrings.portablemode
 msgid "Portable"
-msgstr ""
+msgstr "Portatile"
 
 #: fstrings.proxymanual
 msgctxt "fstrings.proxymanual"
 msgid "Manual"
-msgstr "Manual"
+msgstr "Manuale"
 
 #: fstrings.proxynot
 msgctxt "fstrings.proxynot"
 msgid "No proxy"
-msgstr "Proxy Yok"
+msgstr "Nessun proxy"
 
 #: fstrings.proxysystem
 msgctxt "fstrings.proxysystem"
 msgid "System proxy"
-msgstr "System proxy"
+msgstr "Proxy di sistema"
 
 #: fstrings.queuemainname
 msgctxt "fstrings.queuemainname"
 msgid "Main"
-msgstr "Main"
+msgstr "Principale"
 
 #: fstrings.queuename
 msgctxt "fstrings.queuename"
 msgid "Queue"
-msgstr "Queue"
+msgstr "Coda"
 
 #: fstrings.queuestreename
 msgctxt "fstrings.queuestreename"
 msgid "Queues"
-msgstr "Queues"
+msgstr "Codas"
 
 #: fstrings.rootdownloadpathchange
 msgctxt "fstrings.rootdownloadpathchange"
 msgid "The root of the downloads folder has changed, would like to recreate the routes by categories in the new root?"
-msgstr "The root of the downloads folder has changed, would like to recreate the routes by categories in the new root?"
+msgstr "La radice della cartella Download è cambiata, vorrebbe ricreare i percorsi per categorie nella nuova radice?"
 
 #: fstrings.runwiththesystem
 msgctxt "fstrings.runwiththesystem"
 msgid "Run with the system."
-msgstr "Sistem Baslangıcında Başlat."
+msgstr "Eseguire con il sistema."
 
 #: fstrings.saturday
 msgctxt "fstrings.saturday"
 msgid "Saturday"
-msgstr "Cumartesi"
+msgstr "Sabato"
 
 #: fstrings.startinthesystray
 msgctxt "fstrings.startinthesystray"
 msgid "Start in the systray."
-msgstr "Systray'de başla."
+msgstr "Inizia nel systray."
 
 #: fstrings.startqueuesystray
 msgctxt "fstrings.startqueuesystray"
 msgid "Start queue"
-msgstr "Kuyruğu Başlat"
+msgstr "Coda di avvio"
 
 #: fstrings.statuscanceled
 msgid "Canceled"
-msgstr "İptal Edilmiş"
+msgstr "Annullare"
 
 #: fstrings.statuscomplete
 msgctxt "fstrings.statuscomplete"
 msgid "Complete"
-msgstr "Tamamlandı"
+msgstr "Completo"
 
 #: fstrings.statuserror
 msgctxt "fstrings.statuserror"
 msgid "Error"
-msgstr "Hata"
+msgstr "Errore"
 
 #: fstrings.statusinprogres
 msgctxt "fstrings.statusinprogres"
 msgid "In progress"
-msgstr "İndiriliyor"
+msgstr "In corso"
 
 #: fstrings.statuspaused
 msgctxt "fstrings.statuspaused"
 msgid "Paused"
-msgstr "Durduruldu"
+msgstr "Sostare"
 
 #: fstrings.statusstarting
 msgid "Starting..."
-msgstr "Baslatiliyor..."
+msgstr "Partenza..."
 
 #: fstrings.statusstoped
 msgctxt "fstrings.statusstoped"
 msgid "Stopped"
-msgstr "Durdurulmuş"
+msgstr "Interrompere"
 
 #: fstrings.statusstopping
 msgid "Stopping..."
-msgstr "Stopping..."
+msgstr "Arresto..."
 
 #: fstrings.stopqueuesystray
 msgctxt "fstrings.stopqueuesystray"
 msgid "Stop queue"
-msgstr "Kuyrugu Durdur"
+msgstr "Coda di arresto"
 
 #: fstrings.sunday
 msgctxt "fstrings.sunday"
 msgid "Sunday"
-msgstr "Pazar"
+msgstr "Domenica"
 
 #: fstrings.thursday
 msgctxt "fstrings.thursday"
 msgid "Thursday"
-msgstr "Perşembe"
+msgstr "Giovedi"
 
 #: fstrings.titlenewdown
 msgctxt "fstrings.titlenewdown"
 msgid "New download"
-msgstr "Yeni İndirme"
+msgstr "Nuovo download"
 
 #: fstrings.titlepropertiesdown
 msgctxt "fstrings.titlepropertiesdown"
 msgid "Download properties"
-msgstr "İndirme Özellikleri"
+msgstr "Scarica proprietà"
 
 #: fstrings.transdestinationlabel
+#, fuzzy,badformat
 msgctxt "fstrings.transdestinationlabel"
 msgid "To: %S"
-msgstr "To: %S"
+msgstr "A: % S"
 
 #: fstrings.transfromlabel
+#, fuzzy,badformat
 msgctxt "fstrings.transfromlabel"
 msgid "From: %S"
-msgstr "From: %S"
+msgstr "Da: % S"
 
 #: fstrings.tuesday
 msgctxt "fstrings.tuesday"
 msgid "Tuesday"
-msgstr "Salı"
+msgstr "Martedi"
 
 #: fstrings.videoformatloading
+#, fuzzy
+#| msgid "Loading available formats, please wait..."
 msgid "Loading available formats, please wait"
-msgstr "Kullanılabilir formatlar yükleniyor, lütfen bekleyin"
+msgstr "Caricamento dei formati disponibili, attendere..."
 
 #: fstrings.videoname
 msgctxt "fstrings.videoname"
 msgid "Name:"
-msgstr "Name:"
+msgstr "Nome:"
 
 #: fstrings.videonameloading
+#, fuzzy
+#| msgid "Loading video name, please wait..."
 msgid "Loading video name, please wait"
-msgstr "Loading video name, please wait"
+msgstr "Caricamento Nome video, si prega di attendere..."
 
 #: fstrings.videoselectformat
+#, fuzzy
+#| msgid "Select video format: ->"
 msgid "Select video format:"
-msgstr "Video formatını seç:"
+msgstr "Selezionare il formato video:->"
 
 #: fstrings.wednesday
 msgctxt "fstrings.wednesday"
 msgid "Wednesday"
-msgstr "Çarşamba"
+msgstr "Mercoledi"
 
 #: fstrings.wgetdefarg1
 msgctxt "fstrings.wgetdefarg1"
 msgid "[-c] Continue downloads."
-msgstr "[-c] İndirmeye devam et."
+msgstr "[- c] Continua download."
 
 #: fstrings.wgetdefarg2
 msgctxt "fstrings.wgetdefarg2"
 msgid "[-nH] No create host dir."
-msgstr "[-nH] No create host dir."
+msgstr "[- nH] No creare host dir."
 
 #: fstrings.wgetdefarg3
 msgctxt "fstrings.wgetdefarg3"
 msgid "[-nd] No create out dir."
-msgstr "[-nd] No create out dir."
+msgstr "[- nd] No crea dir."
 
 #: fstrings.wgetdefarg4
 msgctxt "fstrings.wgetdefarg4"
 msgid "[--no-check-certificate] No check SSL."
-msgstr "[--no-check-certificate] No check SSL."
+msgstr "[--No-check-certificate] nessun controllo SSL."
 
 #: tfrabout.btnok.caption
-msgctxt "tfrabout.btnok.caption"
+msgctxt "TFRABOUT.BTNOK.CAPTION"
 msgid "Ok"
 msgstr "Ok"
 
 #: tfrabout.caption
-msgctxt "tfrabout.caption"
+msgctxt "TFRABOUT.CAPTION"
 msgid "About"
-msgstr "About"
+msgstr "Su"
 
 #: tfrabout.lblaboutversion.caption
-msgctxt "tfrabout.lblaboutversion.caption"
+msgctxt "TFRABOUT.LBLABOUTVERSION.CAPTION"
 msgid "AWGG"
 msgstr "AWGG"
 
 #: tfrabout.lblwebsite.caption
-msgctxt "tfrabout.lblwebsite.caption"
+msgctxt "TFRABOUT.LBLWEBSITE.CAPTION"
 msgid "Web site:"
-msgstr "Web site:"
+msgstr "Sito:"
 
 #: tfradd.caption
-msgctxt "tfradd.caption"
+msgctxt "TFRADD.CAPTION"
 msgid "Add"
-msgstr "Ekle"
+msgstr "Aggiungere"
 
 #: tfradd.lblvalue.caption
-msgctxt "tfradd.lblvalue.caption"
+msgctxt "TFRADD.LBLVALUE.CAPTION"
 msgid "Value:"
-msgstr "Value:"
+msgstr "Valore:"
 
 #: tfrconfig.btnaddcategory.hint
-msgctxt "tfrconfig.btnaddcategory.hint"
+msgctxt "TFRCONFIG.BTNADDCATEGORY.HINT"
 msgid "Add"
-msgstr "Ekle"
+msgstr "Aggiungere"
 
 #: tfrconfig.btnadddomain.hint
 msgctxt "tfrconfig.btnadddomain.hint"
 msgid "Add"
-msgstr "Ekle"
+msgstr "Aggiungere"
 
 #: tfrconfig.btnaddextension.hint
-msgctxt "tfrconfig.btnaddextension.hint"
+msgctxt "TFRCONFIG.BTNADDEXTENSION.HINT"
 msgid "Add"
-msgstr "Ekle"
+msgstr "Aggiungere"
 
 #: tfrconfig.btnchromeintegration.caption
 msgid "Enable Chrome integration"
-msgstr ""
+msgstr "Abilita l'integrazione con Chrome"
 
 #: tfrconfig.btnconfigaccept.caption
-msgctxt "tfrconfig.btnconfigaccept.caption"
+msgctxt "TFRCONFIG.BTNCONFIGACCEPT.CAPTION"
 msgid "Accept"
-msgstr "Onayla"
+msgstr "Accettare"
 
 #: tfrconfig.btnconfigapply.caption
-msgctxt "tfrconfig.btnconfigapply.caption"
+msgctxt "TFRCONFIG.BTNCONFIGAPPLY.CAPTION"
 msgid "Apply"
-msgstr "Uygula"
+msgstr "Applicare"
 
 #: tfrconfig.btnconfigcancel.caption
-msgctxt "tfrconfig.btnconfigcancel.caption"
+msgctxt "TFRCONFIG.BTNCONFIGCANCEL.CAPTION"
 msgid "Cancel"
-msgstr "Vazgec"
+msgstr "Annullare"
 
 #: tfrconfig.btndeletecategory.hint
-msgctxt "tfrconfig.btndeletecategory.hint"
+msgctxt "TFRCONFIG.BTNDELETECATEGORY.HINT"
 msgid "Delete"
-msgstr "Sil"
+msgstr "Eliminare"
 
 #: tfrconfig.btndeletedomain.hint
 msgctxt "tfrconfig.btndeletedomain.hint"
 msgid "Delete"
-msgstr "Sil"
+msgstr "Eliminare"
 
 #: tfrconfig.btndeleteextension.hint
-msgctxt "tfrconfig.btndeleteextension.hint"
+msgctxt "TFRCONFIG.BTNDELETEEXTENSION.HINT"
 msgid "Delete"
-msgstr "Sil"
+msgstr "Eliminare"
 
 #: tfrconfig.btneditcategory.hint
-msgctxt "tfrconfig.btneditcategory.hint"
+msgctxt "TFRCONFIG.BTNEDITCATEGORY.HINT"
 msgid "Edit"
-msgstr "Düzenle"
+msgstr "Modificare"
 
 #: tfrconfig.btneditdomain.hint
 msgctxt "tfrconfig.btneditdomain.hint"
 msgid "Edit"
-msgstr "Düzenle"
+msgstr "Modificare"
 
 #: tfrconfig.btnfirefoxintegration.caption
-msgctxt "tfrconfig.btnfirefoxintegration.caption"
+msgctxt "TFRCONFIG.BTNFIREFOXINTEGRATION.CAPTION"
 msgid "Enable Firefox integration"
-msgstr "Firefox entegrasyonunu etkinleştir"
+msgstr "Abilita l'integrazione con Firefox"
 
 #: tfrconfig.btnoperaintegration.caption
 msgid "Enable Opera integration"
-msgstr "Opera entegrasyonunu etkinleştir"
+msgstr "Abilita integrazione Opera"
 
 #: tfrconfig.btnpreviewnotification.caption
-msgctxt "tfrconfig.btnpreviewnotification.caption"
+msgctxt "TFRCONFIG.BTNPREVIEWNOTIFICATION.CAPTION"
 msgid "Preview"
-msgstr "Önizleme"
+msgstr "Anteprima"
 
 #: tfrconfig.btnupdatechecknow.caption
 msgid "Check now"
-msgstr ""
+msgstr "Controlla ora"
 
 #: tfrconfig.caption
-msgctxt "tfrconfig.caption"
+msgctxt "TFRCONFIG.CAPTION"
 msgid "Configuration"
-msgstr "Yapilandirma"
+msgstr "Configurazione"
 
 #: tfrconfig.charia2usemulticonnections.caption
-msgctxt "tfrconfig.charia2usemulticonnections.caption"
+msgctxt "TFRCONFIG.CHARIA2USEMULTICONNECTIONS.CAPTION"
 msgid "Use multiple connections."
-msgstr "Birden çok bağlantı kullan."
+msgstr "Utilizzare più connessioni."
 
 #: tfrconfig.chautocheckupdate.caption
 msgid "Automatic check for updates"
-msgstr ""
+msgstr "Controllo automatico degli aggiornamenti"
 
 #: tfrconfig.chclipboardmonitor.caption
-msgctxt "tfrconfig.chclipboardmonitor.caption"
+msgctxt "TFRCONFIG.CHCLIPBOARDMONITOR.CAPTION"
 msgid "Detect downloads in the clipboard"
-msgstr "Panodaki indirmeleri algıla"
+msgstr "Rileva i download negli appunti"
 
 #: tfrconfig.chdaily.caption
-msgctxt "tfrconfig.chdaily.caption"
+msgctxt "TFRCONFIG.CHDAILY.CAPTION"
 msgid "Daily"
-msgstr "Günlük"
+msgstr "Quotidiano"
 
 #: tfrconfig.chdisablelimits.caption
-msgctxt "tfrconfig.chdisablelimits.caption"
+msgctxt "TFRCONFIG.CHDISABLELIMITS.CAPTION"
 msgid "Disable limits"
-msgstr "Sınırları devre dışı bırak"
+msgstr "Disabilita limiti"
 
 #: tfrconfig.chdownuseagent.caption
-msgctxt "tfrconfig.chdownuseagent.caption"
+msgctxt "TFRCONFIG.CHDOWNUSEAGENT.CAPTION"
 msgid "Use global:"
-msgstr "Use global:"
+msgstr "Usare globale:"
 
 #: tfrconfig.chenablescheduler.caption
-msgctxt "tfrconfig.chenablescheduler.caption"
+msgctxt "TFRCONFIG.CHENABLESCHEDULER.CAPTION"
 msgid "Enable scheduler"
-msgstr "Zamanlayıcıyı etkinleştir"
+msgstr "Abilita scheduler"
 
 #: tfrconfig.chgaria2defarguments.caption
-msgctxt "tfrconfig.chgaria2defarguments.caption"
+msgctxt "TFRCONFIG.CHGARIA2DEFARGUMENTS.CAPTION"
 msgid "Default arguments"
-msgstr "Varsayılan Argümanlar"
+msgstr "Argomenti predefiniti"
 
 #: tfrconfig.chgautomation.caption
-msgctxt "tfrconfig.chgautomation.caption"
+msgctxt "TFRCONFIG.CHGAUTOMATION.CAPTION"
 msgid "Automation"
-msgstr "Otomasyon"
+msgstr "Automazione"
 
 #: tfrconfig.chgaxeldefarguments.caption
-msgctxt "tfrconfig.chgaxeldefarguments.caption"
+msgctxt "TFRCONFIG.CHGAXELDEFARGUMENTS.CAPTION"
 msgid "Default arguments"
-msgstr "Default arguments"
+msgstr "Argomenti predefiniti"
 
 #: tfrconfig.chgcurldefarguments.caption
-msgctxt "tfrconfig.chgcurldefarguments.caption"
+msgctxt "TFRCONFIG.CHGCURLDEFARGUMENTS.CAPTION"
 msgid "Default arguments"
-msgstr "Default arguments"
+msgstr "Argomenti predefiniti"
 
 #: tfrconfig.chgweekdays.caption
-msgctxt "tfrconfig.chgweekdays.caption"
+msgctxt "TFRCONFIG.CHGWEEKDAYS.CAPTION"
 msgid "Week days"
-msgstr "Week days"
+msgstr "Giorni della settimana"
 
 #: tfrconfig.chgwgetdefarguments.caption
-msgctxt "tfrconfig.chgwgetdefarguments.caption"
+msgctxt "TFRCONFIG.CHGWGETDEFARGUMENTS.CAPTION"
 msgid "Default arguments"
-msgstr "Default arguments"
+msgstr "Argomenti predefiniti"
 
 #: tfrconfig.chgyoutubedldefarguments.caption
-msgctxt "tfrconfig.chgyoutubedldefarguments.caption"
+msgctxt "TFRCONFIG.CHGYOUTUBEDLDEFARGUMENTS.CAPTION"
 msgid "Default arguments"
-msgstr "Default arguments"
+msgstr "Argomenti predefiniti"
 
 #: tfrconfig.chignorefilter.caption
 msgid "Ignore domains:"
-msgstr "Yasaklı Siteler"
+msgstr "Ignora domini:"
 
 #: tfrconfig.chinternetcheck.caption
 msgid "Start main queue if internet connection"
-msgstr "İnternet bağlantısı varsa ana kuyruğu başlat"
+msgstr "Avviare la coda principale se la connessione internet"
 
 #: tfrconfig.chloadlogs.caption
-msgctxt "tfrconfig.chloadlogs.caption"
+msgctxt "TFRCONFIG.CHLOADLOGS.CAPTION"
 msgid "Load log when select a download."
-msgstr "Load log when select a download."
+msgstr "Carica log quando si seleziona un download."
 
 #: tfrconfig.chnotifiondownloadcomplete.caption
 msgctxt "tfrconfig.chnotifiondownloadcomplete.caption"
 msgid "Download complete"
-msgstr "İndirme Tamamlandı"
+msgstr "Scarica completa"
 
 #: tfrconfig.chnotifiondownloaderror.caption
 msgid "Download error"
-msgstr "İndirme Hatası"
+msgstr "Errore di Download"
 
 #: tfrconfig.chnotifioninternet.caption
 msgctxt "tfrconfig.chnotifioninternet.caption"
 msgid "Internet connection"
-msgstr "İnternet Bağlantısı"
+msgstr "Connessione Internet"
 
 #: tfrconfig.chnotifionnointernet.caption
 msgctxt "tfrconfig.chnotifionnointernet.caption"
 msgid "No internet connection"
-msgstr "İnternet bağlantısı yok"
+msgstr "Nessuna connessione internet"
 
 #: tfrconfig.chplaysounds.caption
-msgctxt "tfrconfig.chplaysounds.caption"
+msgctxt "TFRCONFIG.CHPLAYSOUNDS.CAPTION"
 msgid "Play sounds"
-msgstr "Sesleri Çal"
+msgstr "Suoni del gioco"
 
 #: tfrconfig.chqueuerotate.caption
-msgctxt "tfrconfig.chqueuerotate.caption"
+msgctxt "TFRCONFIG.CHQUEUEROTATE.CAPTION"
 msgid "Rotate downloads if fail"
-msgstr "Rotate downloads if fail"
+msgstr "Ruota i download in caso di errore"
 
 #: tfrconfig.chsameproxy.caption
-msgctxt "tfrconfig.chsameproxy.caption"
+msgctxt "TFRCONFIG.CHSAMEPROXY.CAPTION"
 msgid "Use the same proxy for all."
-msgstr "Use the same proxy for all."
+msgstr "Usa lo stesso proxy per tutti."
 
 #: tfrconfig.chsavedownlogs.caption
-msgctxt "tfrconfig.chsavedownlogs.caption"
+msgctxt "TFRCONFIG.CHSAVEDOWNLOGS.CAPTION"
 msgid "Save download log history."
-msgstr "İndirme günlüğü geçmişini kaydet."
+msgstr "Salva la cronologia dei log di download."
 
 #: tfrconfig.chshownotifications.caption
-msgctxt "tfrconfig.chshownotifications.caption"
+msgctxt "TFRCONFIG.CHSHOWNOTIFICATIONS.CAPTION"
 msgid "Show notifications"
-msgstr "Bildirimleri göster"
+msgstr "Mostra notifiches"
 
 #: tfrconfig.chshutdown.caption
-msgctxt "tfrconfig.chshutdown.caption"
+msgctxt "TFRCONFIG.CHSHUTDOWN.CAPTION"
 msgid "Shutdown after end"
-msgstr "İndirme Bittikten sonra Kapat"
+msgstr "Arresto dopo la fine"
 
 #: tfrconfig.chsilentdropmode.caption
 msgid "Silent mode"
-msgstr ""
+msgstr "Modalità silenziosa"
 
 #: tfrconfig.chsounddowncomplete.caption
 msgctxt "tfrconfig.chsounddowncomplete.caption"
 msgid "Download complete:"
-msgstr "Download complete:"
+msgstr "Scarica completa:"
 
 #: tfrconfig.chsounddownerror.caption
 msgctxt "tfrconfig.chsounddownerror.caption"
 msgid "Download error:"
-msgstr "İndirme Hatası:"
+msgstr "Errore di Download:"
 
 #: tfrconfig.chsoundinternet.caption
 msgctxt "tfrconfig.chsoundinternet.caption"
 msgid "Internet connection:"
-msgstr "İnternet Bağlantısı:"
+msgstr "Connessione Internet:"
 
 #: tfrconfig.chsoundnointernet.caption
 msgctxt "tfrconfig.chsoundnointernet.caption"
 msgid "No internet connection:"
-msgstr "İnternet bağlantısı yok:"
+msgstr "Nessuna connessione internet:"
 
 #: tfrconfig.chstopqueue.caption
-msgctxt "tfrconfig.chstopqueue.caption"
+msgctxt "TFRCONFIG.CHSTOPQUEUE.CAPTION"
 msgid "Stop queue:"
-msgstr "Stop queue:"
+msgstr "Coda di arresto:\""
 
 #: tfrconfig.chsysnotifications.caption
 msgid "Use system notifications"
-msgstr "Sistem Bildirimlerini Kullan"
+msgstr "Utilizzare le notifiche di sistema"
 
 #: tfrconfig.chupdatearia2.caption
 msgid "Update aria2"
-msgstr ""
+msgstr "Aggiorna aria2"
 
 #: tfrconfig.chupdateaxel.caption
 msgid "Update axel"
-msgstr ""
+msgstr "Aggiorna axel"
 
 #: tfrconfig.chupdatecurl.caption
 msgid "Update curl"
-msgstr ""
+msgstr "Aggiorna curl"
 
 #: tfrconfig.chupdatewget.caption
 msgid "Update wget"
-msgstr ""
+msgstr "Aggiorna wget"
 
 #: tfrconfig.chupdateyoutubedl.caption
 msgid "Update youtube-dl"
-msgstr ""
+msgstr "Aggiorna youtube-dl"
 
 #: tfrconfig.chuseauth.caption
-msgctxt "tfrconfig.chuseauth.caption"
+msgctxt "TFRCONFIG.CHUSEAUTH.CAPTION"
 msgid "Use authentication"
-msgstr "Kimlik Doğrulama Kullan"
+msgstr "Usa autenticazione"
 
 #: tfrconfig.chytuseexternaldown.caption
 msgid "Use external engine:"
-msgstr "Use external engine:"
+msgstr "Utilizzare motore esterno:"
 
 #: tfrconfig.dtpstartqueue.textfornulldate
 msgctxt "tfrconfig.dtpstartqueue.textfornulldate"
 msgid "NULL"
-msgstr ""
+msgstr "NULL"
 
 #: tfrconfig.dtpstopqueue.textfornulldate
 msgctxt "tfrconfig.dtpstopqueue.textfornulldate"
 msgid "NULL"
-msgstr ""
+msgstr "NULL"
 
 #: tfrconfig.edtnoproxyhosts.text
-msgctxt "tfrconfig.edtnoproxyhosts.text"
+msgctxt "TFRCONFIG.EDTNOPROXYHOSTS.TEXT"
 msgid "localhost"
 msgstr "localhost"
 
 #: tfrconfig.edtprogramarguments.text
 msgid "\"[URL]\" -n \"[FILENAME]\" -u \"[USERAGENT]\" -r \"[REFERRER]\" -c \"[COOKIES]\""
-msgstr ""
+msgstr "\"[URL] \"- n  \"[Nome file] \"- u  \"[USERAGENT] \"- r  \"[REFERRER] \" - c \"[cookie]\""
 
 #: tfrconfig.gbaria2multiconnections.caption
-msgctxt "tfrconfig.gbaria2multiconnections.caption"
+msgctxt "TFRCONFIG.GBARIA2MULTICONNECTIONS.CAPTION"
 msgid "Multiple connections"
-msgstr "Multiple connections"
+msgstr "Connessioni Multiple"
 
 #: tfrconfig.gbdownconnection.caption
-msgctxt "tfrconfig.gbdownconnection.caption"
+msgctxt "TFRCONFIG.GBDOWNCONNECTION.CAPTION"
 msgid "Connection"
-msgstr "Bağlantı"
+msgstr "Connessioni"
 
 #: tfrconfig.gbengine.caption
-msgctxt "tfrconfig.gbengine.caption"
+msgctxt "TFRCONFIG.GBENGINE.CAPTION"
 msgid "Engine"
-msgstr "Engine"
+msgstr "Motore"
 
 #: tfrconfig.gblogsloadmode.caption
-msgctxt "tfrconfig.gblogsloadmode.caption"
+msgctxt "TFRCONFIG.GBLOGSLOADMODE.CAPTION"
 msgid "Load mode"
-msgstr "Load mode"
+msgstr "Modalità di caricamento"
 
 #: tfrconfig.gbqueuerotatemode.caption
-msgctxt "tfrconfig.gbqueuerotatemode.caption"
+msgctxt "TFRCONFIG.GBQUEUEROTATEMODE.CAPTION"
 msgid "Rotate mode"
-msgstr "Rotate mode"
+msgstr "Modalità di rotazione"
 
 #: tfrconfig.gbshownotificationfor.caption
 msgid "Show notifications for"
-msgstr "Show notifications for"
+msgstr "Mostra notifiche per"
 
 #: tfrconfig.gbsounds.caption
-msgctxt "tfrconfig.gbsounds.caption"
+msgctxt "TFRCONFIG.GBSOUNDS.CAPTION"
 msgid "Sounds"
-msgstr "Sesler"
+msgstr "Suonos"
 
 #: tfrconfig.gbuseragent.caption
-msgctxt "tfrconfig.gbuseragent.caption"
+msgctxt "TFRCONFIG.GBUSERAGENT.CAPTION"
 msgid "User agent"
-msgstr "User agent"
+msgstr "Agente utente"
 
 #: tfrconfig.gbytoptions.caption
 msgid "Options"
-msgstr "Seçenekler"
+msgstr "Opzioni"
 
 #: tfrconfig.lblaria2additionalargs.caption
-msgctxt "tfrconfig.lblaria2additionalargs.caption"
+msgctxt "TFRCONFIG.LBLARIA2ADDITIONALARGS.CAPTION"
 msgid "Additional arguments:"
-msgstr "Additional arguments:"
+msgstr "Argomenti aggiuntivi:"
 
 #: tfrconfig.lblaria2connections.caption
-msgctxt "tfrconfig.lblaria2connections.caption"
+msgctxt "TFRCONFIG.LBLARIA2CONNECTIONS.CAPTION"
 msgid "Connections per server:"
-msgstr "Connections per server:"
+msgstr "Connessioni per server:"
 
 #: tfrconfig.lblaria2path.caption
-msgctxt "tfrconfig.lblaria2path.caption"
+msgctxt "TFRCONFIG.LBLARIA2PATH.CAPTION"
 msgid "Path of aria2 excecutable file:"
-msgstr "Path of aria2 excecutable file:"
+msgstr "Percorso del archivio eseguibile aria2:"
 
 #: tfrconfig.lblaria2splitsize.caption
-msgctxt "tfrconfig.lblaria2splitsize.caption"
+msgctxt "TFRCONFIG.LBLARIA2SPLITSIZE.CAPTION"
 msgid "Split size (can append K or M):"
-msgstr "Split size (can append K or M):"
+msgstr "Dimensione divisa (può aggiungere K or M):"
 
 #: tfrconfig.lblaxeladditionalargs.caption
-msgctxt "tfrconfig.lblaxeladditionalargs.caption"
+msgctxt "TFRCONFIG.LBLAXELADDITIONALARGS.CAPTION"
 msgid "Additional arguments:"
-msgstr "Additional arguments:"
+msgstr "Argomenti aggiuntivi:"
 
 #: tfrconfig.lblaxelpath.caption
-msgctxt "tfrconfig.lblaxelpath.caption"
+msgctxt "TFRCONFIG.LBLAXELPATH.CAPTION"
 msgid "Path of axel excecutable file:"
-msgstr "Path of axel excecutable file:"
+msgstr "Percorso del archivio excecutable axel:"
 
 #: tfrconfig.lblcategory.caption
-msgctxt "tfrconfig.lblcategory.caption"
+msgctxt "TFRCONFIG.LBLCATEGORY.CAPTION"
 msgid "Category:"
-msgstr "Kategori:"
+msgstr "Categoria:"
 
 #: tfrconfig.lblcategorydownfolder.caption
-msgctxt "tfrconfig.lblcategorydownfolder.caption"
+msgctxt "TFRCONFIG.LBLCATEGORYDOWNFOLDER.CAPTION"
 msgid "Category download folder:"
-msgstr "Kategori indirme klasörü:"
+msgstr "Cartella Download categoria:"
 
 #: tfrconfig.lblcurladditionalargs.caption
-msgctxt "tfrconfig.lblcurladditionalargs.caption"
+msgctxt "TFRCONFIG.LBLCURLADDITIONALARGS.CAPTION"
 msgid "Additional arguments:"
-msgstr "Additional arguments:"
+msgstr "Argomenti aggiuntivi:"
 
 #: tfrconfig.lblcurlpath.caption
-msgctxt "tfrconfig.lblcurlpath.caption"
+msgctxt "TFRCONFIG.LBLCURLPATH.CAPTION"
 msgid "Path of curl excecutable file:"
-msgstr "Path of curl excecutable file:"
+msgstr "Percorso del archivio excecutable curl:"
 
 #: tfrconfig.lbldefengine.caption
-msgctxt "tfrconfig.lbldefengine.caption"
+msgctxt "TFRCONFIG.LBLDEFENGINE.CAPTION"
 msgid "Default engine:"
-msgstr "Varsayılan Motor:"
+msgstr "Motore predefinito:"
 
 #: tfrconfig.lbldeflanguage.caption
-msgctxt "tfrconfig.lbldeflanguage.caption"
+msgctxt "TFRCONFIG.LBLDEFLANGUAGE.CAPTION"
 msgid "Default language:"
-msgstr "Varsayılan Dil:"
+msgstr "Lingua predefinita:"
 
 #: tfrconfig.lbldowndelaytries.caption
-msgctxt "tfrconfig.lbldowndelaytries.caption"
+msgctxt "TFRCONFIG.LBLDOWNDELAYTRIES.CAPTION"
 msgid "Delay tries (sec):"
-msgstr "Delay tries (sec):"
+msgstr "Tentativi di ritardo (sec):"
 
 #: tfrconfig.lbldownfolder.caption
-msgctxt "tfrconfig.lbldownfolder.caption"
+msgctxt "TFRCONFIG.LBLDOWNFOLDER.CAPTION"
 msgid "Default download folder:"
-msgstr "Varsayılan İndirme Klasörü:"
+msgstr "Cartella di download predefinita:"
 
 #: tfrconfig.lbldowntimeout.caption
-msgctxt "tfrconfig.lbldowntimeout.caption"
+msgctxt "TFRCONFIG.LBLDOWNTIMEOUT.CAPTION"
 msgid "Timeout (sec):"
 msgstr "Timeout (sec):"
 
 #: tfrconfig.lbldowntries.caption
-msgctxt "tfrconfig.lbldowntries.caption"
+msgctxt "TFRCONFIG.LBLDOWNTRIES.CAPTION"
 msgid "Tries:"
-msgstr "Tries:"
+msgstr "Provares:"
 
 #: tfrconfig.lblextensions.caption
-msgctxt "tfrconfig.lblextensions.caption"
+msgctxt "TFRCONFIG.LBLEXTENSIONS.CAPTION"
 msgid "Extensions:"
-msgstr "Extensions:"
+msgstr "Estensiones:"
 
 #: tfrconfig.lblftphost.caption
-msgctxt "tfrconfig.lblftphost.caption"
+msgctxt "TFRCONFIG.LBLFTPHOST.CAPTION"
 msgid "FTP:"
 msgstr "FTP:"
 
 #: tfrconfig.lblftpport.caption
-msgctxt "tfrconfig.lblftpport.caption"
+msgctxt "TFRCONFIG.LBLFTPPORT.CAPTION"
 msgid "Port:"
 msgstr "Port:"
 
 #: tfrconfig.lblhidein.caption
-msgctxt "tfrconfig.lblhidein.caption"
+msgctxt "TFRCONFIG.LBLHIDEIN.CAPTION"
 msgid "Hide in:"
-msgstr "Gizle:"
+msgstr "Nasconditi:"
 
 #: tfrconfig.lblhttphost.caption
-msgctxt "tfrconfig.lblhttphost.caption"
+msgctxt "TFRCONFIG.LBLHTTPHOST.CAPTION"
 msgid "HTTP:"
-msgstr "HTTP:"
+msgstr "HTTP"
 
 #: tfrconfig.lblhttpport.caption
-msgctxt "tfrconfig.lblhttpport.caption"
+msgctxt "TFRCONFIG.LBLHTTPPORT.CAPTION"
 msgid "Port:"
-msgstr "Port:"
+msgstr "Port"
 
 #: tfrconfig.lblinternetinterval.caption
 msgid "Interval in seconds:"
-msgstr "Saniye cinsinden aralık"
+msgstr "Intervallo in secondis:\"\""
 
 #: tfrconfig.lblinterneturl.caption
 msgid "Internet URL:"
-msgstr ""
+msgstr "URL Internet:"
 
 #: tfrconfig.lbllogspath.caption
-msgctxt "tfrconfig.lbllogspath.caption"
+msgctxt "TFRCONFIG.LBLLOGSPATH.CAPTION"
 msgid "Path of history logs:"
-msgstr "Path of history logs:"
+msgstr "Percorso dei registri di cronologia:"
 
 #: tfrconfig.lblnoproxyhelp.caption
-msgctxt "tfrconfig.lblnoproxyhelp.caption"
+msgctxt "TFRCONFIG.LBLNOPROXYHELP.CAPTION"
 msgid "Exp: .mozilla.org, localhost, 192.168.0.1"
-msgstr "Exp: .mozilla.org, localhost, 192.168.0.1"
+msgstr "Exp:. mozilla.org, localhost, 192.168.0.1"
 
 #: tfrconfig.lblnoproxyhosts.caption
-msgctxt "tfrconfig.lblnoproxyhosts.caption"
+msgctxt "TFRCONFIG.LBLNOPROXYHOSTS.CAPTION"
 msgid "No proxy for:"
-msgstr "No proxy for:"
+msgstr "Nessun proxy per:"
 
 #: tfrconfig.lblprogramarguments.caption
 msgid "Arguments:"
-msgstr ""
+msgstr "Argomento:"
 
 #: tfrconfig.lblprogrampath.caption
 msgid "Executable:"
-msgstr ""
+msgstr "Eseguibile:"
 
 #: tfrconfig.lblproxypass.caption
-msgctxt "tfrconfig.lblproxypass.caption"
+msgctxt "TFRCONFIG.LBLPROXYPASS.CAPTION"
 msgid "Password:"
-msgstr "Parola:"
+msgstr "Password:"
 
 #: tfrconfig.lblproxyuser.caption
-msgctxt "tfrconfig.lblproxyuser.caption"
+msgctxt "TFRCONFIG.LBLPROXYUSER.CAPTION"
 msgid "User:"
-msgstr "User:"
+msgstr "Utente"
 
 #: tfrconfig.lblqueue.caption
-msgctxt "tfrconfig.lblqueue.caption"
+msgctxt "TFRCONFIG.LBLQUEUE.CAPTION"
 msgid "Queue:"
-msgstr "Queue:"
+msgstr "Coda:"
 
 #: tfrconfig.lblqueuedelaysec.caption
-msgctxt "tfrconfig.lblqueuedelaysec.caption"
+msgctxt "TFRCONFIG.LBLQUEUEDELAYSEC.CAPTION"
 msgid "Delay (downloads or tries)(sec):"
-msgstr "Delay (downloads or tries)(sec):"
+msgstr "Ritardo (download o tentativi)(sec):"
 
 #: tfrconfig.lblqueuetriesrotate.caption
-msgctxt "tfrconfig.lblqueuetriesrotate.caption"
+msgctxt "TFRCONFIG.LBLQUEUETRIESROTATE.CAPTION"
 msgid "Tries or rotate times:"
-msgstr "Tries or rotate times:"
+msgstr "Prova o ruota i tempi:"
 
 #: tfrconfig.lblseconds.caption
-msgctxt "tfrconfig.lblseconds.caption"
+#, fuzzy
+#| msgid "seconds"
+msgctxt "TFRCONFIG.LBLSECONDS.CAPTION"
 msgid " seconds"
-msgstr " saniye"
+msgstr "secondos"
 
 #: tfrconfig.lblsslhost.caption
-msgctxt "tfrconfig.lblsslhost.caption"
+msgctxt "TFRCONFIG.LBLSSLHOST.CAPTION"
 msgid "SSL:"
 msgstr "SSL:"
 
 #: tfrconfig.lblsslport.caption
-msgctxt "tfrconfig.lblsslport.caption"
+msgctxt "TFRCONFIG.LBLSSLPORT.CAPTION"
 msgid "Port:"
 msgstr "Port:"
 
 #: tfrconfig.lblstartqueue.caption
-msgctxt "tfrconfig.lblstartqueue.caption"
+msgctxt "TFRCONFIG.LBLSTARTQUEUE.CAPTION"
 msgid "Start queue:"
-msgstr "Start queue:"
+msgstr "Coda di avvio:"
 
 #: tfrconfig.lblwgetadditionalargs.caption
-msgctxt "tfrconfig.lblwgetadditionalargs.caption"
+msgctxt "TFRCONFIG.LBLWGETADDITIONALARGS.CAPTION"
 msgid "Additional arguments:"
-msgstr "Additional arguments:"
+msgstr "Argomenti aggiuntivi:"
 
 #: tfrconfig.lblwgetpath.caption
-msgctxt "tfrconfig.lblwgetpath.caption"
+msgctxt "TFRCONFIG.LBLWGETPATH.CAPTION"
 msgid "Path of wget executable file:"
-msgstr "Path of wget executable file:"
+msgstr "Percorso del archivio eseguibile wget:"
 
 #: tfrconfig.lblyoutubedladditionalargs.caption
-msgctxt "tfrconfig.lblyoutubedladditionalargs.caption"
+msgctxt "TFRCONFIG.LBLYOUTUBEDLADDITIONALARGS.CAPTION"
 msgid "Additional arguments:"
-msgstr "Additional arguments:"
+msgstr "Argomenti aggiuntivi:"
 
 #: tfrconfig.lblyoutubedlpath.caption
-msgctxt "tfrconfig.lblyoutubedlpath.caption"
+msgctxt "TFRCONFIG.LBLYOUTUBEDLPATH.CAPTION"
 msgid "Path of youtube-dl excecutable file:"
-msgstr "Path of youtube-dl excecutable file:"
+msgstr "Percorso del archivio excecutable youtube-dl:"
 
 #: tfrconfig.rbcategorybytype.caption
-msgctxt "tfrconfig.rbcategorybytype.caption"
+msgctxt "TFRCONFIG.RBCATEGORYBYTYPE.CAPTION"
 msgid "Suggest by file type"
-msgstr "Dosya türüne göre öner"
+msgstr "Suggerisci per tipo di archivio"
 
 #: tfrconfig.rbcategoryonefolder.caption
-msgctxt "tfrconfig.rbcategoryonefolder.caption"
+msgctxt "TFRCONFIG.RBCATEGORYONEFOLDER.CAPTION"
 msgid "All files in single folder"
-msgstr "Tüm dosyalar tek bir klasörde"
+msgstr "Tutti i archivio in una singola cartella"
 
 #: tfrconfig.rblogsloadall.caption
-msgctxt "tfrconfig.rblogsloadall.caption"
+msgctxt "TFRCONFIG.RBLOGSLOADALL.CAPTION"
 msgid "All history log"
-msgstr "All history log"
+msgstr "Tutti i log della cronologia"
 
 #: tfrconfig.rblogsloadlines.caption
-msgctxt "tfrconfig.rblogsloadlines.caption"
+msgctxt "TFRCONFIG.RBLOGSLOADLINES.CAPTION"
 msgid "Last 20 lines."
-msgstr "Last 20 lines."
+msgstr "Ultime 20 righes."
 
 #: tfrconfig.rbqueuermonestep.caption
-msgctxt "tfrconfig.rbqueuermonestep.caption"
+msgctxt "TFRCONFIG.RBQUEUERMONESTEP.CAPTION"
 msgid "One step down"
-msgstr "One step down"
+msgstr "Un passo verso il basso"
 
 #: tfrconfig.rbqueuermtoend.caption
-msgctxt "tfrconfig.rbqueuermtoend.caption"
+msgctxt "TFRCONFIG.RBQUEUERMTOEND.CAPTION"
 msgid "To the end"
-msgstr "To the end"
+msgstr "Fino alla fine"
 
 #: tfrconfig.rbqueuermtwostop.caption
-msgctxt "tfrconfig.rbqueuermtwostop.caption"
+msgctxt "TFRCONFIG.RBQUEUERMTWOSTOP.CAPTION"
 msgid "Two steps down"
-msgstr "Two steps down"
+msgstr "Due passi verso il basso"
 
 #: tfrconfig.rgcategorize.caption
-msgctxt "tfrconfig.rgcategorize.caption"
+msgctxt "TFRCONFIG.RGCATEGORIZE.CAPTION"
 msgid "Categorize"
-msgstr "Categorize"
+msgstr "Classificare"
 
 #: tfrconfig.rgposition.caption
-msgctxt "tfrconfig.rgposition.caption"
+msgctxt "TFRCONFIG.RGPOSITION.CAPTION"
 msgid "Position on the screen"
-msgstr "Position on the screen"
+msgstr "Posizione sullo schermo"
 
 #: tfrconfig.sbtncopyarguments.hint
 msgctxt "tfrconfig.sbtncopyarguments.hint"
 msgid "Copy to clipboard"
-msgstr "Panoya kopyala"
+msgstr "Copia negli appunti"
 
 #: tfrconfig.sbtncopypath.hint
 msgctxt "tfrconfig.sbtncopypath.hint"
 msgid "Copy to clipboard"
-msgstr "Panoya kopyala"
+msgstr "Copia negli appunti"
 
 #: tfrconfig.tsaria2.caption
-msgctxt "tfrconfig.tsaria2.caption"
+msgctxt "TFRCONFIG.TSARIA2.CAPTION"
 msgid "aria2c"
 msgstr "aria2c"
 
 #: tfrconfig.tsautomation.caption
-msgctxt "tfrconfig.tsautomation.caption"
+msgctxt "TFRCONFIG.TSAUTOMATION.CAPTION"
 msgid "Automation"
-msgstr "Automation"
+msgstr "Automazione"
 
 #: tfrconfig.tsaxel.caption
-msgctxt "tfrconfig.tsaxel.caption"
+msgctxt "TFRCONFIG.TSAXEL.CAPTION"
 msgid "axel"
 msgstr "axel"
 
 #: tfrconfig.tsclipboardm.caption
-msgctxt "tfrconfig.tsclipboardm.caption"
+msgctxt "TFRCONFIG.TSCLIPBOARDM.CAPTION"
 msgid "Clipboard monitor"
-msgstr "Clipboard monitor"
+msgstr "Monitor appunti"
 
 #: tfrconfig.tscurl.caption
-msgctxt "tfrconfig.tscurl.caption"
+msgctxt "TFRCONFIG.TSCURL.CAPTION"
 msgid "curl"
 msgstr "curl"
 
 #: tfrconfig.tsdownoptions.caption
-msgctxt "tfrconfig.tsdownoptions.caption"
+msgctxt "TFRCONFIG.TSDOWNOPTIONS.CAPTION"
 msgid "Download options"
-msgstr "İndirme Seçenekleri"
+msgstr "Opzioni di Download"
 
 #: tfrconfig.tsdropbox.caption
 msgid "tsDropBox"
 msgstr ""
 
 #: tfrconfig.tsfolders.caption
-msgctxt "tfrconfig.tsfolders.caption"
+msgctxt "TFRCONFIG.TSFOLDERS.CAPTION"
 msgid "Folders"
-msgstr "Klasörler"
+msgstr "Cartellas"
 
 #: tfrconfig.tsintegration.caption
-msgctxt "tfrconfig.tsintegration.caption"
+msgctxt "TFRCONFIG.TSINTEGRATION.CAPTION"
 msgid "Integration"
-msgstr "Browser Entegrasyon"
+msgstr "Integrazione"
 
 #: tfrconfig.tsinternetmonitor.caption
 msgid "Internet monitor"
-msgstr ""
+msgstr "Monitor Internet"
 
 #: tfrconfig.tslang.caption
-msgctxt "tfrconfig.tslang.caption"
+msgctxt "TFRCONFIG.TSLANG.CAPTION"
 msgid "Language"
-msgstr "Diller"
+msgstr "Lingua"
 
 #: tfrconfig.tslogs.caption
-msgctxt "tfrconfig.tslogs.caption"
+msgctxt "TFRCONFIG.TSLOGS.CAPTION"
 msgid "Logs"
-msgstr "Günlükler"
+msgstr "Logs"
 
 #: tfrconfig.tsnotifications.caption
-msgctxt "tfrconfig.tsnotifications.caption"
+msgctxt "TFRCONFIG.TSNOTIFICATIONS.CAPTION"
 msgid "Notifications"
-msgstr "Bildirimler"
+msgstr "Notificaziones"
 
 #: tfrconfig.tsproxy.caption
-msgctxt "tfrconfig.tsproxy.caption"
+msgctxt "TFRCONFIG.TSPROXY.CAPTION"
 msgid "Proxy"
 msgstr "Proxy"
 
 #: tfrconfig.tsqueue.caption
-msgctxt "tfrconfig.tsqueue.caption"
+msgctxt "TFRCONFIG.TSQUEUE.CAPTION"
 msgid "Queue"
-msgstr "Queue"
+msgstr "Coda"
 
 #: tfrconfig.tsscheduler.caption
-msgctxt "tfrconfig.tsscheduler.caption"
+msgctxt "TFRCONFIG.TSSCHEDULER.CAPTION"
 msgid "Scheduler"
-msgstr "Zamanlayıcı"
+msgstr "Scheduler"
 
 #: tfrconfig.tssounds.caption
-msgctxt "tfrconfig.tssounds.caption"
+msgctxt "TFRCONFIG.TSSOUNDS.CAPTION"
 msgid "Sounds"
-msgstr "Sesler"
+msgstr "Suonos"
 
 #: tfrconfig.tsupdates.caption
 msgid "Updates"
-msgstr ""
+msgstr "Aggiornares"
 
 #: tfrconfig.tswget.caption
-msgctxt "tfrconfig.tswget.caption"
+msgctxt "TFRCONFIG.TSWGET.CAPTION"
 msgid "wget"
 msgstr "wget"
 
@@ -1253,49 +1277,49 @@ msgid "youtube-dl"
 msgstr "youtube-dl"
 
 #: tfrconfirm.caption
-msgctxt "tfrconfirm.caption"
+msgctxt "TFRCONFIRM.CAPTION"
 msgid "Confirm"
-msgstr "Confirm"
+msgstr "Confermare"
 
 #: tfrcopymove.btncancel.caption
-msgctxt "tfrcopymove.btncancel.caption"
+msgctxt "TFRCOPYMOVE.BTNCANCEL.CAPTION"
 msgid "Cancel"
-msgstr "Vazgeç"
+msgstr "Annullare"
 
 #: tfrcopymove.caption
-msgctxt "tfrcopymove.caption"
+msgctxt "TFRCOPYMOVE.CAPTION"
 msgid "File operations"
-msgstr "File operations"
+msgstr "Operazioni di archivio"
 
 #: tfrcopymove.lblfrom.caption
-msgctxt "tfrcopymove.lblfrom.caption"
+msgctxt "TFRCOPYMOVE.LBLFROM.CAPTION"
 msgid "From: %s"
 msgstr "From: %s"
 
 #: tfrcopymove.lblto.caption
-msgctxt "tfrcopymove.lblto.caption"
+msgctxt "TFRCOPYMOVE.LBLTO.CAPTION"
 msgid "To: %s"
 msgstr "To: %s"
 
 #: tfrddbox.caption
-msgctxt "tfrddbox.caption"
+msgctxt "TFRDDBOX.CAPTION"
 msgid "Drop box"
 msgstr "Drop box"
 
 #: tfrlang.btnok.caption
-msgctxt "tfrlang.btnok.caption"
+msgctxt "TFRLANG.BTNOK.CAPTION"
 msgid "Ok"
 msgstr "Ok"
 
 #: tfrlang.caption
-msgctxt "tfrlang.caption"
+msgctxt "TFRLANG.CAPTION"
 msgid "Select language"
-msgstr "Dil Seçin"
+msgstr "Seleziona lingua"
 
 #: tfrlang.lbllang.caption
-msgctxt "tfrlang.lbllang.caption"
+msgctxt "TFRLANG.LBLLANG.CAPTION"
 msgid "Language:"
-msgstr "Diller:"
+msgstr "Lingua:"
 
 #: tfrmain.caption
 msgctxt "tfrmain.caption"
@@ -1303,262 +1327,262 @@ msgid "AWGG"
 msgstr "AWGG"
 
 #: tfrmain.cblimit.caption
-msgctxt "tfrmain.cblimit.caption"
+msgctxt "TFRMAIN.CBLIMIT.CAPTION"
 msgid "Limit (Kb/s):"
-msgstr "Limit (Kb/s):"
+msgstr "Limite (Kb/s):"
 
 #: tfrmain.lblmaxdowninprogress.caption
-msgctxt "tfrmain.lblmaxdowninprogress.caption"
+msgctxt "TFRMAIN.LBLMAXDOWNINPROGRESS.CAPTION"
 msgid "Max. downloads in progress:"
-msgstr "Maks.Eşzamanlı İndirme:"
+msgstr "Max. download in corso:"
 
 #: tfrmain.lvmain.columns[0].caption
-msgctxt "tfrmain.lvmain.columns[0].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[0].CAPTION"
 msgid "Status"
-msgstr "Durum"
+msgstr "Statos"
 
 #: tfrmain.lvmain.columns[10].caption
-msgctxt "tfrmain.lvmain.columns[10].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[10].CAPTION"
 msgid "Engine"
 msgstr "Motor"
 
 #: tfrmain.lvmain.columns[11].caption
-msgctxt "tfrmain.lvmain.columns[11].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[11].CAPTION"
 msgid "Parameters"
-msgstr "Parametreler"
+msgstr "Parametros"
 
 #: tfrmain.lvmain.columns[1].caption
-msgctxt "tfrmain.lvmain.columns[1].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[1].CAPTION"
 msgid "File name"
-msgstr "Dosya adı"
+msgstr "Archivio nome"
 
 #: tfrmain.lvmain.columns[2].caption
-msgctxt "tfrmain.lvmain.columns[2].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[2].CAPTION"
 msgid "Size"
-msgstr "Size"
+msgstr "Dimensione"
 
 #: tfrmain.lvmain.columns[3].caption
-msgctxt "tfrmain.lvmain.columns[3].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[3].CAPTION"
 msgid "Downloaded"
-msgstr "İndirildi"
+msgstr "Scaricare"
 
 #: tfrmain.lvmain.columns[4].caption
-msgctxt "tfrmain.lvmain.columns[4].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[4].CAPTION"
 msgid "URL"
 msgstr "URL"
 
 #: tfrmain.lvmain.columns[5].caption
-msgctxt "tfrmain.lvmain.columns[5].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[5].CAPTION"
 msgid "Speed"
-msgstr "Hız"
+msgstr "Velocita"
 
 #: tfrmain.lvmain.columns[6].caption
-msgctxt "tfrmain.lvmain.columns[6].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[6].CAPTION"
 msgid "%"
 msgstr "%"
 
 #: tfrmain.lvmain.columns[7].caption
-msgctxt "tfrmain.lvmain.columns[7].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[7].CAPTION"
 msgid "Estimated"
-msgstr "Tahmini"
+msgstr "Stimare"
 
 #: tfrmain.lvmain.columns[8].caption
-msgctxt "tfrmain.lvmain.columns[8].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[8].CAPTION"
 msgid "Date"
-msgstr "Tarih"
+msgstr "Data"
 
 #: tfrmain.lvmain.columns[9].caption
-msgctxt "tfrmain.lvmain.columns[9].caption"
+msgctxt "TFRMAIN.LVMAIN.COLUMNS[9].CAPTION"
 msgid "Destination"
-msgstr "Hedef"
+msgstr "Destinazione"
 
 #: tfrmain.miadddown.caption
-msgctxt "tfrmain.miadddown.caption"
+msgctxt "TFRMAIN.MIADDDOWN.CAPTION"
 msgid "New download..."
-msgstr "Yeni İndirme..."
+msgstr "Nuovo download..."
 
 #: tfrmain.miaddgrabber.caption
-msgctxt "tfrmain.miaddgrabber.caption"
+msgctxt "TFRMAIN.MIADDGRABBER.CAPTION"
 msgid "New site grabber..."
-msgstr "New site grabber..."
+msgstr "Nuovo sito grabber..."
 
 #: tfrmain.micommandclear.caption
-msgctxt "tfrmain.micommandclear.caption"
+msgctxt "TFRMAIN.MICOMMANDCLEAR.CAPTION"
 msgid "Clear command out"
-msgstr "Komutu temizle"
+msgstr "Cancella comando"
 
 #: tfrmain.micommandcopy.caption
-msgctxt "tfrmain.micommandcopy.caption"
+msgctxt "TFRMAIN.MICOMMANDCOPY.CAPTION"
 msgid "Copy"
-msgstr "Kopyala"
+msgstr "Copia"
 
 #: tfrmain.micommandfollow.caption
-msgctxt "tfrmain.micommandfollow.caption"
+msgctxt "TFRMAIN.MICOMMANDFOLLOW.CAPTION"
 msgid "Follow command out (auto scroll)"
-msgstr "Follow command out (auto scroll)"
+msgstr "Seguire comando out (scorrimento automatico)"
 
 #: tfrmain.micommandselectall.caption
-msgctxt "tfrmain.micommandselectall.caption"
+msgctxt "TFRMAIN.MICOMMANDSELECTALL.CAPTION"
 msgid "Select all"
-msgstr "Hepsini Seç"
+msgstr "Seleziona tutto"
 
 #: tfrmain.midropbox.caption
-msgctxt "tfrmain.midropbox.caption"
+msgctxt "TFRMAIN.MIDROPBOX.CAPTION"
 msgid "Drop box"
 msgstr "Drop box"
 
 #: tfrmain.miexit.caption
-msgctxt "tfrmain.miexit.caption"
+msgctxt "TFRMAIN.MIEXIT.CAPTION"
 msgid "Exit"
-msgstr "Cıkış"
+msgstr "Uscita"
 
 #: tfrmain.milimovebottom.caption
 msgid "Move to bottom"
-msgstr ""
+msgstr "Sposta in basso"
 
 #: tfrmain.milimovedown.caption
 msgid "Move down"
-msgstr ""
+msgstr "Sposta giù"
 
 #: tfrmain.milimovetop.caption
 msgid "Move to top"
-msgstr ""
+msgstr "Sposta in alto"
 
 #: tfrmain.milimoveup.caption
 msgid "Move up"
-msgstr ""
+msgstr "Spostati verso l'alto"
 
 #: tfrmain.miliposition.caption
 msgid "Position"
-msgstr ""
+msgstr "Posizione"
 
 #: tfrmain.milistcanceldown.caption
 msgctxt "tfrmain.milistcanceldown.caption"
 msgid "Cancel"
-msgstr "Vazgeç"
+msgstr "Annullare"
 
 #: tfrmain.milistclearcomplete.caption
 msgid "Clear all complete"
-msgstr ""
+msgstr "Cancella tutto completo"
 
 #: tfrmain.milistclearlog.caption
-msgctxt "tfrmain.milistclearlog.caption"
+msgctxt "TFRMAIN.MILISTCLEARLOG.CAPTION"
 msgid "Clean history log file"
-msgstr "Geçmişi temizle günlük dosyası"
+msgstr "Pulisci il archivio di registro della cronologia"
 
 #: tfrmain.milistcontinuelaterdown.caption
 msgctxt "tfrmain.milistcontinuelaterdown.caption"
 msgid "Continue later"
-msgstr "Daha sonra devam et"
+msgstr "Continua più tardi"
 
 #: tfrmain.milistcopyfiles.caption
-msgctxt "tfrmain.milistcopyfiles.caption"
+msgctxt "TFRMAIN.MILISTCOPYFILES.CAPTION"
 msgid "Copy file(s) to..."
-msgstr "Copy file(s) to..."
+msgstr "Copia archivio(s) per..."
 
 #: tfrmain.milistcopyurl.caption
-msgctxt "tfrmain.milistcopyurl.caption"
+msgctxt "TFRMAIN.MILISTCOPYURL.CAPTION"
 msgid "Copy download URL"
-msgstr "Copy download URL"
+msgstr "Copia URL di download"
 
 #: tfrmain.milistdeletedown.caption
-msgctxt "tfrmain.milistdeletedown.caption"
+msgctxt "TFRMAIN.MILISTDELETEDOWN.CAPTION"
 msgid "Delete"
-msgstr "Sil"
+msgstr "Eliminare"
 
 #: tfrmain.milistdeletedowndisk.caption
-msgctxt "tfrmain.milistdeletedowndisk.caption"
+msgctxt "TFRMAIN.MILISTDELETEDOWNDISK.CAPTION"
 msgid "Delete from disk"
-msgstr "Delete from disk"
+msgstr "Eliminare dal disco"
 
 #: tfrmain.milistmovefiles.caption
-msgctxt "tfrmain.milistmovefiles.caption"
+msgctxt "TFRMAIN.MILISTMOVEFILES.CAPTION"
 msgid "Move file(s) to..."
-msgstr "Move file(s) to..."
+msgstr "Spostare archivio(s) per..."
 
 #: tfrmain.milistopendestination.caption
-msgctxt "tfrmain.milistopendestination.caption"
+msgctxt "TFRMAIN.MILISTOPENDESTINATION.CAPTION"
 msgid "Go to the destination folder"
-msgstr "Hedef klasöre git"
+msgstr "Vai alla cartella di destinazione"
 
 #: tfrmain.milistopenfile.caption
-msgctxt "tfrmain.milistopenfile.caption"
+msgctxt "TFRMAIN.MILISTOPENFILE.CAPTION"
 msgid "Open file"
-msgstr "Open file"
+msgstr "Apri archivio"
 
 #: tfrmain.milistopenlog.caption
-msgctxt "tfrmain.milistopenlog.caption"
+msgctxt "TFRMAIN.MILISTOPENLOG.CAPTION"
 msgid "Open history log file"
-msgstr "Geçmiş günlük dosyasını aç"
+msgstr "Apri archivio di registro Cronologia"
 
 #: tfrmain.milistopenurl.caption
-msgctxt "tfrmain.milistopenurl.caption"
+msgctxt "TFRMAIN.MILISTOPENURL.CAPTION"
 msgid "Open download URL"
-msgstr "İndirme URL’sini aç"
+msgstr "Apri URL di download"
 
 #: tfrmain.milistproperties.caption
-msgctxt "tfrmain.milistproperties.caption"
+msgctxt "TFRMAIN.MILISTPROPERTIES.CAPTION"
 msgid "Properties"
-msgstr "Özellikler"
+msgstr "Proprieta"
 
 #: tfrmain.milistrestartlater.caption
-msgctxt "tfrmain.milistrestartlater.caption"
+msgctxt "TFRMAIN.MILISTRESTARTLATER.CAPTION"
 msgid "Restart later"
-msgstr "Sonra yeniden başlat"
+msgstr "Riavvia più tardi"
 
 #: tfrmain.milistrestartnow.caption
-msgctxt "tfrmain.milistrestartnow.caption"
+msgctxt "TFRMAIN.MILISTRESTARTNOW.CAPTION"
 msgid "Restart now"
-msgstr "Şimdi yeniden başlat"
+msgstr "Riavvia ora"
 
 #: tfrmain.milistsendtoqueue.caption
-msgctxt "tfrmain.milistsendtoqueue.caption"
+msgctxt "TFRMAIN.MILISTSENDTOQUEUE.CAPTION"
 msgid "Send to the queue"
-msgstr "Kuyruğa gönder"
+msgstr "Invia alla coda"
 
 #: tfrmain.milistshowtrayicon.caption
-msgctxt "tfrmain.milistshowtrayicon.caption"
+msgctxt "TFRMAIN.MILISTSHOWTRAYICON.CAPTION"
 msgid "Show in systray"
-msgstr "Systray'de göster"
+msgstr "Mostra in systray"
 
 #: tfrmain.miliststartdown.caption
-msgctxt "tfrmain.miliststartdown.caption"
+msgctxt "TFRMAIN.MILISTSTARTDOWN.CAPTION"
 msgid "Start"
-msgstr "Başlat"
+msgstr "Inizia"
 
 #: tfrmain.miliststopdown.caption
-msgctxt "tfrmain.miliststopdown.caption"
+msgctxt "TFRMAIN.MILISTSTOPDOWN.CAPTION"
 msgid "Stop"
-msgstr "Dur"
+msgstr "Interrompere"
 
 #: tfrmain.mimainabout.caption
-msgctxt "tfrmain.mimainabout.caption"
+msgctxt "TFRMAIN.MIMAINABOUT.CAPTION"
 msgid "About"
-msgstr "Hakkında"
+msgstr "Su"
 
 #: tfrmain.mimainadddown.caption
-msgctxt "tfrmain.mimainadddown.caption"
+msgctxt "TFRMAIN.MIMAINADDDOWN.CAPTION"
 msgid "New download..."
-msgstr "Yeni indirme..."
+msgstr "Nuovo download..."
 
 #: tfrmain.mimainaddgrabber.caption
-msgctxt "tfrmain.mimainaddgrabber.caption"
+msgctxt "TFRMAIN.MIMAINADDGRABBER.CAPTION"
 msgid "New site grabber..."
-msgstr "Site Grabber..."
+msgstr "Nuovo sito grabber..."
 
 #: tfrmain.mimaincheckupdate.caption
 msgid "Check for updates..."
-msgstr ""
+msgstr "Controlla gli aggiornamenti..."
 
 #: tfrmain.mimaincolumns.caption
-msgctxt "tfrmain.mimaincolumns.caption"
+msgctxt "TFRMAIN.MIMAINCOLUMNS.CAPTION"
 msgid "Columns"
-msgstr "Sütunlar"
+msgstr "Colonna"
 
 #: tfrmain.mimainconfig.caption
-msgctxt "tfrmain.mimainconfig.caption"
+msgctxt "TFRMAIN.MIMAINCONFIG.CAPTION"
 msgid "Configuration"
-msgstr "Yapılandırma"
+msgstr "Configuracione"
 
 #: tfrmain.mimainddbox.caption
 msgctxt "tfrmain.mimainddbox.caption"
@@ -1566,293 +1590,293 @@ msgid "Drop box"
 msgstr "Drop box"
 
 #: tfrmain.mimaindeleteall.caption
-msgctxt "tfrmain.mimaindeleteall.caption"
+msgctxt "TFRMAIN.MIMAINDELETEALL.CAPTION"
 msgid "Delete all"
-msgstr "Hepsini sil"
+msgstr "Eliminare tutto"
 
 #: tfrmain.mimaindeletedown.caption
-msgctxt "tfrmain.mimaindeletedown.caption"
+msgctxt "TFRMAIN.MIMAINDELETEDOWN.CAPTION"
 msgid "Delete download"
-msgstr "İndirmeyi sil"
+msgstr "Eliminare download"
 
 #: tfrmain.mimaindeletedowndisk.caption
-msgctxt "tfrmain.mimaindeletedowndisk.caption"
+msgctxt "TFRMAIN.MIMAINDELETEDOWNDISK.CAPTION"
 msgid "Delete from disk"
-msgstr "Diskten sil"
+msgstr "Eliminare dal disco"
 
 #: tfrmain.mimaindeletedowndisk.hint
-msgctxt "tfrmain.mimaindeletedowndisk.hint"
+msgctxt "TFRMAIN.MIMAINDELETEDOWNDISK.HINT"
 msgid "Delete from disk"
-msgstr "Diskten sil"
+msgstr "Eliminare dal disco"
 
 #: tfrmain.mimaindonate.caption
 msgid "Donate"
-msgstr ""
+msgstr "Donazione"
 
 #: tfrmain.mimaindownloads.caption
-msgctxt "tfrmain.mimaindownloads.caption"
+msgctxt "TFRMAIN.MIMAINDOWNLOADS.CAPTION"
 msgid "Downloads"
-msgstr "İndirme Yöneticisi"
+msgstr "Downloads"
 
 #: tfrmain.mimainexit.caption
-msgctxt "tfrmain.mimainexit.caption"
+msgctxt "TFRMAIN.MIMAINEXIT.CAPTION"
 msgid "Exit"
-msgstr "Cıkış"
+msgstr "Uscita"
 
 #: tfrmain.mimainexportdown.caption
-msgctxt "tfrmain.mimainexportdown.caption"
+msgctxt "TFRMAIN.MIMAINEXPORTDOWN.CAPTION"
 msgid "Export list of downloads..."
-msgstr "İndirme listesini dışa aktar..."
+msgstr "Elenco di esportazione di download..."
 
 #: tfrmain.mimainfile.caption
-msgctxt "tfrmain.mimainfile.caption"
+msgctxt "TFRMAIN.MIMAINFILE.CAPTION"
 msgid "File"
-msgstr "Dosya"
+msgstr "Archivio"
 
 #: tfrmain.mimainhelp.caption
-msgctxt "tfrmain.mimainhelp.caption"
+msgctxt "TFRMAIN.MIMAINHELP.CAPTION"
 msgid "Help"
-msgstr "Yardım"
+msgstr "Aiutare"
 
 #: tfrmain.mimainhomepage.caption
-msgctxt "tfrmain.mimainhomepage.caption"
+msgctxt "TFRMAIN.MIMAINHOMEPAGE.CAPTION"
 msgid "Official web site"
-msgstr "Resmi internet sitesi"
+msgstr "Sito ufficiale"
 
 #: tfrmain.mimainimportdown.caption
-msgctxt "tfrmain.mimainimportdown.caption"
+msgctxt "TFRMAIN.MIMAINIMPORTDOWN.CAPTION"
 msgid "Import list of downloads..."
-msgstr "İndirme listesini al ..."
+msgstr "Elenco di importazione di download..."
 
 #: tfrmain.mimainintray.caption
 msgctxt "tfrmain.mimainintray.caption"
 msgid "Show program icon in systray"
-msgstr "Systray'deki program simgesini göster"
+msgstr "Mostra l'icona del programma in systray"
 
 #: tfrmain.mimainrestartalllater.caption
-msgctxt "tfrmain.mimainrestartalllater.caption"
+msgctxt "TFRMAIN.MIMAINRESTARTALLLATER.CAPTION"
 msgid "Restart all later"
-msgstr "Hepsini daha sonra yeniden başlat"
+msgstr "Riavvia tutto più tardi"
 
 #: tfrmain.mimainrestartallnow.caption
-msgctxt "tfrmain.mimainrestartallnow.caption"
+msgctxt "TFRMAIN.MIMAINRESTARTALLNOW.CAPTION"
 msgid "Restart all now"
-msgstr "Hepsini Yeniden başlat"
+msgstr "Riavvia tutto ora"
 
 #: tfrmain.mimainscheduler.caption
-msgctxt "tfrmain.mimainscheduler.caption"
+msgctxt "TFRMAIN.MIMAINSCHEDULER.CAPTION"
 msgid "Scheduler"
-msgstr "Zamanlayıcı"
+msgstr "Scheduler"
 
 #: tfrmain.mimainselectall.caption
-msgctxt "tfrmain.mimainselectall.caption"
+msgctxt "TFRMAIN.MIMAINSELECTALL.CAPTION"
 msgid "Select all"
-msgstr "Hepsini Seç"
+msgstr "Seleziona tutto"
 
 #: tfrmain.mimainshow.caption
-msgctxt "tfrmain.mimainshow.caption"
+msgctxt "TFRMAIN.MIMAINSHOW.CAPTION"
 msgid "Show"
-msgstr "Düzenle"
+msgstr "Mostrare"
 
 #: tfrmain.mimainshowcommand.caption
-msgctxt "tfrmain.mimainshowcommand.caption"
+msgctxt "TFRMAIN.MIMAINSHOWCOMMAND.CAPTION"
 msgid "Command out"
-msgstr "Komut Penceresi"
+msgstr "Comando fuori"
 
 #: tfrmain.mimainshowcurrent.caption
-msgctxt "tfrmain.mimainshowcurrent.caption"
+msgctxt "TFRMAIN.MIMAINSHOWCURRENT.CAPTION"
 msgid "Downloaded"
-msgstr "İndirildi"
+msgstr "Scaricare"
 
 #: tfrmain.mimainshowdate.caption
-msgctxt "tfrmain.mimainshowdate.caption"
+msgctxt "TFRMAIN.MIMAINSHOWDATE.CAPTION"
 msgid "Date"
-msgstr "Tarih"
+msgstr "Data"
 
 #: tfrmain.mimainshowdestination.caption
-msgctxt "tfrmain.mimainshowdestination.caption"
+msgctxt "TFRMAIN.MIMAINSHOWDESTINATION.CAPTION"
 msgid "Destination"
-msgstr "Hedef"
+msgstr "Destinazione"
 
 #: tfrmain.mimainshowengine.caption
-msgctxt "tfrmain.mimainshowengine.caption"
+msgctxt "TFRMAIN.MIMAINSHOWENGINE.CAPTION"
 msgid "Engine"
 msgstr "Motor"
 
 #: tfrmain.mimainshowestimated.caption
-msgctxt "tfrmain.mimainshowestimated.caption"
+msgctxt "TFRMAIN.MIMAINSHOWESTIMATED.CAPTION"
 msgid "Estimated"
-msgstr "Tahmini"
+msgstr "Stimare"
 
 #: tfrmain.mimainshowgrid.caption
-msgctxt "tfrmain.mimainshowgrid.caption"
+msgctxt "TFRMAIN.MIMAINSHOWGRID.CAPTION"
 msgid "Show gridlines"
-msgstr "Izgara çizgilerini göster"
+msgstr "Mostra gridlines"
 
 #: tfrmain.mimainshowintray.caption
-msgctxt "tfrmain.mimainshowintray.caption"
+msgctxt "TFRMAIN.MIMAINSHOWINTRAY.CAPTION"
 msgid "Show program icon in systray"
-msgstr "Systray'deki program simgesini göster"
+msgstr "Mostra l'icona del programma in systray"
 
 #: tfrmain.mimainshowname.caption
-msgctxt "tfrmain.mimainshowname.caption"
+msgctxt "TFRMAIN.MIMAINSHOWNAME.CAPTION"
 msgid "File name"
-msgstr "Dosya adı"
+msgstr "Nome archivio"
 
 #: tfrmain.mimainshowparameters.caption
-msgctxt "tfrmain.mimainshowparameters.caption"
+msgctxt "TFRMAIN.MIMAINSHOWPARAMETERS.CAPTION"
 msgid "Parameters"
-msgstr "Parametreler"
+msgstr "Parametro"
 
 #: tfrmain.mimainshowpercent.caption
-msgctxt "tfrmain.mimainshowpercent.caption"
+msgctxt "TFRMAIN.MIMAINSHOWPERCENT.CAPTION"
 msgid "Percent"
-msgstr "Yüzde"
+msgstr "Percento"
 
 #: tfrmain.mimainshowsize.caption
-msgctxt "tfrmain.mimainshowsize.caption"
+msgctxt "TFRMAIN.MIMAINSHOWSIZE.CAPTION"
 msgid "Size"
-msgstr "Size"
+msgstr "Dimensione"
 
 #: tfrmain.mimainshowspeed.caption
-msgctxt "tfrmain.mimainshowspeed.caption"
+msgctxt "TFRMAIN.MIMAINSHOWSPEED.CAPTION"
 msgid "Speed"
-msgstr "Hız"
+msgstr "Velocita"
 
 #: tfrmain.mimainshowstate.caption
-msgctxt "tfrmain.mimainshowstate.caption"
+msgctxt "TFRMAIN.MIMAINSHOWSTATE.CAPTION"
 msgid "State"
-msgstr "State"
+msgstr "Stato"
 
 #: tfrmain.mimainshowtraydowns.caption
-msgctxt "tfrmain.mimainshowtraydowns.caption"
+msgctxt "TFRMAIN.MIMAINSHOWTRAYDOWNS.CAPTION"
 msgid "Show downloads icons in systray"
-msgstr "İndirme simgelerini systray'de göster"
+msgstr "Mostra download icone in systray"
 
 #: tfrmain.mimainshowtree.caption
-msgctxt "tfrmain.mimainshowtree.caption"
+msgctxt "TFRMAIN.MIMAINSHOWTREE.CAPTION"
 msgid "Show tree view panel"
-msgstr "Ağaç görünümü panelini göster"
+msgstr "Mostra pannello vista ad albero"
 
 #: tfrmain.mimainshowurl.caption
-msgctxt "tfrmain.mimainshowurl.caption"
+msgctxt "TFRMAIN.MIMAINSHOWURL.CAPTION"
 msgid "URL"
 msgstr "URL"
 
 #: tfrmain.mimainstartall.caption
-msgctxt "tfrmain.mimainstartall.caption"
+msgctxt "TFRMAIN.MIMAINSTARTALL.CAPTION"
 msgid "Start all"
-msgstr "Hepsini Başlat"
+msgstr "Inizia tutto"
 
 #: tfrmain.mimainstartqueue.caption
-msgctxt "tfrmain.mimainstartqueue.caption"
+msgctxt "TFRMAIN.MIMAINSTARTQUEUE.CAPTION"
 msgid "Start queue"
-msgstr "Kuyruğu Başlat"
+msgstr "Inizia coda"
 
 #: tfrmain.mimainstopall.caption
-msgctxt "tfrmain.mimainstopall.caption"
+msgctxt "TFRMAIN.MIMAINSTOPALL.CAPTION"
 msgid "Stop all"
-msgstr "Hepsini Durdur"
+msgstr "Ferma tutto"
 
 #: tfrmain.mimainstopqueue.caption
-msgctxt "tfrmain.mimainstopqueue.caption"
+msgctxt "TFRMAIN.MIMAINSTOPQUEUE.CAPTION"
 msgid "Stop queue"
-msgstr "Kuyruğu Durdur"
+msgstr "Coda di arresto"
 
 #: tfrmain.mimaintools.caption
-msgctxt "tfrmain.mimaintools.caption"
+msgctxt "TFRMAIN.MIMAINTOOLS.CAPTION"
 msgid "Tools"
-msgstr "Ayarlar"
+msgstr "Strumenti"
 
 #: tfrmain.mimainunselectall.caption
-msgctxt "tfrmain.mimainunselectall.caption"
+msgctxt "TFRMAIN.MIMAINUNSELECTALL.CAPTION"
 msgid "Unselect all"
-msgstr "Hepsini Kaldır"
+msgstr "Deseleziona tutto"
 
 #: tfrmain.mishowmainform.caption
-msgctxt "tfrmain.mishowmainform.caption"
+msgctxt "TFRMAIN.MISHOWMAINFORM.CAPTION"
 msgid "Show"
-msgstr "Göster"
+msgstr "Mostrare"
 
 #: tfrmain.mistopall.caption
-msgctxt "tfrmain.mistopall.caption"
+msgctxt "TFRMAIN.MISTOPALL.CAPTION"
 msgid "Stop all"
-msgstr "Hepsini Durdur"
+msgstr "Ferma tutto"
 
 #: tfrmain.mitrayabout.caption
-msgctxt "tfrmain.mitrayabout.caption"
+msgctxt "TFRMAIN.MITRAYABOUT.CAPTION"
 msgid "About"
-msgstr "Hakkında"
+msgstr "Su"
 
 #: tfrmain.mitraydowncancel.caption
 msgctxt "tfrmain.mitraydowncancel.caption"
 msgid "Cancel"
-msgstr "İptal"
+msgstr "Annulare"
 
 #: tfrmain.mitraydowncontinuelater.caption
 msgctxt "tfrmain.mitraydowncontinuelater.caption"
 msgid "Continue later"
-msgstr "Continue later"
+msgstr "Continua più tardi"
 
 #: tfrmain.mitraydownstart.caption
-msgctxt "tfrmain.mitraydownstart.caption"
+msgctxt "TFRMAIN.MITRAYDOWNSTART.CAPTION"
 msgid "Start"
-msgstr "Start"
+msgstr "Inizia"
 
 #: tfrmain.mitraydownstop.caption
-msgctxt "tfrmain.mitraydownstop.caption"
+msgctxt "TFRMAIN.MITRAYDOWNSTOP.CAPTION"
 msgid "Stop"
-msgstr "Durdur"
+msgstr "Interrompere"
 
 #: tfrmain.mitreeaddqueue.caption
-msgctxt "tfrmain.mitreeaddqueue.caption"
+msgctxt "TFRMAIN.MITREEADDQUEUE.CAPTION"
 msgid "New queue"
-msgstr "New queue"
+msgstr "Nuovo coda"
 
 #: tfrmain.mitreedeletequeue.caption
-msgctxt "tfrmain.mitreedeletequeue.caption"
+msgctxt "TFRMAIN.MITREEDELETEQUEUE.CAPTION"
 msgid "Delete queue"
-msgstr "Delete queue"
+msgstr "Eliminare coda"
 
 #: tfrmain.mitreerenamequeue.caption
-msgctxt "tfrmain.mitreerenamequeue.caption"
+msgctxt "TFRMAIN.MITREERENAMEQUEUE.CAPTION"
 msgid "Rename queue"
-msgstr "Rename queue"
+msgstr "Rinominare coda"
 
 #: tfrmain.mitreestartqueue.caption
-msgctxt "tfrmain.mitreestartqueue.caption"
+msgctxt "TFRMAIN.MITREESTARTQUEUE.CAPTION"
 msgid "Start queue"
-msgstr "Start queue"
+msgstr "Inizia coda"
 
 #: tfrmain.mitreestopqueue.caption
-msgctxt "tfrmain.mitreestopqueue.caption"
+msgctxt "TFRMAIN.MITREESTOPQUEUE.CAPTION"
 msgid "Stop queue"
-msgstr "Stop queue"
+msgstr "Interrompere coda"
 
 #: tfrmain.mitrydownhide.caption
-msgctxt "tfrmain.mitrydownhide.caption"
+msgctxt "TFRMAIN.MITRYDOWNHIDE.CAPTION"
 msgid "Hide"
-msgstr "Gizle"
+msgstr "Nascondere"
 
 #: tfrmain.odlgimportdown.title
-msgctxt "tfrmain.odlgimportdown.title"
+msgctxt "TFRMAIN.ODLGIMPORTDOWN.TITLE"
 msgid "Open file list of downloads"
-msgstr "Open file list of downloads"
+msgstr "Aprire l'elenco dei archivio di download"
 
 #: tfrmain.sdlgexportdown.title
-msgctxt "tfrmain.sdlgexportdown.title"
+msgctxt "TFRMAIN.SDLGEXPORTDOWN.TITLE"
 msgid "Save file list of downloads"
-msgstr "Save file list of downloads"
+msgstr "Salva elenco archivio di download"
 
 #: tfrmain.tbadddown.hint
-msgctxt "tfrmain.tbadddown.hint"
+msgctxt "TFRMAIN.TBADDDOWN.HINT"
 msgid "New download"
-msgstr "New download"
+msgstr "Nuovo download"
 
 #: tfrmain.tbaddgrabber.hint
-msgctxt "tfrmain.tbaddgrabber.hint"
+msgctxt "TFRMAIN.TBADDGRABBER.HINT"
 msgid "New site grabber"
-msgstr "New site grabber"
+msgstr "Nuovo sito grabber"
 
 #: tfrmain.tbcanceldown.caption
 msgid "tbCancelDown"
@@ -1860,17 +1884,17 @@ msgstr ""
 
 #: tfrmain.tbcanceldown.hint
 msgid "Cancel download"
-msgstr "Cancel download"
+msgstr "Annulla download"
 
 #: tfrmain.tbclipboard.hint
-msgctxt "tfrmain.tbclipboard.hint"
+msgctxt "TFRMAIN.TBCLIPBOARD.HINT"
 msgid "Enable/Disable clipboard monitor"
-msgstr "Enable/Disable clipboard monitor"
+msgstr "Abilita / Disabilita il monitor degli appunti"
 
 #: tfrmain.tbconfig.hint
-msgctxt "tfrmain.tbconfig.hint"
+msgctxt "TFRMAIN.TBCONFIG.HINT"
 msgid "Configuration"
-msgstr "Yapılandırma"
+msgstr "Configuracione"
 
 #: tfrmain.tbcontinuelater.caption
 msgid "tbContinueLater"
@@ -1879,246 +1903,245 @@ msgstr ""
 #: tfrmain.tbcontinuelater.hint
 msgctxt "tfrmain.tbcontinuelater.hint"
 msgid "Continue later"
-msgstr "Daha sonra devam et"
+msgstr "Continua più tardi"
 
 #: tfrmain.tbdeldowndisk.hint
-msgctxt "tfrmain.tbdeldowndisk.hint"
+msgctxt "TFRMAIN.TBDELDOWNDISK.HINT"
 msgid "Delete from disk"
-msgstr "Diskten sil"
+msgstr "Eliminare dal disco"
 
 #: tfrmain.tbdeletedown.hint
-msgctxt "tfrmain.tbdeletedown.hint"
+msgctxt "TFRMAIN.TBDELETEDOWN.HINT"
 msgid "Delete download"
-msgstr "İndirmeyi Sil"
+msgstr "Eliminare download"
 
 #: tfrmain.tbexit.hint
-msgctxt "tfrmain.tbexit.hint"
+msgctxt "TFRMAIN.TBEXIT.HINT"
 msgid "Exit"
-msgstr "Çıkış"
+msgstr "Uscita"
 
 #: tfrmain.tbexportdown.hint
-msgctxt "tfrmain.tbexportdown.hint"
+msgctxt "TFRMAIN.TBEXPORTDOWN.HINT"
 msgid "Export list of downloads..."
-msgstr "Export list of downloads..."
+msgstr "Elenco di esportazione dei download..."
 
 #: tfrmain.tbimportdown.hint
-msgctxt "tfrmain.tbimportdown.hint"
+msgctxt "TFRMAIN.TBIMPORTDOWN.HINT"
 msgid "Import list of downloads..."
-msgstr "Import list of downloads..."
+msgstr "Elenco di importazione di download..."
 
 #: tfrmain.tbrestartlater.hint
-msgctxt "tfrmain.tbrestartlater.hint"
+msgctxt "TFRMAIN.TBRESTARTLATER.HINT"
 msgid "Restart later"
-msgstr "Restart later"
+msgstr "Riavvia più tardi"
 
 #: tfrmain.tbrestartnow.hint
-msgctxt "tfrmain.tbrestartnow.hint"
+msgctxt "TFRMAIN.TBRESTARTNOW.HINT"
 msgid "Restart download"
-msgstr "İndirmeyi yeniden başlat"
+msgstr "Riavvia download"
 
 #: tfrmain.tbscheduler.hint
-msgctxt "tfrmain.tbscheduler.hint"
+msgctxt "TFRMAIN.TBSCHEDULER.HINT"
 msgid "Scheduler"
-msgstr "Zamanlayıcı"
+msgstr "Scheduler"
 
 #: tfrmain.tbstartdown.hint
-msgctxt "tfrmain.tbstartdown.hint"
+msgctxt "TFRMAIN.TBSTARTDOWN.HINT"
 msgid "Start download"
-msgstr "İndirmeye başla"
+msgstr "Inizia download"
 
 #: tfrmain.tbstartqueue.hint
-msgctxt "tfrmain.tbstartqueue.hint"
+msgctxt "TFRMAIN.TBSTARTQUEUE.HINT"
 msgid "Start queue"
-msgstr "Start queue"
+msgstr "Inizia coda"
 
 #: tfrmain.tbstartscheduler.hint
-msgctxt "tfrmain.tbstartscheduler.hint"
+msgctxt "TFRMAIN.TBSTARTSCHEDULER.HINT"
 msgid "Start scheduler"
-msgstr "Zamanlayıcı Başlat"
+msgstr "Inizia scheduler"
 
 #: tfrmain.tbsteepdown.hint
-msgctxt "tfrmain.tbsteepdown.hint"
+msgctxt "TFRMAIN.TBSTEEPDOWN.HINT"
 msgid "Move one step down"
-msgstr "Bir adım aşağı git"
+msgstr "Sposta un passo verso il basso"
 
 #: tfrmain.tbsteepup.hint
-msgctxt "tfrmain.tbsteepup.hint"
+msgctxt "TFRMAIN.TBSTEEPUP.HINT"
 msgid "Move one step up"
-msgstr "Bir adım yukarı git"
+msgstr "Sposta un passo in su"
 
 #: tfrmain.tbstopall.hint
-msgctxt "tfrmain.tbstopall.hint"
+msgctxt "TFRMAIN.TBSTOPALL.HINT"
 msgid "Stop all"
-msgstr "Hepsini durdur"
+msgstr "Interrompere tutto"
 
 #: tfrmain.tbstopdown.hint
-msgctxt "tfrmain.tbstopdown.hint"
+msgctxt "TFRMAIN.TBSTOPDOWN.HINT"
 msgid "Stop download"
-msgstr "İndirmeyi durdur"
+msgstr "Interrompere download"
 
 #: tfrmain.tbstopqueue.hint
-msgctxt "tfrmain.tbstopqueue.hint"
+msgctxt "TFRMAIN.TBSTOPQUEUE.HINT"
 msgid "Stop queue"
-msgstr "Stop queue"
+msgstr "Interrompere coda"
 
 #: tfrmain.tbstopscheduler.hint
-msgctxt "tfrmain.tbstopscheduler.hint"
+msgctxt "TFRMAIN.TBSTOPSCHEDULER.HINT"
 msgid "Stop scheduler"
-msgstr "Zamanlayıcıyı durdur"
+msgstr "Interrompere scheduler"
 
 #: tfrmain.tbtodown.hint
-msgctxt "tfrmain.tbtodown.hint"
+msgctxt "TFRMAIN.TBTODOWN.HINT"
 msgid "Move to the end"
-msgstr "Move to the end"
+msgstr "Sposta alla fine"
 
 #: tfrmain.tbtoup.hint
-msgctxt "tfrmain.tbtoup.hint"
+msgctxt "TFRMAIN.TBTOUP.HINT"
 msgid "Move to the start"
-msgstr "Move to the start"
+msgstr "Sposta all'inizio"
 
 #: tfrnewdown.btnaddqueue.hint
-msgctxt "tfrnewdown.btnaddqueue.hint"
+msgctxt "TFRNEWDOWN.BTNADDQUEUE.HINT"
 msgid "Add queue"
-msgstr "Add queue"
+msgstr "Aggiungi coda"
 
 #: tfrnewdown.btnaddtofilter.hint
 msgid "Not detect this domain with clipboard monitor"
-msgstr "Not detect this domain with clipboard monitor"
+msgstr "Non rilevare questo dominio con clipboard monitor"
 
 #: tfrnewdown.btncancel.caption
-msgctxt "tfrnewdown.btncancel.caption"
+msgctxt "TFRNEWDOWN.BTNCANCEL.CAPTION"
 msgid "Cancel"
-msgstr "Vazgeç"
+msgstr "Annullare"
 
 #: tfrnewdown.btncategorygo.hint
 msgid "Configure the category file"
-msgstr "Configure the category file"
+msgstr "Configura il archivio di categoria"
 
 #: tfrnewdown.btndeletefilter.hint
 msgid "Detect this domain with clipboard monitor"
-msgstr "Bu etki alanını pano izleyicisi ile algıla"
+msgstr "Rilevare questo dominio con clipboard monitor"
 
 #: tfrnewdown.btnforcenames.hint
 msgctxt "tfrnewdown.btnforcenames.hint"
 msgid "No force names"
-msgstr "Zorlama yok"
+msgstr "Nessun nome di forza"
 
 #: tfrnewdown.btngodestination.hint
 msgid "Open the path folder"
-msgstr "Open the path folder"
+msgstr "Apri la cartella del percorso"
 
 #: tfrnewdown.btnmore.hint
 msgid "Select the video format"
-msgstr "Select the video format"
+msgstr "Selezionare il formato video"
 
 #: tfrnewdown.btnnoforcenames.hint
 msgctxt "tfrnewdown.btnnoforcenames.hint"
 msgid "Force names"
-msgstr "Force names"
+msgstr "Forze nomes"
 
 #: tfrnewdown.btnpaused.caption
-msgctxt "tfrnewdown.btnpaused.caption"
+msgctxt "TFRNEWDOWN.BTNPAUSED.CAPTION"
 msgid "Paused"
-msgstr "Paused"
+msgstr "Sostare"
 
 #: tfrnewdown.btnschedule.hint
-msgctxt "tfrnewdown.btnschedule.hint"
+msgctxt "TFRNEWDOWN.BTNSCHEDULE.HINT"
 msgid "Schedule"
 msgstr "Schedule"
 
 #: tfrnewdown.btnstart.caption
-msgctxt "tfrnewdown.btnstart.caption"
+msgctxt "TFRNEWDOWN.BTNSTART.CAPTION"
 msgid "Start now"
-msgstr "Şimdi başla"
+msgstr "Inizia ora"
 
 #: tfrnewdown.btntoend.hint
 msgctxt "tfrnewdown.btntoend.hint"
 msgid "Position in queue"
-msgstr "Position in queue"
+msgstr "Posizione in coda"
 
 #: tfrnewdown.btntoqueue.caption
-msgctxt "tfrnewdown.btntoqueue.caption"
+msgctxt "TFRNEWDOWN.BTNTOQUEUE.CAPTION"
 msgid "To the queue [F2]"
-msgstr "To the queue [F2]"
+msgstr "Alla coda [F2]"
 
 #: tfrnewdown.btntoup.hint
-msgctxt "tfrnewdown.btntoup.hint"
+msgctxt "TFRNEWDOWN.BTNTOUP.HINT"
 msgid "Position in queue"
-msgstr "Position in queue"
+msgstr "Posizione in coda"
 
 #: tfrnewdown.caption
-msgctxt "tfrnewdown.caption"
+msgctxt "TFRNEWDOWN.CAPTION"
 msgid "New download"
-msgstr "Yeni İndirme"
+msgstr "Nuovo download"
 
 #: tfrnewdown.dedestination.hint
 msgid "Select the path folder"
-msgstr "Select the path folder"
+msgstr "Selezionare la cartella percorso"
 
 #: tfrnewdown.lbldestination.caption
-msgctxt "tfrnewdown.lbldestination.caption"
+msgctxt "TFRNEWDOWN.LBLDESTINATION.CAPTION"
 msgid "Path:"
-msgstr "Path:"
+msgstr "Percorso: ->"
 
 #: tfrnewdown.lblengine.caption
-msgctxt "tfrnewdown.lblengine.caption"
+msgctxt "TFRNEWDOWN.LBLENGINE.CAPTION"
 msgid "Engine:"
-msgstr "Engine:"
+msgstr "Motor:"
 
 #: tfrnewdown.lblfilename.caption
-msgctxt "tfrnewdown.lblfilename.caption"
+msgctxt "TFRNEWDOWN.LBLFILENAME.CAPTION"
 msgid "Name:"
-msgstr "Name:"
+msgstr "Nome:"
 
 #: tfrnewdown.lblparameters.caption
-msgctxt "tfrnewdown.lblparameters.caption"
+msgctxt "TFRNEWDOWN.LBLPARAMETERS.CAPTION"
 msgid "Parameters:"
-msgstr "Parameters:"
+msgstr "Parametros"
 
 #: tfrnewdown.lblpassword.caption
-msgctxt "tfrnewdown.lblpassword.caption"
+msgctxt "TFRNEWDOWN.LBLPASSWORD.CAPTION"
 msgid "HTTP/FTP Password:"
-msgstr "HTTP/FTP Password:"
+msgstr "Password HTTP / FTP:"
 
 #: tfrnewdown.lblqueue.caption
-msgctxt "tfrnewdown.lblqueue.caption"
+msgctxt "TFRNEWDOWN.LBLQUEUE.CAPTION"
 msgid "Queue:"
-msgstr "Queue:"
+msgstr "Coda (queue):"
 
 #: tfrnewdown.lblurl.caption
-msgctxt "tfrnewdown.lblurl.caption"
+msgctxt "TFRNEWDOWN.LBLURL.CAPTION"
 msgid "URL:"
 msgstr "URL:"
 
 #: tfrnewdown.lbluser.caption
-msgctxt "tfrnewdown.lbluser.caption"
+msgctxt "TFRNEWDOWN.LBLUSER.CAPTION"
 msgid "HTTP/FTP User:"
-msgstr "HTTP/FTP User:"
+msgstr "HTTP / FTP Utente:"
 
 #: tfrnotification.btncopyto.hint
-msgctxt "tfrnotification.btncopyto.hint"
+msgctxt "TFRNOTIFICATION.BTNCOPYTO.HINT"
 msgid "Copy file to..."
-msgstr "Copy file to..."
+msgstr "Copia archivio su..."
 
 #: tfrnotification.btngopath.hint
-msgctxt "tfrnotification.btngopath.hint"
+msgctxt "TFRNOTIFICATION.BTNGOPATH.HINT"
 msgid "Go to the destination folder"
-msgstr "Go to the destination folder"
+msgstr "Vai alla cartella di destinazione"
 
 #: tfrnotification.btnmoveto.hint
-msgctxt "tfrnotification.btnmoveto.hint"
+msgctxt "TFRNOTIFICATION.BTNMOVETO.HINT"
 msgid "Move file to..."
-msgstr "Move file to..."
+msgstr "Sposta archivio su..."
 
 #: tfrnotification.btnopenfile.hint
-msgctxt "tfrnotification.btnopenfile.hint"
+msgctxt "TFRNOTIFICATION.BTNOPENFILE.HINT"
 msgid "Open file"
-msgstr "Open file"
+msgstr "Apri archivio"
 
 #: tfrnotification.caption
-msgctxt "tfrnotification.caption"
 msgid "Download notification"
-msgstr ""
+msgstr "Scarica notifica"
 
 #: tfrnotification.lbldescriptionerror.caption
 msgid "lblDescriptionError"
@@ -2133,194 +2156,194 @@ msgid "lblTitle"
 msgstr ""
 
 #: tfrreplace.btncancel.caption
-msgctxt "tfrreplace.btncancel.caption"
+msgctxt "TFRREPLACE.BTNCANCEL.CAPTION"
 msgid "Cancel"
-msgstr "Vazgeç"
+msgstr "Annullare"
 
 #: tfrreplace.btnok.caption
-msgctxt "tfrreplace.btnok.caption"
+msgctxt "TFRREPLACE.BTNOK.CAPTION"
 msgid "Ok"
 msgstr "Ok"
 
 #: tfrreplace.caption
 msgctxt "tfrreplace.caption"
 msgid "File exists"
-msgstr "File exists"
+msgstr "Archivio esistere"
 
 #: tfrreplace.lblfileexistinformation.caption
-msgctxt "tfrreplace.lblfileexistinformation.caption"
+msgctxt "TFRREPLACE.LBLFILEEXISTINFORMATION.CAPTION"
 msgid "The file that you attempt to download already exists, what do you want to do?"
-msgstr "The file that you attempt to download already exists, what do you want to do?"
+msgstr "Il archivio che si tenta di scaricare esiste già, cosa vuoi fare?"
 
 #: tfrreplace.lblfilename.caption
-msgctxt "tfrreplace.lblfilename.caption"
+msgctxt "TFRREPLACE.LBLFILENAME.CAPTION"
 msgid "File name:"
-msgstr "File name:"
+msgstr "Nome dal archivio:"
 
 #: tfrreplace.rbautorename.caption
-msgctxt "tfrreplace.rbautorename.caption"
+msgctxt "TFRREPLACE.RBAUTORENAME.CAPTION"
 msgid "Auto rename the file."
-msgstr "Auto rename the file."
+msgstr "Rinomina automaticamente il archivio."
 
 #: tfrreplace.rbmanualrename.caption
-msgctxt "tfrreplace.rbmanualrename.caption"
+msgctxt "TFRREPLACE.RBMANUALRENAME.CAPTION"
 msgid "Manual rename the file."
-msgstr "Manual rename the file."
+msgstr "Manuale rinominare il archivio."
 
 #: tfrreplace.rboverwrite.caption
-msgctxt "tfrreplace.rboverwrite.caption"
+msgctxt "TFRREPLACE.RBOVERWRITE.CAPTION"
 msgid "Overwrite the file."
-msgstr "Overwrite the file."
+msgstr "Sovrascrivi il archivio."
 
 #: tfrreplace.rbupdateurl.caption
-msgctxt "tfrreplace.rbupdateurl.caption"
+msgctxt "TFRREPLACE.RBUPDATEURL.CAPTION"
 msgid "Update URL for this file."
-msgstr "Update URL for this file."
+msgstr "Aggiorna URL per questo archivio."
 
 #: tfrsitegrabber.bgauthentication.caption
-msgctxt "tfrsitegrabber.bgauthentication.caption"
+msgctxt "TFRSITEGRABBER.BGAUTHENTICATION.CAPTION"
 msgid "HTTP/FTP Authentication"
-msgstr "HTTP/FTP Authentication"
+msgstr "Autenticazione HTTP / FTP"
 
 #: tfrsitegrabber.btnback.caption
-msgctxt "tfrsitegrabber.btnback.caption"
+msgctxt "TFRSITEGRABBER.BTNBACK.CAPTION"
 msgid "< Back"
-msgstr "< Back"
+msgstr "< Indietro"
 
 #: tfrsitegrabber.btncancel.caption
-msgctxt "tfrsitegrabber.btncancel.caption"
+msgctxt "TFRSITEGRABBER.BTNCANCEL.CAPTION"
 msgid "Cancel"
-msgstr "Cancel"
+msgstr "Annullare"
 
 #: tfrsitegrabber.btnfinish.caption
-msgctxt "tfrsitegrabber.btnfinish.caption"
+msgctxt "TFRSITEGRABBER.BTNFINISH.CAPTION"
 msgid "Finish"
-msgstr "Finish"
+msgstr "Finire"
 
 #: tfrsitegrabber.btnnext.caption
-msgctxt "tfrsitegrabber.btnnext.caption"
+msgctxt "TFRSITEGRABBER.BTNNEXT.CAPTION"
 msgid "Next >"
-msgstr "Next >"
+msgstr "Prossimo >"
 
 #: tfrsitegrabber.caption
-msgctxt "tfrsitegrabber.caption"
+msgctxt "TFRSITEGRABBER.CAPTION"
 msgid "New Site Grabber"
-msgstr "New Site Grabber"
+msgstr "Nuovo Sito Grabber"
 
 #: tfrsitegrabber.chfollowftplink.caption
-msgctxt "tfrsitegrabber.chfollowftplink.caption"
+msgctxt "TFRSITEGRABBER.CHFOLLOWFTPLINK.CAPTION"
 msgid "Follow FTP links"
-msgstr "Follow FTP links"
+msgstr "Segui i link FTP"
 
 #: tfrsitegrabber.chfollowrelativelink.caption
-msgctxt "tfrsitegrabber.chfollowrelativelink.caption"
+msgctxt "TFRSITEGRABBER.CHFOLLOWRELATIVELINK.CAPTION"
 msgid "Follow relative links"
-msgstr "Follow relative links"
+msgstr "Segui i link relativi"
 
 #: tfrsitegrabber.chlinktolocal.caption
-msgctxt "tfrsitegrabber.chlinktolocal.caption"
+msgctxt "TFRSITEGRABBER.CHLINKTOLOCAL.CAPTION"
 msgid "Convert to locals links"
-msgstr "Convert to locals links"
+msgstr "Converti in collegamenti locali"
 
 #: tfrsitegrabber.chnoparentlink.caption
-msgctxt "tfrsitegrabber.chnoparentlink.caption"
+msgctxt "TFRSITEGRABBER.CHNOPARENTLINK.CAPTION"
 msgid "No parent links"
-msgstr "No parent links"
+msgstr "Nessun collegamento genitore"
 
 #: tfrsitegrabber.chpagerequisites.caption
-msgctxt "tfrsitegrabber.chpagerequisites.caption"
+msgctxt "TFRSITEGRABBER.CHPAGEREQUISITES.CAPTION"
 msgid "Page requisites"
-msgstr "Page requisites"
+msgstr "Requisiti della pagina"
 
 #: tfrsitegrabber.chspanhosts.caption
-msgctxt "tfrsitegrabber.chspanhosts.caption"
+msgctxt "TFRSITEGRABBER.CHSPANHOSTS.CAPTION"
 msgid "Span hosts"
-msgstr "Span hosts"
+msgstr "Host Span"
 
 #: tfrsitegrabber.gbdomainrejectfilter.caption
-msgctxt "tfrsitegrabber.gbdomainrejectfilter.caption"
+msgctxt "TFRSITEGRABBER.GBDOMAINREJECTFILTER.CAPTION"
 msgid "Domain reject filter"
-msgstr "Domain reject filter"
+msgstr "Filtro rifiuto dominio"
 
 #: tfrsitegrabber.gbexcludedirectory.caption
-msgctxt "tfrsitegrabber.gbexcludedirectory.caption"
+msgctxt "TFRSITEGRABBER.GBEXCLUDEDIRECTORY.CAPTION"
 msgid "Exclude directory list"
-msgstr "Exclude directory list"
+msgstr "Escludi elenco di directory"
 
 #: tfrsitegrabber.gbfileacceptfilter.caption
-msgctxt "tfrsitegrabber.gbfileacceptfilter.caption"
+msgctxt "TFRSITEGRABBER.GBFILEACCEPTFILTER.CAPTION"
 msgid "File accept filter"
-msgstr "File accept filter"
+msgstr "Archivio Accetta filtro"
 
 #: tfrsitegrabber.gbfilerejectfilter.caption
-msgctxt "tfrsitegrabber.gbfilerejectfilter.caption"
+msgctxt "TFRSITEGRABBER.GBFILEREJECTFILTER.CAPTION"
 msgid "File reject filter"
-msgstr "File reject filter"
+msgstr "Archivio respingere filter"
 
 #: tfrsitegrabber.gbfollowdomainfilter.caption
-msgctxt "tfrsitegrabber.gbfollowdomainfilter.caption"
+msgctxt "TFRSITEGRABBER.GBFOLLOWDOMAINFILTER.CAPTION"
 msgid "Follow domain filter"
-msgstr "Follow domain filter"
+msgstr "Segui il filtro dominio"
 
 #: tfrsitegrabber.gbfollowtags.caption
-msgctxt "tfrsitegrabber.gbfollowtags.caption"
+msgctxt "TFRSITEGRABBER.GBFOLLOWTAGS.CAPTION"
 msgid "Follow tags list"
-msgstr "Follow tags list"
+msgstr "Segui l'elenco dei tag"
 
 #: tfrsitegrabber.gbignoretags.caption
-msgctxt "tfrsitegrabber.gbignoretags.caption"
+msgctxt "TFRSITEGRABBER.GBIGNORETAGS.CAPTION"
 msgid "Ignore tags list"
-msgstr "Ignore tags list"
+msgstr "Ignora elenco tag"
 
 #: tfrsitegrabber.gbincludedirectory.caption
-msgctxt "tfrsitegrabber.gbincludedirectory.caption"
+msgctxt "TFRSITEGRABBER.GBINCLUDEDIRECTORY.CAPTION"
 msgid "Include directory list"
-msgstr "Include directory list"
+msgstr "Includi elenco di directory"
 
 #: tfrsitegrabber.lbldestination.caption
-msgctxt "tfrsitegrabber.lbldestination.caption"
+msgctxt "TFRSITEGRABBER.LBLDESTINATION.CAPTION"
 msgid "Destination:"
-msgstr "Destination:"
+msgstr "Destinazione:"
 
 #: tfrsitegrabber.lblmaxlevel.caption
-msgctxt "tfrsitegrabber.lblmaxlevel.caption"
+msgctxt "TFRSITEGRABBER.LBLMAXLEVEL.CAPTION"
 msgid "Max level:"
-msgstr "Max level:"
+msgstr "Livello massimo:"
 
 #: tfrsitegrabber.lblpassword.caption
-msgctxt "tfrsitegrabber.lblpassword.caption"
+msgctxt "TFRSITEGRABBER.LBLPASSWORD.CAPTION"
 msgid "Password:"
 msgstr "Password:"
 
 #: tfrsitegrabber.lblqueue.caption
-msgctxt "tfrsitegrabber.lblqueue.caption"
+msgctxt "TFRSITEGRABBER.LBLQUEUE.CAPTION"
 msgid "Queue:"
-msgstr "Queue:"
+msgstr "Coda:"
 
 #: tfrsitegrabber.lblsitename.caption
-msgctxt "tfrsitegrabber.lblsitename.caption"
+msgctxt "TFRSITEGRABBER.LBLSITENAME.CAPTION"
 msgid "Name:"
-msgstr "Name:"
+msgstr "Nome:"
 
 #: tfrsitegrabber.lblurl.caption
-msgctxt "tfrsitegrabber.lblurl.caption"
+msgctxt "TFRSITEGRABBER.LBLURL.CAPTION"
 msgid "URL:"
 msgstr "URL:"
 
 #: tfrsitegrabber.lbluser.caption
-msgctxt "tfrsitegrabber.lbluser.caption"
+msgctxt "TFRSITEGRABBER.LBLUSER.CAPTION"
 msgid "User:"
-msgstr "User:"
+msgstr "Utente:"
 
 #: tfrsitegrabber.lbluseragent.caption
-msgctxt "tfrsitegrabber.lbluseragent.caption"
+msgctxt "TFRSITEGRABBER.LBLUSERAGENT.CAPTION"
 msgid "User agent:"
-msgstr "User agent:"
+msgstr "Utente agent:"
 
 #: tfrsitegrabber.lblwelcome.caption
-msgctxt "tfrsitegrabber.lblwelcome.caption"
+msgctxt "TFRSITEGRABBER.LBLWELCOME.CAPTION"
 msgid "Welcome to the site grabber wizard"
-msgstr "Site kapma sihirbazına hoş geldiniz"
+msgstr "Benvenuti nel sito Grabber wizard"
 
 #: tfrsitegrabber.tsbasicoptions.caption
 msgid "tsBasicOptions"
@@ -2344,40 +2367,40 @@ msgstr ""
 
 #: tfrvideoformat.btnreload.caption
 msgid "Reload"
-msgstr "Reload"
+msgstr "Ricaricari"
 
 #: tfrvideoformat.caption
 msgid "Video formats"
-msgstr "Video formats"
+msgstr "Formati Video"
 
 #: tfrvideoformat.chdownplaylist.caption
 msgid "Download all playlist"
-msgstr "Download all playlist"
+msgstr "Scarica tutte le playlist"
 
 #: tfrvideoformat.chdownsubtitle.caption
 msgid "Download all subtitles"
-msgstr "Tüm altyazıları indir"
+msgstr "Scarica tutti i sottotitoli"
 
 #: tfrvideoformat.lblselectformat.caption
 msgid "Select format:"
-msgstr "Select format:"
+msgstr "Seleziona formato:"
 
 #: tfrvideoformat.lblvideoname.caption
-msgctxt "tfrvideoformat.lblvideoname.caption"
+msgctxt "TFRVIDEOFORMAT.LBLVIDEONAME.CAPTION"
 msgid "Name:"
-msgstr "Name:"
+msgstr "Nome:"
 
 #: tfrvideoformat.lvformats.columns[0].caption
 msgid "Format"
-msgstr "Format"
+msgstr "Formato"
 
 #: tfrvideoformat.lvformats.columns[1].caption
 msgctxt "tfrvideoformat.lvformats.columns[1].caption"
 msgid "Description"
-msgstr "Açıklama"
+msgstr "Descrizione"
 
 #: tfrvideoformat.lvformats.columns[2].caption
-msgctxt "tfrvideoformat.lvformats.columns[2].caption"
+msgctxt "TFRVIDEOFORMAT.LVFORMATS.COLUMNS[2].CAPTION"
 msgid "id"
 msgstr "id"
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="10"/>
+    <Version Value="11"/>
     <General>
       <SessionStorage Value="InProjectDir"/>
       <MainUnit Value="0"/>
@@ -19,7 +19,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="6"/>
-      <BuildNr Value="6028"/>
+      <BuildNr Value="6033"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2019" OriginalFilename="awgg" ProductName="AWGG" ProductVersion="0.5.1.5685"/>
     </VersionInfo>
     <BuildModes Count="13">
@@ -132,6 +132,7 @@ end;"/>
             <Checks>
               <IOChecks Value="True"/>
             </Checks>
+            <TargetCPU Value="x86_64"/>
             <Optimizations>
               <OptimizationLevel Value="2"/>
             </Optimizations>
@@ -564,9 +565,16 @@ end;"/>
     </PublishOptions>
     <RunParams>
       <local>
-        <FormatVersion Value="1"/>
         <CommandLineParams Value="http://www.google.com/video.avi"/>
       </local>
+      <FormatVersion Value="2"/>
+      <Modes Count="1">
+        <Mode0 Name="default">
+          <local>
+            <CommandLineParams Value="http://www.google.com/video.avi"/>
+          </local>
+        </Mode0>
+      </Modes>
     </RunParams>
     <RequiredPackages Count="3">
       <Item1>

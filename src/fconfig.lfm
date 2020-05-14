@@ -8,7 +8,7 @@ object frconfig: Tfrconfig
   ClientWidth = 697
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '1.8.4.0'
+  LCLVersion = '2.0.4.0'
   object btnConfigAccept: TButton
     AnchorSideLeft.Control = pcConfig
     AnchorSideRight.Control = btnConfigCancel
@@ -73,7 +73,7 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtProxyPass
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = edtProxyPass
-        Left = 23
+        Left = 24
         Height = 15
         Top = 255
         Width = 53
@@ -87,10 +87,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = lblSSLhost
         AnchorSideRight.Side = asrBottom
-        Left = 8
+        Left = 10
         Height = 15
         Top = 37
-        Width = 33
+        Width = 31
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 6
         Caption = 'HTTP:'
@@ -113,10 +113,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = lblSSLhost
         AnchorSideRight.Side = asrBottom
-        Left = 18
+        Left = 19
         Height = 15
         Top = 122
-        Width = 23
+        Width = 22
         Anchors = [akTop, akRight]
         BorderSpacing.Left = 5
         Caption = 'FTP:'
@@ -260,7 +260,7 @@ object frconfig: Tfrconfig
         Left = 7
         Height = 15
         Top = 155
-        Width = 69
+        Width = 70
         BorderSpacing.Left = 5
         Caption = 'No proxy for:'
         ParentColor = False
@@ -272,10 +272,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = tsProxy
         AnchorSideRight.Side = asrBottom
-        Left = 76
+        Left = 77
         Height = 23
         Top = 151
-        Width = 384
+        Width = 383
         Anchors = [akTop, akLeft, akRight]
         BorderSpacing.Top = 10
         BorderSpacing.Right = 5
@@ -286,7 +286,7 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Control = edtNoProxyHosts
         AnchorSideTop.Control = chUseAuth
         AnchorSideTop.Side = asrBottom
-        Left = 76
+        Left = 77
         Height = 23
         Top = 223
         Width = 144
@@ -298,7 +298,7 @@ object frconfig: Tfrconfig
         AnchorSideTop.Control = edtProxyUser
         AnchorSideTop.Side = asrCenter
         AnchorSideRight.Control = edtProxyUser
-        Left = 50
+        Left = 51
         Height = 15
         Top = 227
         Width = 26
@@ -310,7 +310,7 @@ object frconfig: Tfrconfig
         AnchorSideLeft.Control = edtProxyUser
         AnchorSideTop.Control = edtProxyUser
         AnchorSideTop.Side = asrBottom
-        Left = 76
+        Left = 77
         Height = 23
         Top = 251
         Width = 144
@@ -325,7 +325,7 @@ object frconfig: Tfrconfig
         Left = 15
         Height = 19
         Top = 199
-        Width = 121
+        Width = 119
         BorderSpacing.Top = 10
         Caption = 'Use authentication'
         Color = clDefault
@@ -339,7 +339,7 @@ object frconfig: Tfrconfig
         Left = 82
         Height = 19
         Top = 61
-        Width = 160
+        Width = 159
         BorderSpacing.Top = 5
         Caption = 'Use the same proxy for all.'
         OnChange = chSameProxyChange
@@ -372,10 +372,10 @@ object frconfig: Tfrconfig
         AnchorSideTop.Side = asrBottom
         AnchorSideRight.Control = edtNoProxyHosts
         AnchorSideRight.Side = asrBottom
-        Left = 76
+        Left = 77
         Height = 15
         Top = 174
-        Width = 384
+        Width = 383
         Anchors = [akTop, akLeft, akRight]
         Caption = 'Exp: .mozilla.org, localhost, 192.168.0.1'
         ParentColor = False

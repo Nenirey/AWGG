@@ -3,7 +3,7 @@ unit fmain;
 {
   Main form of AWGG
 
-  Copyright (C) 2019 Reinier Romero Mir
+  Copyright (C) 2020 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -845,22 +845,6 @@ begin
   RS:=TStringList.Create;
   internet:=false;
   descargado:=false;
-  case useproxy of
-  0,1:begin
-        //DHTTPClient.Proxy.Host:= '';
-        //DHTTPClient.Proxy.UserName:= '';
-        //DHTTPClient.Proxy.Password:= '';
-      end;
-  2:begin
-      DHTTPClient.Proxy.Host:= phttp;
-      DHTTPClient.Proxy.Port:= strtoint(phttpport);
-      if useaut then
-      begin
-        DHTTPClient.Proxy.UserName:= puser;
-        DHTTPClient.Proxy.Password:= ppassword;
-      end;
-    end;
-  end;
 end;
 
 procedure TUpdateThread.stop;
@@ -1076,6 +1060,22 @@ begin
     while(updateinprogress)do
       sleep(1000);
     updateinprogress:=true;
+    case useproxy of
+    0,1:begin
+          //DHTTPClient.Proxy.Host:= '';
+          //DHTTPClient.Proxy.UserName:= '';
+          //DHTTPClient.Proxy.Password:= '';
+        end;
+    2:begin
+        DHTTPClient.Proxy.Host:= phttp;
+        DHTTPClient.Proxy.Port:= strtoint(phttpport);
+        if useaut then
+        begin
+          DHTTPClient.Proxy.UserName:= puser;
+          DHTTPClient.Proxy.Password:= ppassword;
+        end;
+      end;
+    end;
     DHTTPClient.AllowRedirect:=true;
     DHTTPClient.IOTimeout:=5000;
     DHTTPClient.AddHeader('Connection','Keep-Alive');
@@ -1218,22 +1218,6 @@ begin
   nointernetchange:=true;
   internet:=false;
   ifstop:=true;
-  case useproxy of
-  0,1:begin
-        //DHTTPClient.Proxy.Host:= '';
-        //DHTTPClient.Proxy.UserName:= '';
-        //DHTTPClient.Proxy.Password:= '';
-      end;
-  2:begin
-      DHTTPClient.Proxy.Host:= phttp;
-      DHTTPClient.Proxy.Port:= strtoint(phttpport);
-      if useaut then
-      begin
-        DHTTPClient.Proxy.UserName:= puser;
-        DHTTPClient.Proxy.Password:= ppassword;
-      end;
-    end;
-  end;
 end;
 
 procedure TConnectionThread.showrs;
@@ -1296,6 +1280,22 @@ begin
         internet:=false;
         firsttime:=false;
         ctryn:=5;
+        case useproxy of
+        0,1:begin
+              //DHTTPClient.Proxy.Host:= '';
+              //DHTTPClient.Proxy.UserName:= '';
+              //DHTTPClient.Proxy.Password:= '';
+            end;
+        2:begin
+            DHTTPClient.Proxy.Host:= phttp;
+            DHTTPClient.Proxy.Port:= strtoint(phttpport);
+            if useaut then
+            begin
+              DHTTPClient.Proxy.UserName:= puser;
+              DHTTPClient.Proxy.Password:= ppassword;
+            end;
+          end;
+        end;
         DHTTPClient.KeepConnection:=false;
         DHTTPClient.IOTimeout:=5000;
         DHTTPClient.HTTPMethod('HEAD',InternetURL,nil,[200]);
