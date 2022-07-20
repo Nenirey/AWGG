@@ -40,7 +40,7 @@ msgid ""
 "\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
-"Copyright (c) 2014-2020\n"
+"Copyright (c) 2014-2022\n"
 "\n"
 "The project uses the following third party resources:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -56,7 +56,7 @@ msgid ""
 "German translation: Mag Fu (mag.fu@yandex.com)\n"
 "Tukish translation: BigLorD @ Github.com\n"
 "Portuguese translation: havokdan@yahoo.com.br\n"
-"Chinese, Italian, Russian translation: Ronaldo Rodrigues Oliveira (morcberry@gmail.com)\n"
+"Chinese, Italian, Russian translation: Ronaldo Rodrigues Oliveira (morcberry@gmail.com)"
 msgstr ""
 "Ce programme est un logiciel libre sous licence GNU GPL 2.\n"
 "Créé par Reinier Romero Mir\n"
@@ -153,10 +153,12 @@ msgid "Videos"
 msgstr "Vidéos"
 
 #: fstrings.commonaudiodescription
+#, object-pascal-format
 msgid "The best quality audio in %s format (if exists)"
 msgstr ""
 
 #: fstrings.commonvideodescription
+#, object-pascal-format
 msgid "The best quality video in %s format (if exists)"
 msgstr ""
 
@@ -234,6 +236,7 @@ msgid "The file exist, do you want replace it?"
 msgstr "Le fichier existe, voulez-vous le remplacer ?"
 
 #: fstrings.fileexistsreplacetext
+#, object-pascal-format
 msgctxt "fstrings.fileexistsreplacetext"
 msgid "The file \"%S\" already exists, do you want to replace it?"
 msgstr "Le fichier \"%S\" existe déjà, vouslez-vous le remplacer ?"
@@ -290,9 +293,10 @@ msgid "Downloads exist in progress, do you want to close anyway?"
 msgstr "Des téléchargements sont en cours, voulez-vous fermer tout de même  ?"
 
 #: fstrings.msgcopyoperationerror
+#, object-pascal-format
 msgid ""
 "Error to copy file, details:\n"
-"%s\n"
+"%s"
 msgstr ""
 
 #: fstrings.msgerrorconfigload
@@ -311,12 +315,13 @@ msgid "Error saving the download list"
 msgstr "Erreur durant l'enregistrement de la liste des téléchargements"
 
 #: fstrings.msgerrorinforme
+#, object-pascal-format
 msgid ""
 "Oh!! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:\n"
 "%s\n"
 "Error description:\n"
 "%s\n"
-"Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue\n"
+"Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue"
 msgstr ""
 
 #: fstrings.msgfilenoexist
@@ -336,7 +341,7 @@ msgstr ""
 #: fstrings.msgmoveoperationerror
 msgid ""
 "Error to move file, details:\n"
-"$s\n"
+"$s"
 msgstr ""
 
 #: fstrings.msgmustselectdownload
@@ -522,11 +527,13 @@ msgid "Download properties"
 msgstr "Propriétés du téléchargement"
 
 #: fstrings.transdestinationlabel
+#, object-pascal-format
 msgctxt "fstrings.transdestinationlabel"
 msgid "To: %S"
 msgstr "Vers: %S"
 
 #: fstrings.transfromlabel
+#, object-pascal-format
 msgctxt "fstrings.transfromlabel"
 msgid "From: %S"
 msgstr "De: %S"
@@ -1320,11 +1327,13 @@ msgid "File operations"
 msgstr "Enregistrement du fichier..."
 
 #: tfrcopymove.lblfrom.caption
+#, object-pascal-format
 msgctxt "tfrcopymove.lblfrom.caption"
 msgid "From: %s"
 msgstr "Depuis: %s"
 
 #: tfrcopymove.lblto.caption
+#, object-pascal-format
 msgctxt "tfrcopymove.lblto.caption"
 msgid "To: %s"
 msgstr "Vers: %s"

@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CONFIG>
   <ProjectOptions>
-    <Version Value="11"/>
+    <Version Value="12"/>
     <General>
+      <Flags>
+        <CompatibilityMode Value="True"/>
+      </Flags>
       <SessionStorage Value="InProjectDir"/>
-      <MainUnit Value="0"/>
       <Title Value="AWGG"/>
       <Scaled Value="True"/>
       <ResourceType Value="res"/>
@@ -19,7 +21,7 @@
       <UseVersionInfo Value="True"/>
       <AutoIncrementBuild Value="True"/>
       <MinorVersionNr Value="6"/>
-      <BuildNr Value="6033"/>
+      <BuildNr Value="6034"/>
       <StringTable Comments="Advanced WGet GUI" FileDescription="Advanced WGet GUI" InternalName="AWGG" LegalCopyright="Reinier Romero Mir 2019" OriginalFilename="awgg" ProductName="AWGG" ProductVersion="0.5.1.5685"/>
     </VersionInfo>
     <BuildModes Count="13">
@@ -113,15 +115,15 @@
             <IncludeFiles Value="$(ProjOutDir)"/>
             <UnitOutputDirectory Value="../units/$(TargetCPU)-$(TargetOS)-$(LCLWidgetType)"/>
           </SearchPaths>
-          <Conditionals Value="if (TargetOS = 'linux') then
+          <Conditionals Value="if (TargetOS = &apos;linux&apos;) then
 begin
-  LinkerOptions += ' -z relro --as-needed';
+  LinkerOptions += &apos; -z relro --as-needed&apos;;
 end;
 
-if LCLWidgetType &lt;> GetIDEValue('LCLWidgetType') then
+if LCLWidgetType &lt;> GetIDEValue(&apos;LCLWidgetType&apos;) then
 begin
-  UnitPath += '$(FallbackOutputRoot)/LazControls/lib/$(TargetCPU)-$(TargetOS)/$(LCLWidgetType);';
-  UnitPath += '$(FallbackOutputRoot)/SynEdit/units/$(TargetCPU)-$(TargetOS)/$(LCLWidgetType);';
+  UnitPath += &apos;$(FallbackOutputRoot)/LazControls/lib/$(TargetCPU)-$(TargetOS)/$(LCLWidgetType);&apos;;
+  UnitPath += &apos;$(FallbackOutputRoot)/SynEdit/units/$(TargetCPU)-$(TargetOS)/$(LCLWidgetType);&apos;;
 end;"/>
           <Parsing>
             <SyntaxOptions>

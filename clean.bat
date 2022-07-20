@@ -20,6 +20,7 @@
 @del /Q /S tools\lib\*.*
 @del /Q tools\extractdwrflnfo.exe
 @del /Q tools\extractdwrflnfo
+@del /Q src\versionitis.exe
 
 @echo Clean up components output directories
 @rmdir /S /Q components\uniqueinstance\lib\

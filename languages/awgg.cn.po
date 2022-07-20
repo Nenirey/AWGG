@@ -8,7 +8,7 @@ msgid ""
 "\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
-"Copyright (c) 2014-2020\n"
+"Copyright (c) 2014-2022\n"
 "\n"
 "The project uses the following third party resources:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -24,7 +24,7 @@ msgid ""
 "German translation: Mag Fu (mag.fu@yandex.com)\n"
 "Tukish translation: BigLorD @ Github.com\n"
 "Portuguese translation: havokdan@yahoo.com.br\n"
-"Chinese, Italian, Russian translation: Ronaldo Rodrigues Oliveira (morcberry@gmail.com)\n"
+"Chinese, Italian, Russian translation: Ronaldo Rodrigues Oliveira (morcberry@gmail.com)"
 msgstr ""
 
 #: fstrings.alldowntreename
@@ -102,10 +102,12 @@ msgid "Videos"
 msgstr "视频"
 
 #: fstrings.commonaudiodescription
+#, object-pascal-format
 msgid "The best quality audio in %s format (if exists)"
 msgstr " 最佳音频质量的%S格式（如果存在)"
 
 #: fstrings.commonvideodescription
+#, object-pascal-format
 msgid "The best quality video in %s format (if exists)"
 msgstr "%S格式的最佳质量视频（如果存在)"
 
@@ -183,6 +185,7 @@ msgid "The file exist, do you want replace it?"
 msgstr "文件存在，你想替换它?？"
 
 #: fstrings.fileexistsreplacetext
+#, object-pascal-format
 msgctxt "fstrings.fileexistsreplacetext"
 msgid "The file \"%S\" already exists, do you want to replace it?"
 msgstr "文件\"%S\"已经存在，是否要替换它？"
@@ -239,9 +242,13 @@ msgid "Downloads exist in progress, do you want to close anyway?"
 msgstr "下载正在进行中，你想反正关闭？"
 
 #: fstrings.msgcopyoperationerror
+#, object-pascal-format, fuzzy
+#| msgid ""
+#| "Error to copy file, details:\n"
+#| "%s\n"
 msgid ""
 "Error to copy file, details:\n"
-"%s\n"
+"%s"
 msgstr ""
 "错误复制文件，详细信息：\n"
 " %s\n"
@@ -262,7 +269,7 @@ msgid "Error saving the download list"
 msgstr "保存下载列表时出错"
 
 #: fstrings.msgerrorinforme
-#, fuzzy
+#, object-pascal-format, fuzzy
 #| msgid ""
 #| "Oh!!  NO !! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:\n"
 #| "%s\n"
@@ -274,7 +281,7 @@ msgid ""
 "%s\n"
 "Error description:\n"
 "%s\n"
-"Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue\n"
+"Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue"
 msgstr ""
 "哦!!  不！! 这是罕见的错误发生，请报告给电子邮件nenirey@gmail.com 使用其他文件：\n"
 "%s\n"
@@ -297,9 +304,13 @@ msgid "Internet connection"
 msgstr "互联网连接"
 
 #: fstrings.msgmoveoperationerror
+#, fuzzy
+#| msgid ""
+#| "Error to move file, details:\n"
+#| "$s\n"
 msgid ""
 "Error to move file, details:\n"
-"$s\n"
+"$s"
 msgstr ""
 "错误移动文件，详细信息：\n"
 "$s\n"
@@ -489,11 +500,13 @@ msgid "Download properties"
 msgstr "下载属性..."
 
 #: fstrings.transdestinationlabel
+#, object-pascal-format
 msgctxt "fstrings.transdestinationlabel"
 msgid "To: %S"
 msgstr "到：%S"
 
 #: fstrings.transfromlabel
+#, object-pascal-format
 msgctxt "fstrings.transfromlabel"
 msgid "From: %S"
 msgstr "发件人：%S"
@@ -1295,11 +1308,13 @@ msgid "File operations"
 msgstr "文件操作"
 
 #: tfrcopymove.lblfrom.caption
+#, object-pascal-format
 msgctxt "TFRCOPYMOVE.LBLFROM.CAPTION"
 msgid "From: %s"
 msgstr "发件人：%s"
 
 #: tfrcopymove.lblto.caption
+#, object-pascal-format
 msgctxt "TFRCOPYMOVE.LBLTO.CAPTION"
 msgid "To: %s"
 msgstr "到：%s"

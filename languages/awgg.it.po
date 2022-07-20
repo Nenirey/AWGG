@@ -8,7 +8,7 @@ msgid ""
 "\n"
 "Created By Reinier Romero Mir\n"
 "Email: nenirey@gmail.com\n"
-"Copyright (c) 2014-2020\n"
+"Copyright (c) 2014-2022\n"
 "\n"
 "The project uses the following third party resources:\n"
 "- Silk icons set 1.3 by Mark James (http://www.famfamfam.com/lab/icons/silk/\n"
@@ -24,7 +24,7 @@ msgid ""
 "German translation: Mag Fu (mag.fu@yandex.com)\n"
 "Tukish translation: BigLorD @ Github.com\n"
 "Portuguese translation: havokdan@yahoo.com.br\n"
-"Chinese, Italian, Russian translation: Ronaldo Rodrigues Oliveira (morcberry@gmail.com)\n"
+"Chinese, Italian, Russian translation: Ronaldo Rodrigues Oliveira (morcberry@gmail.com)"
 msgstr ""
 
 #: fstrings.alldowntreename
@@ -102,12 +102,12 @@ msgid "Videos"
 msgstr "Videos"
 
 #: fstrings.commonaudiodescription
-#, fuzzy,badformat
+#, object-pascal-format, fuzzy, badformat
 msgid "The best quality audio in %s format (if exists)"
 msgstr "L'audio di qualità migliore nel formato % s (se esiste)"
 
 #: fstrings.commonvideodescription
-#, fuzzy,badformat
+#, object-pascal-format, fuzzy, badformat
 msgid "The best quality video in %s format (if exists)"
 msgstr "La migliore qualità video in formato % s (se esiste)"
 
@@ -187,6 +187,7 @@ msgid "The file exist, do you want replace it?"
 msgstr "Il archivio esiste, vuoi sostituirlo?"
 
 #: fstrings.fileexistsreplacetext
+#, object-pascal-format
 msgctxt "fstrings.fileexistsreplacetext"
 msgid "The file \"%S\" already exists, do you want to replace it?"
 msgstr "Il file \" %s\" esiste già, vuoi sostituirlo?"
@@ -243,10 +244,13 @@ msgid "Downloads exist in progress, do you want to close anyway?"
 msgstr "I download esistono in corso, vuoi comunque chiudere?"
 
 #: fstrings.msgcopyoperationerror
-#, fuzzy,badformat
+#, object-pascal-format, fuzzy, badformat
+#| msgid ""
+#| "Error to copy file, details:\n"
+#| "%s\n"
 msgid ""
 "Error to copy file, details:\n"
-"%s\n"
+"%s"
 msgstr "Errore nel copiare file, Dettagli:  n"
 
 #: fstrings.msgerrorconfigload
@@ -265,7 +269,7 @@ msgid "Error saving the download list"
 msgstr "Errore nel salvare l'elenco di download"
 
 #: fstrings.msgerrorinforme
-#, fuzzy
+#, object-pascal-format, fuzzy
 #| msgid ""
 #| "Oh no !! this is rare, an error occured, please report this to email nenirey@gmail.com with the attach file:\n"
 #| "%s\n"
@@ -277,7 +281,7 @@ msgid ""
 "%s\n"
 "Error description:\n"
 "%s\n"
-"Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue\n"
+"Press [Ok] to report, [Cancel] to close the program and [Ignore] to continue"
 msgstr ""
 "Oh no !! questo è raro, si è verificato un errore, si prega di segnalare questo per e-mail nenirey@gmail.com con il file allega:  n%s\n"
 "Descrizione Errore:  n%s\n"
@@ -298,9 +302,13 @@ msgid "Internet connection"
 msgstr "Connessione Internet"
 
 #: fstrings.msgmoveoperationerror
+#, fuzzy
+#| msgid ""
+#| "Error to move file, details:\n"
+#| "$s\n"
 msgid ""
 "Error to move file, details:\n"
-"$s\n"
+"$s"
 msgstr "Errore nel spostare archivio, Dettagli:  n$s"
 
 #: fstrings.msgmustselectdownload
@@ -486,13 +494,13 @@ msgid "Download properties"
 msgstr "Scarica proprietà"
 
 #: fstrings.transdestinationlabel
-#, fuzzy,badformat
+#, object-pascal-format, fuzzy, badformat
 msgctxt "fstrings.transdestinationlabel"
 msgid "To: %S"
 msgstr "A: % S"
 
 #: fstrings.transfromlabel
-#, fuzzy,badformat
+#, object-pascal-format, fuzzy, badformat
 msgctxt "fstrings.transfromlabel"
 msgid "From: %S"
 msgstr "Da: % S"
@@ -1292,11 +1300,13 @@ msgid "File operations"
 msgstr "Operazioni di archivio"
 
 #: tfrcopymove.lblfrom.caption
+#, object-pascal-format
 msgctxt "TFRCOPYMOVE.LBLFROM.CAPTION"
 msgid "From: %s"
 msgstr "From: %s"
 
 #: tfrcopymove.lblto.caption
+#, object-pascal-format
 msgctxt "TFRCOPYMOVE.LBLTO.CAPTION"
 msgid "To: %s"
 msgstr "To: %s"

@@ -3,7 +3,7 @@ unit fmain;
 {
   Main form of AWGG
 
-  Copyright (C) 2020 Reinier Romero Mir
+  Copyright (C) 2022 Reinier Romero Mir
   nenirey@gmail.com
 
   This library is free software; you can redistribute it and/or modify it
@@ -4222,7 +4222,7 @@ begin
           end;
           if (frmain.lvMain.Items[indice].SubItems[columnname]<>'') and (tmps.IndexOf('--yes-playlist')=-1) then
           begin
-            tmps.Add('--o');
+            tmps.Add('--output');
             tmps.Add(UTF8ToSys(frmain.lvMain.Items[indice].SubItems[columnname]));
           end;
           tmps.Add(frmain.lvMain.Items[indice].SubItems[columnurl]);

@@ -1,3 +1,10 @@
+Changes in (0.6.0.6034 BETA):
+
+-Update language files.
+-Fix new yt-dl -o option to --output.
+-Build under last stable lazarus 2.2.2 fpc 3.2.2.
+
+
 Changes in (0.6.0.5953 BETA):
 
 -Update language files.

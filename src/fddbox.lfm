@@ -24,8 +24,7 @@ object frddbox: Tfrddbox
   OnMouseUp = FormMouseUp
   OnMouseWheel = FormMouseWheel
   OnPaint = FormPaint
-  PopupMenu = frmain.pmTrayIcon
-  LCLVersion = '2.0.4.0'
+  LCLVersion = '2.0.6.0'
   object frddboximgLogo: TImage
     Left = 5
     Height = 83
@@ -86,7 +85,6 @@ object frddbox: Tfrddbox
       010D98B7D360F07A3D1B4BC397B39729ACD7EA9EEDD5A77A0547C1BC44611DC0
       D3E085E70A6FFE07D11F867927A0A25F0000000049454E44AE426082
     }
-    PopupMenu = frmain.pmTrayIcon
     Proportional = True
     Stretch = True
   end
@@ -117,7 +115,6 @@ object frddbox: Tfrddbox
     OnMouseUp = FormMouseUp
     OnMouseWheel = FormMouseWheel
     ParentFont = False
-    PopupMenu = frmain.pmTrayIcon
     TabOrder = 0
     Visible = False
   end

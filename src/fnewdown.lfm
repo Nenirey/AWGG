@@ -16,7 +16,7 @@ object frnewdown: Tfrnewdown
   OnShow = FormShow
   Position = poScreenCenter
   ShowInTaskBar = stAlways
-  LCLVersion = '2.0.4.0'
+  LCLVersion = '2.0.6.0'
   object edtURL: TEdit
     AnchorSideLeft.Control = lblURL
     AnchorSideLeft.Side = asrBottom
