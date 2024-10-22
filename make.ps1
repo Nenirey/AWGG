@@ -1,6 +1,6 @@
 function f_clean {
     Write-Output "Clean up output directory"
-    winget install lazarus
+    winget search lazarus
 }
 
 function f_main {
