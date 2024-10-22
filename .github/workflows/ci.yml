@@ -30,4 +30,4 @@ jobs:
     - name: Build
       working-directory: "."
       shell: bash
-      run: bash -x make.sh ci
+      run: bash -x make.sh all

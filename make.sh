@@ -40,13 +40,6 @@ function clean # Clean up all temporary files
     rm -f awgg
 }
 
-function prepare
-{
-    log 'info' 'Download dep'
-    sudo apt-get update
-    sudo apt-get install -y lazarus
-}
-
 function version_itis
 {
     "${lazbuild}" src/versionitis.lpi # Build versionitis
@@ -89,6 +82,15 @@ function build_release
 function main
 {
     set -eo pipefail
+    if !(which lazbuild); then
+        source '/etc/os-release'
+        case ${ID:?} in
+            debian | ubuntu)
+                sudo apt-get update
+                sudo apt-get install -y lazarus
+            ;;
+        esac
+    fi
     lazbuild=$(which lazbuild) # path to lazbuild
     export lazbuild
 
@@ -105,10 +107,6 @@ function main
         export -a AWGG_ARCH=("--cpu=${CPU_TARGET}")
     fi
     case ${1} in
-        ci)
-            prepare
-            build_default
-        ;;
         clean)   clean;;
         beta)    build_beta;;
         release) build_release;;
