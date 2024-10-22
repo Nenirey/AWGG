@@ -29,6 +29,6 @@ jobs:
       with:
         submodules: true
     - name: Build on Linux
-      if: runner.os == "Linux"
+      if: runner.os == 'Linux'
       shell: bash
       run: bash -x make.sh all
