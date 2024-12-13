@@ -102,8 +102,8 @@ function priv_lazbuild
         find "${COMPONENTS%%/*}" -type 'f' -name '*.lpk' -exec \
             lazbuild --add-package-link {} +
     fi
-    find 'app' -type 'f' -name '*.lpi' -exec \
-        lazbuild --no-write-project --recursive --no-write-project --widgetset=qt5 {} + 1>&2
+    find 'src' -type 'f' -name '*.lpi' -exec \
+        lazbuild --no-write-project --recursive --no-write-project --widgetset=qt5 --build-mode=release {} + 1>&2
 )
 
 function main
@@ -142,4 +142,4 @@ function main
     esac
 }
 
-main "${@}"
+main "${@}" >/dev/null
