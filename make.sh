@@ -80,15 +80,6 @@ function build_release
 
 function priv_lazbuild
 (
-    if ! (which lazbuild); then
-        source '/etc/os-release'
-        case ${ID:?} in
-            debian | ubuntu)
-                sudo apt-get update
-                sudo apt-get install -y lazarus{-ide-qt5,}
-                ;;
-        esac
-    fi
     declare -r COMPONENTS='use/components.txt'
     if [[ -d "${COMPONENTS%%/*}" ]]; then
         git submodule update --init --recursive --force --remote
@@ -118,6 +109,15 @@ function priv_lazbuild
 function main
 {
     set -eo pipefail
+    if ! (which lazbuild); then
+        source '/etc/os-release'
+        case ${ID:?} in
+            debian | ubuntu)
+                sudo apt-get update
+                sudo apt-get install -y lazarus{-ide-qt5,}
+                ;;
+        esac
+    fi
     lazbuild=$(which lazbuild) # path to lazbuild
     export lazbuild
 
