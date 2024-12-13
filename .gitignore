@@ -27,3 +27,5 @@ docs/_build/
 *.bak
 *.ppu
 *.old
+*.res
+src/backup/
