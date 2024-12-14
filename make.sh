@@ -31,7 +31,6 @@ function clean # Clean up all temporary files
     rm -f tools/extractdwrflnfo
     rm -rf src/lib
     rm -rf src/backup
-    rm -r units/*
     rm -f src/versionitis
 
     # Remove debug files
@@ -79,16 +78,44 @@ function build_release
     strip awgg                                                # Strip debug info
 }
 
+function priv_lazbuild
+(
+    declare -r COMPONENTS='use/components.txt'
+    if [[ -d "${COMPONENTS%%/*}" ]]; then
+        git submodule update --init --recursive --force --remote
+        if [[ -f "${COMPONENTS}" ]]; then
+            while read -r; do
+                if [[ -n "${REPLY}" ]] &&
+                    ! (lazbuild --verbose-pkgsearch "${REPLY}") &&
+                    ! (lazbuild --add-package "${REPLY}") &&
+                    ! [[ -d "${COMPONENTS%%/*}/${REPLY}" ]]; then
+                        declare -A VAR=(
+                            [url]="https://packages.lazarus-ide.org/${REPLY}.zip"
+                            [out]=$(mktemp)
+                        )
+                        wget --output-document "${VAR[out]}" "${VAR[url]}" >/dev/null
+                        unzip -o "${VAR[out]}" -d "${COMPONENTS%%/*}/${REPLY}"
+                        rm --verbose "${VAR[out]}"
+                    fi
+            done < "${COMPONENTS}"
+        fi
+        find "${COMPONENTS%%/*}" -type 'f' -name '*.lpk' -exec \
+            lazbuild --add-package-link {} +
+    fi
+    find 'src' -type 'f' -name '*.lpi' -exec \
+        lazbuild --no-write-project --recursive --no-write-project --widgetset=qt5 --build-mode=release {} + 1>&2
+)
+
 function main
 {
     set -eo pipefail
-    if !(which lazbuild); then
+    if ! (which lazbuild); then
         source '/etc/os-release'
         case ${ID:?} in
             debian | ubuntu)
                 sudo apt-get update
-                sudo apt-get install -y lazarus
-            ;;
+                sudo apt-get install -y lazarus{-ide-qt5,}
+                ;;
         esac
     fi
     lazbuild=$(which lazbuild) # path to lazbuild
@@ -107,6 +134,7 @@ function main
         export -a AWGG_ARCH=("--cpu=${CPU_TARGET}")
     fi
     case ${1} in
+        build)   priv_lazbuild ;;
         clean)   clean;;
         beta)    build_beta;;
         release) build_release;;
@@ -114,4 +142,4 @@ function main
     esac
 }
 
-main "${@}"
+main "${@}" >/dev/null
